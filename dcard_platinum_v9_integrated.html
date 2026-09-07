@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>dカード提案シミュレーター V9.0 統合版</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f4f5f7;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",Arial;color:#17191d;padding-bottom:40px}
+header{background:#111318;color:white;padding:20px 16px;border-bottom:4px solid #b58a1d}header small{color:#dec56b;font-weight:900}header h1{font-size:21px;margin:5px 0}header p{font-size:12px;color:#ddd;margin:0}
+.wrap{max-width:760px;margin:auto;padding:12px}.card{background:white;border-radius:18px;padding:16px;margin:12px 0;border:1px solid #e9ebee;box-shadow:0 5px 18px #00000008}
+.step{font-size:10px;font-weight:900;color:#987415}.title{font-size:17px;font-weight:950;margin:3px 0 12px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:580px){.grid{grid-template-columns:1fr}}
+label{display:block;font-size:12px;font-weight:850;margin:8px 0 5px}select,input{width:100%;padding:12px;border:1px solid #d5d9df;border-radius:12px;background:white;font-size:16px}
+.summary{margin-top:12px;padding:12px;border-radius:13px;background:#f7f8f9;border:1px solid #e4e7eb}.row{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px dashed #e3e6ea;font-size:12px}.row:last-child{border-bottom:0}.row b{white-space:nowrap}
+.monthly{font-size:28px!important;font-weight:1000;color:#111}.hidden{display:none!important}
+.hero{background:linear-gradient(145deg,#111318,#353941);color:white}.hero .big{font-size:28px;font-weight:1000;margin:4px 0}.hero .sub{font-size:12px;color:#ddd}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}@media(max-width:430px){.compare{grid-template-columns:1fr}}
+.box{border:1px solid #e5e7eb;border-radius:14px;padding:12px}.box h3{margin:0 0 6px;font-size:13px}.box.gold{border-top:5px solid #b58a1d}.box.plat{border-top:5px solid #555b63}.net{font-size:21px;font-weight:1000}
+.note{font-size:11px;color:#6d747d;line-height:1.55;margin-top:7px}.progress{height:8px;background:#e7e9ec;border-radius:99px;overflow:hidden;margin-top:7px}.progress i{display:block;height:100%;background:#b58a1d;width:0}
+.status{margin-top:10px;background:#eef8f2;color:#17633e;padding:9px 11px;border-radius:10px;font-size:11px;font-weight:850}
+</style>
+</head>
+<body onload="calcAll()">
+<header>
+<small>d CARD SALES SIMULATOR • V9.0 統合版</small>
+<h1>GOLD / PLATINUM 提案シミュレーター</h1>
+<p>料金プランからポイ活・銀行・dカード積立まで、GOLD / PLATINUMを一括比較</p>
+</header>
+
+<div class="wrap">
+
+<section class="card hero">
+<div class="step">RESULT</div>
+<div class="big" id="heroText">PLATINUMなら 年間＋0円</div>
+<div class="sub" id="heroSub">入力内容を変更すると即時更新</div>
+</section>
+
+<section class="card">
+<div class="step">STEP 1</div><div class="title">料金プラン・データ量</div>
+
+<label>料金プラン</label>
+<select id="plan" onchange="planChanged()">
+<option value="max">ドコモ MAX</option>
+<option value="poimax">ドコモ ポイ活 MAX</option>
+<option value="poi20">ドコモ ポイ活 20</option>
+</select>
+
+<div id="maxStepArea">
+<label>ドコモ MAX データ量</label>
+<select id="maxStep" onchange="calcAll()">
+<option value="5698">STEP 1：～1GB</option>
+<option value="6798">STEP 2：1GB超～3GB</option>
+<option value="8448">STEP 3：3GB超～無制限</option>
+</select>
+</div>
+
+<div id="poiMaxArea" class="hidden">
+<label>ドコモ ポイ活 MAX データ量</label>
+<select id="poiMaxOnly" onchange="calcAll()">
+<option value="11748">段階制なし：無制限</option>
+</select>
+<div class="note">ポイ活MAXはSTEP1・2・3なし。基本料金11,748円で固定。</div>
+</div>
+
+<div id="poi20Area" class="hidden">
+<label>ドコモ ポイ活20 データ量</label>
+<select id="poi20Step" onchange="calcAll()">
+<option value="7898">～20GB</option>
+<option value="9570">20GB超～無制限</option>
+</select>
+</div>
+
+<div class="summary">
+<div class="row"><span>選択プラン</span><b id="planName">ドコモ MAX</b></div>
+<div class="row"><span>データ量</span><b id="dataName">STEP 1：～1GB</b></div>
+<div class="row"><span>割引前基本料金</span><b id="basePrice">5,698円</b></div>
+<div class="row"><span>毎月の料金</span><b class="monthly" id="monthlyPrice">5,148円</b></div>
+</div>
+</section>
+
+<section class="card">
+<div class="step">STEP 2</div><div class="title">割引・追加料金</div>
+<div class="grid">
+<div><label>ドコモ光 / home 5Gセット割</label><select id="hikariDisc" onchange="calcAll()"><option value="0">なし</option><option value="1210">あり −1,210円</option></select></div>
+<div><label>みんなドコモ割</label><select id="minnaDisc" onchange="calcAll()"><option value="0">1回線（なし）</option><option value="550">2回線 −550円</option><option value="1210">3回線以上 −1,210円</option></select></div>
+<div><label>ドコモでんきセット割</label><select id="denkiDisc" onchange="calcAll()"><option value="0">なし</option><option value="110">あり −110円</option></select></div>
+<div><label>長期利用割</label><select id="longDisc" onchange="calcAll()"><option value="0">なし</option><option value="110">10年以上 −110円</option><option value="220">20年以上 −220円</option></select></div>
+<div><label>通話オプション</label><select id="voice" onchange="calcAll()"><option value="0">なし</option><option value="880">5分通話無料 ＋880円</option><option value="1980">かけ放題 ＋1,980円</option></select></div>
+<div><label>その他追加料金 / 月</label><input id="extra" type="number" value="0" min="0" step="100" oninput="calcAll()" onchange="calcAll()"></div>
+</div>
+
+<div class="summary">
+<div class="row"><span>基本料金</span><b id="billBase">5,698円</b></div>
+<div class="row"><span>割引合計</span><b id="billDisc">−550円</b></div>
+<div class="row"><span>通話・追加料金</span><b id="billPlus">＋0円</b></div>
+<div class="row"><span>毎月の支払概算</span><b class="monthly" id="billMonthly">5,148円</b></div>
+</div>
+<div class="note">dカードお支払割 −550円を自動で含めています。</div>
+</section>
+
+<section class="card">
+<div class="step">STEP 3</div><div class="title">カード利用・固定費</div>
+<div class="grid">
+<div><label>月間ショッピング利用額</label><input id="monthlySpend" type="number" value="200000" min="0" step="1000" oninput="calcAll()"></div>
+<div><label>年間ショッピング利用額</label><input id="annualSpend" type="number" value="2400000" min="0" step="10000" oninput="calcAll()"></div>
+<div><label>ドコモ光 / 月</label><input id="hikariFee" type="number" value="5720" min="0" step="100" oninput="calcAll()"></div>
+<div><label>ドコモでんき / 月</label><input id="denkiFee" type="number" value="10000" min="0" step="100" oninput="calcAll()"></div>
+</div>
+</section>
+
+<section class="card hidden" id="poiCard">
+<div class="step">STEP 4</div><div class="title">ポイ活 自動計算</div>
+<label>ポイ活対象決済額 / 月</label><input id="poiSpend" type="number" value="50000" min="0" step="1000" oninput="calcAll()">
+<div class="summary" id="poiRule"></div>
+<div class="compare"><div class="box gold"><h3>GOLD</h3><div class="net" id="goldPoiM">0pt / 月</div><div class="note" id="goldPoiRemain"></div><div class="progress"><i id="goldBar"></i></div></div><div class="box plat"><h3>PLATINUM</h3><div class="net" id="platPoiM">0pt / 月</div><div class="note" id="platPoiRemain"></div><div class="progress"><i id="platBar"></i></div></div></div>
+</section>
+
+<section class="card">
+<div class="step">STEP 5</div><div class="title">ドコモの銀行</div>
+<label>対象決済のポイントアップを計算</label><select id="bankUse" onchange="calcAll()"><option value="1">利用する</option><option value="0">利用しない</option></select>
+<div class="note">月間ショッピング利用額を対象決済額として概算。GOLDは＋1%、PLATINUMは＋2%、各月3,000pt上限で比較します。</div>
+</section>
+
+<section class="card">
+<div class="step">STEP 6</div><div class="title">dカード積立（マネックス証券）</div>
+<div class="grid">
+<div><label>積立方法</label><select id="monexType" onchange="calcAll()"><option value="none">利用しない</option><option value="nisa">NISA</option><option value="tax">課税口座</option><option value="both">NISA＋課税口座</option></select></div>
+<div><label>積立額 / 月</label><input id="monexAmt" type="number" value="100000" min="0" max="100000" step="1000" oninput="calcAll()"></div>
+<div><label>PLATINUM利用年</label><select id="platYear" onchange="calcAll()"><option value="first">入会初年度</option><option value="later">2年目以降</option></select></div>
+</div>
+<div class="note">積立額は月10万円までの概算。2年目以降のPLATINUM還元率は月間ショッピング利用額に応じて判定します。</div>
+</section>
+
+<section class="card">
+<div class="step">STEP 7</div><div class="title">年間ご利用額特典</div>
+<div class="summary"><div class="row"><span>年間ショッピング利用額</span><b id="annualSpendShow">0円</b></div><div class="row"><span>GOLD 特典</span><b id="goldBenefit">0円</b></div><div class="row"><span>PLATINUM 特典</span><b id="platBenefit">0円</b></div><div class="row"><span>次のPLATINUM特典まで</span><b id="nextBenefit">—</b></div></div>
+</section>
+
+<section class="card">
+<div class="step">RESULT</div><div class="title">GOLD vs PLATINUM 年間比較</div>
+<div class="compare"><div class="box gold"><h3>dカード GOLD</h3><div class="net" id="goldNet">0円</div><div class="row"><span>固定費ポイント</span><b id="goldFixed">0pt</b></div><div class="row"><span>ポイ活</span><b id="goldPoiY">0pt</b></div><div class="row"><span>銀行</span><b id="goldBank">0pt</b></div><div class="row"><span>dカード積立</span><b id="goldMonex">0pt</b></div><div class="row"><span>年間利用額特典</span><b id="goldBenefit2">0円</b></div><div class="row"><span>年会費</span><b>−11,000円</b></div></div>
+<div class="box plat"><h3>dカード PLATINUM</h3><div class="net" id="platNet">0円</div><div class="row"><span>固定費ポイント</span><b id="platFixed">0pt</b></div><div class="row"><span>ポイ活</span><b id="platPoiY">0pt</b></div><div class="row"><span>銀行</span><b id="platBank">0pt</b></div><div class="row"><span>dカード積立</span><b id="platMonex">0pt</b></div><div class="row"><span>年間利用額特典</span><b id="platBenefit2">0円</b></div><div class="row"><span>年会費</span><b>−29,700円</b></div></div></div>
+<div class="status" id="status">✓ 初期計算済み</div><div class="note">※提案用の概算シミュレーターです。実際の進呈条件・対象外取引・キャンペーン等は公式条件をご確認ください。</div>
+</section>
+
+</div>
+
+<script>
+function g(id){return document.getElementById(id);}
+function num(id){
+  var v=parseFloat(g(id).value);
+  if(isNaN(v)){return 0;}
+  return v;
+}
+function y(v){return Math.round(v).toLocaleString("ja-JP")+"円";}
+function p(v){return Math.round(v).toLocaleString("ja-JP")+"pt";}
+
+function currentBase(){
+  var plan=g("plan").value;
+  if(plan==="max"){return num("maxStep");}
+  if(plan==="poimax"){return 11748;}
+  return num("poi20Step");
+}
+function currentDataName(){
+  var plan=g("plan").value;
+  if(plan==="max"){
+    return g("maxStep").options[g("maxStep").selectedIndex].text;
+  }
+  if(plan==="poimax"){return "段階制なし：無制限";}
+  return g("poi20Step").options[g("poi20Step").selectedIndex].text;
+}
+function currentPlanName(){
+  return g("plan").options[g("plan").selectedIndex].text;
+}
+
+function planChanged(){
+  var plan=g("plan").value;
+  g("maxStepArea").className = plan==="max" ? "" : "hidden";
+  g("poiMaxArea").className = plan==="poimax" ? "" : "hidden";
+  g("poi20Area").className = plan==="poi20" ? "" : "hidden";
+  g("poiCard").className = plan==="max" ? "card hidden" : "card";
+
+  if(plan==="poi20"){
+    g("longDisc").value="0";
+    g("longDisc").disabled=true;
+  }else{
+    g("longDisc").disabled=false;
+  }
+  calcAll();
+}
+
+function poiConfig(card){
+  var plan=g("plan").value;
+  if(plan==="poimax"){
+    if(card==="plat"){return {rate:0.10,cap:5000,year:60000};}
+    return {rate:0.05,cap:5000,year:60000};
+  }
+  if(plan==="poi20"){
+    if(card==="plat"){return {rate:0.05,cap:2500,year:30000};}
+    return {rate:0.02,cap:2500,year:30000};
+  }
+  return {rate:0,cap:0,year:0};
+}
+function poiMonth(card){
+  var c=poiConfig(card);
+  if(c.rate===0){return 0;}
+  return Math.min(num("poiSpend")*c.rate,c.cap);
+}
+function poiYear(card){
+  var c=poiConfig(card);
+  return Math.min(poiMonth(card)*12,c.year);
+}
+function showPoi(){
+  var plan=g("plan").value;
+  if(plan==="max"){return;}
+
+  var gc=poiConfig("gold");
+  var pc=poiConfig("plat");
+  var gm=poiMonth("gold");
+  var pm=poiMonth("plat");
+
+  g("poiRule").innerHTML =
+    (plan==="poimax" ? "<b>ポイ活MAX：段階制なし</b><br>" : "<b>ポイ活20</b><br>")+
+    "GOLD："+Math.round(gc.rate*100)+"% / 月"+p(gc.cap)+"上限<br>"+
+    "PLATINUM："+Math.round(pc.rate*100)+"% / 月"+p(pc.cap)+"上限";
+
+  g("goldPoiM").textContent=p(gm)+" / 月";
+  g("platPoiM").textContent=p(pm)+" / 月";
+
+  var gr=Math.max(0,gc.cap/gc.rate-num("poiSpend"));
+  var pr=Math.max(0,pc.cap/pc.rate-num("poiSpend"));
+
+  g("goldPoiRemain").textContent = gm>=gc.cap ? "上限到達" : "上限まであと決済 "+y(gr);
+  g("platPoiRemain").textContent = pm>=pc.cap ? "上限到達" : "上限まであと決済 "+y(pr);
+
+  g("goldBar").style.width=Math.min(100,gm/gc.cap*100)+"%";
+  g("platBar").style.width=Math.min(100,pm/pc.cap*100)+"%";
+}
+
+function annualBenefit(card){
+  var a=num("annualSpend");
+  if(card==="gold"){return a>=1000000?10000:0;}
+  if(a>=4000000){return 40000;}
+  if(a>=3000000){return 30000;}
+  if(a>=2000000){return 20000;}
+  if(a>=1000000){return 10000;}
+  return 0;
+}
+
+function monexPoints(card){
+  var type=g("monexType").value, amt=Math.min(100000,num("monexAmt"));
+  if(type==="none" || amt<=0){return 0;}
+  var shop=num("monthlySpend"), nisaRate, taxRates;
+  if(card==="gold"){nisaRate=.011;taxRates=[.011,.006,.002];}
+  else if(g("platYear").value==="first"){nisaRate=.031;taxRates=[.031,.026,.022];}
+  else if(shop>=200000){nisaRate=.031;taxRates=[.031,.026,.022];}
+  else if(shop>=100000){nisaRate=.021;taxRates=[.021,.016,.012];}
+  else{nisaRate=.011;taxRates=[.011,.006,.002];}
+  function taxPts(a){var x=Math.min(a,50000)*taxRates[0]; if(a>50000)x+=Math.min(a-50000,20000)*taxRates[1]; if(a>70000)x+=(a-70000)*taxRates[2]; return x;}
+  var monthly=0;
+  if(type==="nisa") monthly=amt*nisaRate;
+  else if(type==="tax") monthly=taxPts(amt);
+  else {var n=Math.min(amt,50000); monthly=n*nisaRate+taxPts(Math.max(0,amt-n));}
+  return monthly*12;
+}
+function nextPlatBenefit(){var a=num("annualSpend"), levels=[1000000,2000000,3000000,4000000]; for(var i=0;i<levels.length;i++){if(a<levels[i])return levels[i]-a;} return 0;}
+
+function calcAll(){
+  var base=currentBase();
+  var discount=num("hikariDisc")+num("minnaDisc")+num("denkiDisc")+num("longDisc")+550;
+  var plus=num("voice")+num("extra");
+  var monthly=Math.max(0,base-discount)+plus;
+  g("planName").textContent=currentPlanName(); g("dataName").textContent=currentDataName(); g("basePrice").textContent=y(base); g("monthlyPrice").textContent=y(monthly)+" / 月";
+  g("billBase").textContent=y(base); g("billDisc").textContent="−"+y(discount); g("billPlus").textContent="＋"+y(plus); g("billMonthly").textContent=y(monthly);
+  showPoi();
+  var gPoi=poiYear("gold"), pPoi=poiYear("plat"), shop=num("monthlySpend");
+  var bankOn=g("bankUse").value==="1"; var gBank=bankOn?Math.min(shop*.01,3000)*12:0; var pBank=bankOn?Math.min(shop*.02,3000)*12:0;
+  var mobileTax=Math.floor((monthly/1.1)/1000)*1000, hikariTax=Math.floor((num("hikariFee")/1.1)/1000)*1000, denkiTax=Math.floor((num("denkiFee")/1.1)/1000)*1000;
+  var platMobileRate=shop>=200000?.20:(shop>=100000?.15:.10), platFixedRate=shop>=200000?.12:(shop>=100000?.11:.10);
+  var gFixed=(mobileTax*.10+hikariTax*.10+denkiTax*.10)*12, pFixed=(mobileTax*platMobileRate+hikariTax*platFixedRate+denkiTax*platFixedRate)*12;
+  var gMonex=monexPoints("gold"), pMonex=monexPoints("plat"), gBen=annualBenefit("gold"), pBen=annualBenefit("plat");
+  var gNet=gFixed+gPoi+gBank+gMonex+gBen-11000, pNet=pFixed+pPoi+pBank+pMonex+pBen-29700;
+  g("goldPoiY").textContent=p(gPoi); g("platPoiY").textContent=p(pPoi); g("goldFixed").textContent=p(gFixed); g("platFixed").textContent=p(pFixed); g("goldBank").textContent=p(gBank); g("platBank").textContent=p(pBank); g("goldMonex").textContent=p(gMonex); g("platMonex").textContent=p(pMonex);
+  g("goldBenefit").textContent=y(gBen); g("platBenefit").textContent=y(pBen); g("goldBenefit2").textContent=y(gBen); g("platBenefit2").textContent=y(pBen); g("annualSpendShow").textContent=y(num("annualSpend")); var nb=nextPlatBenefit(); g("nextBenefit").textContent=nb?y(nb):"最高ランク到達";
+  g("goldNet").textContent=y(gNet); g("platNet").textContent=y(pNet);
+  var diff=pNet-gNet; if(diff>=0){g("heroText").textContent="PLATINUMなら 年間＋"+y(diff);g("heroSub").textContent="GOLD比で月あたり約＋"+y(diff/12);}else{g("heroText").textContent="GOLDなら 年間＋"+y(-diff);g("heroSub").textContent="PLATINUM比で月あたり約＋"+y((-diff)/12);}
+  g("status").textContent="✓ 計算反映済み";
+}
+
+planChanged();
+</script>
+</body>
+</html>
