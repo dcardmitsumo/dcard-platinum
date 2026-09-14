@@ -873,6 +873,39 @@ V16.3で確認した計算修正・開通後フロー修正・追加工事費・
 .hm-flow-head{display:flex;align-items:center;justify-content:space-between;gap:14px;border-bottom:3px solid var(--hm-red);padding-bottom:14px;margin-bottom:14px}.hm-flow-head h2{margin:0;font-size:29px}.hm-flow-sub{font-size:13px;color:#5f6670}.hm-product{display:flex;align-items:center;gap:12px;background:#eef5ff;border:1px solid #c8dcff;border-radius:16px;padding:14px 16px;margin-bottom:18px;color:#1f5aab;font-weight:900;font-size:19px}.hm-product .home{width:42px;height:42px;border-radius:12px;background:#fff;display:grid;place-items:center;font-size:22px}.hm-timeline{position:relative}.hm-step{display:grid;grid-template-columns:52px 52px 1fr 112px;gap:12px;align-items:start;position:relative;padding:8px 0 18px}.hm-step:not(:last-child):after{content:"";position:absolute;left:25px;top:56px;bottom:-2px;width:2px;background:#cfd4da}.hm-num{width:46px;height:46px;border-radius:50%;background:#707984;color:#fff;display:grid;place-items:center;font-weight:900}.hm-step:first-child .hm-num{background:var(--hm-red)}.hm-stepico{width:46px;height:46px;border-radius:50%;background:#f3f5f7;display:grid;place-items:center;font-size:21px}.hm-stepbody h4{margin:0 0 4px;font-size:18px}.hm-stepbody p{margin:0;color:#4d535b;line-height:1.55;font-size:14px}.hm-timing{display:inline-block;margin-bottom:5px;border:1px solid #efc16f;background:#fff9ed;color:#9a6000;border-radius:999px;padding:3px 10px;font-size:12px;font-weight:900}.hm-datebox{border:1px solid #e0e4e8;border-radius:10px;padding:9px;text-align:center;color:#8b9198;font-size:12px;background:#fff}.hm-datebox b{display:block;color:#333;font-size:13px;margin-bottom:6px}.hm-datebox .date-line{border-bottom:1px solid #aeb4bb;padding:4px 0;font-size:14px}.hm-tip{display:flex;gap:10px;background:#fff1f4;border-radius:12px;padding:12px 14px;margin-top:2px;font-size:12px;line-height:1.55}.hm-tip b{color:#cc0037}.hm-flow-actions{display:grid;grid-template-columns:1fr 1.5fr;gap:10px;margin-top:18px}.hm-flow-actions button{padding:14px;border-radius:12px;font-weight:900;border:1px solid #dde2e7;background:#fff}.hm-flow-actions .primary{background:var(--hm-red);border-color:var(--hm-red);color:#fff}
 @media(max-width:680px){.hikari-sheet.modern,.hikari-step-sheet.modern{padding:16px 12px;margin:10px 8px}.hm-title{font-size:25px}.hm-titlebar{align-items:center}.hm-thanks{margin-left:0}.hm-kpis{grid-template-columns:1fr 1fr}.hm-kpi:nth-child(3){grid-column:1/-1}.hm-kpi b{font-size:27px}.hm-two{grid-template-columns:1fr}.hm-step{grid-template-columns:38px 40px 1fr 78px;gap:7px}.hm-num,.hm-stepico{width:36px;height:36px;font-size:16px}.hm-step:not(:last-child):after{left:18px;top:45px}.hm-stepbody h4{font-size:16px}.hm-stepbody p{font-size:12px}.hm-datebox{padding:7px 4px}.hm-flow-head h2{font-size:24px}.hm-product{font-size:16px}.hm-actions,.hm-flow-actions{grid-template-columns:1fr}.hm-table{font-size:13px}.hm-table th,.hm-table td{padding:9px 8px!important}}
 </style>
+
+<style id="hikariFinishV169">
+/* V16.9: approved 4-screen layout */
+:root{--hf-red:#d5003b;--hf-pink:#fff0f4;--hf-blue:#1261c9;--hf-ink:#182033;--hf-line:#dde2e8}
+#pageHikari>.hikari-proposal{padding:0 14px 110px!important;background:#f5f6f8!important;border:0!important;box-shadow:none!important}
+.hikari-compact-head{position:sticky;top:0;z-index:1000;box-shadow:0 3px 12px rgba(0,0,0,.12)}
+.hikari-compact-head h1:after{content:"つながる、うれしい、ドコモの光。";float:right;font-size:12px;font-weight:700;opacity:.9;margin-top:9px}
+.he-left,.he-right{border-radius:12px;box-shadow:0 2px 8px rgba(20,30,45,.05)}
+.he-left{padding:14px}.he-right{padding:14px}
+.he-section-title{margin:0 0 8px}.he-q{padding:11px 0}.he-q>b{font-size:17px}
+.he-buttons button{border-radius:7px;min-height:58px}.he-buttons button.is-on{background:#fff1f5;box-shadow:inset 0 0 0 1px var(--hf-red)}
+.he-summary{border-radius:10px}.he-acc{border-radius:9px!important;overflow:hidden}.he-acc summary{font-size:17px!important}
+.he-sticky{z-index:1100!important;border-top:1px solid #d7dce2!important;box-shadow:0 -5px 18px rgba(0,0,0,.08)!important}
+/* quote / flow / handover: each is a full clean sheet */
+#hikariQuotePreview,.hikari-handover,#hikariEstimate>.card:has(#hikariFlowSection){max-width:860px!important;margin:12px auto!important;background:#fff!important;border:1px solid #e0e4e8!important;border-radius:12px!important;box-shadow:0 3px 14px rgba(20,30,45,.06)!important}
+#hikariEstimate>.card:has(#hikariFlowSection){padding:0!important}
+#hikariEstimate>.card:has(#hikariFlowSection)>#hikariFlowSection,#hikariEstimate>.card:has(#hikariFlowSection)>.mini{display:none!important}
+#hikariFlowGuide{margin:0!important}
+.hikari-step-sheet.modern{max-width:none!important;margin:0!important;border:0!important;border-radius:12px!important;box-shadow:none!important;padding:22px!important}
+.hm-flow-head{justify-content:flex-start!important;gap:12px!important}.hm-flow-head h2{font-size:27px!important;color:var(--hf-ink)}
+.hm-flow-head h2:before{content:"⚙";color:var(--hf-red);margin-right:10px}.hm-flow-head h2{font-size:0!important}.hm-flow-head h2:after{content:"開通の流れ";font-size:27px!important}
+.hm-flow-sub{font-size:13px!important;margin-top:5px!important}.hm-product{border-radius:10px!important;margin:12px 0 16px!important;padding:11px 14px!important}
+.hm-step{grid-template-columns:44px 44px 1fr 96px!important;gap:10px!important;padding:7px 0 15px!important}.hm-num,.hm-stepico{width:40px!important;height:40px!important}.hm-step:not(:last-child):after{left:19px!important;top:48px!important}.hm-stepbody h4{font-size:17px!important}.hm-stepbody p{font-size:13px!important}.hm-datebox{padding:7px 5px!important}
+.hm-tip{background:#fff0f4!important;border:1px solid #ffd6e1!important}.hm-flow-actions .primary{background:var(--hf-red)!important}
+/* handover */
+.hikari-handover{padding:22px!important}.hikari-handover-title{text-align:left!important;font-size:25px!important;letter-spacing:0!important;margin:0 0 5px!important;color:var(--hf-ink)}
+.hikari-handover-title:before{content:"👥";margin-right:10px}.hikari-handover .hikari-rule{height:3px!important;margin:8px 0 12px!important}.hikari-handover .hikari-sheet-date{text-align:right!important;margin:0 0 10px!important}.hikari-handover .hikari-sec-title{font-size:16px!important;margin:16px 0 7px!important;border-left:0!important;padding:0!important;color:#222!important}.hikari-handover .hikari-sec-title:before{content:"▣";color:var(--hf-red);margin-right:7px}.hikari-handover table{width:100%;border-collapse:collapse;font-size:13px}.hikari-handover th,.hikari-handover td{border:1px solid #d9dde2;padding:8px 10px;text-align:left}.hikari-handover th{width:32%;background:#fafafa}.hikari-handover .strong{font-weight:900;color:var(--hf-red)}
+/* quote */
+#hikariQuotePreview{padding:0!important;border:0!important}.hikari-sheet.modern{max-width:none!important;margin:0!important;border-radius:12px!important;box-shadow:none!important}.hm-title{color:var(--hf-ink)!important}.hm-title .ico{color:var(--hf-red)!important}.hm-kpi{border-radius:9px!important}.hm-kpi:nth-child(1){background:#fff5ef!important}.hm-kpi:nth-child(2){background:#eef7ff!important}.hm-kpi:nth-child(3){background:#fff1f5!important}.hm-actions .primary{background:var(--hf-red)!important}
+@media(max-width:700px){.hikari-compact-head h1:after{display:none}#pageHikari>.hikari-proposal{padding:0 5px 100px!important}.he-shell{grid-template-columns:1fr!important}.hikari-step-sheet.modern,.hikari-handover{padding:14px 10px!important}.hm-step{grid-template-columns:34px 34px 1fr 72px!important;gap:6px!important}.hm-num,.hm-stepico{width:32px!important;height:32px!important}.hm-step:not(:last-child):after{left:15px!important;top:39px!important}.hm-stepbody h4{font-size:14px!important}.hm-stepbody p{font-size:11px!important}.hm-timing{font-size:10px!important}.hikari-handover-title{font-size:20px!important}}
+@media print{.he-sticky{display:none!important}}
+</style>
+
 </head>
 <body onload="calcAll()"><div class="standalone-homebar"><a href="./store_menu_imagecards_v4.html">← 3つのメニューへ戻る</a></div>
 <div class="app-tabs">
@@ -3722,7 +3755,7 @@ function renderHikariTransferSheet(){
   var c=hikariProposalCalc(), fam=hikariFamilyCalc(), labels=hikariOptionLabels();
   var oldName=hikariOldCarrierName()||"未選択";
   var d=new Date(), ds=d.getFullYear()+"年"+(d.getMonth()+1)+"月"+d.getDate()+"日";
-  box.innerHTML='<div class="hikari-handover-title">登 録 ス タ ッ フ 引 き 継 ぎ シ ー ト</div><div class="hikari-rule"></div><div class="hikari-sheet-date">作成日：'+esc(ds)+'</div>'+
+  box.innerHTML='<div class="hikari-handover-title">登録スタッフ引き継ぎシート</div><div class="mini" style="margin:0 0 8px">お客様情報・ご契約内容をスタッフ間で共有するためのシートです。</div><div class="hikari-rule"></div><div class="hikari-sheet-date">作成日：'+esc(ds)+'</div>'+
   '<div class="hikari-sec-title">現在の固定回線（ヒアリング）</div><table><tbody><tr><th>お使いの回線</th><td><b>'+esc(oldName)+'</b>　月額 '+esc(signedYen(c.oldM))+'</td></tr></tbody></table>'+
   '<div class="hikari-sec-title">ご契約内容</div><table><tbody><tr><th>商材</th><td>ドコモ光 '+esc(hv("hikariSpeed")==="10g"?"10ギガ":"1ギガ")+'</td></tr><tr><th>申込区分</th><td>'+esc(hikariApplyLabel())+'</td></tr><tr><th>住居タイプ</th><td>'+esc(hv("hikariHouse")==="house"?"戸建":"マンション")+'</td></tr><tr><th>プロバイダ</th><td>タイプ'+esc(hv("hikariType"))+'</td></tr><tr><th>月額基本料</th><td>'+esc(signedYen(c.baseM))+'</td></tr><tr><th>QR（スマホで読み取り）</th><td><span class="hikari-qr-placeholder">申込QR</span><div class="mini">申込ページ案内用</div></td></tr></tbody></table>'+
   '<div class="hikari-sec-title">お申込みオプション</div><table><tbody><tr><th>光電話</th><td>'+esc(labels.phone)+'</td></tr><tr><th>テレビ</th><td>'+esc(labels.tv)+'</td></tr><tr><th>スカパー！</th><td>'+esc(labels.sky)+'</td></tr></tbody></table>'+
@@ -4367,6 +4400,7 @@ renderSavedQuotes();
 </div>
 <div id="hikariPrintReport" class="print-report"></div>
 
+<!-- V16.9 approved four-screen visual rebuild -->
 <script id="hikariEasyEstimateScriptV168">
 (function(){
   function q(id){return document.getElementById(id)}
