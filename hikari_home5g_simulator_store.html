@@ -912,6 +912,23 @@ V16.3で確認した計算修正・開通後フロー修正・追加工事費・
 @media(max-width:620px){.hf-flow-sheet{padding:16px 10px}.hf-flow-title h2{font-size:23px}.hf-flow-row{grid-template-columns:36px 36px minmax(0,1fr) 72px;gap:6px;min-height:105px}.hf-flow-rail>b{width:32px;height:32px;font-size:11px}.hf-flow-rail>i{top:31px}.hf-flow-icon{width:32px;height:32px;font-size:15px}.hf-flow-copy h3{font-size:14px}.hf-flow-copy p{font-size:10px}.hf-flow-date{padding:5px 2px}.hf-flow-date b{font-size:10px}.hf-flow-tip{grid-template-columns:1fr}.hf-flow-actions{grid-template-columns:1fr}.hf-product{font-size:14px}}
 </style>
 
+
+<style id="hikariFourPaneHardFixV173">
+/* V17.3: 4画面を明示的に分離。旧「開通後の流れ」は画面表示しない */
+#hikariLegacyAfterFlow{display:none!important}
+#hikariEstimate[data-active-pane="estimate"]>#hikariFlowPane,
+#hikariEstimate[data-active-pane="estimate"]>#hikariQuotePreview,
+#hikariEstimate[data-active-pane="estimate"]>#hikariTransferSheet{display:none!important}
+#hikariEstimate[data-active-pane="flow"]>*{display:none!important}
+#hikariEstimate[data-active-pane="flow"]>#hikariFlowPane{display:block!important}
+#hikariEstimate[data-active-pane="quote"]>*{display:none!important}
+#hikariEstimate[data-active-pane="quote"]>#hikariQuotePreview{display:block!important}
+#hikariEstimate[data-active-pane="transfer"]>*{display:none!important}
+#hikariEstimate[data-active-pane="transfer"]>#hikariTransferSheet{display:block!important}
+#hikariFlowPane>.title,#hikariFlowPane>.mini{display:none!important}
+#hikariFlowPane{padding:0!important;background:transparent!important;border:0!important;box-shadow:none!important}
+#hikariTransferSheet{max-width:860px!important;margin:12px auto!important}
+</style>
 </head>
 <body onload="calcAll()"><div class="standalone-homebar"><a href="./store_menu_imagecards_v4.html">← 3つのメニューへ戻る</a></div>
 <div class="app-tabs">
@@ -3793,13 +3810,18 @@ function renderHikariTransferSheet(){
   var c=hikariProposalCalc(), fam=hikariFamilyCalc(), labels=hikariOptionLabels();
   var oldName=hikariOldCarrierName()||"未選択";
   var d=new Date(), ds=d.getFullYear()+"年"+(d.getMonth()+1)+"月"+d.getDate()+"日";
-  box.innerHTML='<div class="hikari-handover-title">登録スタッフ引き継ぎシート</div><div class="mini" style="margin:0 0 8px">お客様情報・ご契約内容をスタッフ間で共有するためのシートです。</div><div class="hikari-rule"></div><div class="hikari-sheet-date">作成日：'+esc(ds)+'</div>'+
-  '<div class="hikari-sec-title">現在の固定回線（ヒアリング）</div><table><tbody><tr><th>お使いの回線</th><td><b>'+esc(oldName)+'</b>　月額 '+esc(signedYen(c.oldM))+'</td></tr></tbody></table>'+
-  '<div class="hikari-sec-title">ご契約内容</div><table><tbody><tr><th>商材</th><td>ドコモ光 '+esc(hv("hikariSpeed")==="10g"?"10ギガ":"1ギガ")+'</td></tr><tr><th>申込区分</th><td>'+esc(hikariApplyLabel())+'</td></tr><tr><th>住居タイプ</th><td>'+esc(hv("hikariHouse")==="house"?"戸建":"マンション")+'</td></tr><tr><th>プロバイダ</th><td>タイプ'+esc(hv("hikariType"))+'</td></tr><tr><th>月額基本料</th><td>'+esc(signedYen(c.baseM))+'</td></tr><tr><th>QR（スマホで読み取り）</th><td><span class="hikari-qr-placeholder">申込QR</span><div class="mini">申込ページ案内用</div></td></tr></tbody></table>'+
-  '<div class="hikari-sec-title">お申込みオプション</div><table><tbody><tr><th>光電話</th><td>'+esc(labels.phone)+'</td></tr><tr><th>テレビ</th><td>'+esc(labels.tv)+'</td></tr><tr><th>スカパー！</th><td>'+esc(labels.sky)+'</td></tr></tbody></table>'+
-  '<div class="hikari-sec-title">工事・初期費用</div><table><tbody><tr><th>契約事務手数料</th><td>'+esc(signedYen(c.adminFee))+'</td></tr><tr><th>工事費合計</th><td>'+esc(signedYen(c.netConstruction+c.phoneConstruction+c.tvConstruction+c.additionalConstruction))+'</td></tr><tr><th>初期費用合計</th><td class="strong">'+esc(signedYen(c.start))+'</td></tr></tbody></table>'+
-  '<div class="hikari-sec-title">特典・その他</div><table><tbody><tr><th>セット割</th><td>'+fam.n+'回線 / 月額 '+esc(signedYen(fam.monthly))+'</td></tr><tr><th>ドコモ側 還元・特典</th><td>'+esc(signedYen(c.benefit))+'</td></tr></tbody></table>'+
-  '<div class="hikari-sec-title">登録スタッフ記入欄</div><table><tbody><tr><th>登録日</th><td style="height:42px"></td></tr><tr><th>登録担当</th><td></td></tr><tr><th>備考</th><td>'+esc(hv("hikariProposalMemo")||hv("hikariStaffMemo")||"")+'</td></tr></tbody></table></div>';
+  var customer=hv("hikariCustomer")||"";
+  var plan="ドコモ光 "+(hv("hikariSpeed")==="10g"?"10ギガ":"1ギガ");
+  var opts=[labels.phone,labels.tv,labels.sky].filter(function(x){return x&&!/利用しない/.test(x)}).join(" / ")||"なし";
+  box.innerHTML='<div class="hikari-sheet modern"><div class="hm-titlebar"><div class="hm-title"><span class="ico">●</span>登録スタッフ引き継ぎシート</div><div class="hm-date">作成日 '+esc(ds)+'</div></div>'+
+  '<div class="hm-thanks">お客様情報・ご契約内容をスタッフ間で共有するためのシートです。</div>'+
+  '<div class="hm-section"><h3>● お客様情報</h3><table class="hm-table"><tbody><tr><th>お客様名</th><td>'+esc(customer||"例）山田様")+'</td></tr><tr><th>ご連絡先</th><td></td></tr><tr><th>ご住所</th><td></td></tr></tbody></table></div>'+
+  '<div class="hm-section"><h3>▤ ご契約内容</h3><table class="hm-table"><tbody><tr><th>サービス</th><td>'+esc(plan)+'</td></tr><tr><th>申込区分</th><td>'+esc(hikariApplyLabel())+'</td></tr><tr><th>住居タイプ</th><td>'+esc(hv("hikariHouse")==="house"?"戸建":"マンション")+'</td></tr><tr><th>プロバイダ</th><td>タイプ'+esc(hv("hikariType"))+'</td></tr><tr><th>オプション</th><td>'+esc(opts)+'</td></tr></tbody></table></div>'+
+  '<div class="hm-section"><h3>⌁ 現在のご利用回線（ヒアリング）</h3><table class="hm-table"><tbody><tr><th>ネット</th><td>'+esc(oldName)+'</td></tr><tr><th>電話</th><td>'+esc(labels.phone)+'</td></tr><tr><th>テレビ</th><td>'+esc(labels.tv)+'</td></tr></tbody></table></div>'+
+  '<div class="hm-section"><h3>¥ 料金・特典</h3><table class="hm-table"><tbody><tr><th>月額基本料金</th><td>'+esc(signedYen(c.baseM))+'</td></tr><tr><th>月額合計目安</th><td>'+esc(signedYen(c.newM))+'</td></tr><tr><th>初期費用合計</th><td>'+(c.constructionNeedsCheck?'要確認（確定済み '+esc(signedYen(c.start))+'）':esc(signedYen(c.start)))+'</td></tr><tr><th>dポイント・特典 入力合計</th><td>'+esc((c.benefit||0).toLocaleString())+'pt</td></tr></tbody></table></div>'+
+  '<div class="hm-section"><h3>✎ 備考</h3><div style="min-height:76px;border:1px solid #d8dde3;border-radius:8px;padding:10px">'+esc(hv("hikariProposalMemo")||hv("hikariStaffMemo")||"")+'</div></div>'+
+  '<div class="hm-section"><h3>● 登録スタッフ</h3><table class="hm-table"><tbody><tr><th>登録日</th><td>　　年　月　日</td></tr><tr><th>担当者</th><td></td></tr><tr><th>引き継ぎ先</th><td></td></tr></tbody></table></div>'+
+  '<div class="hm-actions"><button class="primary" type="button" onclick="printHikariQuote()">▣ このシートをPDF保存 / 印刷</button></div></div>';
 }
 
 function updateHikariPreview(){
@@ -4111,13 +4133,13 @@ renderSavedQuotes();
     <div class="he-left">
       <div class="he-section-title"><span>1</span>基本設定</div>
       <div class="he-q"><b>回線速度</b><div class="he-buttons" data-bind="hikariSpeed">
-        <button type="button" data-value="1g">ドコモ光 1ギガ</button><button type="button" data-value="10g">ドコモ光 10ギガ</button>
+        <button type="button" data-value="1g" onclick="hikariEasyChoose('hikariSpeed','1g')">ドコモ光 1ギガ</button><button type="button" data-value="10g" onclick="hikariEasyChoose('hikariSpeed','10g')">ドコモ光 10ギガ</button>
       </div></div>
       <div class="he-q"><b>お住まい</b><div class="he-buttons" data-bind="hikariHouse">
-        <button type="button" data-value="house">戸建て</button><button type="button" data-value="mansion">マンション</button>
+        <button type="button" data-value="house" onclick="hikariEasyChoose('hikariHouse','house')">戸建て</button><button type="button" data-value="mansion" onclick="hikariEasyChoose('hikariHouse','mansion')">マンション</button>
       </div></div>
       <div class="he-q"><b>申込区分</b><div class="he-buttons he-buttons-4" data-bind="hikariApplyType">
-        <button type="button" data-value="new">新規</button><button type="button" data-value="tenyo">転用</button><button type="button" data-value="jigyosha">事業者変更</button><button type="button" data-value="reuse">光回線再利用</button>
+        <button type="button" data-value="new" onclick="hikariEasyChoose('hikariApplyType','new')">新規</button><button type="button" data-value="tenyo" onclick="hikariEasyChoose('hikariApplyType','tenyo')">転用</button><button type="button" data-value="jigyosha" onclick="hikariEasyChoose('hikariApplyType','jigyosha')">事業者変更</button><button type="button" data-value="reuse" onclick="hikariEasyChoose('hikariApplyType','reuse')">光回線再利用</button>
       </div></div>
       <div class="he-q"><b>現在の回線</b><div id="heCarrierMount"></div></div>
       <div class="he-q"><b>タイプ / プロバイダ</b><div id="heTypeMount"></div></div>
@@ -4415,7 +4437,7 @@ renderSavedQuotes();
 
   <div id="hikariTransferSheet" class="hikari-handover"></div>
 
-  <div class="card" style="margin-top:14px;border:1px solid #dfe4e8">
+  <div class="card" id="hikariFlowPane" style="margin-top:14px;border:1px solid #dfe4e8">
     <div class="title" id="hikariFlowSection">開通までの流れ・手順</div>
     <div class="mini">申込み区分に合わせて必要な手順を自動表示します。</div>
     <div id="hikariFlowGuide" style="margin-top:10px"></div>
@@ -4428,7 +4450,7 @@ renderSavedQuotes();
     <div id="hikariQuotePreviewInner"></div>
   </div>
 
-  <div class="card post-flow-box" style="border:1px solid #dfe4e8">
+  <div class="card post-flow-box" id="hikariLegacyAfterFlow" style="border:1px solid #dfe4e8">
     <div class="title">開通後の流れ</div>
     <div class="note" style="margin-top:8px"><b>開通後の重要チェック</b><br>
     ①ネットが使える → ②電話/テレビ確認 → ③旧契約の扱い確認 → ④機器返却 → ⑤セット割 → ⑥初回請求 → ⑦翌月に二重請求チェック、の順で確認します。</div>
@@ -4439,7 +4461,8 @@ renderSavedQuotes();
 </div>
 <div id="hikariPrintReport" class="print-report"></div>
 
-<!-- V16.9 approved four-screen visual rebuild -->
+<!-- V17.2 four-screen rebuild / direct pricing button sync -->
+<div id="hikariBuildMarker" data-build="2026-09-14-v17.2" hidden></div>
 <script id="hikariEasyEstimateScriptV168">
 (function(){
   function q(id){return document.getElementById(id)}
@@ -4457,7 +4480,25 @@ renderSavedQuotes();
       syncButtons();
     }catch(e){console.warn(e)}
   }
-  document.querySelectorAll('.he-buttons[data-bind] button').forEach(function(b){b.addEventListener('click',function(){setVal(b.parentElement.dataset.bind,b.dataset.value);});});
+  // V17.2: visual buttons must directly drive the underlying selects and totals.
+  // Inline onclick + this global function avoids Safari/event-order issues seen on the public page.
+  window.hikariEasyChoose=function(id,val){
+    var el=q(id); if(!el)return;
+    el.value=val;
+    // Always update the base fee immediately before any render.
+    if(id==='hikariSpeed'||id==='hikariHouse'||id==='hikariType') syncPlanPrice();
+    if(id==='hikariApplyType') syncApplyInitialCost();
+    syncButtons();
+    // Run the complete render once.
+    if(typeof window.updateHikariPreview==='function') window.updateHikariPreview();
+    refreshEasy();
+  };
+  document.querySelectorAll('.he-buttons[data-bind] button').forEach(function(b){
+    b.addEventListener('click',function(ev){
+      // Inline onclick already handles current core buttons. This keeps any future buttons working too.
+      if(!b.getAttribute('onclick')) window.hikariEasyChoose(b.parentElement.dataset.bind,b.dataset.value);
+    });
+  });
 
   mount('hikariOldCarrier','heCarrierMount'); mount('hikariOldCarrierOther','heCarrierMount'); mount('hikariType','heTypeMount');
   mount('hikariPhoneOption','hePhoneMount'); mount('hikariTvOption','heTvMount'); mount('hikariSkyOption','heSkyMount');
@@ -4616,6 +4657,24 @@ renderSavedQuotes();
   var initial=paneByHref[location.hash]||'estimate';
   var initialLink=nav.querySelector('a[href="'+(location.hash||'#hikariEstimate')+'"]') || nav.querySelector('a[href="#hikariEstimate"]');
   showPane(initial,initialLink);
+})();
+</script>
+
+<script id="hikariFourPaneHardFixScriptV173">
+(function(){
+  var root=document.getElementById('hikariEstimate'), nav=document.querySelector('.hikari-nav');
+  if(!root||!nav)return;
+  var map={'#hikariEstimate':'estimate','#hikariQuotePreview':'quote','#hikariFlowSection':'flow','#hikariTransferSection':'transfer'};
+  function activate(a){
+    var pane=map[a.getAttribute('href')]||'estimate';
+    root.setAttribute('data-active-pane',pane);
+    nav.querySelectorAll('a').forEach(function(x){x.classList.toggle('active',x===a)});
+    if(typeof updateHikariPreview==='function') updateHikariPreview();
+  }
+  nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();e.stopImmediatePropagation();activate(a);},{capture:true});});
+  var initial=map[location.hash]||'estimate';
+  var a=[].slice.call(nav.querySelectorAll('a')).find(function(x){return map[x.getAttribute('href')]===initial})||nav.querySelector('a');
+  activate(a);
 })();
 </script>
 </body>
