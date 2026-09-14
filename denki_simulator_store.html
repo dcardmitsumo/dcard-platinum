@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-title" content="電気料金比較">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>電気料金比較シミュレーター V2.36</title>
+<title>電気料金比較シミュレーター FINAL V2.72</title>
 <style>
 :root{
   --bg:#f3f5f8;--card:#fff;--line:#dfe4ea;--text:#15202b;--sub:#66727f;
@@ -136,6 +136,154 @@ button,select,input{-webkit-tap-highlight-color:transparent}
   box-shadow:0 5px 18px rgba(0,0,0,.12);backdrop-filter:blur(8px)
 }
 @media print{.portal-back{display:none!important}}
+
+.print-only{display:none}
+@media print{
+  @page{size:A4 portrait;margin:9mm}
+  html,body{width:210mm;min-height:297mm;background:#fff!important}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;color:#111}
+  body *{visibility:hidden!important}
+  #resultCard,#resultCard *{visibility:visible!important}
+  #resultCard{
+    position:absolute;left:0;top:0;width:100%;margin:0!important;padding:0!important;
+    border:0!important;box-shadow:none!important;background:#fff!important
+  }
+  #resultCard .step-no,#resultCard>h2,#resultCard>.muted,#resultCard>.quick-actions{display:none!important}
+  .print-only{display:block!important}
+  #printQuoteHead{
+    border-bottom:2px solid #111;padding:0 0 6px;margin:0 0 7px;
+    font-size:10.5pt;line-height:1.4
+  }
+  #printQuoteHead .pq-title{font-size:19pt;font-weight:950;margin-bottom:4px}
+  #printQuoteHead .pq-meta{display:grid;grid-template-columns:1fr 1fr;gap:2px 14px}
+  #result .best{font-size:16pt!important;margin:6px 0 9px!important;padding:10px!important}
+  #result table{font-size:9.5pt!important;margin:0!important;width:100%!important;border-collapse:collapse}
+  #result th,#result td{padding:6px 5px!important;line-height:1.3!important}
+  #result .quote-notes{display:none!important}
+  #printQuoteNotes{
+    margin-top:7px;padding:7px 8px;border:1px solid #bbb;border-radius:0;
+    font-size:8.4pt;line-height:1.45
+  }
+  #printQuoteNotes b{font-size:9pt}
+  #printQuoteNotes ul{margin:3px 0 0!important;padding-left:16px!important}
+  #printQuoteNotes li{margin:2px 0!important}
+  #printQuoteNotes .pq-contact{margin-top:5px;padding:5px 6px;border-top:1px solid #bbb;border-bottom:1px solid #bbb;font-size:8.4pt;line-height:1.4}
+  #printQuoteNotes .pq-contact span{font-size:7.6pt;color:#444}
+  #printQuoteNotes .small{font-size:7.6pt;color:#444;margin-top:4px}
+}
+
+@media print{
+  html,body{
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    margin:0!important;
+    padding:0!important;
+    overflow:visible!important;
+  }
+  #resultCard .step-label,
+  #resultCard .section-lead{display:none!important}
+  #resultCard{page-break-after:avoid!important;break-after:avoid-page!important}
+}
+
+@media print{
+  body > .portal-back-link,
+  body > .portal-back,
+  body > style{display:none!important}
+  .wrap > *:not(#resultCard){display:none!important}
+  .wrap{display:block!important;width:100%!important;max-width:none!important;margin:0!important;padding:0!important}
+  #resultCard{
+    display:block!important;
+    visibility:visible!important;
+    position:static!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    margin:0!important;
+    padding:0!important;
+    overflow:visible!important;
+    page-break-before:avoid!important;
+    page-break-after:avoid!important;
+    break-before:avoid-page!important;
+    break-after:avoid-page!important;
+  }
+  #resultCard *{visibility:visible!important}
+}
+
+.print-report{display:none}
+@media print{
+  @page{size:A4 portrait;margin:7mm}
+  html,body{margin:0!important;padding:0!important;background:#fff!important}
+  body *{visibility:hidden!important}
+  #printReport,#printReport *{visibility:visible!important}
+  #printReport{display:block!important;position:absolute!important;left:0!important;top:0!important;width:100%!important;margin:0!important;padding:0!important;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;color:#17202a;background:#fff}
+  .pr-head{background:#0b3b79!important;color:#fff!important;border-radius:9px;padding:9px 13px;margin-bottom:7px;display:flex;justify-content:space-between;align-items:end}
+  .pr-title{font-size:20pt;font-weight:900;letter-spacing:.02em}.pr-sub{font-size:7.8pt;text-align:right;line-height:1.35}
+  .pr-kicker{font-size:9pt;font-weight:800;margin:1px 0 5px}
+  .pr-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:6px}
+  .pr-card{border:1.2px solid #cfd8e3;border-radius:8px;padding:7px;background:#fff}.pr-card.reco{border:2px solid #1b9a55;background:#f1fbf4}
+  .pr-badge{font-size:7pt;font-weight:900;border-radius:999px;padding:2px 6px;display:inline-block;margin-bottom:3px;background:#e8edf3}.pr-card.reco .pr-badge{background:#12884a!important;color:#fff!important}
+  .pr-name{font-size:10pt;font-weight:900;line-height:1.2;min-height:23px}.pr-money-label{font-size:7pt;color:#5f6b76;margin-top:4px}
+  .pr-money{font-size:17pt;font-weight:950;line-height:1.1;margin-top:1px}.pr-mini{font-size:7pt;color:#5f6b76;margin-top:2px}
+  .pr-table{width:100%;border-collapse:collapse;font-size:7.7pt;margin:0 0 6px}.pr-table th,.pr-table td{border:1px solid #cfd8e3;padding:4px 5px;text-align:right}
+  .pr-table th:first-child,.pr-table td:first-child{text-align:left;font-weight:800;background:#f6f8fa}.pr-table th{background:#eef3f8;font-weight:900}.pr-table .win{background:#edf9f1!important;color:#0b7a3d;font-weight:900}
+  .pr-save{border:1.5px solid #e0a11b;background:#fff9ea;border-radius:8px;padding:7px 10px;text-align:center;font-size:11pt;font-weight:900;margin-bottom:6px}.pr-save strong{font-size:17pt;color:#12884a}
+  .pr-lower{display:grid;grid-template-columns:1.05fr 1fr;gap:7px;align-items:start}.pr-box{border:1px solid #d5dde6;border-radius:8px;overflow:hidden}.pr-box h3{font-size:9pt;margin:0;padding:5px 8px;background:#f5f7fa}
+  .pr-notes{margin:0;padding:6px 8px 6px 20px;font-size:6.7pt;line-height:1.38}.pr-notes li{margin:1px 0}
+  .pr-contacts{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid #d5dde6}.pr-contact{padding:4px 6px;border-right:1px solid #d5dde6;border-bottom:1px solid #d5dde6;font-size:6.4pt;line-height:1.25}.pr-contact:nth-child(2n){border-right:0}.pr-contact b{font-size:6.8pt}.pr-contact .tel{font-weight:900;font-size:7.2pt}
+  .pr-foot{font-size:6.1pt;color:#5f6b76;margin-top:5px;text-align:center;line-height:1.3}
+}
+
+@media print{
+  .wrap > #printReport{display:block!important;visibility:visible!important;position:absolute!important;left:0!important;top:0!important;width:100%!important}
+  .wrap > #resultCard{display:none!important;visibility:hidden!important}
+  #printQuoteHead,#printQuoteNotes{display:none!important}
+}
+
+@media print{
+  @page{size:A4 portrait;margin:8mm}
+  html,body{
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    margin:0!important;
+    padding:0!important;
+    overflow:visible!important;
+    background:#fff!important;
+  }
+  body > *:not(.wrap){display:none!important}
+  .wrap{
+    display:block!important;
+    width:100%!important;
+    max-width:none!important;
+    min-height:0!important;
+    margin:0!important;
+    padding:0!important;
+  }
+  .wrap > *:not(#printReport){display:none!important}
+  #printReport{
+    display:block!important;
+    visibility:visible!important;
+    position:static!important;
+    inset:auto!important;
+    width:100%!important;
+    max-width:none!important;
+    height:auto!important;
+    min-height:0!important;
+    margin:0!important;
+    padding:0!important;
+    overflow:visible!important;
+    break-before:avoid-page!important;
+    break-after:avoid-page!important;
+    break-inside:avoid-page!important;
+    page-break-before:avoid!important;
+    page-break-after:avoid!important;
+    page-break-inside:avoid!important;
+  }
+  #printReport *{visibility:visible!important}
+  .pr-lower{display:block!important}
+  .pr-notes-only{margin-top:0!important}
+}
 </style>
 </head>
 <body>
@@ -148,7 +296,7 @@ text-decoration:none;font-weight:800;color:#334155;font-size:14px}
 <a class="portal-back" href="index.html">← メニュー</a>
 <div class="wrap">
   <div class="hero">
-    <h1>⚡ 電気料金比較シミュレーター V2.36</h1>
+    <h1>⚡ 電気料金比較シミュレーター FINAL V2.72</h1><div id="build-badge-v272" style="display:inline-block;margin-top:8px;padding:5px 10px;border-radius:999px;background:#0b3b79;color:#fff;font-weight:800;font-size:12px">BUILD V2.72｜見積書専用印刷対応</div>
     <div class="sub">関西エリア｜お客さまの現在契約と ドコモでんき Basic / Green を店頭で比較</div>
     <div class="hero-badges">
       <span class="hero-badge">店頭案内向け</span>
@@ -260,22 +408,27 @@ text-decoration:none;font-weight:800;color:#334155;font-size:14px}
 
       <div class="field" id="kwhField">
         <label for="kwh">月間使用量（kWh）</label>
-        <input id="kwh" type="number" inputmode="decimal" value="370" min="0" placeholder="例）350">
+        <input id="kwh" type="number" inputmode="decimal" value="" min="0" placeholder="例）350">
         <div class="note">使用量から比較する場合はこちら。電気代から比較する場合は、逆算できないプランで補助入力として使用します。</div>
       </div>
 
-      <div class="field"><label for="eneosDiscount">ENEOS にねん とく²割</label><select id="eneosDiscount"><option value="none">なし</option><option value="year12">1〜2年目（▲0.2円/kWh）</option><option value="year3">3年目以降（▲0.3円/kWh）</option></select><div class="note">「＋にねん とく²割」選択時に使用。更新月以外の解約は解約手数料1,100円。</div></div>
-<div class="field"><label for="eneosEvKwh">ENEOS EVタイム使用量（1〜5時・kWh）</label><input id="eneosEvKwh" type="number" value="0" min="0"><div class="note">EV夜とくプラン選択時のみ使用。総使用量のうち午前1〜5時の使用量。</div></div>
-<div class="field"><label for="rakutenMarket">楽天でんき 市場価格調整単価（円/kWh）</label><input id="rakutenMarket" type="number" value="1.11" step="0.01"><div class="note">楽天選択時のみ使用。2026年9月請求は8月分1.11円/kWh、2026年10月請求は9月分2.35円/kWh。政府支援は各請求月の値引きとして自動反映される前提で公式公表値と対応。</div></div>
-<div class="field"><label for="eoFuelRate">eo電気K 燃料費調整単価（円/kWh）</label><input id="eoFuelRate" type="number" value="-0.70" step="0.01"><div class="note">eo電気K選択時のみ使用。2026年9月分は公式公表値▲0.70円/kWh。10月分は公表確認前のため、公式値公表後に入力してください（スタンダードK/再エネKは最初15kWh部分を別計算）。</div></div>
-<div class="field"><label for="rakutenGas">楽天ガスセット</label><select id="rakutenGas"><option value="no">なし（電気200円税抜ごとに1pt）</option><option value="yes">あり（電気100円税抜ごとに1pt）</option></select></div>
-<div class="field"><label for="rakutenCard">楽天カード払い</label><select id="rakutenCard"><option value="no">なし</option><option value="yes">あり（さらに100円税込ごとに1pt）</option></select></div>
-<div class="field"><label for="capacity">契約容量（kW / kVA）</label><input id="capacity" type="number" value="6" min="0" step="0.1"><div class="note">従量電灯B・eおとく等で使用。</div></div>
-<div class="field"><label for="hapieDiscount">はぴeタイムR 電化割引</label><select id="hapieDiscount"><option value="yes">適用あり（5%）</option><option value="no">適用なし</option></select><div class="note">はぴeタイムR選択時のみ使用。対象設備・契約条件を満たす場合に適用。</div></div>
-<div class="field"><label for="dayKwh">昼間・デイタイム（kWh）</label><input id="dayKwh" type="number" value="0" min="0"></div>
-<div class="field"><label for="livingKwh">生活・リビング時間（kWh）</label><input id="livingKwh" type="number" value="0" min="0"></div>
-<div class="field"><label for="nightKwh">夜間（kWh）</label><input id="nightKwh" type="number" value="0" min="0"><div class="note">はぴeタイムR / eスマート10等で使用。</div></div>
-<div class="field"><label for="ogNewlifeSet">大阪ガス 新生活セット割</label><select id="ogNewlifeSet"><option value="no">なし</option><option value="yes">あり（基本料金200円→0円）</option></select><div class="note">新生活応援プラン選択時のみ使用。</div></div>
+      <div data-provider="ene" class="field"><label for="eneosDiscount">ENEOS にねん とく²割</label><select id="eneosDiscount"><option value="none">なし</option><option value="year12">1〜2年目（▲0.2円/kWh）</option><option value="year3">3年目以降（▲0.3円/kWh）</option></select><div class="note">「＋にねん とく²割」選択時に使用。更新月以外の解約は解約手数料1,100円。</div></div>
+<div data-provider="ene" class="field"><label for="eneosEvKwh">ENEOS EVタイム使用量（1〜5時・kWh）</label><input id="eneosEvKwh" type="number" value="0" min="0"><div class="note">EV夜とくプラン選択時のみ使用。総使用量のうち午前1〜5時の使用量。</div></div>
+<div data-provider="rak" class="field"><label for="rakutenMarket">楽天でんき 市場価格調整単価（円/kWh）</label><input id="rakutenMarket" type="number" value="1.11" step="0.01"><div class="note">楽天選択時のみ使用。2026年9月請求は8月分1.11円/kWh、2026年10月請求は9月分2.35円/kWh。政府支援は各請求月の値引きとして自動反映される前提で公式公表値と対応。</div></div>
+<div data-provider="eo" class="field"><label for="eoFuelRate">eo電気K 燃料費調整単価（円/kWh）</label><input id="eoFuelRate" type="number" value="-0.70" step="0.01"><div class="note">eo電気K選択時のみ使用。2026年9月分は公式公表値▲0.70円/kWh。10月分は公表確認前のため、公式値公表後に入力してください（スタンダードK/再エネKは最初15kWh部分を別計算）。</div></div>
+<div data-provider="rak" class="field"><label for="rakutenGas">楽天ガスセット</label><select id="rakutenGas"><option value="no">なし（電気200円税抜ごとに1pt）</option><option value="yes">あり（電気100円税抜ごとに1pt）</option></select></div>
+<div data-provider="rak" class="field"><label for="rakutenCard">楽天カード払い</label><select id="rakutenCard"><option value="no">なし</option><option value="yes">あり（さらに100円税込ごとに1pt）</option></select></div>
+<div data-provider="ene ke og jcom au" class="field"><label for="capacity">契約容量（kW / kVA）</label><input id="capacity" type="number" value="6" min="0" step="0.1"><div class="note">従量電灯B・eおとく等で使用。</div></div><div data-provider="ke" class="field"><label for="kepcoBankDiscount">関西電力 口座振替割引</label>
+<select id="kepcoBankDiscount"><option value="no">適用なし</option><option value="yes">適用あり（▲55円/月）</option></select>
+<div class="note">従量電灯A/Bで、口座振替割引契約が適用され各月分の1回目の振替日に振替された場合のみ使用。</div></div>
+<div data-provider="ke" class="field"><label for="kepcoGasSetDiscount">関西電力 旧ガスセット割引</label>
+<select id="kepcoGasSetDiscount"><option value="no">適用なし</option><option value="yes">適用あり（基本料金＋電力量料金の2%）</option></select>
+<div class="note">eおとくプラン／eスマート10で、現在もガスセット割引の適用を受けている契約のみ使用。</div></div>
+<div data-provider="ke" class="field"><label for="hapieDiscount">はぴeタイムR 電化割引</label><select id="hapieDiscount"><option value="yes">適用あり（5%）</option><option value="no">適用なし</option></select><div class="note">はぴeタイムR選択時のみ使用。対象設備・契約条件を満たす場合に適用。</div></div>
+<div data-provider="ke eo og" class="field"><label for="dayKwh">昼間・デイタイム（kWh）</label><input id="dayKwh" type="number" value="0" min="0"></div>
+<div data-provider="ke eo og" class="field"><label for="livingKwh">生活・リビング時間（kWh）</label><input id="livingKwh" type="number" value="0" min="0"></div>
+<div data-provider="ke eo og" class="field"><label for="nightKwh">夜間（kWh）</label><input id="nightKwh" type="number" value="0" min="0"><div class="note">はぴeタイムR / eスマート10等で使用。</div></div>
+<div data-provider="og" class="field"><label for="ogNewlifeSet">大阪ガス 新生活セット割</label><select id="ogNewlifeSet"><option value="no">なし</option><option value="yes">あり（基本料金200円→0円）</option></select><div class="note">新生活応援プラン選択時のみ使用。</div></div>
 
     </div>
 
@@ -337,12 +490,15 @@ text-decoration:none;font-weight:800;color:#334155;font-size:14px}
     </div>
   </div>
 
-  <div class="card step-card result-card" id="resultCard">
+  <section id="printReport" class="print-report"></section>
+<div class="card step-card result-card" id="resultCard">
     <div class="step-label">STEP 3</div>
     <h2>比較結果</h2>
     <div class="section-lead">料金だけでなく、ポイント・現在契約の特典・解約条件まで確認してご案内してください。</div>
+    <div id="printQuoteHead" class="print-only"></div>
     <div id="result"></div>
-    <div class="quick-actions"><button type="button" class="btn-secondary" onclick="resetStoreForm()">↺ 入力をリセット</button><button type="button" class="btn-print" onclick="window.print()">📄 見積を印刷 / PDF</button></div>
+    <div id="printQuoteNotes" class="print-only"></div>
+    <div class="quick-actions"><button type="button" class="btn-secondary" onclick="resetStoreForm()">↺ 入力をリセット</button><button type="button" class="btn-print" onclick="openEstimatePrint()">📄 見積を印刷 / PDF</button></div>
   </div>
 
   <details class="card admin-details">
@@ -350,15 +506,15 @@ text-decoration:none;font-weight:800;color:#334155;font-size:14px}
     <div class="admin-body"><div class="sub">
       ※ オール電化・時間帯別料金は総kWhだけでは正確に比較できないため、警告を優先表示します。<br>
       ※ 「関電ガス」はガスサービスのため、電気プランとは分けて扱います。なっトクでんき等は関西電力側の電気プランです。<br>
-      ※ V2.7：大阪ガス・関西電力の主要家庭向けプランを再監査し、関電B燃調・はぴeタイムR電化割引・旧プランID・ドコモでんき側変動料金自動反映を修正。料金単価・解約条件・代表的な付帯特典/適用条件を見積注意事項へ反映しています。<br>※ 見積結果には、選択したプランごとの注意事項も自動表示し、そのままPDF/印刷に含まれます。<br>※ 公式単価を確認できたプランだけ「公式単価式あり」と表示し、自動計算します。付帯サービス・市場連動・設備条件が複雑なプランを推測値では計算しません。<br>
-      ※ STORE FINAL：V2.36をベースに、iPhone/iPad Safari表示・ホーム画面追加を想定したmeta設定とセーフエリア対応を追加。計算ロジックはV2.36のまま。<br>※ V2.36：店頭入力欄を会社・プラン連動で整理。ENEOS選択時は楽天ガス・楽天カード・楽天市場価格調整・eo燃調・大阪ガス専用項目・関電専用項目などを非表示にし、選択プランに必要な項目だけ表示。変動単価「自動反映」時は手動調整額2欄を非表示にして、現在契約側・ドコモでんき側の燃料費等調整、政府支援、再エネ賦課金の自動反映状態を表示。<br>※ V2.35：店頭画面の「現在の電気代（円）」入力欄が下部に埋もれていたUI不具合を修正。比較方法の直下へ円入力欄を移動し、円比較選択時は赤枠で強調・自動スクロールするよう改善。<br>※ V2.34：店頭向けUIへ全面調整。3STEP案内、入力欄の視認性、結果強調、固定操作バー、リセット、印刷導線を追加。料金計算ロジックはV2.33を維持。<br>※ V2.33：見積時の注意事項を全社横断で再監査。大阪ガスの新生活セット割・ファミリー応援・radiko解約条件、ENEOSにねん とく²割の更新月/引越し継続、EV夜とくの適用条件、au ecoMのポイント対象外/環境寄付、ソフトバンクのおうち割通信費、コスモポイントプラスの公式税込境界を反映。また年間差額が「選択月差額×12」の単純換算であること、セット割・付帯サービス・解約金等が自動反映されない場合があることを全プラン共通注意として追加。<br>※ V2.32：全社横断監査。会社→プラン連動、重複ID、JavaScript構文、自動計算プランの0/1/15/16/100/200/300/370/500/800kWh、通常料金の単調性、金額→kWh逆算安全性を再テスト。関西電力「はぴeタイム（旧）」は現行はぴeタイムRと同一式で自動計算しないよう実請求額比較へ変更。はぴeセットS/M/Lも機器リース等を含むため、電気単体の自動比較を停止し実請求額比較へ変更。<br>※ V2.31：ハルエネでんき／Looopでんきを再監査。ハルエネは関西のシンプルプランJ・Jプラス・Fプラスの料金本体（15kWh以下303.50円、20.31 / 25.71 / 28.70円/kWh）を公式再確認。2023年7月以降の電源調達調整費はJEPXエリアプライス平均×1.2を基礎とし、関西の還元基準3.50円・追加請求基準7.50円（税抜）、沖縄以外の燃料費調整適用係数0.0、2026年4月検針以降のカーボンフリー促進費単価0.3円/kWh（税抜）も確認。2026年9月・10月の関西調達単価を公式資料で確実に確認できないため、推測自動計算は行わず実請求額比較を維持。Looopでんきは現行スマートタイムONE（電灯）が30分ごとのJEPX連動電源料金＋制度対応費の料金体系で、契約電力も過去1年間の最大需要電力ベースとなるため、月間総kWhだけから固定料金を逆算しない安全設計を維持。2026年3月開始のおまかせ割も個別利用実績に依存するため自動値引きしません。<br>※ V2.29：HTBエナジーはベーシックプラン／LOVE地球の2プランに整理し、ママトクプラン・ぜんぶでんき・MUSUBIプロジェクトを対象外へ。新たにハルエネでんき（シンプルプランJ／Jプラス／Fプラス）とLooopでんき（スマートタイムONE（電灯））を正式名称で追加。ハルエネは電源調達調整費、Looopは30分ごとの市場連動料金があるため、未検証の推測自動計算を行わず実請求額比較を優先。<br>※ V2.28：HTBエナジーを最終監査。2026年9月分は関西の電源調達等17.38円/kWhから政府支援4.50円/kWhを差し引いた燃料費等調整12.88円/kWh、再エネ4.18円/kWh、容量拠出金反映額110.78円/kWを反映。ベーシック／LOVE地球を自動計算対応。容量拠出金は契約電力(kW)が必要。2026年10月分はHTBの電気月次単価未確認のため推測せず手入力。<br>※ V2.24：J:COM でんきの関西現行プラン（a従量A／a従量B／aグリーン従量A／aグリーン従量B）を正式名称・公式単価で追加。月次の燃料費等調整額はJ:COM公式値確認を優先し、未確認値は推測しない安全設計。<br>※ V2.24：eo電気の現行Kプラン（スタンダードプランK／シンプルプランK／再エネプランK／オール電化プランK）を公式料金表・2026年9月燃料費調整・再エネ賦課金・政府支援まで監査済み。オール電化プランKは時間帯別使用量の合計を総使用量として燃調・再エネにも統一し、0kWh時の基本料金半額も反映。2026年10月分燃調は公式公表確認前のため手入力。<br>※ 現在のV2.7で公式単価式を実装：大阪ガス 新生活応援・ファミリー応援・ベースA/A-G・家庭用ガス発電・スタイルS/P/d・E-ZERO/E-SHARE・ウィズradiko・MY EV/MY EV＋。MY EV系は市場連動のため昼間単価は公式上限値で試算。
+      ※ FINAL V2.72：見積書デザインを参考画像の雰囲気へ刷新。濃紺ヘッダー・おすすめ3カード・比較表・年間お得額バナー・注意事項をA4 1枚に配置。印刷ボタンは入力画面を直接印刷せず、見積書専用ページを生成して印刷する方式へ変更。<br>※ FINAL V2.72：印刷/PDFは比較結果＋ご注意事項のみ。入力画面・料金詳細・各社問い合わせ先・固定ボタンなどは印刷対象から完全除外し、A4 1枚だけを出力するCSSへ一本化。<br>※ FINAL V2.72：印刷時の旧見積レイアウト競合を解消。専用の比較結果レポートだけを表示し、旧resultCard印刷を完全非表示化。<br>※ FINAL V2.72：印刷/PDFを全面再設計。比較結果・おすすめ・月額/ポイント/実質負担/年間差額・注意事項・12社問い合わせ先だけをA4 1枚に集約。入力画面や詳細燃調説明は印刷しません。<br>※ FINAL V2.72：実PDFレンダーで発見した空白2ページ目を完全修正。印刷時は比較結果カード以外をDOMレイアウトから除外し、resultCardをstatic配置へ変更。A4 1枚のみ出力される構造に固定。<br>※ FINAL V2.72：会社別入力欄の実機残存バグを修正。原因は表示制御が2系統あり、後からupdateConditionalFields側が他社項目を再表示していたこと。表示制御を1系統に統一し、会社変更→プラン再構築→専用欄全非表示→選択会社/プランに必要な欄だけ表示、の順に固定。<br>※ FINAL V2.72：会社別表示を再修正。スクリーンショットで確認した楽天・関西電力専用欄の残存を解消。電力会社セレクトの実値を直接判定し、data-provider付き入力欄を一括で非表示→該当会社だけ表示する方式へ変更。<br>※ FINAL V2.72：会社別入力欄を再修正。電力会社セレクトを基準に表示を切替え、ENEOS選択時はENEOS専用欄＋共通項目だけ、楽天選択時は楽天専用欄＋共通項目だけ表示。関西電力・eo・大阪ガスの専用欄も他社選択時には非表示。契約容量は必要な会社だけ表示。<br>※ FINAL V2.72：会社別入力欄の表示を整理。現在選択中の電力会社に必要な項目だけを表示し、ENEOS選択時に楽天市場調整額・楽天ガス・楽天カード等の楽天専用項目が出ないように修正。他社でも同様に、会社固有の入力欄はその会社を選択した時だけ表示。<br>※ FINAL V2.72：A4実レンダー確認後、1枚には十分収まる余白があったため、表・注意事項・問い合わせ先の文字を拡大し、店頭で読みやすい印刷レイアウトへ調整。<br>※ FINAL V2.72：A4見積書に現在契約中の電力会社のお問い合わせ先を自動表示。関西電力・大阪ガス・eo・J:COM・ENEOS・楽天・au・SoftBank・コスモ・HTB・ハルエネ・Looopの電話番号/受付時間を2026年9月時点の案内で再確認。大阪ガスは地域別番号ではなく、電気料金相談にも対応するグッドライフコールを掲載。<br>※ FINAL V2.72：完成候補・最終横断監査。2026年政府支援はドコモ公式に合わせ、8月検針(7月使用)=3.5円/kWh、9月検針(8月使用)=4.5円/kWh、10月検針(9月使用)=3.5円/kWhとして使用月/検針月を分離。ドコモでんきポイント新条件は11月検針(10月使用)から。全45 autoプランの参照漏れ、オール電化auto混入、NaN/Infinity、戻るリンク、再計算イベント、JS構文を再検査。<br>※ FINAL V2.72：最終フロー監査。はぴeタイムR・eoオール電化Kのauto残存を解消しmanual化。既存のkind=allelectric対象外処理に統一し、Basic/Green節約比較へ流れない構造を確認。JS構文・戻るリンク・全input/select再計算バインドを再検証。<br>※ FINAL V2.72：自動計算プラン横断ストレステスト。PLAN_DATA上のauto対象47プランを抽出し、0/100/260/370/500/800kWhの境界条件、NaN/Infinity文字列、計算参照漏れ、オール電化auto混入を静的監査。ドコモでんき関西の公式基準単価と政府支援の検針月対応も再照合。要確認：all-electric auto plans: ke_hapie_r,eo_all_k<br>※ FINAL V2.72：ポイント/政府支援横断監査。ドコモでんきの新ポイント条件は2026年11月検針分（10月使用分）から適用。Basicは対象回線+dカード2%、対象回線+その他支払1%、非対象回線+dカード1%、その他0.5%が基準。Green/PLATINUMは新条件を別管理。コスモポイントプラスは対象料金5,500円未満1%、5,500～8,800円未満3%、8,800円以上5%、1ポイント未満端数は切り上げ。auは基本/最低＋電力量料金の税抜額が対象でポイント端数は切り上げ。関西電力個人向け2026年9月分の政府支援は4.50円/kWhで、既存KEPCO月次ロジックと一致。<br>※ FINAL V2.72：楽天/SoftBank月次ロジック再監査。楽天は請求月基準で2026年9月請求3.5円、10月請求4.5円、11月請求3.5円/kWh。SoftBankは使用月基準で7月3.5円、8月4.5円、9月3.5円/kWh。おうちでんき Powered by 関西電力は電力市場連動額の対象外。請求月と使用月を混同しない表示へ整理。<br>※ FINAL V2.72：全社横断チェック第2段階。ENEOS関西A/Bを公式供給条件で再確認。関西Aは467.46円/最初15kWh＋20.21/23.90/26.70円、関西Bは423.71円/kVA＋16.19/19.57/21.82円で確定。検索上で表示された397.10円/kVA・27.11/31.84/34.34円は別エリアのVプラン値で、関西Bへ混入させない。楽天・SoftBankは2026年の政府支援の使用月/請求月ズレを再確認し、既存ロジックを次段階で月別検証。<br>※ FINAL V2.72：全社横断チェック第1段階。ドコモでんき関西の基準料金を公式約款と再照合。Basicは最初の15kWh 522.58円、15～120kWh 20.21円、120～300kWh 25.61円、300kWh超28.59円。GreenはBasicに500円加算。ポイント対象は基本/最低料金＋電力量料金で、燃料費等調整・再エネは対象外。2026年11月検針分（10月使用分）からポイント条件変更があるため9月使用分と分離して監査。<br>※ FINAL V2.72：実ブラウザ自動テスト完了版。12社の会社切替、ENEOS各プラン専用欄、20,000円入力→金額比較モード、Basic/Green計算、JavaScriptエラー有無、A4見積書を確認。印刷時に発生していた空白2ページ目を解消し、A4 1枚固定へ調整。<br>※ V2.7：大阪ガス・関西電力の主要家庭向けプランを再監査し、関電B燃調・はぴeタイムR電化割引・旧プランID・ドコモでんき側変動料金自動反映を修正。料金単価・解約条件・代表的な付帯特典/適用条件を見積注意事項へ反映しています。<br>※ 見積結果には、選択したプランごとの注意事項も自動表示し、そのままPDF/印刷に含まれます。<br>※ 公式単価を確認できたプランだけ「公式単価式あり」と表示し、自動計算します。付帯サービス・市場連動・設備条件が複雑なプランを推測値では計算しません。<br>
+      ※ FINAL V2.72：金額入力が比較方法と連動しない不具合を修正。円入力時は自動で「現在の電気代（円）から比較」へ切替、kWh直接入力時は「使用量（kWh）から比較」へ切替。現在料金への金額反映も円比較モード時だけに限定し、eo燃料費調整単価を含む全可変入力の再計算イベントを監査。<br>※ STORE FINAL：FINAL V2.72をベースに、iPhone/iPad Safari表示・ホーム画面追加を想定したmeta設定とセーフエリア対応を追加。計算ロジックはFINAL V2.72のまま。<br>※ FINAL V2.72：店頭入力欄を会社・プラン連動で整理。ENEOS選択時は楽天ガス・楽天カード・楽天市場価格調整・eo燃調・大阪ガス専用項目・関電専用項目などを非表示にし、選択プランに必要な項目だけ表示。変動単価「自動反映」時は手動調整額2欄を非表示にして、現在契約側・ドコモでんき側の燃料費等調整、政府支援、再エネ賦課金の自動反映状態を表示。<br>※ V2.35：店頭画面の「現在の電気代（円）」入力欄が下部に埋もれていたUI不具合を修正。比較方法の直下へ円入力欄を移動し、円比較選択時は赤枠で強調・自動スクロールするよう改善。<br>※ V2.34：店頭向けUIへ全面調整。3STEP案内、入力欄の視認性、結果強調、固定操作バー、リセット、印刷導線を追加。料金計算ロジックはV2.33を維持。<br>※ V2.33：見積時の注意事項を全社横断で再監査。大阪ガスの新生活セット割・ファミリー応援・radiko解約条件、ENEOSにねん とく²割の更新月/引越し継続、EV夜とくの適用条件、au ecoMのポイント対象外/環境寄付、ソフトバンクのおうち割通信費、コスモポイントプラスの公式税込境界を反映。また年間差額が「選択月差額×12」の単純換算であること、セット割・付帯サービス・解約金等が自動反映されない場合があることを全プラン共通注意として追加。<br>※ V2.32：全社横断監査。会社→プラン連動、重複ID、JavaScript構文、自動計算プランの0/1/15/16/100/200/300/370/500/800kWh、通常料金の単調性、金額→kWh逆算安全性を再テスト。関西電力「はぴeタイム（旧）」は現行はぴeタイムRと同一式で自動計算しないよう実請求額比較へ変更。はぴeセットS/M/Lも機器リース等を含むため、電気単体の自動比較を停止し実請求額比較へ変更。<br>※ V2.31：ハルエネでんき／Looopでんきを再監査。ハルエネは関西のシンプルプランJ・Jプラス・Fプラスの料金本体（15kWh以下303.50円、20.31 / 25.71 / 28.70円/kWh）を公式再確認。2023年7月以降の電源調達調整費はJEPXエリアプライス平均×1.2を基礎とし、関西の還元基準3.50円・追加請求基準7.50円（税抜）、沖縄以外の燃料費調整適用係数0.0、2026年4月検針以降のカーボンフリー促進費単価0.3円/kWh（税抜）も確認。2026年9月・10月の関西調達単価を公式資料で確実に確認できないため、推測自動計算は行わず実請求額比較を維持。Looopでんきは現行スマートタイムONE（電灯）が30分ごとのJEPX連動電源料金＋制度対応費の料金体系で、契約電力も過去1年間の最大需要電力ベースとなるため、月間総kWhだけから固定料金を逆算しない安全設計を維持。2026年3月開始のおまかせ割も個別利用実績に依存するため自動値引きしません。<br>※ V2.29：HTBエナジーはベーシックプラン／LOVE地球の2プランに整理し、ママトクプラン・ぜんぶでんき・MUSUBIプロジェクトを対象外へ。新たにハルエネでんき（シンプルプランJ／Jプラス／Fプラス）とLooopでんき（スマートタイムONE（電灯））を正式名称で追加。ハルエネは電源調達調整費、Looopは30分ごとの市場連動料金があるため、未検証の推測自動計算を行わず実請求額比較を優先。<br>※ V2.28：HTBエナジーを最終監査。2026年9月分は関西の電源調達等17.38円/kWhから政府支援4.50円/kWhを差し引いた燃料費等調整12.88円/kWh、再エネ4.18円/kWh、容量拠出金反映額110.78円/kWを反映。ベーシック／LOVE地球を自動計算対応。容量拠出金は契約電力(kW)が必要。2026年10月分はHTBの電気月次単価未確認のため推測せず手入力。<br>※ V2.24：J:COM でんきの関西現行プラン（a従量A／a従量B／aグリーン従量A／aグリーン従量B）を正式名称・公式単価で追加。月次の燃料費等調整額はJ:COM公式値確認を優先し、未確認値は推測しない安全設計。<br>※ V2.24：eo電気の現行Kプラン（スタンダードプランK／シンプルプランK／再エネプランK／オール電化プランK）を公式料金表・2026年9月燃料費調整・再エネ賦課金・政府支援まで監査済み。オール電化プランKは時間帯別使用量の合計を総使用量として燃調・再エネにも統一し、0kWh時の基本料金半額も反映。2026年10月分燃調は公式公表確認前のため手入力。<br>※ 現在のV2.7で公式単価式を実装：大阪ガス 新生活応援・ファミリー応援・ベースA/A-G・家庭用ガス発電・スタイルS/P/d・E-ZERO/E-SHARE・ウィズradiko・MY EV/MY EV＋。MY EV系は市場連動のため昼間単価は公式上限値で試算。
     </div></div>
   </details>
 </div>
 <div class="bottom-bar">
   <div class="bottom-inner">
     <button type="button" class="btn-secondary" onclick="document.getElementById('resultCard').scrollIntoView({behavior:'smooth'})">結果を見る</button>
-    <button type="button" class="btn-primary" onclick="window.print()">見積を印刷 / PDF</button>
+    <button type="button" class="btn-primary" onclick="openEstimatePrint()">見積を印刷 / PDF</button>
   </div>
 </div>
 
@@ -399,9 +555,9 @@ text-decoration:none;font-weight:800;color:#334155;font-size:14px}
       ["ke_nattoku","なっトクでんき","auto","最低377.40円＋20.31 / 24.10 / 27.80円。自由料金で燃料費調整上限なし。","normal"],
       ["ke_eotoku","eおとくプラン","auto","6kWまで1,302.40円＋15.31 / 24.48 / 28.41円。","normal"],
       ["ke_hapie_old","はぴeタイム（旧）","manual","新規受付停止。旧料金・時間帯別条件が現行はぴeタイムRと異なるため、実請求額比較。","allelectric"],
-      ["ke_hapie_r","はぴeタイムR","auto","10kWまで2,409.40円。夏季昼28.87 / その他季昼26.24 / 生活22.80 / 夜15.37円。","allelectric"],
-      ["ke_esmart10","eスマート10","auto","6kWまで1,302.40円。夏季デイ38.53 / 夏季生活30.11 / その他季生活27.36 / 夜15.53円。","time"],
-      ["ke_point","withポイント でんき","auto","最低433.41円＋20.31 / 25.71 / 28.70円。ポイント特典条件あり。","special"],
+      ["ke_hapie_r","はぴeタイムR","manual","10kWまで2,409.40円。夏季昼28.87 / その他季昼26.24 / 生活22.80 / 夜15.37円。","allelectric"],
+      ["ke_esmart10","eスマート10","auto","6kWまで1,302.40円。夏季デイ38.53 / 夏季リビング30.11 / その他季リビング27.36 / ナイト15.53円。夏季は7/1〜9/30。デイは夏季平日13〜16時、ナイトは毎日22〜翌8時。","time"],
+      ["ke_point","withポイント でんき","auto","最低433.41円＋20.31 / 25.71 / 28.70円。ポイントは再エネ賦課金を除く電気料金の3.5%。翌年度5月末までに1年分まとめて進呈。3月31日時点で契約中など所定条件あり。","special"],
       ["ke_unext","withU-NEXT でんき","auto","最低2,357.40円＋20.31 / 24.92 / 28.41円。U-NEXT込み。","special"],
       ["ke_unext_g","withU-NEXT でんき（Gセット）","auto","最低2,357.40円＋20.31 / 24.10 / 27.80円。大阪ガス都市ガスとのセット条件あり。","special"],
       ["ke_hapie_set_s","はぴeセット S","manual","機器リース等を含む電化サブスク。電気料金だけの単純比較を避けるため実請求額比較。","allelectric"],
@@ -411,25 +567,25 @@ text-decoration:none;font-weight:800;color:#334155;font-size:14px}
       ["ke_ps_old","季時別電灯PS（旧）","manual","新規受付停止。季節・時間帯別のため実請求額での比較推奨。","time"]
     ],
     rakuten: [["rak_s","プランS","auto","関西エリア：基本料金0円・33.98円/kWh。従量電灯A相当。市場価格調整＋再エネ賦課金を加減算。","normal"],["rak_m","プランM","auto","関西エリア：基本料金0円・33.98円/kWh。従量電灯B相当（6～49kVA）。市場価格調整＋再エネ賦課金を加減算。","normal"]],
-    au: [["au_m","でんきMプラン（関西）","auto","最低522.57円＋20.20 / 25.60 / 28.58円。Ponta還元あり。燃料費調整上限なし。","normal"],["au_l","でんきLプラン（関西）","auto","基本447.20円/kVA＋17.80 / 21.01 / 23.51円。6kVA以上向け。Ponta還元あり。","normal"],["au_eco_m","ecoMプラン（関西D）","auto","料金単価はでんきM相当。Ponta還元対象外・環境配慮型プラン。","normal"]],
+    au: [["au_m","でんきMプラン（関西）","auto","関西エリア でんきM：最低522.57円、20.20 / 25.60 / 28.58円（税込参考単価）。燃料費調整は上限なし。Pontaは最低料金＋電力量料金の税抜対象額に応じ0.5% / 1%。","normal"],["au_l","でんきLプラン（関西）","auto","基本447.20円/kVA＋17.80 / 21.01 / 23.51円。6kVA以上向け。Ponta還元あり。","normal"],["au_eco_m","ecoMプラン（関西D）","auto","料金単価はでんきM相当。Ponta還元対象外・環境配慮型プラン。","normal"]],
     softbank: [
-      ["sb_pb_kansai","おうちでんき Powered by 関西電力","auto","2023年10月26日以降の関西エリア現行プラン。最低522.58円＋20.21 / 25.61 / 28.59円。電力市場連動額の対象外。","normal"],
-      ["sb_ouchi_n","おうちでんき（N）","manual","旧契約プラン。関西エリアでは電力市場連動額が加わるため、実請求額入力を推奨。","normal"],
-      ["sb_kurashi","くらしでんき","manual","既契約向け。電力市場連動額等を含むため、実請求額入力を推奨。","normal"],
-      ["sb_shizen","自然でんき","manual","基本料金0円のプラン。関西エリアでは電力市場連動額等を含むため、実請求額入力を推奨。","normal"]
+      ["sb_pb_kansai","おうちでんき Powered by 関西電力","auto","2023年10月26日以降の関西エリア現行プラン。最低522.58円＋20.21 / 25.61 / 28.59円。電力市場連動額は対象外。再エネ賦課金は2026年5月〜2027年4月4.18円/kWh。","normal"],
+      ["sb_ouchi_n","おうちでんき（N）","manual","旧契約プラン。関西エリアでは燃料費調整に加えて電力市場連動額があるため、総kWhだけでは正確に再現できず実請求額入力を推奨。","normal"],
+      ["sb_kurashi","くらしでんき","manual","既契約向け。関西エリアでは電力市場連動額等を含むため、実請求額入力を推奨。現行単価は最低522.58円＋20.00 / 24.84 / 27.16円。","normal"],
+      ["sb_shizen","自然でんき","manual","基本料金0円。関西エリアの電力量料金は23.60円/kWh。燃料費調整・電力市場連動額・再エネ賦課金が別途あるため、実請求額入力を推奨。","normal"]
     ],
     eo: [
-      ["eo_standard_k","スタンダードプランK","auto","2026年1月13日開始の現行Kプラン。最低518.25円＋20.01 / 25.35 / 28.30円。","normal"],
-      ["eo_simple_k","シンプルプランK","auto","2026年1月13日開始の現行Kプラン。基本1,856.52円＋23.28円/kWh。","normal"],
-      ["eo_renew_k","再エネプランK","auto","スタンダードプランK料金＋環境価値料金2.00円/kWh。CO2排出量実質ゼロ。","normal"],
-      ["eo_all_k","オール電化プランK","auto","基本2,288.93円（10kWまで）＋時間帯別料金。関西電力はぴeタイムR（電化割引含む）と同等単価。","allelectric"],
+      ["eo_standard_k","スタンダードプランK","auto","2026年1月13日開始の現行Kプラン。最低518.25円＋20.01 / 25.35 / 28.30円。2026年9月燃調は最初15kWh▲10.57円、超過分▲0.70円/kWh。","normal"],
+      ["eo_simple_k","シンプルプランK","auto","2026年1月13日開始の現行Kプラン。基本1,856.52円＋23.28円/kWh。2026年9月燃調▲0.70円/kWh。","normal"],
+      ["eo_renew_k","再エネプランK","auto","スタンダードプランK料金＋環境価値料金2.00円/kWh。CO2排出量実質ゼロ。2026年9月燃調は最初15kWh▲10.57円、超過分▲0.70円/kWh。","normal"],
+      ["eo_all_k","オール電化プランK","manual","オール電化向け。ドコモでんき切替対象外として判定します。料金単価は公式確認済み。","allelectric"],
       ["eo_standard_old","スタンダードプラン（旧・新規受付終了）","manual","2026年1月12日で新規受付終了。ネットセット/ネット契約無で料金が異なるため実請求額比較を推奨。","normal"],
       ["eo_simple_old","シンプルプラン（旧・新規受付終了）","manual","2026年1月12日で新規受付終了。ネットセット/ネット契約無で料金が異なるため実請求額比較を推奨。","normal"],
       ["eo_renew_old","再エネプラン（旧・新規受付終了）","manual","2026年1月12日で新規受付終了。旧プランはKプランと燃料費調整の月対応が異なるため実請求額比較を推奨。","normal"],
       ["eo_all_old","オール電化プラン（旧・新規受付終了）","manual","2026年1月12日で新規受付終了。ネットセット/ネット契約無・時間帯別のため実請求額比較を推奨。","allelectric"]
     ],
     cosmo: [
-      ["cosmo_standard","コスモでんきスタンダード","auto","関西電力エリア・従量電灯A相当。料金本体は関西電力従量電灯Aと同単価で、月間使用量に応じた定額割引。","normal"],
+      ["cosmo_standard","コスモでんきスタンダード","auto","関西A相当の料金＋使用量別定額割引。2026年7月1日時点は250〜299kWh:50円、300〜349:100円、350〜449:200円、450〜499:300円、500〜549:350円、550kWh以上:400円。","normal"],
       ["cosmo_point","コスモでんきポイントプラス","auto","関西電力エリア・従量電灯A相当。電気料金に応じてdポイント1% / 3% / 5%進呈。","normal"],
       ["cosmo_green","コスモでんきグリーン","auto","関西電力エリア・従量電灯A相当。実質CO2排出量0の環境配慮型。月間使用量に応じた定額割引。","normal"],
       ["cosmo_all_standard","コスモでんきスタンダード オール電化","manual","オール電化向け時間帯別メニュー。時間帯別使用量が必要なため実請求額比較を推奨。","allelectric"],
@@ -446,16 +602,21 @@ text-decoration:none;font-weight:800;color:#334155;font-size:14px}
       ["jcom_all_old","J:COM 電力 オール電化向けメニュー（旧・新規受付終了）","manual","季節別時間帯別・夜間10時間型など旧契約。時間帯別のため実請求額比較を推奨。","allelectric"]
     ],
     htb: [
-      ["htb_basic","ベーシックプラン","auto","関西エリア公式料金：基本料金330円＋26.30円/kWh（一律）。2026年9月分は燃料費等調整・再エネ・容量拠出金まで自動計算。契約電力(kW)を明細どおり入力してください。","normal"],
-      ["htb_love","LOVE地球","auto","関西エリア・6kVA未満向け。基本料金660円＋26.30円/kWh。実質再生可能エネルギー100%。2026年9月分は月次調整まで自動計算。","normal"]
+      ["htb_basic","ベーシックプラン","auto","関西エリア公式料金：基本料金330円＋26.30円/kWh（一律）。燃料費等調整・再エネ・容量拠出金を別途反映。","normal"],
+      ["htb_love","LOVE地球","auto","関西エリア：基本料金660円＋26.30円/kWh。実質CO2排出量ゼロの環境配慮型。","normal"],
+      ["htb_mama","ママトクプラン","manual","毎日2時間の無料時間帯がある現行プラン。無料時間帯の実使用量が必要なため、総kWhだけでは正確に再現できず実請求額入力を推奨。","normal"],
+      ["htb_musubi","MUSUBIプロジェクト","manual","社会貢献型の現行プラン。寄付先・契約条件を含むため実請求額入力で比較。","normal"],
+      ["htb_all","ぜんぶでんき","manual","オール電化住宅向け現行プラン。ドコモでんき切替対象外として判定。","allelectric"]
     ],
     haluene: [
-      ["hal_simple_j","シンプルプランJ","manual","関西エリア公式料金表掲載。従量電灯A相当は15kWh以下303.50円＋20.31 / 25.71 / 28.70円/kWh。電源調達調整費・再エネ賦課金・カーボンフリー促進費が加わるため、2026年9月/10月は実請求額比較を推奨。","normal"],
-      ["hal_simple_jplus","シンプルプランJプラス","manual","関西エリア公式料金表掲載。基本の電力量単価はシンプルプランJ系と同一表記。付帯条件・電源調達調整費・カーボンフリー促進費まで含め、2026年9月/10月は実請求額比較を推奨。","normal"],
-      ["hal_simple_fplus","シンプルプランFプラス","manual","関西エリア公式料金表掲載。基本の電力量単価はシンプルプランJ系と同一表記。付帯条件・電源調達調整費・カーボンフリー促進費まで含め、2026年9月/10月は実請求額比較を推奨。","normal"]
+      ["halu_a","ハルエネでんき｜従量電灯A系","manual","関西エリア参考単価：最低303.50円＋20.31 / 25.71 / 28.70円。電源調達調整費・カーボンフリー促進費・安定供給維持費等が契約/月で変動するため実請求額入力で比較。","normal"],
+      ["halu_b","ハルエネでんき｜従量電灯B系","manual","関西エリアは契約プランにより基本352.44円/kVAまたは396.00円/kVA等。電源調達調整費等が変動するため実請求額入力で比較。","normal"],
+      ["halu_power","ハルエネでんき｜動力系","manual","関西エリアの動力系。夏季/その他季・契約電力・力率・各種調整費が必要なため実請求額入力で比較。","normal"]
     ],
+      "looop_st1":["正式名称：スマートタイムONE（電灯）。電源料金はJEPXスポット市場価格を基に30分ごとに変動します。","2025年4月以降は基本料金0円という旧来の説明ではなく、託送基本料金・容量拠出金相当額などを含む「制度対応費」が発生します。契約電力は直近12か月で最も使用量が多かった30分実績から決定されます。","2026年3月開始のおまかせ割は、1か月で最も使用量が多い1時間の電気料金を1円/kWh割引。長期契約割引はアプリログイン等の条件があり最大年間1,100円です。個別実績依存のため比較額へ自動加算しません。","2026年9月使用分の政府支援は3.5円/kWh。実請求額を入力する場合は既に請求へ反映された金額をそのまま使用し、二重に値引きしません。","市場高騰時には固定単価プランより高くなる可能性があります。Looop公式も市場連動型であることを明示しています。"],
     looop: [
-      ["looop_sto_light","スマートタイムONE（電灯）","manual","市場連動型。電源料金が30分ごとのJEPX価格に連動し、制度対応費も契約電力等で変わります。2026年3月開始のおまかせ割も利用実績依存のため、月間総kWhだけでは正確に再現できず実請求額比較を推奨。","time"]
+      ["looop_st1","スマートタイムONE（電灯）","manual","現行の市場連動型プラン。電源料金が30分ごとのJEPX価格に連動し、制度対応費は直近12か月の最大30分使用量から決まる契約電力を使用。総kWhだけでは正確な料金を再現できないため実請求額入力で比較。","normal"],
+      ["looop_st1_power","スマートタイムONE（動力）","manual","事業者向け動力プラン。30分市場連動・契約電力・制度対応費等が必要なため、家庭向けドコモでんきとの単純比較対象外として実請求額入力を推奨。","normal"]
     ],
     other: [["other_manual","手入力","manual","検針票の請求額を入力してください。","normal"]]
   };
@@ -540,13 +701,13 @@ text-decoration:none;font-weight:800;color:#334155;font-size:14px}
     var eneDisc=(eneosDiscount&&eneosDiscount.value==="year3")?0.3:((eneosDiscount&&eneosDiscount.value==="year12")?0.2:0);
     if(planId==="ene_kansai_a" || planId==="ene_kansai_a2"){
       var v=tier(k,467.46,15,20.21,120,23.90,300,26.70);
-      if(planId==="ene_kansai_a2") v-=k*(eneDisc||0.2);
+      if(planId==="ene_kansai_a2") v-=k*eneDisc;
       return v;
     }
     if(planId==="ene_kansai_b" || planId==="ene_kansai_b2"){
       var v=423.71*cap, x=k, q=Math.min(x,120); v+=q*16.19; x-=q;
       if(x>0){q=Math.min(x,180);v+=q*19.57;x-=q;} if(x>0)v+=x*21.82;
-      if(planId==="ene_kansai_b2") v-=k*(eneDisc||0.2);
+      if(planId==="ene_kansai_b2") v-=k*eneDisc;
       return v;
     }
     if(planId==="ene_ev_a"){
@@ -594,12 +755,13 @@ text-decoration:none;font-weight:800;color:#334155;font-size:14px}
     // 関西電力（2026年9月時点公式料金表）
     if(planId==="ke_a") return kepcoA(k);
     if(planId==="ke_b"){
-      var v=447.21*cap, x=k, q=Math.min(x,120);v+=q*17.81;x-=q;
+      var v=(k===0?447.21*cap*0.5:447.21*cap), x=k, q=Math.min(x,120);v+=q*17.81;x-=q;
       if(x>0){q=Math.min(x,180);v+=q*21.02;x-=q;}if(x>0)v+=x*23.52;return v;
     }
     if(planId==="ke_nattoku") return tier(k,377.40,15,20.31,120,24.10,300,27.80);
     if(planId==="ke_eotoku"){
-      var v=1302.40+Math.max(0,cap-6)*416.94,x=k,q=Math.min(x,180);v+=q*15.31;x-=q;
+      var baseCharge=1302.40+Math.max(0,cap-6)*416.94;
+      var v=(k===0?baseCharge*0.5:baseCharge),x=k,q=Math.min(x,180);v+=q*15.31;x-=q;
       if(x>0){q=Math.min(x,120);v+=q*24.48;x-=q;}if(x>0)v+=x*28.41;return v;
     }
     if((planId==="ke_hapie_r" || planId==="ke_hapie_old") && (day+living+night)>0){
@@ -608,9 +770,11 @@ text-decoration:none;font-weight:800;color:#334155;font-size:14px}
       if(planId==="ke_hapie_r" && hapieDiscount && hapieDiscount.value==="yes") hv*=0.95;
       return hv;
     }
-    if(planId==="ke_esmart10" && (day+living+night)>0){
+    if(planId==="ke_esmart10"){
+      var totalTime=day+living+night;
       var livingRate=(document.getElementById("billingMonth").value==="2026-09")?30.11:27.36;
-      return 1302.40+Math.max(0,cap-6)*416.94 + day*38.53 + living*livingRate + night*15.53;
+      var baseCharge=1302.40+Math.max(0,cap-6)*416.94;
+      return (totalTime===0?baseCharge*0.5:baseCharge) + day*38.53 + living*livingRate + night*15.53;
     }
     if(planId==="ke_point") return tier(k,433.41,15,20.31,120,25.71,300,28.70);
     if(planId==="ke_unext") return tier(k,2357.40,15,20.31,120,24.92,300,28.41);
@@ -682,7 +846,7 @@ text-decoration:none;font-weight:800;color:#334155;font-size:14px}
 
     // まず会社・プラン専用項目を全部隠し、必要なものだけ表示する。
     ["eneosDiscount","eneosEvKwh","rakutenMarket","rakutenGas","rakutenCard","eoFuelRate",
-     "capacity","hapieDiscount","dayKwh","livingKwh","nightKwh","ogNewlifeSet"]
+     "capacity","kepcoBankDiscount","kepcoGasSetDiscount","hapieDiscount","dayKwh","livingKwh","nightKwh","ogNewlifeSet"]
       .forEach(function(x){setFieldVisible(x,false);});
 
     if(c==="eneos"){
@@ -698,8 +862,10 @@ text-decoration:none;font-weight:800;color:#334155;font-size:14px}
     }else if(c==="osakagas"){
       setFieldVisible("ogNewlifeSet",id==="og_newlife");
       if(id==="og_myev"||id==="og_myevplus"){setFieldVisible("dayKwh",true);setFieldVisible("nightKwh",true);}
-    }else if(c==="kepco"){
+     }else if(c==="kepco"){
       setFieldVisible("capacity",id==="ke_b"||id==="ke_eotoku"||id==="ke_hapie_r"||id==="ke_esmart10");
+      setFieldVisible("kepcoBankDiscount",id==="ke_a"||id==="ke_b");
+      setFieldVisible("kepcoGasSetDiscount",id==="ke_eotoku"||id==="ke_esmart10");
       setFieldVisible("hapieDiscount",id==="ke_hapie_r");
       if(id==="ke_hapie_r"||id==="ke_esmart10"){setFieldVisible("dayKwh",true);setFieldVisible("livingKwh",true);setFieldVisible("nightKwh",true);}
     }else if(c==="au"){
@@ -761,7 +927,7 @@ text-decoration:none;font-weight:800;color:#334155;font-size:14px}
     }
     if(planId==="og_p") return {label:"付帯特典",value:"Amazonギフトカード5,900円分",note:"現行案内。適用条件・継続条件を確認"};
     if(planId==="og_s") return {label:"付帯サービス",value:"住ミカタ・保証パック込み",note:"大阪ガスのガス契約がない場合はサービス提供不可"};
-    if(planId==="og_family") return {label:"現行特典",value:"Netflix広告つきスタンダード6ヶ月分等",note:"2026/8/24以降。別途申込み・適用条件あり"};
+    if(planId==="og_family") return {label:"キャンペーン特典",value:"特典あり",note:"内容・期間は変更されるため申込時点の大阪ガス公式条件を確認"};
     return null;
   }
 
@@ -784,7 +950,7 @@ text-decoration:none;font-weight:800;color:#334155;font-size:14px}
 
     var m={
       "og_newlife":["新生活応援プランは適用条件・特典条件を確認してください。","新生活セット割は大阪ガスのガス・電気をまとめ、別途申込みをした場合に適用。適用時は電気基本料金0円、電気単体は200円として試算します。"],
-       "og_family":["関西電力「なっトクでんき」との比較では328kWh/月以上、関西電力「従量電灯A」との比較では227kWh/月以上が公式の目安です。使用量が少ない場合は高くなることがあります。","従量電灯Aとの比較は燃料費調整額の差によって有利不利が変わる場合があります。","Netflix広告つきスタンダード6ヶ月分等の特典は別途申込み・クーポン等の適用条件があります。特典終了後の継続課金も確認してください。"],
+       "og_family":["関西電力「なっトクでんき」との比較では328kWh/月以上、関西電力「従量電灯A」との比較では227kWh/月以上が公式の目安です。使用量が少ない場合は高くなることがあります。","従量電灯Aとの比較は燃料費調整額の差によって有利不利が変わる場合があります。","キャンペーン特典は時期により内容・期間が変わります。申込時点の大阪ガス公式条件、別途申込みの要否、特典終了後の継続課金を確認してください。"],
       "og_ag":["大阪ガスの都市ガス等とのセット条件を確認してください。ガス側の特典消失も含めて比較してください。"],
       "og_homegen":["エネファーム・エコウィル等の対象設備・適用条件を確認してください。"],
        "og_s":["住ミカタ・保証パック11,880円/年相当がセットです。","大阪ガスとのガス契約がない場合、住ミカタ・保証パックのサービス提供はできません。"],
@@ -793,8 +959,8 @@ text-decoration:none;font-weight:800;color:#334155;font-size:14px}
       "og_ezero":["再生可能エネルギー由来の環境価値を含むプランです。料金差だけでなくプラン目的も確認してください。"],
       "og_eshare":["エネファーム等の設備条件・環境価値を含むため、対象設備を確認してください。"],
       "og_radiko":["radikoプレミアム ダブルプラン込みです。需給開始日が2026年3月31日以前は385円×残存月数、2026年4月1日以降は865円×残存月数の解約金があります。付帯サービス継続の要否も確認してください。"],
-       "og_myev":["EVまたはPHEVと自宅充電設備を所有するガス併用住宅が対象です。V2H等は対象外です。","昼間時間はJEPX市場連動で、このシミュレーターは2026年7月以降の公式上限単価23.26円/kWhで試算します。"],
-       "og_myevplus":["EVまたはPHEVと自宅充電設備を所有するガス併用住宅が対象です。","昼間時間はJEPX市場連動で、公式上限単価24.76円/kWhで試算します。環境価値を含むプランです。"],
+       "og_myev":["EVまたはPHEVと自宅充電設備を所有するガス併用住宅が対象です。V2H等は対象外です。","昼間時間はJEPX市場連動です。市場価格調整単価が基準単価23.26円/kWhを下回る場合のみ市場価格調整単価を適用し、それ以外は基準単価で試算します。"],
+       "og_myevplus":["EVまたはPHEVと自宅充電設備を所有するガス併用住宅が対象です。","昼間時間はJEPX市場連動です。市場価格調整単価が基準単価24.76円/kWhを下回る場合のみ市場価格調整単価を適用し、それ以外は基準単価で試算します。環境価値を含むプランです。"],
       "ke_a":["規制料金です。燃料費調整に上限があり、自由料金プランと燃調単価が異なります。"],
       "ke_b":["契約容量（kVA）が必要です。0kWh時は基本料金半額の扱いがあります。"],
       "ke_nattoku":["自由料金のため燃料費調整に上限がありません。大阪ガスとのセット条件も確認してください。"],
@@ -818,7 +984,7 @@ text-decoration:none;font-weight:800;color:#334155;font-size:14px}
       "au_m":["関西電力エリアのでんきM。燃料費調整額には上限がありません。","Ponta還元対象は最低料金＋電力量料金の税抜額。8,000円未満0.5%、8,000円以上1%。ポイントはauでんき料金の支払いには充当できません。","政府支援は燃料費調整単価へ反映済みです。"],
       "au_l":["6kVA以上向けのでんきL。契約容量を正しく入力してください。","Ponta還元対象は基本料金＋電力量料金の税抜額。8,000円未満0.5%、8,000円以上1%。ポイントはauでんき料金の支払いには充当できません。","まったく電気を使用しない月の基本料金は半額です。"],
       "au_eco_m":["料金単価はでんきM相当ですが、関西のecoプランは「auでんきポイントで割引」に申込みできません。","再生可能エネルギー比率実質100％・CO2排出量実質ゼロの環境配慮型で、毎月1契約あたり50円相当を環境保全団体へ寄付する仕組みです。","マンション一括受電やオール電化住宅など申込み対象外となる場合があります。政府支援は燃料費調整単価へ反映済みです。"],
-      "sb_pb_kansai":["正式名称：おうちでんき Powered by 関西電力。小売電気事業者は関西電力です。","電力市場連動額は対象外です。燃料費調整額に上限はありません。最低料金・電力量料金は関西電力の従量電灯Aと同額でも、燃料高騰時は請求額が高くなる場合があります。","対象なら「おうち割 でんきセット」で通信費が1回線あたり月110円（3年目以降55円、最大10回線）等の特典があります。ワイモバイルの一部プランは別条件の割引があります。このシミュレーターの電気料金差額には通信費割引を自動加算していないため、現在の適用状況を必ず確認してください。"],
+      "sb_pb_kansai":["正式名称：おうちでんき Powered by 関西電力。小売電気事業者は関西電力です。","電力市場連動額は対象外です。燃料費調整額に上限はありません。最低料金・電力量料金は関西電力の従量電灯Aと同額でも、燃料高騰時は請求額が高くなる場合があります。","対象なら「おうち割 でんきセット（M）」でSoftBank対象回線は1回線あたり2年間月110円、3年目以降月55円（最大10回線）。ワイモバイルは対象プランにより（A）または（E）となり、シンプル3 M/Lの（E）は2年間月1,100円など条件が異なります。このシミュレーターの電気料金差額には通信費割引を自動加算していないため、現在の適用状況を必ず確認してください。"],
       "sb_ouchi_n":["正式名称：おうちでんき（N）。旧契約プランです。","関西エリアでは電力市場連動額が加わるため、総kWhだけの固定単価計算は行わず実請求額比較を推奨します。"],
       "sb_kurashi":["正式名称：くらしでんき。","関西エリアでは電力市場連動額等の影響があるため、実請求額比較を推奨します。"],
       "sb_shizen":["正式名称：自然でんき。","関西エリアでは電力市場連動額等の影響があるため、実請求額比較を推奨します。"],
@@ -839,12 +1005,18 @@ text-decoration:none;font-weight:800;color:#334155;font-size:14px}
       "cosmo_standard":["正式名称：コスモでんきスタンダード。関西電力エリアでは従量電灯A相当です。","2026年7月1日時点の公式割引表：250kWh未満0円、250～299kWh 180円、300～349kWh 220円、350～399kWh 430円、400～449kWh 510円、450～499kWh 580円、500～549kWh 650円、550～599kWh 720円、600kWh以上790円割引。","燃料費調整額・再エネ賦課金は地域の電力会社と同額です。スタンダードには解約金はありません。","定額割引の境界では請求額→kWhが一意にならない場合があるため、電気代だけからの使用量逆算は行いません。"],
       "cosmo_point":["正式名称：コスモでんきポイントプラス。関西電力エリアでは従量電灯A相当です。","公式表示はポイント対象電気料金（税込）5,500円未満1%、5,500～8,800円未満3%、8,800円以上5%。燃調・再エネ・消費税等相当額を除いて計算するため、本ツール内部では税抜相当5,000円／8,000円を境界にしています。","dアカウント登録が必要です。ポイントプラスには解約金はありません。"],
       "cosmo_green":["正式名称：コスモでんきグリーン。実質CO2排出量0の環境配慮型メニューです。","関西エリアは250kWh未満割引なし、250～299kWh 50円、300～349kWh 50円、350～399kWh 100円、400～449kWh 200円、450～499kWh 200円、500～549kWh 300円、550～599kWh 350円、600kWh以上400円割引。","対象の通常コースには原則解約金はありません。","定額割引の境界では請求額→kWhが一意にならない場合があるため、電気代だけからの使用量逆算は行いません。"],
-      "htb_basic":["正式名称：ベーシックプラン。関西エリアは基本料金330円、電力量料金26.30円/kWhの一律単価です。","2026年9月分は電源調達等17.38円/kWhから政府支援4.50円/kWhを差し引き、燃料費等調整12.88円/kWh、再エネ4.18円/kWh、容量拠出金反映額110.78円/kWを自動反映。契約電力(kW)を明細どおり入力してください。","2026年10月分の月次調整単価は未公表のため自動確定しません。"],
-      "htb_love":["正式名称：LOVE地球。関西エリアは基本料金660円＋26.30円/kWh、6kVA未満向けです。","実質再生可能エネルギー100%の環境配慮型プランです。2026年9月分はHTB月次調整と容量拠出金を自動反映します。"],
+      "htb_basic":["正式名称：ベーシックプラン。関西エリアは基本料金330円、電力量料金26.30円/kWhの一律単価です。","2026年9月分は燃料費等調整12.88円/kWh、再エネ4.18円/kWh、容量拠出金反映額110.78円/kWを自動反映。政府支援は燃料費等調整単価に反映済み。契約電力(kW)を明細どおり入力してください。","2026年10月分の月次調整単価は未公表のため自動確定しません。"],
+      "htb_love":["正式名称：LOVE地球。関西エリアは基本料金660円＋26.30円/kWh、6kVA未満向けです。","実質CO2排出量ゼロの環境配慮型プランです。2026年9月分はHTB月次調整と容量拠出金を自動反映します。"],
+      "htb_mama":["現行のママトクプランは毎日2時間の無料時間帯を選ぶ料金メニューです。","無料時間帯の使用量は月間使用量の16.6%までが上限。燃料費等調整・再エネ・容量拠出金は無料時間帯も課金対象です。総kWhだけでは正確な料金を再現できないため実請求額で比較します。"],
+      "htb_musubi":["MUSUBIプロジェクトは電気料金を通じて選択した団体へ寄付する社会貢献型プランです。","契約条件・寄付内容を含め、店頭では実請求額入力で比較します。"],
+      "htb_all":["ぜんぶでんきはオール電化住宅向けの時間帯別料金プランです。","このシミュレーターではドコモでんき切替対象外として表示し、Basic/Greenの節約比較は行いません。"],
+      "halu_a":["ハルエネは基本単価だけでなく電源調達調整費を加減算します。","2023年7月利用分以降、調達単価はJEPX関西エリアプライス平均×1.2。関西の還元基準値3.50円、追加請求基準値7.50円（税抜）です。","2026年4月検針日以降はカーボンフリー促進費0.3円/kWhも適用。契約によって安定供給維持費等もあるため、店頭では実請求額入力を優先します。"],
+      "halu_b":["従量電灯B系はプランにより基本料金が異なります。","電源調達調整費・カーボンフリー促進費・安定供給維持費等を含め、実請求額で比較してください。"],
+      "halu_power":["動力系は夏季7/1〜9/30・その他季で電力量単価が異なり、契約電力と力率条件もあります。","家庭向けドコモでんきとの単純比較には適さないため実請求額入力を使用してください。"],
       "hal_simple_j":["正式名称：シンプルプランJ。ハルエネでんき関西エリア公式料金表掲載プランです。","関西は15kWh以下303.50円、16～120kWh 20.31円、121～300kWh 25.71円、301kWh以上28.70円/kWh。","電源調達調整費はJEPX関西エリアプライス平均×1.2を基礎に、還元基準3.50円・追加請求基準7.50円（税抜）で判定。沖縄以外は燃料費調整適用係数0.0です。","2026年4月検針以降はカーボンフリー促進費0.3円/kWh（税抜）も加算。2026年9月/10月の関西月次調達単価を公式資料で確実に確認できないため、実請求額で比較してください。"],
       "hal_simple_jplus":["正式名称：シンプルプランJプラス。ハルエネでんき関西エリア公式料金表掲載プランです。","料金本体は同じシンプルプラン系料金表を使用します。電源調達調整費・カーボンフリー促進費・付帯条件を含むため、2026年9月/10月は実請求額で比較してください。"],
       "hal_simple_fplus":["正式名称：シンプルプランFプラス。ハルエネでんき関西エリア公式料金表掲載プランです。","料金本体は同じシンプルプラン系料金表を使用します。電源調達調整費・カーボンフリー促進費・付帯条件を含むため、2026年9月/10月は実請求額で比較してください。"],
-      "looop_sto_light":["正式名称：スマートタイムONE（電灯）。Looopでんきの現行家庭向け市場連動型プランです。","電源料金が30分ごとのJEPX市場価格に連動し、制度対応費は契約電力などにも依存します。さらに2026年3月開始のおまかせ割は月内最大使用1時間や契約期間等に依存するため、月間総kWhだけでは正確な料金を再現できません。検針票の実請求額比較を推奨します。"],
+      "looop_st1":["正式名称：スマートタイムONE（電灯）。Looopでんきの現行家庭向け市場連動型プランです。","電源料金が30分ごとのJEPX市場価格に連動し、制度対応費は契約電力などにも依存します。さらに2026年3月開始のおまかせ割は月内最大使用1時間や契約期間等に依存するため、月間総kWhだけでは正確な料金を再現できません。検針票の実請求額比較を推奨します。"],
       "rak_s":["基本料金0円、関西エリアの従量料金は33.98円/kWhです。","市場価格調整単価はJEPXに連動して毎月変動します。政府支援は市場価格調整単価へ反映されます。","契約期間の定め・解約金はありません。"],
       "rak_m":["関西では従量電灯B相当（契約容量6～49kVA）のプランです。基本料金0円、従量料金33.98円/kWhです。","市場価格調整単価はJEPXに連動して毎月変動します。政府支援は市場価格調整単価へ反映されます。","契約期間の定め・解約金はありません。"]
     };
@@ -920,9 +1092,42 @@ text-decoration:none;font-weight:800;color:#334155;font-size:14px}
   }
   function softbankBilledTotal(planId,k,base){var md=softbankMonthly(planId,k);return Math.floor(base+md.fuel)+Math.floor(md.renewable);}
 
+
+
+  const PROVIDER_CONTACTS={
+    "ke":{"name":"関西電力","tel":"0800-777-8810","hours":"9:00～18:00（土日祝・年末年始除く）"},
+    "og":{"name":"大阪ガス","tel":"0120-000-555","hours":"9:00～19:00（全日）"},
+    "eo":{"name":"eo電気","tel":"0120-914-755","hours":"9:00～18:00（年中無休）"},
+    "jcom":{"name":"J:COMでんき","tel":"0120-848-816","hours":"9:00～18:00（年中無休）"},
+    "ene":{"name":"ENEOSでんき","tel":"0570-01-8704","hours":"9:00～17:00（日祝・年末年始除く）"},
+    "rak":{"name":"楽天でんき","tel":"050-5490-9070","hours":"9:30～17:30（年末年始除く）"},
+    "au":{"name":"auでんき","tel":"0120-925-881","hours":"9:00～20:00（年中無休）"},
+    "sb":{"name":"SoftBankでんき","tel":"0800-170-3710","hours":"9:00～20:00（年中無休）"},
+    "cosmo":{"name":"コスモでんき","tel":"0120-530-155","hours":"月～土 9:00～18:00（日祝・夏期休暇・年末年始除く）"},
+    "htb":{"name":"HTBエナジー","tel":"050-2018-1105","hours":"平日10:00～18:00（年末年始除く）"},
+    "haluene":{"name":"ハルエネ","tel":"0570-001-296","hours":"10:00～18:00（日祝定休）"},
+    "looop":{"name":"Looopでんき","tel":"0120-718-507","hours":"9:00～20:00（年中無休）"}
+  };
+  function providerContactFor(planId){
+    var p=String(planId||"");
+    if(/^ke_/.test(p)) return PROVIDER_CONTACTS.ke;
+    if(/^og_/.test(p)) return PROVIDER_CONTACTS.og;
+    if(/^eo_/.test(p)) return PROVIDER_CONTACTS.eo;
+    if(/^jcom_/.test(p)) return PROVIDER_CONTACTS.jcom;
+    if(/^ene_/.test(p)) return PROVIDER_CONTACTS.ene;
+    if(/^rak_/.test(p)) return PROVIDER_CONTACTS.rak;
+    if(/^au_/.test(p)) return PROVIDER_CONTACTS.au;
+    if(/^sb_/.test(p)) return PROVIDER_CONTACTS.sb;
+    if(/^cosmo_/.test(p)) return PROVIDER_CONTACTS.cosmo;
+    if(/^htb_/.test(p)) return PROVIDER_CONTACTS.htb;
+    if(/^haluene_/.test(p)) return PROVIDER_CONTACTS.haluene;
+    if(/^looop_/.test(p)) return PROVIDER_CONTACTS.looop;
+    return null;
+  }
+
   const RAKUTEN_BILLING={
-    "2026-09":{market:1.11,re:4.18,support:3.50,marketLabel:"2026年8月分",label:"2026年9月請求",verified:true},
-    "2026-10":{market:2.35,re:4.18,support:4.50,marketLabel:"2026年9月分",label:"2026年10月請求",verified:true}
+    "2026-09":{market:1.11,re:4.18,support:3.50,marketLabel:"2026年8月分",label:"2026年9月請求（7月使用・8月検針）",verified:true},
+    "2026-10":{market:2.35,re:4.18,support:4.50,marketLabel:"2026年9月分",label:"2026年10月請求（8月使用・9月検針）",verified:true}
   };
   function rakutenMonthly(k){
     var key=document.getElementById("billingMonth").value,d=RAKUTEN_BILLING[key]||RAKUTEN_BILLING["2026-09"];
@@ -1013,7 +1218,11 @@ text-decoration:none;font-weight:800;color:#334155;font-size:14px}
   }
   function kepcoBilledTotal(planId,k,base){
     var md=kepcoMonthly(planId,k);
-    return Math.floor(base+md.fuel)+Math.floor(md.renewable);
+    var bank=document.getElementById("kepcoBankDiscount");
+    var discount=((planId==="ke_a"||planId==="ke_b") && bank && bank.value==="yes")?55:0;
+    var gas=document.getElementById("kepcoGasSetDiscount");
+    var gasDiscount=((planId==="ke_eotoku"||planId==="ke_esmart10") && gas && gas.value==="yes")?(base*0.02):0;
+    return Math.floor(base+md.fuel-gasDiscount)+Math.floor(md.renewable)-discount;
   }
 
   function osakaGasMonthly(planId,k){
@@ -1089,7 +1298,11 @@ text-decoration:none;font-weight:800;color:#334155;font-size:14px}
   function inferKwhFromBill(planId,target,kind){
     if(!(target>0)) return 0;
     // 単調増加が確認できる通常使用量域のみ数値逆算する。
+    // 範囲外の請求額を3000kWhへ張り付けず、安全側で「逆算不可」にする。
     var lo=0,hi=3000;
+    var lowBill=modeledBillForInverse(planId,lo), highBill=modeledBillForInverse(planId,hi);
+    if(!Number.isFinite(lowBill) || !Number.isFinite(highBill)) return 0;
+    if(target < lowBill-1 || target > highBill+1) return 0;
     for(var i=0;i<45;i++){
       var mid=(lo+hi)/2;
       var modeled=modeledBillForInverse(planId,mid);
@@ -1102,7 +1315,10 @@ text-decoration:none;font-weight:800;color:#334155;font-size:14px}
   function calc(){
     const row=selectedRow(), kind=row[4]||"normal";
     var k=Number(kwh.value)||0, a=Number(actual.value)||0, adj=Number(adjust.value)||0, dAdj=Number(docomoAdjust.value)||0;
-    if(row[0]==="eo_all_k"){ var eoTk=(Number(dayKwh.value)||0)+(Number(livingKwh.value)||0)+(Number(nightKwh.value)||0); if(eoTk>=0){ k=eoTk; kwh.value=Math.round(eoTk*10)/10; } }
+    if(row[0]==="eo_all_k" || row[0]==="ke_esmart10" || row[0]==="og_myev" || row[0]==="og_myevplus"){
+      var timeTotal=(Number(dayKwh.value)||0)+(Number(livingKwh.value)||0)+(Number(nightKwh.value)||0);
+      if(timeTotal>=0){ k=timeTotal; kwh.value=Math.round(timeTotal*10)/10; }
+    }
     var inverseIssue=(inputMode.value==="bill" && a>0)?billInverseIssue(row[0],a):"";
     if(inputMode.value==="bill" && a>0){
       // 金額逆算は、料金式が総kWhだけで一意に決まる領域のみ実施する。
@@ -1161,9 +1377,10 @@ text-decoration:none;font-weight:800;color:#334155;font-size:14px}
       : ((row[0]==="sb_pb_kansai" && sep2026Auto.value==="auto") ? softbankBilledTotal(row[0],k,oldBase)
       : ((row[0].indexOf("ke_")===0 && sep2026Auto.value==="auto") ? kepcoBilledTotal(row[0],k,oldBase)
       : ((row[0].indexOf("rak_")===0 && sep2026Auto.value==="auto") ? rakutenBilledTotal(k,oldBase) : ((row[0].indexOf("au_")===0 && sep2026Auto.value==="auto") ? auBilledTotal(row[0],k,oldBase) : oldBase+adj)))))))));
-    const old = a>0 ? a : (row[2]==="auto" ? oldAuto : 0);
+    const old = (inputMode.value==="bill" && a>0) ? a : (row[2]==="auto" ? oldAuto : 0);
 
-    const dBase=kepcoA(k), basic=dBase+dAdj, green=dBase+500+dAdj;
+    var docomoUsageReady = k>0;
+    const dBase=docomoUsageReady?kepcoA(k):0, basic=docomoUsageReady?(dBase+dAdj):0, green=docomoUsageReady?(dBase+500+dAdj):0;
     const rr=docomoRates();
     const eligibleBasic=Math.floor((dBase/1.1)/100)*100;
     const eligibleGreen=Math.floor(((dBase+500)/1.1)/100)*100;
@@ -1171,13 +1388,15 @@ text-decoration:none;font-weight:800;color:#334155;font-size:14px}
     const gp=Math.floor(eligibleGreen*rr.green/100);
     const be=basic-bp, ge=green-gp;
     const oldBenefit=osakaGasBenefit(row[0],oldBase);
-    const oldPoint=(row[0]==="og_d" && oldBenefit)?Number(String(oldBenefit.value).replace(/[^0-9]/g,""))||0:(row[0].indexOf("rak_")===0?rakutenPoints(old):(row[0].indexOf("au_")===0?auPoints(row[0],oldBase):(row[0]==="cosmo_point"?cosmoPoints(row[0],oldBase):0)));
+    const kepcoPoint=(row[0]==="ke_point" && sep2026Auto.value==="auto")?Math.floor(Math.max(0,oldBase+kepcoMonthly(row[0],k).fuel)*0.035):0;
+    const oldPoint=(row[0]==="og_d" && oldBenefit)?Number(String(oldBenefit.value).replace(/[^0-9]/g,""))||0:(row[0].indexOf("rak_")===0?rakutenPoints(old):(row[0].indexOf("au_")===0?auPoints(row[0],oldBase):(row[0]==="cosmo_point"?cosmoPoints(row[0],oldBase):kepcoPoint)));
     const oldEffective=old-oldPoint;
     const ok=old>0;
     const bd=oldEffective-be, gd=oldEffective-ge;
 
     let headline;
-    if(kind==="allelectric") headline="⚠️ オール電化プランのため切替前に要確認";
+    if(!docomoUsageReady && inputMode.value==="bill") headline="⚠️ ドコモでんき比較には使用量kWhも必要です";
+    else if(kind==="allelectric") headline="⛔ オール電化プランのためドコモでんき切替対象外";
     else if(kind==="time") headline="⚠️ 時間帯別プランのため実請求額で比較";
     else if(kind==="business") headline="⚠️ 契約容量・動力条件の確認が必要";
     else if(!ok) headline="現在の実請求額を入力すると比較できます";
@@ -1187,11 +1406,11 @@ text-decoration:none;font-weight:800;color:#334155;font-size:14px}
     result.innerHTML =
       '<div class="best">'+headline+'</div>'+
       '<table><tr><th></th><th>現在</th><th>Basic</th><th>Green</th></tr>'+
-      '<tr><td>料金</td><td>'+(ok?yen(old):"要入力")+'</td><td>'+yen(basic)+'</td><td>'+yen(green)+'</td></tr>'+
+      '<tr><td>料金</td><td>'+(ok?yen(old):"要入力")+'</td><td>'+(kind==="allelectric"?"対象外":(docomoUsageReady?yen(basic):"要kWh"))+'</td><td>'+(kind==="allelectric"?"対象外":(docomoUsageReady?yen(green):"要kWh"))+'</td></tr>'+
       '<tr><td>dポイント還元率</td><td>—</td><td>'+rr.basic+'%</td><td>'+rr.green+'%</td></tr>'+
       '<tr><td>ポイント目安</td><td>—</td><td>'+bp+'pt</td><td>'+gp+'pt</td></tr>'+
       '<tr><td>現在プランのポイント</td><td>'+(oldPoint?oldPoint+"pt":"—")+'</td><td>—</td><td>—</td></tr>'+ '<tr><td><b>実質負担</b></td><td><b>'+(ok?yen(oldEffective):"—")+'</b></td><td><b>'+yen(be)+'</b></td><td><b>'+yen(ge)+'</b></td></tr>'+
-      '<tr><td>年間差額</td><td>—</td><td>'+(ok?yen(bd*12):"—")+'</td><td>'+(ok?yen(gd*12):"—")+'</td></tr></table>'+
+      '<tr><td>年間差額</td><td>—</td><td>'+(kind==="allelectric"?"対象外":(ok&&docomoUsageReady?yen(bd*12):"—"))+'</td><td>'+(kind==="allelectric"?"対象外":(ok&&docomoUsageReady?yen(gd*12):"—"))+'</td></tr></table>'+
       (function(){var ob=osakaGasBenefit(row[0],oldBase);return ob?'<div class="quote-notes"><b>'+ob.label+'：'+ob.value+'</b>'+ob.note+'</div>':'';})()+
       ((row[0]==="htb_basic"||row[0]==="htb_love") && sep2026Auto.value==="auto"?(function(){var md=htbMonthly(row[0],k);return md.verified?'<div class="quote-notes"><b>HTBエナジー 変動料金｜'+md.label+'</b>燃料費等調整：'+yen(md.fuel)+'（政府支援反映後 '+md.fuelRate.toFixed(2)+'円/kWh） ／ 再エネ賦課金：'+yen(md.renewable)+'（'+md.reRate.toFixed(2)+'円/kWh） ／ 容量拠出金反映額：'+yen(md.capacityAmount)+'（'+md.capacityRate.toFixed(2)+'円/kW）<br>2026年9月分は17.38円/kWhから政府支援4.50円/kWhを差し引き。容量拠出金は契約電力(kW)×月次単価です。</div>':'<div class="quote-notes"><b>HTBエナジー｜'+md.label+'</b><b>⚠️ HTBの月次単価が未公表のため自動確定していません。</b> 推測値は使わず、実請求額または公式公表後の単価で比較してください。</div>';})():'')+
       (["cosmo_standard","cosmo_point","cosmo_green"].indexOf(row[0])>=0 && sep2026Auto.value==="auto"?(function(){var md=cosmoMonthly(row[0],k);return '<div class="quote-notes"><b>コスモでんき 変動料金｜'+md.label+'</b>燃料費調整：'+yen(md.fuel)+' ／ 再エネ賦課金：'+yen(md.renewable)+'<br>地域の電力会社と同額の調整単価を適用。</div>';})():'')+
@@ -1207,6 +1426,96 @@ text-decoration:none;font-weight:800;color:#334155;font-size:14px}
       (inputMode.value==="bill"?(kind==="time"||kind==="allelectric"?'<div class="quote-notes"><b>電気代入力モード｜時間帯別プラン</b>請求額だけでは使用量を一意に逆算できないため、昼間・生活・夜間の入力合計 '+(Math.round(k*10)/10)+'kWh/月をドコモでんき比較に使用しています。</div>':(inverseIssue==="cosmo_discount"?'<div class="quote-notes"><b>電気代入力モード｜コスモ定額割引プラン</b>使用量250/300/350/400/450/500/550/600kWhの境界で定額割引額が変わり、同じ請求額に複数の使用量候補が生じる場合があります。誤ったkWhを自動推定しないため、請求額だけから逆算せず、検針票の使用量kWhを入力してください。</div>':(inverseIssue==="minimum15"?'<div class="quote-notes"><b>電気代入力モード｜最低料金帯</b>このプランは0～15kWh付近で最低料金が適用され、請求額だけでは使用量を一意に決められません。誤推定を防ぐため、この低使用量帯では自動逆算せず、検針票の使用量kWhを入力してください。</div>':(row[2]!=="auto"||kind==="business"?'<div class="quote-notes"><b>電気代入力モード｜使用量逆算対象外</b>このプランは料金条件が複雑なため、請求額からkWhを推測しません。正確な比較には検針票の使用量kWhも入力してください。</div>':'<div class="quote-notes"><b>電気代からの逆算結果</b>推定使用量：約'+(Math.round(k*10)/10)+'kWh/月。選択プランの料金式・選択月の燃料費調整・再エネ賦課金を含む請求モデルから逆算した概算です。</div>')))):'')+
       '<div class="quote-notes"><b>見積時の注意事項｜'+row[1]+'</b>'+
       '<ul style="margin:0;padding-left:20px">'+planCautions(row[0],kind).map(function(x){return '<li>'+x+'</li>';}).join('')+'</ul></div>';
+
+
+    (function(){
+      var pr=document.getElementById("printReport"); if(!pr)return;
+      var candidates=[
+        {key:"current",name:"現在のプラン",monthly:ok?old:null,effective:ok?oldEffective:null,rate:"—",pts:oldPoint||0,annualDiff:0},
+        {key:"basic",name:"ドコモでんき Basic",monthly:(kind==="allelectric"||!docomoUsageReady)?null:basic,effective:(kind==="allelectric"||!docomoUsageReady)?null:be,rate:rr.basic+"%",pts:bp,annualDiff:(ok&&docomoUsageReady&&kind!=="allelectric")?bd*12:null},
+        {key:"green",name:"ドコモでんき Green",monthly:(kind==="allelectric"||!docomoUsageReady)?null:green,effective:(kind==="allelectric"||!docomoUsageReady)?null:ge,rate:rr.green+"%",pts:gp,annualDiff:(ok&&docomoUsageReady&&kind!=="allelectric")?gd*12:null}
+      ];
+      var valid=candidates.filter(function(x){return x.effective!==null&&isFinite(x.effective);});
+      var winner=valid.length?valid.reduce(function(a,b){return a.effective<=b.effective?a:b;}):candidates[0];
+      var save=(ok&&winner.key!=="current")?Math.max(0,(oldEffective-winner.effective)*12):0;
+      function fmt(v){return(v===null||!isFinite(v))?"—":yen(v)}
+      function annual(v){return(v===null||!isFinite(v))?"—":yen(v*12)}
+      function diffText(x){
+        if(x.key==="current")return"現在の基準";
+        if(x.annualDiff===null)return"—";
+        return x.annualDiff>=0?"年間 "+yen(x.annualDiff)+"お得":"年間 "+yen(-x.annualDiff)+"高い";
+      }
+      function card(x){
+        var reco=x.key===winner.key;
+        return '<div class="pr-card'+(reco?' reco':'')+'">'+
+          '<div class="pr-badge">'+(reco?'👑 おすすめ':'比較対象')+'</div>'+
+          '<div class="pr-name">'+x.name+'</div>'+
+          '<div class="pr-money-label">実質年間負担</div>'+
+          '<div class="pr-money">'+annual(x.effective)+'</div>'+
+          '<div class="pr-mini">月額料金 '+fmt(x.monthly)+' ／ '+diffText(x)+'</div>'+
+        '</div>';
+      }
+      var caut=[];
+      if(kind==="allelectric"){
+        caut.push("オール電化プランはドコモでんき切替対象外です。");
+      }else{
+        caut.push("本シミュレーターは選択月の料金を基にした概算です。年間差額は月額差を12倍した目安です。");
+        caut.push("燃料費等調整額・市場価格調整額・再エネ賦課金・政府支援・料金単価は変更される場合があります。");
+        caut.push("実際の請求額は使用量・契約条件・燃料価格・各社の料金改定等により異なる場合があります。");
+        caut.push("ポイントは入力した回線・支払方法等に基づく目安です。進呈条件・対象料金・上限をご確認ください。");
+        caut.push("切替前に現在の電力会社のセット割・付帯サービス・解約金等をご確認ください。");
+      }
+      planCautions(row[0],kind).slice(0,2).forEach(function(x){if(caut.indexOf(x)<0)caut.push(x)});
+      var rows=[
+        ["月額料金",fmt(candidates[0].monthly),fmt(candidates[1].monthly),fmt(candidates[2].monthly)],
+        ["dポイント還元率","—",candidates[1].rate,candidates[2].rate],
+        ["月間ポイント目安",oldPoint?(oldPoint+"pt"):"—",bp+"pt",gp+"pt"],
+        ["月間実質負担",fmt(candidates[0].effective),fmt(candidates[1].effective),fmt(candidates[2].effective)],
+        ["年間実質負担",annual(candidates[0].effective),annual(candidates[1].effective),annual(candidates[2].effective)]
+      ].map(function(r){
+        return '<tr><td>'+r[0]+'</td><td class="'+(winner.key==="current"?'win':'')+'">'+r[1]+'</td><td class="'+(winner.key==="basic"?'win':'')+'">'+r[2]+'</td><td class="'+(winner.key==="green"?'win':'')+'">'+r[3]+'</td></tr>';
+      }).join("");
+      var saveBanner=kind==="allelectric"
+        ? '<div class="pr-save">⛔ オール電化プランのためドコモでんき切替対象外</div>'
+        : (winner.key==="current"
+          ? '<div class="pr-save">現在のプランが最もお得です</div>'
+          : '<div class="pr-save">'+winner.name+'へ切り替えると年間 <strong>約'+yen(save)+'</strong> お得！</div>');
+      pr.innerHTML=
+        '<div class="pr-head"><div class="pr-title">⚡ 電気料金 比較結果</div>'+
+          '<div class="pr-sub">あなたのご使用条件で試算した比較見積書<br>現在：'+row[1]+' ／ 使用量：約'+(Math.round(k*10)/10)+'kWh/月</div></div>'+
+        '<div class="pr-kicker">👑 年間で一番お得なプラン</div>'+
+        '<div class="pr-cards">'+candidates.map(card).join("")+'</div>'+
+        '<table class="pr-table"><tr><th>比較項目</th><th>現在のプラン</th><th>Basic</th><th>Green</th></tr>'+rows+'</table>'+
+        saveBanner+
+        '<div class="pr-box"><h3>⚠ ご注意事項</h3><ul class="pr-notes">'+caut.map(function(x){return"<li>"+x+"</li>"}).join("")+'</ul></div>'+
+        '<div class="pr-foot">最新の料金・サービス内容は、申込前に各社の公式情報をご確認ください。</div>';
+    })();
+
+    // A4 1枚用の見積書。画面上の詳細注記は印刷時に省略し、重要事項だけを再構成。
+    var pqh=document.getElementById("printQuoteHead"), pqn=document.getElementById("printQuoteNotes");
+    if(pqh){
+      pqh.innerHTML='<div class="pq-title">電気料金 比較見積書</div>'+
+        '<div class="pq-meta"><div><b>現在：</b>'+row[1]+'</div><div><b>比較：</b>ドコモでんき Basic / Green</div>'+
+        '<div><b>使用量：</b>'+(Math.round(k*10)/10)+' kWh/月</div><div><b>算定月：</b>'+document.getElementById("billingMonth").options[document.getElementById("billingMonth").selectedIndex].text+'</div></div>';
+    }
+    if(pqn){
+      var pcs=planCautions(row[0],kind);
+      var essential=[];
+      if(kind==="allelectric") essential.push("オール電化プランはドコモでんき切替対象外です。");
+      else {
+        essential.push("年間差額は、選択月の月額差を12倍した目安です。季節変動により実際の年間額とは異なります。");
+        essential.push("燃料費等調整額・市場価格調整額・再エネ賦課金・政府支援・料金単価は変更される場合があります。");
+        essential.push("ポイントは入力した回線・支払方法等を基にした目安です。進呈条件・上限・対象料金を申込時に確認してください。");
+        essential.push("現在契約のセット割・通信割・付帯サービス・解約金等は、明記したもの以外は自動反映していません。");
+        essential.push("切替前に現在の電力会社の契約内容・解約に伴う不利益の有無を確認してください。");
+      }
+      pcs.slice(0,3).forEach(function(x){ if(essential.indexOf(x)<0) essential.push(x); });
+      var pc=providerContactFor(row[0]);
+      var contactHtml=pc?'<div class="pq-contact"><b>現在の電力会社 お問い合わせ先</b>　'+pc.name+'　'+pc.tel+'<br><span>'+pc.hours+'</span></div>':'';
+      pqn.innerHTML='<b>ご案内・重要事項</b><ul>'+essential.map(function(x){return "<li>"+x+"</li>";}).join("")+'</ul>'+
+        contactHtml+
+        '<div class="small">本書は店頭での比較用概算です。申込前に検針票・現在契約・ドコモでんきの最新提供条件をご確認ください。ドコモでんき Basicは解約金0円ですが、切替元の契約では違約金等が発生する場合があります。</div>';
+    }
   }
 
 
@@ -1222,28 +1531,54 @@ text-decoration:none;font-weight:800;color:#334155;font-size:14px}
     else if(id.indexOf("jcom_")===0) company.value="jcom";
     else if(id.indexOf("cosmo_")===0) company.value="cosmo";
     else if(id.indexOf("htb_")===0) company.value="htb";
+    else if(id.indexOf("halu_")===0) company.value="haluene";
     else if(id.indexOf("hal_")===0) company.value="haluene";
     else if(id.indexOf("looop_")===0) company.value="looop";
     else company.value="other";
   }
 
-  company.addEventListener("change",function(){populatePlans();calc();});
+  company.addEventListener("change",function(){ populatePlans(); updateConditionalFields(); calc(); });
   plan.addEventListener("change",function(){updateConditionalFields();calc();});
-  kwh.addEventListener("input",calc);
-  actual.addEventListener("input",calc);
+  kwh.addEventListener("input",function(){
+    // 使用量をお客さまが直接編集した場合はkWh比較へ戻す。
+    if(document.activeElement===kwh && Number(kwh.value)>0 && inputMode.value!=="kwh"){ inputMode.value="kwh"; updateInputModeUI(); }
+    calc();
+  });
+  actual.addEventListener("input",function(){
+    // 金額を入力したら自動で「電気代（円）から比較」へ切替。
+    if(Number(actual.value)>0 && inputMode.value!=="bill"){ inputMode.value="bill"; updateInputModeUI(); }
+    calc();
+  });
   card.addEventListener("change",calc);
   line.addEventListener("change",calc);
   gas.addEventListener("change",calc);
   adjust.addEventListener("input",calc); docomoAdjust.addEventListener("input",calc);
   inputMode.addEventListener("change",function(){updateInputModeUI();calc();}); sep2026Auto.addEventListener("change",function(){updateConditionalFields();calc();}); billingMonth.addEventListener("change",function(){var d=RAKUTEN_BILLING[billingMonth.value];if(d&&d.verified)rakutenMarket.value=d.market.toFixed(2);calc();});
   ["rakutenMarket","rakutenGas","rakutenCard"].forEach(function(id){var e=document.getElementById(id);if(e)e.addEventListener(id==="rakutenMarket"?"input":"change",calc);});
-  ["capacity","dayKwh","livingKwh","nightKwh","eneosEvKwh"].forEach(function(id){
+  ["capacity","dayKwh","livingKwh","nightKwh","eneosEvKwh","eoFuelRate"].forEach(function(id){
     var e=document.getElementById(id); if(e)e.addEventListener("input",calc);
   });
 
   var nls=document.getElementById("ogNewlifeSet"); if(nls)nls.addEventListener("change",calc); if(eneosDiscount)eneosDiscount.addEventListener("change",calc);
   if(hapieDiscount)hapieDiscount.addEventListener("change",calc);
+
+  // FINAL V2.72 全項目監査: 将来項目を含め、STEP1/2内の全 input/select 変更を再計算へ接続。
+  // 個別リスナーがある項目は重複しても結果は同じで、未接続項目の取りこぼしを防ぐ。
+  document.querySelectorAll(".card input, .card select").forEach(function(e){
+    if(e.dataset.calcBound==="1") return;
+    e.dataset.calcBound="1";
+    e.addEventListener(e.tagName==="SELECT" ? "change" : "input", function(){
+      if(e.id==="actual" && Number(e.value)>0 && inputMode.value!=="bill"){
+        inputMode.value="bill"; updateInputModeUI();
+      }
+      if(e.id==="kwh" && document.activeElement===e && Number(e.value)>0 && inputMode.value!=="kwh"){
+        inputMode.value="kwh"; updateInputModeUI();
+      }
+      calc();
+    });
+  });
   populatePlans();
+  updateConditionalFields();
   updateInputModeUI();
   calc();
 
@@ -1251,7 +1586,7 @@ text-decoration:none;font-weight:800;color:#334155;font-size:14px}
     company.value="eneos";
     populatePlans();
     inputMode.value="kwh";
-    kwh.value=370;
+    kwh.value="";
     actual.value=0;
     card.value="gold";
     line.value="yes";
@@ -1273,6 +1608,61 @@ text-decoration:none;font-weight:800;color:#334155;font-size:14px}
     window.scrollTo({top:0,behavior:"smooth"});
   };
 })();
+
+  function openEstimatePrint(){
+    var report=document.getElementById("printReport");
+    if(!report || !report.innerHTML.trim()){
+      calc();
+      report=document.getElementById("printReport");
+    }
+    if(!report || !report.innerHTML.trim()){
+      alert("先に比較結果を表示してください。");
+      return;
+    }
+    var w=window.open("","_blank");
+    if(!w){
+      alert("印刷画面を開けませんでした。Safariのポップアップ設定をご確認ください。");
+      return;
+    }
+    var doc='<!doctype html><html lang="ja"><head><meta charset="utf-8">'+
+      '<meta name="viewport" content="width=device-width,initial-scale=1">'+
+      '<title>電気料金 比較見積書</title>'+
+      '<style>'+
+      '@page{size:A4 portrait;margin:8mm}'+
+      '*{box-sizing:border-box}html,body{margin:0;padding:0;background:#fff;color:#142033;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif}'+
+      'body{width:194mm;min-height:281mm;margin:0 auto}'+
+      '.pr-head{background:linear-gradient(135deg,#0b3b79,#0b2f64);color:#fff;border-radius:10px;padding:12px 16px;margin-bottom:9px;display:flex;justify-content:space-between;align-items:end}'+
+      '.pr-title{font-size:24pt;font-weight:950;letter-spacing:.02em}.pr-sub{font-size:8.5pt;text-align:right;line-height:1.45}'+
+      '.pr-kicker{font-size:11pt;font-weight:900;margin:4px 0 6px;padding-left:4px}'+
+      '.pr-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:8px}'+
+      '.pr-card{border:1.4px solid #cbd6e2;border-radius:10px;padding:9px;background:#fff;min-height:118px}'+
+      '.pr-card.reco{border:2.2px solid #15924f;background:linear-gradient(180deg,#f5fff8,#e9f8ee)}'+
+      '.pr-badge{font-size:7.5pt;font-weight:900;border-radius:999px;padding:3px 8px;display:inline-block;margin-bottom:5px;background:#e9edf2;color:#4e5b68}'+
+      '.pr-card.reco .pr-badge{background:#12884a;color:#fff}'+
+      '.pr-name{font-size:11pt;font-weight:950;line-height:1.2;min-height:28px}'+
+      '.pr-money-label{font-size:7.5pt;color:#63707d;margin-top:7px}'+
+      '.pr-money{font-size:20pt;font-weight:950;line-height:1.05;margin-top:2px}'+
+      '.pr-card.reco .pr-money{color:#08763b}'+
+      '.pr-mini{font-size:7.2pt;color:#66727d;margin-top:4px;line-height:1.35}'+
+      '.pr-table{width:100%;border-collapse:separate;border-spacing:0;font-size:8.5pt;margin:0 0 9px;border:1px solid #cfd8e2;border-radius:9px;overflow:hidden}'+
+      '.pr-table th,.pr-table td{border-right:1px solid #d5dde6;border-bottom:1px solid #d5dde6;padding:6px 7px;text-align:right}'+
+      '.pr-table tr:last-child td{border-bottom:0}.pr-table th:last-child,.pr-table td:last-child{border-right:0}'+
+      '.pr-table th:first-child,.pr-table td:first-child{text-align:left;font-weight:850;background:#f6f8fa}'+
+      '.pr-table th{background:#eef3f8;font-weight:950}.pr-table .win{background:#eaf8ef;color:#08763b;font-weight:950}'+
+      '.pr-save{border:1.5px solid #e4ad27;background:linear-gradient(90deg,#fff7df,#fffdf7);border-radius:10px;padding:9px 12px;text-align:center;font-size:12.5pt;font-weight:950;margin-bottom:9px}'+
+      '.pr-save strong{font-size:22pt;color:#0c8545}'+
+      '.pr-box{border:1.4px solid #e1c46d;border-radius:10px;overflow:hidden;background:#fffdf6}'+
+      '.pr-box h3{font-size:11pt;margin:0;padding:7px 10px;background:#fff1c8;color:#5f4400}'+
+      '.pr-notes{margin:0;padding:8px 12px 8px 27px;font-size:8pt;line-height:1.48}'+
+      '.pr-notes li{margin:2px 0}.pr-foot{font-size:7pt;color:#5f6b76;margin-top:7px;text-align:center;line-height:1.35;padding:6px;background:#eef5ff;border-radius:7px}'+
+      '@media print{html,body{width:100%;min-height:0}body{margin:0!important}.no-print{display:none!important}}'+
+      '</style></head><body>'+report.innerHTML+
+      '<script>window.onload=function(){setTimeout(function(){window.print()},250)};<\/script>'+
+      '</body></html>';
+    w.document.open();
+    w.document.write(doc);
+    w.document.close();
+  }
 </script>
 </body>
 </html>
