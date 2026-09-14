@@ -906,6 +906,12 @@ V16.3で確認した計算修正・開通後フロー修正・追加工事費・
 @media print{.he-sticky{display:none!important}}
 </style>
 
+
+<style id="hikariFlowExactV169">
+#hikariFlowGuide{margin:0!important}.hf-flow-sheet{max-width:760px;margin:0 auto;background:#fff;padding:24px 22px 20px;font-family:inherit;color:#171b22}.hf-flow-title{display:flex;align-items:center;gap:13px;margin-bottom:15px}.hf-gear{font-size:30px;color:#d5003b}.hf-flow-title h2{font-size:28px;line-height:1;margin:0 0 8px;font-weight:900}.hf-flow-title p{margin:0;font-size:13px;color:#4f5660}.hf-product{display:flex;align-items:center;gap:12px;background:#edf5ff;border:1px solid #cfe0f7;border-radius:10px;padding:12px 16px;color:#1761b7;font-size:17px;font-weight:900;margin-bottom:20px}.hf-product>span{font-size:28px}.hf-flow-list{padding:0 2px}.hf-flow-row{display:grid;grid-template-columns:48px 48px minmax(0,1fr) 108px;gap:10px;position:relative;min-height:94px;align-items:start}.hf-flow-rail{position:relative;height:100%;display:flex;justify-content:center}.hf-flow-rail>b{position:relative;z-index:2;width:39px;height:39px;border-radius:50%;background:#7d8794;color:#fff;display:grid;place-items:center;font-size:14px}.hf-flow-rail>b.first{background:#d5003b}.hf-flow-rail>i{position:absolute;top:38px;bottom:0;width:2px;background:#aeb6c0}.hf-flow-rail>em{position:absolute;z-index:3;bottom:4px;color:#d5003b;font-size:13px;font-style:normal;background:#fff;line-height:1}.hf-flow-icon{width:42px;height:42px;border-radius:50%;background:#f2f3f5;display:grid;place-items:center;font-size:21px;font-weight:900}.hf-flow-copy{padding:1px 0 16px}.hf-flow-copy h3{font-size:17px;margin:0 0 5px;font-weight:900}.hf-flow-copy p{font-size:12px;line-height:1.55;margin:0;color:#40464f}.hf-flow-date{border:1px solid #e0e3e7;border-radius:9px;text-align:center;padding:7px 5px;background:#fff;color:#858b93}.hf-flow-date span{display:block;font-size:11px;margin-bottom:5px}.hf-flow-date b{display:block;font-size:13px;color:#555;min-height:18px}.hf-flow-date.done{background:#fff8ee;border-color:#f2d6a6}.hf-flow-date.done span{color:#d5003b;font-weight:900}.hf-flow-tip{display:grid;grid-template-columns:110px 1fr;gap:10px;background:#fff0f4;border-radius:9px;padding:12px 14px;margin-top:3px;font-size:11px;line-height:1.55}.hf-flow-tip b{color:#d5003b;font-size:13px}.hf-flow-actions{display:grid;grid-template-columns:1fr 1.55fr;gap:9px;margin-top:16px}.hf-flow-actions button{min-height:48px;border:1px solid #d7dce1;border-radius:8px;background:#fff;font-weight:900}.hf-flow-actions .primary{background:#d5003b;color:#fff;border-color:#d5003b}
+@media(max-width:620px){.hf-flow-sheet{padding:16px 10px}.hf-flow-title h2{font-size:23px}.hf-flow-row{grid-template-columns:36px 36px minmax(0,1fr) 72px;gap:6px;min-height:105px}.hf-flow-rail>b{width:32px;height:32px;font-size:11px}.hf-flow-rail>i{top:31px}.hf-flow-icon{width:32px;height:32px;font-size:15px}.hf-flow-copy h3{font-size:14px}.hf-flow-copy p{font-size:10px}.hf-flow-date{padding:5px 2px}.hf-flow-date b{font-size:10px}.hf-flow-tip{grid-template-columns:1fr}.hf-flow-actions{grid-template-columns:1fr}.hf-product{font-size:14px}}
+</style>
+
 </head>
 <body onload="calcAll()"><div class="standalone-homebar"><a href="./store_menu_imagecards_v4.html">← 3つのメニューへ戻る</a></div>
 <div class="app-tabs">
@@ -3590,13 +3596,29 @@ function renderHikariExtras(){
   }
   var flow=g("hikariFlowGuide");
   if(flow){
-    var icons=["📝","✉️","📦","🔧","📶","💻","☎️","🧾","✓"];
-    var timings=["本日","7〜10日後","工事日まで","2週間〜1か月後","工事の当日","工事の当日から","開通の確認後","解約金の請求後","翌月以降"];
-    var steps=hikariFlowSteps();
+    var apply=hv("hikariApplyType");
     var product='ドコモ光 '+esc(hv("hikariSpeed")==="10g"?"10ギガ":"1ギガ")+'（'+esc(hv("hikariHouse")==="house"?"戸建":"マンション")+'・タイプ'+esc(hv("hikariType"))+'・'+esc(hikariApplyLabel())+'）';
-    flow.innerHTML='<div class="hikari-step-sheet modern"><div class="hm-flow-head"><h2>⚑ 開通の流れ</h2><div class="hm-flow-sub">お申込みからご利用開始まで</div></div><div class="hm-product"><span class="home">⌂</span>'+product+'</div><div class="hm-timeline">'+
-      steps.map(function(x,i){var n=String(i+1).padStart(2,"0");return '<div class="hm-step"><div class="hm-num">'+n+'</div><div class="hm-stepico">'+(icons[i]||"✓")+'</div><div class="hm-stepbody"><span class="hm-timing">'+esc(timings[i]||"")+'</span><h4>'+esc(x[1])+'</h4><p>'+esc(x[2])+'</p></div><div class="hm-datebox"><b>'+(i===0?'完了日':'予定日')+'</b><div class="date-line">月　日</div></div></div>';}).join("")+
-      '</div><div class="hm-tip"><span>💡</span><div><b>ポイント</b><br>開通前に旧回線を解約すると、インターネットが使えない期間が発生する場合があります。現在の契約内容と切替日を確認してから手続きを進めてください。</div></div><div class="hm-flow-actions"><button type="button" onclick="document.querySelector(\'.hikari-nav a[href=\\\'#hikariQuotePreview\\\']\').click()">見積書に戻る</button><button class="primary" type="button" onclick="printHikariQuote()">▣ この流れをPDF保存 / 印刷</button></div></div>';
+    var today=new Date();
+    var done=today.getFullYear()+"年"+(today.getMonth()+1)+"月"+today.getDate()+"日";
+    var rows;
+    if(apply==="new"){
+      rows=[
+        ["01","▤","お申込み","本日、店頭でお手続きが完了しました。","完了",done],
+        ["02","✉","必要書類のお受け取り","開通のご案内が届きます。あわせて後日、工事日を決めるお電話がありますので、ご都合のよい日をお伝えください。","予定日","月　日"],
+        ["03","◆","ルーターのご準備","ご購入の10ギガ対応ルーターを、工事日までにご用意ください。","予定日","月　日"],
+        ["04","●","開通工事（立ち会い）","ご自宅で工事を行います。立ち会いをお願いします。","予定日","月　日"],
+        ["05","⌁","ルーターの接続・設定","ルーターをつなぎ、インターネットが使えるように設定します。","予定日","月　日"],
+        ["06","▰","ご利用開始","工事完了後、インターネットをご利用いただけます。","予定日","月　日"],
+        ["07","▯","いまの回線の解約","開通・利用開始を確認してから、現在の回線の解約手続きをしてください。","予定日","月　日"]
+      ];
+    }else{
+      var src=hikariFlowSteps();
+      var ico=["▤","✉","◆","●","⌁","▰","▯"];
+      rows=src.map(function(x,i){return [String(i+1).padStart(2,"0"),ico[i]||"✓",x[1],x[2],i===0?"完了":"予定日",i===0?done:"月　日"]});
+    }
+    flow.innerHTML='<div class="hf-flow-sheet"><div class="hf-flow-title"><span class="hf-gear">⚙</span><div><h2>開通の流れ</h2><p>お申込みからご利用開始までのステップ</p></div></div><div class="hf-product"><span>⌂</span>'+product+'</div><div class="hf-flow-list">'+
+      rows.map(function(r,i){return '<div class="hf-flow-row"><div class="hf-flow-rail"><b class="'+(i===0?'first':'')+'">'+r[0]+'</b>'+(i<rows.length-1?'<i></i><em>▼</em>':'')+'</div><div class="hf-flow-icon">'+r[1]+'</div><div class="hf-flow-copy"><h3>'+esc(r[2])+'</h3><p>'+esc(r[3])+'</p></div><div class="hf-flow-date '+(i===0?'done':'')+'"><span>'+r[4]+'</span><b>'+r[5]+'</b></div></div>';}).join('')+
+      '</div><div class="hf-flow-tip"><b>💡 ワンポイント</b><span>タイプCへ切り替える場合や、テレビ・電話の解約がある場合は、ネットが使えない期間が発生することがあります。詳細はスタッフまで。</span></div><div class="hf-flow-actions"><button type="button" onclick="document.querySelector(\'.hikari-nav a[href=\\\'#hikariQuotePreview\\\']\').click()">‹ 見積書に戻る</button><button class="primary" type="button" onclick="printHikariQuote()">▣ この流れをPDFで保存 / 印刷</button></div></div>';
   }
 }
 
