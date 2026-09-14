@@ -3720,7 +3720,8 @@ function hikariProposalCalc(){
   var exit=hn("hikariCancelFee")+hn("hikariOldConstruction")+hn("hikariRemoval")+hn("hikariOtherCost");
   var construction=hikariConstructionCalc();
   var start=construction.total;
-  var benefit=hn("hikariBenefits");
+  var constructionPoint=(g("hikariConstructionPointAuto")&&g("hikariConstructionPointAuto").checked&&hv("hikariApplyType")==="new"&&!construction.needsCheck)?construction.net:0;
+  var benefit=hn("hikariBenefits")+constructionPoint;
   var monthlyBenefit=oldM-newM+fam.monthly;
   return {oldM:oldM,newM:newM,baseM:base,options:opt.total,familyMonthly:fam.monthly,familyYearly:fam.yearly,
           monthlyDiff:monthlyBenefit,exit:exit,start:start,benefit:benefit,
@@ -4129,77 +4130,58 @@ renderSavedQuotes();
   <div class="title">ドコモ光・他社乗り換え 提案書</div>
   <div class="mini">ページ2専用。ドコモ光の内容だけを、dカード見積とは別PDFとして出力できます。</div>
 
-  <div id="hikariEasyEstimate" class="he-shell">
-    <div class="he-left">
-      <div class="he-section-title"><span>1</span>基本設定</div>
-      <div class="he-q"><b>回線速度</b><div class="he-buttons" data-bind="hikariSpeed">
-        <button type="button" data-value="1g" onclick="hikariEasyChoose('hikariSpeed','1g')">ドコモ光 1ギガ</button><button type="button" data-value="10g" onclick="hikariEasyChoose('hikariSpeed','10g')">ドコモ光 10ギガ</button>
-      </div></div>
-      <div class="he-q"><b>お住まい</b><div class="he-buttons" data-bind="hikariHouse">
-        <button type="button" data-value="house" onclick="hikariEasyChoose('hikariHouse','house')">戸建て</button><button type="button" data-value="mansion" onclick="hikariEasyChoose('hikariHouse','mansion')">マンション</button>
-      </div></div>
-      <div class="he-q"><b>申込区分</b><div class="he-buttons he-buttons-4" data-bind="hikariApplyType">
-        <button type="button" data-value="new" onclick="hikariEasyChoose('hikariApplyType','new')">新規</button><button type="button" data-value="tenyo" onclick="hikariEasyChoose('hikariApplyType','tenyo')">転用</button><button type="button" data-value="jigyosha" onclick="hikariEasyChoose('hikariApplyType','jigyosha')">事業者変更</button><button type="button" data-value="reuse" onclick="hikariEasyChoose('hikariApplyType','reuse')">光回線再利用</button>
-      </div></div>
-      <div class="he-q"><b>現在の回線</b><div id="heCarrierMount"></div></div>
-      <div class="he-q"><b>タイプ / プロバイダ</b><div id="heTypeMount"></div></div>
-      <div class="he-note">選択内容に応じて、右側の月額・初期費用・特典がリアルタイムで更新されます。</div>
+  <div id="hikariEasyEstimate" class="he-shell he-stack-v18">
+    <div class="he-card-v18">
+      <div class="he-section-title"><span>1</span>現在の固定回線（ヒアリング）</div>
+      <div class="he-field-row"><label>ネット</label><div id="heCarrierMount"></div></div>
+      <div class="he-note">現在の回線・解約費用などを確認し、開通後の解約案内にも反映します。</div>
+      <div class="he-grid2"><div><label>現在の月額</label><div id="heOldMonthlyMount"></div></div><div><label>他社 解約金</label><div id="heCancelMount"></div></div></div>
+      <div class="he-grid2"><div><label>工事費残債</label><div id="heOldConstructionMount"></div></div><div><label>撤去費</label><div id="heRemovalMount"></div></div></div>
     </div>
 
-    <div class="he-right">
-      <div class="he-summary">
-        <div class="he-summary-head"><b>現在の見積もり結果</b><span>リアルタイム更新</span></div>
-        <div class="he-kpis">
-          <div><span>月額料金</span><b id="heMonthly">—</b></div>
-          <div><span>初期費用</span><b id="heInitial">—</b></div>
-          <div><span>dポイント・特典</span><b id="heBenefit">—</b></div>
-        </div>
-      </div>
+    <div class="he-card-v18">
+      <div class="he-section-title"><span>2</span>商材</div>
+      <div class="he-q"><b>商材</b><div class="he-buttons" data-bind="hikariSpeed"><button type="button" data-value="1g" onclick="hikariEasyChoose('hikariSpeed','1g')">ドコモ光 1ギガ</button><button type="button" data-value="10g" onclick="hikariEasyChoose('hikariSpeed','10g')">ドコモ光 10ギガ</button></div></div>
+      <div class="he-q"><b>申込区分</b><div class="he-buttons he-buttons-4" data-bind="hikariApplyType"><button type="button" data-value="new" onclick="hikariEasyChoose('hikariApplyType','new')">新規</button><button type="button" data-value="tenyo" onclick="hikariEasyChoose('hikariApplyType','tenyo')">転用</button><button type="button" data-value="jigyosha" onclick="hikariEasyChoose('hikariApplyType','jigyosha')">事業者変更</button><button type="button" data-value="reuse" onclick="hikariEasyChoose('hikariApplyType','reuse')">光回線再利用</button></div></div>
+      <div class="he-q"><b>住居タイプ</b><div class="he-buttons" data-bind="hikariHouse"><button type="button" data-value="house" onclick="hikariEasyChoose('hikariHouse','house')">戸建て</button><button type="button" data-value="mansion" onclick="hikariEasyChoose('hikariHouse','mansion')">マンション</button></div></div>
+      <div class="he-field-row"><label>プロバイダ料金タイプ</label><div id="heTypeMount"></div></div>
+      <div class="he-plan-price"><span>月額基本料</span><b id="heBaseMonthly">—</b></div>
+      <div class="he-note">商材・住居タイプ・料金タイプを選ぶと標準月額を自動反映します。</div>
+    </div>
 
-      <details class="he-acc" open><summary><span>月額オプション</span><small id="heMonthlyCount">選択中</small></summary>
-        <div class="he-acc-body">
-          <div class="he-subhead">でんわオプション</div><div id="hePhoneMount"></div>
-          <div class="he-subhead">TV・映像オプション</div><div id="heTvMount"></div><div id="heSkyMount"></div>
-          <label class="he-check"><input id="hikariRouterRental" type="checkbox" onchange="updateHikariPreview()"> 10ギガ対応無線LANルーター（レンタル） <b>550円/月</b></label>
-          <div class="he-subhead">光電話 付加サービス</div><div class="he-addon-grid" id="heAddonsMount"></div>
-        </div>
-      </details>
+    <div class="he-card-v18">
+      <div class="he-section-title"><span>3</span>月額オプション</div>
+      <div class="he-subhead">でんわオプション（基本）</div><div id="hePhoneMount"></div>
+      <div class="he-subhead">でんわ追加オプション</div><div class="he-addon-grid" id="heAddonsMount"></div>
+      <div class="he-subhead">TVオプション（地デジ・BS）</div><div id="heTvMount"></div><div id="heSkyMount"></div>
+      <label class="he-check"><input id="hikariRouterRental" type="checkbox" onchange="updateHikariPreview()"> 10ギガ対応無線LANルーター（レンタル） <b>550円/月</b></label>
+    </div>
 
-      <details class="he-acc" open><summary><span>初期費用・工事費</span><small>自動計算</small></summary>
-        <div class="he-acc-body">
-          <div class="he-field-row"><label>工事費の内容</label><div id="heConstructionMount"></div></div>
-          <label class="he-check"><input id="hikariRouterPurchase" type="checkbox" onchange="updateHikariPreview()"> 10Gルーター購入費用を追加（購入品は価格を手入力）</label>
-          <div class="he-inline"><label>ルーター購入価格</label><input id="hikariRouterPrice" type="number" value="0" min="0" step="10" oninput="updateHikariPreview()"><span>円</span></div>
-          <label id="heWeekendRow" class="he-check"><input id="hikariWeekendWork" type="checkbox" onchange="updateHikariPreview()"> 土日・休日の派遣工事 <b>＋3,300円</b></label>
-          <label id="heReuseFeeRow" class="he-check" style="display:none"><input id="hikariReuseFee" type="checkbox" onchange="updateHikariPreview()"> 光回線再利用手続費 <b>6,600円</b>（請求対象の場合のみ）</label>
-          <div id="heConstructionPointInfo" class="he-mini-preview" style="margin:8px 0"></div>
-          <div class="he-grid2"><div><label>契約事務手数料</label><div id="heAdminMount"></div></div><div><label>追加工事費など</label><div id="heAdditionalMount"></div></div></div>
-          <div class="he-grid2"><div><label>光電話 工事費</label><div id="hePhoneConstructionMount"></div></div><div><label>テレビ 工事費</label><div id="heTvConstructionMount"></div></div></div>
-        </div>
-      </details>
+    <div class="he-card-v18">
+      <div class="he-section-title"><span>4</span>初期費用</div>
+      <div class="he-field-row"><label>工事費の支払い</label><select id="heInstallPay"><option value="24">分割24回</option><option value="12">分割12回</option><option value="1">一括</option></select></div>
+      <label class="he-check"><input id="hikariConstructionPointAuto" type="checkbox" checked onchange="updateHikariPreview()"> 新規工事料実質0円特典を表示（対象工事料相当のdポイントを7か月後から24か月分割進呈）</label>
+      <div class="he-field-row"><label>ネット工事費</label><div id="heConstructionMount"></div></div>
+      <label id="heWeekendRow" class="he-check"><input id="hikariWeekendWork" type="checkbox" onchange="updateHikariPreview()"> 土日・休日の派遣工事 <b>＋3,300円</b></label>
+      <label id="heReuseFeeRow" class="he-check" style="display:none"><input id="hikariReuseFee" type="checkbox" onchange="updateHikariPreview()"> 光回線再利用手続費 <b>6,600円</b>（請求対象の場合のみ）</label>
+      <div class="he-grid2"><div><label>契約事務手数料</label><div id="heAdminMount"></div></div><div><label>追加工事費など</label><div id="heAdditionalMount"></div></div></div>
+      <div class="he-grid2"><div><label>光電話 工事費</label><div id="hePhoneConstructionMount"></div></div><div><label>テレビ 工事費</label><div id="heTvConstructionMount"></div></div></div>
+      <label class="he-check"><input id="hikariRouterPurchase" type="checkbox" onchange="updateHikariPreview()"> 10Gルーター購入費用を追加</label>
+      <div class="he-inline"><label>ルーター購入価格</label><input id="hikariRouterPrice" type="number" value="0" min="0" step="10" oninput="updateHikariPreview()"><span>円</span></div>
+      <div id="heInitialSummaryV18" class="he-cost-summary"></div>
+      <div id="heConstructionPointInfo" class="he-mini-preview"></div>
+    </div>
 
-      <details class="he-acc" open><summary><span>特典・セット割</span><small>お得額を反映</small></summary>
-        <div class="he-acc-body">
-          <div class="he-grid2"><div><label>dポイント・還元（円換算）</label><div id="heBenefitsMount"></div></div><div><label>セット割対象回線数</label><div id="heFamilyCountMount"></div></div></div>
-          <div class="he-field-row"><label>1回線あたりのセット割</label><div id="heFamilyDiscountMount"></div></div>
-          <div id="heFamilyPreview" class="he-mini-preview"></div>
-        </div>
-      </details>
-
-      <details class="he-acc"><summary><span>その他の設定</span><small>お客様情報・乗り換え費用</small></summary>
-        <div class="he-acc-body">
-          <div id="heMetaMount"></div>
-          <div class="he-grid2"><div><label>現在の月額</label><div id="heOldMonthlyMount"></div></div><div><label>他社 解約金</label><div id="heCancelMount"></div></div></div>
-          <div class="he-grid2"><div><label>工事費残債</label><div id="heOldConstructionMount"></div></div><div><label>撤去費</label><div id="heRemovalMount"></div></div></div>
-          <div class="he-field-row"><label>その他乗り換え費用</label><div id="heOtherCostMount"></div></div>
-          <div class="he-field-row"><label>開通・乗り換えメモ</label><div id="heMemoMount"></div></div>
-        </div>
-      </details>
-
+    <div class="he-card-v18">
+      <div class="he-section-title"><span>5</span>特典・見積書情報</div>
+      <div class="he-grid2"><div><label>その他dポイント・還元</label><div id="heBenefitsMount"></div></div><div><label>セット割対象回線数</label><div id="heFamilyCountMount"></div></div></div>
+      <div class="he-field-row"><label>1回線あたりのセット割</label><div id="heFamilyDiscountMount"></div></div><div id="heFamilyPreview" class="he-mini-preview"></div>
+      <div id="hePointSummaryV18" class="he-point-summary"></div>
+      <div id="heMetaMount"></div><div class="he-field-row"><label>その他乗り換え費用</label><div id="heOtherCostMount"></div></div><div class="he-field-row"><label>開通・乗り換えメモ</label><div id="heMemoMount"></div></div>
       <div class="he-actions"><button type="button" class="he-reset" id="heResetBtn">選択内容をリセット</button><button type="button" class="he-primary" onclick="document.querySelector('.hikari-nav a[href=\'#hikariQuotePreview\']').click()">見積書を確認する</button></div>
     </div>
   </div>
-  <div class="he-sticky"><div><span>月額</span><b id="heStickyMonthly">—</b></div><div><span>初期費用</span><b id="heStickyInitial">—</b></div><button type="button" onclick="printHikariQuote()">見積書をPDF / 印刷</button></div>
+  <div class="he-sticky"><div><span>月額</span><b id="heStickyMonthly">—</b></div><div><span>初期費用総額</span><b id="heStickyInitial">—</b></div><div><span>dポイント</span><b id="heStickyPoint">—</b></div><button type="button" onclick="printHikariQuote()">見積書をPDF / 印刷</button></div>
 
   <div class="hikari-grid" id="hikariSettings" style="margin-top:10px">
     <div><label>お客様名 / 光見積名</label><input id="hikariCustomer" data-meta="1" type="text" placeholder="例：山田様 / ドコモ光ご提案"></div>
@@ -4677,5 +4659,38 @@ renderSavedQuotes();
   activate(a);
 })();
 </script>
+
+<style id="hikariEstimateV180">
+.he-stack-v18{display:block!important;max-width:900px;margin:14px auto 90px!important}.he-card-v18{background:#fff;border:1px solid #dfe3e8;border-radius:16px;padding:18px;margin:0 0 14px;box-shadow:0 2px 10px rgba(20,30,45,.04)}.he-card-v18 .he-section-title{font-size:21px;margin-bottom:18px}.he-plan-price{display:flex;align-items:center;justify-content:space-between;background:#fff4f7;border:1px solid #f4ccd7;border-radius:12px;padding:13px 15px;margin-top:12px}.he-plan-price span{font-weight:800}.he-plan-price b{font-size:26px;color:#d5003b}.he-cost-summary,.he-point-summary{margin-top:14px;background:#fff5f7;border:1px solid #efc2ce;border-radius:12px;padding:14px;line-height:1.65}.he-cost-summary strong,.he-point-summary strong{color:#d5003b;font-size:20px}.he-sticky{grid-template-columns:1fr 1fr 1fr 1.35fr!important}.he-sticky #heStickyPoint{color:#fff}.he-card-v18 select,.he-card-v18 input[type=number],.he-card-v18 input[type=text]{min-height:48px;font-size:16px}.he-card-v18 .he-buttons button{min-height:58px}.he-card-v18 .he-subhead{font-size:16px;margin-top:16px}.he-card-v18 #heMetaMount>input{margin-top:8px}
+@media(max-width:700px){.he-stack-v18{margin:10px 10px 110px!important}.he-card-v18{padding:16px 14px;border-radius:14px}.he-card-v18 .he-section-title{font-size:20px}.he-sticky{position:fixed!important;left:0;right:0;bottom:0;margin:0!important;max-width:none!important;grid-template-columns:1fr 1fr 1fr!important;border-radius:0!important;padding:9px 8px!important}.he-sticky button{grid-column:1/-1;min-height:42px!important}.he-sticky b{font-size:20px!important}.he-sticky span{font-size:10px!important}.he-buttons-4{grid-template-columns:1fr 1fr!important}}
+</style>
+<script id="hikariEstimateV180Script">
+(function(){
+ function q(id){return document.getElementById(id)}
+ function yen(n){return Number(n||0).toLocaleString('ja-JP')+'円'}
+ function pt(n){return Number(n||0).toLocaleString('ja-JP')+'pt'}
+ function updateV18(){
+  try{
+   var c=window.hikariProposalCalc?window.hikariProposalCalc():null;if(!c)return;
+   var cons=window.hikariConstructionCalc?window.hikariConstructionCalc():null;
+   var base=q('hikariNewMonthly')?Number(q('hikariNewMonthly').value||0):0;
+   if(q('heBaseMonthly'))q('heBaseMonthly').textContent=yen(base);
+   if(q('heStickyMonthly'))q('heStickyMonthly').textContent=yen(c.newM);
+   if(q('heStickyInitial'))q('heStickyInitial').textContent=c.constructionNeedsCheck?'要確認':yen(c.start);
+   if(q('heStickyPoint'))q('heStickyPoint').textContent=pt(c.benefit);
+   var pointAuto=q('hikariConstructionPointAuto')&&q('hikariConstructionPointAuto').checked&&q('hikariApplyType')&&q('hikariApplyType').value==='new'&&!c.constructionNeedsCheck;
+   var constructionPt=pointAuto&&cons?Number(cons.net||0):0;
+   var manual=q('hikariBenefits')?Number(q('hikariBenefits').value||0):0;
+   if(q('hePointSummaryV18'))q('hePointSummaryV18').innerHTML='<b>dポイント進呈</b><br>新規工事料相当：<strong>'+pt(constructionPt)+'</strong><br>その他特典：'+pt(manual)+'<br><b>合計：<strong>'+pt(constructionPt+manual)+'</strong></b>';
+   var pay=q('heInstallPay')?Number(q('heInstallPay').value):24; var net=cons?Number(cons.net||0):0; var inst=pay>1?Math.floor(net/pay):net;
+   if(q('heInitialSummaryV18'))q('heInitialSummaryV18').innerHTML='<b>初期費用総額：<strong>'+(c.constructionNeedsCheck?'要確認':yen(c.start))+'</strong></b><br>契約・登録等：'+yen((cons?cons.admin:0))+'<br>ネット工事費：'+yen(net)+(pay>1?'（'+pay+'回・目安 '+yen(inst)+'/月、端数は初回調整）':'（一括）')+'<br>電話・テレビ・追加等：'+yen((cons?cons.total-cons.admin-net:0));
+  }catch(e){console.warn(e)}
+ }
+ var old=window.updateHikariPreview;if(old){window.updateHikariPreview=function(){var r=old.apply(this,arguments);updateV18();return r}}
+ document.addEventListener('change',function(e){if(e.target&&e.target.id==='heInstallPay')updateV18()});
+ setTimeout(updateV18,0);
+})();
+</script>
+
 </body>
 </html>
