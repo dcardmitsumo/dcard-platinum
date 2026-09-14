@@ -3623,13 +3623,27 @@ function renderHikariExtras(){
 }
 
 
+function hikariConstructionFee(){
+  var el=g("hikariConstruction");
+  if(!el||el.selectedIndex<0)return 0;
+  var op=el.options[el.selectedIndex];
+  var fee=parseInt(op.getAttribute("data-fee")||"0",10);
+  return isNaN(fee)?0:fee;
+}
+function hikariConstructionNeedsCheck(){
+  var el=g("hikariConstruction");
+  if(!el||el.selectedIndex<0)return false;
+  return el.options[el.selectedIndex].getAttribute("data-verify")==="1";
+}
 function hikariConstructionCalc(){
-  var net=hn("hikariConstruction");
+  var net=hikariConstructionFee();
   var phone=hn("hikariPhoneConstruction");
   var tv=hn("hikariTvConstruction");
   var admin=hn("hikariAdminFee"), additional=hn("hikariAdditionalConstruction");
   var routerPurchase=(g("hikariRouterPurchase")&&g("hikariRouterPurchase").checked)?hn("hikariRouterPrice"):0;
-  return {net:net,phone:phone,tv:tv,admin:admin,additional:additional,routerPurchase:routerPurchase,total:net+phone+tv+admin+additional+routerPurchase};
+  var weekend=(g("hikariWeekendWork")&&g("hikariWeekendWork").checked)?3300:0;
+  var reuseFee=(g("hikariReuseFee")&&g("hikariReuseFee").checked)?6600:0;
+  return {net:net,phone:phone,tv:tv,admin:admin,additional:additional,routerPurchase:routerPurchase,weekend:weekend,reuseFee:reuseFee,total:net+phone+tv+admin+additional+routerPurchase+weekend+reuseFee,needsCheck:hikariConstructionNeedsCheck()};
 }
 function hikariSelectText(id){
   var el=g(id);
@@ -3639,13 +3653,15 @@ function renderHikariConstructionSummary(){
   var box=g("hikariConstructionSummary"); if(!box)return;
   var c=hikariConstructionCalc();
   box.innerHTML='<div class="kpi">'+
-    '<div><span>ネット工事</span><b>'+esc(signedYen(c.net))+'</b></div>'+
+    '<div><span>ネット工事</span><b>'+(c.needsCheck?'要確認':esc(signedYen(c.net)))+'</b></div>'+
     '<div><span>光電話工事</span><b>'+esc(signedYen(c.phone))+'</b></div>'+
     '<div><span>テレビ工事</span><b>'+esc(signedYen(c.tv))+'</b></div>'+
     '<div><span>事務手数料</span><b>'+esc(signedYen(c.admin))+'</b></div>'+
+    '<div><span>土日・休日追加</span><b>'+esc(signedYen(c.weekend||0))+'</b></div>'+
+    '<div><span>光回線再利用手続費</span><b>'+esc(signedYen(c.reuseFee||0))+'</b></div>'+
     '<div><span>追加工事等</span><b>'+esc(signedYen(c.additional))+'</b></div>'+
     '<div><span>10Gルーター購入</span><b>'+esc(signedYen(c.routerPurchase||0))+'</b></div>'+
-    '<div><span>初期費用 合計</span><b>'+esc(signedYen(c.total))+'</b></div>'+
+    '<div><span>初期費用 合計</span><b>'+(c.needsCheck?'要確認（確定済み分 '+esc(signedYen(c.total))+ '）':esc(signedYen(c.total)))+'</b></div>'+
     '</div>'+
     '<div class="mini" style="margin-top:7px">※テレビ5台以上、追加配線、特殊工事、電話の追加工事などは別途費用が発生する場合があります。</div>';
 }
@@ -3692,7 +3708,7 @@ function hikariProposalCalc(){
   return {oldM:oldM,newM:newM,baseM:base,options:opt.total,familyMonthly:fam.monthly,familyYearly:fam.yearly,
           monthlyDiff:monthlyBenefit,exit:exit,start:start,benefit:benefit,
           netConstruction:construction.net,phoneConstruction:construction.phone,tvConstruction:construction.tv,adminFee:construction.admin,additionalConstruction:construction.additional,
-          initialNet:exit+start-benefit,yearDiff:monthlyBenefit*12-(exit+start-benefit)};
+          initialNet:exit+start-benefit,yearDiff:monthlyBenefit*12-(exit+start-benefit),constructionNeedsCheck:construction.needsCheck};
 }
 
 function hikariAfterFlowSteps(){
@@ -3813,9 +3829,9 @@ function hikariPrintPages(customer){
     out+='</div><h2 class="print-section-title">開通前チェック</h2>'+
       '<table class="print-breakdown"><tbody>'+
       '<tr><td>申込区分</td><td>'+esc(hikariApplyLabel())+'</td><td>速度</td><td>'+esc(hv("hikariSpeed")==="10g"?"10ギガ":"1ギガ")+'</td></tr>'+
-      '<tr><td>契約事務手数料</td><td class="num">'+esc(signedYen(hn("hikariAdminFee")))+'</td><td>ネット工事費</td><td class="num">'+esc(signedYen(hn("hikariConstruction")))+'</td></tr>'+
+      '<tr><td>契約事務手数料</td><td class="num">'+esc(signedYen(hn("hikariAdminFee")))+'</td><td>ネット工事費</td><td class="num">'+esc(signedYen(hikariConstructionFee()))+'</td></tr>'+
       '<tr><td>光電話工事費</td><td class="num">'+esc(signedYen(hn("hikariPhoneConstruction")))+'</td><td>テレビ工事費</td><td class="num">'+esc(signedYen(hn("hikariTvConstruction")))+'</td></tr>'+
-      '<tr><td>追加工事費等</td><td class="num">'+esc(signedYen(hn("hikariAdditionalConstruction")))+'</td><td>初期費用合計</td><td class="num">'+esc(signedYen(hikariConstructionCalc().total))+'</td></tr>'+
+      '<tr><td>追加工事費等</td><td class="num">'+esc(signedYen(hn("hikariAdditionalConstruction")+hikariConstructionCalc().weekend+hikariConstructionCalc().reuseFee+hikariConstructionCalc().routerPurchase))+'</td><td>初期費用合計</td><td class="num">'+(hikariConstructionCalc().needsCheck?'要確認（確定済み分 '+esc(signedYen(hikariConstructionCalc().total))+'）':esc(signedYen(hikariConstructionCalc().total)))+'</td></tr>'+
       '<tr><td>確認メモ</td><td colspan="3">'+esc(hv("hikariProposalMemo")||"—")+'</td></tr>'+
       '</tbody></table>'+
       (hv("hikariType")==="C"?'<div class="print-note"><b>タイプCの転用：</b>ドコモ光タイプC提携CATVの光インターネットをご利用中の場合、他社CATVからでも転用で切替可能です。原則工事不要・提携CATVのネット解約金不要で、テレビ・電話サービスはCATV契約のまま継続できます。利用状況により工事が必要な場合があります。</div>':'')+
@@ -3834,7 +3850,7 @@ function hikariPrintPages(customer){
       '<tr><td>撤去費</td><td class="num">'+esc(signedYen(hn("hikariRemoval")))+'</td></tr>'+
       '<tr><td>その他乗り換え費用</td><td class="num">'+esc(signedYen(hn("hikariOtherCost")))+'</td></tr>'+
       '<tr><td>ドコモ光 契約事務手数料</td><td class="num">'+esc(signedYen(hn("hikariAdminFee")))+'</td></tr>'+
-      '<tr><td>ドコモ光 ネット工事料</td><td class="num">'+esc(signedYen(hn("hikariConstruction")))+'</td></tr>'+
+      '<tr><td>ドコモ光 ネット工事料</td><td class="num">'+esc(signedYen(hikariConstructionFee()))+'</td></tr>'+
       '<tr><td>ドコモ光電話 工事料</td><td class="num">'+esc(signedYen(hn("hikariPhoneConstruction")))+'</td></tr>'+
       '<tr><td>ドコモ光テレビオプション 工事料</td><td class="num">'+esc(signedYen(hn("hikariTvConstruction")))+'</td></tr>'+
       '<tr><td>ドコモ側 還元・特典</td><td class="num">'+esc(signedYen(-hn("hikariBenefits")))+'</td></tr>'+
@@ -4130,8 +4146,11 @@ renderSavedQuotes();
       <details class="he-acc" open><summary><span>初期費用・工事費</span><small>自動計算</small></summary>
         <div class="he-acc-body">
           <div class="he-field-row"><label>工事費の内容</label><div id="heConstructionMount"></div></div>
-          <label class="he-check"><input id="hikariRouterPurchase" type="checkbox" onchange="updateHikariPreview()"> 10Gルーター購入費用を追加</label>
-          <div class="he-inline"><label>ルーター価格</label><input id="hikariRouterPrice" type="number" value="6780" min="0" step="10" oninput="updateHikariPreview()"><span>円</span></div>
+          <label class="he-check"><input id="hikariRouterPurchase" type="checkbox" onchange="updateHikariPreview()"> 10Gルーター購入費用を追加（購入品は価格を手入力）</label>
+          <div class="he-inline"><label>ルーター購入価格</label><input id="hikariRouterPrice" type="number" value="0" min="0" step="10" oninput="updateHikariPreview()"><span>円</span></div>
+          <label id="heWeekendRow" class="he-check"><input id="hikariWeekendWork" type="checkbox" onchange="updateHikariPreview()"> 土日・休日の派遣工事 <b>＋3,300円</b></label>
+          <label id="heReuseFeeRow" class="he-check" style="display:none"><input id="hikariReuseFee" type="checkbox" onchange="updateHikariPreview()"> 光回線再利用手続費 <b>6,600円</b>（請求対象の場合のみ）</label>
+          <div id="heConstructionPointInfo" class="he-mini-preview" style="margin:8px 0"></div>
           <div class="he-grid2"><div><label>契約事務手数料</label><div id="heAdminMount"></div></div><div><label>追加工事費など</label><div id="heAdditionalMount"></div></div></div>
           <div class="he-grid2"><div><label>光電話 工事費</label><div id="hePhoneConstructionMount"></div></div><div><label>テレビ 工事費</label><div id="heTvConstructionMount"></div></div></div>
         </div>
@@ -4192,21 +4211,19 @@ renderSavedQuotes();
     <div><label>契約事務手数料</label><input id="hikariAdminFee" data-meta="1" type="number" min="0" value="4950" oninput="updateHikariPreview()"></div>
 
     <div><label>ネット工事費</label><select id="hikariConstruction" data-meta="1" onchange="updateHikariPreview()">
-      <option value="28600">新規｜派遣・屋内配線あり｜28,600円</option>
-      <option value="18260">新規｜派遣・屋内配線なし｜18,260円</option>
-      <option value="3300">新規｜無派遣工事｜3,300円</option>
-      <option value="0">転用 / 事業者変更｜速度そのまま代表例｜0円</option>
-      <option value="18260">光回線再利用｜代表例｜18,260円</option>
-    </select></div>
+      <option value="new_dispatch_wiring" data-fee="28600" data-dispatch="1">新規｜派遣・屋内配線あり｜28,600円</option>
+      <option value="new_dispatch_nowiring" data-fee="18260" data-dispatch="1">新規｜派遣・屋内配線なし｜18,260円</option>
+      <option value="new_nodispatch" data-fee="3300" data-dispatch="0">新規｜無派遣工事｜3,300円</option>
+    </select><div id="hikariConstructionCaution" class="mini" style="margin-top:5px"></div></div>
 
     <div><label>ドコモ光電話 工事費</label><select id="hikariPhoneConstruction" data-meta="1" onchange="updateHikariPreview()">
       <option value="0">電話なし / フレッツひかり電話を転用｜0円</option>
       <option value="1100">光と同時申込・新規番号｜基本機能 1,100円</option>
       <option value="3300">光と同時申込・番号継続｜基本機能＋同番移行 3,300円</option>
-      <option value="11000">光電話のみ新規・派遣あり・新規番号｜11,000円</option>
-      <option value="13200">光電話のみ新規・派遣あり・番号継続｜13,200円</option>
-      <option value="3300">光電話のみ新規・無派遣・新規番号｜3,300円</option>
-      <option value="5500">光電話のみ新規・無派遣・番号継続｜5,500円</option>
+      <option value="9350">光電話のみ新規・派遣あり・新規番号｜9,350円</option>
+      <option value="11550">光電話のみ新規・派遣あり・番号継続｜11,550円</option>
+      <option value="4400">光電話のみ新規・無派遣・新規番号｜4,400円</option>
+      <option value="6600">光電話のみ新規・無派遣・番号継続｜6,600円</option>
     </select></div>
 
     <div><label>ドコモ光テレビオプション 工事費</label><select id="hikariTvConstruction" data-meta="1" onchange="updateHikariPreview()">
@@ -4218,7 +4235,7 @@ renderSavedQuotes();
     </select><div class="mini" style="margin-top:5px">同時申込の代表額。番号ポータビリティや設備状況で追加工事が発生する場合があります。</div></div>
 
     <div><label>追加工事費・休日/特殊工事など</label><input id="hikariAdditionalConstruction" data-meta="1" type="number" min="0" value="0" placeholder="追加がある場合のみ" oninput="updateHikariPreview()">
-      <div class="mini">工事内容により追加料金が発生する場合に入力。宅内工事料合計に応じた加算等もここで調整できます。</div></div>
+      <div class="mini">工事内容により追加料金が発生する場合に入力。土日休日の派遣工事は通常3,300円の追加対象です。光回線再利用手続費6,600円は、2026年2月1日以降申込かつ180日以内に開通した場合は請求されません。</div></div>
 
     <div><label>ドコモ側 還元・特典（円換算）</label><input id="hikariBenefits" data-meta="1" type="number" min="0" value="0" oninput="updateHikariPreview()"></div>
 
@@ -4433,8 +4450,8 @@ renderSavedQuotes();
   function refreshEasy(){
     try{
       var c=window.hikariProposalCalc?window.hikariProposalCalc():null;if(!c)return;
-      q('heMonthly').textContent=yen(c.newM);q('heInitial').textContent=yen(c.start);q('heBenefit').textContent=yen(c.benefit);
-      q('heStickyMonthly').textContent=yen(c.newM);q('heStickyInitial').textContent=yen(c.start);
+      q('heMonthly').textContent=yen(c.newM);q('heInitial').textContent=(c.constructionNeedsCheck?'要確認':yen(c.start));q('heBenefit').textContent=yen(c.benefit);
+      q('heStickyMonthly').textContent=yen(c.newM);q('heStickyInitial').textContent=(c.constructionNeedsCheck?'要確認':yen(c.start));
       var fam=window.hikariFamilyCalc?window.hikariFamilyCalc():null;if(fam&&q('heFamilyPreview'))q('heFamilyPreview').innerHTML='<b>家族合計のセット割</b>　月額 '+yen(fam.monthly)+' / 年間 '+yen(fam.yearly);
       var o=window.hikariOptionsCalc?window.hikariOptionsCalc():null;if(o&&q('heMonthlyCount')){var n=0;if(o.phone)n++;if(o.tv)n++;if(o.sky)n++;if(o.routerRental)n++;q('heMonthlyCount').textContent='選択中：'+n+'件';}
       syncButtons();
@@ -4449,16 +4466,99 @@ renderSavedQuotes();
   mount('hikariBenefits','heBenefitsMount'); mount('hikariFamilyCount','heFamilyCountMount'); mount('hikariFamilyDiscount','heFamilyDiscountMount');
   mount('hikariCustomer','heMetaMount'); mount('hikariStaffMemo','heMetaMount'); mount('hikariOldMonthly','heOldMonthlyMount'); mount('hikariCancelFee','heCancelMount'); mount('hikariOldConstruction','heOldConstructionMount'); mount('hikariRemoval','heRemovalMount'); mount('hikariOtherCost','heOtherCostMount'); mount('hikariProposalMemo','heMemoMount');
 
-  // 元の更新関数に、上部サマリー更新を追加
-  if(window.updateHikariPreview){var old=window.updateHikariPreview;window.updateHikariPreview=function(){var r=old.apply(this,arguments);refreshEasy();return r;};}
+  // V17.0: 基本プランの選択と金額を自動連動（2年定期契約・税込）
+  function syncPlanPrice(){
+    var speed=q('hikariSpeed')?q('hikariSpeed').value:'1g';
+    var house=q('hikariHouse')?q('hikariHouse').value:'mansion';
+    var type=q('hikariType')?q('hikariType').value:'A';
+    var price=0;
+    if(speed==='10g'){
+      price=(type==='B')?6600:(type==='single'?5940:6380); // A/C 6,380円
+    }else if(house==='house'){
+      price=(type==='B')?5940:(type==='single'?5500:5720); // A/C 5,720円
+    }else{
+      price=(type==='B')?4620:(type==='single'?4180:4400); // A/C 4,400円
+    }
+    if(q('hikariNewMonthly')) q('hikariNewMonthly').value=price;
+    return price;
+  }
+  function syncConstructionOptions(){
+    var apply=q('hikariApplyType')?q('hikariApplyType').value:'new';
+    var type=q('hikariType')?q('hikariType').value:'A';
+    var construction=q('hikariConstruction');
+    if(!construction)return;
+    var opts=[];
+    if(apply==='new'){
+      opts=[
+        ['new_dispatch_wiring','28600','1','0','新規｜派遣・屋内配線あり｜28,600円'],
+        ['new_dispatch_nowiring','18260','1','0','新規｜派遣・屋内配線なし｜18,260円'],
+        ['new_nodispatch','3300','0','0','新規｜無派遣工事｜3,300円']
+      ];
+    }else if(apply==='tenyo'){
+      opts=[
+        ['tenyo_same','0','0','0',(type==='C'?'タイプC転用｜原則工事不要の代表例｜0円':'転用｜速度そのまま代表例｜0円')],
+        ['tenyo_change','0','0','1','転用｜速度変更・設備変更あり｜工事料 要確認']
+      ];
+    }else if(apply==='jigyosha'){
+      opts=[
+        ['jigyosha_same','0','0','0','事業者変更｜速度変更なし・工事不要の場合｜0円（代表例）'],
+        ['jigyosha_change','0','0','1','事業者変更｜速度変更・設備変更あり｜工事料 要確認']
+      ];
+    }else{
+      opts=[
+        ['reuse_rep','18260','1','0','光回線再利用｜工事料代表例｜18,260円'],
+        ['reuse_check','0','0','1','光回線再利用｜設備状況により工事料 要確認']
+      ];
+    }
+    construction.innerHTML=opts.map(function(o){return '<option value="'+o[0]+'" data-fee="'+o[1]+'" data-dispatch="'+o[2]+'" data-verify="'+o[3]+'">'+o[4]+'</option>';}).join('');
+  }
+  function syncConditionalInitialFees(){
+    var apply=q('hikariApplyType')?q('hikariApplyType').value:'new';
+    var construction=q('hikariConstruction');
+    var op=construction&&construction.selectedIndex>=0?construction.options[construction.selectedIndex]:null;
+    var dispatch=op&&op.getAttribute('data-dispatch')==='1';
+    var weekend=q('hikariWeekendWork'), weekendRow=q('heWeekendRow');
+    if(weekendRow)weekendRow.style.display=dispatch?'flex':'none';
+    if(weekend&&!dispatch)weekend.checked=false;
+    var reuse=q('hikariReuseFee'), reuseRow=q('heReuseFeeRow');
+    if(reuseRow)reuseRow.style.display=apply==='reuse'?'flex':'none';
+    if(reuse&&apply!=='reuse')reuse.checked=false;
+    var caution=q('hikariConstructionCaution');
+    if(caution){
+      var verify=op&&op.getAttribute('data-verify')==='1';
+      if(verify)caution.textContent='設備・速度変更などで工事料が変わるため、ドコモ公式の工事料金シミュレーションで確定してください。未確定額は合計に加算していません。';
+      else if(apply==='reuse')caution.textContent='光回線再利用の18,260円は代表例です。設備状況により変動します。再利用手続費6,600円は請求条件を別途確認してください。';
+      else if(apply==='tenyo'||apply==='jigyosha')caution.textContent='速度変更などを伴う場合は別途工事料が発生することがあります。';
+      else caution.textContent='新規工事料は設備状況により、28,600円／18,260円／3,300円のいずれかになります。';
+    }
+    var info=q('heConstructionPointInfo');
+    if(info){
+      var net=window.hikariConstructionFee?window.hikariConstructionFee():0;
+      if(apply==='new'&&net>0){
+        info.innerHTML='<b>新規工事料実質0円特典：</b>対象条件を満たす場合、ネット工事料相当 <b>'+yen(net)+'相当のdポイント</b>を利用開始月の7か月後から24か月に分けて進呈。ここでは通常の「特典」合計へ自動加算しません。';
+      }else if(apply==='reuse'){
+        info.innerHTML='<b>光回線再利用手続費：</b>2026年2月1日以降の申込みで、申込みから180日以内に開通した場合は6,600円が請求されません。請求対象のときだけ上のチェックを入れてください。';
+      }else info.textContent='';
+    }
+  }
+  function syncApplyInitialCost(){
+    syncConstructionOptions();
+    syncConditionalInitialFees();
+  }
+  ['hikariSpeed','hikariHouse','hikariType'].forEach(function(id){var el=q(id);if(el)el.addEventListener('change',syncPlanPrice);});
+  if(q('hikariApplyType'))q('hikariApplyType').addEventListener('change',syncApplyInitialCost);
+  if(q('hikariConstruction'))q('hikariConstruction').addEventListener('change',syncConditionalInitialFees);
+
+  // 元の更新関数に、料金同期＋上部サマリー更新を追加
+  if(window.updateHikariPreview){var old=window.updateHikariPreview;window.updateHikariPreview=function(){syncPlanPrice();syncConditionalInitialFees();var r=old.apply(this,arguments);refreshEasy();return r;};}
   q('heResetBtn')&&q('heResetBtn').addEventListener('click',function(){
     setVal('hikariSpeed','1g');setVal('hikariHouse','mansion');setVal('hikariApplyType','new');setVal('hikariType','A');
     if(q('hikariOldCarrier')){q('hikariOldCarrier').value='';q('hikariOldCarrier').dispatchEvent(new Event('change',{bubbles:true}));}
     if(q('hikariPhoneOption'))q('hikariPhoneOption').value='0'; if(q('hikariTvOption'))q('hikariTvOption').value='none'; if(q('hikariSkyOption'))q('hikariSkyOption').value='none';
-    if(q('hikariRouterRental'))q('hikariRouterRental').checked=false; if(q('hikariRouterPurchase'))q('hikariRouterPurchase').checked=false;
+    if(q('hikariRouterRental'))q('hikariRouterRental').checked=false; if(q('hikariRouterPurchase'))q('hikariRouterPurchase').checked=false; if(q('hikariRouterPrice'))q('hikariRouterPrice').value='0'; if(q('hikariWeekendWork'))q('hikariWeekendWork').checked=false; if(q('hikariReuseFee'))q('hikariReuseFee').checked=false;
     updateHikariPreview();
   });
-  syncButtons();refreshEasy();
+  syncPlanPrice();syncApplyInitialCost();syncButtons();refreshEasy();
 })();
 </script>
 
@@ -4474,7 +4574,7 @@ renderSavedQuotes();
     if(el.id==='hikariTransferSheet') panes='transfer';
     if(el.querySelector && el.querySelector('#hikariFlowSection')) panes='flow';
     if(el.id==='hikariQuotePreview') panes='quote';
-    if(el.classList && el.classList.contains('post-flow-box')) panes='flow';
+    if(el.classList && el.classList.contains('post-flow-box')) panes='afterflow'; // 旧『開通後の流れ』は4タブでは表示しない
     // PDF/印刷ボタンは見積もり・見積書の両方で使えるようにする
     if(el.classList && el.classList.contains('pdf-action')) panes='estimate quote';
     el.setAttribute('data-hikari-panes',panes);
