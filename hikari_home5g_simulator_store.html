@@ -820,6 +820,20 @@ V16.3で確認した計算修正・開通後フロー修正・追加工事費・
 @media print{.standalone-homebar{display:none!important}}
 </style>
 
+
+<style id="hikariCompactTabsV165">
+:root{--hikari-red:#d5003b;--hikari-red2:#d92755;}
+#pageHikari{background:#f6f7f9!important;padding:0 0 32px!important;}
+.hikari-compact-head{background:linear-gradient(135deg,#d5003b,#c90035);color:#fff;padding:16px 22px 0;margin:0 0 14px;}
+.hikari-compact-head h1{margin:0 0 12px;font-size:clamp(25px,3vw,38px);line-height:1.15;font-weight:900;letter-spacing:.01em;}
+.hikari-nav{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;max-width:1050px;margin:0 auto;}
+.hikari-nav a{min-height:56px;display:flex;align-items:center;justify-content:center;text-align:center;padding:8px 5px;border-radius:14px 14px 0 0;background:rgba(255,255,255,.17);color:#fff!important;text-decoration:none;font-size:clamp(14px,1.8vw,20px);font-weight:800;line-height:1.15;border:1px solid rgba(255,255,255,.08);border-bottom:0;}
+.hikari-nav a.active{background:#fff;color:var(--hikari-red)!important;}
+#pageHikari>.hikari-proposal{max-width:1180px;margin:0 auto!important;}
+#pageHikari .card{scroll-margin-top:90px;}
+@media(max-width:600px){.hikari-compact-head{padding:12px 8px 0}.hikari-compact-head h1{font-size:24px;margin-left:4px}.hikari-nav{gap:3px}.hikari-nav a{min-height:50px;font-size:12px;padding:6px 2px;border-radius:9px 9px 0 0}}
+@media print{.hikari-compact-head{display:none!important}}
+</style>
 </head>
 <body onload="calcAll()"><div class="standalone-homebar"><a href="./store_menu_imagecards_v4.html">← 3つのメニューへ戻る</a></div>
 <div class="app-tabs">
@@ -3959,11 +3973,20 @@ renderSavedQuotes();
 
 </div>
 <div id="pageHikari" class="app-page active">
-<section class="card hikari-proposal">
+<div class="hikari-compact-head">
+  <h1>ドコモ光 / home 5G</h1>
+  <nav class="hikari-nav" aria-label="ドコモ光・home 5G メニュー">
+    <a class="active" href="#hikariEstimate">見積もり</a>
+    <a href="#hikariQuotePreview">見積書</a>
+    <a href="#hikariFlowSection">開通の流れ</a>
+    <a href="#hikariTransferSection">引き継ぎ</a>
+  </nav>
+</div>
+<section class="card hikari-proposal" id="hikariEstimate">
   <div class="title">ドコモ光・他社乗り換え 提案書</div>
   <div class="mini">ページ2専用。ドコモ光の内容だけを、dカード見積とは別PDFとして出力できます。</div>
 
-  <div class="hikari-grid" style="margin-top:10px">
+  <div class="hikari-grid" id="hikariSettings" style="margin-top:10px">
     <div><label>お客様名 / 光見積名</label><input id="hikariCustomer" data-meta="1" type="text" placeholder="例：山田様 / ドコモ光ご提案"></div>
     <div><label>担当者 / メモ</label><input id="hikariStaffMemo" data-meta="1" type="text" placeholder="任意"></div>
   </div>
@@ -4092,7 +4115,7 @@ renderSavedQuotes();
 
 
   <div class="card" style="margin-top:14px;border:1px solid #dfe4e8">
-  <div class="title">他社回線・ホームルーター vs ドコモ光｜実質負担比較</div>
+  <div class="title" id="hikariTransferSection">他社回線・ホームルーター vs ドコモ光｜実質負担比較</div>
   <div class="mini">光料金だけでなく、スマホセット割・初期費用・特典・旧回線の解約費用まで含めて比較します。</div>
   <div class="hikari-grid" style="margin-top:10px">
     <div><label>他社光 月額</label><input id="hikariCompareOldMonthly" data-meta="1" type="number" min="0" value="0" placeholder="例：5500" oninput="updateHikariPreview()"></div>
@@ -4200,7 +4223,7 @@ renderSavedQuotes();
   </div>
 
   <div class="card" style="margin-top:14px;border:1px solid #dfe4e8">
-    <div class="title">開通までの流れ・手順</div>
+    <div class="title" id="hikariFlowSection">開通までの流れ・手順</div>
     <div class="mini">申込み区分に合わせて必要な手順を自動表示します。</div>
     <div id="hikariFlowGuide" style="margin-top:10px"></div>
   </div>
@@ -4222,5 +4245,8 @@ renderSavedQuotes();
 </section>
 </div>
 <div id="hikariPrintReport" class="print-report"></div>
+<script>
+document.querySelectorAll('.hikari-nav a').forEach(function(a){a.addEventListener('click',function(){document.querySelectorAll('.hikari-nav a').forEach(function(x){x.classList.remove('active')});a.classList.add('active')})});
+</script>
 </body>
 </html>
