@@ -198,6 +198,38 @@ body{min-height:100vh;padding:calc(14px + env(safe-area-inset-top)) 0 calc(22px 
 }
 </style>
 
+
+<style id="miraiFaceMotionV4">
+.mirai-banner{position:relative;overflow:hidden}
+.mirai-facefx{position:absolute;left:0;top:0;width:34%;height:100%;pointer-events:none;z-index:5}
+.mirai-eye{
+ position:absolute;left:17.4%;top:25.0%;width:7.2%;height:1.2%;
+ border-radius:50%;background:#5b2f27;opacity:0;
+ transform:rotate(-5deg);transform-origin:center;
+ animation:miraiBlinkV4 5.2s infinite;
+ box-shadow:4.6vw 0 0 #5b2f27;
+}
+.mirai-mouth{
+ position:absolute;left:18.8%;top:35.0%;width:4.2%;height:1.0%;
+ border-radius:0 0 50% 50%;background:#8b3940;opacity:0;
+ transform-origin:center top;
+}
+.mirai-banner.mirai-speaking .mirai-mouth{
+ opacity:.92;animation:miraiMouthV4 .18s ease-in-out infinite alternate;
+}
+@keyframes miraiBlinkV4{
+ 0%,44%,46%,78%,80%,100%{opacity:0;transform:scaleY(.15)}
+ 45%,79%{opacity:.92;transform:scaleY(1)}
+}
+@keyframes miraiMouthV4{
+ from{transform:scale(.85,.35)}
+ to{transform:scale(1.08,1.8)}
+}
+@media(prefers-reduced-motion:reduce){
+ .mirai-eye,.mirai-mouth{animation:none!important}
+}
+</style>
+
 </head>
 <body>
 <div class="wrap">
@@ -426,6 +458,21 @@ document.addEventListener('visibilitychange',function(){
       return oldSpeak(u);
     };
   }
+})();
+</script>
+
+
+<script id="miraiFaceLogicV4">
+(function(){
+ const b=document.querySelector('.mirai-banner');
+ if(!b || !('speechSynthesis' in window)) return;
+ const proto=SpeechSynthesisUtterance.prototype;
+ document.addEventListener('click',function(){}, {passive:true});
+ const obs=setInterval(function(){
+   if(speechSynthesis.speaking) b.classList.add('mirai-speaking');
+   else b.classList.remove('mirai-speaking');
+ },90);
+ window.addEventListener('pagehide',()=>clearInterval(obs),{once:true});
 })();
 </script>
 
