@@ -199,36 +199,7 @@ body{min-height:100vh;padding:calc(14px + env(safe-area-inset-top)) 0 calc(22px 
 </style>
 
 
-<style id="miraiFaceMotionV4">
-.mirai-banner{position:relative;overflow:hidden}
-.mirai-facefx{position:absolute;left:0;top:0;width:34%;height:100%;pointer-events:none;z-index:5}
-.mirai-eye{
- position:absolute;left:17.4%;top:25.0%;width:7.2%;height:1.2%;
- border-radius:50%;background:#5b2f27;opacity:0;
- transform:rotate(-5deg);transform-origin:center;
- animation:miraiBlinkV4 5.2s infinite;
- box-shadow:4.6vw 0 0 #5b2f27;
-}
-.mirai-mouth{
- position:absolute;left:18.8%;top:35.0%;width:4.2%;height:1.0%;
- border-radius:0 0 50% 50%;background:#8b3940;opacity:0;
- transform-origin:center top;
-}
-.mirai-banner.mirai-speaking .mirai-mouth{
- opacity:.92;animation:miraiMouthV4 .18s ease-in-out infinite alternate;
-}
-@keyframes miraiBlinkV4{
- 0%,44%,46%,78%,80%,100%{opacity:0;transform:scaleY(.15)}
- 45%,79%{opacity:.92;transform:scaleY(1)}
-}
-@keyframes miraiMouthV4{
- from{transform:scale(.85,.35)}
- to{transform:scale(1.08,1.8)}
-}
-@media(prefers-reduced-motion:reduce){
- .mirai-eye,.mirai-mouth{animation:none!important}
-}
-</style>
+
 
 </head>
 <body>
@@ -462,19 +433,31 @@ document.addEventListener('visibilitychange',function(){
 </script>
 
 
-<script id="miraiFaceLogicV4">
-(function(){
- const b=document.querySelector('.mirai-banner');
- if(!b || !('speechSynthesis' in window)) return;
- const proto=SpeechSynthesisUtterance.prototype;
- document.addEventListener('click',function(){}, {passive:true});
- const obs=setInterval(function(){
-   if(speechSynthesis.speaking) b.classList.add('mirai-speaking');
-   else b.classList.remove('mirai-speaking');
- },90);
- window.addEventListener('pagehide',()=>clearInterval(obs),{once:true});
+
+
+
+<script id="miraiNaturalFaceLogicV6">
+(()=>{
+ const b=document.querySelector('.mirai-banner'); if(!b)return;
+ let busy=false;
+ function blink(){if(busy)return;b.classList.add('v6-blink');setTimeout(()=>b.classList.remove('v6-blink'),180)}
+ function scheduleBlink(){setTimeout(()=>{blink(); if(Math.random()<.28)setTimeout(blink,260); scheduleBlink()},2800+Math.random()*2600)}
+ scheduleBlink();
+ if('speechSynthesis' in window){setInterval(()=>{busy=speechSynthesis.speaking;b.classList.toggle('v6-speaking',busy)},70)}
+ document.querySelectorAll('.ai-choice').forEach(x=>x.addEventListener('pointerdown',()=>{b.classList.remove('v6-react');void b.offsetWidth;b.classList.add('v6-react');setTimeout(()=>b.classList.remove('v6-react'),600)}));
 })();
 </script>
-
 </body>
 </html>
+<style id="miraiNaturalFaceV6">
+.mirai-banner::after{display:none!important}
+.mirai-face-v6{position:absolute;inset:0;z-index:8;pointer-events:none}
+/* Coordinates calibrated against the current 1536x1024 banner artwork */
+.mirai-v6-lid{position:absolute;left:14.55%;top:37.9%;width:4.2%;height:1.05%;border-radius:50%;background:#6b433a;opacity:0;transform:rotate(7deg);box-shadow:0 -1px 0 rgba(255,255,255,.22)}
+.mirai-v6-mouth{position:absolute;left:16.9%;top:52.7%;width:3.15%;height:1.05%;border-radius:20% 20% 55% 55%;background:#8f4b52;opacity:0;transform-origin:50% 0}
+.mirai-banner.v6-blink .mirai-v6-lid{opacity:.96}
+.mirai-banner.v6-speaking .mirai-v6-mouth{opacity:.95;animation:v6talk .16s ease-in-out infinite alternate}
+.mirai-banner.v6-react{animation:v6nod .55s ease-in-out 1}
+@keyframes v6talk{0%{transform:scale(.78,.30)}100%{transform:scale(1.08,1.75)}}
+@keyframes v6nod{0%,100%{transform:translateY(0)}45%{transform:translateY(-3px)}}
+</style>
