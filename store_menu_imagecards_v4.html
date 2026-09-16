@@ -346,17 +346,29 @@ document.addEventListener('visibilitychange',function(){
 <script id="miraiNaturalFaceMotionJS">
 (function(){
   var b=document.querySelector('.mirai-banner'); if(!b)return;
-  var busy=false, timer=null;
-  function clearFace(){b.classList.remove('mirai-blink','mirai-wink');}
-  function blink(){if(busy||document.hidden)return; clearFace(); b.classList.add('mirai-blink'); setTimeout(clearFace,115);}
-  function wink(){if(busy||document.hidden)return; clearFace(); b.classList.add('mirai-wink'); setTimeout(clearFace,260);}
-  function schedule(){clearTimeout(timer); timer=setTimeout(function(){
-    if(!busy){ if(Math.random()<0.18) wink(); else blink(); }
-    schedule();
-  },2600+Math.random()*3200);}
-  schedule();
+  var busy=false, faceBusy=false, blinkTimer=null, winkTimer=null;
+  function clearFace(){b.classList.remove('mirai-blink','mirai-wink'); faceBusy=false;}
+  function blink(){
+    if(busy||faceBusy||document.hidden)return;
+    faceBusy=true; b.classList.add('mirai-blink');
+    setTimeout(clearFace,115);
+  }
+  function wink(){
+    if(busy||faceBusy||document.hidden)return;
+    faceBusy=true; b.classList.add('mirai-wink');
+    setTimeout(clearFace,360);
+  }
+  function scheduleBlink(){
+    clearTimeout(blinkTimer);
+    blinkTimer=setTimeout(function(){blink(); scheduleBlink();},2800+Math.random()*2000);
+  }
+  function scheduleWink(){
+    clearTimeout(winkTimer);
+    winkTimer=setTimeout(function(){wink(); scheduleWink();},9000+Math.random()*5000);
+  }
+  scheduleBlink(); scheduleWink();
   if('speechSynthesis' in window){
-    setInterval(function(){busy=!!speechSynthesis.speaking; if(busy)clearFace();},90);
+    setInterval(function(){busy=!!speechSynthesis.speaking; if(busy&&faceBusy)clearFace();},90);
   }
   document.addEventListener('visibilitychange',function(){if(document.hidden)clearFace();});
 })();
