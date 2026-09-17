@@ -984,8 +984,9 @@ body{padding:0 16px 28px!important;background:linear-gradient(180deg,#f7fbff 0,#
 <button class="goal-hit hit-dcard" type="button" aria-label="dカードシミュレーターをはじめる" onclick="location.href='./dcard_simulator_store.html'"></button>
 <button class="goal-hit hit-hikari" type="button" aria-label="ドコモ光シミュレーターをはじめる" onclick="location.href='./hikari_home5g_simulator_store.html'"></button>
 <button class="goal-hit hit-denki" type="button" aria-label="でんきシミュレーターをはじめる" onclick="location.href='./denki_simulator_store.html'"></button>
-<button class="goal-hit hit-compare" type="button" aria-label="他社からドコモ料金比較シミュレーターをはじめる" onclick="document.getElementById('storeHome').style.display='none';window.scrollTo(0,0)"></button>
-</div></div><div class="visual-topnav">
+<button class="goal-hit hit-compare" type="button" aria-label="他社からドコモ料金比較シミュレーターをはじめる" onclick="document.getElementById('storeHome').style.display='none';document.getElementById('compareBackToMenu').style.display='block';window.scrollTo(0,0)"></button>
+</div></div><a href="#" id="compareBackToMenu" onclick="document.getElementById('storeHome').style.display='flex';this.style.display='none';window.scrollTo(0,0);return false" style="display:none;position:fixed;left:14px;top:14px;z-index:99998;background:#fff;border:1px solid #ddd;border-radius:999px;padding:9px 14px;text-decoration:none;color:#111;font-weight:800;box-shadow:0 2px 10px #0002">← 4つのメニューへ戻る</a>
+<div class="visual-topnav">
 <a class="vt-card pink" href="#" onclick="return false" aria-disabled="true"><span class="vt-icon">💳</span><span><b>dカード</b><small>シミュレーター</small></span><i>›</i></a>
 <a class="vt-card blue" href="#" onclick="return false" aria-disabled="true"><span class="vt-icon">🏠</span><span><b>ドコモ光</b><small>シミュレーター</small></span><i>›</i></a>
 <a class="vt-card green" href="#" onclick="return false" aria-disabled="true"><span class="vt-icon">💡</span><span><b>でんき</b><small>シミュレーター</small></span><i>›</i></a>
