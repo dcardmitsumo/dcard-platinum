@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-
+<!doctype html>
 <html lang="ja">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>dカード 店頭提案シミュレーター V14｜YouTube公開版</title>
 <style>
 *{box-sizing:border-box}body{margin:0;background:#f4f5f7;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",Arial;color:#17191d;padding-bottom:40px}
@@ -801,6 +800,7 @@ V16.4 rebuilt baseline:
 V16.3で確認した計算修正・開通後フロー修正・追加工事費・実質負担比較を統合。
 今後の店頭用単品HTMLはこの版を基準に更新。
 -->
+
 <style id="standaloneMode">
 .app-tabs{display:none!important}
 #pageDcard{display:none!important}
@@ -819,6 +819,8 @@ V16.3で確認した計算修正・開通後フロー修正・追加工事費・
 }
 @media print{.standalone-homebar{display:none!important}}
 </style>
+
+
 <style id="hikariCompactTabsV165">
 :root{--hikari-red:#d5003b;--hikari-red2:#d92755;}
 #pageHikari{background:#f6f7f9!important;padding:0 0 32px!important;}
@@ -836,204 +838,102 @@ V16.3で確認した計算修正・開通後フロー修正・追加工事費・
 @media(max-width:600px){.hikari-compact-head{padding:12px 8px 0}.hikari-compact-head h1{font-size:24px;margin-left:4px}.hikari-nav{gap:3px}.hikari-nav a{min-height:50px;font-size:12px;padding:6px 2px;border-radius:9px 9px 0 0}}
 @media print{.hikari-compact-head{display:none!important}}
 </style>
-<style id="hikariEasyEstimateV168">
-#hikariEstimate>.title,#hikariEstimate>.mini,#hikariEstimate>#hikariSettings,#hikariEstimate>.pdf-action,#hikariEstimate>.hikari-checks{display:none!important}
-.he-shell{display:grid;grid-template-columns:minmax(330px,.88fr) minmax(430px,1.12fr);gap:16px;max-width:1180px;margin:0 auto 18px;align-items:start}
-.he-left,.he-right{background:#fff;border:1px solid #e2e5e9;border-radius:18px;padding:18px;box-shadow:0 5px 18px rgba(20,30,45,.04)}
-.he-section-title{font-size:22px;font-weight:900;color:#151b28;display:flex;align-items:center;gap:9px;margin-bottom:14px}.he-section-title span{display:inline-flex;width:34px;height:34px;border-radius:50%;align-items:center;justify-content:center;background:#d5003b;color:#fff}
-.he-q{padding:14px 0;border-top:1px solid #eef0f2}.he-q>b{display:block;font-size:16px;margin-bottom:9px}.he-buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.he-buttons-4{grid-template-columns:repeat(2,minmax(0,1fr))}.he-buttons button{min-height:54px;border:1px solid #d6dbe1;background:#fff;border-radius:12px;font-weight:800;font-size:15px;color:#1c2638}.he-buttons button.is-on{border:2px solid #d5003b;background:#fff2f5;color:#c90037}.he-note{background:#fff7f9;border:1px solid #ffd7e2;border-radius:12px;padding:10px 12px;font-size:12px;color:#6a4752;margin-top:8px}
-.he-shell select,.he-shell input[type=number],.he-shell input[type=text]{width:100%;min-height:48px;border:1px solid #d8dde3;border-radius:10px;background:#fff;padding:9px 11px;font-size:15px}
-.he-summary{background:linear-gradient(135deg,#fff2f5,#fff);border:1px solid #ffd7e2;border-radius:16px;padding:14px}.he-summary-head{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:10px}.he-summary-head b{font-size:18px}.he-summary-head span{font-size:11px;color:#c90037;background:#fff;border:1px solid #ffc4d4;border-radius:999px;padding:4px 8px}.he-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.he-kpis>div{background:#fff;border:1px solid #e4e7ea;border-radius:12px;padding:12px;text-align:center}.he-kpis span{display:block;color:#6e7580;font-size:12px}.he-kpis b{display:block;font-size:24px;color:#d5003b;margin-top:5px;font-variant-numeric:tabular-nums}.he-kpis>div:nth-child(2) b{color:#1752a3}
-.he-acc{margin-top:12px;border:1px solid #e0e4e8;border-radius:14px;overflow:hidden;background:#fff}.he-acc summary{list-style:none;cursor:pointer;padding:14px 15px;background:#fff4f7;font-weight:900;color:#c90037;display:flex;justify-content:space-between;align-items:center}.he-acc summary::-webkit-details-marker{display:none}.he-acc summary small{font-size:11px;color:#777}.he-acc-body{padding:14px}.he-subhead{font-weight:900;background:#faf2f4;border-radius:8px;padding:7px 9px;margin:8px 0}.he-check{display:flex;gap:8px;align-items:flex-start;padding:10px;border:1px solid #e3e6e9;border-radius:10px;margin:8px 0;font-size:14px}.he-check input{width:20px;height:20px;accent-color:#d5003b}.he-check b{margin-left:auto;white-space:nowrap}.he-addon-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.he-grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.he-field-row{margin:9px 0}.he-field-row>label,.he-grid2 label,.he-inline label{display:block;font-weight:800;font-size:13px;margin-bottom:5px}.he-inline{display:grid;grid-template-columns:1fr 120px 24px;gap:8px;align-items:center;margin:9px 0}.he-inline label{margin:0}.he-mini-preview{margin-top:8px;border-radius:10px;background:#f7f9fb;padding:10px;font-size:13px}.he-actions{display:grid;grid-template-columns:1fr 1.25fr;gap:8px;margin-top:14px}.he-actions button,.he-sticky button{min-height:50px;border-radius:12px;font-weight:900;font-size:15px}.he-reset{border:1px solid #d7dbe0;background:#fff}.he-primary,.he-sticky button{border:0;background:#d5003b;color:#fff}
-.he-sticky{position:sticky;bottom:0;z-index:60;max-width:1180px;margin:0 auto;background:#202124;color:#fff;display:grid;grid-template-columns:1fr 1fr 1.25fr;gap:10px;align-items:center;padding:10px 14px;border-radius:14px 14px 0 0;box-shadow:0 -5px 18px rgba(0,0,0,.18)}.he-sticky>div{text-align:center}.he-sticky span{display:block;font-size:11px;color:#c9cbd0}.he-sticky b{font-size:24px}.he-sticky button{background:#d5003b}
-/* 旧入力UIは値保持用。見積もりタブでは非表示 */
-#hikariEstimate>.card:not(.post-flow-box),#hikariEstimate>#hikariPreview{display:none!important}
-#hikariEstimate>#hikariTransferSheet,#hikariEstimate>#hikariQuotePreview,#hikariEstimate>.post-flow-box{display:block}
-@media(max-width:850px){.he-shell{grid-template-columns:1fr}.he-left,.he-right{border-radius:14px;padding:14px}.he-kpis b{font-size:21px}.he-sticky{grid-template-columns:1fr 1fr;border-radius:0;margin:0 -14px}.he-sticky button{grid-column:1/-1}.he-addon-grid,.he-grid2{grid-template-columns:1fr}.he-buttons-4{grid-template-columns:1fr 1fr}.he-inline{grid-template-columns:1fr 105px 22px}}
-@media print{#hikariEasyEstimate,.he-sticky{display:none!important}}
-</style>
+
 <style id="hikariSheetStyleV166">
 /* 4タブ内を「イエナカ見積もり」風の店頭シート表示に */
 .hikari-sheet{background:#fff;border:1px solid #dfe3e7;border-radius:20px;padding:28px;box-shadow:0 2px 8px rgba(0,0,0,.03);max-width:980px;margin:14px auto;}
 .hikari-sheet-title{text-align:center;font-weight:900;font-size:30px;letter-spacing:.18em;margin:0 0 8px;color:#222}.hikari-sheet-date{color:#73777d;font-size:15px;margin-bottom:18px}.hikari-rule{height:4px;background:#d5003b;margin:8px 0 22px}.hikari-sec-title{font-size:20px;font-weight:900;color:#d5003b;border-left:6px solid #d5003b;padding-left:10px;margin:24px 0 10px}.hikari-sheet table{width:100%;border-collapse:collapse;font-size:16px}.hikari-sheet th,.hikari-sheet td{border:1px solid #d7dadd;padding:12px 14px;vertical-align:middle}.hikari-sheet th{background:#fafafa;text-align:left;width:38%}.hikari-sheet .num{text-align:right;font-variant-numeric:tabular-nums}.hikari-sheet .strong{font-weight:900}.hikari-kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.hikari-kpi{border:3px solid #d5003b;border-radius:14px;padding:16px;text-align:center;background:#fff}.hikari-kpi span{display:block;color:#7b7f85;font-size:14px}.hikari-kpi b{display:block;color:#cf0037;font-size:30px;line-height:1.15;margin-top:6px}.hikari-kpi.wide{grid-column:1/-1}.hikari-step-sheet{background:#fff;border:1px solid #dfe3e7;border-radius:20px;padding:26px;max-width:980px;margin:14px auto}.hikari-product-pill{border:2px solid #bfd7ff;background:#eef5ff;color:#1e57a7;font-size:24px;font-weight:900;border-radius:999px;padding:12px 18px;text-align:center;margin:4px 20px 22px}.hikari-step-row{display:grid;grid-template-columns:86px 1fr 150px;gap:18px;position:relative;padding:0 0 26px}.hikari-step-row:not(:last-child):before{content:"▼";position:absolute;left:34px;bottom:5px;color:#d5003b;font-size:20px}.hikari-step-icon{width:74px;height:74px;border-radius:50%;background:#f1f3f5;display:flex;align-items:center;justify-content:center;font-size:32px}.hikari-step-badge{display:inline-block;background:#183c70;color:#fff;font-weight:900;border-radius:999px;padding:4px 22px;margin-bottom:5px}.hikari-step-timing{display:inline-block;border:2px solid #e9b663;background:#fff9ee;color:#9b5b00;font-weight:900;border-radius:999px;padding:3px 16px;margin-left:8px}.hikari-step-name{font-size:22px;font-weight:900;margin:2px 0 4px}.hikari-step-desc{font-size:16px;line-height:1.55}.hikari-datebox{color:#8d9298;text-align:center;padding-top:22px}.hikari-datebox .line{border-bottom:2px solid #aaa;padding:8px 0;font-size:20px}.hikari-handover{background:#fff;border:1px solid #dfe3e7;border-radius:20px;padding:28px;max-width:980px;margin:14px auto}.hikari-handover-title{text-align:center;font-weight:900;font-size:30px;letter-spacing:.16em;line-height:1.35;margin-bottom:12px}.hikari-qr-placeholder{display:inline-flex;width:116px;height:116px;border:1px solid #bbb;align-items:center;justify-content:center;font-weight:900;color:#777;background:repeating-linear-gradient(45deg,#fff,#fff 6px,#eee 6px,#eee 12px)}
 @media(max-width:680px){.hikari-sheet,.hikari-step-sheet,.hikari-handover{padding:18px 14px;border-radius:14px;margin:10px 8px}.hikari-sheet-title,.hikari-handover-title{font-size:24px;letter-spacing:.11em}.hikari-kpi b{font-size:27px}.hikari-step-row{grid-template-columns:62px 1fr 94px;gap:10px}.hikari-step-icon{width:58px;height:58px;font-size:25px}.hikari-step-row:not(:last-child):before{left:22px}.hikari-step-name{font-size:18px}.hikari-step-desc{font-size:14px}.hikari-step-badge{padding:3px 14px}.hikari-step-timing{display:block;width:max-content;margin:5px 0 0}.hikari-datebox{font-size:12px;padding-top:14px}.hikari-datebox .line{font-size:16px}.hikari-product-pill{font-size:18px;margin:2px 4px 18px}.hikari-sheet th,.hikari-sheet td{padding:9px 10px;font-size:14px}}
 </style>
-<style id="hikariModernSheetV167">
-:root{--hm-red:#d5003b;--hm-navy:#173d70;--hm-blue:#2e70d1;--hm-line:#e3e6ea;--hm-soft:#f7f8fa;}
-.hikari-sheet.modern,.hikari-step-sheet.modern{max-width:980px;border:1px solid #e1e4e8;border-radius:22px;box-shadow:0 8px 28px rgba(22,34,52,.06);padding:26px;background:#fff;}
-.hm-titlebar{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;border-bottom:3px solid var(--hm-red);padding:0 2px 14px;margin-bottom:18px}.hm-title{display:flex;align-items:center;gap:12px;font-size:30px;font-weight:900}.hm-title .ico{width:44px;height:44px;border-radius:13px;background:#fff1f5;color:var(--hm-red);display:grid;place-items:center;font-size:24px}.hm-date{font-size:14px;color:#68707a;white-space:nowrap}.hm-thanks{font-size:14px;color:#6a717a;margin:-8px 0 18px 58px}
-.hm-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:22px}.hm-kpi{border-radius:16px;padding:16px;text-align:center;border:1px solid #eceef1;background:linear-gradient(180deg,#fff,#fafbfc)}.hm-kpi:nth-child(1){background:#fff7f2}.hm-kpi:nth-child(2){background:#f4f8ff}.hm-kpi:nth-child(3){background:#fff3f6}.hm-kpi small{display:block;font-weight:800;color:#555d67;min-height:36px}.hm-kpi b{display:block;font-size:30px;margin-top:7px;color:var(--hm-red);font-variant-numeric:tabular-nums}.hm-kpi:nth-child(2) b{color:#1656ae}
-.hm-section{margin-top:20px}.hm-section h3{font-size:19px;color:#d00039;border-left:6px solid #d00039;padding-left:10px;margin:0 0 10px;display:flex;align-items:center;gap:7px}.hm-table{width:100%;border-collapse:separate!important;border-spacing:0;overflow:hidden;border:1px solid #e0e3e6;border-radius:12px;font-size:15px}.hm-table th,.hm-table td{padding:11px 13px!important;border:0!important;border-bottom:1px solid #e4e7ea!important}.hm-table tr:last-child th,.hm-table tr:last-child td{border-bottom:0!important}.hm-table th{background:#fafafa!important;width:55%!important}.hm-table td{text-align:right;font-variant-numeric:tabular-nums}.hm-table tr.total th,.hm-table tr.total td{background:#fff1f4!important;font-weight:900}.hm-two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.hm-note{font-size:12px;color:#666e77;line-height:1.55;margin-top:12px}.hm-actions{display:grid;grid-template-columns:1.5fr 1fr;gap:10px;margin-top:20px}.hm-actions button{border:0;border-radius:12px;padding:14px 12px;font-weight:900;font-size:15px}.hm-actions .primary{background:var(--hm-red);color:#fff}.hm-actions .secondary{background:#fff;border:1px solid #dfe3e7;color:#222}
-.hm-flow-head{display:flex;align-items:center;justify-content:space-between;gap:14px;border-bottom:3px solid var(--hm-red);padding-bottom:14px;margin-bottom:14px}.hm-flow-head h2{margin:0;font-size:29px}.hm-flow-sub{font-size:13px;color:#5f6670}.hm-product{display:flex;align-items:center;gap:12px;background:#eef5ff;border:1px solid #c8dcff;border-radius:16px;padding:14px 16px;margin-bottom:18px;color:#1f5aab;font-weight:900;font-size:19px}.hm-product .home{width:42px;height:42px;border-radius:12px;background:#fff;display:grid;place-items:center;font-size:22px}.hm-timeline{position:relative}.hm-step{display:grid;grid-template-columns:52px 52px 1fr 112px;gap:12px;align-items:start;position:relative;padding:8px 0 18px}.hm-step:not(:last-child):after{content:"";position:absolute;left:25px;top:56px;bottom:-2px;width:2px;background:#cfd4da}.hm-num{width:46px;height:46px;border-radius:50%;background:#707984;color:#fff;display:grid;place-items:center;font-weight:900}.hm-step:first-child .hm-num{background:var(--hm-red)}.hm-stepico{width:46px;height:46px;border-radius:50%;background:#f3f5f7;display:grid;place-items:center;font-size:21px}.hm-stepbody h4{margin:0 0 4px;font-size:18px}.hm-stepbody p{margin:0;color:#4d535b;line-height:1.55;font-size:14px}.hm-timing{display:inline-block;margin-bottom:5px;border:1px solid #efc16f;background:#fff9ed;color:#9a6000;border-radius:999px;padding:3px 10px;font-size:12px;font-weight:900}.hm-datebox{border:1px solid #e0e4e8;border-radius:10px;padding:9px;text-align:center;color:#8b9198;font-size:12px;background:#fff}.hm-datebox b{display:block;color:#333;font-size:13px;margin-bottom:6px}.hm-datebox .date-line{border-bottom:1px solid #aeb4bb;padding:4px 0;font-size:14px}.hm-tip{display:flex;gap:10px;background:#fff1f4;border-radius:12px;padding:12px 14px;margin-top:2px;font-size:12px;line-height:1.55}.hm-tip b{color:#cc0037}.hm-flow-actions{display:grid;grid-template-columns:1fr 1.5fr;gap:10px;margin-top:18px}.hm-flow-actions button{padding:14px;border-radius:12px;font-weight:900;border:1px solid #dde2e7;background:#fff}.hm-flow-actions .primary{background:var(--hm-red);border-color:var(--hm-red);color:#fff}
-@media(max-width:680px){.hikari-sheet.modern,.hikari-step-sheet.modern{padding:16px 12px;margin:10px 8px}.hm-title{font-size:25px}.hm-titlebar{align-items:center}.hm-thanks{margin-left:0}.hm-kpis{grid-template-columns:1fr 1fr}.hm-kpi:nth-child(3){grid-column:1/-1}.hm-kpi b{font-size:27px}.hm-two{grid-template-columns:1fr}.hm-step{grid-template-columns:38px 40px 1fr 78px;gap:7px}.hm-num,.hm-stepico{width:36px;height:36px;font-size:16px}.hm-step:not(:last-child):after{left:18px;top:45px}.hm-stepbody h4{font-size:16px}.hm-stepbody p{font-size:12px}.hm-datebox{padding:7px 4px}.hm-flow-head h2{font-size:24px}.hm-product{font-size:16px}.hm-actions,.hm-flow-actions{grid-template-columns:1fr}.hm-table{font-size:13px}.hm-table th,.hm-table td{padding:9px 8px!important}}
-</style>
-<style id="hikariFinishV169">
-/* V16.9: approved 4-screen layout */
-:root{--hf-red:#d5003b;--hf-pink:#fff0f4;--hf-blue:#1261c9;--hf-ink:#182033;--hf-line:#dde2e8}
-#pageHikari>.hikari-proposal{padding:0 14px 110px!important;background:#f5f6f8!important;border:0!important;box-shadow:none!important}
-.hikari-compact-head{position:sticky;top:0;z-index:1000;box-shadow:0 3px 12px rgba(0,0,0,.12)}
-.hikari-compact-head h1:after{content:"つながる、うれしい、ドコモの光。";float:right;font-size:12px;font-weight:700;opacity:.9;margin-top:9px}
-.he-left,.he-right{border-radius:12px;box-shadow:0 2px 8px rgba(20,30,45,.05)}
-.he-left{padding:14px}.he-right{padding:14px}
-.he-section-title{margin:0 0 8px}.he-q{padding:11px 0}.he-q>b{font-size:17px}
-.he-buttons button{border-radius:7px;min-height:58px}.he-buttons button.is-on{background:#fff1f5;box-shadow:inset 0 0 0 1px var(--hf-red)}
-.he-summary{border-radius:10px}.he-acc{border-radius:9px!important;overflow:hidden}.he-acc summary{font-size:17px!important}
-.he-sticky{z-index:1100!important;border-top:1px solid #d7dce2!important;box-shadow:0 -5px 18px rgba(0,0,0,.08)!important}
-/* quote / flow / handover: each is a full clean sheet */
-#hikariQuotePreview,.hikari-handover,#hikariEstimate>.card:has(#hikariFlowSection){max-width:860px!important;margin:12px auto!important;background:#fff!important;border:1px solid #e0e4e8!important;border-radius:12px!important;box-shadow:0 3px 14px rgba(20,30,45,.06)!important}
-#hikariEstimate>.card:has(#hikariFlowSection){padding:0!important}
-#hikariEstimate>.card:has(#hikariFlowSection)>#hikariFlowSection,#hikariEstimate>.card:has(#hikariFlowSection)>.mini{display:none!important}
-#hikariFlowGuide{margin:0!important}
-.hikari-step-sheet.modern{max-width:none!important;margin:0!important;border:0!important;border-radius:12px!important;box-shadow:none!important;padding:22px!important}
-.hm-flow-head{justify-content:flex-start!important;gap:12px!important}.hm-flow-head h2{font-size:27px!important;color:var(--hf-ink)}
-.hm-flow-head h2:before{content:"⚙";color:var(--hf-red);margin-right:10px}.hm-flow-head h2{font-size:0!important}.hm-flow-head h2:after{content:"開通の流れ";font-size:27px!important}
-.hm-flow-sub{font-size:13px!important;margin-top:5px!important}.hm-product{border-radius:10px!important;margin:12px 0 16px!important;padding:11px 14px!important}
-.hm-step{grid-template-columns:44px 44px 1fr 96px!important;gap:10px!important;padding:7px 0 15px!important}.hm-num,.hm-stepico{width:40px!important;height:40px!important}.hm-step:not(:last-child):after{left:19px!important;top:48px!important}.hm-stepbody h4{font-size:17px!important}.hm-stepbody p{font-size:13px!important}.hm-datebox{padding:7px 5px!important}
-.hm-tip{background:#fff0f4!important;border:1px solid #ffd6e1!important}.hm-flow-actions .primary{background:var(--hf-red)!important}
-/* handover */
-.hikari-handover{padding:22px!important}.hikari-handover-title{text-align:left!important;font-size:25px!important;letter-spacing:0!important;margin:0 0 5px!important;color:var(--hf-ink)}
-.hikari-handover-title:before{content:"👥";margin-right:10px}.hikari-handover .hikari-rule{height:3px!important;margin:8px 0 12px!important}.hikari-handover .hikari-sheet-date{text-align:right!important;margin:0 0 10px!important}.hikari-handover .hikari-sec-title{font-size:16px!important;margin:16px 0 7px!important;border-left:0!important;padding:0!important;color:#222!important}.hikari-handover .hikari-sec-title:before{content:"▣";color:var(--hf-red);margin-right:7px}.hikari-handover table{width:100%;border-collapse:collapse;font-size:13px}.hikari-handover th,.hikari-handover td{border:1px solid #d9dde2;padding:8px 10px;text-align:left}.hikari-handover th{width:32%;background:#fafafa}.hikari-handover .strong{font-weight:900;color:var(--hf-red)}
-/* quote */
-#hikariQuotePreview{padding:0!important;border:0!important}.hikari-sheet.modern{max-width:none!important;margin:0!important;border-radius:12px!important;box-shadow:none!important}.hm-title{color:var(--hf-ink)!important}.hm-title .ico{color:var(--hf-red)!important}.hm-kpi{border-radius:9px!important}.hm-kpi:nth-child(1){background:#fff5ef!important}.hm-kpi:nth-child(2){background:#eef7ff!important}.hm-kpi:nth-child(3){background:#fff1f5!important}.hm-actions .primary{background:var(--hf-red)!important}
-@media(max-width:700px){.hikari-compact-head h1:after{display:none}#pageHikari>.hikari-proposal{padding:0 5px 100px!important}.he-shell{grid-template-columns:1fr!important}.hikari-step-sheet.modern,.hikari-handover{padding:14px 10px!important}.hm-step{grid-template-columns:34px 34px 1fr 72px!important;gap:6px!important}.hm-num,.hm-stepico{width:32px!important;height:32px!important}.hm-step:not(:last-child):after{left:15px!important;top:39px!important}.hm-stepbody h4{font-size:14px!important}.hm-stepbody p{font-size:11px!important}.hm-timing{font-size:10px!important}.hikari-handover-title{font-size:20px!important}}
-@media print{.he-sticky{display:none!important}}
-</style>
-<style id="hikariFlowExactV169">
-#hikariFlowGuide{margin:0!important}.hf-flow-sheet{max-width:760px;margin:0 auto;background:#fff;padding:24px 22px 20px;font-family:inherit;color:#171b22}.hf-flow-title{display:flex;align-items:center;gap:13px;margin-bottom:15px}.hf-gear{font-size:30px;color:#d5003b}.hf-flow-title h2{font-size:28px;line-height:1;margin:0 0 8px;font-weight:900}.hf-flow-title p{margin:0;font-size:13px;color:#4f5660}.hf-product{display:flex;align-items:center;gap:12px;background:#edf5ff;border:1px solid #cfe0f7;border-radius:10px;padding:12px 16px;color:#1761b7;font-size:17px;font-weight:900;margin-bottom:20px}.hf-product>span{font-size:28px}.hf-flow-list{padding:0 2px}.hf-flow-row{display:grid;grid-template-columns:48px 48px minmax(0,1fr) 108px;gap:10px;position:relative;min-height:94px;align-items:start}.hf-flow-rail{position:relative;height:100%;display:flex;justify-content:center}.hf-flow-rail>b{position:relative;z-index:2;width:39px;height:39px;border-radius:50%;background:#7d8794;color:#fff;display:grid;place-items:center;font-size:14px}.hf-flow-rail>b.first{background:#d5003b}.hf-flow-rail>i{position:absolute;top:38px;bottom:0;width:2px;background:#aeb6c0}.hf-flow-rail>em{position:absolute;z-index:3;bottom:4px;color:#d5003b;font-size:13px;font-style:normal;background:#fff;line-height:1}.hf-flow-icon{width:42px;height:42px;border-radius:50%;background:#f2f3f5;display:grid;place-items:center;font-size:21px;font-weight:900}.hf-flow-copy{padding:1px 0 16px}.hf-flow-copy h3{font-size:17px;margin:0 0 5px;font-weight:900}.hf-flow-copy p{font-size:12px;line-height:1.55;margin:0;color:#40464f}.hf-flow-date{border:1px solid #e0e3e7;border-radius:9px;text-align:center;padding:7px 5px;background:#fff;color:#858b93}.hf-flow-date span{display:block;font-size:11px;margin-bottom:5px}.hf-flow-date b{display:block;font-size:13px;color:#555;min-height:18px}.hf-flow-date.done{background:#fff8ee;border-color:#f2d6a6}.hf-flow-date.done span{color:#d5003b;font-weight:900}.hf-flow-tip{display:grid;grid-template-columns:110px 1fr;gap:10px;background:#fff0f4;border-radius:9px;padding:12px 14px;margin-top:3px;font-size:11px;line-height:1.55}.hf-flow-tip b{color:#d5003b;font-size:13px}.hf-flow-actions{display:grid;grid-template-columns:1fr 1.55fr;gap:9px;margin-top:16px}.hf-flow-actions button{min-height:48px;border:1px solid #d7dce1;border-radius:8px;background:#fff;font-weight:900}.hf-flow-actions .primary{background:#d5003b;color:#fff;border-color:#d5003b}
-@media(max-width:620px){.hf-flow-sheet{padding:16px 10px}.hf-flow-title h2{font-size:23px}.hf-flow-row{grid-template-columns:36px 36px minmax(0,1fr) 72px;gap:6px;min-height:105px}.hf-flow-rail>b{width:32px;height:32px;font-size:11px}.hf-flow-rail>i{top:31px}.hf-flow-icon{width:32px;height:32px;font-size:15px}.hf-flow-copy h3{font-size:14px}.hf-flow-copy p{font-size:10px}.hf-flow-date{padding:5px 2px}.hf-flow-date b{font-size:10px}.hf-flow-tip{grid-template-columns:1fr}.hf-flow-actions{grid-template-columns:1fr}.hf-product{font-size:14px}}
-</style>
-<style id="hikariFourPaneHardFixV173">
-/* V17.3: 4画面を明示的に分離。旧「開通後の流れ」は画面表示しない */
-#hikariLegacyAfterFlow{display:none!important}
-#hikariEstimate[data-active-pane="estimate"]>#hikariFlowPane,
-#hikariEstimate[data-active-pane="estimate"]>#hikariQuotePreview,
-#hikariEstimate[data-active-pane="estimate"]>#hikariTransferSheet{display:none!important}
-#hikariEstimate[data-active-pane="flow"]>*{display:none!important}
-#hikariEstimate[data-active-pane="flow"]>#hikariFlowPane{display:block!important}
-#hikariEstimate[data-active-pane="quote"]>*{display:none!important}
-#hikariEstimate[data-active-pane="quote"]>#hikariQuotePreview{display:block!important}
-#hikariEstimate[data-active-pane="transfer"]>*{display:none!important}
-#hikariEstimate[data-active-pane="transfer"]>#hikariTransferSheet{display:block!important}
-#hikariFlowPane>.title,#hikariFlowPane>.mini{display:none!important}
-#hikariFlowPane{padding:0!important;background:transparent!important;border:0!important;box-shadow:none!important}
-#hikariTransferSheet{max-width:860px!important;margin:12px auto!important}
-</style>
-<style id="hikariPrintFlowMatchV175">
-.hikari-quote-date-editor{display:flex;align-items:center;gap:8px;margin:0 0 10px;padding:10px 12px;border:1px solid #e0e4e8;border-radius:10px;background:#fff}.hikari-quote-date-editor label{font-weight:900;color:#d5003b}.hikari-quote-date-editor input{flex:1;min-width:0;padding:9px 10px;border:1px solid #cfd5db;border-radius:8px;background:#fff;font:inherit}.hikari-quote-date-editor button{padding:9px 12px;border:1px solid #cfd5db;border-radius:8px;background:#fff;font-weight:800}
-@media print{
-  .hikari-quote-date-editor{display:none!important}
-  .hf-print-flow{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#161a20;padding:2mm 3mm!important}
-  .hf-print-flow-head{border-bottom:3px solid #d5003b;padding:0 0 7px;margin:0 0 8px}.hf-print-flow-head h2{margin:0 0 2px;font-size:20px}.hf-print-flow-head div{font-size:9px;color:#555}
-  .hf-print-product{border:1px solid #cfe0f7;background:#edf5ff;color:#1761b7;border-radius:8px;padding:7px 10px;font-size:11px;font-weight:900;margin-bottom:8px}
-  .hf-print-flow-list{margin:0 1mm}.hf-print-flow-row{display:grid;grid-template-columns:34px 34px 1fr 72px;gap:7px;align-items:start;position:relative;min-height:20mm;padding:2px 0 5px;break-inside:avoid}
-  .hf-print-flow-row:not(:last-child):after{content:"";position:absolute;left:16px;top:32px;bottom:-2px;width:1.5px;background:#aeb6c0}
-  .hf-print-num{position:relative;z-index:2;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:#7d8794;color:#fff;font-weight:900;font-size:10px}.hf-print-num.first{background:#d5003b}
-  .hf-print-ico{width:32px;height:32px;border-radius:50%;background:#f2f3f5;display:grid;place-items:center;font-size:13px;font-weight:900}
-  .hf-print-copy{padding-top:1px}.hf-print-copy b{display:block;font-size:11px;margin-bottom:2px}.hf-print-copy span{display:block;font-size:8px;line-height:1.45;color:#3f454d}
-  .hf-print-date{border:1px solid #dfe3e7;border-radius:7px;text-align:center;padding:4px 3px;color:#7f858c;background:#fff}.hf-print-date small{display:block;font-size:7px;margin-bottom:3px}.hf-print-date b{display:block;font-size:9px;color:#555}.hf-print-date.done{background:#fff8ee;border-color:#efd09b}.hf-print-date.done small{color:#d5003b;font-weight:900}
-  .hf-print-tip{display:grid;grid-template-columns:72px 1fr;gap:7px;background:#fff0f4;border-radius:7px;padding:7px 9px;font-size:7.5px;line-height:1.4;margin:3px 0 7px}.hf-print-tip b{color:#d5003b;font-size:9px}
-  .hf-print-flow .print-section-title{font-size:11px;margin:7px 0 4px}
-  .hf-print-flow .print-breakdown{font-size:7.5px;margin:4px 0 6px}.hf-print-flow .print-breakdown td{padding:3px 4px}
-  .hf-print-flow .print-note{font-size:7px;margin-top:4px}
-}
-</style>
-
-<style id="hikariHearingSimpleV184">
-.he-viewing-v184{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin:12px 0 14px;padding:12px 14px;border:1px solid #eee;border-radius:14px;background:#fff}.he-viewing-v184 .he-viewing-label{font-weight:800;margin-right:2px}.he-viewing-v184 label{display:flex;align-items:center;gap:7px;font-weight:700;margin:0}.he-viewing-v184 input[type=checkbox]{width:24px;height:24px;accent-color:#d9003f}.he-amount-preset-v184 select,.he-amount-preset-v184 input{width:100%}.he-custom-amount-v184{margin-top:7px}.he-hearing-simple-v184>div{min-width:0}@media(max-width:680px){.he-hearing-simple-v184{grid-template-columns:1fr!important}.he-viewing-v184{gap:14px}.he-viewing-v184 .he-viewing-label{width:100%}}
-</style>
-
-<style id="hikariStableLayoutV186">
-/* V18.6: 旧フォームは計算用DOMとして保持し、画面には出さない。表示UIは①〜⑤に固定。 */
-#hikariEstimate > #hikariSettings,
-#hikariEstimate > .pdf-action,
-#hikariEstimate > .hikari-checks,
-#hikariEstimate > .hikari-grid {display:none!important;}
-/* 旧フォーム内の入力は非表示でもJSから値を参照・更新できる */
-#hikariEasyEstimate{display:block!important;}
-#hikariEasyEstimate .he-card-v18{display:block!important;}
-#hikariEasyEstimate select,
-#hikariEasyEstimate input:not([type="hidden"]),
-#hikariEasyEstimate button{visibility:visible!important;opacity:1!important;}
-</style>
 </head>
-<body onload="calcAll()"><div class="standalone-homebar"><a href="./store_menu_imagecards_v4.html">← 3つのメニューへ戻る</a></div>
+<body onload="calcAll()"><div class="standalone-homebar"><a href="./othercarrier_docomo_compare_v58_independent_routes.html">← 3つのメニューへ戻る</a></div>
 <div class="app-tabs">
-<button class="app-tab active" data-app-page="dcard" id="tabDcard" type="button">ページ1｜dカード見積もり</button>
-<button class="app-tab" data-app-page="hikari" id="tabHikari" type="button">ページ2｜ドコモ光・他社乗り換え</button>
+  <button type="button" id="tabDcard" class="app-tab active" data-app-page="dcard">ページ1｜dカード見積もり</button>
+  <button type="button" id="tabHikari" class="app-tab" data-app-page="hikari">ページ2｜ドコモ光・他社乗り換え</button>
 </div>
-<div class="app-page" id="pageDcard">
+
+<div id="pageDcard" class="app-page">
 <header>
 <small>d CARD SALES SIMULATOR • 店頭用 V16.4｜再構築・監査反映版</small>
 <h1>dカード 店頭提案シミュレーター</h1>
 <p>料金プランからポイ活・銀行・dカード積立まで、dカード / GOLD U / GOLD / PLATINUMを一括比較</p>
 </header>
+
 <div class="wrap">
-<div class="familybar" id="familyBar"><button class="familytab active" data-member="0" onclick="switchMember(0)" type="button">本人</button><button class="familyadd" id="familyAdd" onclick="addMember()" type="button">＋ 家族を追加</button></div>
+<div class="familybar" id="familyBar"><button type="button" class="familytab active" data-member="0" onclick="switchMember(0)">本人</button><button type="button" class="familyadd" id="familyAdd" onclick="addMember()">＋ 家族を追加</button></div>
 <section class="quote-tools">
-<div class="step">見積管理</div>
-<div class="title">保存・PDF / 印刷</div>
-<div class="toolgrid">
-<div>
-<label>お客様名 / 見積名</label>
-<input data-meta="1" id="quoteCustomer" placeholder="例：山田様 / ご家族見積" type="text"/>
-</div>
-<div>
-<label>担当者・メモ</label>
-<input data-meta="1" id="quoteMemo" placeholder="任意" type="text"/>
-</div>
-</div>
-<div class="actions">
-<button class="btn-primary" onclick="saveQuote()" type="button">💾 見積を保存</button>
-<button class="btn-secondary" onclick="printQuote()" type="button">📄 dカード見積をPDF / 印刷</button>
-<button class="btn-secondary" onclick="exportQuotes()" type="button">⬇️ 保存データを書き出し</button>
-<button class="btn-secondary" onclick="g('quoteImport').click()" type="button">⬆️ 保存データを読込</button>
-<input accept="application/json,.json" data-meta="1" id="quoteImport" onchange="importQuotes(event)" style="display:none" type="file"/>
-</div>
-<div class="quote-card-select">
-<div class="select-title">見積書 / PDFに載せるカードを選択</div>
-<div class="checks">
-<label class="quote-card-option"><input checked="" data-meta="1" id="quoteCardSilver" type="checkbox" value="silver"/><span class="quote-check"></span><span>dカード</span></label>
-<label class="quote-card-option"><input checked="" data-meta="1" id="quoteCardGoldu" type="checkbox" value="goldu"/><span class="quote-check"></span><span>GOLD U</span></label>
-<label class="quote-card-option"><input checked="" data-meta="1" id="quoteCardGold" type="checkbox" value="gold"/><span class="quote-check"></span><span>GOLD</span></label>
-<label class="quote-card-option"><input checked="" data-meta="1" id="quoteCardPlat" type="checkbox" value="plat"/><span class="quote-check"></span><span>PLATINUM</span></label>
-</div>
-<div class="mini">例：dカード＋GOLD、GOLD＋PLATINUMなど、必要なカードだけ選んでPDF化できます。</div><div class="mini"><b>世帯のお支払割</b>は、本人＋家族タブそれぞれの料金プランに応じた年間割引額を合算して表示します。</div><div class="mini"><b>PDF / 印刷</b>では「回線ごとの料金プラン＋各割引＋各オプション＝合計」を明細表示し、その下に選択したdカードごとの「携帯料金＋対象オプションの年間ポイント」を表示します。</div>
+  <div class="step">見積管理</div>
+  <div class="title">保存・PDF / 印刷</div>
+  <div class="toolgrid">
+    <div>
+      <label>お客様名 / 見積名</label>
+      <input id="quoteCustomer" data-meta="1" type="text" placeholder="例：山田様 / ご家族見積">
+    </div>
+    <div>
+      <label>担当者・メモ</label>
+      <input id="quoteMemo" data-meta="1" type="text" placeholder="任意">
+    </div>
+  </div>
+  <div class="actions">
+    <button type="button" class="btn-primary" onclick="saveQuote()">💾 見積を保存</button>
+    <button type="button" class="btn-secondary" onclick="printQuote()">📄 dカード見積をPDF / 印刷</button>
+    <button type="button" class="btn-secondary" onclick="exportQuotes()">⬇️ 保存データを書き出し</button>
+    <button type="button" class="btn-secondary" onclick="g('quoteImport').click()">⬆️ 保存データを読込</button>
+    <input id="quoteImport" data-meta="1" type="file" accept="application/json,.json" style="display:none" onchange="importQuotes(event)">
+  </div>
+  <div class="quote-card-select">
+  <div class="select-title">見積書 / PDFに載せるカードを選択</div>
+  <div class="checks">
+    <label class="quote-card-option"><input type="checkbox" id="quoteCardSilver" data-meta="1" value="silver" checked><span class="quote-check"></span><span>dカード</span></label>
+    <label class="quote-card-option"><input type="checkbox" id="quoteCardGoldu" data-meta="1" value="goldu" checked><span class="quote-check"></span><span>GOLD U</span></label>
+    <label class="quote-card-option"><input type="checkbox" id="quoteCardGold" data-meta="1" value="gold" checked><span class="quote-check"></span><span>GOLD</span></label>
+    <label class="quote-card-option"><input type="checkbox" id="quoteCardPlat" data-meta="1" value="plat" checked><span class="quote-check"></span><span>PLATINUM</span></label>
+  </div>
+  <div class="mini">例：dカード＋GOLD、GOLD＋PLATINUMなど、必要なカードだけ選んでPDF化できます。</div><div class="mini"><b>世帯のお支払割</b>は、本人＋家族タブそれぞれの料金プランに応じた年間割引額を合算して表示します。</div><div class="mini"><b>PDF / 印刷</b>では「回線ごとの料金プラン＋各割引＋各オプション＝合計」を明細表示し、その下に選択したdカードごとの「携帯料金＋対象オプションの年間ポイント」を表示します。</div>
 </div>
 <div class="note">保存データはこの端末・ブラウザ内に保存されます。端末変更やバックアップには「保存データを書き出し」を使ってください。</div>
-<div class="saved-list" id="savedQuotes"></div>
+  <div id="savedQuotes" class="saved-list"></div>
 </section>
 <section class="public-intro">
-<h2>dカード 店頭提案シミュレーター</h2>
-<p>店頭でお客さまの契約状況を確認しながら、料金プランや毎月の利用状況を入力すると、dカード・GOLD U・GOLD・PLATINUMの年間メリットをまとめて比較できます。<br/><b>2026年9月1日に発表された改定内容を反映した「改定後ルール基準」</b>で計算しています。PLATINUMのケータイ・ドコモ光・dカード積立は2026年12月利用/決済分以降、ドコモでんきは2026年11月検針分以降の条件を基準にしています。</p>
+  <h2>dカード 店頭提案シミュレーター</h2>
+  <p>店頭でお客さまの契約状況を確認しながら、料金プランや毎月の利用状況を入力すると、dカード・GOLD U・GOLD・PLATINUMの年間メリットをまとめて比較できます。<br><b>2026年9月1日に発表された改定内容を反映した「改定後ルール基準」</b>で計算しています。PLATINUMのケータイ・ドコモ光・dカード積立は2026年12月利用/決済分以降、ドコモでんきは2026年11月検針分以降の条件を基準にしています。</p>
 <div class="public-guide">
-<div><b>① 条件を入力</b><br/>料金プラン・割引・利用サービスを選択</div>
-<div><b>② 4券種を自動比較</b><br/>ポイント・年会費などをまとめて計算</div>
-<div><b>③ RESULTを確認</b><br/>年間メリットが大きいカードをチェック</div>
-</div>
+    <div><b>① 条件を入力</b><br>料金プラン・割引・利用サービスを選択</div>
+    <div><b>② 4券種を自動比較</b><br>ポイント・年会費などをまとめて計算</div>
+    <div><b>③ RESULTを確認</b><br>年間メリットが大きいカードをチェック</div>
+  </div>
 </section>
+
+
+
 <div class="inputpane">
+
+
 <section class="card hero">
 <div class="step">RESULT</div>
 <div class="big" id="heroText">PLATINUMなら 年間＋0円</div>
 <div class="sub" id="heroSub">入力内容を変更すると即時更新</div>
 </section>
+
 <section class="card">
 <div class="step">STEP 1</div><div class="title">料金プラン・データ量</div>
-<div class="summary hidden" id="familyCardBox" style="margin-bottom:10px">
-<div class="row"><span>この家族は</span>
-<select id="familyCardMode" onchange="calcAll()">
-<option selected="" value="no">本会員カードとして比較</option>
-<option value="yes">家族カードとして比較</option>
-</select>
-</div>
-<div class="mini" id="familyCardHint">
+
+<div id="familyCardBox" class="summary hidden" style="margin-bottom:10px">
+  <div class="row"><span>この家族は</span>
+    <select id="familyCardMode" onchange="calcAll()">
+      <option value="no" selected>本会員カードとして比較</option>
+      <option value="yes">家族カードとして比較</option>
+    </select>
+  </div>
+  <div class="mini" id="familyCardHint">
     家族カードを選ぶと、家族カード年会費・家族カード対象のケータイ還元・ショッピング基本還元を反映します。PLATINUM家族カードは2026年9月発表の改定内容を基準に10%で比較します。
   </div>
 </div>
-<input id="memberPointSilver" type="hidden" value="0"/>
-<input id="memberPointGoldu" type="hidden" value="0"/>
-<input id="memberPointGold" type="hidden" value="0"/>
-<input id="memberPointPlat" type="hidden" value="0"/>
+<input type="hidden" id="memberPointSilver" value="0">
+<input type="hidden" id="memberPointGoldu" value="0">
+<input type="hidden" id="memberPointGold" value="0">
+<input type="hidden" id="memberPointPlat" value="0">
+
 <label>料金プラン</label>
 <select id="plan" onchange="planChanged()">
 <option value="max">ドコモ MAX</option>
@@ -1050,6 +950,7 @@ V16.3で確認した計算修正・開通後フロー修正・追加工事費・
 <option value="gigalite">ギガライト（受付終了）</option>
 <option value="g5_gigalite">5Gギガライト（受付終了）</option>
 </select>
+
 <div id="maxStepArea">
 <label>ドコモ MAX データ量</label>
 <select id="maxStep" onchange="calcAll()">
@@ -1058,21 +959,23 @@ V16.3で確認した計算修正・開通後フロー修正・追加工事費・
 <option value="8448">STEP 3：3GB超～無制限</option>
 </select>
 </div>
-<div class="hidden" id="poiMaxArea">
+
+<div id="poiMaxArea" class="hidden">
 <label>ドコモ ポイ活 MAX データ量</label>
 <select id="poiMaxOnly" onchange="calcAll()">
 <option value="11748">段階制なし：無制限</option>
 </select>
 <div class="note">ポイ活MAXはSTEP1・2・3なし。基本料金11,748円で固定。</div>
 </div>
-<div class="hidden" id="poi20Area">
+
+<div id="poi20Area" class="hidden">
 <label>ドコモ ポイ活20 データ量</label>
 <select id="poi20Step" onchange="calcAll()">
 <option value="7898">～20GB</option>
 <option value="9570">20GB超～無制限</option>
 </select>
 </div>
-<div class="hidden" id="u15Area">
+<div id="u15Area" class="hidden">
 <label>ドコモ スマホデビュープラン U15 データ量</label>
 <select id="u15Step" onchange="calcAll()">
 <option value="2508">～5GB：2,508円</option>
@@ -1080,17 +983,20 @@ V16.3で確認した計算修正・開通後フロー修正・追加工事費・
 </select>
 <div class="note">5歳～15歳のスマホデビュー向け。ドコモ親子割（U15）は初回適用月を含む最大12か月。</div>
 </div>
-<div class="hidden" id="mini4Area">
+
+<div id="mini4Area" class="hidden">
 <label>ドコモ mini 4GB</label>
 <select id="mini4Only" onchange="calcAll()"><option value="2750">4GB：2,750円</option></select>
 <div class="note">dカード GOLD / PLATINUM：対象料金1,000円（税抜）ごとに1％還元。</div>
 </div>
-<div class="hidden" id="mini10Area">
+
+<div id="mini10Area" class="hidden">
 <label>ドコモ mini 10GB</label>
 <select id="mini10Only" onchange="calcAll()"><option value="3850">10GB：3,850円</option></select>
 <div class="note">dカード GOLD / PLATINUM：対象料金1,000円（税抜）ごとに1％還元。</div>
 </div>
-<div class="hidden" id="ahamoArea">
+
+<div id="ahamoArea" class="hidden">
 <label>ahamo データ量</label>
 <select id="ahamoStep" onchange="calcAll()">
 <option value="2970">40GB（増量中）：2,970円</option>
@@ -1098,7 +1004,7 @@ V16.3で確認した計算修正・開通後フロー修正・追加工事費・
 </select>
 <div class="note">ahamoは1,000円につき10pt（1%）、月30pt上限で計算。ドコモ光はカード特典対象。</div>
 </div>
-<div class="hidden" id="eximoArea">
+<div id="eximoArea" class="hidden">
 <label>eximo データ量</label>
 <select id="eximoStep" onchange="legacyStepChanged();calcAll()">
 <option value="4565">STEP 1：～1GB　4,565円</option>
@@ -1107,14 +1013,16 @@ V16.3で確認した計算修正・開通後フロー修正・追加工事費・
 </select>
 <div class="note">旧料金プラン（新規受付終了）。現在契約中の方向け比較用。</div>
 </div>
-<div class="hidden" id="eximoPoiArea">
+
+<div id="eximoPoiArea" class="hidden">
 <label>eximo ポイ活</label>
 <select id="eximoPoiOnly" onchange="calcAll()">
 <option value="10615">無制限：10,615円</option>
 </select>
 <div class="note">旧料金プラン（新規受付終了）。ポイ活特典は月5,000pt上限で計算。</div>
 </div>
-<div class="hidden" id="gigahoPremierArea">
+
+<div id="gigahoPremierArea" class="hidden">
 <label>ギガホ プレミア データ量</label>
 <select id="gigahoPremierStep" onchange="legacyStepChanged();calcAll()">
 <option value="5555">～3GB：5,555円</option>
@@ -1122,7 +1030,8 @@ V16.3で確認した計算修正・開通後フロー修正・追加工事費・
 </select>
 <div class="note">定期契約なしの料金で計算。2023年6月30日で新規受付終了。</div>
 </div>
-<div class="hidden" id="g5GigahoPremierArea">
+
+<div id="g5GigahoPremierArea" class="hidden">
 <label>5Gギガホ プレミア データ量</label>
 <select id="g5GigahoPremierStep" onchange="legacyStepChanged();calcAll()">
 <option value="5665">～3GB：5,665円</option>
@@ -1130,7 +1039,8 @@ V16.3で確認した計算修正・開通後フロー修正・追加工事費・
 </select>
 <div class="note">2023年6月30日で新規受付終了。</div>
 </div>
-<div class="hidden" id="gigaliteArea">
+
+<div id="gigaliteArea" class="hidden">
 <label>ギガライト ステップ</label>
 <select id="gigaliteStep" onchange="legacyStepChanged();calcAll()">
 <option value="3465">STEP 1：～1GB　3,465円</option>
@@ -1140,7 +1050,8 @@ V16.3で確認した計算修正・開通後フロー修正・追加工事費・
 </select>
 <div class="note">定期契約なしの料金で計算。STEPに応じてドコモ光セット割も自動で選択肢を変更。</div>
 </div>
-<div class="hidden" id="g5GigaliteArea">
+
+<div id="g5GigaliteArea" class="hidden">
 <label>5Gギガライト ステップ</label>
 <select id="g5GigaliteStep" onchange="legacyStepChanged();calcAll()">
 <option value="3465">STEP 1：～1GB　3,465円</option>
@@ -1150,16 +1061,18 @@ V16.3で確認した計算修正・開通後フロー修正・追加工事費・
 </select>
 <div class="note">STEPに応じてドコモ光セット割も自動で選択肢を変更。</div>
 </div>
+
 <div class="grid" style="margin-top:7px">
 <div>
 <label>現在の料金プランで貯まるdポイント / 月</label>
-<input id="currentPlanPt" min="0" oninput="calcAll()" step="10" type="number" value="0"/>
+<input id="currentPlanPt" type="number" value="0" min="0" step="10" oninput="calcAll()">
 <div class="mini">My docomoなどで確認した「今のプランで毎月貯まるポイント」を手入力。</div>
 </div>
 <div class="summary">
 <div class="row"><span>現在プラン 年間</span><b id="currentPlanPtYear">0pt</b></div>
 </div>
 </div>
+
 <div class="summary">
 <div class="row"><span>選択プラン</span><b id="planName">ドコモ MAX</b></div>
 <div class="row"><span>データ量</span><b id="dataName">STEP 1：～1GB</b></div>
@@ -1167,6 +1080,7 @@ V16.3で確認した計算修正・開通後フロー修正・追加工事費・
 <div class="row"><span>毎月の料金</span><b class="monthly" id="monthlyPrice">5,698円</b></div>
 </div>
 </section>
+
 <section class="card">
 <div class="step">STEP 2</div><div class="title">割引・追加料金</div>
 <div class="grid">
@@ -1199,7 +1113,7 @@ V16.3で確認した計算修正・開通後フロー修正・追加工事費・
 <div><label>長期利用割</label><select id="longDisc" onchange="calcAll()"><option value="0">なし</option><option value="110">10年以上 −110円</option><option value="220">20年以上 −220円</option></select></div>
 <div><label>dカードお支払割 / 支払いカード</label>
 <select id="dcardPay" onchange="calcAll()">
-<option selected="" value="none">設定なし</option>
+<option value="none" selected>設定なし</option>
 <option value="silver">dカード（シルバー） −220円</option>
 <option value="goldu">dカード GOLD U −550円</option>
 <option value="gold">dカード GOLD −550円</option>
@@ -1208,8 +1122,9 @@ V16.3で確認した計算修正・開通後フロー修正・追加工事費・
 <div class="mini" id="dcardPayHint">支払いに設定するdカードを選択してください。</div>
 </div>
 <div><label>通話オプション</label><select id="voice" onchange="calcAll()"><option value="0">なし</option><option value="880">5分通話無料 ＋880円</option><option value="1980">かけ放題 ＋1,980円</option></select></div>
-<div><label>その他追加料金 / 月</label><input id="extra" min="0" onchange="calcAll()" oninput="calcAll()" step="100" type="number" value="0"/></div>
+<div><label>その他追加料金 / 月</label><input id="extra" type="number" value="0" min="0" step="100" oninput="calcAll()" onchange="calcAll()"></div>
 </div>
+
 <div class="summary">
 <div class="row"><span>基本料金</span><b id="billBase">5,698円</b></div>
 <div class="row"><span>dカード支払い</span><b id="billDcardPay">設定なし</b></div>
@@ -1232,77 +1147,81 @@ V16.3で確認した計算修正・開通後フロー修正・追加工事費・
 </div>
 <div class="note">dカードお支払割は、上の「支払いカード」で選択した場合のみ反映します。</div>
 </section>
+
 <section class="card">
 <div class="step">STEP 3</div><div class="title">カード利用・固定費</div>
 <div class="grid">
-<div><label>月間ショッピング利用額</label><input id="monthlySpend" min="0" oninput="calcAll()" step="1000" type="number" value="0"/></div>
-<div><label>年間ショッピング利用額</label><input id="annualSpend" min="0" oninput="calcAll()" step="10000" type="number" value="0"/></div>
-<div><label>ドコモ光 / 月（home 5G選択時はポイント計算0）</label><input id="hikariFee" min="0" oninput="calcAll()" step="100" type="number" value="0"/></div>
+<div><label>月間ショッピング利用額</label><input id="monthlySpend" type="number" value="0" min="0" step="1000" oninput="calcAll()"></div>
+<div><label>年間ショッピング利用額</label><input id="annualSpend" type="number" value="0" min="0" step="10000" oninput="calcAll()"></div>
+<div><label>ドコモ光 / 月（home 5G選択時はポイント計算0）</label><input id="hikariFee" type="number" value="0" min="0" step="100" oninput="calcAll()"></div>
 <div>
 <label>電気・ガスの入力方法</label>
 <select id="utilityMode" onchange="toggleUtilityMode();calcAll()">
-<option selected="" value="easy">かんたん入力（使用量だけ）</option>
-<option value="detail">詳細入力（検針票の対象額）</option>
+  <option value="easy" selected>かんたん入力（使用量だけ）</option>
+  <option value="detail">詳細入力（検針票の対象額）</option>
 </select>
 <div class="mini">検針票なしなら「かんたん入力」。電気はkWh、ガスは㎥だけで計算します。</div>
 </div>
 <div>
 <label>ドコモでんきプラン（関西）</label>
 <select id="denkiPlan" onchange="calcAll()">
-<option value="basic">Basic</option>
-<option selected="" value="green">Green</option>
+  <option value="basic">Basic</option>
+  <option value="green" selected>Green</option>
 </select>
 </div>
 <div>
 <label>適用時期</label>
 <select id="denkiEra" onchange="calcAll()">
-<option selected="" value="new">2026年11月検針分から（9月発表の改定後）</option>
+  <option value="new" selected>2026年11月検針分から（9月発表の改定後）</option>
 </select>
 </div>
 <div>
 <label>PLATINUM 改定後の最大還元期間</label>
 <select id="denkiIntro" onchange="calcAll()">
-<option selected="" value="no">該当しない</option>
-<option value="yes">該当する</option>
+  <option value="no" selected>該当しない</option>
+  <option value="yes">該当する</option>
 </select>
 <div class="mini" id="denkiIntroHint">11月検針分以降：入会後2か月目までが対象</div>
 </div>
 <div>
 <label>ドコモ ガス（大阪ガスエリア）</label>
 <select id="gasUse" onchange="calcAll()">
-<option selected="" value="no">利用しない</option>
-<option value="yes">利用する（まとめトク料金）</option>
+  <option value="no" selected>利用しない</option>
+  <option value="yes">利用する（まとめトク料金）</option>
 </select>
 <div class="mini">ドコモでんきとセットなら、でんきのポイント還元率に＋2%。</div>
 </div>
 <div id="utilityEasy">
 <div>
 <label>電気の使用量 / 月（kWh）</label>
-<input id="denkiKwh" min="0" oninput="calcAll()" step="1" type="number" value="0"/>
+<input id="denkiKwh" type="number" value="0" min="0" step="1" oninput="calcAll()">
 <div class="mini">関西 Mプランの最低料金＋電力量料金からポイント対象額を自動計算。</div>
 </div>
 <div>
 <label>ガスの使用量 / 月（㎥）</label>
-<input id="gasM3" min="0" oninput="calcAll()" step="1" type="number" value="0"/>
+<input id="gasM3" type="number" value="0" min="0" step="1" oninput="calcAll()">
 <div class="mini">まとめトク料金の使用量からガス料金を概算し、ポイントを試算します。</div>
 </div>
 </div>
 <div id="utilityDetail" style="display:none">
 <div>
 <label>ドコモでんき ポイント対象額 / 月（税込）</label>
-<input id="denkiFee" min="0" oninput="calcAll()" step="1" type="number" value="0"/>
+<input id="denkiFee" type="number" value="0" min="0" step="1" oninput="calcAll()">
 <div class="mini">検針票の「最低料金＋電力量料金」のみ。燃料費等調整額・再エネ賦課金は除外。</div>
 </div>
 <div>
 <label>ドコモ ガス ポイント対象額 / 月（税込）</label>
-<input id="gasFee" min="0" oninput="calcAll()" step="1" type="number" value="0"/>
+<input id="gasFee" type="number" value="0" min="0" step="1" oninput="calcAll()">
 <div class="mini">検針票のポイント対象となるガス料金を入力。</div>
 </div>
 </div>
 </div>
 </section>
+
+
 <section class="card">
 <div class="step">STEP 3B</div><div class="title">ドコモオプション・爆アゲ</div>
+
 <label>ケータイ料金還元の対象として加算するオプション</label>
 <div class="grid">
 <div><select id="phoneOpt1" onchange="calcAll()">
@@ -1338,6 +1257,7 @@ V16.3で確認した計算修正・開通後フロー修正・追加工事費・
 <option value="pack1012|1012">あんしんパック モバイル 1,012円</option>
 <option value="pack1287|1287">あんしんパック モバイル 1,287円</option>
 <option value="pack1562|1562">あんしんパック モバイル 1,562円</option>
+
 <option value="smartpack792|792">smartあんしんパック 792円～（330円補償時）</option>
 <option value="smartpack952|952">smartあんしんパック 952円～（490円補償時）</option>
 <option value="smartpack1012|1012">smartあんしんパック 1,012円～（550円補償時）</option>
@@ -1383,6 +1303,7 @@ V16.3で確認した計算修正・開通後フロー修正・追加工事費・
 <option value="pack1012|1012">あんしんパック モバイル 1,012円</option>
 <option value="pack1287|1287">あんしんパック モバイル 1,287円</option>
 <option value="pack1562|1562">あんしんパック モバイル 1,562円</option>
+
 <option value="smartpack792|792">smartあんしんパック 792円～（330円補償時）</option>
 <option value="smartpack952|952">smartあんしんパック 952円～（490円補償時）</option>
 <option value="smartpack1012|1012">smartあんしんパック 1,012円～（550円補償時）</option>
@@ -1428,6 +1349,7 @@ V16.3で確認した計算修正・開通後フロー修正・追加工事費・
 <option value="pack1012|1012">あんしんパック モバイル 1,012円</option>
 <option value="pack1287|1287">あんしんパック モバイル 1,287円</option>
 <option value="pack1562|1562">あんしんパック モバイル 1,562円</option>
+
 <option value="smartpack792|792">smartあんしんパック 792円～（330円補償時）</option>
 <option value="smartpack952|952">smartあんしんパック 952円～（490円補償時）</option>
 <option value="smartpack1012|1012">smartあんしんパック 1,012円～（550円補償時）</option>
@@ -1473,6 +1395,7 @@ V16.3で確認した計算修正・開通後フロー修正・追加工事費・
 <option value="pack1012|1012">あんしんパック モバイル 1,012円</option>
 <option value="pack1287|1287">あんしんパック モバイル 1,287円</option>
 <option value="pack1562|1562">あんしんパック モバイル 1,562円</option>
+
 <option value="smartpack792|792">smartあんしんパック 792円～（330円補償時）</option>
 <option value="smartpack952|952">smartあんしんパック 952円～（490円補償時）</option>
 <option value="smartpack1012|1012">smartあんしんパック 1,012円～（550円補償時）</option>
@@ -1518,6 +1441,7 @@ V16.3で確認した計算修正・開通後フロー修正・追加工事費・
 <option value="pack1012|1012">あんしんパック モバイル 1,012円</option>
 <option value="pack1287|1287">あんしんパック モバイル 1,287円</option>
 <option value="pack1562|1562">あんしんパック モバイル 1,562円</option>
+
 <option value="smartpack792|792">smartあんしんパック 792円～（330円補償時）</option>
 <option value="smartpack952|952">smartあんしんパック 952円～（490円補償時）</option>
 <option value="smartpack1012|1012">smartあんしんパック 1,012円～（550円補償時）</option>
@@ -1530,10 +1454,11 @@ V16.3で確認した計算修正・開通後フロー修正・追加工事費・
 <option value="smartpack1922|1922">smartあんしんパック 1,922円～（1,460円補償時）</option>
 <option value="smartpack2182|2182">smartあんしんパック 2,182円～（1,720円補償時）</option>
 </select></div>
-<div><label>その他対象オプション / 月</label><input id="phoneOptCustom" min="0" oninput="calcAll()" step="10" type="number" value="0"/></div>
+<div><label>その他対象オプション / 月</label><input id="phoneOptCustom" type="number" value="0" min="0" step="10" oninput="calcAll()"></div>
 </div>
 <div class="mini">最大5件まで選択可能。同じオプションを複数欄で選んでも1件分だけ加算。選択分は「ケータイ料金還元」に含めます。機種・契約条件で料金が変わるサービスは「その他対象オプション / 月」で補正できます。</div>
 <div class="mini"><b>通話オプション特典：</b>「5分通話無料オプション（880円）」または「かけ放題オプション（1,980円）」契約中は、留守番電話330円・キャッチホン220円が定額料割引で0円。STEP 2の通話オプション選択に連動して自動で0円計算します。</div>
+
 <label style="margin-top:6px">爆アゲ セレクション（最大5サービス）</label>
 <div class="grid">
 <div><select id="baku1" onchange="calcAll()">
@@ -1653,16 +1578,18 @@ V16.3で確認した計算修正・開通後フロー修正・追加工事費・
 </div>
 <div class="mini">爆アゲ対象サービスの月額料金は「通話・追加料金」に加算。爆アゲでもらえるdポイントは料金とは分けて「爆アゲ等還元」に表示します。</div>
 </section>
+
 <section class="card hidden" id="poiCard">
 <div class="step">STEP 4</div><div class="title">ポイ活 自動計算</div>
-<label>ポイ活対象決済額 / 月</label><input id="poiSpend" min="0" oninput="calcAll()" step="1000" type="number" value="0"/>
+<label>ポイ活対象決済額 / 月</label><input id="poiSpend" type="number" value="0" min="0" step="1000" oninput="calcAll()">
 <div class="summary" id="poiRule"></div>
 <div class="compare fourcards"><div class="box silver"><h3>dカード</h3><div class="net" id="silverPoiM">0pt / 月</div></div><div class="box goldu"><h3>GOLD U</h3><div class="net" id="golduPoiM">0pt / 月</div></div><div class="box gold"><h3>GOLD</h3><div class="net" id="goldPoiM">0pt / 月</div><div class="note" id="goldPoiRemain"></div><div class="progress"><i id="goldBar"></i></div></div><div class="box plat"><h3>PLATINUM</h3><div class="net" id="platPoiM">0pt / 月</div><div class="note" id="platPoiRemain"></div><div class="progress"><i id="platBar"></i></div></div></div>
 </section>
+
 <section class="card">
 <div class="step">STEP 4B</div><div class="title">ポイ活 ファミリー特典</div>
 <div class="grid">
-<div><label>対象回線数（手入力）</label><input id="poikatsuFamilyLines" max="10" min="0" oninput="calcAll()" step="1" type="number" value="0"/><div class="mini">一括請求グループ内の対象回線数。最大10回線。代表回線の見積でだけ入力してください。</div></div>
+<div><label>対象回線数（手入力）</label><input id="poikatsuFamilyLines" type="number" value="0" min="0" max="10" step="1" oninput="calcAll()"><div class="mini">一括請求グループ内の対象回線数。最大10回線。代表回線の見積でだけ入力してください。</div></div>
 </div>
 <div class="summary">
 <div class="row"><span>dカード</span><b id="familySilverPreview">0pt/月 ｜ 0pt/年</b></div><div class="row"><span>GOLD / GOLD U</span><b id="familyGoldPreview">0pt/月 ｜ 0pt/年</b></div>
@@ -1670,6 +1597,7 @@ V16.3で確認した計算修正・開通後フロー修正・追加工事費・
 </div>
 <div class="note">適用には一括請求グループ内に「ドコモ ポイ活 MAX」または対象のeximo ポイ活回線があり、対象回線が2回線以上あるなどの条件があります。人数は自動判定せず手動入力です。</div>
 </section>
+
 <section class="card">
 <div class="step">STEP 5</div><div class="title">ドコモの銀行</div>
 <div class="grid">
@@ -1678,19 +1606,23 @@ V16.3で確認した計算修正・開通後フロー修正・追加工事費・
 </div>
 <div class="note">初年度はGOLD＋1%、PLATINUM＋2%。2年目以降は月間ショッピング利用額に応じて上乗せ率を自動判定。各月3,000pt上限。</div>
 </section>
+
 <section class="card">
 <div class="step">STEP 6</div><div class="title">dカード積立（マネックス証券）</div><div class="note">PLATINUMは2026年12月決済分（2027年1月買付分）からの改定後条件で計算。最大3.1%の一律期間は入会月から2か月後まで。</div>
 <div class="grid">
 <div><label>積立方法</label><select id="monexType" onchange="calcAll()"><option value="none">利用しない</option><option value="nisa">NISA</option><option value="tax">課税口座</option><option value="both">NISA＋課税口座</option></select></div>
-<div><label>積立額 / 月</label><input id="monexAmt" max="100000" min="0" oninput="calcAll()" step="1000" type="number" value="0"/></div>
+<div><label>積立額 / 月</label><input id="monexAmt" type="number" value="0" min="0" max="100000" step="1000" oninput="calcAll()"></div>
 <div><label>PLATINUM利用年</label><select id="platYear" onchange="calcAll()"><option value="first">入会月から2か月後まで</option><option value="later">2年目以降</option></select></div>
 </div>
 <div class="note">積立額は月10万円までの概算。2026年12月決済分以降は、入会月から3か月後以降のPLATINUM還元率を月間ショッピング利用額に応じて判定します。</div>
 </section>
+
 <section class="card">
 <div class="step">STEP 7</div><div class="title">年間ご利用額特典</div><div class="note">家族カード利用分は本会員カードの年間利用額へ合算されます。家族カード単体には年間ご利用額特典を付けずに計算します。</div>
 <div class="summary"><div class="row"><span>年間ショッピング利用額</span><b id="annualSpendShow">0円</b></div><div class="row"><span>dカード 特典</span><b>対象外</b></div><div class="row"><span>GOLD U 特典</span><b>対象外</b></div><div class="row"><span>GOLD 特典</span><b id="goldBenefit">0円</b></div><div class="row"><span>PLATINUM 特典</span><b id="platBenefit">0円</b></div><div class="row"><span>次のPLATINUM特典まで</span><b id="nextBenefit">—</b></div></div>
 </section>
+
+
 </div>
 <div class="resultpane">
 <section class="card">
@@ -1749,15 +1681,23 @@ V16.3で確認した計算修正・開通後フロー修正・追加工事費・
 <div class="row payment-discount-row"><span>dカードお支払割 年間お得額</span><b id="platPayDiscountY">0円</b></div><div class="row payment-discount-row"><span>家族分 お支払割 年間お得額</span><b id="platFamilyPayDiscountY">0円</b></div><div class="row payment-discount-row family-total-row"><span>世帯のお支払割 合計</span><b id="platHouseholdPayDiscountY">0円</b></div><div class="row"><span>年会費</span><b id="platAnnualFee">−29,700円</b></div></div></div>
 <div class="status" id="status">✓ 初期計算済み</div><div class="note">※提案用の概算シミュレーターです。実際の進呈条件・対象外取引・キャンペーン等は公式条件をご確認ください。</div>
 </section>
+
+
 </div>
-<div class="reset-wrap"><button class="reset-btn" onclick="resetEstimate()" type="button">見積書をすべてリセット</button></div>
+
+
+
+<div class="reset-wrap"><button type="button" class="reset-btn" onclick="resetEstimate()">見積書をすべてリセット</button></div>
 </div>
+
+
 <section class="public-footer">
-<b>ご利用前にご確認ください</b><br/>
+<b>ご利用前にご確認ください</b><br>
 このシミュレーターは料金・ポイント等の目安を確認するための概算ツールです。
 実際の請求額、ポイント進呈、割引・キャンペーンの適用可否は、契約内容や適用条件、時期などにより異なる場合があります。
 最終的な条件はNTTドコモ・dカード等の公式案内をご確認ください。本版は2026年9月1日に発表された改定後条件を基準にしています。通常dカードの2027年1月以降の通常決済還元率・年会費など、施行時期がさらに先の項目は別途表示・更新が必要になる場合があります。入力した内容を送信するための氏名・電話番号・メールアドレス等の入力欄は設けていません。
 </section>
+
 <script>
 function g(id){return document.getElementById(id);}
 function num(id){
@@ -2920,7 +2860,6 @@ function initFamilyV115(){
 }
 
 
-initHikariQuoteDate();
 planChanged();
 toggleUtilityMode();
 initFamilyV115();
@@ -3558,8 +3497,7 @@ function hikariOptionsCalc(){
   if(sv==="select5")sky=1980+429;
   if(sv==="select10")sky=2860+429;
   if(sv==="single")sky=408+429;
-  var routerRental=(g("hikariRouterRental")&&g("hikariRouterRental").checked)?550:0;
-  return {phone:phone,phoneAddons:addons.total,phoneAddonRows:addons.rows,tv:tv,sky:sky,routerRental:routerRental,total:phone+addons.total+tv+sky+routerRental};
+  return {phone:phone,phoneAddons:addons.total,phoneAddonRows:addons.rows,tv:tv,sky:sky,total:phone+addons.total+tv+sky};
 }
 function hikariOptionLabels(){
   function txt(id){
@@ -3590,54 +3528,22 @@ function renderHikariExtras(){
   }
   var flow=g("hikariFlowGuide");
   if(flow){
-    var apply=hv("hikariApplyType");
-    var product='ドコモ光 '+esc(hv("hikariSpeed")==="10g"?"10ギガ":"1ギガ")+'（'+esc(hv("hikariHouse")==="house"?"戸建":"マンション")+'・タイプ'+esc(hv("hikariType"))+'・'+esc(hikariApplyLabel())+'）';
-    var today=new Date();
-    var done=today.getFullYear()+"年"+(today.getMonth()+1)+"月"+today.getDate()+"日";
-    var rows;
-    if(apply==="new"){
-      rows=[
-        ["01","▤","お申込み","本日、店頭でお手続きが完了しました。","完了",done],
-        ["02","✉","必要書類のお受け取り","開通のご案内が届きます。あわせて後日、工事日を決めるお電話がありますので、ご都合のよい日をお伝えください。","予定日","月　日"],
-        ["03","◆","ルーターのご準備","ご購入の10ギガ対応ルーターを、工事日までにご用意ください。","予定日","月　日"],
-        ["04","●","開通工事（立ち会い）","ご自宅で工事を行います。立ち会いをお願いします。","予定日","月　日"],
-        ["05","⌁","ルーターの接続・設定","ルーターをつなぎ、インターネットが使えるように設定します。","予定日","月　日"],
-        ["06","▰","ご利用開始","工事完了後、インターネットをご利用いただけます。","予定日","月　日"],
-        ["07","▯","いまの回線の解約","開通・利用開始を確認してから、現在の回線の解約手続きをしてください。","予定日","月　日"]
-      ];
-    }else{
-      var src=hikariFlowSteps();
-      var ico=["▤","✉","◆","●","⌁","▰","▯"];
-      rows=src.map(function(x,i){return [String(i+1).padStart(2,"0"),ico[i]||"✓",x[1],x[2],i===0?"完了":"予定日",i===0?done:"月　日"]});
-    }
-    flow.innerHTML='<div class="hf-flow-sheet"><div class="hf-flow-title"><span class="hf-gear">⚙</span><div><h2>開通の流れ</h2><p>お申込みからご利用開始までのステップ</p></div></div><div class="hf-product"><span>⌂</span>'+product+'</div><div class="hf-flow-list">'+
-      rows.map(function(r,i){return '<div class="hf-flow-row"><div class="hf-flow-rail"><b class="'+(i===0?'first':'')+'">'+r[0]+'</b>'+(i<rows.length-1?'<i></i><em>▼</em>':'')+'</div><div class="hf-flow-icon">'+r[1]+'</div><div class="hf-flow-copy"><h3>'+esc(r[2])+'</h3><p>'+esc(r[3])+'</p></div><div class="hf-flow-date '+(i===0?'done':'')+'"><span>'+r[4]+'</span><b>'+r[5]+'</b></div></div>';}).join('')+
-      '</div><div class="hf-flow-tip"><b>💡 ワンポイント</b><span>タイプCへ切り替える場合や、テレビ・電話の解約がある場合は、ネットが使えない期間が発生することがあります。詳細はスタッフまで。</span></div><div class="hf-flow-actions"><button type="button" onclick="document.querySelector(\'.hikari-nav a[href=\\\'#hikariQuotePreview\\\']\').click()">‹ 見積書に戻る</button><button class="primary" type="button" onclick="printHikariQuote()">▣ この流れをPDFで保存 / 印刷</button></div></div>';
+    var icons=["🏬","📩","📦","🛠️","📶","💻","☎️","🧾","✅"];
+    var timings=["本日","7〜10日後","工事日まで","2週間〜1か月後","工事の当日","工事の当日から","開通の確認後","解約金の請求後","翌月以降"];
+    flow.innerHTML='<div class="hikari-step-sheet"><div class="hikari-product-pill">ドコモ光 '+esc(hv("hikariSpeed")==="10g"?"10ギガ":"1ギガ")+'（'+esc(hv("hikariHouse")==="house"?"戸建":"マンション")+'・タイプ'+esc(hv("hikariType"))+'・'+esc(hikariApplyLabel())+'）</div>'+
+      hikariFlowSteps().map(function(x,i){
+        return '<div class="hikari-step-row"><div class="hikari-step-icon">'+(icons[i]||"✓")+'</div><div><span class="hikari-step-badge">STEP '+esc(x[0])+'</span><span class="hikari-step-timing">'+esc(timings[i]||"")+'</span><div class="hikari-step-name">'+esc(x[1])+'</div><div class="hikari-step-desc">'+esc(x[2])+'</div></div><div class="hikari-datebox">予定日<div class="line">月　 日</div></div></div>';
+      }).join("")+'</div>';
   }
 }
 
 
-function hikariConstructionFee(){
-  var el=g("hikariConstruction");
-  if(!el||el.selectedIndex<0)return 0;
-  var op=el.options[el.selectedIndex];
-  var fee=parseInt(op.getAttribute("data-fee")||"0",10);
-  return isNaN(fee)?0:fee;
-}
-function hikariConstructionNeedsCheck(){
-  var el=g("hikariConstruction");
-  if(!el||el.selectedIndex<0)return false;
-  return el.options[el.selectedIndex].getAttribute("data-verify")==="1";
-}
 function hikariConstructionCalc(){
-  var net=hikariConstructionFee();
+  var net=hn("hikariConstruction");
   var phone=hn("hikariPhoneConstruction");
   var tv=hn("hikariTvConstruction");
   var admin=hn("hikariAdminFee"), additional=hn("hikariAdditionalConstruction");
-  var routerPurchase=(g("hikariRouterPurchase")&&g("hikariRouterPurchase").checked)?hn("hikariRouterPrice"):0;
-  var weekend=(g("hikariWeekendWork")&&g("hikariWeekendWork").checked)?3300:0;
-  var reuseFee=(g("hikariReuseFee")&&g("hikariReuseFee").checked)?6600:0;
-  return {net:net,phone:phone,tv:tv,admin:admin,additional:additional,routerPurchase:routerPurchase,weekend:weekend,reuseFee:reuseFee,total:net+phone+tv+admin+additional+routerPurchase+weekend+reuseFee,needsCheck:hikariConstructionNeedsCheck()};
+  return {net:net,phone:phone,tv:tv,admin:admin,additional:additional,total:net+phone+tv+admin+additional};
 }
 function hikariSelectText(id){
   var el=g(id);
@@ -3647,15 +3553,12 @@ function renderHikariConstructionSummary(){
   var box=g("hikariConstructionSummary"); if(!box)return;
   var c=hikariConstructionCalc();
   box.innerHTML='<div class="kpi">'+
-    '<div><span>ネット工事</span><b>'+(c.needsCheck?'要確認':esc(signedYen(c.net)))+'</b></div>'+
+    '<div><span>ネット工事</span><b>'+esc(signedYen(c.net))+'</b></div>'+
     '<div><span>光電話工事</span><b>'+esc(signedYen(c.phone))+'</b></div>'+
     '<div><span>テレビ工事</span><b>'+esc(signedYen(c.tv))+'</b></div>'+
     '<div><span>事務手数料</span><b>'+esc(signedYen(c.admin))+'</b></div>'+
-    '<div><span>土日・休日追加</span><b>'+esc(signedYen(c.weekend||0))+'</b></div>'+
-    '<div><span>光回線再利用手続費</span><b>'+esc(signedYen(c.reuseFee||0))+'</b></div>'+
     '<div><span>追加工事等</span><b>'+esc(signedYen(c.additional))+'</b></div>'+
-    '<div><span>10Gルーター購入</span><b>'+esc(signedYen(c.routerPurchase||0))+'</b></div>'+
-    '<div><span>初期費用 合計</span><b>'+(c.needsCheck?'要確認（確定済み分 '+esc(signedYen(c.total))+ '）':esc(signedYen(c.total)))+'</b></div>'+
+    '<div><span>初期費用 合計</span><b>'+esc(signedYen(c.total))+'</b></div>'+
     '</div>'+
     '<div class="mini" style="margin-top:7px">※テレビ5台以上、追加配線、特殊工事、電話の追加工事などは別途費用が発生する場合があります。</div>';
 }
@@ -3697,13 +3600,12 @@ function hikariProposalCalc(){
   var exit=hn("hikariCancelFee")+hn("hikariOldConstruction")+hn("hikariRemoval")+hn("hikariOtherCost");
   var construction=hikariConstructionCalc();
   var start=construction.total;
-  var constructionPoint=(g("hikariConstructionPointAuto")&&g("hikariConstructionPointAuto").checked&&hv("hikariApplyType")==="new"&&!construction.needsCheck)?construction.net:0;
-  var benefit=hn("hikariBenefits")+constructionPoint;
+  var benefit=hn("hikariBenefits");
   var monthlyBenefit=oldM-newM+fam.monthly;
   return {oldM:oldM,newM:newM,baseM:base,options:opt.total,familyMonthly:fam.monthly,familyYearly:fam.yearly,
           monthlyDiff:monthlyBenefit,exit:exit,start:start,benefit:benefit,
           netConstruction:construction.net,phoneConstruction:construction.phone,tvConstruction:construction.tv,adminFee:construction.admin,additionalConstruction:construction.additional,
-          initialNet:exit+start-benefit,yearDiff:monthlyBenefit*12-(exit+start-benefit),constructionNeedsCheck:construction.needsCheck};
+          initialNet:exit+start-benefit,yearDiff:monthlyBenefit*12-(exit+start-benefit)};
 }
 
 function hikariAfterFlowSteps(){
@@ -3764,46 +3666,23 @@ function renderHikariAfterFlow(){
   }).join("");
 }
 
-function hikariQuoteDateValue(){
-  var el=g("hikariQuoteDate");
-  if(el&&el.value)return el.value;
-  var d=new Date();
-  function z(n){return String(n).padStart(2,"0")}
-  return d.getFullYear()+"-"+z(d.getMonth()+1)+"-"+z(d.getDate());
-}
-function hikariQuoteDateText(){
-  var v=hikariQuoteDateValue(), m=v.match(/^(\d{4})-(\d{2})-(\d{2})$/);
-  return m ? Number(m[1])+"年"+Number(m[2])+"月"+Number(m[3])+"日" : v;
-}
-function setHikariQuoteDateToday(){
-  var el=g("hikariQuoteDate"); if(!el)return;
-  var d=new Date(); function z(n){return String(n).padStart(2,"0")}
-  el.value=d.getFullYear()+"-"+z(d.getMonth()+1)+"-"+z(d.getDate());
-  updateHikariPreview();
-}
-function initHikariQuoteDate(){
-  var el=g("hikariQuoteDate"); if(!el||el.value)return;
-  var d=new Date(); function z(n){return String(n).padStart(2,"0")}
-  el.value=d.getFullYear()+"-"+z(d.getMonth()+1)+"-"+z(d.getDate());
-}
-
 function renderHikariQuotePreview(){
   var box=g("hikariQuotePreviewInner"); if(!box)return;
-  var c=hikariProposalCalc(), fam=hikariFamilyCalc(), o=hikariOptionsCalc();
+  var c=hikariProposalCalc(), fam=hikariFamilyCalc(), o=hikariOptionsCalc(), labels=hikariOptionLabels();
   var customer=(hv("hikariCustomer")||"").trim()||"お客様";
   var oldName=hikariOldCarrierName()||"現在の回線";
-  var ds=hikariQuoteDateText();
+  var d=new Date(), ds=d.getFullYear()+"年"+(d.getMonth()+1)+"月"+d.getDate()+"日";
   var monthlyNet=Math.max(0,c.newM-fam.monthly);
-  var plan="ドコモ光 "+(hv("hikariSpeed")==="10g"?"10ギガ":"1ギガ")+"（"+(hv("hikariHouse")==="house"?"戸建":"マンション")+"・タイプ"+hv("hikariType")+"）";
-  box.innerHTML='<div class="hikari-sheet modern">'+
-    '<div class="hm-titlebar"><div class="hm-title"><span class="ico">▤</span>お見積書</div><div class="hm-date">作成日 '+esc(ds)+'</div></div><div class="hm-thanks">'+esc(customer)+' 様　｜　下記の内容でお見積りいたします。</div>'+
-    '<div class="hm-kpis"><div class="hm-kpi"><small>月額料金目安<br>セット割反映後</small><b>'+esc(signedYen(monthlyNet))+'</b></div><div class="hm-kpi"><small>初期費用<br>工事・事務手数料等</small><b>'+esc(signedYen(c.start))+'</b></div><div class="hm-kpi"><small>dポイント・特典<br>入力合計</small><b>'+esc((c.benefit||0).toLocaleString())+'pt</b></div></div>'+
-    '<div class="hm-section"><h3>⌂ ご契約内容</h3><table class="hm-table"><tbody><tr><th>商材</th><td>'+esc(plan)+'</td></tr><tr><th>お申込み区分</th><td>'+esc(hikariApplyLabel())+'</td></tr><tr><th>現在の回線</th><td>'+esc(oldName)+'</td></tr></tbody></table></div>'+
-    '<div class="hm-section"><h3>¥ 月額内訳</h3><table class="hm-table"><tbody><tr><th>ドコモ光 基本料金</th><td>'+esc(signedYen(c.baseM))+'</td></tr><tr><th>オプション</th><td>'+esc(signedYen(o.total))+'</td></tr><tr><th>ドコモ光セット割</th><td>-'+esc(signedYen(fam.monthly))+'</td></tr><tr class="total"><th>月額合計目安</th><td>'+esc(signedYen(monthlyNet))+'</td></tr></tbody></table></div>'+
-    '<div class="hm-two"><div class="hm-section"><h3>● 初期費用</h3><table class="hm-table"><tbody><tr><th>契約事務手数料</th><td>'+esc(signedYen(c.adminFee))+'</td></tr><tr><th>ネット工事費</th><td>'+esc(signedYen(c.netConstruction))+'</td></tr><tr><th>電話・テレビ・追加工事</th><td>'+esc(signedYen(c.phoneConstruction+c.tvConstruction+c.additionalConstruction))+'</td></tr><tr class="total"><th>初期費用合計</th><td>'+esc(signedYen(c.start))+'</td></tr></tbody></table></div>'+
-    '<div class="hm-section"><h3>🎁 特典・お得額</h3><table class="hm-table"><tbody><tr><th>ドコモ側 還元・特典</th><td>'+esc(signedYen(c.benefit))+'</td></tr><tr><th>家族セット割 年間</th><td>'+esc(signedYen(fam.yearly))+'</td></tr><tr class="total"><th>1年間のお得度目安</th><td>'+esc(signedYen(c.yearDiff))+'</td></tr></tbody></table></div></div>'+
-    '<div class="hm-note">※表示金額は入力内容から算出した目安です。実際の請求額・工事費・特典進呈条件は申込時点の公式条件をご確認ください。</div>'+
-    '<div class="hm-actions"><button class="primary" type="button" onclick="printHikariQuote()">▣ この見積書をPDF保存 / 印刷</button><button class="secondary" type="button" onclick="document.querySelectorAll(\'.hikari-nav a\')[0].click()">見積もりに戻る</button></div></div>';
+  box.innerHTML='<div class="hikari-sheet">'+
+    '<div class="hikari-sheet-title">お 見 積 書</div><div class="hikari-rule"></div><div class="hikari-sheet-date">作成日：'+esc(ds)+'　｜　'+esc(customer)+'</div>'+
+    '<div class="hikari-kpis"><div class="hikari-kpi"><span>通常時お支払い目安</span><b>'+esc(signedYen(monthlyNet))+'</b></div><div class="hikari-kpi"><span>初期費用</span><b>'+esc(signedYen(c.start))+'</b></div><div class="hikari-kpi wide"><span>dポイント・特典 合計</span><b>'+esc((hn("hikariBenefits")||0).toLocaleString())+'pt</b></div></div>'+
+    '<div class="hikari-sec-title">ご契約内容</div><table><tbody>'+
+    '<tr><th>お申込み区分</th><td>'+esc(hikariApplyLabel())+'</td></tr><tr><th>ドコモ光</th><td>'+esc(hv("hikariSpeed")==="10g"?"10ギガ":"1ギガ")+' / '+esc(hv("hikariHouse")==="house"?"戸建":"マンション")+' / タイプ'+esc(hv("hikariType"))+'</td></tr>'+
+    '<tr><th>現在の回線</th><td>'+esc(oldName)+'　'+esc(signedYen(c.oldM))+'/月</td></tr></tbody></table>'+
+    '<div class="hikari-sec-title">月額内訳</div><table><tbody><tr><th>ドコモ光 基本料金</th><td class="num">'+esc(signedYen(c.baseM))+'</td></tr><tr><th>オプション</th><td class="num">'+esc(signedYen(o.total))+'</td></tr><tr><th>ドコモ光セット割</th><td class="num">-'+esc(signedYen(fam.monthly))+'</td></tr><tr><th class="strong">月額合計目安</th><td class="num strong">'+esc(signedYen(monthlyNet))+'</td></tr></tbody></table>'+
+    '<div class="hikari-sec-title">初期費用</div><table><tbody><tr><th>契約事務手数料</th><td class="num">'+esc(signedYen(c.adminFee))+'</td></tr><tr><th>ネット工事費</th><td class="num">'+esc(signedYen(c.netConstruction))+'</td></tr><tr><th>電話・テレビ・追加工事</th><td class="num">'+esc(signedYen(c.phoneConstruction+c.tvConstruction+c.additionalConstruction))+'</td></tr><tr><th class="strong">初期費用合計</th><td class="num strong">'+esc(signedYen(c.start))+'</td></tr></tbody></table>'+
+    '<div class="hikari-sec-title">特典・その他</div><table><tbody><tr><th>ドコモ側 還元・特典</th><td class="num">'+esc(signedYen(c.benefit))+'</td></tr><tr><th>家族セット割 年間</th><td class="num">'+esc(signedYen(fam.yearly))+'</td></tr><tr><th>1年間のお得度目安</th><td class="num strong">'+esc(signedYen(c.yearDiff))+'</td></tr></tbody></table>'+
+    '<div class="mini" style="margin-top:14px">※実際の請求額・工事費・特典進呈条件は契約内容と申込時点の公式条件をご確認ください。</div></div>';
 }
 
 function renderHikariTransferSheet(){
@@ -3811,18 +3690,13 @@ function renderHikariTransferSheet(){
   var c=hikariProposalCalc(), fam=hikariFamilyCalc(), labels=hikariOptionLabels();
   var oldName=hikariOldCarrierName()||"未選択";
   var d=new Date(), ds=d.getFullYear()+"年"+(d.getMonth()+1)+"月"+d.getDate()+"日";
-  var customer=hv("hikariCustomer")||"";
-  var plan="ドコモ光 "+(hv("hikariSpeed")==="10g"?"10ギガ":"1ギガ");
-  var opts=[labels.phone,labels.tv,labels.sky].filter(function(x){return x&&!/利用しない/.test(x)}).join(" / ")||"なし";
-  box.innerHTML='<div class="hikari-sheet modern"><div class="hm-titlebar"><div class="hm-title"><span class="ico">●</span>登録スタッフ引き継ぎシート</div><div class="hm-date">作成日 '+esc(ds)+'</div></div>'+
-  '<div class="hm-thanks">お客様情報・ご契約内容をスタッフ間で共有するためのシートです。</div>'+
-  '<div class="hm-section"><h3>● お客様情報</h3><table class="hm-table"><tbody><tr><th>お客様名</th><td>'+esc(customer||"例）山田様")+'</td></tr><tr><th>ご連絡先</th><td></td></tr><tr><th>ご住所</th><td></td></tr></tbody></table></div>'+
-  '<div class="hm-section"><h3>▤ ご契約内容</h3><table class="hm-table"><tbody><tr><th>サービス</th><td>'+esc(plan)+'</td></tr><tr><th>申込区分</th><td>'+esc(hikariApplyLabel())+'</td></tr><tr><th>住居タイプ</th><td>'+esc(hv("hikariHouse")==="house"?"戸建":"マンション")+'</td></tr><tr><th>プロバイダ</th><td>タイプ'+esc(hv("hikariType"))+'</td></tr><tr><th>オプション</th><td>'+esc(opts)+'</td></tr></tbody></table></div>'+
-  '<div class="hm-section"><h3>⌁ 現在のご利用回線（ヒアリング）</h3><table class="hm-table"><tbody><tr><th>ネット</th><td>'+esc(oldName)+'</td></tr><tr><th>電話</th><td>'+esc(labels.phone)+'</td></tr><tr><th>テレビ</th><td>'+esc(labels.tv)+'</td></tr></tbody></table></div>'+
-  '<div class="hm-section"><h3>¥ 料金・特典</h3><table class="hm-table"><tbody><tr><th>月額基本料金</th><td>'+esc(signedYen(c.baseM))+'</td></tr><tr><th>月額合計目安</th><td>'+esc(signedYen(c.newM))+'</td></tr><tr><th>初期費用合計</th><td>'+(c.constructionNeedsCheck?'要確認（確定済み '+esc(signedYen(c.start))+'）':esc(signedYen(c.start)))+'</td></tr><tr><th>dポイント・特典 入力合計</th><td>'+esc((c.benefit||0).toLocaleString())+'pt</td></tr></tbody></table></div>'+
-  '<div class="hm-section"><h3>✎ 備考</h3><div style="min-height:76px;border:1px solid #d8dde3;border-radius:8px;padding:10px">'+esc(hv("hikariProposalMemo")||hv("hikariStaffMemo")||"")+'</div></div>'+
-  '<div class="hm-section"><h3>● 登録スタッフ</h3><table class="hm-table"><tbody><tr><th>登録日</th><td>　　年　月　日</td></tr><tr><th>担当者</th><td></td></tr><tr><th>引き継ぎ先</th><td></td></tr></tbody></table></div>'+
-  '<div class="hm-actions"><button class="primary" type="button" onclick="printHikariQuote()">▣ このシートをPDF保存 / 印刷</button></div></div>';
+  box.innerHTML='<div class="hikari-handover-title">登 録 ス タ ッ フ 引 き 継 ぎ シ ー ト</div><div class="hikari-rule"></div><div class="hikari-sheet-date">作成日：'+esc(ds)+'</div>'+
+  '<div class="hikari-sec-title">現在の固定回線（ヒアリング）</div><table><tbody><tr><th>お使いの回線</th><td><b>'+esc(oldName)+'</b>　月額 '+esc(signedYen(c.oldM))+'</td></tr></tbody></table>'+
+  '<div class="hikari-sec-title">ご契約内容</div><table><tbody><tr><th>商材</th><td>ドコモ光 '+esc(hv("hikariSpeed")==="10g"?"10ギガ":"1ギガ")+'</td></tr><tr><th>申込区分</th><td>'+esc(hikariApplyLabel())+'</td></tr><tr><th>住居タイプ</th><td>'+esc(hv("hikariHouse")==="house"?"戸建":"マンション")+'</td></tr><tr><th>プロバイダ</th><td>タイプ'+esc(hv("hikariType"))+'</td></tr><tr><th>月額基本料</th><td>'+esc(signedYen(c.baseM))+'</td></tr><tr><th>QR（スマホで読み取り）</th><td><span class="hikari-qr-placeholder">申込QR</span><div class="mini">申込ページ案内用</div></td></tr></tbody></table>'+
+  '<div class="hikari-sec-title">お申込みオプション</div><table><tbody><tr><th>光電話</th><td>'+esc(labels.phone)+'</td></tr><tr><th>テレビ</th><td>'+esc(labels.tv)+'</td></tr><tr><th>スカパー！</th><td>'+esc(labels.sky)+'</td></tr></tbody></table>'+
+  '<div class="hikari-sec-title">工事・初期費用</div><table><tbody><tr><th>契約事務手数料</th><td>'+esc(signedYen(c.adminFee))+'</td></tr><tr><th>工事費合計</th><td>'+esc(signedYen(c.netConstruction+c.phoneConstruction+c.tvConstruction+c.additionalConstruction))+'</td></tr><tr><th>初期費用合計</th><td class="strong">'+esc(signedYen(c.start))+'</td></tr></tbody></table>'+
+  '<div class="hikari-sec-title">特典・その他</div><table><tbody><tr><th>セット割</th><td>'+fam.n+'回線 / 月額 '+esc(signedYen(fam.monthly))+'</td></tr><tr><th>ドコモ側 還元・特典</th><td>'+esc(signedYen(c.benefit))+'</td></tr></tbody></table>'+
+  '<div class="hikari-sec-title">登録スタッフ記入欄</div><table><tbody><tr><th>登録日</th><td style="height:42px"></td></tr><tr><th>登録担当</th><td></td></tr><tr><th>備考</th><td>'+esc(hv("hikariProposalMemo")||hv("hikariStaffMemo")||"")+'</td></tr></tbody></table></div>';
 }
 
 function updateHikariPreview(){
@@ -3844,27 +3718,17 @@ function updateHikariPreview(){
 function hikariPrintPages(customer){
   var out="", c=hikariProposalCalc(), steps=hikariFlowSteps();
   if(hc("hikariPdfFlow")){
-    var apply=hv("hikariApplyType"), today=new Date(), done=today.getFullYear()+"年"+(today.getMonth()+1)+"月"+today.getDate()+"日", rows;
-    if(apply==="new") rows=[
-      ["01","▤","お申込み","本日、店頭でお手続きが完了しました。","完了",done],
-      ["02","✉","必要書類のお受け取り","開通のご案内が届きます。あわせて後日、工事日を決めるお電話がありますので、ご都合のよい日をお伝えください。","予定日","月　日"],
-      ["03","◆","ルーターのご準備","ご購入の10ギガ対応ルーターを、工事日までにご用意ください。","予定日","月　日"],
-      ["04","●","開通工事（立ち会い）","ご自宅で工事を行います。立ち会いをお願いします。","予定日","月　日"],
-      ["05","⌁","ルーターの接続・設定","ルーターをつなぎ、インターネットが使えるように設定します。","予定日","月　日"],
-      ["06","▰","ご利用開始","工事完了後、インターネットをご利用いただけます。","予定日","月　日"],
-      ["07","▯","いまの回線の解約","開通・利用開始を確認してから、現在の回線の解約手続きをしてください。","予定日","月　日"]
-    ]; else {
-      var ico=["▤","✉","◆","●","⌁","▰","▯"]; rows=steps.map(function(x,i){return [String(i+1).padStart(2,"0"),ico[i]||"✓",x[1],x[2],i===0?"完了":"予定日",i===0?done:"月　日"]});
-    }
-    var product='ドコモ光 '+(hv("hikariSpeed")==="10g"?"10ギガ":"1ギガ")+'（'+(hv("hikariHouse")==="house"?"戸建":"マンション")+'・タイプ'+hv("hikariType")+'・'+hikariApplyLabel()+'）';
-    out+='<section class="print-page hf-print-flow"><div class="hf-print-flow-head"><h2>開通の流れ</h2><div>お申込みからご利用開始までのステップ</div></div><div class="hf-print-product">⌂ '+esc(product)+'</div><div class="hf-print-flow-list">';
-    rows.forEach(function(r,i){out+='<div class="hf-print-flow-row"><div class="hf-print-num '+(i===0?'first':'')+'">'+r[0]+'</div><div class="hf-print-ico">'+r[1]+'</div><div class="hf-print-copy"><b>'+esc(r[2])+'</b><span>'+esc(r[3])+'</span></div><div class="hf-print-date '+(i===0?'done':'')+'"><small>'+esc(r[4])+'</small><b>'+esc(r[5])+'</b></div></div>';});
-    out+='</div><div class="hf-print-tip"><b>ワンポイント</b><span>タイプCへ切り替える場合や、テレビ・電話の解約がある場合は、ネットが使えない期間が発生することがあります。詳細はスタッフまで。</span></div><h2 class="print-section-title">開通前チェック</h2>'+
+    out+='<section class="print-page"><div class="hikari-print-hero"><h2>ドコモ光 開通までの流れ</h2>'+
+      '<div>'+esc(customer)+'　｜　'+esc(hikariApplyLabel())+'　｜　ドコモ光 '+esc(hv("hikariSpeed")==="10g"?"10ギガ":"1ギガ")+
+      '　｜　'+esc(hv("hikariHouse")==="house"?"戸建":"マンション")+'　｜　タイプ'+esc(hv("hikariType"))+'</div></div>'+
+      '<div class="flow-steps">';
+    steps.forEach(function(x){out+='<div class="flow-step"><b>STEP '+esc(x[0])+'<br>'+esc(x[1])+'</b>'+esc(x[2])+'</div>';});
+    out+='</div><h2 class="print-section-title">開通前チェック</h2>'+
       '<table class="print-breakdown"><tbody>'+
       '<tr><td>申込区分</td><td>'+esc(hikariApplyLabel())+'</td><td>速度</td><td>'+esc(hv("hikariSpeed")==="10g"?"10ギガ":"1ギガ")+'</td></tr>'+
-      '<tr><td>契約事務手数料</td><td class="num">'+esc(signedYen(hn("hikariAdminFee")))+'</td><td>ネット工事費</td><td class="num">'+esc(signedYen(hikariConstructionFee()))+'</td></tr>'+
+      '<tr><td>契約事務手数料</td><td class="num">'+esc(signedYen(hn("hikariAdminFee")))+'</td><td>ネット工事費</td><td class="num">'+esc(signedYen(hn("hikariConstruction")))+'</td></tr>'+
       '<tr><td>光電話工事費</td><td class="num">'+esc(signedYen(hn("hikariPhoneConstruction")))+'</td><td>テレビ工事費</td><td class="num">'+esc(signedYen(hn("hikariTvConstruction")))+'</td></tr>'+
-      '<tr><td>追加工事費等</td><td class="num">'+esc(signedYen(hn("hikariAdditionalConstruction")+hikariConstructionCalc().weekend+hikariConstructionCalc().reuseFee+hikariConstructionCalc().routerPurchase))+'</td><td>初期費用合計</td><td class="num">'+(hikariConstructionCalc().needsCheck?'要確認（確定済み分 '+esc(signedYen(hikariConstructionCalc().total))+'）':esc(signedYen(hikariConstructionCalc().total)))+'</td></tr>'+
+      '<tr><td>追加工事費等</td><td class="num">'+esc(signedYen(hn("hikariAdditionalConstruction")))+'</td><td>初期費用合計</td><td class="num">'+esc(signedYen(hikariConstructionCalc().total))+'</td></tr>'+
       '<tr><td>確認メモ</td><td colspan="3">'+esc(hv("hikariProposalMemo")||"—")+'</td></tr>'+
       '</tbody></table>'+
       (hv("hikariType")==="C"?'<div class="print-note"><b>タイプCの転用：</b>ドコモ光タイプC提携CATVの光インターネットをご利用中の場合、他社CATVからでも転用で切替可能です。原則工事不要・提携CATVのネット解約金不要で、テレビ・電話サービスはCATV契約のまま継続できます。利用状況により工事が必要な場合があります。</div>':'')+
@@ -3883,7 +3747,7 @@ function hikariPrintPages(customer){
       '<tr><td>撤去費</td><td class="num">'+esc(signedYen(hn("hikariRemoval")))+'</td></tr>'+
       '<tr><td>その他乗り換え費用</td><td class="num">'+esc(signedYen(hn("hikariOtherCost")))+'</td></tr>'+
       '<tr><td>ドコモ光 契約事務手数料</td><td class="num">'+esc(signedYen(hn("hikariAdminFee")))+'</td></tr>'+
-      '<tr><td>ドコモ光 ネット工事料</td><td class="num">'+esc(signedYen(hikariConstructionFee()))+'</td></tr>'+
+      '<tr><td>ドコモ光 ネット工事料</td><td class="num">'+esc(signedYen(hn("hikariConstruction")))+'</td></tr>'+
       '<tr><td>ドコモ光電話 工事料</td><td class="num">'+esc(signedYen(hn("hikariPhoneConstruction")))+'</td></tr>'+
       '<tr><td>ドコモ光テレビオプション 工事料</td><td class="num">'+esc(signedYen(hn("hikariTvConstruction")))+'</td></tr>'+
       '<tr><td>ドコモ側 還元・特典</td><td class="num">'+esc(signedYen(-hn("hikariBenefits")))+'</td></tr>'+
@@ -4063,7 +3927,7 @@ function buildHikariPrintReport(){
   }).join("") : '<tr><td>光電話 付加サービス</td><td class="num">選択なし</td></tr>';
 
   var html='<section class="print-page"><div class="hikari-print-hero"><h2>ドコモ光 ご提案見積書</h2>'+
-    '<div>'+esc(customer)+'　｜　見積日：'+esc(hikariQuoteDateText())+(staff?'　｜　'+esc(staff):'')+'</div></div>'+
+    '<div>'+esc(customer)+'　｜　作成：'+esc(quoteStamp())+(staff?'　｜　'+esc(staff):'')+'</div></div>'+
     '<div class="proposal-kpis"><div class="proposal-kpi"><span>現在の月額</span><b>'+esc(signedYen(c.oldM))+'</b></div>'+
     '<div class="proposal-kpi"><span>ドコモ光＋選択OP</span><b>'+esc(signedYen(c.newM))+'</b></div>'+
     '<div class="proposal-kpi"><span>実質月額お得度</span><b>'+esc(signedYen(c.monthlyDiff))+'</b></div></div>'+
@@ -4123,25 +3987,86 @@ calcAll();
 renderSavedQuotes();
 
 </script>
-<div class="print-report" id="printReport"></div>
+<div id="printReport" class="print-report"></div>
+
 </div>
-<div class="app-page active" id="pageHikari"><div aria-label="build version" class="hikari-build-v181">V18.6</div>
+<div id="pageHikari" class="app-page active">
 <div class="hikari-compact-head">
-<h1>ドコモ光 / home 5G</h1>
-<nav aria-label="ドコモ光・home 5G メニュー" class="hikari-nav">
-<a class="active" href="#hikariEstimate">見積もり</a>
-<a href="#hikariQuotePreview">見積書</a>
-<a href="#hikariFlowSection">開通の流れ</a>
-<a href="#hikariTransferSection">引き継ぎ</a>
-</nav>
+  <h1>ドコモ光 / home 5G</h1>
+  <nav class="hikari-nav" aria-label="ドコモ光・home 5G メニュー">
+    <a class="active" href="#hikariEstimate">見積もり</a>
+    <a href="#hikariQuotePreview">見積書</a>
+    <a href="#hikariFlowSection">開通の流れ</a>
+    <a href="#hikariTransferSection">引き継ぎ</a>
+  </nav>
 </div>
 <section class="card hikari-proposal" id="hikariEstimate">
-<div class="title">ドコモ光・他社乗り換え 提案書</div>
-<div class="mini">ページ2専用。ドコモ光の内容だけを、dカード見積とは別PDFとして出力できます。</div>
-<div class="he-shell he-stack-v18" id="hikariEasyEstimate">
-<div class="he-card-v18">
-<div class="he-section-title"><span>1</span>現在のご利用状況（ヒアリング）</div>
-<div class="he-field-row"><label>ネット</label><div id="heCarrierMount"><select data-meta="1" id="hikariOldCarrier" onchange="toggleOtherCarrier();renderCarrierGuide();renderCarrierPricePresets();updateHikariPreview()">
+  <div class="title">ドコモ光・他社乗り換え 提案書</div>
+  <div class="mini">ページ2専用。ドコモ光の内容だけを、dカード見積とは別PDFとして出力できます。</div>
+
+  <div class="hikari-grid" id="hikariSettings" style="margin-top:10px">
+    <div><label>お客様名 / 光見積名</label><input id="hikariCustomer" data-meta="1" type="text" placeholder="例：山田様 / ドコモ光ご提案"></div>
+    <div><label>担当者 / メモ</label><input id="hikariStaffMemo" data-meta="1" type="text" placeholder="任意"></div>
+  </div>
+  <button type="button" class="pdf-action" onclick="printHikariQuote()">📄 ドコモ光見積をPDF / 印刷</button>
+
+  <div class="hikari-checks">
+    <label><input id="hikariPdfFlow" data-meta="1" type="checkbox" checked onchange="updateHikariPreview()"> 開通の流れをPDFに追加</label>
+    <label><input id="hikariPdfSwitch" data-meta="1" type="checkbox" checked onchange="updateHikariPreview()"> 他社乗り換え見積をPDFに追加</label>
+    <label><input id="hikariPdfAfter" data-meta="1" type="checkbox" checked onchange="updateHikariPreview()"> 開通後の流れをPDFに追加</label>
+  </div>
+
+  <div class="hikari-grid" style="margin-top:12px">
+    <div><label>お申込み区分</label><select id="hikariApplyType" data-meta="1" onchange="renderTypeCHint();updateHikariPreview()">
+      <option value="new">新規</option><option value="tenyo">転用</option><option value="jigyosha">事業者変更</option><option value="reuse">光回線再利用</option>
+    </select>
+      <div id="typeCHint" class="mini" style="margin-top:6px"></div>
+    </div>
+    <div><label>ドコモ光</label><select id="hikariSpeed" data-meta="1" onchange="updateHikariPreview()">
+      <option value="1g">1ギガ</option><option value="10g">10ギガ</option>
+    </select></div>
+    <div><label>住居</label><select id="hikariHouse" data-meta="1" onchange="updateHikariPreview()">
+      <option value="mansion">マンション</option><option value="house">戸建</option>
+    </select></div>
+    <div><label>タイプ / プロバイダ</label><select id="hikariType" data-meta="1" onchange="renderTypeCHint();updateHikariPreview()">
+      <option value="A">タイプA</option><option value="B">タイプB</option><option value="C">タイプC（提携CATVから転用対応）</option><option value="single">単独タイプ</option>
+    </select></div>
+
+    <div><label>ドコモ光 月額（税込）</label><input id="hikariNewMonthly" data-meta="1" type="number" min="0" value="4400" oninput="updateHikariPreview()"></div>
+    <div><label>契約事務手数料</label><input id="hikariAdminFee" data-meta="1" type="number" min="0" value="4950" oninput="updateHikariPreview()"></div>
+
+    <div><label>ネット工事費</label><select id="hikariConstruction" data-meta="1" onchange="updateHikariPreview()">
+      <option value="28600">新規｜派遣・屋内配線あり｜28,600円</option>
+      <option value="18260">新規｜派遣・屋内配線なし｜18,260円</option>
+      <option value="3300">新規｜無派遣工事｜3,300円</option>
+      <option value="0">転用 / 事業者変更｜速度そのまま代表例｜0円</option>
+      <option value="18260">光回線再利用｜代表例｜18,260円</option>
+    </select></div>
+
+    <div><label>ドコモ光電話 工事費</label><select id="hikariPhoneConstruction" data-meta="1" onchange="updateHikariPreview()">
+      <option value="0">電話なし / フレッツひかり電話を転用｜0円</option>
+      <option value="1100">光と同時申込・新規番号｜基本機能 1,100円</option>
+      <option value="3300">光と同時申込・番号継続｜基本機能＋同番移行 3,300円</option>
+      <option value="11000">光電話のみ新規・派遣あり・新規番号｜11,000円</option>
+      <option value="13200">光電話のみ新規・派遣あり・番号継続｜13,200円</option>
+      <option value="3300">光電話のみ新規・無派遣・新規番号｜3,300円</option>
+      <option value="5500">光電話のみ新規・無派遣・番号継続｜5,500円</option>
+    </select></div>
+
+    <div><label>ドコモ光テレビオプション 工事費</label><select id="hikariTvConstruction" data-meta="1" onchange="updateHikariPreview()">
+      <option value="0">テレビなし / フレッツ・テレビ転用｜0円</option>
+      <option value="13530">光の派遣工事と同時・テレビ1台｜13,530円</option>
+      <option value="31460">光の派遣工事と同時・テレビ2～4台｜31,460円</option>
+      <option value="23980">テレビのみ新規・テレビ1台｜23,980円</option>
+      <option value="41910">テレビのみ新規・テレビ2～4台｜41,910円</option>
+    </select><div class="mini" style="margin-top:5px">同時申込の代表額。番号ポータビリティや設備状況で追加工事が発生する場合があります。</div></div>
+
+    <div><label>追加工事費・休日/特殊工事など</label><input id="hikariAdditionalConstruction" data-meta="1" type="number" min="0" value="0" placeholder="追加がある場合のみ" oninput="updateHikariPreview()">
+      <div class="mini">工事内容により追加料金が発生する場合に入力。宅内工事料合計に応じた加算等もここで調整できます。</div></div>
+
+    <div><label>ドコモ側 還元・特典（円換算）</label><input id="hikariBenefits" data-meta="1" type="number" min="0" value="0" oninput="updateHikariPreview()"></div>
+
+    <div><label>現在の他社回線</label><select id="hikariOldCarrier" data-meta="1" onchange="toggleOtherCarrier();renderCarrierGuide();renderCarrierPricePresets();updateHikariPreview()">
 <option value="">選択してください</option>
 <optgroup label="関西で多い回線">
 <option value="eo光">eo光</option>
@@ -4180,404 +4105,166 @@ renderSavedQuotes();
 <option value="auひかり">auひかり</option>
 <option value="その他">その他（手入力）</option>
 </optgroup>
-</select><input data-meta="1" id="hikariOldCarrierOther" oninput="updateHikariPreview()" placeholder="その他の回線名を入力" style="display:none;margin-top:6px" type="text"/></div></div>
-<div class="he-hearing-grid he-hearing-simple-v184">
-<div><label>ネット料金</label><div id="heCarrierNetPlanMount"><select data-meta="1" id="carrierNetPlan" onchange="applyCarrierPriceTotal()"><option value="0">回線を選ぶと候補を表示</option></select></div></div>
-<div><label>電話</label><div id="heCarrierPhonePlanMount"><select id="hikariOldPhoneStatus" onchange="hikariSetCurrentPhoneStatus(this.value)"><option value="unknown">（未ヒアリング）</option><option value="set">回線とセット（あり）</option><option value="analog">アナログ電話（NTT加入電話）</option><option value="none">なし</option></select><select data-meta="1" id="carrierPhonePlan" onchange="applyCarrierPriceTotal()" style="display:none!important"><option value="0">電話なし｜0円</option></select></div></div>
-<div><label>テレビ</label><div id="heCarrierTvPlanMount"><select id="hikariOldTvStatus" onchange="hikariSetCurrentTvStatus(this.value)"><option value="unknown">（未ヒアリング）</option><option value="line">あり（回線でご視聴）</option><option value="antenna">なし（アンテナで視聴）</option></select><select data-meta="1" id="carrierTvPlan" onchange="applyCarrierPriceTotal()" style="display:none!important"><option value="0">テレビなし｜0円</option></select></div></div>
-</div>
-<div class="he-viewing-v185"><span class="he-viewing-label">ご視聴</span><label><input type="checkbox" id="hikariOldTvTerrestrial" onchange="updateHikariPreview()"><span>地デジ</span></label><label><input type="checkbox" id="hikariOldTvBS" onchange="updateHikariPreview()"><span>BS</span></label><label><input type="checkbox" id="hikariOldTvCS" onchange="updateHikariPreview()"><span>CS</span></label></div>
-<div class="he-note">ネット・電話・テレビの金額を選ぶと「現在の月額」へ自動反映します。地デジ・BS・CSは視聴状況の確認用です。</div>
-<div class="he-grid2"><div><label>現在の月額</label><div id="heOldMonthlyMount"><input data-meta="1" id="hikariOldMonthly" min="0" oninput="updateHikariPreview()" type="number" value="0"/></div></div><div><label>他社 解約金</label><div id="heCancelMount" class="he-amount-preset-v184"><select id="hikariCancelFeeSelect" onchange="hikariApplyAmountPreset('hikariCancelFee',this.value,'hikariCancelFeeCustom')"><option value="0">なし｜0円</option><option value="1100">1,100円</option><option value="3300">3,300円</option><option value="5500">5,500円</option><option value="10450">10,450円</option><option value="11000">11,000円</option><option value="custom">その他（金額入力）</option></select><input data-meta="1" id="hikariCancelFee" min="0" type="hidden" value="0"/><input id="hikariCancelFeeCustom" class="he-custom-amount-v184" min="0" inputmode="numeric" placeholder="金額を入力" type="number" style="display:none" oninput="hikariApplyCustomAmount('hikariCancelFee',this.value)"/></div></div></div>
-<div class="he-grid2"><div><label>工事費残債</label><div id="heOldConstructionMount" class="he-amount-preset-v184"><select id="hikariOldConstructionSelect" onchange="hikariApplyAmountPreset('hikariOldConstruction',this.value,'hikariOldConstructionCustom')"><option value="0">なし｜0円</option><option value="3300">3,300円</option><option value="11000">11,000円</option><option value="22000">22,000円</option><option value="28600">28,600円</option><option value="44000">44,000円</option><option value="custom">その他（金額入力）</option></select><input data-meta="1" id="hikariOldConstruction" min="0" type="hidden" value="0"/><input id="hikariOldConstructionCustom" class="he-custom-amount-v184" min="0" inputmode="numeric" placeholder="残債を入力" type="number" style="display:none" oninput="hikariApplyCustomAmount('hikariOldConstruction',this.value)"/></div></div><div><label>撤去費</label><div id="heRemovalMount" class="he-amount-preset-v184"><select id="hikariRemovalSelect" onchange="hikariApplyAmountPreset('hikariRemoval',this.value,'hikariRemovalCustom')"><option value="0">なし｜0円</option><option value="3300">3,300円</option><option value="5500">5,500円</option><option value="11000">11,000円</option><option value="22000">22,000円</option><option value="24200">24,200円</option><option value="custom">その他（金額入力）</option></select><input data-meta="1" id="hikariRemoval" min="0" type="hidden" value="0"/><input id="hikariRemovalCustom" class="he-custom-amount-v184" min="0" inputmode="numeric" placeholder="撤去費を入力" type="number" style="display:none" oninput="hikariApplyCustomAmount('hikariRemoval',this.value)"/></div></div></div>
-</div>
-<div class="he-card-v18">
-<div class="he-section-title"><span>2</span>商材</div>
-<div class="he-q"><b>商材</b><div class="he-buttons" data-bind="hikariSpeed"><button data-value="1g" onclick="hikariEasyChoose('hikariSpeed','1g')" type="button">ドコモ光 1ギガ</button><button data-value="10g" onclick="hikariEasyChoose('hikariSpeed','10g')" type="button">ドコモ光 10ギガ</button></div></div>
-<div class="he-q"><b>申込区分</b><div class="he-buttons he-buttons-4" data-bind="hikariApplyType"><button data-value="new" onclick="hikariEasyChoose('hikariApplyType','new')" type="button">新規</button><button data-value="tenyo" onclick="hikariEasyChoose('hikariApplyType','tenyo')" type="button">転用</button><button data-value="jigyosha" onclick="hikariEasyChoose('hikariApplyType','jigyosha')" type="button">事業者変更</button><button data-value="reuse" onclick="hikariEasyChoose('hikariApplyType','reuse')" type="button">光回線再利用</button></div></div>
-<div class="he-q"><b>住居タイプ</b><div class="he-buttons" data-bind="hikariHouse"><button data-value="house" onclick="hikariEasyChoose('hikariHouse','house')" type="button">戸建て</button><button data-value="mansion" onclick="hikariEasyChoose('hikariHouse','mansion')" type="button">マンション</button></div></div>
-<div class="he-field-row"><label>プロバイダ料金タイプ</label><div id="heTypeMount"><select data-meta="1" id="hikariType" onchange="renderTypeCHint();updateHikariPreview()">
-<option value="A">タイプA</option><option value="B">タイプB</option><option value="C">タイプC（提携CATVから転用対応）</option><option value="single">単独タイプ</option>
-</select></div></div>
-<div class="he-plan-price"><span>月額基本料</span><b id="heBaseMonthly">—</b></div>
-<div class="he-note">商材・住居タイプ・料金タイプを選ぶと標準月額を自動反映します。</div>
-</div>
-<div class="he-card-v18">
-<div class="he-section-title"><span>3</span>月額オプション</div>
-<div class="he-subhead">でんわオプション（基本）</div><div id="hePhoneMount"><select data-meta="1" id="hikariPhoneOption" onchange="updateHikariPreview()">
-<option value="0">利用しない</option>
-<option value="550">ドコモ光電話｜550円/月</option>
-<option value="1650">ドコモ光電話バリュー｜1,650円/月</option>
-</select></div>
-<div class="he-precision-row"><label>電話番号</label><select id="hePhoneNumberMode"><option value="none">電話なし / 対象外</option><option value="new">新しい電話番号を取得</option><option value="port">現在の電話番号を継続（番号ポータビリティ）</option><option value="manual">特殊ケース・手動選択</option></select></div>
-<div class="he-precision-row"><label>光電話 工事費</label><div id="hePhoneConstructionMountV181"><select data-meta="1" id="hikariPhoneConstruction" onchange="updateHikariPreview()">
-<option value="0">電話なし / フレッツひかり電話を転用｜0円</option>
-<option value="1100">光と同時申込・新規番号｜基本機能 1,100円</option>
-<option value="3300">光と同時申込・番号継続｜基本機能＋同番移行 3,300円</option>
-<option value="9350">光電話のみ新規・派遣あり・新規番号｜9,350円</option>
-<option value="11550">光電話のみ新規・派遣あり・番号継続｜11,550円</option>
-<option value="4400">光電話のみ新規・無派遣・新規番号｜4,400円</option>
-<option value="6600">光電話のみ新規・無派遣・番号継続｜6,600円</option>
-</select></div></div>
-<div class="he-subhead">でんわ追加オプション</div><div class="he-addon-grid" id="heAddonsMount"><select data-meta="1" id="hikariPhoneAddon1" onchange="updateHikariPreview()">
-<option value="none">選択なし</option>
-<option value="callerid">発信者番号表示（ナンバー・ディスプレイ相当）｜440円</option>
-<option value="numberrequest">ナンバー・リクエスト｜220円</option>
-<option value="callwaiting">通話中着信｜330円</option>
-<option value="forward">転送でんわ｜550円</option>
-<option value="nuisance">迷惑電話ストップサービス｜220円</option>
-<option value="mail">着信お知らせメール｜110円</option>
-<option value="double">ダブルチャネル｜220円</option>
-<option value="addnumber">追加番号｜110円</option>
-</select><select data-meta="1" id="hikariPhoneAddon2" onchange="updateHikariPreview()">
-<option value="none">選択なし</option>
-<option value="callerid">発信者番号表示（ナンバー・ディスプレイ相当）｜440円</option>
-<option value="numberrequest">ナンバー・リクエスト｜220円</option>
-<option value="callwaiting">通話中着信｜330円</option>
-<option value="forward">転送でんわ｜550円</option>
-<option value="nuisance">迷惑電話ストップサービス｜220円</option>
-<option value="mail">着信お知らせメール｜110円</option>
-<option value="double">ダブルチャネル｜220円</option>
-<option value="addnumber">追加番号｜110円</option>
-</select><select data-meta="1" id="hikariPhoneAddon3" onchange="updateHikariPreview()">
-<option value="none">選択なし</option>
-<option value="callerid">発信者番号表示（ナンバー・ディスプレイ相当）｜440円</option>
-<option value="numberrequest">ナンバー・リクエスト｜220円</option>
-<option value="callwaiting">通話中着信｜330円</option>
-<option value="forward">転送でんわ｜550円</option>
-<option value="nuisance">迷惑電話ストップサービス｜220円</option>
-<option value="mail">着信お知らせメール｜110円</option>
-<option value="double">ダブルチャネル｜220円</option>
-<option value="addnumber">追加番号｜110円</option>
-</select><select data-meta="1" id="hikariPhoneAddon4" onchange="updateHikariPreview()">
-<option value="none">選択なし</option>
-<option value="callerid">発信者番号表示（ナンバー・ディスプレイ相当）｜440円</option>
-<option value="numberrequest">ナンバー・リクエスト｜220円</option>
-<option value="callwaiting">通話中着信｜330円</option>
-<option value="forward">転送でんわ｜550円</option>
-<option value="nuisance">迷惑電話ストップサービス｜220円</option>
-<option value="mail">着信お知らせメール｜110円</option>
-<option value="double">ダブルチャネル｜220円</option>
-<option value="addnumber">追加番号｜110円</option>
-</select></div>
-<div class="he-subhead">TVオプション（地デジ・BS）</div><div id="heTvMount"><select data-meta="1" id="hikariTvOption" onchange="updateHikariPreview()">
-<option value="none">利用しない</option>
-<option value="docomo_tv">ドコモ光テレビオプション｜990円/月</option>
-<option value="hikari_basic">ひかりTV 基本プラン｜1,210円/月</option>
-<option value="hikari_channel">ひかりTV 専門チャンネルプラン｜3,300円/月</option>
-<option value="hikari_video">ひかりTV 専門チャンネル・ビデオ｜4,400円/月</option>
-</select></div>
-<div class="he-precision-row"><label>テレビ工事</label><div id="heTvConstructionMountV181"><select data-meta="1" id="hikariTvConstruction" onchange="updateHikariPreview()">
-<option value="0">テレビなし / フレッツ・テレビ転用｜0円</option>
-<option value="13530">光の派遣工事と同時・テレビ1台｜13,530円</option>
-<option value="31460">光の派遣工事と同時・テレビ2～4台｜31,460円</option>
-<option value="23980">テレビのみ新規・テレビ1台｜23,980円</option>
-<option value="41910">テレビのみ新規・テレビ2～4台｜41,910円</option>
-</select></div></div>
-<div class="he-tv-official-note">ドコモ光と派遣工事を同時に新規申込：1台 13,530円／2〜4台 31,460円。テレビのみ新規：1台 23,980円／2〜4台 41,910円。いずれもテレビ視聴サービス登録料3,080円を含みます。</div>
-<div class="he-subhead">映像系サービス（スカパー！等）</div><div id="heSkyMount"><select data-meta="1" id="hikariSkyOption" onchange="updateHikariPreview()">
-<option value="none">利用しない</option>
-<option value="basic">基本プラン 50ch｜3,960円/月</option>
-<option value="select5">セレクト5｜1,980円/月</option>
-<option value="select10">セレクト10｜2,860円/月</option>
-<option value="single">1チャンネル｜408円～/月</option>
-</select></div>
-<label class="he-check"><input id="hikariRouterRental" onchange="updateHikariPreview()" type="checkbox"/> 10ギガ対応無線LANルーター（レンタル） <b>550円/月</b></label>
-</div>
-<div class="he-card-v18">
-<div class="he-section-title"><span>4</span>初期費用</div>
-<div class="he-field-row"><label>工事費の支払い</label><select id="heInstallPay"><option value="24">分割24回</option><option value="12">分割12回</option><option value="1">一括</option></select></div>
-<label class="he-check"><input checked="" id="hikariConstructionPointAuto" onchange="updateHikariPreview()" type="checkbox"/> 新規工事料実質0円特典を表示（対象工事料相当のdポイントを7か月後から24か月分割進呈）</label>
-<div class="he-field-row"><label>ネット工事費</label><div id="heConstructionMount"><select data-meta="1" id="hikariConstruction" onchange="updateHikariPreview()">
-<option data-dispatch="1" data-fee="28600" value="new_dispatch_wiring">新規｜派遣・屋内配線あり｜28,600円</option>
-<option data-dispatch="1" data-fee="18260" value="new_dispatch_nowiring">新規｜派遣・屋内配線なし｜18,260円</option>
-<option data-dispatch="0" data-fee="3300" value="new_nodispatch">新規｜無派遣工事｜3,300円</option>
-</select></div></div>
-<label class="he-check" id="heWeekendRow"><input id="hikariWeekendWork" onchange="updateHikariPreview()" type="checkbox"/> 土日・休日の派遣工事 <b>＋3,300円</b></label>
-<label class="he-check" id="heReuseFeeRow" style="display:none"><input id="hikariReuseFee" onchange="updateHikariPreview()" type="checkbox"/> 光回線再利用手続費 <b>6,600円</b>（請求対象の場合のみ）</label>
-<div class="he-grid2"><div><label>契約事務手数料</label><div id="heAdminMount"><input data-meta="1" id="hikariAdminFee" min="0" oninput="updateHikariPreview()" type="number" value="4950"/></div></div><div><label>追加工事費など</label><div id="heAdditionalMount"><input data-meta="1" id="hikariAdditionalConstruction" min="0" oninput="updateHikariPreview()" placeholder="追加がある場合のみ" type="number" value="0"/></div></div></div>
-<div class="he-grid2 he-moved-construction-controls"><div><label>光電話 工事費</label><div id="hePhoneConstructionMount"></div></div><div><label>テレビ 工事費</label><div id="heTvConstructionMount"></div></div></div>
-<label class="he-check"><input id="hikariRouterPurchase" onchange="updateHikariPreview()" type="checkbox"/> 10Gルーター購入費用を追加</label>
-<div class="he-inline"><label>ルーター購入価格</label><input id="hikariRouterPrice" min="0" oninput="updateHikariPreview()" step="10" type="number" value="0"/><span>円</span></div>
-<div class="he-cost-summary" id="heInitialSummaryV18"></div><div class="he-accuracy-note" id="heAccuracyNoteV181">※工事料は設備状況で変動します。自動計算できない特殊工事は「追加工事費など」で調整してください。</div>
-<div class="he-mini-preview" id="heConstructionPointInfo"></div>
-</div>
-<div class="he-card-v18">
-<div class="he-section-title"><span>5</span>特典・見積書情報</div>
-<div class="he-grid2"><div><label>その他dポイント・還元</label><div id="heBenefitsMount"><input data-meta="1" id="hikariBenefits" min="0" oninput="updateHikariPreview()" type="number" value="0"/></div></div><div><label>セット割対象回線数</label><div id="heFamilyCountMount"><select data-meta="1" id="hikariFamilyCount" onchange="updateHikariPreview()">
-<option value="1">1回線</option><option value="2">2回線</option><option value="3">3回線</option><option value="4">4回線</option><option value="5">5回線</option><option value="6">6回線</option><option value="7">7回線</option><option value="8">8回線</option><option value="9">9回線</option><option value="10">10回線</option><option value="15">15回線</option><option value="20">20回線</option>
-</select></div></div></div>
-<div class="he-field-row"><label>1回線あたりのセット割</label><div id="heFamilyDiscountMount"><select data-meta="1" id="hikariFamilyDiscount" onchange="updateHikariPreview()">
-<option value="1210">1,210円｜MAX・ポイ活MAX・ポイ活20・mini</option>
-<option value="1100">1,100円｜eximo等</option>
-<option value="550">550円｜ギガライト一部</option>
-<option value="0">0円｜ahamo等 対象外</option>
-</select></div></div><div class="he-mini-preview" id="heFamilyPreview"></div>
-<div class="he-point-summary" id="hePointSummaryV18"></div>
-<div id="heMetaMount"><input data-meta="1" id="hikariCustomer" placeholder="例：山田様 / ドコモ光ご提案" type="text"/><input data-meta="1" id="hikariStaffMemo" placeholder="任意" type="text"/></div><div class="he-field-row"><label>その他乗り換え費用</label><div id="heOtherCostMount"><input data-meta="1" id="hikariOtherCost" min="0" oninput="updateHikariPreview()" type="number" value="0"/></div></div><div class="he-field-row"><label>開通・乗り換えメモ</label><div id="heMemoMount"><input data-meta="1" id="hikariProposalMemo" oninput="updateHikariPreview()" placeholder="例：固定電話番号継続予定 / Wi-Fiルーター要確認" type="text"/></div></div>
-<div class="he-actions"><button class="he-reset" id="heResetBtn" type="button">選択内容をリセット</button><button class="he-primary" onclick="document.querySelector('.hikari-nav a[href=\'#hikariQuotePreview\']').click()" type="button">見積書を確認する</button></div>
-</div>
-</div>
-<div class="he-sticky"><div><span>月額</span><b id="heStickyMonthly">—</b></div><div><span>初期費用総額</span><b id="heStickyInitial">—</b></div><div><span>dポイント</span><b id="heStickyPoint">—</b></div><button onclick="printHikariQuote()" type="button">見積書をPDF / 印刷</button></div>
-<div class="hikari-grid" id="hikariSettings" style="margin-top:10px">
-<div><label>お客様名 / 光見積名</label></div>
-<div><label>担当者 / メモ</label></div>
-</div>
-<button class="pdf-action" onclick="printHikariQuote()" type="button">📄 ドコモ光見積をPDF / 印刷</button>
-<div class="hikari-checks">
-<label><input checked="" data-meta="1" id="hikariPdfFlow" onchange="updateHikariPreview()" type="checkbox"/> 開通の流れをPDFに追加</label>
-<label><input checked="" data-meta="1" id="hikariPdfSwitch" onchange="updateHikariPreview()" type="checkbox"/> 他社乗り換え見積をPDFに追加</label>
-<label><input checked="" data-meta="1" id="hikariPdfAfter" onchange="updateHikariPreview()" type="checkbox"/> 開通後の流れをPDFに追加</label>
-</div>
-<div class="hikari-grid" style="margin-top:12px">
-<div><label>お申込み区分</label><select data-meta="1" id="hikariApplyType" onchange="renderTypeCHint();updateHikariPreview()">
-<option value="new">新規</option><option value="tenyo">転用</option><option value="jigyosha">事業者変更</option><option value="reuse">光回線再利用</option>
 </select>
-<div class="mini" id="typeCHint" style="margin-top:6px"></div>
-</div>
-<div><label>ドコモ光</label><select data-meta="1" id="hikariSpeed" onchange="updateHikariPreview()">
-<option value="1g">1ギガ</option><option value="10g">10ギガ</option>
-</select></div>
-<div><label>住居</label><select data-meta="1" id="hikariHouse" onchange="updateHikariPreview()">
-<option value="mansion">マンション</option><option value="house">戸建</option>
-</select></div>
-<div><label>タイプ / プロバイダ</label></div>
-<div><label>ドコモ光 月額（税込）</label><input data-meta="1" id="hikariNewMonthly" min="0" oninput="updateHikariPreview()" type="number" value="4400"/></div>
-<div><label>契約事務手数料</label></div>
-<div><label>ネット工事費</label><div class="mini" id="hikariConstructionCaution" style="margin-top:5px"></div></div>
-<div><label>ドコモ光電話 工事費</label></div>
-<div><label>ドコモ光テレビオプション 工事費</label><div class="mini" style="margin-top:5px">同時申込の代表額。番号ポータビリティや設備状況で追加工事が発生する場合があります。</div></div>
-<div><label>追加工事費・休日/特殊工事など</label>
-<div class="mini">工事内容により追加料金が発生する場合に入力。土日休日の派遣工事は通常3,300円の追加対象です。光回線再利用手続費6,600円は、2026年2月1日以降申込かつ180日以内に開通した場合は請求されません。</div></div>
-<div><label>ドコモ側 還元・特典（円換算）</label></div>
-<div><label>現在の他社回線</label>
+<input id="hikariOldCarrierOther" data-meta="1" type="text" placeholder="その他の回線名を入力" style="display:none;margin-top:6px" oninput="updateHikariPreview()">
+<div id="carrierGuide" class="carrier-guide" style="display:none"></div></div>
 
-<div class="carrier-guide" id="carrierGuide" style="display:none"></div></div>
-<div><label>他社ネット / ホームルーター料金</label>
+    <div><label>他社ネット / ホームルーター料金</label>
+      <select id="carrierNetPlan" data-meta="1" onchange="applyCarrierPriceTotal()"><option value="0">回線を選ぶと候補を表示</option></select>
+    </div>
+    <div><label>他社電話料金</label>
+      <select id="carrierPhonePlan" data-meta="1" onchange="applyCarrierPriceTotal()"><option value="0">電話なし｜0円</option></select>
+    </div>
+    <div><label>他社テレビ料金</label>
+      <select id="carrierTvPlan" data-meta="1" onchange="applyCarrierPriceTotal()"><option value="0">テレビなし｜0円</option></select>
+    </div>
+    <div><label>他社 月額合計（自動）</label>
+      <input id="carrierServiceTotal" data-meta="1" type="number" min="0" value="0" readonly>
+      <div class="mini">ネット＋電話＋テレビの選択額。必要なら下の「現在の月額」で手修正できます。</div>
+    </div>
 
-</div>
-<div><label>他社電話料金</label>
+    <div><label>現在の月額（税込）</label><input id="hikariOldMonthly" data-meta="1" type="number" min="0" value="0" oninput="updateHikariPreview()"></div>
+    <div><label>他社 解約金</label><input id="hikariCancelFee" data-meta="1" type="number" min="0" value="0" oninput="updateHikariPreview()"></div>
+    <div><label>他社 工事費残債</label><input id="hikariOldConstruction" data-meta="1" type="number" min="0" value="0" oninput="updateHikariPreview()"></div>
+    <div><label>撤去費</label><input id="hikariRemoval" data-meta="1" type="number" min="0" value="0" oninput="updateHikariPreview()"></div>
+    <div><label>その他乗り換え費用</label><input id="hikariOtherCost" data-meta="1" type="number" min="0" value="0" oninput="updateHikariPreview()"></div>
+    <div class="full"><label>開通・乗り換えメモ</label><input id="hikariProposalMemo" data-meta="1" type="text" placeholder="例：固定電話番号継続予定 / Wi-Fiルーター要確認" oninput="updateHikariPreview()"></div>
+  </div>
 
-</div>
-<div><label>他社テレビ料金</label>
 
-</div>
-<div><label>他社 月額合計（自動）</label>
-<input data-meta="1" id="carrierServiceTotal" min="0" readonly="" type="number" value="0"/>
-<div class="mini">ネット＋電話＋テレビの選択額。必要なら下の「現在の月額」で手修正できます。</div>
-</div>
-<div><label>現在の月額（税込）</label></div>
-<div><label>他社 解約金</label></div>
-<div><label>他社 工事費残債</label></div>
-<div><label>撤去費</label></div>
-<div><label>その他乗り換え費用</label></div>
-<div class="full"><label>開通・乗り換えメモ</label></div>
+  <div class="card" style="margin-top:14px;border:1px solid #dfe4e8">
+  <div class="title" id="hikariTransferSection">他社回線・ホームルーター vs ドコモ光｜実質負担比較</div>
+  <div class="mini">光料金だけでなく、スマホセット割・初期費用・特典・旧回線の解約費用まで含めて比較します。</div>
+  <div class="hikari-grid" style="margin-top:10px">
+    <div><label>他社光 月額</label><input id="hikariCompareOldMonthly" data-meta="1" type="number" min="0" value="0" placeholder="例：5500" oninput="updateHikariPreview()"></div>
+    <div><label>他社スマホセット割（月額合計）</label><input id="hikariOldSetDiscount" data-meta="1" type="number" min="0" value="0" placeholder="例：2200" oninput="updateHikariPreview()"></div>
+    <div><label>他社 その他月額特典</label><input id="hikariOldMonthlyBenefit" data-meta="1" type="number" min="0" value="0" placeholder="例：1100" oninput="updateHikariPreview()"></div>
+    <div><label>他社 継続特典・CB（期間分）</label><input id="hikariOldPeriodBenefit" data-meta="1" type="number" min="0" value="0" placeholder="例：10000" oninput="updateHikariPreview()"></div>
+  </div>
+  <div id="hikariEffectiveCompare" class="quote-preview-sheet" style="margin-top:10px"></div>
 </div>
 <div class="card" style="margin-top:14px;border:1px solid #dfe4e8">
-<div class="title" id="hikariTransferSection">他社回線・ホームルーター vs ドコモ光｜実質負担比較</div>
-<div class="mini">光料金だけでなく、スマホセット割・初期費用・特典・旧回線の解約費用まで含めて比較します。</div>
-<div class="hikari-grid" style="margin-top:10px">
-<div><label>他社光 月額</label><input data-meta="1" id="hikariCompareOldMonthly" min="0" oninput="updateHikariPreview()" placeholder="例：5500" type="number" value="0"/></div>
-<div><label>他社スマホセット割（月額合計）</label><input data-meta="1" id="hikariOldSetDiscount" min="0" oninput="updateHikariPreview()" placeholder="例：2200" type="number" value="0"/></div>
-<div><label>他社 その他月額特典</label><input data-meta="1" id="hikariOldMonthlyBenefit" min="0" oninput="updateHikariPreview()" placeholder="例：1100" type="number" value="0"/></div>
-<div><label>他社 継続特典・CB（期間分）</label><input data-meta="1" id="hikariOldPeriodBenefit" min="0" oninput="updateHikariPreview()" placeholder="例：10000" type="number" value="0"/></div>
-</div>
-<div class="quote-preview-sheet" id="hikariEffectiveCompare" style="margin-top:10px"></div>
-</div>
-<div class="card" style="margin-top:14px;border:1px solid #dfe4e8">
-<div class="title">初期費用・工事費 見積</div>
-<div class="mini">ネット・光電話・テレビの工事内容をプルダウンで選ぶと、初期費用合計へ自動反映します。</div>
-<div class="hikari-preview" id="hikariConstructionSummary" style="margin-top:10px"></div>
-</div>
-<div class="card" style="margin-top:14px;border:1px solid #dfe4e8">
-<div class="title">家族のドコモ光セット割｜お得度アップ</div>
-<div class="hikari-grid">
-<div><label>セット割対象回線数</label></div>
-<div><label>1回線あたり割引額</label></div>
-</div>
-<div class="hikari-preview" id="hikariFamilyBox" style="margin-top:10px"></div>
-<div class="mini" style="margin-top:7px">※家族全員を同じ割引額で計算します。MAX系・eximo系・ギガライト等が混在する場合は、この欄だけでは厳密な合計にならないため個別確認してください。</div>
-</div>
-<div class="card" style="margin-top:14px;border:1px solid #dfe4e8">
-<div class="title">ドコモ光 オプション</div>
-<div class="hikari-grid">
-<div><label>ドコモ光電話</label></div>
-<div><label>光電話 付加サービス①</label></div>
-<div><label>光電話 付加サービス②</label></div>
-<div><label>光電話 付加サービス③</label></div>
-<div><label>光電話 付加サービス④</label></div>
-<div><label>テレビサービス</label></div>
-<div><label>スカパー！</label></div>
-<div><label>スカパー！基本料</label><select data-meta="1" id="hikariSkyBase" onchange="updateHikariPreview()">
-<option value="429">429円/月（スカパー選択時）</option>
-</select></div>
-</div>
-<div class="mini" id="hikariOptionNote" style="margin-top:8px"></div>
-<div class="mini" style="margin-top:5px">※10ギガ対応無線LANルーターをドコモからレンタルする場合は月額550円が別途必要です。ブロードバンドユニバーサルサービス料等の少額料金はこの見積には自動加算していません。</div>
-</div>
-<div class="hikari-handover" id="hikariTransferSheet"></div>
-<div class="card" id="hikariFlowPane" style="margin-top:14px;border:1px solid #dfe4e8">
-<div class="title" id="hikariFlowSection">開通までの流れ・手順</div>
-<div class="mini">申込み区分に合わせて必要な手順を自動表示します。</div>
-<div id="hikariFlowGuide" style="margin-top:10px"></div>
-</div>
-<div class="hikari-preview" id="hikariPreview"></div>
-<div class="quote-preview-sheet" id="hikariQuotePreview">
-<div class="hikari-quote-date-editor"><label for="hikariQuoteDate">見積日</label><input data-meta="1" id="hikariQuoteDate" onchange="updateHikariPreview()" type="date"/><button onclick="setHikariQuoteDateToday()" type="button">今日</button></div>
-<div style="font-weight:900;margin-bottom:8px">見積書プレビュー</div>
-<div id="hikariQuotePreviewInner"></div>
-</div>
-<div class="card post-flow-box" id="hikariLegacyAfterFlow" style="border:1px solid #dfe4e8">
-<div class="title">開通後の流れ</div>
-<div class="note" style="margin-top:8px"><b>開通後の重要チェック</b><br/>
+    <div class="title">初期費用・工事費 見積</div>
+    <div class="mini">ネット・光電話・テレビの工事内容をプルダウンで選ぶと、初期費用合計へ自動反映します。</div>
+    <div id="hikariConstructionSummary" class="hikari-preview" style="margin-top:10px"></div>
+  </div>
+
+  <div class="card" style="margin-top:14px;border:1px solid #dfe4e8">
+    <div class="title">家族のドコモ光セット割｜お得度アップ</div>
+    <div class="hikari-grid">
+      <div><label>セット割対象回線数</label><select id="hikariFamilyCount" data-meta="1" onchange="updateHikariPreview()">
+        <option value="1">1回線</option><option value="2">2回線</option><option value="3">3回線</option><option value="4">4回線</option><option value="5">5回線</option><option value="6">6回線</option><option value="7">7回線</option><option value="8">8回線</option><option value="9">9回線</option><option value="10">10回線</option><option value="15">15回線</option><option value="20">20回線</option>
+      </select></div>
+      <div><label>1回線あたり割引額</label><select id="hikariFamilyDiscount" data-meta="1" onchange="updateHikariPreview()">
+        <option value="1210">1,210円｜MAX・ポイ活MAX・ポイ活20・mini</option>
+        <option value="1100">1,100円｜eximo等</option>
+        <option value="550">550円｜ギガライト一部</option>
+        <option value="0">0円｜ahamo等 対象外</option>
+      </select></div>
+    </div>
+    <div id="hikariFamilyBox" class="hikari-preview" style="margin-top:10px"></div>
+    <div class="mini" style="margin-top:7px">※家族全員を同じ割引額で計算します。MAX系・eximo系・ギガライト等が混在する場合は、この欄だけでは厳密な合計にならないため個別確認してください。</div>
+  </div>
+
+  <div class="card" style="margin-top:14px;border:1px solid #dfe4e8">
+    <div class="title">ドコモ光 オプション</div>
+    <div class="hikari-grid">
+      <div><label>ドコモ光電話</label><select id="hikariPhoneOption" data-meta="1" onchange="updateHikariPreview()">
+        <option value="0">利用しない</option>
+        <option value="550">ドコモ光電話｜550円/月</option>
+        <option value="1650">ドコモ光電話バリュー｜1,650円/月</option>
+      </select></div>
+      <div><label>光電話 付加サービス①</label><select id="hikariPhoneAddon1" data-meta="1" onchange="updateHikariPreview()">
+        <option value="none">選択なし</option>
+        <option value="callerid">発信者番号表示（ナンバー・ディスプレイ相当）｜440円</option>
+        <option value="numberrequest">ナンバー・リクエスト｜220円</option>
+        <option value="callwaiting">通話中着信｜330円</option>
+        <option value="forward">転送でんわ｜550円</option>
+        <option value="nuisance">迷惑電話ストップサービス｜220円</option>
+        <option value="mail">着信お知らせメール｜110円</option>
+        <option value="double">ダブルチャネル｜220円</option>
+        <option value="addnumber">追加番号｜110円</option>
+      </select></div>
+      <div><label>光電話 付加サービス②</label><select id="hikariPhoneAddon2" data-meta="1" onchange="updateHikariPreview()">
+        <option value="none">選択なし</option>
+        <option value="callerid">発信者番号表示（ナンバー・ディスプレイ相当）｜440円</option>
+        <option value="numberrequest">ナンバー・リクエスト｜220円</option>
+        <option value="callwaiting">通話中着信｜330円</option>
+        <option value="forward">転送でんわ｜550円</option>
+        <option value="nuisance">迷惑電話ストップサービス｜220円</option>
+        <option value="mail">着信お知らせメール｜110円</option>
+        <option value="double">ダブルチャネル｜220円</option>
+        <option value="addnumber">追加番号｜110円</option>
+      </select></div>
+      <div><label>光電話 付加サービス③</label><select id="hikariPhoneAddon3" data-meta="1" onchange="updateHikariPreview()">
+        <option value="none">選択なし</option>
+        <option value="callerid">発信者番号表示（ナンバー・ディスプレイ相当）｜440円</option>
+        <option value="numberrequest">ナンバー・リクエスト｜220円</option>
+        <option value="callwaiting">通話中着信｜330円</option>
+        <option value="forward">転送でんわ｜550円</option>
+        <option value="nuisance">迷惑電話ストップサービス｜220円</option>
+        <option value="mail">着信お知らせメール｜110円</option>
+        <option value="double">ダブルチャネル｜220円</option>
+        <option value="addnumber">追加番号｜110円</option>
+      </select></div>
+      <div><label>光電話 付加サービス④</label><select id="hikariPhoneAddon4" data-meta="1" onchange="updateHikariPreview()">
+        <option value="none">選択なし</option>
+        <option value="callerid">発信者番号表示（ナンバー・ディスプレイ相当）｜440円</option>
+        <option value="numberrequest">ナンバー・リクエスト｜220円</option>
+        <option value="callwaiting">通話中着信｜330円</option>
+        <option value="forward">転送でんわ｜550円</option>
+        <option value="nuisance">迷惑電話ストップサービス｜220円</option>
+        <option value="mail">着信お知らせメール｜110円</option>
+        <option value="double">ダブルチャネル｜220円</option>
+        <option value="addnumber">追加番号｜110円</option>
+      </select></div>
+      <div><label>テレビサービス</label><select id="hikariTvOption" data-meta="1" onchange="updateHikariPreview()">
+        <option value="none">利用しない</option>
+        <option value="docomo_tv">ドコモ光テレビオプション｜990円/月</option>
+        <option value="hikari_basic">ひかりTV 基本プラン｜1,210円/月</option>
+        <option value="hikari_channel">ひかりTV 専門チャンネルプラン｜3,300円/月</option>
+        <option value="hikari_video">ひかりTV 専門チャンネル・ビデオ｜4,400円/月</option>
+      </select></div>
+      <div><label>スカパー！</label><select id="hikariSkyOption" data-meta="1" onchange="updateHikariPreview()">
+        <option value="none">利用しない</option>
+        <option value="basic">基本プラン 50ch｜3,960円/月</option>
+        <option value="select5">セレクト5｜1,980円/月</option>
+        <option value="select10">セレクト10｜2,860円/月</option>
+        <option value="single">1チャンネル｜408円～/月</option>
+      </select></div>
+      <div><label>スカパー！基本料</label><select id="hikariSkyBase" data-meta="1" onchange="updateHikariPreview()">
+        <option value="429">429円/月（スカパー選択時）</option>
+      </select></div>
+    </div>
+    <div id="hikariOptionNote" class="mini" style="margin-top:8px"></div>
+    <div class="mini" style="margin-top:5px">※10ギガ対応無線LANルーターをドコモからレンタルする場合は月額550円が別途必要です。ブロードバンドユニバーサルサービス料等の少額料金はこの見積には自動加算していません。</div>
+  </div>
+
+  <div id="hikariTransferSheet" class="hikari-handover"></div>
+
+  <div class="card" style="margin-top:14px;border:1px solid #dfe4e8">
+    <div class="title" id="hikariFlowSection">開通までの流れ・手順</div>
+    <div class="mini">申込み区分に合わせて必要な手順を自動表示します。</div>
+    <div id="hikariFlowGuide" style="margin-top:10px"></div>
+  </div>
+
+  <div class="hikari-preview" id="hikariPreview"></div>
+
+  <div class="quote-preview-sheet" id="hikariQuotePreview">
+    <div style="font-weight:900;margin-bottom:8px">見積書プレビュー</div>
+    <div id="hikariQuotePreviewInner"></div>
+  </div>
+
+  <div class="card post-flow-box" style="border:1px solid #dfe4e8">
+    <div class="title">開通後の流れ</div>
+    <div class="note" style="margin-top:8px"><b>開通後の重要チェック</b><br>
     ①ネットが使える → ②電話/テレビ確認 → ③旧契約の扱い確認 → ④機器返却 → ⑤セット割 → ⑥初回請求 → ⑦翌月に二重請求チェック、の順で確認します。</div>
-<div class="mini">開通した後に、お客様へ案内する確認事項です。申込み区分や選択オプションに合わせて内容を変えます。</div>
-<div id="hikariAfterFlow" style="margin-top:10px"></div>
-</div>
+    <div class="mini">開通した後に、お客様へ案内する確認事項です。申込み区分や選択オプションに合わせて内容を変えます。</div>
+    <div id="hikariAfterFlow" style="margin-top:10px"></div>
+  </div>
 </section>
 </div>
-<div class="print-report" id="hikariPrintReport"></div>
-<!-- V17.2 four-screen rebuild / direct pricing button sync -->
-<div data-build="2026-09-14-v18.3" hidden="" id="hikariBuildMarker"></div>
-<script id="hikariEasyEstimateScriptV168">
-(function(){
-  function q(id){return document.getElementById(id)}
-  function mount(id,target){var el=q(id),t=q(target);if(el&&t){t.appendChild(el);}}
-  function setVal(id,val){var el=q(id);if(!el)return;el.value=val;el.dispatchEvent(new Event('change',{bubbles:true}));syncButtons();}
-  function syncButtons(){document.querySelectorAll('.he-buttons[data-bind]').forEach(function(group){var el=q(group.dataset.bind);if(!el)return;group.querySelectorAll('button').forEach(function(b){b.classList.toggle('is-on',String(el.value)===String(b.dataset.value));});});}
-  function yen(n){return Number(n||0).toLocaleString('ja-JP')+'円'}
-  function refreshEasy(){
-    try{
-      var c=window.hikariProposalCalc?window.hikariProposalCalc():null;if(!c)return;
-      q('heMonthly').textContent=yen(c.newM);q('heInitial').textContent=(c.constructionNeedsCheck?'要確認':yen(c.start));q('heBenefit').textContent=yen(c.benefit);
-      q('heStickyMonthly').textContent=yen(c.newM);q('heStickyInitial').textContent=(c.constructionNeedsCheck?'要確認':yen(c.start));
-      var fam=window.hikariFamilyCalc?window.hikariFamilyCalc():null;if(fam&&q('heFamilyPreview'))q('heFamilyPreview').innerHTML='<b>家族合計のセット割</b>　月額 '+yen(fam.monthly)+' / 年間 '+yen(fam.yearly);
-      var o=window.hikariOptionsCalc?window.hikariOptionsCalc():null;if(o&&q('heMonthlyCount')){var n=0;if(o.phone)n++;if(o.tv)n++;if(o.sky)n++;if(o.routerRental)n++;q('heMonthlyCount').textContent='選択中：'+n+'件';}
-      syncButtons();
-    }catch(e){console.warn(e)}
-  }
-  // V17.2: visual buttons must directly drive the underlying selects and totals.
-  // Inline onclick + this global function avoids Safari/event-order issues seen on the public page.
-  window.hikariEasyChoose=function(id,val){
-    var el=q(id); if(!el)return;
-    el.value=val;
-    // Always update the base fee immediately before any render.
-    if(id==='hikariSpeed'||id==='hikariHouse'||id==='hikariType') syncPlanPrice();
-    if(id==='hikariApplyType') syncApplyInitialCost();
-    syncButtons();
-    // Run the complete render once.
-    if(typeof window.updateHikariPreview==='function') window.updateHikariPreview();
-    refreshEasy();
-  };
-  document.querySelectorAll('.he-buttons[data-bind] button').forEach(function(b){
-    b.addEventListener('click',function(ev){
-      // Inline onclick already handles current core buttons. This keeps any future buttons working too.
-      if(!b.getAttribute('onclick')) window.hikariEasyChoose(b.parentElement.dataset.bind,b.dataset.value);
-    });
-  });
-
-  mount('hikariOldCarrier','heCarrierMount'); mount('hikariOldCarrierOther','heCarrierMount'); mount('hikariType','heTypeMount');
-  mount('hikariPhoneOption','hePhoneMount'); mount('hikariTvOption','heTvMount'); mount('hikariSkyOption','heSkyMount');
-  ['hikariPhoneAddon1','hikariPhoneAddon2','hikariPhoneAddon3','hikariPhoneAddon4'].forEach(function(id){mount(id,'heAddonsMount')});
-  mount('hikariConstruction','heConstructionMount'); mount('hikariAdminFee','heAdminMount'); mount('hikariAdditionalConstruction','heAdditionalMount'); mount('hikariPhoneConstruction','hePhoneConstructionMount'); mount('hikariTvConstruction','heTvConstructionMount');
-  mount('hikariBenefits','heBenefitsMount'); mount('hikariFamilyCount','heFamilyCountMount'); mount('hikariFamilyDiscount','heFamilyDiscountMount');
-  mount('hikariCustomer','heMetaMount'); mount('hikariStaffMemo','heMetaMount'); mount('hikariOldMonthly','heOldMonthlyMount'); mount('hikariCancelFee','heCancelMount'); mount('hikariOldConstruction','heOldConstructionMount'); mount('hikariRemoval','heRemovalMount'); mount('hikariOtherCost','heOtherCostMount'); mount('hikariProposalMemo','heMemoMount');
-
-  // V17.0: 基本プランの選択と金額を自動連動（2年定期契約・税込）
-  function syncPlanPrice(){
-    var speed=q('hikariSpeed')?q('hikariSpeed').value:'1g';
-    var house=q('hikariHouse')?q('hikariHouse').value:'mansion';
-    var type=q('hikariType')?q('hikariType').value:'A';
-    var price=0;
-    if(speed==='10g'){
-      price=(type==='B')?6600:(type==='single'?5940:6380); // A/C 6,380円
-    }else if(house==='house'){
-      price=(type==='B')?5940:(type==='single'?5500:5720); // A/C 5,720円
-    }else{
-      price=(type==='B')?4620:(type==='single'?4180:4400); // A/C 4,400円
-    }
-    if(q('hikariNewMonthly')) q('hikariNewMonthly').value=price;
-    return price;
-  }
-  function syncConstructionOptions(){
-    var apply=q('hikariApplyType')?q('hikariApplyType').value:'new';
-    var type=q('hikariType')?q('hikariType').value:'A';
-    var construction=q('hikariConstruction');
-    if(!construction)return;
-    var opts=[];
-    if(apply==='new'){
-      opts=[
-        ['new_dispatch_wiring','28600','1','0','新規｜派遣・屋内配線あり｜28,600円'],
-        ['new_dispatch_nowiring','18260','1','0','新規｜派遣・屋内配線なし｜18,260円'],
-        ['new_nodispatch','3300','0','0','新規｜無派遣工事｜3,300円']
-      ];
-    }else if(apply==='tenyo'){
-      opts=[
-        ['tenyo_same','0','0','0',(type==='C'?'タイプC転用｜原則工事不要の代表例｜0円':'転用｜速度そのまま代表例｜0円')],
-        ['tenyo_change','0','0','1','転用｜速度変更・設備変更あり｜工事料 要確認']
-      ];
-    }else if(apply==='jigyosha'){
-      opts=[
-        ['jigyosha_same','0','0','0','事業者変更｜速度変更なし・工事不要の場合｜0円（代表例）'],
-        ['jigyosha_change','0','0','1','事業者変更｜速度変更・設備変更あり｜工事料 要確認']
-      ];
-    }else{
-      opts=[
-        ['reuse_rep','18260','1','0','光回線再利用｜工事料代表例｜18,260円'],
-        ['reuse_check','0','0','1','光回線再利用｜設備状況により工事料 要確認']
-      ];
-    }
-    construction.innerHTML=opts.map(function(o){return '<option value="'+o[0]+'" data-fee="'+o[1]+'" data-dispatch="'+o[2]+'" data-verify="'+o[3]+'">'+o[4]+'</option>';}).join('');
-  }
-  function syncConditionalInitialFees(){
-    var apply=q('hikariApplyType')?q('hikariApplyType').value:'new';
-    var construction=q('hikariConstruction');
-    var op=construction&&construction.selectedIndex>=0?construction.options[construction.selectedIndex]:null;
-    var dispatch=op&&op.getAttribute('data-dispatch')==='1';
-    var weekend=q('hikariWeekendWork'), weekendRow=q('heWeekendRow');
-    if(weekendRow)weekendRow.style.display=dispatch?'flex':'none';
-    if(weekend&&!dispatch)weekend.checked=false;
-    var reuse=q('hikariReuseFee'), reuseRow=q('heReuseFeeRow');
-    if(reuseRow)reuseRow.style.display=apply==='reuse'?'flex':'none';
-    if(reuse&&apply!=='reuse')reuse.checked=false;
-    var caution=q('hikariConstructionCaution');
-    if(caution){
-      var verify=op&&op.getAttribute('data-verify')==='1';
-      if(verify)caution.textContent='設備・速度変更などで工事料が変わるため、ドコモ公式の工事料金シミュレーションで確定してください。未確定額は合計に加算していません。';
-      else if(apply==='reuse')caution.textContent='光回線再利用の18,260円は代表例です。設備状況により変動します。再利用手続費6,600円は請求条件を別途確認してください。';
-      else if(apply==='tenyo'||apply==='jigyosha')caution.textContent='速度変更などを伴う場合は別途工事料が発生することがあります。';
-      else caution.textContent='新規工事料は設備状況により、28,600円／18,260円／3,300円のいずれかになります。';
-    }
-    var info=q('heConstructionPointInfo');
-    if(info){
-      var net=window.hikariConstructionFee?window.hikariConstructionFee():0;
-      if(apply==='new'&&net>0){
-        info.innerHTML='<b>新規工事料実質0円特典：</b>対象条件を満たす場合、ネット工事料相当 <b>'+yen(net)+'相当のdポイント</b>を利用開始月の7か月後から24か月に分けて進呈。ここでは通常の「特典」合計へ自動加算しません。';
-      }else if(apply==='reuse'){
-        info.innerHTML='<b>光回線再利用手続費：</b>2026年2月1日以降の申込みで、申込みから180日以内に開通した場合は6,600円が請求されません。請求対象のときだけ上のチェックを入れてください。';
-      }else info.textContent='';
-    }
-  }
-  function syncApplyInitialCost(){
-    syncConstructionOptions();
-    syncConditionalInitialFees();
-  }
-  ['hikariSpeed','hikariHouse','hikariType'].forEach(function(id){var el=q(id);if(el)el.addEventListener('change',syncPlanPrice);});
-  if(q('hikariApplyType'))q('hikariApplyType').addEventListener('change',syncApplyInitialCost);
-  if(q('hikariConstruction'))q('hikariConstruction').addEventListener('change',syncConditionalInitialFees);
-
-  // 元の更新関数に、料金同期＋上部サマリー更新を追加
-  if(window.updateHikariPreview){var old=window.updateHikariPreview;window.updateHikariPreview=function(){syncPlanPrice();syncConditionalInitialFees();var r=old.apply(this,arguments);refreshEasy();return r;};}
-  q('heResetBtn')&&q('heResetBtn').addEventListener('click',function(){
-    setVal('hikariSpeed','1g');setVal('hikariHouse','mansion');setVal('hikariApplyType','new');setVal('hikariType','A');
-    if(q('hikariOldCarrier')){q('hikariOldCarrier').value='';q('hikariOldCarrier').dispatchEvent(new Event('change',{bubbles:true}));}
-    if(q('hikariPhoneOption'))q('hikariPhoneOption').value='0'; if(q('hikariTvOption'))q('hikariTvOption').value='none'; if(q('hikariSkyOption'))q('hikariSkyOption').value='none';
-    if(q('hikariRouterRental'))q('hikariRouterRental').checked=false; if(q('hikariRouterPurchase'))q('hikariRouterPurchase').checked=false; if(q('hikariRouterPrice'))q('hikariRouterPrice').value='0'; if(q('hikariWeekendWork'))q('hikariWeekendWork').checked=false; if(q('hikariReuseFee'))q('hikariReuseFee').checked=false;
-    updateHikariPreview();
-  });
-  syncPlanPrice();syncApplyInitialCost();syncButtons();refreshEasy();
-})();
-</script>
+<div id="hikariPrintReport" class="print-report"></div>
 <script>
 (function(){
   var root=document.getElementById('hikariEstimate');
@@ -4590,7 +4277,7 @@ renderSavedQuotes();
     if(el.id==='hikariTransferSheet') panes='transfer';
     if(el.querySelector && el.querySelector('#hikariFlowSection')) panes='flow';
     if(el.id==='hikariQuotePreview') panes='quote';
-    if(el.classList && el.classList.contains('post-flow-box')) panes='afterflow'; // 旧『開通後の流れ』は4タブでは表示しない
+    if(el.classList && el.classList.contains('post-flow-box')) panes='flow';
     // PDF/印刷ボタンは見積もり・見積書の両方で使えるようにする
     if(el.classList && el.classList.contains('pdf-action')) panes='estimate quote';
     el.setAttribute('data-hikari-panes',panes);
@@ -4634,242 +4321,5 @@ renderSavedQuotes();
   showPane(initial,initialLink);
 })();
 </script>
-<script id="hikariFourPaneHardFixScriptV173">
-(function(){
-  var root=document.getElementById('hikariEstimate'), nav=document.querySelector('.hikari-nav');
-  if(!root||!nav)return;
-  var map={'#hikariEstimate':'estimate','#hikariQuotePreview':'quote','#hikariFlowSection':'flow','#hikariTransferSection':'transfer'};
-  function activate(a){
-    var pane=map[a.getAttribute('href')]||'estimate';
-    root.setAttribute('data-active-pane',pane);
-    nav.querySelectorAll('a').forEach(function(x){x.classList.toggle('active',x===a)});
-    if(typeof updateHikariPreview==='function') updateHikariPreview();
-  }
-  nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();e.stopImmediatePropagation();activate(a);},{capture:true});});
-  var initial=map[location.hash]||'estimate';
-  var a=[].slice.call(nav.querySelectorAll('a')).find(function(x){return map[x.getAttribute('href')]===initial})||nav.querySelector('a');
-  activate(a);
-})();
-</script>
-<style id="hikariEstimateV180">
-.he-stack-v18{display:block!important;max-width:900px;margin:14px auto 90px!important}.he-card-v18{background:#fff;border:1px solid #dfe3e8;border-radius:16px;padding:18px;margin:0 0 14px;box-shadow:0 2px 10px rgba(20,30,45,.04)}.he-card-v18 .he-section-title{font-size:21px;margin-bottom:18px}.he-plan-price{display:flex;align-items:center;justify-content:space-between;background:#fff4f7;border:1px solid #f4ccd7;border-radius:12px;padding:13px 15px;margin-top:12px}.he-plan-price span{font-weight:800}.he-plan-price b{font-size:26px;color:#d5003b}.he-cost-summary,.he-point-summary{margin-top:14px;background:#fff5f7;border:1px solid #efc2ce;border-radius:12px;padding:14px;line-height:1.65}.he-cost-summary strong,.he-point-summary strong{color:#d5003b;font-size:20px}.he-sticky{grid-template-columns:1fr 1fr 1fr 1.35fr!important}.he-sticky #heStickyPoint{color:#fff}.he-card-v18 select,.he-card-v18 input[type=number],.he-card-v18 input[type=text]{min-height:48px;font-size:16px}.he-card-v18 .he-buttons button{min-height:58px}.he-card-v18 .he-subhead{font-size:16px;margin-top:16px}.he-card-v18 #heMetaMount>input{margin-top:8px}
-@media(max-width:700px){.he-stack-v18{margin:10px 10px 110px!important}.he-card-v18{padding:16px 14px;border-radius:14px}.he-card-v18 .he-section-title{font-size:20px}.he-sticky{position:fixed!important;left:0;right:0;bottom:0;margin:0!important;max-width:none!important;grid-template-columns:1fr 1fr 1fr!important;border-radius:0!important;padding:9px 8px!important}.he-sticky button{grid-column:1/-1;min-height:42px!important}.he-sticky b{font-size:20px!important}.he-sticky span{font-size:10px!important}.he-buttons-4{grid-template-columns:1fr 1fr!important}}
-</style>
-<script id="hikariEstimateV180Script">
-(function(){
- function q(id){return document.getElementById(id)}
- function yen(n){return Number(n||0).toLocaleString('ja-JP')+'円'}
- function pt(n){return Number(n||0).toLocaleString('ja-JP')+'pt'}
- function updateV18(){
-  try{
-   var c=window.hikariProposalCalc?window.hikariProposalCalc():null;if(!c)return;
-   var cons=window.hikariConstructionCalc?window.hikariConstructionCalc():null;
-   var base=q('hikariNewMonthly')?Number(q('hikariNewMonthly').value||0):0;
-   if(q('heBaseMonthly'))q('heBaseMonthly').textContent=yen(base);
-   if(q('heStickyMonthly'))q('heStickyMonthly').textContent=yen(c.newM);
-   if(q('heStickyInitial'))q('heStickyInitial').textContent=c.constructionNeedsCheck?'要確認':yen(c.start);
-   if(q('heStickyPoint'))q('heStickyPoint').textContent=pt(c.benefit);
-   var pointAuto=q('hikariConstructionPointAuto')&&q('hikariConstructionPointAuto').checked&&q('hikariApplyType')&&q('hikariApplyType').value==='new'&&!c.constructionNeedsCheck;
-   var constructionPt=pointAuto&&cons?Number(cons.net||0):0;
-   var manual=q('hikariBenefits')?Number(q('hikariBenefits').value||0):0;
-   if(q('hePointSummaryV18'))q('hePointSummaryV18').innerHTML='<b>dポイント進呈</b><br>新規工事料相当：<strong>'+pt(constructionPt)+'</strong><br>その他特典：'+pt(manual)+'<br><b>合計：<strong>'+pt(constructionPt+manual)+'</strong></b>';
-   var pay=q('heInstallPay')?Number(q('heInstallPay').value):24; var net=cons?Number(cons.net||0):0; var inst=pay>1?Math.floor(net/pay):net;
-   if(q('heInitialSummaryV18'))q('heInitialSummaryV18').innerHTML='<b>初期費用総額：<strong>'+(c.constructionNeedsCheck?'要確認':yen(c.start))+'</strong></b><br>契約・登録等：'+yen((cons?cons.admin:0))+'<br>ネット工事費：'+yen(net)+(pay>1?'（'+pay+'回・目安 '+yen(inst)+'/月、端数は初回調整）':'（一括）')+'<br>電話・テレビ・追加等：'+yen((cons?cons.total-cons.admin-net:0));
-  }catch(e){console.warn(e)}
- }
- var old=window.updateHikariPreview;if(old){window.updateHikariPreview=function(){var r=old.apply(this,arguments);updateV18();return r}}
- document.addEventListener('change',function(e){if(e.target&&e.target.id==='heInstallPay')updateV18()});
- setTimeout(updateV18,0);
-})();
-</script>
-<style id="hikariPrecisionV181">
-.hikari-build-v181{position:fixed;right:6px;top:6px;z-index:9999;font-size:9px;color:#9aa0a6;background:rgba(255,255,255,.72);padding:2px 5px;border-radius:7px;pointer-events:none}
-.he-hearing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:10px 0}.he-hearing-grid label,.he-precision-row label{display:block;font-weight:800;margin:0 0 6px}.he-hearing-grid select{width:100%;min-height:50px}
-.he-precision-row{margin:10px 0}.he-precision-row select{width:100%;min-height:52px}.he-moved-construction-controls{display:none!important}
-.he-tv-official-note,.he-accuracy-note{font-size:12px;line-height:1.6;color:#6b7280;margin-top:8px}.he-tv-official-note{background:#fff8fa;border-left:3px solid #d5003b;padding:8px 10px;border-radius:6px}
-.he-cost-summary .v181-top{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:10px}.he-cost-summary .v181-kpi{background:#fff;border:1px solid #f0c9d3;border-radius:10px;padding:10px}.he-cost-summary .v181-kpi span{display:block;font-size:12px;color:#666}.he-cost-summary .v181-kpi b{display:block;color:#d5003b;font-size:20px;margin-top:2px}.he-cost-summary .v181-total{padding-top:10px;border-top:1px solid #efc2ce;font-weight:800}.he-cost-summary .v181-lines{margin:8px 0 0;font-size:13px;line-height:1.75;color:#4b5563}.he-cost-summary .v181-lines b{color:#111}.he-cost-summary .v181-warn{margin-top:8px;padding:7px 9px;background:#fff7e8;border-radius:8px;font-size:12px;color:#7a5310}
-@media(max-width:700px){.he-hearing-grid{grid-template-columns:1fr}.he-cost-summary .v181-top{grid-template-columns:1fr 1fr}.hikari-build-v181{top:2px;right:2px}}
-</style>
-<script id="hikariPrecisionV181Script">
-(function(){
- function q(id){return document.getElementById(id)}
- function n(id){var e=q(id);return e?Number(e.value||0):0}
- function yen(v){return Number(v||0).toLocaleString('ja-JP')+'円'}
- function move(id,target){var e=q(id),t=q(target);if(e&&t&&e.parentNode!==t)t.appendChild(e)}
- function setSelect(id,val){var e=q(id);if(!e)return;var ok=[].some.call(e.options,function(o){return o.value===String(val)});if(ok)e.value=String(val)}
- function tvSplit(total){
-   total=Number(total||0);
-   if(total===13530)return {work:10450,reg:3080,admin:0};
-   if(total===31460)return {work:28380,reg:3080,admin:0};
-   if(total===23980)return {work:18700,reg:3080,admin:2200};
-   if(total===41910)return {work:36630,reg:3080,admin:2200};
-   return {work:total,reg:0,admin:0};
- }
- function syncPhoneAuto(){
-   var phone=q('hikariPhoneOption'),mode=q('hePhoneNumberMode'),apply=q('hikariApplyType'),fee=q('hikariPhoneConstruction');
-   if(!phone||!mode||!fee)return;
-   if(phone.value==='0'){mode.value='none';setSelect('hikariPhoneConstruction','0');return;}
-   if(mode.value==='none')mode.value='new';
-   if(mode.value==='manual')return;
-   if(apply&&apply.value==='new'){
-     setSelect('hikariPhoneConstruction',mode.value==='port'?'3300':'1100');
-   } else if(apply&&apply.value==='tenyo') {
-     setSelect('hikariPhoneConstruction','0');
-   }
- }
- function syncTvAuto(){
-   var tv=q('hikariTvOption'), fee=q('hikariTvConstruction');if(!tv||!fee)return;
-   if(tv.value==='none'){setSelect('hikariTvConstruction','0');return;}
-   if(tv.value==='docomo_tv' && fee.value==='0'){
-     var construction=q('hikariConstruction');
-     var dispatched=construction&&construction.selectedIndex>=0&&construction.options[construction.selectedIndex].getAttribute('data-dispatch')==='1';
-     if(dispatched)setSelect('hikariTvConstruction','13530');
-   }
- }
- function refreshPrecision(){
-   move('carrierNetPlan','heCarrierNetPlanMount');move('carrierPhonePlan','heCarrierPhonePlanMount');move('carrierTvPlan','heCarrierTvPlanMount');
-   move('hikariPhoneConstruction','hePhoneConstructionMountV181');move('hikariTvConstruction','heTvConstructionMountV181');
-   syncPhoneAuto();syncTvAuto();
-   var c=window.hikariProposalCalc?window.hikariProposalCalc():null, cons=window.hikariConstructionCalc?window.hikariConstructionCalc():null;if(!c||!cons)return;
-   var tv=tvSplit(cons.tv), pay=q('heInstallPay')?Number(q('heInstallPay').value||24):24;
-   var netInst=pay>1?Math.floor(cons.net/pay):cons.net;
-   var feeTotal=cons.admin+tv.reg+tv.admin+cons.reuseFee;
-   var works=cons.net+cons.phone+tv.work+cons.weekend+cons.additional;
-   var other=cons.routerPurchase||0;
-   var box=q('heInitialSummaryV18');
-   if(box){
-     box.innerHTML='<div class="v181-top"><div class="v181-kpi"><span>手数料・登録料</span><b>'+yen(feeTotal)+'</b></div><div class="v181-kpi"><span>工事費合計</span><b>'+(cons.needsCheck?'要確認':yen(works))+'</b></div></div>'+
-       '<div class="v181-total">初期費用総額：<strong>'+(cons.needsCheck?'要確認（確定済み '+yen(cons.total)+'）':yen(cons.total))+'</strong></div>'+
-       '<div class="v181-lines"><b>内訳</b><br>・契約事務手数料 '+yen(cons.admin)+'<br>・回線工事費 '+(cons.needsCheck?'要確認':yen(cons.net))+'<br>・光電話工事費 '+yen(cons.phone)+'<br>・テレビ工事 '+yen(tv.work)+(tv.reg?'<br>・テレビ視聴サービス登録料 '+yen(tv.reg):'')+(tv.admin?'<br>・テレビオプション契約事務手数料 '+yen(tv.admin):'')+(cons.weekend?'<br>・土日休日加算 '+yen(cons.weekend):'')+(cons.reuseFee?'<br>・光回線再利用手続費 '+yen(cons.reuseFee):'')+(cons.additional?'<br>・追加工事費 '+yen(cons.additional):'')+(other?'<br>・ルーター購入 '+yen(other):'')+'</div>'+
-       '<div class="v181-warn">ネット工事費の'+(pay===1?'一括払い：'+yen(cons.net):pay+'回分割目安：'+yen(netInst)+'/月（端数は初回調整）')+'。電話・テレビなどの工事費は別項目です。</div>';
-   }
-   var note=q('heAccuracyNoteV181');if(note){note.innerHTML='2026年9月確認：新規回線工事の代表額は28,600円／屋内配線なし18,260円／無派遣3,300円。テレビ初期費用は申込形態・台数で変わります。設備状況・特殊工事は最終確認が必要です。';}
- }
- function bind(){
-   ['hikariPhoneOption','hePhoneNumberMode','hikariApplyType','hikariTvOption','hikariConstruction','hikariTvConstruction','hikariPhoneConstruction','heInstallPay'].forEach(function(id){var e=q(id);if(e)e.addEventListener('change',function(){if(id==='hikariPhoneOption'||id==='hePhoneNumberMode'||id==='hikariApplyType')syncPhoneAuto();if(id==='hikariTvOption'||id==='hikariConstruction')syncTvAuto();if(typeof window.updateHikariPreview==='function')window.updateHikariPreview();setTimeout(refreshPrecision,0);});});
-   ['carrierNetPlan','carrierPhonePlan','carrierTvPlan'].forEach(function(id){var e=q(id);if(e)e.addEventListener('change',function(){setTimeout(refreshPrecision,0)});});
- }
- var old=window.updateHikariPreview;
- if(old){window.updateHikariPreview=function(){var r=old.apply(this,arguments);setTimeout(refreshPrecision,0);return r}}
- setTimeout(function(){refreshPrecision();bind();},20);
-})();
-</script>
-<style id="hikariMountRepairV182">
-/* V18.2: mobile/Safari robust mount repair */
-#hikariEasyEstimate .he-field-row select,
-#hikariEasyEstimate .he-field-row input,
-#hikariEasyEstimate .he-hearing-grid select,
-#hikariEasyEstimate .he-hearing-grid input,
-#hikariEasyEstimate #heMetaMount input,
-#hikariEasyEstimate #heOldMonthlyMount input,
-#hikariEasyEstimate #heCancelMount input,
-#hikariEasyEstimate #heOldConstructionMount input,
-#hikariEasyEstimate #heRemovalMount input,
-#hikariEasyEstimate #heOtherCostMount input,
-#hikariEasyEstimate #heMemoMount input{display:block!important;width:100%!important;box-sizing:border-box!important;visibility:visible!important;opacity:1!important;min-height:48px!important}
-#hikariEasyEstimate #heCarrierMount>select{display:block!important;width:100%!important;visibility:visible!important;opacity:1!important;min-height:52px!important}
-#hikariEasyEstimate #heCarrierMount>input{width:100%!important;box-sizing:border-box!important}
-</style>
-<script id="hikariMountRepairScriptV182">
-(function(){
-  function q(id){return document.getElementById(id)}
-  function move(id,target){
-    var e=q(id),t=q(target);
-    if(!e||!t)return false;
-    if(e.parentNode!==t)t.appendChild(e);
-    return true;
-  }
-  function repair(){
-    var pairs=[
-      ['hikariOldCarrier','heCarrierMount'],['hikariOldCarrierOther','heCarrierMount'],
-      ['carrierNetPlan','heCarrierNetPlanMount'],['carrierPhonePlan','heCarrierPhonePlanMount'],['carrierTvPlan','heCarrierTvPlanMount'],
-      ['hikariOldMonthly','heOldMonthlyMount'],['hikariCancelFee','heCancelMount'],['hikariOldConstruction','heOldConstructionMount'],['hikariRemoval','heRemovalMount'],
-      ['hikariType','heTypeMount'],['hikariPhoneOption','hePhoneMount'],['hikariTvOption','heTvMount'],['hikariSkyOption','heSkyMount'],
-      ['hikariConstruction','heConstructionMount'],['hikariPhoneConstruction','hePhoneConstructionMountV181'],['hikariTvConstruction','heTvConstructionMountV181'],
-      ['hikariAdminFee','heAdminMount'],['hikariAdditionalConstruction','heAdditionalMount'],
-      ['hikariBenefits','heBenefitsMount'],['hikariFamilyCount','heFamilyCountMount'],['hikariFamilyDiscount','heFamilyDiscountMount'],
-      ['hikariCustomer','heMetaMount'],['hikariStaffMemo','heMetaMount'],['hikariOtherCost','heOtherCostMount'],['hikariProposalMemo','heMemoMount']
-    ];
-    pairs.forEach(function(x){move(x[0],x[1])});
-    ['hikariPhoneAddon1','hikariPhoneAddon2','hikariPhoneAddon3','hikariPhoneAddon4'].forEach(function(id){move(id,'heAddonsMount')});
-
-    /* If the old-line preset selects have not been populated yet, populate them now. */
-    try{ if(typeof window.renderCarrierPricePresets==='function') window.renderCarrierPricePresets(); }catch(e){console.warn('carrier preset repair',e)}
-    try{ if(typeof window.syncPlanPrice==='function') window.syncPlanPrice(); }catch(e){}
-    try{ if(typeof window.updateHikariPreview==='function') window.updateHikariPreview(); }catch(e){console.warn('preview repair',e)}
-
-    /* Visible diagnostic marker: only show if any required field still failed to mount. */
-    var required=[['hikariOldCarrier','heCarrierMount'],['carrierNetPlan','heCarrierNetPlanMount'],['hikariOldMonthly','heOldMonthlyMount'],['hikariType','heTypeMount']];
-    var failed=required.some(function(x){var e=q(x[0]),t=q(x[1]);return !e||!t||e.parentNode!==t});
-    document.documentElement.setAttribute('data-hikari-mount',failed?'failed':'ok');
-  }
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',repair,{once:true}); else repair();
-  window.addEventListener('load',repair,{once:true});
-  setTimeout(repair,100);
-  setTimeout(repair,500);
-})();
-</script>
-<style id="hikariStaticMountV183">
-/* V18.4: controls are statically placed in the visible UI; no JS mount dependency */
-#hikariEasyEstimate select,#hikariEasyEstimate input[type="number"],#hikariEasyEstimate input[type="text"],#hikariEasyEstimate input[type="date"]{display:block!important;visibility:visible!important;opacity:1!important}
-#heCarrierMount,#heCarrierNetPlanMount,#heCarrierPhonePlanMount,#heCarrierTvPlanMount,#heOldMonthlyMount,#heCancelMount,#heOldConstructionMount,#heRemovalMount{min-height:48px}
-</style>
-<script id="hikariHearingSimpleScriptV184">
-window.hikariApplyAmountPreset=function(targetId,value,customId){
-  var target=document.getElementById(targetId), custom=document.getElementById(customId);
-  if(!target)return;
-  if(value==='custom'){
-    if(custom){custom.style.display='block';custom.focus();target.value=Math.max(0,Number(custom.value)||0);}
-  }else{
-    target.value=Math.max(0,Number(value)||0);
-    if(custom)custom.style.display='none';
-  }
-  if(typeof updateHikariPreview==='function')updateHikariPreview();
-};
-window.hikariApplyCustomAmount=function(targetId,value){
-  var target=document.getElementById(targetId);if(!target)return;
-  target.value=Math.max(0,Number(value)||0);
-  if(typeof updateHikariPreview==='function')updateHikariPreview();
-};
-</script>
-
-<style id="hikariHearingFixV185">
-/* V18.5: 電話/テレビはヒアリング状態を選ぶだけ。視聴チェックはiPhoneでも崩れない縦並び。 */
-.he-viewing-v185{display:block;margin:12px 0 14px;padding:14px 16px;border:1px solid #e4e7eb;border-radius:14px;background:#fff}
-.he-viewing-v185 .he-viewing-label{display:block;font-weight:900;margin:0 0 8px}
-.he-viewing-v185 label{display:flex!important;align-items:center!important;gap:10px!important;margin:0!important;padding:9px 0!important;font-size:16px!important;font-weight:700!important;width:auto!important}
-.he-viewing-v185 input[type="checkbox"]{-webkit-appearance:checkbox!important;appearance:checkbox!important;display:inline-block!important;flex:0 0 22px!important;width:22px!important;height:22px!important;min-width:22px!important;min-height:22px!important;margin:0!important;padding:0!important;border-radius:4px!important;accent-color:#d5003b!important}
-.he-viewing-v185 label span{display:inline!important;white-space:nowrap}
-#hikariOldPhoneStatus,#hikariOldTvStatus{width:100%!important}
-</style>
-<script id="hikariHearingFixScriptV185">
-(function(){
-  function firstNonZero(select){
-    if(!select)return;
-    var opts=[].slice.call(select.options||[]), idx=opts.findIndex(function(o){return Number(o.value)>0});
-    select.selectedIndex=idx>=0?idx:0;
-  }
-  window.hikariSetCurrentPhoneStatus=function(v){
-    var p=document.getElementById('carrierPhonePlan');
-    if(p){ if(v==='set') firstNonZero(p); else p.selectedIndex=0; }
-    if(typeof applyCarrierPriceTotal==='function')applyCarrierPriceTotal();
-  };
-  window.hikariSetCurrentTvStatus=function(v){
-    var t=document.getElementById('carrierTvPlan');
-    if(t){ if(v==='line') firstNonZero(t); else t.selectedIndex=0; }
-    if(typeof applyCarrierPriceTotal==='function')applyCarrierPriceTotal();
-  };
-  var oldRender=window.renderCarrierPricePresets;
-  if(typeof oldRender==='function'){
-    window.renderCarrierPricePresets=function(){
-      oldRender();
-      var ps=document.getElementById('hikariOldPhoneStatus'),ts=document.getElementById('hikariOldTvStatus');
-      if(ps&&ps.value==='set')window.hikariSetCurrentPhoneStatus('set');
-      if(ts&&ts.value==='line')window.hikariSetCurrentTvStatus('line');
-    };
-  }
-})();
-</script>
-
 </body>
 </html>
