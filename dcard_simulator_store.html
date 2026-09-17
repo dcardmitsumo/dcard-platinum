@@ -753,75 +753,12 @@ input:focus,select:focus{
   margin:10px 0;touch-action:manipulation;
 }
 .phone-addon-note{margin-top:7px;padding:8px;border-radius:8px;background:#f7f8fa;font-size:11px}
-
-.quote-preview-sheet{
-  margin-top:14px;border:1px solid #d9dee4;border-radius:14px;background:#fff;
-  padding:14px;box-shadow:0 2px 10px rgba(0,0,0,.05)
-}
-.quote-preview-sheet h3{margin:0 0 4px;font-size:18px}
-.quote-preview-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;border-bottom:2px solid #202124;padding-bottom:8px;margin-bottom:10px}
-.quote-preview-name{font-weight:900;font-size:16px}
-.quote-preview-table{width:100%;border-collapse:collapse;font-size:12px}
-.quote-preview-table th,.quote-preview-table td{border-bottom:1px solid #e4e7ea;padding:7px 4px;text-align:left;vertical-align:top}
-.quote-preview-table td.num{text-align:right;font-weight:800;white-space:nowrap}
-.quote-preview-total{font-size:15px;font-weight:900}
-.post-flow-box{margin-top:14px}
-.post-flow-item{border-left:4px solid #202124;background:#fafbfc;border-radius:8px;padding:9px 10px;margin-bottom:8px}
-.post-flow-item b{display:block;margin-bottom:3px}
-@media(max-width:700px){.quote-preview-head{display:block}}
 </style>
-<!-- V15.8.2: 画面上の長い更新履歴を完全非表示化。機能はV15.8を維持。 -->
-<!--
-V15.9 construction fee basis:
-Network: 28,600 / 18,260 / 3,300 (Docomo official, applications from 2026-06-01)
-Hikari Phone: simultaneous application representative amounts; additional work may apply
-TV option: simultaneous 1 TV 13,530 / 2-4 TVs 31,460; TV-only 23,980 / 41,910
--->
-<!-- V16.1: 他社回線/ホームルーター選択、主要社のネット・電話・テレビ料金プリセット、自動月額合計。未プリセット会社は手入力。 -->
-<!--
-V16.2 audit:
-- 新規: 新回線利用確認前に旧回線を先行解約しない
-- 事業者変更: 切替完了で旧回線解約。ただし旧プロバイダの有料OP等は別途確認
-- 転用: 旧プロバイダ契約/OPが残る場合あり
-- 光回線再利用: 工事完了で変更元契約解約。番号継続は同時番号ポータビリティ確認
-- Type C: CATV受付番号/継続するCATV電話・TVとネット契約を分けて確認
-- 返却機器、セット割、初回請求、特典、翌月二重請求までチェック
--->
-<!--
-V16.3 full audit fixes:
-1. 開通後フローの電話/TV/Sky判定IDを実在IDへ修正。
-2. 光電話工事費の代表パターンを公式料金に整理。
-3. 追加工事費入力を初期費用・実質負担・PDFへ反映。
-4. 家族セット割は同一割引単価×人数の簡易モデルである旨を明示。
-5. 10Gルーターレンタル550円/月、ブロードバンドユニバーサルサービス料は自動加算外と明示。
--->
-<!--
-V16.4 rebuilt baseline:
-V16.3で確認した計算修正・開通後フロー修正・追加工事費・実質負担比較を統合。
-今後の店頭用単品HTMLはこの版を基準に更新。
--->
-
-<style id="standaloneMode">
-.app-tabs{display:none!important}
-#pageDcard{display:block!important}
-#pageHikari{display:none!important}
-.standalone-homebar{
-  position:sticky;top:0;z-index:2147483647;
-  padding:calc(8px + env(safe-area-inset-top)) 12px 8px;
-  background:rgba(255,255,255,.96);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid #e5e7eb;
-}
-.standalone-homebar a{
-  display:inline-flex;align-items:center;gap:7px;text-decoration:none;
-  color:#111;background:#f3f4f6;border:1px solid #d9dde5;
-  border-radius:999px;padding:9px 13px;font-size:13px;font-weight:900;
-}
-@media print{.standalone-homebar{display:none!important}}
-</style>
-
 </head>
-<body onload="calcAll()"><div class="standalone-homebar"><a href="./store_menu_imagecards_v4.html">← 3つのメニューへ戻る</a></div>
+<body onload="calcAll()">
+<!-- V59: return to unified V58 menu only -->
+<a href="./othercarrier_docomo_compare_v58_independent_routes.html" style="position:fixed;left:14px;top:14px;z-index:99999;background:#fff;border:1px solid #ddd;border-radius:999px;padding:9px 14px;text-decoration:none;color:#111;font-weight:800;box-shadow:0 2px 10px #0002">← メニューへ戻る</a>
+
 <div class="app-tabs">
   <button type="button" id="tabDcard" class="app-tab active" data-app-page="dcard">ページ1｜dカード見積もり</button>
   <button type="button" id="tabHikari" class="app-tab" data-app-page="hikari">ページ2｜ドコモ光・他社乗り換え</button>
@@ -829,7 +766,7 @@ V16.3で確認した計算修正・開通後フロー修正・追加工事費・
 
 <div id="pageDcard" class="app-page active">
 <header>
-<small>d CARD SALES SIMULATOR • 店頭用 V16.4｜再構築・監査反映版</small>
+<small>d CARD SALES SIMULATOR • 店頭用 V15.7｜dカード/光PDF分離・光電話OP</small>
 <h1>dカード 店頭提案シミュレーター</h1>
 <p>料金プランからポイ活・銀行・dカード積立まで、dカード / GOLD U / GOLD / PLATINUMを一括比較</p>
 </header>
@@ -872,6 +809,7 @@ V16.3で確認した計算修正・開通後フロー修正・追加工事費・
 <section class="public-intro">
   <h2>dカード 店頭提案シミュレーター</h2>
   <p>店頭でお客さまの契約状況を確認しながら、料金プランや毎月の利用状況を入力すると、dカード・GOLD U・GOLD・PLATINUMの年間メリットをまとめて比較できます。<br><b>2026年9月1日に発表された改定内容を反映した「改定後ルール基準」</b>で計算しています。PLATINUMのケータイ・ドコモ光・dカード積立は2026年12月利用/決済分以降、ドコモでんきは2026年11月検針分以降の条件を基準にしています。</p>
+  <div class="note" style="margin-top:10px"><b>V15.7：dカード見積PDFとドコモ光見積PDFを完全分離し、それぞれ専用ボタンで印刷/PDF保存できるよう修正。光電話付加サービスを4枠プルダウン化（発信者番号表示、ナンバー・リクエスト、通話中着信、転送でんわ、迷惑電話ストップ、着信お知らせメール、ダブルチャネル、追加番号）。光電話バリューに含まれる6サービスは重複加算しない。V15.6：ドコモ光セット割の対象人数×割引額で家族合計の月額/年間お得額を比較へ反映。ドコモ光電話/バリュー、ドコモ光テレビオプション、ひかりTV、スカパー基本プラン/セレクト5/10/単チャンネルを追加。新規/転用/事業者変更/光回線再利用/タイプC転用の開通手順を画面表示。V15.5：他社回線プルダウン選択時に、解約金・撤去費・工事費残債の代表額一覧を自動表示。eo光/J:COM/NURO光/KCNは公式公表額を反映し、その他は契約条件確認方式で表示。V15.4：ドコモ光タイプCの提携CATV利用者は、他社CATVからでもタイプCへ「転用」で切替可能である旨をページ2とPDFへ追加。原則工事不要・提携CATVネット解約金不要、テレビ/電話継続可、例外条件も注意表示。V15.3.1：iPhoneのHTMLプレビューでページ2タブをタップできない問題を修正。タブを最前面化し、click/touchendの両方でページ切替を実行。V15.3：ページ2の操作不能を修正し、チェックボックス・入力欄を確実に操作可能化。他社回線選択時に会社別の問い合わせ先・解約金/残債の確認ポイント・機器返却・固定電話番号・承諾番号等の注意事項を自動表示する「解約・乗り換えチェック」を追加。V15.2：ページ2の現在利用中回線を関西圏中心のプルダウン化。eo光、J:COM、NURO光、KCN、Baycom、ZTV、WINKに加え、SoftBank光・ビッグローブ光・楽天ひかり・So-net光・@nifty光・GMOとくとくBB光・フレッツ光等を追加。その他は手入力対応。V15.1：画面を「ページ1｜dカード見積もり」「ページ2｜ドコモ光・他社乗り換え」の2タブ構成に変更。ドコモ光機能をSTEP8から分離。V15.0：PDF提案書に「ドコモ光 開通までの流れ」「他社からドコモ光への乗り換え費用見積」の追加ページを実装。新規・転用・事業者変更・光回線再利用を切替可能。初期費用・他社解約金/残債/撤去費・還元特典・月額差・1年間差額を入力値から自動計算。V14.8：ケータイ料金還元対象オプションと爆アゲ セレクションを各5枠に拡張。爆アゲにデジタル版「週刊少年ジャンプ」定期購読を追加。smartあんしんパックの現行料金帯も選択肢へ追加。V14.7：2026年9月時点の公式条件で全体監査。U22/U29・ハーティ・子育ての優先制御、U15/光・home5G・でんき適否、mini/ahamoのケータイ料金ポイント、2026年12月以降ポイ活ポイント算定基礎、PLATINUM改定後期間、dカード積立通常dカードの段階還元、2026年8月開始のmini/ahamoデータ増量表示を修正。V14.6.3：爆アゲ セレクション等の対象ドコモ月額サービス料金を、GOLD/GOLD U/PLATINUM等のケータイ料金dポイント還元の算定対象にも加算。爆アゲ独自還元とは別枠で二重に正しく計上。無料特典分は除外。V14.6.2：PDF見積を「料金プラン→各割引→各オプション→合計」の明細形式に変更。選択したdカードごとに携帯料金＋対象オプションの年間dポイント還元を表示。実際に選択したケータイ料金還元対象オプション（あんしんセキュリティ、smartあんしん補償等）を名称付きで明細化。V14.6.1：U15のドコモ光/home 5Gセット割を対象外に修正。ドコモでんきセット割をMAX/ポイ活MAX/ポイ活20/miniのみ選択可能に制御。U22/U29とハーティ等の重畳時は基本料金を超える重複割引を防止し、公式の優先関係に合わせて制御。PDF見積書に有料オプションを項目別明細で追加。V14.5：子育てサポート、U22/U29、ahamo→MAXのりかえ割、ドコモ光/home 5Gセット割の区別を追加。home 5G料金はdカード GOLD等のケータイ／ドコモ光高還元ポイントを0として計算。V14.4：ドコモ スマホデビュープラン U15、ドコモ親子割（U15・家族）を追加。家族のMAX・ポイ活MAX・ahamoは最大12か月550円/月を世帯合算。V14.3：ハーティ割引（現行・旧プラン）と5分無料／かけ放題の音声OP割引に対応。V14修正：</b>見積保存・PDF・書き出し・読込を復旧。家族カード合算、dカードお支払割年間額、PDF比較カード選択、ポイ活ファミリー表示を修正。</div>
 <div class="public-guide">
     <div><b>① 条件を入力</b><br>料金プラン・割引・利用サービスを選択</div>
     <div><b>② 4券種を自動比較</b><br>ポイント・年会費などをまとめて計算</div>
@@ -2448,7 +2386,10 @@ function bindAppTabs(){
     btn.addEventListener("touchend",run,{passive:false});
   });
 }
-document.addEventListener("DOMContentLoaded",function(){ /* standalone mode */ });
+document.addEventListener("DOMContentLoaded",function(){
+  bindAppTabs();
+  switchAppPage("dcard");
+});
 
 function switchAppPage(page){
   var d=g("pageDcard"), h=g("pageHikari"), td=g("tabDcard"), th=g("tabHikari");
@@ -3171,98 +3112,7 @@ function hn(id){var e=g(id);return e?Math.max(0,Number(e.value)||0):0;}
 function hc(id){var e=g(id);return !!(e&&e.checked);}
 
 
-
-var carrierPricePresets={
-  "home 5G":{
-    net:[["home 5G プラン",5280]], phone:[["電話なし",0]], tv:[["テレビなし",0]],
-    note:"端末代・月々サポート等は別計算。"
-  },
-  "SoftBank Air":{
-    net:[["Air 4G/5G共通｜基本料金",5368],["Airターミナル6購入｜24か月目まで目安",4950]],
-    phone:[["電話なし",0]], tv:[["テレビなし",0]],
-    note:"2026年12月以降は基本料金改定予定。端末残債に注意。"
-  },
-  "Rakuten Turbo":{
-    net:[["Rakuten Turbo プラン",4840]], phone:[["電話なし",0]], tv:[["テレビなし",0]],
-    note:"端末代41,580円は別。キャンペーン適用条件は別確認。"
-  },
-  "UQ WiMAX":{
-    net:[["料金を手入力",0]], phone:[["電話なし",0]], tv:[["テレビなし",0]],
-    note:"契約プラン・キャンペーンで料金が変わるため現在請求額を手入力。"
-  },
-  "WiMAX その他":{
-    net:[["料金を手入力",0]], phone:[["電話なし",0]], tv:[["テレビなし",0]],
-    note:"提供事業者ごとに料金が異なるため現在請求額を手入力。"
-  },
-  "SoftBank 光":{
-    net:[["1ギガ 戸建・2年自動更新",5720],["1ギガ 集合・2年自動更新",4180],["10ギガ・2年自動更新",6380]],
-    phone:[["電話なし",0],["指定オプションパック（電話等含む）",550]],
-    tv:[["テレビなし",0],["ソフトバンク光テレビ",990]],
-    note:"1ギガは2026年12月から+330円改定予定。"
-  },
-  "NURO 光":{
-    net:[["ネット料金は契約プランにより異なるため手入力",0]],
-    phone:[["電話なし",0],["NURO 光 でんわ｜西日本",330],["NURO 光 でんわ｜東日本",550]],
-    tv:[["テレビなし",0],["ひかりTV 基本プラン",1210],["専門チャンネルプラン",3300],["専門チャンネル＋ビデオ",4400]],
-    note:"ネット本体は契約時期・2G/10G・住居タイプで差が大きいため請求額入力推奨。"
-  },
-  "KCN":{
-    net:[["戸建 光1G｜1～3年目",5280],["戸建 光1G｜4年目以降",4950],["戸建 光10G｜1～3年目",6600],["戸建 光10G｜4年目以降",5500],["集合 光1G",5280],["集合 光10G",6600]],
-    phone:[["電話なし",0],["ケーブルライン",1419],["ケーブルプラス電話",1639]],
-    tv:[["テレビなし",0],["地デジシンプル",1650],["4Kライト",2200],["4Kセレクト",3850],["4Kスタンダード",4620],["4Kプライム",5390]],
-    note:"KCNはセット契約時に個別合算より安くなる組合せあり。正確な請求額はセット料金を確認。"
-  },
-  "auひかり":{
-    net:[["ホーム1G ギガ得｜ネット",5720],["ホーム1G 標準｜ネット",6930],["ホーム5G ギガ得｜ネット",6270],["ホーム5G 標準｜ネット",7480]],
-    phone:[["電話なし",0],["auひかり電話",770]],
-    tv:[["テレビなし",0],["テレビサービス",550]],
-    note:"テレビは550円～。プロバイダ・プラン等で条件差あり。"
-  },
-  "J:COM NET":{
-    net:[["戸建 1G通常料金目安",5610],["集合 1G通常料金目安",5280],["戸建 320M通常料金目安",5060],["集合 320M通常料金目安",4730]],
-    phone:[["電話なし",0],["J:COM PHONE 基本料金",1012]],
-    tv:[["テレビなし",0],["TV料金は地域・コースで異なるため手入力",0]],
-    note:"J:COMは地域・物件・セット・キャンペーン差が大きいため、最終的に現在請求額で確認。"
-  }
-};
-function carrierPresetOptions(rows){
-  return (rows||[["なし",0]]).map(function(r){
-    return '<option value="'+Number(r[1]||0)+'">'+esc(r[0])+'｜'+signedYen(Number(r[1]||0))+'</option>';
-  }).join("");
-}
-function renderCarrierPricePresets(){
-  var name=hikariOldCarrierName(),d=carrierPricePresets[name];
-  var n=g("carrierNetPlan"),p=g("carrierPhonePlan"),t=g("carrierTvPlan");
-  if(!n||!p||!t)return;
-  if(!d){
-    n.innerHTML='<option value="0">料金は「現在の月額」に手入力</option>';
-    p.innerHTML='<option value="0">電話なし / 手入力</option>';
-    t.innerHTML='<option value="0">テレビなし / 手入力</option>';
-  }else{
-    n.innerHTML=carrierPresetOptions(d.net);
-    p.innerHTML=carrierPresetOptions(d.phone);
-    t.innerHTML=carrierPresetOptions(d.tv);
-  }
-  applyCarrierPriceTotal();
-}
-function applyCarrierPriceTotal(){
-  var total=hn("carrierNetPlan")+hn("carrierPhonePlan")+hn("carrierTvPlan");
-  var out=g("carrierServiceTotal"),old=g("hikariOldMonthly"),cmp=g("hikariCompareOldMonthly");
-  if(out)out.value=total;
-  if(total>0){
-    if(old)old.value=total;
-    if(cmp)cmp.value=total;
-  }
-  updateHikariPreview();
-}
-
 var carrierSupportData={
-"home 5G":{tel:"ドコモ公式窓口で確認",hours:"窓口により異なる",fee:"契約期間なし。端末代残債がある場合は残額を確認。",notes:["home 5Gは工事不要。","HR02等の端末残債を確認。","ドコモ光へ変更時はhome 5Gセット割からドコモ光セット割への切替を確認。"]},
-"SoftBank Air":{tel:"SoftBank公式窓口/My SoftBankで確認",hours:"窓口により異なる",fee:"端末購入の場合はAirターミナル残債・月月割終了の影響を確認。",notes:["Airターミナル残債を確認。","解約で月月割が終了する場合あり。","機器の購入/レンタル区分を確認。"]},
-"Rakuten Turbo":{tel:"楽天モバイル公式窓口で確認",hours:"窓口により異なる",fee:"端末代残債とキャンペーン割引終了の影響を確認。",notes:["Rakuten Turbo 5G端末代残債を確認。","48カ月未満解約時は端末実質0円キャンペーンの残期間に注意。"]},
-"UQ WiMAX":{tel:"UQ WiMAX公式窓口で確認",hours:"窓口により異なる",fee:"契約プラン・端末残債を確認。",notes:["端末代残債を確認。","契約中プラン・割引の終了条件を確認。"]},
-"WiMAX その他":{tel:"契約中のWiMAX事業者へ確認",hours:"事業者により異なる",fee:"事業者ごとに解除料・端末残債が異なる。",notes:["契約事業者名を確認。","端末残債・解除料・返却要否を確認。"]},
-
 "eo光":{
  tel:"0120-919-151",hours:"9:00～18:00（年中無休）",
  fee:"契約プラン・利用期間で異なるため契約内容を確認。eo光シンプルプランは最低利用期間・解約違約金なし。標準工事費の分割残債がある場合は一括請求。",
@@ -3509,171 +3359,19 @@ function renderHikariExtras(){
   }
 }
 
-
-function hikariConstructionCalc(){
-  var net=hn("hikariConstruction");
-  var phone=hn("hikariPhoneConstruction");
-  var tv=hn("hikariTvConstruction");
-  var admin=hn("hikariAdminFee"), additional=hn("hikariAdditionalConstruction");
-  return {net:net,phone:phone,tv:tv,admin:admin,additional:additional,total:net+phone+tv+admin+additional};
-}
-function hikariSelectText(id){
-  var el=g(id);
-  return el&&el.selectedIndex>=0 ? el.options[el.selectedIndex].text : "";
-}
-function renderHikariConstructionSummary(){
-  var box=g("hikariConstructionSummary"); if(!box)return;
-  var c=hikariConstructionCalc();
-  box.innerHTML='<div class="kpi">'+
-    '<div><span>ネット工事</span><b>'+esc(signedYen(c.net))+'</b></div>'+
-    '<div><span>光電話工事</span><b>'+esc(signedYen(c.phone))+'</b></div>'+
-    '<div><span>テレビ工事</span><b>'+esc(signedYen(c.tv))+'</b></div>'+
-    '<div><span>事務手数料</span><b>'+esc(signedYen(c.admin))+'</b></div>'+
-    '<div><span>追加工事等</span><b>'+esc(signedYen(c.additional))+'</b></div>'+
-    '<div><span>初期費用 合計</span><b>'+esc(signedYen(c.total))+'</b></div>'+
-    '</div>'+
-    '<div class="mini" style="margin-top:7px">※テレビ5台以上、追加配線、特殊工事、電話の追加工事などは別途費用が発生する場合があります。</div>';
-}
-
-
-function hikariEffectiveCompareCalc(months){
-  months=months||12;
-  var c=hikariProposalCalc(),fam=hikariFamilyCalc();
-  var oldMonthly=hn("hikariCompareOldMonthly")||hn("hikariOldMonthly");
-  var oldSet=hn("hikariOldSetDiscount"),oldOther=hn("hikariOldMonthlyBenefit"),oldBenefit=hn("hikariOldPeriodBenefit");
-  var oldEff=Math.max(0,oldMonthly-oldSet-oldOther);
-  var oldPeriod=oldEff*months-oldBenefit;
-  var docEff=c.newM-fam.monthly;
-  var docPeriod=docEff*months+c.start-c.benefit;
-  return {oldMonthly:oldMonthly,oldDiscount:oldSet+oldOther,oldEff:oldEff,oldPeriod:oldPeriod,
-    docGross:c.newM,docSet:fam.monthly,docEff:docEff,docPeriod:docPeriod,
-    saving:oldPeriod-docPeriod,savingWithExit:oldPeriod-(docPeriod+c.exit)};
-}
-function renderHikariEffectiveCompare(){
-  var box=g("hikariEffectiveCompare");if(!box)return;
-  var a=hikariEffectiveCompareCalc(12),b=hikariEffectiveCompareCalc(24);
-  function verdict(x){return x>=0?"ドコモ光が "+signedYen(x)+" お得":"他社光が "+signedYen(Math.abs(x))+" お得";}
-  box.innerHTML='<div class="quote-preview-head"><div><h3>実質負担比較</h3><div class="mini">家計全体の負担で比較</div></div></div>'+
-  '<table class="quote-preview-table"><tbody><tr><th></th><th>他社光</th><th>ドコモ光</th></tr>'+
-  '<tr><td>光＋OP月額</td><td class="num">'+esc(signedYen(a.oldMonthly))+'</td><td class="num">'+esc(signedYen(a.docGross))+'</td></tr>'+
-  '<tr><td>スマホセット割等</td><td class="num">-'+esc(signedYen(a.oldDiscount))+'</td><td class="num">-'+esc(signedYen(a.docSet))+'</td></tr>'+
-  '<tr class="quote-preview-total"><td>実質月額負担</td><td class="num">'+esc(signedYen(a.oldEff))+'</td><td class="num">'+esc(signedYen(a.docEff))+'</td></tr>'+
-  '<tr><td>1年間 実質負担</td><td class="num">'+esc(signedYen(a.oldPeriod))+'</td><td class="num">'+esc(signedYen(a.docPeriod))+'</td></tr>'+
-  '<tr><td>2年間 実質負担</td><td class="num">'+esc(signedYen(b.oldPeriod))+'</td><td class="num">'+esc(signedYen(b.docPeriod))+'</td></tr></tbody></table>'+
-  '<div class="kpi" style="margin-top:10px"><div><span>1年間のお得差</span><b>'+esc(verdict(a.saving))+'</b></div>'+
-  '<div><span>2年間のお得差</span><b>'+esc(verdict(b.saving))+'</b></div>'+
-  '<div><span>解約金・残債・撤去費まで含む1年</span><b>'+esc(verdict(a.savingWithExit))+'</b></div></div>'+
-  '<div class="mini" style="margin-top:8px">実質負担＝光回線＋選択オプション－スマホセット割。期間比較では初期費用・入力した特典も反映します。</div>';
-}
-
 function hikariProposalCalc(){
   var oldM=hn("hikariOldMonthly"), base=hn("hikariNewMonthly"), fam=hikariFamilyCalc(), opt=hikariOptionsCalc();
   var newM=base+opt.total;
   var exit=hn("hikariCancelFee")+hn("hikariOldConstruction")+hn("hikariRemoval")+hn("hikariOtherCost");
-  var construction=hikariConstructionCalc();
-  var start=construction.total;
+  var start=hn("hikariAdminFee")+hn("hikariConstruction");
   var benefit=hn("hikariBenefits");
   var monthlyBenefit=oldM-newM+fam.monthly;
   return {oldM:oldM,newM:newM,baseM:base,options:opt.total,familyMonthly:fam.monthly,familyYearly:fam.yearly,
           monthlyDiff:monthlyBenefit,exit:exit,start:start,benefit:benefit,
-          netConstruction:construction.net,phoneConstruction:construction.phone,tvConstruction:construction.tv,adminFee:construction.admin,additionalConstruction:construction.additional,
           initialNet:exit+start-benefit,yearDiff:monthlyBenefit*12-(exit+start-benefit)};
 }
-
-function hikariAfterFlowSteps(){
-  var t=g("hikariApplyType")?g("hikariApplyType").value:"new";
-  var type=g("hikariType")?g("hikariType").value:"A";
-  var phone=parseInt(hv("hikariPhoneOption")||"0",10)>0, tv=hv("hikariTvOption")!=="none", sky=hv("hikariSkyOption")!=="none";
-  var rows=[];
-
-  rows.push(["① 開通したら最初に","インターネット接続を確認",
-    "ONU/HGW・ルーターのランプを確認し、スマホとPCをWi-Fi接続。Webページが開くところまで確認します。"]);
-
-  if(phone){
-    rows.push(["② 電話","発信・着信・電話番号を確認",
-      "ドコモ光電話から発信/着信テスト。番号継続の場合は、同じ番号で使えることを確認してから旧電話サービスの扱いを確認します。"]);
-  }
-  if(tv||sky){
-    rows.push(["③ テレビ","地デジ・BS・スカパー！等を確認",
-      "テレビ配線と視聴を確認。スカパー！を契約した場合は別契約・視聴開始状況も確認します。"]);
-  }
-
-  if(t==="new"){
-    rows.push(["④ 旧回線","ドコモ光が使えてから旧回線を解約",
-      "先に旧回線を止めず、ドコモ光のネット・電話・テレビが使えることを確認後に解約。解約金、工事費残債、撤去費、最終請求を確認します。"]);
-  }else if(t==="jigyosha"){
-    rows.push(["④ 旧事業者","自動解約範囲と残る契約を確認",
-      "事業者変更は切替完了で旧光回線が解約されますが、旧プロバイダの有料オプション等は自動解約されない場合があります。不要サービスを個別確認します。"]);
-  }else if(t==="tenyo"){
-    rows.push(["④ フレッツ/旧プロバイダ","残るプロバイダ・オプションを確認",
-      "転用後も旧プロバイダ契約や有料オプションが残る場合があります。メール・セキュリティ等も含め、不要な契約だけ解約します。"]);
-  }else if(t==="reuse"){
-    rows.push(["④ 変更元回線","切替完了と旧サービス終了を確認",
-      "光回線再利用は工事完了で変更元契約が解約。電話番号を継続する場合は番号ポータビリティ完了も確認し、旧オプション・ポイント・割引の終了を確認します。"]);
-  }
-
-  if(type==="C"){
-    rows.push(["⑤ タイプC","CATV側のテレビ・電話・ネット契約を確認",
-      "タイプCはCATV設備を利用します。CATV側で継続するテレビ・電話と、終了するネット契約を分けて確認し、二重請求がないか確認します。"]);
-  }
-
-  rows.push(["⑥ レンタル機器","旧回線の機器を返却",
-    "旧事業者から返却案内があるONU・ルーター・ホームゲートウェイ等を期限内に返却。自己判断で先に返却しないようにします。"]);
-
-  rows.push(["⑦ スマホ割引","ドコモ光セット割を確認",
-    "対象のファミリー回線にドコモ光セット割が反映されているか、My docomoや請求で確認します。対象条件を満たす場合は原則自動適用です。"]);
-
-  rows.push(["⑧ 初回請求","初期費用・工事費・特典を確認",
-    "契約事務手数料、工事費、電話/テレビ工事費、月額料金、旧回線の最終請求を確認。キャンペーン特典は進呈時期・受取条件も確認します。"]);
-
-  rows.push(["⑨ 最終チェック","二重請求・解約漏れがないか確認",
-    "翌月以降のカード/口座明細で、旧ネット・旧プロバイダ・電話・テレビ・セキュリティ等が不要なのに請求継続していないか確認します。"]);
-  return rows;
-}
-
-function renderHikariAfterFlow(){
-  var box=g("hikariAfterFlow"); if(!box)return;
-  box.innerHTML=hikariAfterFlowSteps().map(function(x){
-    return '<div class="post-flow-item"><b>STEP '+esc(x[0])+'｜'+esc(x[1])+'</b><div class="mini">'+esc(x[2])+'</div></div>';
-  }).join("");
-}
-
-function renderHikariQuotePreview(){
-  var box=g("hikariQuotePreviewInner"); if(!box)return;
-  var c=hikariProposalCalc(), fam=hikariFamilyCalc(), o=hikariOptionsCalc(), labels=hikariOptionLabels();
-  var customer=(hv("hikariCustomer")||"").trim()||"お客様";
-  var oldName=hikariOldCarrierName()||"現在の回線";
-  var addonRows=(o.phoneAddonRows||[]).map(function(r){
-    return '<tr><td>'+esc(r.name)+'</td><td class="num">'+(r.included?'バリューに含む':esc(signedYen(r.charged)))+'</td></tr>';
-  }).join("");
-  box.innerHTML=
-    '<div class="quote-preview-head"><div><h3>ドコモ光 ご提案見積書</h3><div class="quote-preview-name">'+esc(customer)+'</div></div>'+
-    '<div class="mini">'+esc(hikariApplyLabel())+' / '+esc(hv("hikariSpeed")==="10g"?"10ギガ":"1ギガ")+' / '+esc(hv("hikariHouse")==="house"?"戸建":"マンション")+'</div></div>'+
-    '<table class="quote-preview-table"><tbody>'+
-    '<tr><th>現在の回線</th><td>'+esc(oldName)+'</td><td class="num">'+esc(signedYen(c.oldM))+'/月</td></tr>'+
-    '<tr><th>ドコモ光 基本月額</th><td>'+esc(hv("hikariSpeed")==="10g"?"10ギガ":"1ギガ")+'</td><td class="num">'+esc(signedYen(c.baseM))+'/月</td></tr>'+
-    '<tr><th>光電話</th><td>'+esc(labels.phone)+'</td><td class="num">'+esc(signedYen(o.phone))+'</td></tr>'+
-    addonRows+
-    '<tr><th>テレビ</th><td>'+esc(labels.tv)+'</td><td class="num">'+esc(signedYen(o.tv))+'</td></tr>'+
-    '<tr><th>スカパー！</th><td>'+esc(labels.sky)+'</td><td class="num">'+esc(signedYen(o.sky))+'</td></tr>'+
-    '<tr class="quote-preview-total"><th>ドコモ光＋OP</th><td></td><td class="num">'+esc(signedYen(c.newM))+'/月</td></tr>'+
-    '<tr><th>ドコモ光セット割</th><td>'+fam.n+'回線 × '+esc(signedYen(fam.per))+'</td><td class="num">-'+esc(signedYen(fam.monthly))+'/月</td></tr>'+
-    '<tr><th>実質月額お得度</th><td>現在料金との比較</td><td class="num">'+esc(signedYen(c.monthlyDiff))+'/月</td></tr>'+
-    '<tr><th>ネット工事費</th><td>'+esc(hikariSelectText("hikariConstruction"))+'</td><td class="num">'+esc(signedYen(c.netConstruction))+'</td></tr>'+
-    '<tr><th>光電話工事費</th><td>'+esc(hikariSelectText("hikariPhoneConstruction"))+'</td><td class="num">'+esc(signedYen(c.phoneConstruction))+'</td></tr>'+
-    '<tr><th>テレビ工事費</th><td>'+esc(hikariSelectText("hikariTvConstruction"))+'</td><td class="num">'+esc(signedYen(c.tvConstruction))+'</td></tr>'+
-    '<tr><th>乗り換え＋初期費用</th><td>特典差引後</td><td class="num">'+esc(signedYen(c.initialNet))+'</td></tr>'+
-    '<tr class="quote-preview-total"><th>1年間のお得度目安</th><td></td><td class="num">'+esc(signedYen(c.yearDiff))+'</td></tr>'+
-    '</tbody></table>'+
-    '<div class="mini" style="margin-top:8px">※画面上のプレビューです。「ドコモ光見積をPDF / 印刷」から印刷用レイアウトを出せます。</div>';
-}
-
 function updateHikariPreview(){
-  renderHikariEffectiveCompare();
   renderHikariExtras();
-  renderHikariConstructionSummary();
-  renderHikariQuotePreview();
-  renderHikariAfterFlow();
   var box=g("hikariPreview"); if(!box)return;
   var c=hikariProposalCalc();
   box.innerHTML='<div style="font-weight:900;margin-bottom:7px">提案書プレビュー</div>'+
@@ -3694,9 +3392,7 @@ function hikariPrintPages(customer){
     out+='</div><h2 class="print-section-title">開通前チェック</h2>'+
       '<table class="print-breakdown"><tbody>'+
       '<tr><td>申込区分</td><td>'+esc(hikariApplyLabel())+'</td><td>速度</td><td>'+esc(hv("hikariSpeed")==="10g"?"10ギガ":"1ギガ")+'</td></tr>'+
-      '<tr><td>契約事務手数料</td><td class="num">'+esc(signedYen(hn("hikariAdminFee")))+'</td><td>ネット工事費</td><td class="num">'+esc(signedYen(hn("hikariConstruction")))+'</td></tr>'+
-      '<tr><td>光電話工事費</td><td class="num">'+esc(signedYen(hn("hikariPhoneConstruction")))+'</td><td>テレビ工事費</td><td class="num">'+esc(signedYen(hn("hikariTvConstruction")))+'</td></tr>'+
-      '<tr><td>追加工事費等</td><td class="num">'+esc(signedYen(hn("hikariAdditionalConstruction")))+'</td><td>初期費用合計</td><td class="num">'+esc(signedYen(hikariConstructionCalc().total))+'</td></tr>'+
+      '<tr><td>契約事務手数料</td><td class="num">'+esc(signedYen(hn("hikariAdminFee")))+'</td><td>工事料入力値</td><td class="num">'+esc(signedYen(hn("hikariConstruction")))+'</td></tr>'+
       '<tr><td>確認メモ</td><td colspan="3">'+esc(hv("hikariProposalMemo")||"—")+'</td></tr>'+
       '</tbody></table>'+
       (hv("hikariType")==="C"?'<div class="print-note"><b>タイプCの転用：</b>ドコモ光タイプC提携CATVの光インターネットをご利用中の場合、他社CATVからでも転用で切替可能です。原則工事不要・提携CATVのネット解約金不要で、テレビ・電話サービスはCATV契約のまま継続できます。利用状況により工事が必要な場合があります。</div>':'')+
@@ -3715,9 +3411,7 @@ function hikariPrintPages(customer){
       '<tr><td>撤去費</td><td class="num">'+esc(signedYen(hn("hikariRemoval")))+'</td></tr>'+
       '<tr><td>その他乗り換え費用</td><td class="num">'+esc(signedYen(hn("hikariOtherCost")))+'</td></tr>'+
       '<tr><td>ドコモ光 契約事務手数料</td><td class="num">'+esc(signedYen(hn("hikariAdminFee")))+'</td></tr>'+
-      '<tr><td>ドコモ光 ネット工事料</td><td class="num">'+esc(signedYen(hn("hikariConstruction")))+'</td></tr>'+
-      '<tr><td>ドコモ光電話 工事料</td><td class="num">'+esc(signedYen(hn("hikariPhoneConstruction")))+'</td></tr>'+
-      '<tr><td>ドコモ光テレビオプション 工事料</td><td class="num">'+esc(signedYen(hn("hikariTvConstruction")))+'</td></tr>'+
+      '<tr><td>ドコモ光 工事料</td><td class="num">'+esc(signedYen(hn("hikariConstruction")))+'</td></tr>'+
       '<tr><td>ドコモ側 還元・特典</td><td class="num">'+esc(signedYen(-hn("hikariBenefits")))+'</td></tr>'+
       '<tr><td>家族のドコモ光セット割（月額合計）</td><td class="num">-'+esc(signedYen(c.familyMonthly))+'</td></tr>'+
       '<tr><td>光電話・テレビ・スカパー等（月額）</td><td class="num">'+esc(signedYen(c.options))+'</td></tr>'+
@@ -3727,15 +3421,6 @@ function hikariPrintPages(customer){
       '<div class="proposal-kpi"><span>初期負担目安</span><b>'+esc(signedYen(c.initialNet))+'</b></div>'+
       '<div class="proposal-kpi"><span>1年間の差額目安</span><b>'+esc(signedYen(c.yearDiff))+'</b></div></div>'+
       '<div class="print-note">※還元・キャンペーンは自動確定せず、店頭で確認した金額を入力する方式です。違約金・残債・撤去費等も現在の事業者の請求内容をご確認ください。</div></section>';
-  }
-  if(hc("hikariPdfAfter")){
-    var after=hikariAfterFlowSteps();
-    out+='<section class="print-page"><div class="hikari-print-hero"><h2>ドコモ光 開通後の流れ</h2>'+
-      '<div>'+esc(customer)+'　｜　開通後チェックリスト</div></div><div class="flow-steps">';
-    after.forEach(function(x){
-      out+='<div class="flow-step"><b>STEP '+esc(x[0])+'<br>'+esc(x[1])+'</b>'+esc(x[2])+'</div>';
-    });
-    out+='</div><div class="print-note">※旧回線の解約・貸与機器返却・オプション解約の扱いは事業者や契約内容で異なります。ドコモ光の通信・電話が利用できることを確認してから手続きを進めてください。</div></section>';
   }
   return out;
 }
@@ -3907,24 +3592,7 @@ function buildHikariPrintReport(){
     '<tr><td>'+esc(labels.sky)+'</td><td class="num">'+esc(signedYen(o.sky))+'</td></tr>'+
     '<tr class="total-row"><td>ドコモ光＋選択オプション 月額</td><td class="num">'+esc(signedYen(c.newM))+'</td></tr>'+
     '</tbody></table>'+
-    '<h2 class="print-section-title">初期費用・工事費</h2><table class="print-breakdown"><tbody>'+
-    '<tr><td>契約事務手数料</td><td class="num">'+esc(signedYen(c.adminFee))+'</td></tr>'+
-    '<tr><td>ネット工事費</td><td class="num">'+esc(signedYen(c.netConstruction))+'</td></tr>'+
-    '<tr><td>ドコモ光電話 工事費</td><td class="num">'+esc(signedYen(c.phoneConstruction))+'</td></tr>'+
-    '<tr><td>ドコモ光テレビオプション 工事費</td><td class="num">'+esc(signedYen(c.tvConstruction))+'</td></tr>'+
-    '<tr><td>追加工事費等</td><td class="num">'+esc(signedYen(c.additionalConstruction))+'</td></tr>'+
-    '<tr class="total-row"><td>初期費用 合計</td><td class="num">'+esc(signedYen(c.start))+'</td></tr>'+
-    '</tbody></table>'+
-        '<h2 class="print-section-title">他社回線・ホームルーター vs ドコモ光｜実質負担比較</h2>'+
-    (function(){var x=hikariEffectiveCompareCalc(12),y=hikariEffectiveCompareCalc(24);return '<table class="print-breakdown"><tbody>'+
-      '<tr><td></td><td class="num">他社光</td><td class="num">ドコモ光</td></tr>'+
-      '<tr><td>実質月額負担</td><td class="num">'+esc(signedYen(x.oldEff))+'</td><td class="num">'+esc(signedYen(x.docEff))+'</td></tr>'+
-      '<tr><td>1年間 実質負担</td><td class="num">'+esc(signedYen(x.oldPeriod))+'</td><td class="num">'+esc(signedYen(x.docPeriod))+'</td></tr>'+
-      '<tr><td>2年間 実質負担</td><td class="num">'+esc(signedYen(y.oldPeriod))+'</td><td class="num">'+esc(signedYen(y.docPeriod))+'</td></tr>'+
-      '<tr class="total-row"><td>1年間の差額（＋＝ドコモ光がお得）</td><td colspan="2" class="num">'+esc(signedYen(x.saving))+'</td></tr>'+
-      '<tr><td>解約金等まで含む1年間の差額</td><td colspan="2" class="num">'+esc(signedYen(x.savingWithExit))+'</td></tr>'+
-      '</tbody></table>';})()+
-'<h2 class="print-section-title">家族のドコモ光セット割</h2><table class="print-breakdown"><tbody>'+
+    '<h2 class="print-section-title">家族のドコモ光セット割</h2><table class="print-breakdown"><tbody>'+
     '<tr><td>対象回線数</td><td class="num">'+esc(String(fam.n))+'回線</td></tr>'+
     '<tr><td>1回線あたり</td><td class="num">'+esc(signedYen(fam.per))+'</td></tr>'+
     '<tr><td>家族合計 月額割引</td><td class="num">-'+esc(signedYen(fam.monthly))+'</td></tr>'+
@@ -3972,7 +3640,6 @@ renderSavedQuotes();
   <div class="hikari-checks">
     <label><input id="hikariPdfFlow" data-meta="1" type="checkbox" checked onchange="updateHikariPreview()"> 開通の流れをPDFに追加</label>
     <label><input id="hikariPdfSwitch" data-meta="1" type="checkbox" checked onchange="updateHikariPreview()"> 他社乗り換え見積をPDFに追加</label>
-    <label><input id="hikariPdfAfter" data-meta="1" type="checkbox" checked onchange="updateHikariPreview()"> 開通後の流れをPDFに追加</label>
   </div>
 
   <div class="hikari-grid" style="margin-top:12px">
@@ -3993,39 +3660,10 @@ renderSavedQuotes();
 
     <div><label>ドコモ光 月額（税込）</label><input id="hikariNewMonthly" data-meta="1" type="number" min="0" value="4400" oninput="updateHikariPreview()"></div>
     <div><label>契約事務手数料</label><input id="hikariAdminFee" data-meta="1" type="number" min="0" value="4950" oninput="updateHikariPreview()"></div>
-
-    <div><label>ネット工事費</label><select id="hikariConstruction" data-meta="1" onchange="updateHikariPreview()">
-      <option value="28600">新規｜派遣・屋内配線あり｜28,600円</option>
-      <option value="18260">新規｜派遣・屋内配線なし｜18,260円</option>
-      <option value="3300">新規｜無派遣工事｜3,300円</option>
-      <option value="0">転用 / 事業者変更｜速度そのまま代表例｜0円</option>
-      <option value="18260">光回線再利用｜代表例｜18,260円</option>
-    </select></div>
-
-    <div><label>ドコモ光電話 工事費</label><select id="hikariPhoneConstruction" data-meta="1" onchange="updateHikariPreview()">
-      <option value="0">電話なし / フレッツひかり電話を転用｜0円</option>
-      <option value="1100">光と同時申込・新規番号｜基本機能 1,100円</option>
-      <option value="3300">光と同時申込・番号継続｜基本機能＋同番移行 3,300円</option>
-      <option value="11000">光電話のみ新規・派遣あり・新規番号｜11,000円</option>
-      <option value="13200">光電話のみ新規・派遣あり・番号継続｜13,200円</option>
-      <option value="3300">光電話のみ新規・無派遣・新規番号｜3,300円</option>
-      <option value="5500">光電話のみ新規・無派遣・番号継続｜5,500円</option>
-    </select></div>
-
-    <div><label>ドコモ光テレビオプション 工事費</label><select id="hikariTvConstruction" data-meta="1" onchange="updateHikariPreview()">
-      <option value="0">テレビなし / フレッツ・テレビ転用｜0円</option>
-      <option value="13530">光の派遣工事と同時・テレビ1台｜13,530円</option>
-      <option value="31460">光の派遣工事と同時・テレビ2～4台｜31,460円</option>
-      <option value="23980">テレビのみ新規・テレビ1台｜23,980円</option>
-      <option value="41910">テレビのみ新規・テレビ2～4台｜41,910円</option>
-    </select><div class="mini" style="margin-top:5px">同時申込の代表額。番号ポータビリティや設備状況で追加工事が発生する場合があります。</div></div>
-
-    <div><label>追加工事費・休日/特殊工事など</label><input id="hikariAdditionalConstruction" data-meta="1" type="number" min="0" value="0" placeholder="追加がある場合のみ" oninput="updateHikariPreview()">
-      <div class="mini">工事内容により追加料金が発生する場合に入力。宅内工事料合計に応じた加算等もここで調整できます。</div></div>
-
+    <div><label>工事料 / 初期工事費</label><input id="hikariConstruction" data-meta="1" type="number" min="0" value="28600" oninput="updateHikariPreview()"></div>
     <div><label>ドコモ側 還元・特典（円換算）</label><input id="hikariBenefits" data-meta="1" type="number" min="0" value="0" oninput="updateHikariPreview()"></div>
 
-    <div><label>現在の他社回線</label><select id="hikariOldCarrier" data-meta="1" onchange="toggleOtherCarrier();renderCarrierGuide();renderCarrierPricePresets();updateHikariPreview()">
+    <div><label>現在の他社回線</label><select id="hikariOldCarrier" data-meta="1" onchange="toggleOtherCarrier();renderCarrierGuide();updateHikariPreview()">
 <option value="">選択してください</option>
 <optgroup label="関西で多い回線">
 <option value="eo光">eo光</option>
@@ -4053,13 +3691,6 @@ renderSavedQuotes();
 <option value="U-NEXT光">U-NEXT光</option>
 <option value="フレッツ光（NTT西日本）">フレッツ光（NTT西日本）</option>
 </optgroup>
-<optgroup label="ホームルーター">
-<option value="home 5G">docomo home 5G</option>
-<option value="SoftBank Air">SoftBank Air</option>
-<option value="Rakuten Turbo">Rakuten Turbo</option>
-<option value="UQ WiMAX">UQ WiMAX ホームルーター</option>
-<option value="WiMAX その他">その他 WiMAX系ホームルーター</option>
-</optgroup>
 <optgroup label="その他">
 <option value="auひかり">auひかり</option>
 <option value="その他">その他（手入力）</option>
@@ -4067,21 +3698,6 @@ renderSavedQuotes();
 </select>
 <input id="hikariOldCarrierOther" data-meta="1" type="text" placeholder="その他の回線名を入力" style="display:none;margin-top:6px" oninput="updateHikariPreview()">
 <div id="carrierGuide" class="carrier-guide" style="display:none"></div></div>
-
-    <div><label>他社ネット / ホームルーター料金</label>
-      <select id="carrierNetPlan" data-meta="1" onchange="applyCarrierPriceTotal()"><option value="0">回線を選ぶと候補を表示</option></select>
-    </div>
-    <div><label>他社電話料金</label>
-      <select id="carrierPhonePlan" data-meta="1" onchange="applyCarrierPriceTotal()"><option value="0">電話なし｜0円</option></select>
-    </div>
-    <div><label>他社テレビ料金</label>
-      <select id="carrierTvPlan" data-meta="1" onchange="applyCarrierPriceTotal()"><option value="0">テレビなし｜0円</option></select>
-    </div>
-    <div><label>他社 月額合計（自動）</label>
-      <input id="carrierServiceTotal" data-meta="1" type="number" min="0" value="0" readonly>
-      <div class="mini">ネット＋電話＋テレビの選択額。必要なら下の「現在の月額」で手修正できます。</div>
-    </div>
-
     <div><label>現在の月額（税込）</label><input id="hikariOldMonthly" data-meta="1" type="number" min="0" value="0" oninput="updateHikariPreview()"></div>
     <div><label>他社 解約金</label><input id="hikariCancelFee" data-meta="1" type="number" min="0" value="0" oninput="updateHikariPreview()"></div>
     <div><label>他社 工事費残債</label><input id="hikariOldConstruction" data-meta="1" type="number" min="0" value="0" oninput="updateHikariPreview()"></div>
@@ -4090,23 +3706,6 @@ renderSavedQuotes();
     <div class="full"><label>開通・乗り換えメモ</label><input id="hikariProposalMemo" data-meta="1" type="text" placeholder="例：固定電話番号継続予定 / Wi-Fiルーター要確認" oninput="updateHikariPreview()"></div>
   </div>
 
-
-  <div class="card" style="margin-top:14px;border:1px solid #dfe4e8">
-  <div class="title">他社回線・ホームルーター vs ドコモ光｜実質負担比較</div>
-  <div class="mini">光料金だけでなく、スマホセット割・初期費用・特典・旧回線の解約費用まで含めて比較します。</div>
-  <div class="hikari-grid" style="margin-top:10px">
-    <div><label>他社光 月額</label><input id="hikariCompareOldMonthly" data-meta="1" type="number" min="0" value="0" placeholder="例：5500" oninput="updateHikariPreview()"></div>
-    <div><label>他社スマホセット割（月額合計）</label><input id="hikariOldSetDiscount" data-meta="1" type="number" min="0" value="0" placeholder="例：2200" oninput="updateHikariPreview()"></div>
-    <div><label>他社 その他月額特典</label><input id="hikariOldMonthlyBenefit" data-meta="1" type="number" min="0" value="0" placeholder="例：1100" oninput="updateHikariPreview()"></div>
-    <div><label>他社 継続特典・CB（期間分）</label><input id="hikariOldPeriodBenefit" data-meta="1" type="number" min="0" value="0" placeholder="例：10000" oninput="updateHikariPreview()"></div>
-  </div>
-  <div id="hikariEffectiveCompare" class="quote-preview-sheet" style="margin-top:10px"></div>
-</div>
-<div class="card" style="margin-top:14px;border:1px solid #dfe4e8">
-    <div class="title">初期費用・工事費 見積</div>
-    <div class="mini">ネット・光電話・テレビの工事内容をプルダウンで選ぶと、初期費用合計へ自動反映します。</div>
-    <div id="hikariConstructionSummary" class="hikari-preview" style="margin-top:10px"></div>
-  </div>
 
   <div class="card" style="margin-top:14px;border:1px solid #dfe4e8">
     <div class="title">家族のドコモ光セット割｜お得度アップ</div>
@@ -4122,7 +3721,6 @@ renderSavedQuotes();
       </select></div>
     </div>
     <div id="hikariFamilyBox" class="hikari-preview" style="margin-top:10px"></div>
-    <div class="mini" style="margin-top:7px">※家族全員を同じ割引額で計算します。MAX系・eximo系・ギガライト等が混在する場合は、この欄だけでは厳密な合計にならないため個別確認してください。</div>
   </div>
 
   <div class="card" style="margin-top:14px;border:1px solid #dfe4e8">
@@ -4196,7 +3794,6 @@ renderSavedQuotes();
       </select></div>
     </div>
     <div id="hikariOptionNote" class="mini" style="margin-top:8px"></div>
-    <div class="mini" style="margin-top:5px">※10ギガ対応無線LANルーターをドコモからレンタルする場合は月額550円が別途必要です。ブロードバンドユニバーサルサービス料等の少額料金はこの見積には自動加算していません。</div>
   </div>
 
   <div class="card" style="margin-top:14px;border:1px solid #dfe4e8">
@@ -4206,19 +3803,6 @@ renderSavedQuotes();
   </div>
 
   <div class="hikari-preview" id="hikariPreview"></div>
-
-  <div class="quote-preview-sheet" id="hikariQuotePreview">
-    <div style="font-weight:900;margin-bottom:8px">見積書プレビュー</div>
-    <div id="hikariQuotePreviewInner"></div>
-  </div>
-
-  <div class="card post-flow-box" style="border:1px solid #dfe4e8">
-    <div class="title">開通後の流れ</div>
-    <div class="note" style="margin-top:8px"><b>開通後の重要チェック</b><br>
-    ①ネットが使える → ②電話/テレビ確認 → ③旧契約の扱い確認 → ④機器返却 → ⑤セット割 → ⑥初回請求 → ⑦翌月に二重請求チェック、の順で確認します。</div>
-    <div class="mini">開通した後に、お客様へ案内する確認事項です。申込み区分や選択オプションに合わせて内容を変えます。</div>
-    <div id="hikariAfterFlow" style="margin-top:10px"></div>
-  </div>
 </section>
 </div>
 <div id="hikariPrintReport" class="print-report"></div>
