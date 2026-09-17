@@ -986,12 +986,8 @@ body{padding:0 16px 28px!important;background:linear-gradient(180deg,#f7fbff 0,#
 <button class="goal-hit hit-denki" type="button" aria-label="でんきシミュレーターをはじめる" onclick="location.href='./denki_simulator_store.html'"></button>
 <button class="goal-hit hit-compare" type="button" aria-label="他社からドコモ料金比較シミュレーターをはじめる" onclick="document.getElementById('storeHome').style.display='none';document.getElementById('compareBackToMenu').style.display='block';window.scrollTo(0,0)"></button>
 </div></div><a href="#" id="compareBackToMenu" onclick="document.getElementById('storeHome').style.display='flex';this.style.display='none';window.scrollTo(0,0);return false" style="display:none;position:fixed;left:14px;top:14px;z-index:99998;background:#fff;border:1px solid #ddd;border-radius:999px;padding:9px 14px;text-decoration:none;color:#111;font-weight:800;box-shadow:0 2px 10px #0002">← 4つのメニューへ戻る</a>
-<div class="visual-topnav">
-<a class="vt-card pink" href="#" onclick="return false" aria-disabled="true"><span class="vt-icon">💳</span><span><b>dカード</b><small>シミュレーター</small></span><i>›</i></a>
-<a class="vt-card blue" href="#" onclick="return false" aria-disabled="true"><span class="vt-icon">🏠</span><span><b>ドコモ光</b><small>シミュレーター</small></span><i>›</i></a>
-<a class="vt-card green" href="#" onclick="return false" aria-disabled="true"><span class="vt-icon">💡</span><span><b>でんき</b><small>シミュレーター</small></span><i>›</i></a>
-<a class="vt-card orange active compare-menu-card" href="#"><span class="vt-icon compare-switch-icon"><span class="phone-mini">📱</span><span class="switch-arrows">⇄</span></span><span class="compare-menu-copy"><b>他社から<br class="menu-mobile-break">ドコモへ</b><small>料金比較<br class="menu-mobile-break">シミュレーター</small></span><i>›</i></a>
-</div>
+<!-- V59: 他社比較画面では上部4メニューを表示しない。ホーム復帰は compareBackToMenu のみ。 -->
+
 <div class="app-tabs">
 <button class="app-tab active" data-app-page="dcard" id="tabDcard" type="button">ページ1｜dカード見積もり</button>
 <button class="app-tab" data-app-page="hikari" id="tabHikari" type="button">ページ2｜ドコモ光・他社乗り換え</button>
