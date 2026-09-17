@@ -981,7 +981,10 @@ body{padding:0 16px 28px!important;background:linear-gradient(180deg,#f7fbff 0,#
 /* みらいちゃん：現在の4メニュー画像は固定。目の差分だけ重ねる */
 #storeHome .goal-stage{overflow:hidden}
 #storeHome .mirai-goal-face{position:absolute;inset:0;z-index:5;pointer-events:none;overflow:hidden}
-#storeHome .mirai-goal-eye{position:absolute;display:block;opacity:0;pointer-events:none;user-select:none;-webkit-user-drag:none}
+#storeHome .mirai-goal-eye{position:absolute;display:block;opacity:0;pointer-events:none;user-select:none;-webkit-user-drag:none;
+  -webkit-mask-image:radial-gradient(ellipse at center,#000 50%,rgba(0,0,0,.96) 62%,rgba(0,0,0,.62) 76%,transparent 96%);
+  mask-image:radial-gradient(ellipse at center,#000 50%,rgba(0,0,0,.96) 62%,rgba(0,0,0,.62) 76%,transparent 96%);
+  -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
 #storeHome .mirai-goal-eye.eye-l{left:11.0523%;top:26.4169%;width:7.2800%;height:8.6455%}
 #storeHome .mirai-goal-eye.eye-r{left:18.1337%;top:31.7003%;width:6.2210%;height:7.6849%}
 #storeHome.mirai-blink .mirai-goal-eye{opacity:1}
@@ -3338,37 +3341,7 @@ body{position:static!important}
   '<div class="switchbox"><h3>乗り換え時の費用・特典（概算）</h3><div class="sw">'+BR('他社端末残債',Y(balance))+BR('初期費用',Y(initial))+BR('特典・キャッシュバック',Y(benefit))+BR('適用による実質負担',S(-effective))+'</div><div class="gift">🎁 乗り換え条件もまとめて確認</div></div>'+ 
   '<div class="break doc"><h3>ドコモ 月額料金の内訳</h3>'+BR('基本料金（'+docPlan+'）',Y(docBase))+BR('通話オプション',Y(docVoicePrice))+BR('各種割引',S(-billDisc))+BR('追加オプション',Y(docOptions))+'<div style="height:12.2mm"></div><div class="bt"><span>合計（税込）</span><b>'+Y(docTotal)+'</b></div></div></section>'+ 
   '<section class="points"><div class="pt first"><span class="pi">☝</span><span>おすすめポイント</span></div><div class="pt"><span class="pi">◉</span><span>毎月の通信費を<br>ひと目で比較</span></div><div class="pt"><span class="pi">🎁</span><span>乗り換え時の<br>費用・特典も確認</span></div><div class="pt"><span class="pi">▯</span><span>料金内訳を<br>左右で比較</span></div><div class="pt"><span class="pi">♥</span><span>年間の差額まで<br>まとめて確認</span></div></section>'+ 
-  '<footer class="foot"><div class="notes">※ 表示金額は税込です。実際のご請求額は、ご利用状況・各種キャンペーン・適用条件により異なる場合があります。<br>※ マネ活2等の現金・Pontaポイント還元は請求額から自動控除していません。端末残債・初期費用・特典は契約状況により異なります。<br>※ 最新の料金・割引条件は、各社公式情報・契約内容をご確認ください。</div><div class="sign">スマホ料金比較シミュレーター<br>店頭提案用 見積書</div></footer></div><div class="no-print"><button onclick="window.print()">PDF保存 / 印刷</button></div><script id="v37-home-js">function homeClock(){var d=new Date(),w=['日','月','火','水','木','金','土'];var de=document.getElementById('homeDate'),ti=document.getElementById('homeTime');if(de)de.textContent=d.getFullYear()+'年'+(d.getMonth()+1)+'月'+d.getDate()+'日 ('+w[d.getDay()]+')';if(ti)ti.textContent=String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')}function homeOpen(kind){document.getElementById('storeHome').style.display='none';if(kind==='hikari'){var b=document.getElementById('tabHikari');if(b)b.click()}else if(kind==='dcard'){var b=document.getElementById('tabDcard');if(b)b.click()}else if(kind==='denki'){var b=document.getElementById('tabDcard');if(b)b.click();var el=document.getElementById('denkiPlan');if(el)setTimeout(function(){el.scrollIntoView({behavior:'smooth',block:'center'})},100)}window.scrollTo(0,0)}homeClock();setInterval(homeClock,30000);</script>
-<script id="v54-liveclock-js">
-(function(){
-  var wd=['日','月','火','水','木','金','土'];
-  function parts(now){
-    var p=new Intl.DateTimeFormat('ja-JP',{timeZone:'Asia/Tokyo',year:'numeric',month:'numeric',day:'numeric',weekday:'short',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(now);
-    var o={}; p.forEach(function(x){o[x.type]=x.value;}); return o;
-  }
-  function tick(){
-    var p=parts(new Date()),d=document.getElementById('v54Date'),t=document.getElementById('v54Time');
-    if(d)d.textContent=p.year+'年'+p.month+'月'+p.day+'日（'+p.weekday.replace(/[()（）]/g,'')+'）';
-    if(t)t.textContent=p.hour+':'+p.minute;
-  }
-  tick(); setInterval(tick,1000);
-})();
-</script>
-
-<script id="miraiGoalFaceLogicV1">
-(function(){
-  var b=document.getElementById('storeHome'); if(!b)return;
-  var busy=false, blinkTimer=null, winkTimer=null;
-  function clearFace(){b.classList.remove('mirai-blink','mirai-wink');busy=false;}
-  function blink(){if(busy||document.hidden||b.style.display==='none')return;busy=true;b.classList.add('mirai-blink');setTimeout(clearFace,115);}
-  function wink(){if(busy||document.hidden||b.style.display==='none')return;busy=true;b.classList.add('mirai-wink');setTimeout(clearFace,360);}
-  function scheduleBlink(){clearTimeout(blinkTimer);blinkTimer=setTimeout(function(){blink();scheduleBlink();},2800+Math.random()*2000);}
-  function scheduleWink(){clearTimeout(winkTimer);winkTimer=setTimeout(function(){wink();scheduleWink();},9000+Math.random()*5000);}
-  scheduleBlink();scheduleWink();
-  document.addEventListener('visibilitychange',function(){if(document.hidden)clearFace();});
-})();
-</script>
-</body></html>';
+  '<footer class="foot"><div class="notes">※ 表示金額は税込です。実際のご請求額は、ご利用状況・各種キャンペーン・適用条件により異なる場合があります。<br>※ マネ活2等の現金・Pontaポイント還元は請求額から自動控除していません。端末残債・初期費用・特典は契約状況により異なります。<br>※ 最新の料金・割引条件は、各社公式情報・契約内容をご確認ください。</div><div class="sign">スマホ料金比較シミュレーター<br>店頭提案用 見積書</div></footer></div><div class="no-print"><button onclick="window.print()">PDF保存 / 印刷</button></div></body></html>';
   w.document.open();w.document.write(html);w.document.close();setTimeout(function(){w.focus();w.print();},450);
 }
 
@@ -4835,5 +4808,34 @@ window.addEventListener('load',function(){setTimeout(updateCompareV5,50)});docum
 };
  tick();setInterval(tick,30000);
 })();
-</script></body>
+</script>
+<script id="v54-liveclock-js">
+(function(){
+  var wd=['日','月','火','水','木','金','土'];
+  function parts(now){
+    var p=new Intl.DateTimeFormat('ja-JP',{timeZone:'Asia/Tokyo',year:'numeric',month:'numeric',day:'numeric',weekday:'short',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(now);
+    var o={}; p.forEach(function(x){o[x.type]=x.value;}); return o;
+  }
+  function tick(){
+    var p=parts(new Date()),d=document.getElementById('v54Date'),t=document.getElementById('v54Time');
+    if(d)d.textContent=p.year+'年'+p.month+'月'+p.day+'日（'+p.weekday.replace(/[()（）]/g,'')+'）';
+    if(t)t.textContent=p.hour+':'+p.minute;
+  }
+  tick(); setInterval(tick,1000);
+})();
+</script>
+<script id="miraiGoalFaceLogicV1">
+(function(){
+  var b=document.getElementById('storeHome'); if(!b)return;
+  var busy=false, blinkTimer=null, winkTimer=null;
+  function clearFace(){b.classList.remove('mirai-blink','mirai-wink');busy=false;}
+  function blink(){if(busy||document.hidden||b.style.display==='none')return;busy=true;b.classList.add('mirai-blink');setTimeout(clearFace,95);}
+  function wink(){if(busy||document.hidden||b.style.display==='none')return;busy=true;b.classList.add('mirai-wink');setTimeout(clearFace,240);}
+  function scheduleBlink(){clearTimeout(blinkTimer);blinkTimer=setTimeout(function(){blink();scheduleBlink();},2800+Math.random()*2000);}
+  function scheduleWink(){clearTimeout(winkTimer);winkTimer=setTimeout(function(){wink();scheduleWink();},9000+Math.random()*5000);}
+  scheduleBlink();scheduleWink();
+  document.addEventListener('visibilitychange',function(){if(document.hidden)clearFace();});
+})();
+</script>
+</body>
 </html>
