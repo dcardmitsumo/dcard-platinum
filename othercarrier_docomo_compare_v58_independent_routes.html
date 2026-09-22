@@ -4812,5 +4812,22 @@ window.addEventListener('load',function(){setTimeout(updateCompareV5,50)});docum
 };
  tick();setInterval(tick,30000);
 })();
-</script></body>
+</script>
+<script id="stray-code-cleanup-v42">
+(function(){
+  function clean(root){
+    var w=document.createTreeWalker(root||document.body,NodeFilter.SHOW_TEXT);
+    var bad=[];
+    while(w.nextNode()){
+      var n=w.currentNode, t=n.nodeValue||'';
+      if((t.indexOf('w.document.open();w.document.write(html)')!==-1 && t.indexOf('familyStates')!==-1) ||
+         (t.indexOf('// V11.5: 最大5人分の見積を1画面で切替')!==-1 && t.indexOf('function editableFields')!==-1)){bad.push(n);}
+    }
+    bad.forEach(function(n){n.nodeValue='';});
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',function(){clean(document.body);}); else clean(document.body);
+  setTimeout(function(){clean(document.body);},100);
+})();
+</script>
+</body>
 </html>
