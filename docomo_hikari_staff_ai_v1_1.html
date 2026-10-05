@@ -28,10 +28,24 @@ main{max-width:1050px;margin:auto;padding:18px 14px 90px}.search{display:flex;ga
 <button class="card ai" onclick="openAI()"><div class="icon">🤖</div><h3>ドコモ光 AIアシスタント</h3><p>複雑なケースや分からない内容を自然な文章で質問。将来AI APIと接続します。</p></button>
 </div></section>
 
-<section id="flow" class="view"><div class="topbar"><button class="back" onclick="home()">← 戻る</button><div><div class="pill" id="flowPill"></div><div class="view-title" id="flowTitle"></div></div></div>
-<div class="search"><input id="flowSearch" placeholder="この手続きについて質問を検索"><button onclick="searchFlow()">検索</button></div>
-<div id="levelTabs" style="display:none;gap:8px;margin:14px 0;flex-wrap:wrap"><button class="back" onclick="setLevel('basic')">基本編</button><button class="back" onclick="setLevel('advanced')">応用編</button><button class="back" onclick="setLevel('all')">全質問</button></div>
+<section id="serviceSelect" class="view"><div class="topbar"><button class="back" onclick="home()">← 戻る</button><div><div class="pill" id="servicePill"></div><div class="view-title" id="serviceTitle"></div></div></div>
+<div class="notice">確認したいサービスを選んでください。選択した内容に関係する質問・注意事項だけを表示します。</div>
+<div class="grid">
+<button class="card" onclick="openService('net')"><div class="icon">🌐</div><h3>ネット</h3><p>料金・工事・1G/10G・プロバイダ・セット割など</p></button>
+<button class="card" onclick="openService('phone')"><div class="icon">☎️</div><h3>電話</h3><p>光電話・番号ポータビリティ・付加サービスなど</p></button>
+<button class="card" onclick="openService('tv')"><div class="icon">📺</div><h3>地デジ・BS</h3><p>テレビオプション・工事・視聴条件など</p></button>
+<button class="card" onclick="openService('cs')"><div class="icon">🎬</div><h3>CS・スカパー！</h3><p>有料専門チャンネル・料金・キャンペーン・逆引き</p></button>
+</div></section>
+
+<section id="flow" class="view"><div class="topbar"><button class="back" onclick="backToServices()">← サービス選択</button><div><div class="pill" id="flowPill"></div><div class="view-title" id="flowTitle"></div></div></div>
+<div class="search"><input id="flowSearch" placeholder="この項目について質問を検索"><button onclick="searchFlow()">検索</button></div>
+<div id="levelTabs" style="display:flex;gap:8px;margin:14px 0;flex-wrap:wrap"><button class="back" onclick="setLevel('basic')">基本編</button><button class="back" onclick="setLevel('advanced')">応用編</button><button class="back" onclick="setLevel('all')">全質問</button><button id="channelBtn" class="back" onclick="openChannelFinder()" style="display:none">📺 チャンネル逆引き</button></div>
 <div class="section-title" id="questionHeading">よくある質問</div><div id="questions" class="q-list"></div><div id="answer" class="answer"></div></section>
+
+<section id="channelFinder" class="view"><div class="topbar"><button class="back" onclick="returnFromChannels()">← CS・スカパー！へ</button><div><div class="pill">TV / SKY PerfecTV!</div><div class="view-title">見たいチャンネルから逆引き</div></div></div>
+<div class="notice">チャンネル名・ジャンルを入力すると、契約方法の目安を表示します。料金・編成は変更されるため、最終受付時はスカパー！公式で再確認してください。</div>
+<div class="search"><input id="channelSearch" placeholder="例：東映、J SPORTS、映画、野球、WOWOW"><button onclick="searchChannels()">検索</button></div>
+<div class="section-title">代表的なチャンネル・商品</div><div id="channelResults" class="q-list"></div><div id="channelAnswer" class="answer"></div></section>
 
 <section id="aiView" class="view"><div class="topbar"><button class="back" onclick="home()">← 戻る</button><div><div class="pill">AI ASSISTANT</div><div class="view-title">ドコモ光 AIアシスタント</div></div></div>
 <div class="chat" id="chat"><div class="bubble bot">ドコモ光について質問してください。<br>例：「事業者変更で固定電話をそのまま使える？」</div></div>
@@ -43,7 +57,7 @@ main{max-width:1050px;margin:auto;padding:18px 14px 90px}.search{display:flex;ga
 <script>
 const common=[
  {q:'工事は必要ですか？',keys:['工事','必要','派遣'],a:'受付区分・現在の回線・設備状況などによって異なります。',warn:'現時点ではV1の仮回答です。正式運用前にドコモ光の最新業務ルールを登録してください。'},
- {q:'固定電話の番号はそのまま使えますか？',keys:['固定電話','電話番号','番号','そのまま','継続','引継'],a:'電話番号の発番元や現在の電話サービスなど、条件確認が必要です。',warn:'先に現在の電話サービスを解約すると番号継続に影響するケースがあるため、受付手順を確認してから案内します。'},
+ {q:'固定電話の番号はそのまま使えますか？',keys:['固定電話','電話番号','番号','そのまま','継続','引継'],a:'現在は双方向番号ポータビリティにより、NTT東西発番に限定されず、対象の0AB-J固定電話番号はドコモ光電話へ番号ポータビリティできます。',warn:'利用中の電話サービスや提供エリアなどによっては番号を継続できない場合があります。番号継続を希望する場合は、現在の電話サービスを先に解約せず、受付時に継続可否を確認してください。'},
  {q:'開通までどれくらいかかりますか？',keys:['開通','何日','期間','いつ','日数'],a:'設備状況や工事内容、繁忙状況などにより異なります。受付時に開通見込みを確認して案内します。'},
  {q:'1ギガと10ギガはどう選べばいいですか？',keys:['1ギガ','10ギガ','1G','10G','速度'],a:'利用用途・接続台数・提供エリア・対応機器などを確認して提案します。',warn:'10ギガは提供可否や対応機器の確認が必要です。'}
 ];
@@ -64,8 +78,15 @@ const specific={
   {level:'basic',cat:'セット割',q:'ドコモ光セット割は自動で入る？',keys:['セット割','自動','スマホ割引','ファミリー'],a:'対象のドコモスマホとドコモ光をセットで契約している場合、対象料金プランでは原則お手続き不要でスマホ料金から割引されます。',staff:'対象プラン・割引額はスマホ料金プランによって異なります。同一ファミリー割引グループ内の対象回線にも適用される仕組みがあります。',source:'ドコモ公式「ドコモ光セット割」',updated:'2026-10-05'},
   {level:'basic',cat:'セット割',q:'ahamoはドコモ光セット割の対象？',keys:['ahamo','セット割','対象外'],a:'ahamoはドコモ光セット割の対象外です。また、ahamo光もドコモ光セット割の対象外です。',source:'ドコモ公式「ドコモ光セット割」',updated:'2026-10-05'},
   {level:'basic',cat:'光電話',q:'ドコモ光電話の基本料金はいくら？',keys:['光電話','電話','550円','基本料金'],a:'ドコモ光電話はドコモ光／ahamo光の月額料金にプラス550円／月（税込）です。',staff:'6つの付加サービスと528円分の無料通話が付く「ドコモ光電話バリュー」は月額1,650円（税込）です。',source:'ドコモ公式「ドコモ光電話」「料金プラン・通話料」',updated:'2026-10-05'},
-  {level:'advanced',cat:'光電話',q:'今の固定電話番号をドコモ光電話で使える？',keys:['電話番号','固定電話','番号ポータビリティ','継続','引継'],a:'条件を満たせば番号ポータビリティで継続できる場合があります。現在の電話サービスや電話番号の発番元などの確認が必要です。',warn:'番号継続を希望する場合、現在の電話サービスを先に解約しないよう案内してください。番号の種類によっては継続できない場合があります。',source:'ドコモ公式「ドコモ光電話」',updated:'2026-10-05'},
+  {level:'basic',cat:'光電話',q:'ドコモ光電話のオプション料金と内容をまとめて確認したい',keys:['光電話','オプション','料金','発信者番号表示','転送','通話中着信','ナンバーリクエスト','迷惑電話','着信メール','ダブルチャネル','追加番号'],a:'主な付加サービスは、通話中着信330円／月、転送でんわ550円／月・1番号、発信者番号表示440円／月、ナンバー・リクエスト220円／月、迷惑電話ストップサービス220円／月、着信お知らせメール110円／月・1番号、ダブルチャネル220円／月、追加番号110円／月・1番号です。',staff:'通話中着信＝通話中の第三者着信へ切替、転送でんわ＝指定番号へ転送、発信者番号表示＝着信前に番号表示、ナンバー・リクエスト＝非通知相手へ番号通知を案内、迷惑電話ストップ＝登録した迷惑電話を拒否、着信お知らせメール＝着信をメール通知、ダブルチャネル＝同時2通話、追加番号＝契約番号＋4番号で最大5番号。',warn:'ナンバー・リクエストは発信者番号表示の契約が必要です。発信者番号表示は対応電話機が必要です。追加番号は番号ごとにユニバーサルサービス料等が必要になる場合があります。',source:'ドコモ公式「ドコモ光電話向けサービス」',updated:'2026-10-05'},
+  {level:'basic',cat:'光電話',q:'ドコモ光電話バリューには何が含まれる？',keys:['光電話バリュー','バリュー','1650円','無料通話','6つ'],a:'ドコモ光電話バリューは月額1,650円（税込）。6つの付加サービスと528円（税込）分の無料通話がセットです。',staff:'セット対象は、通話中着信・転送でんわ・発信者番号表示・ナンバー・リクエスト・迷惑電話ストップサービス・着信お知らせメール。個別合計よりまとめて利用したい場合に確認しやすいプランです。',warn:'無料通話は一部発信先が対象外です。未使用分は翌月1か月に限り繰り越し可能です。ダブルチャネル・追加番号はバリューに含まれません。',source:'ドコモ公式「料金プラン・通話料」「ドコモ光電話向けサービス」',updated:'2026-10-05'},
+  {level:'advanced',cat:'光電話',q:'今の固定電話番号をドコモ光電話で使える？',keys:['電話番号','固定電話','番号ポータビリティ','継続','引継'],a:'現在は双方向番号ポータビリティにより、NTT東西発番に限定されず、対象の0AB-J固定電話番号はドコモ光電話へ番号ポータビリティできます。',warn:'利用中の電話サービスや提供エリアなどによっては番号を継続できない場合があります。番号継続を希望する場合は、現在の電話サービスを先に解約せず、受付時に継続可否を確認してください。',source:'ドコモ公式「ドコモ光電話」',updated:'2026-10-05'},
   {level:'basic',cat:'テレビ',q:'ドコモ光テレビオプションの月額はいくら？',keys:['テレビ','テレビオプション','990円','月額'],a:'ドコモ光テレビオプションは月額990円（税込）です。地デジ・無料BSなどをアンテナ不要で視聴できます。',warn:'BS有料放送やスカパー！などは別途契約・視聴料が必要です。地域・設備状況により利用できない場合があります。',source:'ドコモ公式「ドコモ光テレビオプション」',updated:'2026-10-05'},
+  {level:'basic',cat:'テレビ',q:'テレビオプション990円だけで何が見られる？',keys:['テレビ','990円','地デジ','BS','CS','無料チャンネル'],a:'月額990円（税込）のドコモ光テレビオプションでは、アンテナ不要で地デジ・無料BSなどを視聴できます。光回線テレビでは4K8K衛星放送の無料チャンネルやCSの一部も対象です。',staff:'CSの専門チャンネルやBSの有料チャンネルまで見たい場合は、別途スカパー！などの有料放送契約が必要です。',warn:'視聴可能チャンネルは地域・設備・対応機器によって異なります。NHK受信料、有料BS・CSの視聴料はテレビオプション990円には含まれません。',source:'ドコモ公式「ドコモ光テレビオプション」／スカパー！公式「光回線テレビFAQ」',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'CSの有料専門チャンネルを見るにはどうする？',keys:['CS','有料','専門チャンネル','スカパー','チャンネル','映画','スポーツ','アニメ','音楽'],a:'CSの有料専門チャンネルを視聴する場合は、ドコモ光テレビオプションに加えて「スカパー！」を契約し、希望するパックまたはチャンネルを選びます。',staff:'料金の基本構成は「ドコモ光／ahamo光料金＋テレビオプション990円＋スカパー！基本料429円＋選択したパック／チャンネル料金」です。例として基本プランは通常3,960円／月、セレクト5は1,980円／月。希望ジャンルだけでなく、見たい具体的なチャンネル名を確認して商品を選択します。',warn:'一部商品は専用チューナー等が必要です。テレビ／レコーダーごとの契約が原則ですが、商品によって複数台条件が異なります。チャンネル構成・料金は変更される場合があるため申込時にスカパー！公式で確認してください。',source:'ドコモ公式「スカパー！」／スカパー！公式「光回線テレビ」',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'ドコモ光テレビオプションとスカパー！を同時申込みすると特典はある？',keys:['テレビ','スカパー','同時申込','キャンペーン','特典','初期費用','実質無料'],a:'あります。ドコモ公式では、ドコモ光テレビオプションとスカパー！対象商品を同時申込みすると、スカパー！の初期費用が実質無料になる特典が案内されています。',staff:'スカパー！公式FAQでは、テレビオプションと同時にスカパー！またはプレミアムサービス光へ加入し、1,980円（税込）以上の商品を2年間契約することなどが条件として案内されています。',warn:'対象商品・契約期間など条件があります。キャンペーン内容は変更・終了する場合があるため、受付時点の公式条件を必ず確認してください。',source:'ドコモ公式「ドコモ光テレビオプション」／スカパー！公式FAQ',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'他社から乗り換えでテレビオプション・スカパー！にもdポイント特典はある？',keys:['乗り換え','テレビ','スカパー','5000','3000','8000','dポイント','特典'],a:'対象条件を満たす他社からの乗り換えでは、「ドコモ光テレビオプション／スカパー！ 乗り換え特典」があります。テレビオプション新規で5,000pt、スカパー！で3,000pt、合計最大8,000ptのdポイント（期間・用途限定）が案内されています。',staff:'ドコモ光／ahamo光と同日にテレビオプション（新規）・スカパー！を申込み、他社サービスからの乗り換え確認、所定期限までの開通・証明書提出・契約継続などが必要です。解約金が発生していない乗り換えでも、本特典のみ対象となるケースがあります。',warn:'通常のドコモ光／ahamo光乗り換え特典との組み合わせや還元額は条件で異なります。証明書条件・申込チャネル・進呈条件を受付時に公式ページで確認してください。',source:'ドコモ公式「ドコモ光テレビオプション／スカパー！ 乗り換え特典」',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'今やっているスカパー！基本プランのキャンペーンは？',keys:['スカパー','基本プラン','キャンペーン','半額','1980','3960','30周年'],a:'2026年10月31日まで、スカパー！新規加入者向けに「基本プラン視聴料 最大3か月半額キャンペーン」が実施されています。通常3,960円／月の基本プラン視聴料が、初回視聴料割引と合わせて最大3か月1,980円／月になります。',staff:'2026年8月1日～10月31日の新規加入・対象手続き完了が対象。基本料429円／月は加入翌月以降別途かかります。',warn:'期間限定キャンペーンです。再加入など対象外条件があります。光回線テレビと同時の場合は工事完了時期にも注意し、申込時点のスカパー！公式キャンペーンを再確認してください。',source:'スカパー！公式「祝30周年！スカパー！基本プラン視聴料最大3ヶ月半額キャンペーン」',updated:'2026-10-05'},
   {level:'advanced',cat:'テレビ',q:'テレビオプションを光と同時に新規申込みした時の工事費は？',keys:['テレビ','工事費','同時','1台','2台','4台','13530','31460'],a:'ドコモ光／ahamo光の派遣工事と同時にテレビオプションを新規申込みする代表例では、テレビ1台まで13,530円、2～4台31,460円（税込）です。',staff:'内訳は基本工事料3,300円＋テレビ接続工事料（1台7,150円／2～4台25,080円）＋テレビ視聴サービス登録料3,080円。光回線本体の工事料・契約事務手数料は別途です。',warn:'宅内設備や追加工事で料金が変わる場合があります。5台以上は別途費用が発生します。',source:'ドコモ公式「ドコモ光テレビオプション」',updated:'2026-10-05'},
   {level:'advanced',cat:'テレビ',q:'テレビオプションだけ後から申込むと工事費はいくら？',keys:['テレビ','後から','単独','23980','41910','工事費'],a:'テレビオプションのみ新規申込みの代表例では、テレビ1台まで23,980円、2～4台41,910円（税込）です。',staff:'この場合、テレビオプション契約事務手数料2,200円が含まれます。',warn:'設備状況や追加工事により変動します。',source:'ドコモ公式「ドコモ光テレビオプション」',updated:'2026-10-05'},
   {level:'advanced',cat:'テレビ',q:'SCチャンネル・専門チャンネルは見られる？',keys:['SC','SCチャンネル','専門チャンネル','CS','スカパー'],a:'ドコモ公式では主に「スカパー！／専門チャンネル」として案内されています。ドコモ光テレビオプションとあわせてスカパー！を契約することで、対象の専門チャンネルを視聴できます。',staff:'スカパー！利用時は、ドコモ光月額＋テレビオプション990円＋スカパー！基本料429円＋選択したパック／チャンネル料金が基本構成です。',warn:'チャンネル・パックによって対応機器や専用チューナーが必要な場合があります。「SCチャンネル」という現場呼称だけで判断せず、希望する具体的なチャンネル名を確認してください。',source:'ドコモ公式「スカパー！」「映像サービス」',updated:'2026-10-05'},
@@ -77,21 +98,45 @@ const specific={
  '事業者変更':[{q:'事業者変更で必要なものは？',keys:['事業者変更','必要','承諾番号'],a:'現在の光コラボ事業者や契約状況を確認し、必要な手続き情報を案内します。正式な必要物は最新業務ルールを登録して表示します。'}],
  '解約新規':[{q:'解約新規にする場合の注意点は？',keys:['解約新規','解約','注意'],a:'インターネットが利用できない期間、電話番号、解約費用、撤去・新設工事などの確認が重要です。'}]
 };
-let current='';let currentLevel='basic';
+const channelGuide=[
+ {name:'東映チャンネル',genre:'映画・ドラマ・アニメ・特撮',channel:'CS218',single:'1,650円／月',basic:true,select:true,note:'単チャンネル契約のほか、スカパー！基本プランの対象。セレクト5／10の選択対象にも含まれるかは申込時の現行対象一覧で最終確認。'},
+ {name:'映画・チャンネルNECO',genre:'映画・ドラマ',channel:'CS223',single:'660円／月',basic:true,select:true,note:'スカパー！基本プラン対象。単チャンネル契約も可能。'},
+ {name:'ザ・シネマ',genre:'映画',channel:'CS227',single:'770円／月',basic:true,select:true,note:'スカパー！基本プラン対象。単チャンネル契約も可能。'},
+ {name:'ムービープラス',genre:'映画',channel:'CS240',single:'660円／月',basic:true,select:true,note:'スカパー！基本プラン対象。単チャンネル契約も可能。'},
+ {name:'WOWOWプラス 映画・ドラマ・スポーツ・音楽',genre:'映画・ドラマ・スポーツ・音楽',channel:'BS252',single:'770円／月',basic:true,select:true,note:'WOWOW（BS191～193）とは別チャンネル。スカパー！基本プラン対象。'},
+ {name:'日本映画専門チャンネル',genre:'映画',channel:'BS255',single:'770円／月',basic:true,select:true,note:'スカパー！基本プラン対象。'},
+ {name:'衛星劇場',genre:'映画・韓流・華流・歌舞伎・演劇',channel:'CS219',single:'2,140円／月',basic:false,select:false,note:'基本プラン対象外。単チャンネル等で契約を確認。'},
+ {name:'J SPORTS 1・2・3・4',genre:'スポーツ・野球・ラグビー・モータースポーツ',channel:'BS242～245',single:'商品・セットを確認',basic:false,select:false,note:'4チャンネルを含むセット商品などがある。映画＆スポーツ！プレミアセットはJ SPORTS 1～4＋BS10プレミアムの5chで3,865円／月。'},
+ {name:'プロ野球セット',genre:'野球・スポーツ',channel:'12ch',single:'4,054円／月',basic:false,select:false,note:'セ・パ12球団公式戦を試合終了まで全試合生中継と案内されているセット商品。'},
+ {name:'WOWOW',genre:'映画・スポーツ・音楽・ドラマ',channel:'BS191～193',single:'2,530円／月',basic:false,select:false,note:'WOWOWプライム／ライブ／シネマの3chセット。対象のスカパー！商品との組み合わせで2,200円／月となる案内あり。'},
+ {name:'スカパー！基本プラン',genre:'映画・スポーツ・音楽・アニメ・ドラマ・ニュースほか',channel:'50ch',single:'3,960円／月',basic:true,select:false,note:'11ジャンル50ch。テレビ／レコーダー1台分の料金で3台まで追加料金なし。2026年10月31日まで新規加入者向け最大3か月半額キャンペーン実施中。'},
+ {name:'スカパー！セレクト5',genre:'複数ジャンル',channel:'対象48chから5ch',single:'1,980円／月',basic:false,select:true,note:'対象48chから5chを選択。選択チャンネルは契約翌月から無料変更可能。'},
+ {name:'スカパー！セレクト10',genre:'複数ジャンル',channel:'対象48chから10ch',single:'2,860円／月',basic:false,select:true,note:'対象48chから10chを選択。選択チャンネルは契約翌月から無料変更可能。'}
+];
+let current='';let currentService='';let currentLevel='basic';
+const serviceNames={net:'ネット',phone:'電話',tv:'地デジ・BS',cs:'CS・スカパー！'};
 function show(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0)}
 function home(){show('home')}
 function items(cat){return [...(specific[cat]||[]),...common]}
-function openFlow(cat){current=cat;currentLevel=cat==='新規'?'basic':'all';document.getElementById('flowPill').textContent=cat;document.getElementById('flowTitle').textContent=cat+' サポート';document.getElementById('levelTabs').style.display=cat==='新規'?'flex':'none';renderCurrent();document.getElementById('answer').className='answer';show('flow')}
-function renderCurrent(){let arr=items(current);if(current==='新規'&&currentLevel!=='all')arr=arr.filter(x=>!x.level||x.level===currentLevel);document.getElementById('questionHeading').textContent=current==='新規'?(currentLevel==='basic'?'基本編':currentLevel==='advanced'?'応用編':'全質問'):'よくある質問';renderQuestions(arr)}
+function serviceMatch(x,service){const c=x.cat||'';const blob=[x.q,x.a,x.staff,x.warn,(x.keys||[]).join(' ')].filter(Boolean).join(' ');if(service==='phone')return c==='光電話'||/電話|番号ポータビリティ|固定電話|FAX|ダブルチャネル|追加番号/.test(blob);if(service==='cs')return c==='テレビ'&&/CS|スカパー|専門チャンネル|SCチャンネル|WOWOW|セレクト|基本プラン/.test(blob);if(service==='tv')return c==='テレビ'&&!/CS|スカパー|専門チャンネル|SCチャンネル|WOWOW|セレクト|基本プラン/.test(blob);return !serviceMatch(x,'phone')&&!serviceMatch(x,'tv')&&!serviceMatch(x,'cs');}
+function openFlow(cat){current=cat;document.getElementById('servicePill').textContent=cat;document.getElementById('serviceTitle').textContent=cat+'｜確認するサービス';show('serviceSelect')}
+function openService(service){currentService=service;currentLevel='basic';document.getElementById('flowPill').textContent=current+' / '+serviceNames[service];document.getElementById('flowTitle').textContent=serviceNames[service]+' サポート';document.getElementById('channelBtn').style.display=service==='cs'?'inline-block':'none';document.getElementById('flowSearch').value='';document.getElementById('answer').className='answer';renderCurrent();show('flow')}
+function backToServices(){openFlow(current)}
+function renderCurrent(){let arr=items(current).filter(x=>serviceMatch(x,currentService));if(currentLevel!=='all')arr=arr.filter(x=>!x.level||x.level===currentLevel);document.getElementById('questionHeading').textContent=(currentLevel==='basic'?'基本編':currentLevel==='advanced'?'応用編':'全質問')+'｜'+serviceNames[currentService];renderQuestions(arr)}
 function setLevel(level){currentLevel=level;document.getElementById('flowSearch').value='';document.getElementById('answer').className='answer';renderCurrent()}
 function renderQuestions(arr){const el=document.getElementById('questions');el.innerHTML='';arr.forEach(x=>{let b=document.createElement('button');b.className='q';b.innerHTML=`${x.cat?`<small style="color:#a40029">${x.cat}</small><br>`:''}${x.q}`;b.onclick=()=>showAnswer(x);el.appendChild(b)});if(!arr.length)el.innerHTML='<div class="empty">該当する質問が見つかりませんでした。</div>'}
 function showAnswer(x){const a=document.getElementById('answer');a.innerHTML=`<h3>${x.q}</h3><div class="box conclusion"><b>✅ 結論</b><br>${x.a}</div>${x.staff?`<div class="box staff"><b>🔎 スタッフ確認</b><br>${x.staff}</div>`:''}${x.warn?`<div class="box warning"><b>⚠️ 注意事項</b><br>${x.warn}</div>`:''}${x.source?`<div class="placeholder"><b>根拠：</b>${x.source}<br><b>情報確認日：</b>${x.updated||'2026-10-05'}</div>`:''}`;a.className='answer show';a.scrollIntoView({behavior:'smooth',block:'start'})}
 function score(x,s){s=s.toLowerCase().replace(/\s/g,'');let n=0;if(x.q.toLowerCase().includes(s))n+=10;(x.keys||[]).forEach(k=>{if(s.includes(k.toLowerCase())||k.toLowerCase().includes(s))n+=3});return n}
-function searchFlow(){let s=document.getElementById('flowSearch').value.trim();if(!s)return renderCurrent();let base=items(current);if(current==='新規'&&currentLevel!=='all')base=base.filter(x=>!x.level||x.level===currentLevel);let a=base.map(x=>[x,score(x,s)]).filter(z=>z[1]>0).sort((a,b)=>b[1]-a[1]).map(z=>z[0]);renderQuestions(a)}
+function searchFlow(){let s=document.getElementById('flowSearch').value.trim();if(!s)return renderCurrent();let base=items(current).filter(x=>serviceMatch(x,currentService));if(currentLevel!=='all')base=base.filter(x=>!x.level||x.level===currentLevel);let a=base.map(x=>[x,score(x,s)]).filter(z=>z[1]>0).sort((a,b)=>b[1]-a[1]).map(z=>z[0]);renderQuestions(a)}
 function allItems(){let out=[];Object.keys(specific).forEach(c=>specific[c].forEach(x=>out.push({...x,cat:c})));common.forEach(x=>out.push({...x,cat:'共通'}));return out}
 function searchAll(){let s=document.getElementById('globalSearch').value.trim();if(!s)return;let a=allItems().map(x=>[x,score(x,s)]).filter(z=>z[1]>0).sort((a,b)=>b[1]-a[1]);let el=document.getElementById('resultList');el.innerHTML='';a.forEach(([x])=>{let b=document.createElement('button');b.className='q';b.innerHTML=`<small>${x.cat}</small><br>${x.q}`;b.onclick=()=>{current=x.cat==='共通'?'新規':x.cat;openFlow(current);setTimeout(()=>showAnswer(x),50)};el.appendChild(b)});if(!a.length)el.innerHTML='<div class="empty">近い質問が見つかりませんでした。AIアシスタントから質問する機能へ今後つなげます。</div>';show('results')}
 function openAI(){show('aiView');setTimeout(()=>document.getElementById('aiInput').focus(),100)}
 function askAI(){let i=document.getElementById('aiInput'),s=i.value.trim();if(!s)return;let chat=document.getElementById('chat');chat.insertAdjacentHTML('beforeend',`<div class="bubble user">${esc(s)}</div>`);i.value='';let ranked=allItems().map(x=>[x,score(x,s)]).sort((a,b)=>b[1]-a[1]);let best=ranked[0];let msg=best&&best[1]>0?`<b>関連する回答を見つけました。</b><br><br><b>${best[0].q}</b><br>${best[0].a}${best[0].warn?`<br><br>⚠️ ${best[0].warn}`:''}`:'V1の登録済みQ&Aでは判断できませんでした。次段階でAI APIを接続すると、複雑な文章の解析や追加質問ができるようになります。';setTimeout(()=>{chat.insertAdjacentHTML('beforeend',`<div class="bubble bot">${msg}</div>`);chat.scrollTop=chat.scrollHeight},250)}
+function openChannelFinder(){show('channelFinder');document.getElementById('channelSearch').value='';renderChannels(channelGuide);document.getElementById('channelAnswer').className='answer'}
+function returnFromChannels(){openService('cs')}
+function renderChannels(arr){const el=document.getElementById('channelResults');el.innerHTML='';arr.forEach(x=>{let b=document.createElement('button');b.className='q';b.innerHTML=`<small style="color:#a40029">${x.genre}</small><br>${x.name} <small>（${x.channel}）</small>`;b.onclick=()=>showChannel(x);el.appendChild(b)});if(!arr.length)el.innerHTML='<div class="empty">該当する登録チャンネルがありません。正式運用ではスカパー！現行チャンネル一覧との連携を拡張します。</div>'}
+function searchChannels(){let s=document.getElementById('channelSearch').value.trim().toLowerCase().replace(/\s/g,'');if(!s)return renderChannels(channelGuide);let arr=channelGuide.filter(x=>[x.name,x.genre,x.channel,x.note].join(' ').toLowerCase().replace(/\s/g,'').includes(s));renderChannels(arr)}
+function showChannel(x){const a=document.getElementById('channelAnswer');let plan=x.basic?'基本プラン対象':'基本プラン対象外／個別商品を確認';a.innerHTML=`<h3>${x.name}</h3><div class="box conclusion"><b>📺 視聴方法の目安</b><br>${x.channel}｜${x.genre}<br><b>商品料金：</b>${x.single}<br><b>基本プラン：</b>${plan}</div><div class="box staff"><b>💰 光回線テレビでの料金構成</b><br>ドコモ光／ahamo光料金 ＋ ドコモ光テレビオプション990円／月 ＋ スカパー！基本料429円／月 ＋ 選択商品料金</div><div class="box warning"><b>⚠️ 商品選択の注意</b><br>${x.note}<br><br>チャンネル編成・料金・セレクト対象は変更される場合があります。申込時はスカパー！公式の最新商品一覧で最終確認してください。</div><div class="placeholder"><b>根拠：</b>ドコモ公式「スカパー！」／スカパー！公式「料金・商品」「チャンネル一覧」<br><b>情報確認日：</b>2026-10-05</div>`;a.className='answer show';a.scrollIntoView({behavior:'smooth',block:'start'})}
 function esc(s){return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
 document.getElementById('aiInput').addEventListener('keydown',e=>{if(e.key==='Enter')askAI()});document.getElementById('globalSearch').addEventListener('keydown',e=>{if(e.key==='Enter')searchAll()});
 </script></body></html>
