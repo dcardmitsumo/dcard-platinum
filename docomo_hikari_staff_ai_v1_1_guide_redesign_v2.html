@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ドコモ光 STAFF SUPPORT</title>
+<style>
+:root{--red:#cc0033;--red2:#e6003d;--ink:#17171b;--muted:#6b6b74;--bg:#f5f6f8;--card:#fff;--line:#e8e8ed;--warn:#fff5df;--blue:#eef6ff}
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink)}button,input,select,textarea{font:inherit}
+header{background:linear-gradient(135deg,#b9002d,var(--red2));color:white;padding:calc(18px + env(safe-area-inset-top)) 18px 22px;box-shadow:0 4px 18px #b9002d33}.head{max-width:1050px;margin:auto}.brand{font-size:13px;font-weight:800;letter-spacing:.1em;opacity:.88}.title{font-size:26px;font-weight:900;margin-top:4px}.sub{font-size:13px;opacity:.9;margin-top:5px}
+main{max-width:1050px;margin:auto;padding:18px 14px 90px}.search{display:flex;gap:8px;background:white;padding:10px;border-radius:16px;box-shadow:0 3px 15px #0000000b;margin-bottom:18px}.search input{border:0;outline:0;flex:1;min-width:0;padding:8px;font-size:16px}.search button,.primary{border:0;background:var(--red);color:#fff;border-radius:11px;padding:10px 15px;font-weight:800;cursor:pointer}
+.section-title{font-size:17px;font-weight:900;margin:18px 3px 11px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:17px;text-align:left;box-shadow:0 4px 16px #00000009;cursor:pointer;min-height:118px}.card:hover{transform:translateY(-1px)}.icon{font-size:25px}.card h3{margin:8px 0 4px;font-size:18px}.card p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}.ai{grid-column:1/-1;background:linear-gradient(135deg,#fff,#fff1f5);border:1.5px solid #f1b6c5;min-height:130px}.ai h3{color:#a6002a}
+.view{display:none}.view.active{display:block}.topbar{display:flex;align-items:center;gap:10px;margin-bottom:14px}.back{border:0;background:#fff;border-radius:11px;padding:10px 13px;font-weight:800;box-shadow:0 2px 10px #0000000b}.view-title{font-size:22px;font-weight:900}.pill{display:inline-block;background:#fbe6eb;color:#a40029;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:800;margin-bottom:10px}
+.q-list{display:grid;gap:9px}.q{width:100%;border:1px solid var(--line);background:#fff;border-radius:14px;padding:14px;text-align:left;font-weight:750;cursor:pointer}.q:after{content:'›';float:right;color:#aaa;font-size:20px}.answer{background:#fff;border-radius:18px;border:1px solid var(--line);padding:18px;margin-top:14px;display:none}.answer.show{display:block}.answer h3{margin:0 0 8px}.box{border-radius:13px;padding:13px;margin:10px 0;line-height:1.65;font-size:14px}.conclusion{background:#eef9f1}.warning{background:var(--warn)}.staff{background:var(--blue)}.placeholder{color:#777;font-size:13px;border-top:1px solid var(--line);padding-top:11px;margin-top:12px}
+.chat{background:white;border:1px solid var(--line);border-radius:18px;min-height:390px;padding:15px;display:flex;flex-direction:column;gap:11px}.bubble{max-width:88%;padding:12px 14px;border-radius:16px;line-height:1.6;font-size:14px}.bot{align-self:flex-start;background:#f1f2f5}.user{align-self:flex-end;background:#fbe6eb}.chat-input{display:flex;gap:8px;margin-top:10px}.chat-input input{flex:1;min-width:0;border:1px solid #ddd;border-radius:13px;padding:13px;outline:none}.notice{font-size:12px;color:var(--muted);margin:10px 3px;line-height:1.5}.form-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:14px}.form-grid{display:grid;grid-template-columns:1fr;gap:12px}.field label{display:block;font-size:12px;font-weight:800;margin-bottom:5px;color:#555}.field input,.field select,.field textarea{width:100%;border:1px solid #dcdce2;border-radius:11px;padding:11px;background:#fff}.schedule-sheet{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;margin-top:16px}.schedule-hero{display:flex;justify-content:space-between;gap:14px;align-items:center;background:linear-gradient(135deg,#fff1f4,#fff9e8);border-radius:16px;padding:14px 16px;margin:10px 0 18px}.schedule-hero-copy{font-size:13px;line-height:1.6;font-weight:700}.schedule-hero-art{font-size:44px;white-space:nowrap}.step-card{display:grid;grid-template-columns:105px 1fr;gap:16px;align-items:center;border-radius:16px;padding:14px 16px;margin-bottom:8px;border:1px solid #ececf0}.step-card:nth-child(4n+1){background:#fff3f5}.step-card:nth-child(4n+2){background:#eef8ff}.step-card:nth-child(4n+3){background:#f1faef}.step-card:nth-child(4n){background:#fff7e9}.step-visual{min-height:82px;border-radius:14px;background:rgba(255,255,255,.78);display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center}.step-visual .ico{font-size:40px;line-height:1}.step-visual .lbl{font-size:10px;font-weight:900;color:#666;margin-top:5px}.step-content{min-width:0}.step-heading{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.step-badge{width:32px;height:32px;border-radius:50%;background:var(--red);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:900;flex:none}.step-card .step-title{font-size:17px}.step-card .step-note{font-size:13px}.schedule-finish{display:flex;align-items:center;justify-content:center;gap:12px;border:2px solid #f0b8c6;background:#fff7dc;border-radius:16px;padding:15px;text-align:center;font-weight:900;font-size:17px;margin-top:12px}.schedule-finish .ico{font-size:38px}@media(max-width:600px){.step-card{grid-template-columns:78px 1fr;padding:11px}.step-visual{min-height:72px}.step-visual .ico{font-size:34px}.schedule-hero-art{font-size:34px}}.schedule-input-step{border:1px solid #e4e4e8;border-radius:16px;padding:14px;margin-bottom:12px;background:#fff}.schedule-input-head{display:flex;align-items:center;gap:10px;font-weight:900;margin-bottom:10px}.schedule-input-no{width:30px;height:30px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;flex:none}.schedule-input-help{font-size:12px;color:#666;margin:-3px 0 10px 40px}.timeline-arrow{text-align:left;margin:-12px 0 4px 17px;color:var(--red);font-size:22px;font-weight:900}.step-date{display:inline-block;background:#fff0f3;color:#a40029;border-radius:999px;padding:3px 9px;font-size:12px;font-weight:900;margin-bottom:5px}.step-title{font-size:16px}.schedule-sheet .step-note{background:#f7f7f9;border-radius:10px;padding:9px 11px;margin-top:7px}.schedule-complete{border:2px solid #f0b8c6;background:#fff5f7;border-radius:14px;padding:14px;text-align:center;font-weight:900;font-size:17px;margin-top:4px}.schedule-sheet h2{margin:0 0 5px}.schedule-meta{font-size:13px;color:#666;margin-bottom:18px}.timeline{display:grid;gap:0}.step{display:grid;grid-template-columns:38px 1fr;gap:10px;position:relative;padding-bottom:18px}.step:not(:last-child):before{content:'';position:absolute;left:18px;top:34px;bottom:0;width:2px;background:#ead1d8}.step-no{width:36px;height:36px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;z-index:1}.step-body{padding:5px 0}.step-title{font-weight:900}.step-note{font-size:13px;color:#555;line-height:1.55;margin-top:4px}.print-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.empty{background:white;border-radius:16px;padding:18px;color:var(--muted);border:1px solid var(--line)}
+@media print{body{background:#fff}header,.no-print,#scheduleBuilder .topbar,#scheduleBuilder .form-card,#scheduleBuilder .notice{display:none!important}main{padding:0;max-width:none}.view{display:none!important}#scheduleBuilder{display:block!important}.schedule-sheet{border:0;padding:12mm;margin:0;box-shadow:none}.schedule-sheet h2{font-size:22px}.step{break-inside:avoid}.step-note{font-size:12px}}
+@media(min-width:760px){.form-grid{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:repeat(3,1fr)}.ai{grid-column:1/-1}.title{font-size:30px}.card{min-height:135px}}
+</style>
+<style id="flow-overlap-fix">
+/* 開通までの流れ：入力欄の重なり防止 */
+input,select,textarea{box-sizing:border-box;max-width:100%}
+.flow-form .step-card,.flow-step-card{height:auto!important;overflow:visible!important}
+.flow-form .step-grid,.flow-step-grid{
+ display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+ gap:18px 22px!important;align-items:start!important
+}
+.flow-form .field,.flow-step-grid>div{min-width:0!important}
+.flow-form input,.flow-form select,.flow-form textarea,
+.flow-step-grid input,.flow-step-grid select,.flow-step-grid textarea{
+ width:100%!important;min-width:0!important;margin:0!important
+}
+@media(max-width:760px){
+ .flow-form .step-grid,.flow-step-grid{grid-template-columns:1fr!important;gap:14px!important}
+}
+</style>
+
+
+<style id="customer-guide-redesign-20261005">
+/* CUSTOMER GUIDE: iPadで見やすい横長カードUI */
+#scheduleBuilder{max-width:100%;padding-bottom:90px}
+#scheduleBuilder .topbar{align-items:center;margin-bottom:18px}
+#scheduleBuilder .view-title{font-size:28px;line-height:1.2}
+#scheduleBuilder .notice{background:transparent;border:0;padding:0 4px 14px;color:#555}
+#scheduleBuilder .form-card{background:transparent;border:0;box-shadow:none;padding:0}
+#scheduleBuilder .form-card>.field:first-child{
+ background:#fff;border:1px solid #e2e4e8;border-radius:18px;padding:16px 18px;margin-bottom:16px!important
+}
+#scheduleBuilder .schedule-input-step{
+ background:#fff;border:1px solid #e0e3e8;border-radius:18px;
+ padding:18px 20px 20px;margin:0 0 14px;overflow:visible;height:auto;box-shadow:0 1px 2px rgba(0,0,0,.025)
+}
+#scheduleBuilder .schedule-input-head{
+ display:flex;align-items:center;gap:12px;font-size:20px;font-weight:900;line-height:1.3;margin-bottom:4px
+}
+#scheduleBuilder .schedule-input-no{
+ flex:0 0 40px;width:40px;height:40px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;
+ background:#d90832;color:#fff;font-size:20px;font-weight:900
+}
+#scheduleBuilder .schedule-input-help{margin:0 0 14px 52px;color:#666;font-size:13px;line-height:1.5}
+#scheduleBuilder .form-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:16px!important;align-items:start}
+#scheduleBuilder .schedule-main-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+#scheduleBuilder .field{min-width:0}
+#scheduleBuilder .field label{display:block;margin:0 0 7px;font-weight:800;color:#333;font-size:14px}
+#scheduleBuilder input,#scheduleBuilder select,#scheduleBuilder textarea{
+ display:block;width:100%!important;min-width:0!important;max-width:100%!important;
+ box-sizing:border-box!important;border:1px solid #d6dbe2;border-radius:13px;
+ background:#fff;min-height:54px;padding:12px 14px;margin:0!important;font-size:16px
+}
+#scheduleBuilder select:focus,#scheduleBuilder input:focus,#scheduleBuilder textarea:focus{
+ outline:0;border-color:#52aef2;box-shadow:0 0 0 3px rgba(82,174,242,.22)
+}
+#scheduleBuilder #scProviderHint{
+ margin:8px 2px 0!important;padding:7px 10px;border-radius:9px;background:#fff8e7;color:#8a6412!important;
+ font-size:12px!important;line-height:1.45!important
+}
+#scheduleBuilder .print-actions{
+ position:sticky;bottom:10px;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);
+ border:1px solid #e0e3e8;border-radius:16px;padding:10px;display:grid;grid-template-columns:2fr 1fr;gap:10px;
+ box-shadow:0 8px 28px rgba(0,0,0,.10);margin-top:18px
+}
+#scheduleBuilder .print-actions button{min-height:48px}
+@media(max-width:1050px){
+ #scheduleBuilder .schedule-main-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ #scheduleBuilder .schedule-main-grid .field:last-child{grid-column:1/-1}
+}
+@media(max-width:760px){
+ #scheduleBuilder .view-title{font-size:23px}
+ #scheduleBuilder .schedule-input-step{padding:16px}
+ #scheduleBuilder .form-grid,#scheduleBuilder .schedule-main-grid{grid-template-columns:1fr!important}
+ #scheduleBuilder .schedule-main-grid .field:last-child{grid-column:auto}
+ #scheduleBuilder .schedule-input-help{margin-left:0}
+ #scheduleBuilder .print-actions{grid-template-columns:1fr}
+}
+</style>
+
+
+<style id="customer-guide-ipad-final-fix">
+#scheduleBuilder .schedule-main-grid{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr)!important;
+  gap:18px!important;
+}
+#scheduleBuilder .schedule-input-step .form-grid:not(.schedule-main-grid){
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:18px!important;
+}
+#scheduleBuilder .schedule-input-step{overflow:visible!important;height:auto!important}
+#scheduleBuilder .field{min-width:0!important;overflow:visible!important}
+#scheduleBuilder input,#scheduleBuilder select,#scheduleBuilder textarea{
+  width:100%!important;min-width:0!important;max-width:none!important;
+  height:54px!important;box-sizing:border-box!important;
+}
+#scheduleBuilder textarea{height:auto!important;min-height:86px!important}
+#scheduleBuilder #scProvider{width:100%!important}
+#scheduleBuilder #scProviderHint{width:auto!important;box-sizing:border-box!important}
+@media (min-width:761px){
+  #scheduleBuilder .schedule-main-grid .field:last-child{grid-column:auto!important}
+}
+@media (max-width:760px){
+  #scheduleBuilder .schedule-main-grid,
+  #scheduleBuilder .schedule-input-step .form-grid:not(.schedule-main-grid){
+    grid-template-columns:1fr!important;
+  }
+}
+</style>
+
+</head>
+<body><header><div class="head"><div class="brand">DOCOMO HIKARI</div><div class="title">ドコモ光 STAFF SUPPORT</div><div class="sub">現場スタッフ向け 接客・受付サポートツール</div></div></header>
+<main>
+<section id="home" class="view active">
+<div class="search"><input id="globalSearch" placeholder="質問を入力（例：工事は必要？）"><button onclick="searchAll()">検索</button></div>
+<div class="section-title">お手続きを選択してください</div>
+<div class="grid">
+<button class="card" onclick="openFlow('新規')"><div class="icon">✨</div><h3>新規</h3><p>新しくドコモ光をお申込みするケース</p></button>
+<button class="card" onclick="openFlow('他社奪還')"><div class="icon">🔄</div><h3>他社奪還</h3><p>他社固定回線からドコモ光をご提案</p></button>
+<button class="card" onclick="openFlow('転用')"><div class="icon">↪️</div><h3>転用</h3><p>フレッツ光からドコモ光へ</p></button>
+<button class="card" onclick="openFlow('事業者変更')"><div class="icon">🔁</div><h3>事業者変更</h3><p>他社光コラボからドコモ光へ</p></button>
+<button class="card" onclick="openFlow('解約新規')"><div class="icon">🧾</div><h3>解約新規</h3><p>既存回線を解約し、新規でお申込み</p></button>
+<button class="card ai" onclick="openAI()"><div class="icon">🤖</div><h3>ドコモ光 AIアシスタント</h3><p>複雑なケースや分からない内容を自然な文章で質問。将来AI APIと接続します。</p></button>
+</div></section>
+
+<section id="serviceSelect" class="view"><div class="topbar"><button class="back" onclick="home()">← 戻る</button><div><div class="pill" id="servicePill"></div><div class="view-title" id="serviceTitle"></div></div></div>
+<div class="notice">確認したいサービスを選んでください。選択した内容に関係する質問・注意事項だけを表示します。</div>
+<div class="grid">
+<button class="card" onclick="openService('net')"><div class="icon">🌐</div><h3>ネット</h3><p>料金・工事・1G/10G・プロバイダ・セット割など</p></button>
+<button class="card" onclick="openService('phone')"><div class="icon">☎️</div><h3>電話</h3><p>光電話・番号ポータビリティ・付加サービスなど</p></button>
+<button class="card" onclick="openService('tv')"><div class="icon">📺</div><h3>地デジ・BS</h3><p>テレビオプション・工事・視聴条件など</p></button>
+<button class="card" onclick="openService('cs')"><div class="icon">🎬</div><h3>CS・スカパー！</h3><p>有料専門チャンネル・料金・キャンペーン・逆引き</p></button>
+</div></section>
+
+<section id="flow" class="view"><div class="topbar"><button class="back" onclick="backToServices()">← サービス選択</button><div><div class="pill" id="flowPill"></div><div class="view-title" id="flowTitle"></div></div></div>
+<div class="search"><input id="flowSearch" placeholder="この項目について質問を検索"><button onclick="searchFlow()">検索</button></div>
+<div id="levelTabs" style="display:flex;gap:8px;margin:14px 0;flex-wrap:wrap"><button class="back" onclick="setLevel('basic')">基本編</button><button class="back" onclick="setLevel('advanced')">応用編</button><button class="back" onclick="setLevel('all')">全質問</button><button id="channelBtn" class="back" onclick="openChannelFinder()" style="display:none">📺 チャンネル逆引き</button><button id="scheduleBtn" class="back" onclick="openScheduleBuilder()" style="display:none">📄 開通までの流れを作成</button></div>
+<div class="section-title" id="questionHeading">よくある質問</div><div id="questions" class="q-list"></div><div id="answer" class="answer"></div></section>
+
+<section id="channelFinder" class="view"><div class="topbar"><button class="back" onclick="returnFromChannels()">← CS・スカパー！へ</button><div><div class="pill">TV / SKY PerfecTV!</div><div class="view-title">見たいチャンネルから逆引き</div></div></div>
+<div class="notice">チャンネル名・ジャンルを入力すると、契約方法の目安を表示します。料金・編成は変更されるため、最終受付時はスカパー！公式で再確認してください。</div>
+<div class="search"><input id="channelSearch" placeholder="例：東映、J SPORTS、映画、野球、WOWOW"><button onclick="searchChannels()">検索</button></div>
+<div class="section-title">代表的なチャンネル・商品</div><div id="channelResults" class="q-list"></div><div id="channelAnswer" class="answer"></div></section>
+
+<section id="aiView" class="view"><div class="topbar"><button class="back" onclick="home()">← 戻る</button><div><div class="pill">AI ASSISTANT</div><div class="view-title">ドコモ光 AIアシスタント</div></div></div>
+<div class="chat" id="chat"><div class="bubble bot">ドコモ光について質問してください。<br>例：「事業者変更で固定電話をそのまま使える？」</div></div>
+<div class="chat-input"><input id="aiInput" placeholder="質問を入力してください"><button class="primary" onclick="askAI()">送信</button></div>
+<div class="notice">V1では登録済みQ&Aから近い内容を検索します。AI APIはAPIキーを保護するサーバー側接続を前提に、次段階で実装します。</div></section>
+
+
+<section id="scheduleBuilder" class="view"><div class="topbar"><button class="back" onclick="returnFromSchedule()">← ネットへ</button><div><div class="pill">CUSTOMER GUIDE</div><div class="view-title">ドコモ光 開通までの流れを作成</div></div></div>
+<div class="notice"><b>上から順番に入力するだけでOK。</b> 日付が決まっていない項目は空欄のままで「未定」として作成できます。</div>
+<div class="form-card">
+<div class="field" style="margin-bottom:14px"><label>お客様名（任意）</label><input id="scName" placeholder="例：山田 太郎 様"></div>
+<div class="schedule-input-step"><div class="schedule-input-head"><span class="schedule-input-no">1</span>ドコモ光を申し込む</div><div class="schedule-input-help">まず申込日と契約内容を入力</div><div class="form-grid schedule-main-grid"><div class="field"><label>申込日</label><input id="scApply" type="date"></div><div class="field"><label>回線</label><select id="scSpeed"><option>ドコモ光 1ギガ</option><option>ドコモ光 10ギガ</option><option>ahamo光 1ギガ</option><option>ahamo光 10ギガ</option></select></div><div class="field"><label>プロバイダ</label><select id="scProvider"></select><div id="scProviderHint" style="font-size:12px;color:#666;margin-top:7px;line-height:1.5"></div></div></div></div>
+<div class="schedule-input-step"><div class="schedule-input-head"><span class="schedule-input-no">2</span>プロバイダから書類・機器が届く</div><div class="schedule-input-help">分かる範囲で到着目安を入力。分からなければ空欄でOK</div><div class="field"><label>到着予定・目安</label><input id="scDocs" placeholder="例：申込み後1週間前後／10月10日ごろ"></div></div>
+<div class="schedule-input-step"><div class="schedule-input-head"><span class="schedule-input-no">3</span>訪問サポートを予約する</div><div class="schedule-input-help">利用する場合だけ入力。未利用なら空欄でもOK</div><div class="field"><label>予約日</label><input id="scSupportBook" type="date"></div></div>
+<div class="schedule-input-step"><div class="schedule-input-head"><span class="schedule-input-no">4</span>ドコモ光の開通工事</div><div class="schedule-input-help">お客様が特に確認したい重要な日程</div><div class="form-grid"><div class="field"><label>工事日</label><input id="scWork" type="date"></div><div class="field"><label>時間帯</label><input id="scWorkTime" placeholder="例：午前／9:00〜12:00／未定"></div><div class="field"><label>立会い</label><select id="scAttend"><option>必要</option><option>不要</option><option>未定・要確認</option></select></div></div></div>
+<div class="schedule-input-step"><div class="schedule-input-head"><span class="schedule-input-no">5</span>工事後にONU・Wi-Fiルーターを接続</div><div class="schedule-input-help">ここは自動で案内に入ります。入力不要です。</div></div>
+<div class="schedule-input-step"><div class="schedule-input-head"><span class="schedule-input-no">6</span>訪問サポート・初期設定</div><div class="schedule-input-help">訪問設定を利用する場合の実施日</div><div class="field"><label>訪問サポート実施日</label><input id="scSupport" type="date"></div></div>
+<div class="field" style="margin-top:14px"><label>お客様への追記事項（任意）</label><textarea id="scMemo" rows="3" placeholder="例：ルーターが先に届いても工事日まで保管してください。"></textarea></div>
+<div class="print-actions"><button class="primary" onclick="buildSchedule()">この内容で案内を作成</button><button class="back" onclick="window.print()">印刷・PDF保存</button></div></div>
+<div id="scheduleSheet" class="schedule-sheet" style="display:none"></div></section>
+
+<section id="results" class="view"><div class="topbar"><button class="back" onclick="home()">← 戻る</button><div class="view-title">検索結果</div></div><div id="resultList" class="q-list"></div></section>
+</main>
+<script>
+const common=[
+ {q:'工事は必要ですか？',keys:['工事','必要','派遣','新規','戸建','マンション','光コンセント'],a:'新規契約の場合、戸建タイプは原則として工事担当者が訪問する派遣工事が必要です。マンションタイプは、すでに光コンセントなど利用可能な光設備があり、NTT側で派遣不要と判定された場合は訪問工事なしで開通できることがあります。',warn:'「マンションに光コンセントがあれば必ず工事不要」とは限りません。既設設備が利用可能かどうかはNTT側の設備確認で決まります。光コンセントがない場合は派遣工事が必要です。'},
+ {q:'固定電話の番号はそのまま使えますか？',keys:['固定電話','電話番号','番号','そのまま','継続','引継'],a:'現在は双方向番号ポータビリティにより、NTT東西発番に限定されず、対象の0AB-J固定電話番号はドコモ光電話へ番号ポータビリティできます。',warn:'利用中の電話サービスや提供エリアなどによっては番号を継続できない場合があります。番号継続を希望する場合は、現在の電話サービスを先に解約せず、受付時に継続可否を確認してください。'},
+ {q:'開通までどれくらいかかりますか？',keys:['開通','何日','期間','いつ','日数','2週間','1か月'],a:'ドコモ光1ギガは、申込み日の確定から利用開始まで最短の目安として約2週間、通常は2週間～1か月程度です。設備状況・繁忙期・工事日調整などにより1か月以上かかる場合もあります。',warn:'10ギガは目安が異なり、おおむね1か月半です。工事日・開通日は設備状況によるため、2週間で必ず開通すると確約しないでください。'},
+ {q:'1ギガと10ギガはどう選べばいいですか？',keys:['1ギガ','10ギガ','1G','10G','速度'],a:'利用用途・接続台数・提供エリア・対応機器などを確認して提案します。',warn:'10ギガは提供可否や対応機器の確認が必要です。'}
+];
+const specific={
+ '新規':[
+  {level:'basic',cat:'受付・申込み',q:'新規申込みから利用開始までの流れは？',keys:['新規','申込','流れ','開通','利用開始'],a:'基本の流れは、①ドコモ光／ahamo光申込み → ②必要書類の受取り → ③開通工事 → ④ルーターなどの接続・設定 → ⑤利用開始です。',staff:'1ギガは申込み日の確定から利用開始まで2週間～1か月程度、10ギガはおおむね1か月半が目安です。設備状況・繁忙期などにより1か月以上かかる場合があります。',warn:'工事日や開通日は設備状況で変動します。確約表現は避け、受付時の確定情報を案内してください。',source:'ドコモ公式「新規契約」',updated:'2026-10-05'},
+  {level:'advanced',cat:'受付・申込み',q:'未成年・代理人でも申込みできますか？',keys:['未成年','代理人','親権者','委任状','本人確認'],a:'可能ですが、追加書類が必要です。未成年申込みは親権者の本人確認書類・同意書、代理人申込みは契約者と代理人双方の本人確認書類・委任状が必要です。',warn:'必要書類は受付方法や契約状況により追加確認が必要になる場合があります。',source:'ドコモ公式「新規契約」',updated:'2026-10-05'},
+  {level:'basic',cat:'料金',q:'新規契約の事務手数料はいくら？',keys:['事務手数料','初期費用','4950'],a:'契約事務手数料は4,950円（税込）です。',staff:'原則、利用開始日の翌月に利用料金とあわせて請求されます。',source:'ドコモ公式「新規契約」',updated:'2026-10-05'},
+  {level:'basic',cat:'工事',q:'新規の工事料はいくら？',keys:['工事料','工事費','28600','18260','3300'],a:'2026年6月1日以降の申込みでは、代表例として屋内配線工程ありの派遣工事は28,600円（税込）です。屋内配線を新設しない場合は18,260円（税込）、派遣工事なしで開通できる場合は3,300円（税込）です。',staff:'戸建・マンション共通。実際の工事内容で金額が変わるため、最終確認は工事料金シミュレーションで行います。',warn:'現地状況により工事内容・料金が変更される場合があります。土日祝などの追加料金やオプション工事は別途です。',source:'ドコモ公式「工事料分割払い」「初期費用／工事料FAQ」',updated:'2026-10-05'},
+  {level:'advanced',cat:'工事',q:'工事料は分割払いできますか？',keys:['分割','12回','24回','工事料'],a:'できます。工事料は12回または24回の分割払いを選択できます。',warn:'分割支払い中にドコモ光／ahamo光を解約した場合、残債は解約日の翌月に一括請求されます。',source:'ドコモ公式「工事料分割払い」',updated:'2026-10-05'},
+  {level:'basic',cat:'工事',q:'工事当日の立ち会いは必要？',keys:['立会','立ち会い','工事当日','派遣'],a:'派遣工事の場合は、設置場所などを決定できる方の立ち会いが必要です。設備状況により、立ち会い不要の派遣工事なしで開通できる場合もあります。',source:'ドコモ公式「新規契約」',updated:'2026-10-05'},
+  {level:'advanced',cat:'工事',q:'新規工事料は本当に無料？',keys:['工事無料','実質0円','工事料無料','dポイント'],a:'現在は「新規工事料実質0円特典」があり、対象の新規工事料相当をdポイント（期間・用途限定）で進呈する仕組みです。工事料そのものが請求されない「無料」とは異なります。',staff:'契約事務手数料4,950円、土日祝の追加工事料、オプション工事料、追加料金などは特典対象外です。',warn:'フレッツ光や提携CATVからの切替、移転など対象外条件があります。特典条件は申込み時点で必ず再確認してください。',source:'ドコモ公式「ドコモ光 新規工事料実質0円特典」',updated:'2026-10-05'},
+  {level:'basic',cat:'1ギガ・10ギガ',q:'1ギガの月額料金はいくら？',keys:['1ギガ','1G','月額','料金','マンション','戸建'],a:'2年定期契約の場合、1ギガ タイプA/Cはマンション4,400円、戸建5,720円（税込）。タイプBはマンション4,620円、戸建5,940円（税込）です。',staff:'単独タイプはマンション4,180円、戸建5,500円（税込）ですが、別途お客さま自身でプロバイダ契約が必要です。定期契約なしは料金が異なります。',source:'ドコモ公式「ドコモ光 1ギガの料金プランFAQ」',updated:'2026-10-05'},
+  {level:'basic',cat:'1ギガ・10ギガ',q:'10ギガのタイプAはいくら？',keys:['10ギガ','10G','6380','タイプA','料金'],a:'ドコモ光10ギガ タイプAは、キャンペーン終了後の通常月額が6,380円（税込）です。戸建・マンション同額です。',warn:'プロバイダタイプや定期契約有無で料金が異なります。キャンペーン適用中の金額と通常料金を混同しないよう注意してください。',source:'ドコモ公式「ドコモ光 10ギガ」「料金プラン」',updated:'2026-10-05'},
+  {level:'basic',cat:'1ギガ・10ギガ',q:'10ギガは今500円で使える？',keys:['10ギガ','500円','ワンコイン','6か月','キャンペーン'],a:'対象条件を満たす「ドコモ光 10ギガ（2年定期契約）」の新規申込みでは、基本料金が最大6か月間500円／月（税込）となるキャンペーンが案内されています。',warn:'ルーター利用料などは別途です。適用条件・終了時期は変更される可能性があるため、受付時点の公式キャンペーン条件を確認してください。',source:'ドコモ公式「ドコモ光 10ギガ」',updated:'2026-10-05'},
+  {level:'basic',cat:'プロバイダ',q:'タイプAとタイプBは何が違う？',keys:['タイプA','タイプB','プロバイダ','違い'],a:'主な違いは選べるプロバイダと月額料金です。1ギガ・10ギガとも対応プロバイダが決められており、タイプAとBで料金が異なります。',staff:'1ギガと10ギガでは対応プロバイダも異なります。希望プロバイダが対象か公式一覧で確認してください。',source:'ドコモ公式「ドコモ光のプロバイダ」',updated:'2026-10-05'},
+  {level:'advanced',cat:'プロバイダ',q:'単独タイプはプロバイダ込み？',keys:['単独タイプ','プロバイダ','別契約'],a:'いいえ。単独タイプはドコモ光の回線料金とは別に、お客さま自身で対応プロバイダを契約する必要があり、プロバイダ料金も別途かかります。',source:'ドコモ公式「新規契約」「料金プラン」',updated:'2026-10-05'},
+
+  {level:'basic',cat:'プロバイダ',q:'1ギガでWi-Fiルーターを無料レンタルできるおすすめプロバイダは？',keys:['1ギガ','1G','ルーター','無料','レンタル','おすすめ','GMO','OCN','nifty'],a:'代表的な候補はGMOとくとくBB、OCN インターネット、@niftyなどです。GMOとくとくBBはドコモ光1ギガ利用中Wi-Fiルーター0円レンタル、OCN インターネットは1ギガ契約者向けWi-Fi 6対応ルーター無償レンタル、@niftyもドコモ光利用中は無料のレンタルプランがあります。',staff:'店頭で「費用を抑えたい」なら無料レンタルの有無を比較材料にできます。機種・最大速度・サポート・セキュリティ等もプロバイダごとに異なるため、ルーター無料だけで決めず希望に合わせて提案します。',warn:'無償レンタルは別途申込みや適用条件がある場合があります。プロバイダごとの最新条件を申込時に確認してください。',source:'ドコモ公式プロバイダ一覧／OCN公式・GMOとくとくBB・@nifty公式',updated:'2026-10-05'},
+  {level:'basic',cat:'プロバイダ',q:'@niftyの1ギガWi-Fiルーターは無料レンタルできる？',keys:['nifty','ニフティ','1ギガ','1G','ルーター','Wi-Fi','無料','0円','レンタル'],a:'はい。@nifty with ドコモ光では、1ギガ向けWi-Fiルーターレンタルを契約中0円／月で利用できるプランがあります。',staff:'「1ギガでルーター代をかけたくない」というお客様への比較候補です。@nifty with ドコモ光の契約中はレンタル料金0円で、1つの@nifty IDにつき1契約（機器1台）です。',warn:'ルーターは別途申込みが必要です。機種は予告なく変更される場合があります。@nifty with ドコモ光解除後も継続利用する場合は有料となるため、解除時の扱いも案内してください。',source:'@nifty公式「@nifty with ドコモ光 Wi-Fiルーターレンタルサービス」',updated:'2026-10-05'},
+  {level:'basic',cat:'プロバイダ',q:'OCN インターネットの1ギガWi-Fiルーターは無料レンタルできる？',keys:['OCN','1ギガ','1G','ルーター','Wi-Fi6','無料','無償','レンタル'],a:'はい。OCN インターネット × ドコモ光 1ギガでは、Wi-Fi 6対応ルーターを無償レンタルできます。',staff:'1ギガ契約者向けの特典です。OCN公式ではWi-Fi 6対応ルーターの無償レンタルとして案内されています。ルーターを購入せず始めたいお客様への比較候補になります。',warn:'ドコモ光申込みと同時に自動で届くわけではありません。OCN会員登録証が届いた後、Wi-Fiルーターレンタルサービスサイトから別途申込みが必要です。10ギガは無償レンタルではなく優待販売なので混同しないでください。',source:'OCN公式「OCN インターネット × ドコモ光」',updated:'2026-10-05'},
+  {level:'basic',cat:'プロバイダ',q:'GMOとくとくBBのルーターレンタルはいくら？ 1ギガ・10ギガで違う？',keys:['GMO','ルーター','1ギガ','10ギガ','190円','無料'],a:'1ギガはWi-Fiルーターを0円でレンタルできます。10ギガは10ギガ対応Wi-Fiルーターを月額190円（税込）でレンタルできます。10ギガ用は出荷月無料、翌月から190円で、日割りはありません。',staff:'10ギガ向けレンタル機種としてWi-Fi 7対応「WSR6500BE6P-10G」が案内されています。37か月継続利用すると利用者へ譲渡される案内もあります。',warn:'10ギガ解約時など返却が必要な場合があります。返却期限超過時の未返却補償料など、最新条件をGMO公式で確認してください。',source:'GMOとくとくBB公式「ドコモ光レンタルWi-Fiルーター」',updated:'2026-10-05'},
+  {level:'basic',cat:'1ギガ・10ギガ',q:'ドコモ提供のWi-Fiルーターは月々いくら？',keys:['ドコモ','NTT','ルーター','レンタル','330円','550円','1ギガ','10ギガ'],a:'ドコモ光電話対応ルーターで無線LAN機能を利用する場合、1ギガ対応は月額330円（税込）、10ギガ対応無線LANルーターは月額550円（税込）です。無線LAN機能を利用しないドコモ光電話対応ルーターは無料です。',staff:'10ギガでドコモから10Gbps対応無線LANルーターをレンタルする場合も月額550円（税込）と案内されています。',warn:'プロバイダ独自の無料・割安レンタルとは別サービスです。どこから借りるルーターなのかを区別して案内してください。',source:'ドコモ公式「機器使用料について」「ドコモ光10ギガ」',updated:'2026-10-05'},
+  {level:'advanced',cat:'プロバイダ',q:'OCN インターネットのルーターは1ギガ・10ギガでどう違う？',keys:['OCN','ルーター','1ギガ','10ギガ','Wi-Fi7','優待販売'],a:'1ギガはWi-Fi 6対応無線LANルーターの無償レンタルが案内されています。一方10ギガは無償レンタルではなく、10ギガ対応Wi-Fiルーターの優待販売が案内されています。',staff:'「OCNなら10ギガもルーター無料」と案内しないよう注意。1ギガと10ギガで提供方法が異なります。',source:'ドコモ公式「OCN インターネット」',updated:'2026-10-05'},
+  {level:'advanced',cat:'プロバイダ',q:'10ギガでルーター費用を抑えるならどれがおすすめ？',keys:['10ギガ','10G','おすすめ','ルーター','190円','550円','GMO'],a:'レンタル料金だけで比較すると、GMOとくとくBBの10ギガ対応Wi-Fiルーターは月額190円（税込）で、ドコモ提供の10Gbps対応無線LANルーター月額550円（税込）より月360円安い設定です。',staff:'GMOの案内機種はWi-Fi 7対応で機種を確実に利用でき、37か月継続で譲渡の案内があります。料金・機能を重視するお客様には比較候補として提案しやすいです。',warn:'「必ずGMOが一番」とはせず、プロバイダ料金、サポート、希望機種、利用環境まで含めて提案してください。市販ルーターを用意する選択肢もあります。',source:'GMOとくとくBB公式／ドコモ公式「ドコモ光10ギガ」',updated:'2026-10-05'},
+  {level:'advanced',cat:'プロバイダ',q:'@niftyのルーターは1ギガ・10ギガでどうなる？',keys:['nifty','ニフティ','ルーター','1ギガ','10ギガ','無料','550円'],a:'1ギガでは@nifty with ドコモ光利用中にレンタル料金無料のWi-Fiルータープランがあります。10ギガでは@nifty公式でWi-Fi 7ルーターの分割購入商品と、ドコモ提供のNTT 10ギガ対応ルーター月額550円（税込）が案内されています。',warn:'1ギガの無料レンタル条件と10ギガの商品・レンタル条件は別です。最新の対象機種・価格を申込時に確認してください。',source:'@nifty公式「Wi-Fiルーターレンタル」「ドコモ光」',updated:'2026-10-05'},
+  {level:'advanced',cat:'プロバイダ',q:'1ギガと10ギガでルーター選びの注意点は？',keys:['1ギガ','10ギガ','ルーター','注意','Wi-Fi6','Wi-Fi7','10Gbps'],a:'1ギガ用の無料レンタルルーターを10ギガ回線で使えても、10ギガ回線本来の性能を発揮できない場合があります。10ギガでは10Gbps対応WAN/LANポートなどを備えた10ギガ対応ルーターを選ぶことが重要です。',staff:'10ギガを提案するときは回線料金だけでなく、ルーター費用・端末側のWi-Fi規格・有線LANポート／LANケーブルなど宅内環境もセットで確認します。',source:'ドコモ公式「ドコモ光10ギガ」／BIGLOBE公式FAQ',updated:'2026-10-05'},  {level:'basic',cat:'セット割',q:'ドコモ光セット割は自動で入る？',keys:['セット割','自動','スマホ割引','ファミリー'],a:'対象のドコモスマホとドコモ光をセットで契約している場合、対象料金プランでは原則お手続き不要でスマホ料金から割引されます。',staff:'対象プラン・割引額はスマホ料金プランによって異なります。同一ファミリー割引グループ内の対象回線にも適用される仕組みがあります。',source:'ドコモ公式「ドコモ光セット割」',updated:'2026-10-05'},
+  {level:'basic',cat:'セット割',q:'ahamoはドコモ光セット割の対象？',keys:['ahamo','セット割','対象外'],a:'ahamoはドコモ光セット割の対象外です。また、ahamo光もドコモ光セット割の対象外です。',source:'ドコモ公式「ドコモ光セット割」',updated:'2026-10-05'},
+  {level:'basic',cat:'光電話',q:'ドコモ光電話の基本料金はいくら？',keys:['光電話','電話','550円','基本料金'],a:'ドコモ光電話はドコモ光／ahamo光の月額料金にプラス550円／月（税込）です。',staff:'6つの付加サービスと528円分の無料通話が付く「ドコモ光電話バリュー」は月額1,650円（税込）です。',source:'ドコモ公式「ドコモ光電話」「料金プラン・通話料」',updated:'2026-10-05'},
+  {level:'basic',cat:'光電話',q:'ドコモ光電話のオプション料金と内容をまとめて確認したい',keys:['光電話','オプション','料金','発信者番号表示','転送','通話中着信','ナンバーリクエスト','迷惑電話','着信メール','ダブルチャネル','追加番号'],a:'主な付加サービスは、通話中着信330円／月、転送でんわ550円／月・1番号、発信者番号表示440円／月、ナンバー・リクエスト220円／月、迷惑電話ストップサービス220円／月、着信お知らせメール110円／月・1番号、ダブルチャネル220円／月、追加番号110円／月・1番号です。',staff:'通話中着信＝通話中の第三者着信へ切替、転送でんわ＝指定番号へ転送、発信者番号表示＝着信前に番号表示、ナンバー・リクエスト＝非通知相手へ番号通知を案内、迷惑電話ストップ＝登録した迷惑電話を拒否、着信お知らせメール＝着信をメール通知、ダブルチャネル＝同時2通話、追加番号＝契約番号＋4番号で最大5番号。',warn:'ナンバー・リクエストは発信者番号表示の契約が必要です。発信者番号表示は対応電話機が必要です。追加番号は番号ごとにユニバーサルサービス料等が必要になる場合があります。',source:'ドコモ公式「ドコモ光電話向けサービス」',updated:'2026-10-05'},
+  {level:'basic',cat:'光電話',q:'ドコモ光電話バリューには何が含まれる？',keys:['光電話バリュー','バリュー','1650円','無料通話','6つ'],a:'ドコモ光電話バリューは月額1,650円（税込）。6つの付加サービスと528円（税込）分の無料通話がセットです。',staff:'セット対象は、通話中着信・転送でんわ・発信者番号表示・ナンバー・リクエスト・迷惑電話ストップサービス・着信お知らせメール。個別合計よりまとめて利用したい場合に確認しやすいプランです。',warn:'無料通話は一部発信先が対象外です。未使用分は翌月1か月に限り繰り越し可能です。ダブルチャネル・追加番号はバリューに含まれません。',source:'ドコモ公式「料金プラン・通話料」「ドコモ光電話向けサービス」',updated:'2026-10-05'},
+  {level:'advanced',cat:'光電話',q:'今の固定電話番号をドコモ光電話で使える？',keys:['電話番号','固定電話','番号ポータビリティ','継続','引継'],a:'現在は双方向番号ポータビリティにより、NTT東西発番に限定されず、対象の0AB-J固定電話番号はドコモ光電話へ番号ポータビリティできます。',warn:'利用中の電話サービスや提供エリアなどによっては番号を継続できない場合があります。番号継続を希望する場合は、現在の電話サービスを先に解約せず、受付時に継続可否を確認してください。',source:'ドコモ公式「ドコモ光電話」',updated:'2026-10-05'},
+  {level:'basic',cat:'テレビ',q:'ドコモ光テレビオプションの月額はいくら？',keys:['テレビ','テレビオプション','990円','月額'],a:'ドコモ光テレビオプションは月額990円（税込）です。地デジ・無料BSなどをアンテナ不要で視聴できます。',warn:'BS有料放送やスカパー！などは別途契約・視聴料が必要です。地域・設備状況により利用できない場合があります。',source:'ドコモ公式「ドコモ光テレビオプション」',updated:'2026-10-05'},
+  {level:'basic',cat:'テレビ',q:'テレビオプション990円だけで何が見られる？',keys:['テレビ','990円','地デジ','BS','CS','無料チャンネル'],a:'月額990円（税込）のドコモ光テレビオプションでは、アンテナ不要で地デジ・無料BSなどを視聴できます。光回線テレビでは4K8K衛星放送の無料チャンネルやCSの一部も対象です。',staff:'CSの専門チャンネルやBSの有料チャンネルまで見たい場合は、別途スカパー！などの有料放送契約が必要です。',warn:'視聴可能チャンネルは地域・設備・対応機器によって異なります。NHK受信料、有料BS・CSの視聴料はテレビオプション990円には含まれません。',source:'ドコモ公式「ドコモ光テレビオプション」／スカパー！公式「光回線テレビFAQ」',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'CSの有料専門チャンネルを見るにはどうする？',keys:['CS','有料','専門チャンネル','スカパー','チャンネル','映画','スポーツ','アニメ','音楽'],a:'CSの有料専門チャンネルを視聴する場合は、ドコモ光テレビオプションに加えて「スカパー！」を契約し、希望するパックまたはチャンネルを選びます。',staff:'料金の基本構成は「ドコモ光／ahamo光料金＋テレビオプション990円＋スカパー！基本料429円＋選択したパック／チャンネル料金」です。例として基本プランは通常3,960円／月、セレクト5は1,980円／月。希望ジャンルだけでなく、見たい具体的なチャンネル名を確認して商品を選択します。',warn:'一部商品は専用チューナー等が必要です。テレビ／レコーダーごとの契約が原則ですが、商品によって複数台条件が異なります。チャンネル構成・料金は変更される場合があるため申込時にスカパー！公式で確認してください。',source:'ドコモ公式「スカパー！」／スカパー！公式「光回線テレビ」',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'ドコモ光テレビオプションとスカパー！を同時申込みすると特典はある？',keys:['テレビ','スカパー','同時申込','キャンペーン','特典','初期費用','実質無料'],a:'あります。ドコモ公式では、ドコモ光テレビオプションとスカパー！対象商品を同時申込みすると、スカパー！の初期費用が実質無料になる特典が案内されています。',staff:'スカパー！公式FAQでは、テレビオプションと同時にスカパー！またはプレミアムサービス光へ加入し、1,980円（税込）以上の商品を2年間契約することなどが条件として案内されています。',warn:'対象商品・契約期間など条件があります。キャンペーン内容は変更・終了する場合があるため、受付時点の公式条件を必ず確認してください。',source:'ドコモ公式「ドコモ光テレビオプション」／スカパー！公式FAQ',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'他社から乗り換えでテレビオプション・スカパー！にもdポイント特典はある？',keys:['乗り換え','テレビ','スカパー','5000','3000','8000','dポイント','特典'],a:'対象条件を満たす他社からの乗り換えでは、「ドコモ光テレビオプション／スカパー！ 乗り換え特典」があります。テレビオプション新規で5,000pt、スカパー！で3,000pt、合計最大8,000ptのdポイント（期間・用途限定）が案内されています。',staff:'ドコモ光／ahamo光と同日にテレビオプション（新規）・スカパー！を申込み、他社サービスからの乗り換え確認、所定期限までの開通・証明書提出・契約継続などが必要です。解約金が発生していない乗り換えでも、本特典のみ対象となるケースがあります。',warn:'通常のドコモ光／ahamo光乗り換え特典との組み合わせや還元額は条件で異なります。証明書条件・申込チャネル・進呈条件を受付時に公式ページで確認してください。',source:'ドコモ公式「ドコモ光テレビオプション／スカパー！ 乗り換え特典」',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'今やっているスカパー！基本プランのキャンペーンは？',keys:['スカパー','基本プラン','キャンペーン','半額','1980','3960','30周年'],a:'2026年10月31日まで、スカパー！新規加入者向けに「基本プラン視聴料 最大3か月半額キャンペーン」が実施されています。通常3,960円／月の基本プラン視聴料が、初回視聴料割引と合わせて最大3か月1,980円／月になります。',staff:'2026年8月1日～10月31日の新規加入・対象手続き完了が対象。基本料429円／月は加入翌月以降別途かかります。',warn:'期間限定キャンペーンです。再加入など対象外条件があります。光回線テレビと同時の場合は工事完了時期にも注意し、申込時点のスカパー！公式キャンペーンを再確認してください。',source:'スカパー！公式「祝30周年！スカパー！基本プラン視聴料最大3ヶ月半額キャンペーン」',updated:'2026-10-05'},
+  {level:'basic',cat:'テレビ',q:'NTT工事の場合、テレビ台数ごとの工事費はいくら？',keys:['NTT','工事費','テレビ','台数','1台','2台','3台','4台','5台'],a:'ドコモ光／ahamo光の派遣工事と同時にドコモ光テレビオプションを新規申込みする場合、代表例はテレビ1台まで13,530円、テレビ2～4台は31,460円（税込）です。5台目以降は端末接続工事が1台あたり3,630円（税込）の代表例となり、設備状況により追加工事費が発生します。',staff:'1台：基本工事3,300円＋テレビ接続7,150円＋テレビ視聴サービス登録3,080円＝13,530円。2～4台：3,300円＋25,080円＋3,080円＝31,460円。テレビと映像用回線終端装置が別室の場合は、テレビ1台でも複数台工事扱いになる場合があります。',warn:'これは光回線の派遣工事とテレビオプションを同時新規する代表例です。テレビオプションだけ後日申込みの場合は金額が異なります。宅内設備・ブースター・分配器などで追加費用が発生する場合があります。',source:'ドコモ公式「ドコモ光テレビオプション」',updated:'2026-10-05'},
+  {level:'basic',cat:'テレビ',q:'スカパー！側でテレビ接続工事する場合、キャンペーンなしの標準工事費はいくら？',keys:['スカパー','通常料金','キャンペーンなし','工事費','接続工事','1台','2台','3台','4台','7150','19800'],a:'スカパー！側の標準テレビ接続工事は、単独工事（テレビ1台）7,150円（税込）、共聴工事（テレビ1～3台まで）19,800円（税込）です。4台目以降はテレビ1台につき5,500円（税込）の追加例があります。',staff:'重要：これはスカパー！側のテレビ接続工事料金です。ドコモ／NTT側が実施するテレビ接続工事（1台7,150円、2～4台25,080円）とは料金体系が異なります。さらにドコモ光テレビオプション側では、基本工事料・テレビ視聴サービス登録料などが別途発生する場合があります。',warn:'宅内設備や工事内容によってオプション工事料が追加される場合があります。スカパー！同時加入の初期費用サポートが適用される場合は、条件を満たすことでテレビ接続工事料が3台まで無料になります。',source:'スカパー！公式FAQ「ドコモ光でスカパー！を申し込んだ場合」／スカパー！公式「ご視聴開始までの流れ」',updated:'2026-10-05'},
+  {level:'basic',cat:'テレビ',q:'スカパー！テレビ接続工事無料特典を使うと台数ごとにいくら？',keys:['スカパー','キャンペーン','特典','工事費','接続工事','テレビ','台数','1台','2台','3台','4台','5500','無料'],a:'対象条件を満たすスカパー！のテレビ接続工事無料特典では、1～3台までテレビ接続工事料が無料、4台目以降は1台あたり5,500円（税込）です。',staff:'例：1台＝0円、2台＝0円、3台＝0円、4台＝5,500円、5台＝11,000円（特典対象となるテレビ接続工事部分）。ドコモ経由でテレビオプションとスカパー！を同時新規し、月額1,980円以上の対象商品を契約するなどの適用条件があります。',warn:'これは条件付きの特典です。スカパー！側の共聴工事は通常1～3台19,800円（税込）ですが、対象条件を満たす場合はテレビ接続工事料が3台まで無料になります。特典が適用されなければ通常のテレビ接続工事費がかかります。また追加配線・特殊工事等は別料金になる場合があります。契約後2年以内に対象商品またはスカパー！を解約した場合は23,430円（不課税）、ブースター設置時はさらに13,200円（不課税）が請求される条件があります。',source:'ドコモ公式「スカパー！」',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'スカパー！施策でテレビ接続工事費が0円になる条件は？',keys:['スカパー','施策','工事費0円','工事無料','条件','1980','2年','6か月','3台'],a:'ドコモ経由で「ドコモ光テレビオプション」と「スカパー！」を同時に新規申込みし、月額1,980円（税込）以上の対象商品を契約するなど、所定条件を満たすとテレビ接続工事料が3台まで無料になります。',staff:'主な条件：①ドコモ経由でテレビオプションとスカパー！を同時新規申込み、②同時に月額1,980円以上の対象商品を契約、③テレビオプションの開通工事が新規申込日から6か月以内に完了、④テレビ接続工事完了後3週間以内にスカパー！を新規契約、⑤契約から2年間、対象商品およびスカパー！を継続。4台目以降は5,500円／台。',warn:'同一B-CASカード・ACAS番号／ICカードでの再加入は対象外です。既存施設の撤去やオプション工事は無料対象外。3週間以内に新規契約しない場合、または契約から2年以内に対象商品・スカパー！を解約した場合は23,430円（不課税）の請求対象。施策は変更・終了する場合があるため受付時に最新条件を確認してください。',source:'ドコモ公式「スカパー！」／スカパー！公式FAQ',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'通常のスカパー！を見るのに専用チューナーは必要？',keys:['スカパー','チューナー','専用チューナー','テレビ','レコーダー','不要'],a:'通常の「スカパー！」は、対応するテレビやレコーダーで視聴する場合、基本的に専用チューナーは不要です。',staff:'テレビ／レコーダーのB-CAS・ACAS番号等で契約して視聴します。一方、「プレミアムサービス」「プレミアムサービス光」は専用チューナーが必要です。',warn:'お客様が「スカパー！」と「プレミアムサービス光」のどちらを希望しているかで必要機器が変わります。ここを受付時に必ず切り分けてください。',source:'スカパー！公式FAQ「スカパー！を見るために専用チューナーの設置は必要ですか」',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'スカパー！のチューナーは無料レンタル？購入？',keys:['スカパー','チューナー','レンタル','購入','無料','プレミアムサービス光'],a:'通常の「スカパー！」は専用チューナー自体が原則不要です。スカパー！公式FAQでは、一般のスカパー！について「チューナー・アンテナのレンタルサービスはありません」と案内されています。一方、プレミアムサービス光は専用チューナーが必要で、機器の購入や、契約・機器条件に応じたレンタル／サポートがあります。',staff:'プレミアムサービス光のレンタル規約には、光STB 660円／月、光DVR 990円／月、4K光STB 1,009円／月、4K光WSTB等990円／月の設定があります。また「プレミアム光 はじめるサポート」では条件を満たす新規加入者向けにPT-SH700A＋標準取付工事を0円で提供する案内があります。',warn:'「無料チューナーレンタル」と一括りに案内しないでください。通常スカパー！とプレミアムサービス光では仕組みが異なり、対象機種・提供方法・サポート条件も変わります。申込時の最新ラインナップを確認してください。',source:'スカパー！公式FAQ／プレミアムサービス光レンタル規約／「プレミアム光 はじめるサポート」',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'プレミアムサービス光のチューナーを自分で買うことはできる？',keys:['プレミアムサービス光','チューナー','購入','買う','ダイレクトショップ'],a:'はい。スカパー！公式のプレミアムサービス光加入ガイドには、チューナーを購入する場合の案内とスカパー！ダイレクトショップへの導線があります。',staff:'すでに対応機器を持っている場合の加入手続きも案内されています。購入・レンタル・加入サポートのどれを利用するかは、希望機種や契約条件を確認して案内します。',warn:'機種によって録画機能・4K対応・ダブルチューナーなど仕様が異なります。購入前にプレミアムサービス光対応機器か確認してください。',source:'スカパー！公式「プレミアムサービス光 加入ガイド」',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'スカパー！録画用の外付けハードディスクはレンタルできる？',keys:['スカパー','外付けHDD','ハードディスク','USB-HDD','レンタル','録画','購入'],a:'スカパー！公式では対応USBハードディスクの機種一覧を案内していますが、外付けUSB-HDDを月額レンタルするサービスとしては案内されていません。基本的には対応する市販USB-HDDをお客様で用意します。',staff:'プレミアムサービス光では、ハードディスク内蔵型チューナー（光DVR）のレンタル料金設定があります。外付けHDDを使う場合は、使用するチューナーごとの対応容量・電源方式などを公式のUSB-HDD対応機器一覧で確認します。',warn:'チューナーによって対応容量が異なります。例として一部機種は2TB超に非対応、一部4K機種は4TB超に非対応など制限があります。市販HDDなら何でも使えるとは案内しないでください。',source:'スカパー！公式「USB-HDD機器一覧」／プレミアムサービス光レンタル規約',updated:'2026-10-05'},
+  {level:'advanced',cat:'電話',q:'ドコモ光を解約してもドコモ光電話の電話番号は残せる？',keys:['解約','電話','電話番号','残せる','番号ポータビリティ','継続'],a:'ドコモ光電話そのものはドコモ光の解約に伴い終了します。ただし、現在利用中の電話番号を他社の固定電話サービスなどへ番号ポータビリティできる場合は、電話番号を継続できます。',staff:'番号を残したい場合は、ドコモ光を先に解約せず、事前に移行先事業者で番号移行手続きを行い、移行工事完了後にドコモ光の解約を進めます。',warn:'電話番号・移行先サービス・提供エリアなどにより継続できない場合があります。ドコモ公式も「ドコモ光解約後も電話番号を継続する場合、事前に移行手続きが必要」と案内しています。',source:'ドコモ公式「ドコモ光／ahamo光の解約・他社光サービスへのきりかえ」',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'ドコモ光を解約してもドコモ光テレビオプションは残せる？',keys:['解約','テレビ','テレビオプション','残せる','継続','地デジ'],a:'ドコモ光テレビオプションはドコモ光／ahamo光の回線に付随するオプションのため、ドコモ光を解約してテレビオプションだけをそのまま残すことはできません。',staff:'アンテナを設置していないご家庭では、テレビオプション終了後に地デジ・BSが見られなくなる場合があります。解約前にアンテナ、CATV、他社光テレビなど代替のテレビ受信方法を確認します。スカパー！の有料放送も解約希望の場合は、スカパー！側へ別途手続きが必要です。',warn:'スカパー！契約はドコモ光テレビオプションの解約だけで自動的にすべて解約されるとは限りません。解約後の視聴方法も含め、スカパー！へ確認してください。',source:'ドコモ公式「ドコモ光／ahamo光の解約・他社光サービスへのきりかえ」',updated:'2026-10-05'},
+  {level:'basic',cat:'ネット',q:'ドコモ光の解約金はいくら？戸建・マンションで違う？',keys:['解約金','戸建','マンション','5500','4180','定期契約','更新期間','10ギガ'],a:'2年定期契約で更新期間以外に解約する場合、現行のドコモ光1ギガは戸建5,500円（税込）、マンション4,180円（税込）。ドコモ光10ギガは戸建・マンションとも5,500円（税込）です。定期契約なしは解約金がありません。',staff:'解約金がかからない更新期間は契約満了月（24か月目）・翌月（25か月目）・翌々月（26か月目）の3か月です。2022年6月30日以前の1ギガ旧プランは戸建14,300円／マンション8,800円のケースがありますが、2025年7月以降の契約更新時に新プランへ順次自動移行します。',warn:'「契約日」と「自動更新日」は別です。実際の解約金はMy docomoの契約内容・契約満了月を確認して案内してください。工事費分割残債などがある場合は解約金とは別に支払いが必要になる場合があります。',source:'ドコモ公式FAQ「ドコモ光／ahamo光 解約する場合は解約金がかかりますか？」',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'ドコモ光マンションタイプでもドコモ光テレビオプションを契約できる？',keys:['マンション','テレビオプション','集合住宅','光配線方式','東日本','西日本','1台'],a:'条件付きで契約できます。ドコモ公式の現行案内では、マンションタイプはNTT東日本エリアの「光配線方式」で、対象の1ギガプランの場合にドコモ光テレビオプションを契約できます。',staff:'対象例：ドコモ光 マンション・タイプA／東、タイプB／東、単独タイプ／東、ahamo光 マンション／東。マンションでは接続可能なテレビは1台（映像用回線終端装置と同室での接続のみ）と案内されています。',warn:'マンションなら必ず利用できるわけではありません。西日本のマンションタイプ、タイプC、設備条件等では利用できません。提供エリア内でも設備状況により提供不可の場合があるため、住所・設備確認が必要です。',source:'ドコモ公式「ドコモ光テレビオプション」／「ドコモ光電話・ドコモ光テレビオプションご利用時の注意事項」',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'光テレビオプション＋スカパー！で工事費が実質0円になった後、途中解約するといくらかかる？',keys:['スカパー','途中解約','解約金','工事費','実質0円','23430','13200','2年','ブースター'],a:'テレビ接続工事無料施策を利用した場合、契約から2年以内に対象商品またはスカパー！を解約すると、23,430円（不課税）が請求される条件があります。ブースターを設置していた場合は、さらに13,200円（不課税）が加算される条件があります。',staff:'ブースター設置ありの場合の条件上の請求額は23,430円＋13,200円＝36,630円。これはドコモ光本体の解約金とは別の、スカパー！テレビ接続工事無料施策に関する条件です。',warn:'2年間の継続条件・対象商品・解約時期など、適用条件を必ず確認してください。ドコモ光自体も同時に解約する場合は、契約状況によってドコモ光の解約金や工事費残債等が別途発生する可能性があります。',source:'ドコモ公式「スカパー！」',updated:'2026-10-05'},
+  {level:'basic',cat:'テレビ',q:'ドコモ光テレビオプション990円だけで何が見られる？',keys:['テレビオプション', '990', '地デジ', 'BS', 'CS', '4K8K'],a:'アンテナを使わず地デジ・BSなどを視聴できるサービスです。新4K8K衛星放送にも対応します。ただし有料BS・CS専門チャンネルが990円だけですべて見放題になるわけではありません。',staff:'有料チャンネルを希望する場合はスカパー！等を別途契約。地上／BSデジタル対応テレビまたはチューナーも必要です。',warn:'一部チャンネルは対応機器が必要。提供エリア内でも設備状況で利用できない場合があります。',source:'ドコモ公式「ドコモ光テレビオプション」',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'テレビオプションの工事でテレビは何台まで接続してもらえる？',keys:['テレビ', '工事', '複数台', '4台', '5台'],a:'戸建等の標準的な複数台接続工事では、映像用回線終端装置から共聴設備へ接続し、テレビ4台までの接続・設定が工事内容に含まれる区分があります。5台以上は追加費用が発生します。',staff:'テレビ1台接続と複数台接続では工事料金区分が異なります。宅内設備によってブースター・分配器・同軸配線等の追加工事が必要になる場合があります。',warn:'マンションの光配線方式は扱いが異なり、複数台接続工事が提供されない条件があります。',source:'ドコモ公式「ドコモ光テレビオプション」／スカパー！公式「光回線テレビFAQ」',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'テレビを5台以上つなぎたい場合はどうなる？',keys:['5台', '6台', '複数台', '追加工事'],a:'5台以上の接続は追加工事・追加費用の対象です。台数が増えると信号レベルによってブースター等が必要になる場合もあります。',staff:'受付時にテレビ台数、テレビ端子の場所、既存共聴設備の有無を確認し、標準工事だけで完結すると断定しないのが安全です。',warn:'実際の工事内容は宅内設備の現地確認で決まります。',source:'ドコモ公式「ドコモ光テレビオプション」',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'スカパー！は1契約でテレビ・レコーダー何台まで見られる？',keys:['スカパー', '複数台', 'B-CAS', 'ACAS', 'レコーダー', '3台'],a:'通常はB-CASカード番号・ACAS番号ごとの契約なので、1契約で1台のテレビまたはレコーダーが基本です。テレビとレコーダー両方で視聴するなら、それぞれの番号で契約が必要です。',staff:'例外としてスカパー！基本プランは3台まで追加料金なしで視聴できる案内があります。',warn:'『光回線テレビを何台に配線できるか』と『有料スカパー！契約を何台で視聴できるか』は別の話なので分けて説明してください。',source:'スカパー！公式FAQ「1契約でテレビやレコーダーは何台まで見られますか」',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'テレビではなくレコーダーのB-CAS・ACASでスカパー！を契約するとどうなる？',keys:['レコーダー', 'B-CAS', 'ACAS', '録画', '契約'],a:'スカパー！は契約したB-CAS／ACAS番号の機器で視聴する仕組みです。レコーダー側の番号で契約すれば、そのレコーダーで受信・録画する運用ができます。',staff:'録画を重視するお客様は、どの機器の番号で契約するかを申込前に確認するのが重要です。',warn:'テレビ側とレコーダー側は別番号です。契約していない側で同じ有料放送を直接視聴できるとは限りません。基本プラン等の複数台条件は別途確認してください。',source:'スカパー！公式FAQ',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'4K8Kを見るのにテレビオプションだけで大丈夫？',keys:['4K', '8K', '新4K8K', '対応機器'],a:'ドコモ光テレビオプションは新4K8K衛星放送に対応していますが、実際の視聴には4K8K対応テレビ・チューナーなど、チャンネルに応じた対応機器が必要です。',staff:'『テレビオプションに入れば今のテレビで必ず4K8Kが見られる』とは案内しません。テレビ型番や受信設備を確認します。',warn:'一部チャンネルでは追加の対応機器が必要です。',source:'ドコモ公式「ドコモ光テレビオプション」',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'ドコモ光1ギガから10ギガへ変更してもテレビオプションは継続できる？',keys:['1ギガ', '10ギガ', '変更', 'テレビオプション', '3300'],a:'提供条件を満たせば継続できます。ドコモ公式では、1ギガから10ギガ変更後もテレビオプションを継続する場合、映像用回線終端装置を設置するため3,300円（税込）の工事料が発生すると案内されています。',staff:'10ギガ変更の受付時は、テレビオプション利用中か必ず確認すると工事費の説明漏れを防げます。',warn:'住所・設備・プランによって提供条件を満たさない場合があります。',source:'ドコモ公式FAQ「1ギガから10ギガへ変更する場合の事務手数料／工事料」',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'引っ越し先でもテレビオプションをそのまま使える？',keys:['引越し', '移転', 'テレビオプション', '西日本', 'マンション'],a:'移転先がテレビオプションの提供条件を満たせば継続できますが、移転先の設備・エリアによっては利用できません。特に西日本エリアのマンションタイプへ移転する場合、ドコモ光テレビオプションは提供不可のため廃止となります。',staff:'引越し受付では『新住所』『戸建／マンション』『東西エリア』『テレビオプション利用中』をセットで確認します。',warn:'現在利用できているからといって、移転先でも必ず利用できるわけではありません。',source:'ドコモ公式「お引越し（移転）のお手続き」',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'テレビオプションを解約した月は日割りになる？',keys:['テレビオプション', '解約月', '日割り', '990'],a:'なりません。ドコモ光テレビオプションの解約月は月額使用料が日割りされず、1か月分が請求されます。',staff:'月初に解約しても月額使用料は1か月分となる点を事前に案内します。',warn:'スカパー！など別契約の有料放送は解約手続き・請求条件が別です。',source:'ドコモ公式FAQ「解約／他社への乗り換え」',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'ドコモ光を事業者変更したらテレビオプションはどうなる？',keys:['事業者変更', 'テレビオプション', '移行', 'NTT'],a:'乗換先でも同等オプションを提供している場合は移行されるケースがあります。提供していない場合は、原則NTTとの直接契約となる案内があります。',staff:'事業者変更＝テレビが必ず即終了、とは限りません。乗換先の提供状況を確認して案内します。',warn:'NTTとの直接契約になる場合、手数料や請求元変更が発生します。最新条件を乗換先・NTTへ確認してください。',source:'ドコモ公式「ドコモ光／ahamo光の解約・他社光サービスへのきりかえ」',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'テレビが映らない時、まず何を確認する？',keys:['映らない', '故障', 'テレビ', 'ケーブル', '再起動'],a:'まずドコモ光／ahamo光の障害情報を確認し、テレビやホームゲートウェイ等の電源を切る→接続ケーブルの緩みを確認→機器の電源を入れ直す、の順で確認します。',staff:'映像用回線終端装置・分配器・同軸ケーブル周辺も確認対象です。複数台のうち1台だけか、全台映らないかも切り分けます。',warn:'機器・B-CASカード等の抜き差しは取扱説明に従って慎重に実施してください。',source:'ドコモ公式「ドコモ光テレビオプション用機器の操作・確認方法」',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'スカパー！を録画する場合、外付けHDDなら何でも使える？',keys:['録画', 'USB-HDD', 'HDD', '対応機種', '容量'],a:'いいえ。チューナーやテレビごとに動作確認済みUSB-HDD、対応容量、接続条件が異なります。対応機器一覧を確認して選ぶ必要があります。',staff:'プレミアムサービス光対応チューナーではUSB-HDD録画に対応する機種があります。対応機種ではUSBハブ経由で複数HDDを接続できる場合もあります。',warn:'市販USB-HDDなら何でも利用できるとは案内しないでください。',source:'スカパー！公式「録画ガイド」／対応チューナー取扱説明書',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'テレビ工事で追加料金がかかるのはどんな場合？',keys:['テレビ','追加料金','追加工事','端子','同軸','分配器','ブースター'],a:'宅内のテレビ設備によって、標準のテレビ接続工事料とは別に追加工事料がかかる場合があります。工事担当者が現地設備を確認し、必要な工事内容を案内します。',staff:'代表的な追加工事料：テレビ端子接続工事3,850円／箇所、3m超の同軸ケーブル新設5,500円／配線、3mまでの同軸コード新設は東日本1,100円／配線・西日本880円／配線、ブースター設置13,200円／台、2分配器3,080円／個、3/4分配器4,400円／個、6/8分配器7,150円／個、5台目以降の端末設置3,630円／台。テレビオプション利用開始後に追加工事だけ行う場合は同軸基本工事料4,950円が加算される場合があります。',warn:'実際に必要な追加工事は宅内配線・テレビ端子・分配器・電波レベル等で異なります。受付時に「必ずこの金額だけ」と断定せず、工事当日の現地確認で追加費用が発生する可能性を案内してください。',source:'ドコモ公式「ドコモ光テレビオプション 工事料について」',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'ブースターは何のために必要？料金はいくら？',keys:['ブースター','増幅','テレビ','電波','13200','複数台'],a:'ブースターは、テレビ信号を増幅して複数のテレビへ安定した映像を届けるための機器です。宅内設備やテレビ台数、信号レベルによって必要になる場合があります。',staff:'NTT側の追加工事としてブースターを新設する代表的な工事料は13,200円（税込）／台です。テレビ台数に一律で必要になるものではなく、現地の受信レベル・配線状況などで判断されます。',warn:'スカパー！同時申込みのテレビ接続工事無料特典を利用した場合でも、契約条件を満たさず2年以内に対象商品またはスカパー！を解約すると、23,430円（不課税）に加え、ブースターを設置していた場合13,200円（不課税）が請求される条件があります。',source:'ドコモ公式「ドコモ光テレビオプション 工事料について」「スカパー！」',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'スカパー！基本プランの料金と特徴は？',keys:['スカパー','基本プラン','3960','50ch','50チャンネル','複数台'],a:'スカパー！基本プランは11ジャンル50chが見放題のパックで、月額パック料金は3,960円（税込）です。別途スカパー！基本料429円／月が必要です。',staff:'映画・スポーツ・音楽・アニメ・ドラマ・ニュースなど幅広いジャンルをまとめて見たいお客様向け。基本プランは、同一契約者・同一住所・同一支払方法など所定条件を満たせば、テレビ／レコーダー1台目～3台目まで組み合わせ自由で追加のパック料金なしで利用できます。各B-CAS/ACAS等で申込みが必要です。',warn:'4台目以降は1台あたり基本プラン3,960円／月が必要。法人・業務用契約は複数台割引対象外です。加入月の基本料・パック料金無料など現行条件は申込時に公式確認してください。',source:'ドコモ公式「スカパー！」',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'スカパー！セレクト5の料金と特徴は？',keys:['セレクト5','1980','5ch','5チャンネル','48ch'],a:'スカパー！セレクト5は、対象48chから好きな5chを選べるパックで、月額1,980円（税込）です。別途スカパー！基本料429円／月が必要です。',staff:'「見たいチャンネルが5つ程度に絞れている」「基本プランほど多くはいらない」というお客様向け。選択チャンネルは契約翌月から無料で変更できます。',warn:'すべてのスカパー！チャンネルから5chを選べるわけではなく、セレクト対象チャンネルから選択します。対象チャンネルは変更されることがあるため受付時に最新一覧を確認してください。',source:'ドコモ公式「スカパー！」／スカパー！公式「セレクト5／10」',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'スカパー！セレクト10の料金と特徴は？',keys:['セレクト10','2860','10ch','10チャンネル','48ch'],a:'スカパー！セレクト10は、対象48chから好きな10chを選べるパックで、月額2,860円（税込）です。別途スカパー！基本料429円／月が必要です。',staff:'5chでは足りないが、50chの基本プランまでは不要というお客様向け。選択チャンネルは契約翌月から無料で変更できます。',warn:'対象48chの中から選択します。チャンネル編成・対象可否は変更される場合があるため、見たいチャンネル名を確認して最新一覧と照合してください。',source:'ドコモ公式「スカパー！」／スカパー！公式「セレクト5／10」',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'スカパー！光パックHDの料金と特徴は？',keys:['光パックHD','プレミアムサービス光','4138','60ch','チューナー'],a:'スカパー！光パックHDは約60chが見放題のパックで、月額4,138円（税込）です。別途スカパー！基本料429円／月が必要です。',staff:'多チャンネルをハイビジョンで楽しみたいお客様向け。視聴にはプレミアムサービス光対応チューナー「PT-SH700A」などの対応機器が必要です。',warn:'通常のスカパー！基本プランとは受信・機器条件が異なります。専用チューナー料金やサポート条件が別途発生する場合があるため、申込時にプレミアムサービス光の最新条件を確認してください。',source:'ドコモ公式「スカパー！」',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'CS・スカパー！の月額料金はどう計算する？',keys:['CS','スカパー','料金','基本料','429','990','月額','計算'],a:'ドコモ光でスカパー！を利用する基本的な月額構成は「ドコモ光／ahamo光の月額＋ドコモ光テレビオプション990円＋スカパー！基本料429円＋選んだパック／チャンネル料金」です。',staff:'例：基本プランならテレビ関連部分は990円＋429円＋3,960円＝5,379円／月。セレクト5なら3,399円／月、セレクト10なら4,279円／月（いずれもドコモ光回線料金・NHK受信料等は別）。単チャンネル契約の場合は429円＋そのチャンネル料金＋テレビオプション990円が基本です。',warn:'商品によって専用チューナー料金などが追加される場合があります。また加入月無料等の条件があるため、初月と通常月で請求額が異なる場合があります。',source:'ドコモ公式「スカパー！」',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'CS・有料BSはテレビオプションだけで見られる？',keys:['CS','有料BS','テレビオプション','990','見られる','スカパー'],a:'ドコモ光テレビオプション990円だけで、CS専門チャンネルや有料BSがすべて見放題になるわけではありません。有料チャンネルを視聴するには、スカパー！などの放送サービスを別途契約します。',staff:'テレビオプションは地デジ・無料BSなどを光回線で受信できる環境を整えるサービスです。お客様が見たい具体的なチャンネルを確認し、基本プラン・セレクト5/10・単チャンネル・WOWOW等から適した商品を案内します。',warn:'一部のCSや4K8K放送は対応機器・アダプター等が必要な場合があります。',source:'スカパー！公式「光回線テレビFAQ」／ドコモ公式「スカパー！」',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'テレビオプションを光と同時に新規申込みした時の工事費は？',keys:['テレビ','工事費','同時','1台','2台','4台','13530','31460'],a:'ドコモ光／ahamo光の派遣工事と同時にテレビオプションを新規申込みする代表例では、テレビ1台まで13,530円、2～4台31,460円（税込）です。',staff:'内訳は基本工事料3,300円＋テレビ接続工事料（1台7,150円／2～4台25,080円）＋テレビ視聴サービス登録料3,080円。光回線本体の工事料・契約事務手数料は別途です。',warn:'宅内設備や追加工事で料金が変わる場合があります。5台以上は別途費用が発生します。',source:'ドコモ公式「ドコモ光テレビオプション」',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'テレビオプションだけ後から申込むと工事費はいくら？',keys:['テレビ','後から','単独','23980','41910','工事費'],a:'テレビオプションのみ新規申込みの代表例では、テレビ1台まで23,980円、2～4台41,910円（税込）です。',staff:'この場合、テレビオプション契約事務手数料2,200円が含まれます。',warn:'設備状況や追加工事により変動します。',source:'ドコモ公式「ドコモ光テレビオプション」',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'SCチャンネル・専門チャンネルは見られる？',keys:['SC','SCチャンネル','専門チャンネル','CS','スカパー'],a:'ドコモ公式では主に「スカパー！／専門チャンネル」として案内されています。ドコモ光テレビオプションとあわせてスカパー！を契約することで、対象の専門チャンネルを視聴できます。',staff:'スカパー！利用時は、ドコモ光月額＋テレビオプション990円＋スカパー！基本料429円＋選択したパック／チャンネル料金が基本構成です。',warn:'チャンネル・パックによって対応機器や専用チューナーが必要な場合があります。「SCチャンネル」という現場呼称だけで判断せず、希望する具体的なチャンネル名を確認してください。',source:'ドコモ公式「スカパー！」「映像サービス」',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'スカパー！はテレビ何台でも同じ契約で見られる？',keys:['スカパー','テレビ台数','3台','契約'],a:'原則、スカパー！の視聴にはテレビ／レコーダー1台ごとに契約が必要です。ただし「スカパー！基本プラン」はテレビ3台まで追加料金不要と案内されています。',warn:'契約商品によって条件が異なるため、選択するパック・チャンネルを確認してください。',source:'ドコモ公式「スカパー！」',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'タイプCでもドコモ光テレビオプションは使える？',keys:['タイプC','テレビオプション','使えない'],a:'ドコモ公式では、ドコモ光タイプCでは「ドコモ光テレビオプション」は利用できないと案内されています。',source:'ドコモ公式「スカパー！」',updated:'2026-10-05'}
+ ],
+ '他社奪還':[{q:'他社回線から乗り換える時の注意点は？',keys:['他社','乗り換え','注意','奪還'],a:'現在の回線種別、解約条件、固定電話・テレビ等の利用状況を確認してから適切な受付方法を判断します。'}],
+ '転用':[{q:'転用とは何ですか？',keys:['転用','フレッツ'],a:'フレッツ光をご利用中のお客様がドコモ光へ切り替える受付区分です。詳細条件は最新の業務情報で確認します。'}],
+ '事業者変更':[{q:'事業者変更で必要なものは？',keys:['事業者変更','必要','承諾番号'],a:'現在の光コラボ事業者や契約状況を確認し、必要な手続き情報を案内します。正式な必要物は最新業務ルールを登録して表示します。'}],
+ '解約新規':[{q:'解約新規にする場合の注意点は？',keys:['解約新規','解約','注意'],a:'インターネットが利用できない期間、電話番号、解約費用、撤去・新設工事などの確認が重要です。'}]
+};
+const channelGuide=[
+ {name:'東映チャンネル',genre:'映画・ドラマ・アニメ・特撮',channel:'CS218',single:'1,650円／月',basic:true,select:true,note:'単チャンネル契約のほか、スカパー！基本プランの対象。セレクト5／10の選択対象にも含まれるかは申込時の現行対象一覧で最終確認。'},
+ {name:'映画・チャンネルNECO',genre:'映画・ドラマ',channel:'CS223',single:'660円／月',basic:true,select:true,note:'スカパー！基本プラン対象。単チャンネル契約も可能。'},
+ {name:'ザ・シネマ',genre:'映画',channel:'CS227',single:'770円／月',basic:true,select:true,note:'スカパー！基本プラン対象。単チャンネル契約も可能。'},
+ {name:'ムービープラス',genre:'映画',channel:'CS240',single:'660円／月',basic:true,select:true,note:'スカパー！基本プラン対象。単チャンネル契約も可能。'},
+ {name:'WOWOWプラス 映画・ドラマ・スポーツ・音楽',genre:'映画・ドラマ・スポーツ・音楽',channel:'BS252',single:'770円／月',basic:true,select:true,note:'WOWOW（BS191～193）とは別チャンネル。スカパー！基本プラン対象。'},
+ {name:'日本映画専門チャンネル',genre:'映画',channel:'BS255',single:'770円／月',basic:true,select:true,note:'スカパー！基本プラン対象。'},
+ {name:'衛星劇場',genre:'映画・韓流・華流・歌舞伎・演劇',channel:'CS219',single:'2,140円／月',basic:false,select:false,note:'基本プラン対象外。単チャンネル等で契約を確認。'},
+ {name:'J SPORTS 1・2・3・4',genre:'スポーツ・野球・ラグビー・モータースポーツ',channel:'BS242～245',single:'商品・セットを確認',basic:false,select:false,note:'4チャンネルを含むセット商品などがある。映画＆スポーツ！プレミアセットはJ SPORTS 1～4＋BS10プレミアムの5chで3,865円／月。'},
+ {name:'プロ野球セット',genre:'野球・スポーツ',channel:'12ch',single:'4,054円／月',basic:false,select:false,note:'セ・パ12球団公式戦を試合終了まで全試合生中継と案内されているセット商品。'},
+ {name:'WOWOW',genre:'映画・スポーツ・音楽・ドラマ',channel:'BS191～193',single:'2,530円／月',basic:false,select:false,note:'WOWOWプライム／ライブ／シネマの3chセット。対象のスカパー！商品との組み合わせで2,200円／月となる案内あり。'},
+ {name:'スカパー！基本プラン',genre:'映画・スポーツ・音楽・アニメ・ドラマ・ニュースほか',channel:'50ch',single:'3,960円／月',basic:true,select:false,note:'11ジャンル50ch。テレビ／レコーダー1台分の料金で3台まで追加料金なし。2026年10月31日まで新規加入者向け最大3か月半額キャンペーン実施中。'},
+ {name:'スカパー！セレクト5',genre:'複数ジャンル',channel:'対象48chから5ch',single:'1,980円／月',basic:false,select:true,note:'対象48chから5chを選択。選択チャンネルは契約翌月から無料変更可能。'},
+ {name:'スカパー！セレクト10',genre:'複数ジャンル',channel:'対象48chから10ch',single:'2,860円／月',basic:false,select:true,note:'対象48chから10chを選択。選択チャンネルは契約翌月から無料変更可能。'}
+];
+let current='';let currentService='';let currentLevel='basic';
+const serviceNames={net:'ネット',phone:'電話',tv:'地デジ・BS',cs:'CS・スカパー！'};
+function show(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0)}
+function home(){show('home')}
+function items(cat){return [...(specific[cat]||[]),...common]}
+function serviceMatch(x,service){const c=x.cat||'';const blob=[x.q,x.a,x.staff,x.warn,(x.keys||[]).join(' ')].filter(Boolean).join(' ');if(service==='phone')return c==='光電話'||/電話|番号ポータビリティ|固定電話|FAX|ダブルチャネル|追加番号/.test(blob);if(service==='cs')return c==='テレビ'&&/CS|スカパー|専門チャンネル|SCチャンネル|WOWOW|セレクト|基本プラン/.test(blob);if(service==='tv')return c==='テレビ'&&!/CS|スカパー|専門チャンネル|SCチャンネル|WOWOW|セレクト|基本プラン/.test(blob);return !serviceMatch(x,'phone')&&!serviceMatch(x,'tv')&&!serviceMatch(x,'cs');}
+function openFlow(cat){current=cat;document.getElementById('servicePill').textContent=cat;document.getElementById('serviceTitle').textContent=cat+'｜確認するサービス';show('serviceSelect')}
+function openService(service){currentService=service;currentLevel='basic';document.getElementById('flowPill').textContent=current+' / '+serviceNames[service];document.getElementById('flowTitle').textContent=serviceNames[service]+' サポート';document.getElementById('channelBtn').style.display=service==='cs'?'inline-block':'none';document.getElementById('scheduleBtn').style.display=service==='net'?'inline-block':'none';document.getElementById('flowSearch').value='';document.getElementById('answer').className='answer';renderCurrent();show('flow')}
+function backToServices(){openFlow(current)}
+function renderCurrent(){let arr=items(current).filter(x=>serviceMatch(x,currentService));if(currentLevel!=='all')arr=arr.filter(x=>!x.level||x.level===currentLevel);document.getElementById('questionHeading').textContent=(currentLevel==='basic'?'基本編':currentLevel==='advanced'?'応用編':'全質問')+'｜'+serviceNames[currentService];renderQuestions(arr)}
+function setLevel(level){currentLevel=level;document.getElementById('flowSearch').value='';document.getElementById('answer').className='answer';renderCurrent()}
+function renderQuestions(arr){const el=document.getElementById('questions');el.innerHTML='';arr.forEach(x=>{let b=document.createElement('button');b.className='q';b.innerHTML=`${x.cat?`<small style="color:#a40029">${x.cat}</small><br>`:''}${x.q}`;b.onclick=()=>showAnswer(x);el.appendChild(b)});if(!arr.length)el.innerHTML='<div class="empty">該当する質問が見つかりませんでした。</div>'}
+function showAnswer(x){const a=document.getElementById('answer');a.innerHTML=`<h3>${x.q}</h3><div class="box conclusion"><b>✅ 結論</b><br>${x.a}</div>${x.staff?`<div class="box staff"><b>🔎 スタッフ確認</b><br>${x.staff}</div>`:''}${x.warn?`<div class="box warning"><b>⚠️ 注意事項</b><br>${x.warn}</div>`:''}${x.source?`<div class="placeholder"><b>根拠：</b>${x.source}<br><b>情報確認日：</b>${x.updated||'2026-10-05'}</div>`:''}`;a.className='answer show';a.scrollIntoView({behavior:'smooth',block:'start'})}
+function score(x,s){s=s.toLowerCase().replace(/\s/g,'');let n=0;if(x.q.toLowerCase().includes(s))n+=10;(x.keys||[]).forEach(k=>{if(s.includes(k.toLowerCase())||k.toLowerCase().includes(s))n+=3});return n}
+function searchFlow(){let s=document.getElementById('flowSearch').value.trim();if(!s)return renderCurrent();let base=items(current).filter(x=>serviceMatch(x,currentService));if(currentLevel!=='all')base=base.filter(x=>!x.level||x.level===currentLevel);let a=base.map(x=>[x,score(x,s)]).filter(z=>z[1]>0).sort((a,b)=>b[1]-a[1]).map(z=>z[0]);renderQuestions(a)}
+function allItems(){let out=[];Object.keys(specific).forEach(c=>specific[c].forEach(x=>out.push({...x,cat:c})));common.forEach(x=>out.push({...x,cat:'共通'}));return out}
+function searchAll(){let s=document.getElementById('globalSearch').value.trim();if(!s)return;let a=allItems().map(x=>[x,score(x,s)]).filter(z=>z[1]>0).sort((a,b)=>b[1]-a[1]);let el=document.getElementById('resultList');el.innerHTML='';a.forEach(([x])=>{let b=document.createElement('button');b.className='q';b.innerHTML=`<small>${x.cat}</small><br>${x.q}`;b.onclick=()=>{current=x.cat==='共通'?'新規':x.cat;openFlow(current);setTimeout(()=>showAnswer(x),50)};el.appendChild(b)});if(!a.length)el.innerHTML='<div class="empty">近い質問が見つかりませんでした。AIアシスタントから質問する機能へ今後つなげます。</div>';show('results')}
+function openAI(){show('aiView');setTimeout(()=>document.getElementById('aiInput').focus(),100)}
+function askAI(){let i=document.getElementById('aiInput'),s=i.value.trim();if(!s)return;let chat=document.getElementById('chat');chat.insertAdjacentHTML('beforeend',`<div class="bubble user">${esc(s)}</div>`);i.value='';let ranked=allItems().map(x=>[x,score(x,s)]).sort((a,b)=>b[1]-a[1]);let best=ranked[0];let msg=best&&best[1]>0?`<b>関連する回答を見つけました。</b><br><br><b>${best[0].q}</b><br>${best[0].a}${best[0].warn?`<br><br>⚠️ ${best[0].warn}`:''}`:'V1の登録済みQ&Aでは判断できませんでした。次段階でAI APIを接続すると、複雑な文章の解析や追加質問ができるようになります。';setTimeout(()=>{chat.insertAdjacentHTML('beforeend',`<div class="bubble bot">${msg}</div>`);chat.scrollTop=chat.scrollHeight},250)}
+
+function openScheduleBuilder(){show('scheduleBuilder');if(!document.getElementById('scApply').value){let d=new Date();document.getElementById('scApply').value=[d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')}}
+function returnFromSchedule(){openService('net')}
+function jpDate(v){if(!v)return '未定';let [y,m,d]=v.split('-');return `${Number(m)}月${Number(d)}日`}
+function buildSchedule(){
+ const name=esc(document.getElementById('scName').value.trim()||'お客様');const apply=jpDate(document.getElementById('scApply').value);const speed=esc(document.getElementById('scSpeed').value);const provider=esc(document.getElementById('scProvider').value);const docs=esc(document.getElementById('scDocs').value.trim()||'未定');const sb=jpDate(document.getElementById('scSupportBook').value);const work=jpDate(document.getElementById('scWork').value);const wt=esc(document.getElementById('scWorkTime').value.trim()||'未定');const support=jpDate(document.getElementById('scSupport').value);const attend=esc(document.getElementById('scAttend').value);const memo=esc(document.getElementById('scMemo').value.trim());
+ let providerNote=provider==='OCN インターネット'?'1ギガで無償レンタルルーターを利用する場合は、会員登録証到着後の別途申込みも確認してください。':provider==='GMOとくとくBB'?'ルーターの発送・申込み条件、接続方法を案内書類で確認してください。':provider==='@nifty'?'無料レンタルルーターや訪問サポートを利用する場合は、申込み方法・実施条件を確認してください。':'ルーター・訪問サポートの申込み方法は契約プロバイダへ確認してください。';
+ const steps=[
+ [apply,'ドコモ光 お申込み',`${speed}<br>プロバイダ：${provider}`],
+ [docs,'プロバイダから契約書類・機器が届く',`届いた書類は捨てずに保管してください。ID・パスワード等が記載される場合があります。<br>${providerNote}`],
+ [sb,'訪問サポートを予約',`訪問設定を利用する場合は予約します。実施日は開通工事後になるよう確認してください。`],
+ [work,'ドコモ光 開通工事',`時間帯：${wt}<br>立会い：${attend}<br><b>この工事が終わってからインターネットの接続・設定へ進みます。</b>`],
+ ['工事完了後','ONU・Wi-Fiルーターを接続',`ONU → Wi-Fiルーター → スマートフォン・パソコン等の順に接続・設定します。`],
+ [support,'訪問サポート・初期設定',`予約している場合は、Wi-Fiやスマートフォン・パソコン等の接続設定を行います。`]
+ ];
+ const arts=[['📝','お申込み'],['📦','書類・機器'],['📅','予約'],['👷‍♂️','開通工事'],['📡','ONU・ルーター'],['🏠','訪問サポート'],['📱✨','利用開始']]; const html=steps.map((x,i)=>`<div class="step-card"><div class="step-visual"><div class="ico">${arts[i][0]}</div><div class="lbl">${arts[i][1]}</div></div><div class="step-content"><div class="step-heading"><span class="step-badge">${i+1}</span><span class="step-date">${x[0]}</span><span class="step-title">${x[1]}</span></div><div class="step-note">${x[2]}</div></div></div>${i<steps.length-1?'<div class="timeline-arrow">↓</div>':''}`).join('');
+ document.getElementById('scheduleSheet').innerHTML=`<div style="font-size:12px;font-weight:900;color:#a40029">DOCOMO HIKARI</div><h2>ドコモ光 開通までの流れ</h2><div class="schedule-meta">${name}　｜　${speed}　｜　${provider}</div><div class="schedule-hero"><div class="schedule-hero-copy">お申込みからご利用開始までを、順番にご案内します。<br>赤い番号を上から順に確認してください。</div><div class="schedule-hero-art">👩‍💼📋✨</div></div><div class="timeline">${html}</div><div class="schedule-finish"><span class="ico">🏠📶</span><span>設定完了！ ドコモ光をご利用いただけます</span></div>${memo?`<div class="box warning"><b>📝 ご案内・メモ</b><br>${memo.replace(/\n/g,'<br>')}</div>`:''}<div class="placeholder">※日程・発送時期・工事内容・サポート内容は設備状況やプロバイダ等によって異なります。確定した案内を優先してください。</div>`;document.getElementById('scheduleSheet').style.display='block';document.getElementById('scheduleSheet').scrollIntoView({behavior:'smooth',block:'start'})}
+function openChannelFinder(){show('channelFinder');document.getElementById('channelSearch').value='';renderChannels(channelGuide);document.getElementById('channelAnswer').className='answer'}
+function returnFromChannels(){openService('cs')}
+function renderChannels(arr){const el=document.getElementById('channelResults');el.innerHTML='';arr.forEach(x=>{let b=document.createElement('button');b.className='q';b.innerHTML=`<small style="color:#a40029">${x.genre}</small><br>${x.name} <small>（${x.channel}）</small>`;b.onclick=()=>showChannel(x);el.appendChild(b)});if(!arr.length)el.innerHTML='<div class="empty">該当する登録チャンネルがありません。正式運用ではスカパー！現行チャンネル一覧との連携を拡張します。</div>'}
+function searchChannels(){let s=document.getElementById('channelSearch').value.trim().toLowerCase().replace(/\s/g,'');if(!s)return renderChannels(channelGuide);let arr=channelGuide.filter(x=>[x.name,x.genre,x.channel,x.note].join(' ').toLowerCase().replace(/\s/g,'').includes(s));renderChannels(arr)}
+function showChannel(x){const a=document.getElementById('channelAnswer');let plan=x.basic?'基本プラン対象':'基本プラン対象外／個別商品を確認';a.innerHTML=`<h3>${x.name}</h3><div class="box conclusion"><b>📺 視聴方法の目安</b><br>${x.channel}｜${x.genre}<br><b>商品料金：</b>${x.single}<br><b>基本プラン：</b>${plan}</div><div class="box staff"><b>💰 光回線テレビでの料金構成</b><br>ドコモ光／ahamo光料金 ＋ ドコモ光テレビオプション990円／月 ＋ スカパー！基本料429円／月 ＋ 選択商品料金</div><div class="box warning"><b>⚠️ 商品選択の注意</b><br>${x.note}<br><br>チャンネル編成・料金・セレクト対象は変更される場合があります。申込時はスカパー！公式の最新商品一覧で最終確認してください。</div><div class="placeholder"><b>根拠：</b>ドコモ公式「スカパー！」／スカパー！公式「料金・商品」「チャンネル一覧」<br><b>情報確認日：</b>2026-10-05</div>`;a.className='answer show';a.scrollIntoView({behavior:'smooth',block:'start'})}
+function esc(s){return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+document.getElementById('aiInput').addEventListener('keydown',e=>{if(e.key==='Enter')askAI()});document.getElementById('globalSearch').addEventListener('keydown',e=>{if(e.key==='Enter')searchAll()});
+</script>
+
+
+
+
+
+
+<script id="provider-switch-final">
+(function(){
+const P={
+"ドコモ光 1ギガ":["OCN インターネット","GMOとくとくBB","@nifty","andline","BIGLOBE","SIS","BB.excite","hi-ho","Tigers-net.com","IC-NET","エディオンネット","SYNAPSE（シナプス）","楽天ブロードバンド","DTI","ネスク","TikiTikiインターネット","@T COM","ASAHIネット","TNC","WAKWAK","@ちゃんぷるネット","単独タイプ（別途プロバイダ契約）","タイプC（提携CATV）"],
+"ドコモ光 10ギガ":["OCN インターネット","GMOとくとくBB","@nifty","andline","BIGLOBE","SIS","BB.excite","hi-ho","Tigers-net.com","IC-NET","エディオンネット","@T COM","ASAHIネット","タイプC（提携CATV）"],
+"ahamo光 1ギガ":["ahamo光（プロバイダ一体型・選択不可）"],
+"ahamo光 10ギガ":["ahamo光（プロバイダ一体型・選択不可）"]
+};
+function setup(){
+ const speed=document.getElementById("scSpeed"), sel=document.getElementById("scProvider"), hint=document.getElementById("scProviderHint");
+ if(!speed||!sel)return;
+ function fill(){
+  const old=sel.value, arr=P[speed.value]||[];
+  sel.replaceChildren(...arr.map(v=>{const o=document.createElement("option");o.value=v;o.textContent=v;return o;}));
+  if(arr.includes(old)) sel.value=old; else if(arr.includes("OCN インターネット")) sel.value="OCN インターネット";
+  const a=speed.value.startsWith("ahamo光"); sel.disabled=a;
+  if(hint) hint.textContent=a?"ahamo光はプロバイダ一体型のため選択不要です。":`${speed.value.replace("ドコモ光 ","")}対応プロバイダを表示中（全${arr.length}候補）`;
+ }
+ speed.onchange=fill; fill();
+}
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",setup);else setup();
+})();
+</script>
+
+</body></html>
