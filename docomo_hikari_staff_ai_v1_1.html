@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ドコモ光 STAFF SUPPORT</title>
+<style>
+:root{--red:#cc0033;--red2:#e6003d;--ink:#17171b;--muted:#6b6b74;--bg:#f5f6f8;--card:#fff;--line:#e8e8ed;--warn:#fff5df;--blue:#eef6ff}
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink)}button,input{font:inherit}
+header{background:linear-gradient(135deg,#b9002d,var(--red2));color:white;padding:calc(18px + env(safe-area-inset-top)) 18px 22px;box-shadow:0 4px 18px #b9002d33}.head{max-width:1050px;margin:auto}.brand{font-size:13px;font-weight:800;letter-spacing:.1em;opacity:.88}.title{font-size:26px;font-weight:900;margin-top:4px}.sub{font-size:13px;opacity:.9;margin-top:5px}
+main{max-width:1050px;margin:auto;padding:18px 14px 90px}.search{display:flex;gap:8px;background:white;padding:10px;border-radius:16px;box-shadow:0 3px 15px #0000000b;margin-bottom:18px}.search input{border:0;outline:0;flex:1;min-width:0;padding:8px;font-size:16px}.search button,.primary{border:0;background:var(--red);color:#fff;border-radius:11px;padding:10px 15px;font-weight:800;cursor:pointer}
+.section-title{font-size:17px;font-weight:900;margin:18px 3px 11px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:17px;text-align:left;box-shadow:0 4px 16px #00000009;cursor:pointer;min-height:118px}.card:hover{transform:translateY(-1px)}.icon{font-size:25px}.card h3{margin:8px 0 4px;font-size:18px}.card p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}.ai{grid-column:1/-1;background:linear-gradient(135deg,#fff,#fff1f5);border:1.5px solid #f1b6c5;min-height:130px}.ai h3{color:#a6002a}
+.view{display:none}.view.active{display:block}.topbar{display:flex;align-items:center;gap:10px;margin-bottom:14px}.back{border:0;background:#fff;border-radius:11px;padding:10px 13px;font-weight:800;box-shadow:0 2px 10px #0000000b}.view-title{font-size:22px;font-weight:900}.pill{display:inline-block;background:#fbe6eb;color:#a40029;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:800;margin-bottom:10px}
+.q-list{display:grid;gap:9px}.q{width:100%;border:1px solid var(--line);background:#fff;border-radius:14px;padding:14px;text-align:left;font-weight:750;cursor:pointer}.q:after{content:'›';float:right;color:#aaa;font-size:20px}.answer{background:#fff;border-radius:18px;border:1px solid var(--line);padding:18px;margin-top:14px;display:none}.answer.show{display:block}.answer h3{margin:0 0 8px}.box{border-radius:13px;padding:13px;margin:10px 0;line-height:1.65;font-size:14px}.conclusion{background:#eef9f1}.warning{background:var(--warn)}.staff{background:var(--blue)}.placeholder{color:#777;font-size:13px;border-top:1px solid var(--line);padding-top:11px;margin-top:12px}
+.chat{background:white;border:1px solid var(--line);border-radius:18px;min-height:390px;padding:15px;display:flex;flex-direction:column;gap:11px}.bubble{max-width:88%;padding:12px 14px;border-radius:16px;line-height:1.6;font-size:14px}.bot{align-self:flex-start;background:#f1f2f5}.user{align-self:flex-end;background:#fbe6eb}.chat-input{display:flex;gap:8px;margin-top:10px}.chat-input input{flex:1;min-width:0;border:1px solid #ddd;border-radius:13px;padding:13px;outline:none}.notice{font-size:12px;color:var(--muted);margin:10px 3px;line-height:1.5}.empty{background:white;border-radius:16px;padding:18px;color:var(--muted);border:1px solid var(--line)}
+@media(min-width:760px){.grid{grid-template-columns:repeat(3,1fr)}.ai{grid-column:1/-1}.title{font-size:30px}.card{min-height:135px}}
+</style></head>
+<body><header><div class="head"><div class="brand">DOCOMO HIKARI</div><div class="title">ドコモ光 STAFF SUPPORT</div><div class="sub">現場スタッフ向け 接客・受付サポートツール</div></div></header>
+<main>
+<section id="home" class="view active">
+<div class="search"><input id="globalSearch" placeholder="質問を入力（例：工事は必要？）"><button onclick="searchAll()">検索</button></div>
+<div class="section-title">お手続きを選択してください</div>
+<div class="grid">
+<button class="card" onclick="openFlow('新規')"><div class="icon">✨</div><h3>新規</h3><p>新しくドコモ光をお申込みするケース</p></button>
+<button class="card" onclick="openFlow('他社奪還')"><div class="icon">🔄</div><h3>他社奪還</h3><p>他社固定回線からドコモ光をご提案</p></button>
+<button class="card" onclick="openFlow('転用')"><div class="icon">↪️</div><h3>転用</h3><p>フレッツ光からドコモ光へ</p></button>
+<button class="card" onclick="openFlow('事業者変更')"><div class="icon">🔁</div><h3>事業者変更</h3><p>他社光コラボからドコモ光へ</p></button>
+<button class="card" onclick="openFlow('解約新規')"><div class="icon">🧾</div><h3>解約新規</h3><p>既存回線を解約し、新規でお申込み</p></button>
+<button class="card ai" onclick="openAI()"><div class="icon">🤖</div><h3>ドコモ光 AIアシスタント</h3><p>複雑なケースや分からない内容を自然な文章で質問。将来AI APIと接続します。</p></button>
+</div></section>
+
+<section id="flow" class="view"><div class="topbar"><button class="back" onclick="home()">← 戻る</button><div><div class="pill" id="flowPill"></div><div class="view-title" id="flowTitle"></div></div></div>
+<div class="search"><input id="flowSearch" placeholder="この手続きについて質問を検索"><button onclick="searchFlow()">検索</button></div>
+<div id="levelTabs" style="display:none;gap:8px;margin:14px 0;flex-wrap:wrap"><button class="back" onclick="setLevel('basic')">基本編</button><button class="back" onclick="setLevel('advanced')">応用編</button><button class="back" onclick="setLevel('all')">全質問</button></div>
+<div class="section-title" id="questionHeading">よくある質問</div><div id="questions" class="q-list"></div><div id="answer" class="answer"></div></section>
+
+<section id="aiView" class="view"><div class="topbar"><button class="back" onclick="home()">← 戻る</button><div><div class="pill">AI ASSISTANT</div><div class="view-title">ドコモ光 AIアシスタント</div></div></div>
+<div class="chat" id="chat"><div class="bubble bot">ドコモ光について質問してください。<br>例：「事業者変更で固定電話をそのまま使える？」</div></div>
+<div class="chat-input"><input id="aiInput" placeholder="質問を入力してください"><button class="primary" onclick="askAI()">送信</button></div>
+<div class="notice">V1では登録済みQ&Aから近い内容を検索します。AI APIはAPIキーを保護するサーバー側接続を前提に、次段階で実装します。</div></section>
+
+<section id="results" class="view"><div class="topbar"><button class="back" onclick="home()">← 戻る</button><div class="view-title">検索結果</div></div><div id="resultList" class="q-list"></div></section>
+</main>
+<script>
+const common=[
+ {q:'工事は必要ですか？',keys:['工事','必要','派遣'],a:'受付区分・現在の回線・設備状況などによって異なります。',warn:'現時点ではV1の仮回答です。正式運用前にドコモ光の最新業務ルールを登録してください。'},
+ {q:'固定電話の番号はそのまま使えますか？',keys:['固定電話','電話番号','番号','そのまま','継続','引継'],a:'電話番号の発番元や現在の電話サービスなど、条件確認が必要です。',warn:'先に現在の電話サービスを解約すると番号継続に影響するケースがあるため、受付手順を確認してから案内します。'},
+ {q:'開通までどれくらいかかりますか？',keys:['開通','何日','期間','いつ','日数'],a:'設備状況や工事内容、繁忙状況などにより異なります。受付時に開通見込みを確認して案内します。'},
+ {q:'1ギガと10ギガはどう選べばいいですか？',keys:['1ギガ','10ギガ','1G','10G','速度'],a:'利用用途・接続台数・提供エリア・対応機器などを確認して提案します。',warn:'10ギガは提供可否や対応機器の確認が必要です。'}
+];
+const specific={
+ '新規':[
+  {level:'basic',cat:'受付・申込み',q:'新規申込みから利用開始までの流れは？',keys:['新規','申込','流れ','開通','利用開始'],a:'基本の流れは、①ドコモ光／ahamo光申込み → ②必要書類の受取り → ③開通工事 → ④ルーターなどの接続・設定 → ⑤利用開始です。',staff:'1ギガは申込み日の確定から利用開始まで2週間～1か月程度、10ギガはおおむね1か月半が目安です。設備状況・繁忙期などにより1か月以上かかる場合があります。',warn:'工事日や開通日は設備状況で変動します。確約表現は避け、受付時の確定情報を案内してください。',source:'ドコモ公式「新規契約」',updated:'2026-10-05'},
+  {level:'advanced',cat:'受付・申込み',q:'未成年・代理人でも申込みできますか？',keys:['未成年','代理人','親権者','委任状','本人確認'],a:'可能ですが、追加書類が必要です。未成年申込みは親権者の本人確認書類・同意書、代理人申込みは契約者と代理人双方の本人確認書類・委任状が必要です。',warn:'必要書類は受付方法や契約状況により追加確認が必要になる場合があります。',source:'ドコモ公式「新規契約」',updated:'2026-10-05'},
+  {level:'basic',cat:'料金',q:'新規契約の事務手数料はいくら？',keys:['事務手数料','初期費用','4950'],a:'契約事務手数料は4,950円（税込）です。',staff:'原則、利用開始日の翌月に利用料金とあわせて請求されます。',source:'ドコモ公式「新規契約」',updated:'2026-10-05'},
+  {level:'basic',cat:'工事',q:'新規の工事料はいくら？',keys:['工事料','工事費','28600','18260','3300'],a:'2026年6月1日以降の申込みでは、代表例として屋内配線工程ありの派遣工事は28,600円（税込）です。屋内配線を新設しない場合は18,260円（税込）、派遣工事なしで開通できる場合は3,300円（税込）です。',staff:'戸建・マンション共通。実際の工事内容で金額が変わるため、最終確認は工事料金シミュレーションで行います。',warn:'現地状況により工事内容・料金が変更される場合があります。土日祝などの追加料金やオプション工事は別途です。',source:'ドコモ公式「工事料分割払い」「初期費用／工事料FAQ」',updated:'2026-10-05'},
+  {level:'advanced',cat:'工事',q:'工事料は分割払いできますか？',keys:['分割','12回','24回','工事料'],a:'できます。工事料は12回または24回の分割払いを選択できます。',warn:'分割支払い中にドコモ光／ahamo光を解約した場合、残債は解約日の翌月に一括請求されます。',source:'ドコモ公式「工事料分割払い」',updated:'2026-10-05'},
+  {level:'basic',cat:'工事',q:'工事当日の立ち会いは必要？',keys:['立会','立ち会い','工事当日','派遣'],a:'派遣工事の場合は、設置場所などを決定できる方の立ち会いが必要です。設備状況により、立ち会い不要の派遣工事なしで開通できる場合もあります。',source:'ドコモ公式「新規契約」',updated:'2026-10-05'},
+  {level:'advanced',cat:'工事',q:'新規工事料は本当に無料？',keys:['工事無料','実質0円','工事料無料','dポイント'],a:'現在は「新規工事料実質0円特典」があり、対象の新規工事料相当をdポイント（期間・用途限定）で進呈する仕組みです。工事料そのものが請求されない「無料」とは異なります。',staff:'契約事務手数料4,950円、土日祝の追加工事料、オプション工事料、追加料金などは特典対象外です。',warn:'フレッツ光や提携CATVからの切替、移転など対象外条件があります。特典条件は申込み時点で必ず再確認してください。',source:'ドコモ公式「ドコモ光 新規工事料実質0円特典」',updated:'2026-10-05'},
+  {level:'basic',cat:'1ギガ・10ギガ',q:'1ギガの月額料金はいくら？',keys:['1ギガ','1G','月額','料金','マンション','戸建'],a:'2年定期契約の場合、1ギガ タイプA/Cはマンション4,400円、戸建5,720円（税込）。タイプBはマンション4,620円、戸建5,940円（税込）です。',staff:'単独タイプはマンション4,180円、戸建5,500円（税込）ですが、別途お客さま自身でプロバイダ契約が必要です。定期契約なしは料金が異なります。',source:'ドコモ公式「ドコモ光 1ギガの料金プランFAQ」',updated:'2026-10-05'},
+  {level:'basic',cat:'1ギガ・10ギガ',q:'10ギガのタイプAはいくら？',keys:['10ギガ','10G','6380','タイプA','料金'],a:'ドコモ光10ギガ タイプAは、キャンペーン終了後の通常月額が6,380円（税込）です。戸建・マンション同額です。',warn:'プロバイダタイプや定期契約有無で料金が異なります。キャンペーン適用中の金額と通常料金を混同しないよう注意してください。',source:'ドコモ公式「ドコモ光 10ギガ」「料金プラン」',updated:'2026-10-05'},
+  {level:'basic',cat:'1ギガ・10ギガ',q:'10ギガは今500円で使える？',keys:['10ギガ','500円','ワンコイン','6か月','キャンペーン'],a:'対象条件を満たす「ドコモ光 10ギガ（2年定期契約）」の新規申込みでは、基本料金が最大6か月間500円／月（税込）となるキャンペーンが案内されています。',warn:'ルーター利用料などは別途です。適用条件・終了時期は変更される可能性があるため、受付時点の公式キャンペーン条件を確認してください。',source:'ドコモ公式「ドコモ光 10ギガ」',updated:'2026-10-05'},
+  {level:'basic',cat:'プロバイダ',q:'タイプAとタイプBは何が違う？',keys:['タイプA','タイプB','プロバイダ','違い'],a:'主な違いは選べるプロバイダと月額料金です。1ギガ・10ギガとも対応プロバイダが決められており、タイプAとBで料金が異なります。',staff:'1ギガと10ギガでは対応プロバイダも異なります。希望プロバイダが対象か公式一覧で確認してください。',source:'ドコモ公式「ドコモ光のプロバイダ」',updated:'2026-10-05'},
+  {level:'advanced',cat:'プロバイダ',q:'単独タイプはプロバイダ込み？',keys:['単独タイプ','プロバイダ','別契約'],a:'いいえ。単独タイプはドコモ光の回線料金とは別に、お客さま自身で対応プロバイダを契約する必要があり、プロバイダ料金も別途かかります。',source:'ドコモ公式「新規契約」「料金プラン」',updated:'2026-10-05'},
+  {level:'basic',cat:'セット割',q:'ドコモ光セット割は自動で入る？',keys:['セット割','自動','スマホ割引','ファミリー'],a:'対象のドコモスマホとドコモ光をセットで契約している場合、対象料金プランでは原則お手続き不要でスマホ料金から割引されます。',staff:'対象プラン・割引額はスマホ料金プランによって異なります。同一ファミリー割引グループ内の対象回線にも適用される仕組みがあります。',source:'ドコモ公式「ドコモ光セット割」',updated:'2026-10-05'},
+  {level:'basic',cat:'セット割',q:'ahamoはドコモ光セット割の対象？',keys:['ahamo','セット割','対象外'],a:'ahamoはドコモ光セット割の対象外です。また、ahamo光もドコモ光セット割の対象外です。',source:'ドコモ公式「ドコモ光セット割」',updated:'2026-10-05'},
+  {level:'basic',cat:'光電話',q:'ドコモ光電話の基本料金はいくら？',keys:['光電話','電話','550円','基本料金'],a:'ドコモ光電話はドコモ光／ahamo光の月額料金にプラス550円／月（税込）です。',staff:'6つの付加サービスと528円分の無料通話が付く「ドコモ光電話バリュー」は月額1,650円（税込）です。',source:'ドコモ公式「ドコモ光電話」「料金プラン・通話料」',updated:'2026-10-05'},
+  {level:'advanced',cat:'光電話',q:'今の固定電話番号をドコモ光電話で使える？',keys:['電話番号','固定電話','番号ポータビリティ','継続','引継'],a:'条件を満たせば番号ポータビリティで継続できる場合があります。現在の電話サービスや電話番号の発番元などの確認が必要です。',warn:'番号継続を希望する場合、現在の電話サービスを先に解約しないよう案内してください。番号の種類によっては継続できない場合があります。',source:'ドコモ公式「ドコモ光電話」',updated:'2026-10-05'},
+  {level:'basic',cat:'テレビ',q:'ドコモ光テレビオプションの月額はいくら？',keys:['テレビ','テレビオプション','990円','月額'],a:'ドコモ光テレビオプションは月額990円（税込）です。地デジ・無料BSなどをアンテナ不要で視聴できます。',warn:'BS有料放送やスカパー！などは別途契約・視聴料が必要です。地域・設備状況により利用できない場合があります。',source:'ドコモ公式「ドコモ光テレビオプション」',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'テレビオプションを光と同時に新規申込みした時の工事費は？',keys:['テレビ','工事費','同時','1台','2台','4台','13530','31460'],a:'ドコモ光／ahamo光の派遣工事と同時にテレビオプションを新規申込みする代表例では、テレビ1台まで13,530円、2～4台31,460円（税込）です。',staff:'内訳は基本工事料3,300円＋テレビ接続工事料（1台7,150円／2～4台25,080円）＋テレビ視聴サービス登録料3,080円。光回線本体の工事料・契約事務手数料は別途です。',warn:'宅内設備や追加工事で料金が変わる場合があります。5台以上は別途費用が発生します。',source:'ドコモ公式「ドコモ光テレビオプション」',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'テレビオプションだけ後から申込むと工事費はいくら？',keys:['テレビ','後から','単独','23980','41910','工事費'],a:'テレビオプションのみ新規申込みの代表例では、テレビ1台まで23,980円、2～4台41,910円（税込）です。',staff:'この場合、テレビオプション契約事務手数料2,200円が含まれます。',warn:'設備状況や追加工事により変動します。',source:'ドコモ公式「ドコモ光テレビオプション」',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'SCチャンネル・専門チャンネルは見られる？',keys:['SC','SCチャンネル','専門チャンネル','CS','スカパー'],a:'ドコモ公式では主に「スカパー！／専門チャンネル」として案内されています。ドコモ光テレビオプションとあわせてスカパー！を契約することで、対象の専門チャンネルを視聴できます。',staff:'スカパー！利用時は、ドコモ光月額＋テレビオプション990円＋スカパー！基本料429円＋選択したパック／チャンネル料金が基本構成です。',warn:'チャンネル・パックによって対応機器や専用チューナーが必要な場合があります。「SCチャンネル」という現場呼称だけで判断せず、希望する具体的なチャンネル名を確認してください。',source:'ドコモ公式「スカパー！」「映像サービス」',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'スカパー！はテレビ何台でも同じ契約で見られる？',keys:['スカパー','テレビ台数','3台','契約'],a:'原則、スカパー！の視聴にはテレビ／レコーダー1台ごとに契約が必要です。ただし「スカパー！基本プラン」はテレビ3台まで追加料金不要と案内されています。',warn:'契約商品によって条件が異なるため、選択するパック・チャンネルを確認してください。',source:'ドコモ公式「スカパー！」',updated:'2026-10-05'},
+  {level:'advanced',cat:'テレビ',q:'タイプCでもドコモ光テレビオプションは使える？',keys:['タイプC','テレビオプション','使えない'],a:'ドコモ公式では、ドコモ光タイプCでは「ドコモ光テレビオプション」は利用できないと案内されています。',source:'ドコモ公式「スカパー！」',updated:'2026-10-05'}
+ ],
+ '他社奪還':[{q:'他社回線から乗り換える時の注意点は？',keys:['他社','乗り換え','注意','奪還'],a:'現在の回線種別、解約条件、固定電話・テレビ等の利用状況を確認してから適切な受付方法を判断します。'}],
+ '転用':[{q:'転用とは何ですか？',keys:['転用','フレッツ'],a:'フレッツ光をご利用中のお客様がドコモ光へ切り替える受付区分です。詳細条件は最新の業務情報で確認します。'}],
+ '事業者変更':[{q:'事業者変更で必要なものは？',keys:['事業者変更','必要','承諾番号'],a:'現在の光コラボ事業者や契約状況を確認し、必要な手続き情報を案内します。正式な必要物は最新業務ルールを登録して表示します。'}],
+ '解約新規':[{q:'解約新規にする場合の注意点は？',keys:['解約新規','解約','注意'],a:'インターネットが利用できない期間、電話番号、解約費用、撤去・新設工事などの確認が重要です。'}]
+};
+let current='';let currentLevel='basic';
+function show(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0)}
+function home(){show('home')}
+function items(cat){return [...(specific[cat]||[]),...common]}
+function openFlow(cat){current=cat;currentLevel=cat==='新規'?'basic':'all';document.getElementById('flowPill').textContent=cat;document.getElementById('flowTitle').textContent=cat+' サポート';document.getElementById('levelTabs').style.display=cat==='新規'?'flex':'none';renderCurrent();document.getElementById('answer').className='answer';show('flow')}
+function renderCurrent(){let arr=items(current);if(current==='新規'&&currentLevel!=='all')arr=arr.filter(x=>!x.level||x.level===currentLevel);document.getElementById('questionHeading').textContent=current==='新規'?(currentLevel==='basic'?'基本編':currentLevel==='advanced'?'応用編':'全質問'):'よくある質問';renderQuestions(arr)}
+function setLevel(level){currentLevel=level;document.getElementById('flowSearch').value='';document.getElementById('answer').className='answer';renderCurrent()}
+function renderQuestions(arr){const el=document.getElementById('questions');el.innerHTML='';arr.forEach(x=>{let b=document.createElement('button');b.className='q';b.innerHTML=`${x.cat?`<small style="color:#a40029">${x.cat}</small><br>`:''}${x.q}`;b.onclick=()=>showAnswer(x);el.appendChild(b)});if(!arr.length)el.innerHTML='<div class="empty">該当する質問が見つかりませんでした。</div>'}
+function showAnswer(x){const a=document.getElementById('answer');a.innerHTML=`<h3>${x.q}</h3><div class="box conclusion"><b>✅ 結論</b><br>${x.a}</div>${x.staff?`<div class="box staff"><b>🔎 スタッフ確認</b><br>${x.staff}</div>`:''}${x.warn?`<div class="box warning"><b>⚠️ 注意事項</b><br>${x.warn}</div>`:''}${x.source?`<div class="placeholder"><b>根拠：</b>${x.source}<br><b>情報確認日：</b>${x.updated||'2026-10-05'}</div>`:''}`;a.className='answer show';a.scrollIntoView({behavior:'smooth',block:'start'})}
+function score(x,s){s=s.toLowerCase().replace(/\s/g,'');let n=0;if(x.q.toLowerCase().includes(s))n+=10;(x.keys||[]).forEach(k=>{if(s.includes(k.toLowerCase())||k.toLowerCase().includes(s))n+=3});return n}
+function searchFlow(){let s=document.getElementById('flowSearch').value.trim();if(!s)return renderCurrent();let base=items(current);if(current==='新規'&&currentLevel!=='all')base=base.filter(x=>!x.level||x.level===currentLevel);let a=base.map(x=>[x,score(x,s)]).filter(z=>z[1]>0).sort((a,b)=>b[1]-a[1]).map(z=>z[0]);renderQuestions(a)}
+function allItems(){let out=[];Object.keys(specific).forEach(c=>specific[c].forEach(x=>out.push({...x,cat:c})));common.forEach(x=>out.push({...x,cat:'共通'}));return out}
+function searchAll(){let s=document.getElementById('globalSearch').value.trim();if(!s)return;let a=allItems().map(x=>[x,score(x,s)]).filter(z=>z[1]>0).sort((a,b)=>b[1]-a[1]);let el=document.getElementById('resultList');el.innerHTML='';a.forEach(([x])=>{let b=document.createElement('button');b.className='q';b.innerHTML=`<small>${x.cat}</small><br>${x.q}`;b.onclick=()=>{current=x.cat==='共通'?'新規':x.cat;openFlow(current);setTimeout(()=>showAnswer(x),50)};el.appendChild(b)});if(!a.length)el.innerHTML='<div class="empty">近い質問が見つかりませんでした。AIアシスタントから質問する機能へ今後つなげます。</div>';show('results')}
+function openAI(){show('aiView');setTimeout(()=>document.getElementById('aiInput').focus(),100)}
+function askAI(){let i=document.getElementById('aiInput'),s=i.value.trim();if(!s)return;let chat=document.getElementById('chat');chat.insertAdjacentHTML('beforeend',`<div class="bubble user">${esc(s)}</div>`);i.value='';let ranked=allItems().map(x=>[x,score(x,s)]).sort((a,b)=>b[1]-a[1]);let best=ranked[0];let msg=best&&best[1]>0?`<b>関連する回答を見つけました。</b><br><br><b>${best[0].q}</b><br>${best[0].a}${best[0].warn?`<br><br>⚠️ ${best[0].warn}`:''}`:'V1の登録済みQ&Aでは判断できませんでした。次段階でAI APIを接続すると、複雑な文章の解析や追加質問ができるようになります。';setTimeout(()=>{chat.insertAdjacentHTML('beforeend',`<div class="bubble bot">${msg}</div>`);chat.scrollTop=chat.scrollHeight},250)}
+function esc(s){return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+document.getElementById('aiInput').addEventListener('keydown',e=>{if(e.key==='Enter')askAI()});document.getElementById('globalSearch').addEventListener('keydown',e=>{if(e.key==='Enter')searchAll()});
+</script></body></html>
