@@ -23,6 +23,19 @@ main{max-width:1050px;margin:auto;padding:18px 14px 90px}.search{display:flex;ga
 button:disabled{opacity:.5;cursor:not-allowed}.field [aria-invalid="true"]{border-color:#b00020;outline:2px solid #f5b6c5}.schedule-meta{overflow-wrap:anywhere}
 @media print{.step-card,.guide-warning li{break-inside:avoid;page-break-inside:avoid}.guide-warning{border:1px solid #c9b786;background:#fffaf0;font-size:10pt;padding:4mm}.guide-warning h3{font-size:13pt}.guide-sources{font-size:8pt}.schedule-sheet{padding:0;border-radius:0}.step-card{margin:0 0 2mm;padding:3mm}.step-title{font-size:11pt!important}.schedule-meta{font-size:9pt}.schedule-sheet .step-note{font-size:9pt}.schedule-hero{padding:3mm}.schedule-finish{font-size:12pt}.guide-warning,.step-card{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 </style>
+<style id="carrier-guided-form-style">
+/* 店頭用の4段階入力。外部画像・追加ライブラリは不要。 */
+body.guide-building header{padding:12px 14px 14px}body.guide-building header .title{font-size:21px}body.guide-building header .sub,body.guide-building header .brand{display:none}body.guide-building header a{margin-bottom:5px!important}
+#scheduleBuilder .topbar{align-items:flex-start;flex-wrap:wrap}#scheduleBuilder .view-title{font-size:22px;line-height:1.45}#scheduleBuilder .pill{margin-bottom:4px}.builder-lead{color:#60616b;font-size:14px;line-height:1.7;margin:0 0 18px}
+.guide-builder{padding:0;overflow:hidden;border-color:#e2e2e8;box-shadow:0 6px 24px #20122508}.wizard-progress{display:flex;border-bottom:1px solid #e6e6ed;background:#fafafb;padding:14px 10px;gap:6px;scroll-margin-top:12px}.wizard-tab{flex:1;min-width:0;border:0;border-radius:12px;background:transparent;color:#72727c;padding:9px 3px;cursor:pointer;display:flex;align-items:center;flex-direction:column;gap:6px}.wizard-tab span{width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#e9e9ef;font-size:13px;font-weight:800}.wizard-tab b{font-size:11px;white-space:nowrap}.wizard-tab[aria-current="step"]{color:#a40029;background:#fff0f4}.wizard-tab[aria-current="step"] span{background:#cc0033;color:white}.wizard-tab:focus-visible,.text-button:focus-visible{outline:3px solid #efb1c1;outline-offset:2px}
+.wizard-body{padding:22px 18px 6px}.wizard-panel{min-width:0}.wizard-panel h2{margin:0 0 8px;font-size:23px;line-height:1.45;letter-spacing:-.02em}.panel-kicker{font-size:11px;font-weight:900;letter-spacing:.14em;color:#ad0030;margin-bottom:6px}.panel-description{font-size:14px;line-height:1.65;color:#686973;margin:0 0 22px}.wizard-panel h3{font-size:16px;line-height:1.5;margin:0 0 16px}.form-section{margin-top:24px;padding-top:22px;border-top:1px solid #e9e9ef}.wizard-panel .field{min-width:0;margin-bottom:17px}.wizard-panel .field label{font-size:13px;font-weight:800;color:#353640;margin-bottom:8px;line-height:1.55}.wizard-panel .field input,.wizard-panel .field select,.wizard-panel .field textarea{display:block;min-width:0;max-width:100%;width:100%;min-height:48px;border-radius:12px;padding:12px;border-color:#d8d8e2;font-size:16px;background:#fff;line-height:1.4}.wizard-panel input[type="date"]{appearance:none;-webkit-appearance:none;overflow:hidden;text-align:left}.wizard-panel input[type="date"]::-webkit-date-and-time-value{text-align:left}.wizard-panel input:focus,.wizard-panel select:focus,.wizard-panel textarea:focus{outline:2px solid #ecc0cc;border-color:#cc0033}.optional-tag{display:inline-block;margin-left:5px;padding:1px 6px;border-radius:5px;font-size:10px;font-weight:700;color:#777987;background:#f0f1f5;vertical-align:middle}.field-help{font-size:12px;line-height:1.65;color:#6d6e78;margin:8px 0 0;overflow-wrap:anywhere}.field-help a{color:#a40029}
+.route-callout{border-left:3px solid #cc0033;background:#fff5f7;border-radius:0 10px 10px 0;font-size:13px;line-height:1.65;padding:12px 14px;margin:16px 0}.form-details{border:1px solid #e5e5ee;border-radius:12px;margin:16px 0;background:#fafafb}.form-details summary{padding:14px 12px;font-size:13px;font-weight:800;line-height:1.55;cursor:pointer;color:#4e4f5b}.form-details> :not(summary){margin-left:13px;margin-right:13px}.form-details[open]{padding-bottom:13px}.form-details .field{margin-top:14px}.form-details .form-grid{margin-top:14px}.form-details .guide-warning{background:#fff8e9;margin-top:0}.compact-warning{padding:12px 14px;border-left:3px solid #d6a34a;border-radius:0 10px 10px 0;background:#fff8e8;font-size:12px;line-height:1.7;margin:16px 0}.compact-warning p{margin:3px 0}.compact-warning strong{color:#745316}
+.review-summary{border:1px solid #e3e3eb;border-radius:14px;background:#fcfcfd;padding:5px 14px}.review-summary dl{margin:0}.review-row{display:flex;gap:16px;justify-content:space-between;border-bottom:1px solid #ededf1;padding:13px 0;align-items:flex-start}.review-row:last-child{border-bottom:0}.review-row dt{flex:0 0 90px;color:#757681;font-size:12px;font-weight:700}.review-row dd{margin:0;font-size:14px;font-weight:800;text-align:right;line-height:1.6;overflow-wrap:anywhere;min-width:0}.wizard-panel .print-actions{margin-top:20px}.wizard-panel .print-actions .primary{flex:1;min-height:48px}.wizard-footer{padding:14px 18px 18px;background:#fff;border-top:1px solid #ededf2}.wizard-status{font-size:12px;line-height:1.6;color:#777986;margin-bottom:10px;overflow-wrap:anywhere}.wizard-nav{display:flex;gap:10px;align-items:center;justify-content:space-between}.wizard-nav button{min-height:44px;min-width:96px}.wizard-nav .back{box-shadow:none;background:#f1f2f6}.wizard-nav span{font-size:12px;color:#868791;font-weight:800}.builder-reset{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;padding:12px;background:#fafafb;border-top:1px solid #ededf2;color:#92929c;font-size:11px}.text-button{border:0;background:transparent;color:#9a163a;text-decoration:underline;padding:8px;font-size:12px;cursor:pointer}
+#scheduleSheet{padding:24px 18px}#scheduleSheet .step-card{grid-template-columns:1fr;padding:15px;background:#fff;border-color:#e3e3eb;border-left:3px solid #cc0033}#scheduleSheet .step-visual{display:none}#scheduleSheet .step-heading{gap:8px}#scheduleSheet .step-card .step-title{font-size:16px;line-height:1.5}#scheduleSheet .step-note{background:#f8f8fb;font-size:13px;line-height:1.7}#scheduleSheet .schedule-meta{padding:12px;border:1px solid #ececf1;border-radius:10px;background:#fafafb;line-height:1.8;font-size:12px}#scheduleSheet .schedule-hero{background:#fff2f5}#scheduleSheet .schedule-finish{font-size:15px;background:#fff7f9;border-color:#f0becb}
+@media(min-width:760px){.guide-builder{display:grid;grid-template-columns:190px minmax(0,1fr)}.wizard-progress{grid-row:1/4;display:block;border-right:1px solid #e6e6ed;border-bottom:0;padding:26px 14px}.wizard-tab{width:100%;flex-direction:row;gap:12px;padding:12px;margin-bottom:10px;text-align:left}.wizard-tab b{font-size:13px}.wizard-body{padding:28px 28px 12px}.wizard-footer{padding:18px 28px}.builder-reset{grid-column:2}.wizard-panel h2{font-size:26px}.wizard-panel .form-grid{gap:18px}.review-row dt{flex-basis:150px}#scheduleSheet{padding:28px 34px}}
+@media(max-width:360px){.wizard-body{padding:18px 12px 6px}.wizard-footer{padding:14px 12px}.wizard-progress{padding:12px 5px;gap:2px}.wizard-tab b{font-size:10px}.wizard-panel h2{font-size:21px}.review-row{gap:10px}.review-row dt{flex-basis:75px}}
+@media print{#scheduleSheet{padding:0!important}#scheduleSheet .step-card{border-left:2px solid #cc0033;padding:3mm;background:#fff}#scheduleSheet .step-note{font-size:9pt}#scheduleSheet .step-title{font-size:11pt!important}#scheduleSheet .schedule-meta{font-size:9pt}#scheduleSheet h2{font-size:17pt}.builder-lead{display:none!important}}
+</style>
 </head>
 <body><header><div class="head"><a href="./othercarrier_docomo_compare_v58_independent_routes.html" style="display:inline-flex;align-items:center;min-height:40px;margin-bottom:12px;padding:8px 14px;border:1px solid #ffffff66;border-radius:999px;background:#ffffff18;color:#fff;text-decoration:none;font-size:13px;font-weight:800">← 店頭メニューへ戻る</a><div class="brand">DOCOMO HIKARI</div><div class="title">ドコモ光 STAFF SUPPORT</div><div class="sub">現場スタッフ向け 接客・受付サポートツール</div></div></header>
 <main>
@@ -70,64 +83,59 @@ button:disabled{opacity:.5;cursor:not-allowed}.field [aria-invalid="true"]{borde
 </section>
 
 <section id="scheduleBuilder" class="view">
-  <div class="topbar"><button class="back" onclick="returnFromSchedule()">← サポートへ戻る</button><div><div class="pill">CUSTOMER GUIDE</div><div id="scheduleTitle" class="view-title">開通・切替までの流れを作成</div></div></div>
-  <div class="notice"><b>日付や確認事項が未定でも作成できます。</b> お手続きに合わせた流れと注意事項が自動で入ります。これは説明用の案内で、申込・解約を実行する機能ではありません。</div>
-  <div class="notice">別のお客様の案内を作る場合は「入力を消去」から始めてください。別のお手続き入口へ移ると案件入力を消去します。受付区分を変更した場合、承諾番号と有効期限は再入力が必要です。</div>
-  <div id="scForm" class="form-card">
-    <div class="form-grid">
-      <div class="field"><label for="scName">お客様名（任意）</label><input id="scName" placeholder="例：山田 太郎 様"></div>
-      <div class="field"><label for="scFlow">お手続き</label><select id="scFlow"><option>新規</option><option>他社奪還</option><option>転用</option><option>事業者変更</option><option>解約新規</option></select></div>
-    </div>
-    <div id="scMethodWrap" class="field guide-field" hidden><label for="scSwitchMethod">他社奪還の受付区分</label><select id="scSwitchMethod"><option>要確認</option><option>新規</option><option>転用</option><option>事業者変更</option><option>光回線再利用</option></select><div class="notice">フレッツ光は転用、他社光コラボは事業者変更など、現在の契約と設備を確認して選びます。独自回線・CATV等を一律に新規とは扱いません。未確認のままの場合は「準備用」として作成します。</div></div>
-    <div id="scRouteHelp" class="box staff" aria-live="polite"></div>
-    <div id="scLegacyFields" class="guide-panel" hidden>
-      <h3>現在のご契約・解約の確認</h3>
-      <div class="form-grid">
-        <div class="field"><label for="scOldProvider">現在の回線・契約先</label><input id="scOldProvider" placeholder="例：現在の回線会社／フレッツ光＋プロバイダ"></div>
-        <div class="field"><label for="scOldOptions">残す／終了する有料オプション</label><input id="scOldOptions" placeholder="例：メール、セキュリティ、動画、固定電話、テレビ"></div>
-        <div class="field"><label for="scFees">解約金・工事料残債・撤去費等（確認メモ）</label><input id="scFees" placeholder="例：契約先へ確認中／工事料残債○円"></div>
-        <div class="field"><label for="scReturn">旧レンタル機器の返却期限</label><input id="scReturn" type="date"></div>
-      </div>
-    </div>
-    <div id="scConsentFields" class="guide-panel" hidden>
-      <h3 id="scConsentHeading">承諾番号の確認</h3>
-      <div class="form-grid">
-        <div class="field"><label for="scConsent" id="scConsentLabel">承諾番号（任意）</label><input id="scConsent" autocomplete="off" placeholder="取得済みの場合のみ入力"></div>
-        <div class="field"><label for="scConsentExpiry">承諾番号の有効期限</label><input id="scConsentExpiry" type="date"></div>
-      </div>
-      <div class="notice">有効期間は発行・取得日を含め15日間。番号と期限を発行元の案内で確認してください。入力した番号やお客様名は案内に表示されます。端末を離れる前に入力を消去してください。</div>
-    </div>
-    <div id="scCancelFields" class="guide-panel" hidden>
-      <h3>旧回線を解約する順序</h3>
-      <div class="field"><label for="scCancelOrder">解約・開通の順序</label><select id="scCancelOrder"><option>未定・要確認</option><option>新回線の利用確認後に旧回線を解約</option><option>旧回線の廃止後に新回線を開通（停止期間あり）</option></select></div>
-      <div class="field guide-field"><label for="scCancel">旧回線の解約希望日（確定日ではありません）</label><input id="scCancel" type="date"></div>
-      <div class="notice">同じ場所で新旧回線を併設できるとは限りません。廃止が先行する必要がある場合は、通信停止期間・電話番号・テレビを確認してから日程を調整します。</div>
-    </div>
-    <div class="guide-panel">
-      <h3>電話・テレビの確認</h3>
-      <div class="form-grid">
-        <div class="field"><label for="scPhone">固定電話番号の引継ぎ</label><select id="scPhone"><option>未確認</option><option>継続希望</option><option>新番号希望</option><option>利用なし</option></select></div>
-        <div class="field"><label for="scTV">テレビサービスの引継ぎ</label><select id="scTV"><option>未確認</option><option>継続希望</option><option>利用なし</option></select></div>
-      </div>
-    </div>
-    <div class="schedule-input-step">
-      <div class="schedule-input-head"><span class="schedule-input-no">1</span>申込内容を確認する</div>
-      <div class="form-grid">
+  <div class="topbar"><button class="back" onclick="returnFromSchedule()">← サポートへ</button><div><div class="pill">CUSTOMER GUIDE</div><div id="scheduleTitle" class="view-title">お客様の案内を作成</div></div></div>
+  <p class="builder-lead">4つのステップで、開通・切替の案内を作成します。<br>日程は空欄のまま「未定」で作成できます。</p>
+  <div id="scForm" class="form-card guide-builder">
+    <nav id="wizardProgress" class="wizard-progress" aria-label="案内作成の入力ステップ">
+      <button type="button" class="wizard-tab" data-step="1" aria-controls="wizardPanel1" onclick="setWizardStep(1)"><span>1</span><b>現在の契約</b></button>
+      <button type="button" class="wizard-tab" data-step="2" aria-controls="wizardPanel2" onclick="setWizardStep(2)"><span>2</span><b>新しい契約</b></button>
+      <button type="button" class="wizard-tab" data-step="3" aria-controls="wizardPanel3" onclick="setWizardStep(3)"><span>3</span><b>日程</b></button>
+      <button type="button" class="wizard-tab" data-step="4" aria-controls="wizardPanel4" onclick="setWizardStep(4)"><span>4</span><b>確認・作成</b></button>
+    </nav>
+    <div class="wizard-body">
+      <section id="wizardPanel1" class="wizard-panel" data-step="1" aria-labelledby="wizardHeading1">
+        <div class="panel-kicker">STEP 1 / 4</div><h2 id="wizardHeading1">いまのご契約を確認</h2><p class="panel-description">お手続きと、現在お使いの回線を選んでください。</p>
+        <div class="flow-choice">
+          <div class="field"><label for="scFlow">お手続き</label><select id="scFlow"><option>新規</option><option>他社奪還</option><option>転用</option><option>事業者変更</option><option>解約新規</option></select></div>
+        </div>
+        <div id="scLegacyFields" class="form-section" hidden>
+          <div class="field"><label for="scOldCarrier">現在お使いの回線・会社</label><select id="scOldCarrier" aria-describedby="scCarrierHelp"><option value="">未確認・選択してください</option><optgroup label="よく使う回線"><option value="eo光">eo光</option><option value="J:COM">J:COM（ジェイコム）</option><option value="NURO 光">NURO 光（ニューロ光）</option><option>auひかり</option><option>SoftBank 光</option><option>ビッグローブ光</option><option>So-net 光</option><option>楽天ひかり</option></optgroup><optgroup label="その他の主な回線"><option>@nifty光</option><option>GMOとくとくBB光</option><option>enひかり</option><option>コミュファ光</option><option>メガ・エッグ</option><option>ピカラ光</option><option>BBIQ</option><option>フレッツ光（NTT東日本）</option><option>フレッツ光（NTT西日本）</option><option>地域のケーブルテレビ回線</option></optgroup><option>その他</option></select><p id="scCarrierHelp" class="field-help">一覧にない回線は「その他」を選び、下の補足欄に入力してください。</p></div>
+          <details id="scCarrierDetails" class="form-details"><summary>プラン・プロバイダ・回線名を補足する <span class="optional-tag">任意</span></summary><div class="field"><label for="scOldProvider">ご契約の補足</label><input id="scOldProvider" autocomplete="off" placeholder="例：契約プラン／その他の回線名"></div></details>
+        </div>
+        <div id="scMethodWrap" class="form-section" hidden><div class="field"><label for="scSwitchMethod">ドコモ光への切替方法</label><select id="scSwitchMethod"><option value="要確認">未確認・相談して決める</option><option value="新規">新規（新しい回線を開通）</option><option value="転用">転用（フレッツ光から）</option><option value="事業者変更">事業者変更（光コラボから）</option><option value="光回線再利用">光回線再利用（対象設備のみ）</option></select><p class="field-help">会社名だけでは確定しません。契約中のサービス・設備を確認して選びます。</p></div></div>
+        <div id="scRouteHelp" class="route-callout" aria-live="polite"></div>
+        <details class="form-details"><summary>お手続きの詳しい説明</summary><p id="scRouteDetails" class="field-help"></p></details>
+        <div id="scConsentFields" class="form-section" hidden><h3 id="scConsentHeading">承諾番号の確認</h3><div class="form-grid"><div class="field"><label for="scConsent" id="scConsentLabel">承諾番号（任意）</label><input id="scConsent" autocomplete="off" placeholder="取得済みの場合に入力"></div><div class="field"><label for="scConsentExpiry">有効期限</label><input id="scConsentExpiry" type="date"></div></div><p class="field-help">取得・発行日を含め15日間。番号と期限は発行元の案内で確認します。</p></div>
+      </section>
+      <section id="wizardPanel2" class="wizard-panel" data-step="2" aria-labelledby="wizardHeading2" hidden>
+        <div class="panel-kicker">STEP 2 / 4</div><h2 id="wizardHeading2">新しい契約とサービス</h2><p class="panel-description">回線・プロバイダを選び、電話とテレビの希望を確認します。</p>
+        <div class="form-grid"><div class="field"><label for="scSpeed">お申し込みする回線</label><select id="scSpeed"><option>ドコモ光 1ギガ</option><option>ドコモ光 10ギガ</option><option>ahamo光 1ギガ</option><option>ahamo光 10ギガ</option></select></div><div class="field"><label for="scProvider">プロバイダ</label><select id="scProvider" aria-describedby="scProviderHelp"><option>GMOとくとくBB</option></select><p id="scProviderHelp" class="field-help" aria-live="polite"></p></div></div>
+        <details class="form-details"><summary>プロバイダ一覧・タイプC・単独タイプについて</summary><p class="field-help">対応一覧：2026年10月6日確認。新規受付終了のドコモnet・plala・旧OCNは含みません。タイプC・単独タイプは「その他」を選び、契約先を追記事項に入力してください。<br><a href="https://www.docomo.ne.jp/internet/hikari/provider_list/" target="_blank" rel="noopener noreferrer">ドコモ公式の対応一覧</a></p></details>
+        <div class="form-section"><h3>電話・テレビのご希望</h3><div class="form-grid"><div class="field"><label for="scPhone">固定電話番号の引継ぎ</label><select id="scPhone"><option>未確認</option><option>継続希望</option><option>新番号希望</option><option>利用なし</option></select><p class="field-help">番号を引き継ぐ場合は、現在の電話を先に解約しないでください。</p></div><div class="field"><label for="scTV">テレビのお申し込み</label><select id="scTV" aria-describedby="scTVHelp"><option>未確認</option><option>新規申し込み</option><option>テレビ申し込みなし</option><option value="継続希望">現在のテレビを継続・切替</option></select><p id="scTVHelp" class="field-help" aria-live="polite"></p></div></div></div>
+      </section>
+      <section id="wizardPanel3" class="wizard-panel" data-step="3" aria-labelledby="wizardHeading3" hidden>
+        <div class="panel-kicker">STEP 3 / 4</div><h2 id="wizardHeading3">日程を入力</h2><p class="panel-description">分かっている日付だけ入力してください。未定の項目は空欄で大丈夫です。</p>
         <div class="field"><label for="scApply">申込日・申込予定日</label><input id="scApply" type="date"></div>
-        <div class="field"><label for="scSpeed">回線</label><select id="scSpeed"><option>ドコモ光 1ギガ</option><option>ドコモ光 10ギガ</option><option>ahamo光 1ギガ</option><option>ahamo光 10ギガ</option></select></div>
-        <div class="field"><label for="scProvider">プロバイダ</label><select id="scProvider" aria-describedby="scProviderHelp"><option>GMOとくとくBB</option></select><div id="scProviderHelp" class="notice" aria-live="polite"></div><div class="notice">対応一覧：2026年10月6日確認。新規受付終了のドコモnet・plala・旧OCNは含みません。タイプC・単独タイプは「その他」を選び、契約先を追記事項に入力してください。<br><a href="https://www.docomo.ne.jp/internet/hikari/provider_list/" target="_blank" rel="noopener noreferrer">ドコモ公式の対応プロバイダ一覧</a></div></div>
-      </div>
+        <div class="form-section"><h3 id="scWorkHeading">開通工事</h3><div class="form-grid"><div class="field"><label for="scWork" id="scWorkLabel">工事日</label><input id="scWork" type="date"></div><div class="field"><label for="scWorkTime">時間帯 <span class="optional-tag">任意</span></label><input id="scWorkTime" placeholder="例：午前／9:00〜12:00"></div><div class="field"><label for="scAttend">立会い</label><select id="scAttend"><option>未定・要確認</option><option>必要</option><option>不要</option></select></div></div><p id="scWorkHelp" class="field-help"></p></div>
+        <div id="scCancelFields" class="form-section" hidden><h3>旧回線を解約する順序</h3><div class="field"><label for="scCancelOrder">解約・開通の順序</label><select id="scCancelOrder"><option>未定・要確認</option><option value="新回線の利用確認後に旧回線を解約">新回線を確認してから解約</option><option value="旧回線の廃止後に新回線を開通（停止期間あり）">旧回線を解約してから開通</option></select></div><div class="field"><label for="scCancel">旧回線の解約希望日</label><input id="scCancel" type="date"><p class="field-help">希望日であり、確定日・解約完了ではありません。</p></div><p class="compact-warning">新旧回線を併設できるとは限りません。解約が先なら、通信停止期間・電話番号・テレビを事前に確認してください。</p></div>
+        <details class="form-details"><summary>書類の到着・訪問サポートの日程 <span class="optional-tag">任意</span></summary><div class="field"><label for="scDocs">書類・機器の到着予定</label><input id="scDocs" placeholder="例：10月10日ごろ"></div><div class="form-grid"><div class="field"><label for="scSupportBook">訪問サポート予約日</label><input id="scSupportBook" type="date"></div><div class="field"><label for="scSupport">訪問サポート実施日</label><input id="scSupport" type="date"></div></div><p class="field-help">利用する場合のみ入力。提供条件・費用を確認し、実施日は開通・切替後に調整します。</p></details>
+        <details id="scLegacyDetails" class="form-details" hidden><summary>旧契約の費用・オプション・返却メモ <span class="optional-tag">任意</span></summary><div class="field"><label for="scOldOptions">残す／終了する有料オプション</label><input id="scOldOptions" placeholder="例：メール、セキュリティ、動画"></div><div class="field"><label for="scFees">解約金・工事料残債・撤去費等</label><input id="scFees" placeholder="例：旧契約先へ確認中"></div><div class="field"><label for="scReturn">旧レンタル機器の返却期限</label><input id="scReturn" type="date"></div></details>
+      </section>
+      <section id="wizardPanel4" class="wizard-panel" data-step="4" aria-labelledby="wizardHeading4" hidden>
+        <div class="panel-kicker">STEP 4 / 4</div><h2 id="wizardHeading4">内容を確認して作成</h2><p class="panel-description">選んだ回線・電話・テレビと日程を、ここで確認してください。</p>
+        <div class="field"><label for="scName">案内に入れるお客様名 <span class="optional-tag">任意</span></label><input id="scName" autocomplete="off" placeholder="例：山田 太郎 様"></div>
+        <div id="scReviewSummary" class="review-summary" aria-live="polite"></div>
+        <div id="scKeyWarnings" class="compact-warning" aria-live="polite"></div>
+        <details class="form-details"><summary>お客様に渡す注意事項をすべて確認</summary><div id="scCautionPreview" class="guide-warning"></div></details>
+        <p class="field-help">折りたたんでいても、作成した案内・印刷には注意事項がすべて入ります。</p>
+        <div class="field"><label for="scMemo">お客様への追記事項 <span class="optional-tag">任意</span></label><textarea id="scMemo" rows="3" placeholder="例：電話番号の引継ぎを確認中です。"></textarea></div>
+        <div class="print-actions"><button id="scheduleCreate" type="button" class="primary" onclick="buildSchedule()">お客様用の案内を作成</button><button id="schedulePrint" type="button" class="back" onclick="window.print()" disabled>印刷・PDF保存</button></div>
+      </section>
     </div>
-    <div class="schedule-input-step"><div class="schedule-input-head"><span class="schedule-input-no">2</span>書類・必要機器の到着予定</div><div class="schedule-input-help">ドコモやプロバイダの案内で確認。機器・ID等の送付有無は契約内容で異なります。</div><div class="field"><label for="scDocs">到着予定・目安</label><input id="scDocs" placeholder="例：10月10日ごろ／未定"></div></div>
-    <div class="schedule-input-step"><div class="schedule-input-head"><span class="schedule-input-no">3</span>訪問サポートの予約（利用する場合のみ）</div><div class="field"><label for="scSupportBook">予約日</label><input id="scSupportBook" type="date"></div></div>
-    <div class="schedule-input-step"><div class="schedule-input-head"><span class="schedule-input-no">4</span><span id="scWorkHeading">開通工事</span></div><div class="form-grid"><div class="field"><label for="scWork" id="scWorkLabel">工事日</label><input id="scWork" type="date"></div><div class="field"><label for="scWorkTime">時間帯</label><input id="scWorkTime" placeholder="例：午前／9:00〜12:00／未定"></div><div class="field"><label for="scAttend">立会い</label><select id="scAttend"><option>未定・要確認</option><option>必要</option><option>不要</option></select></div></div><div class="notice" id="scWorkHelp"></div></div>
-    <div class="schedule-input-step"><div class="schedule-input-head"><span class="schedule-input-no">5</span>接続設定・利用確認</div><div class="schedule-input-help">受付区分に合わせて案内へ自動反映します。機器を先に返却しないでください。</div></div>
-    <div class="schedule-input-step"><div class="schedule-input-head"><span class="schedule-input-no">6</span>訪問サポート・初期設定（利用する場合のみ）</div><div class="field"><label for="scSupport">訪問サポート実施日</label><input id="scSupport" type="date"></div></div>
-    <div class="field guide-field"><label for="scMemo">お客様への追記事項（任意）</label><textarea id="scMemo" rows="3" placeholder="例：電話番号の引継ぎ可否を確認中です。旧機器は返却案内まで保管してください。"></textarea></div>
-    <div id="scCautionPreview" class="guide-warning" aria-live="polite"></div>
-    <div id="scStatus" class="notice" role="status" aria-live="polite"></div>
-    <div class="print-actions"><button class="primary" onclick="buildSchedule()">この内容で案内を作成</button><button id="schedulePrint" class="back" onclick="window.print()" disabled>印刷・PDF保存</button><button class="back" onclick="clearScheduleForm()">入力を消去</button></div>
+    <div class="wizard-footer"><div id="scStatus" class="wizard-status" role="status" aria-live="polite"></div><div class="wizard-nav"><button id="wizardPrev" type="button" class="back" onclick="setWizardStep(wizardStep-1)">← 戻る</button><span id="wizardCounter" aria-live="polite">1 / 4</span><button id="wizardNext" type="button" class="primary" onclick="nextWizardStep()">次へ →</button></div></div>
+    <div class="builder-reset"><span>別のお客様へ切り替えるとき</span><button type="button" class="text-button" onclick="clearScheduleForm()">入力を消去</button></div>
   </div>
+  <p class="notice">説明用の案内です。申込・解約を実行する機能ではありません。別のお手続き入口へ移ると案件入力を消去します。</p>
   <div id="scheduleSheet" class="schedule-sheet" style="display:none"></div>
 </section>
 
@@ -214,7 +222,7 @@ const channelGuide=[
 ];
 let current='';let currentService='';let currentLevel='basic';
 const serviceNames={net:'ネット',phone:'電話',tv:'地デジ・BS',cs:'CS・スカパー！'};
-function show(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0)}
+function show(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(id).classList.add('active');document.body.classList.toggle('guide-building',id==='scheduleBuilder');window.scrollTo(0,0)}
 function home(){clearScheduleForm();show('home')}
 function items(cat){return [...(specific[cat]||[]),...common]}
 function serviceMatch(x,service){if(Array.isArray(x.services))return x.services.includes(service);const c=x.cat||'';const blob=[x.q,x.a,x.staff,x.warn,(x.keys||[]).join(' ')].filter(Boolean).join(' ');if(service==='phone')return c==='光電話'||/電話|番号ポータビリティ|固定電話|FAX|ダブルチャネル|追加番号/.test(blob);if(service==='cs')return c==='テレビ'&&/CS|スカパー|専門チャンネル|SCチャンネル|WOWOW|セレクト|基本プラン/.test(blob);if(service==='tv')return c==='テレビ'&&!/CS|スカパー|専門チャンネル|SCチャンネル|WOWOW|セレクト|基本プラン/.test(blob);return !serviceMatch(x,'phone')&&!serviceMatch(x,'tv')&&!serviceMatch(x,'cs');}
@@ -312,7 +320,8 @@ const procedureSources = {
   '事業者変更': ['他社光サービスからのきりかえ（事業者変更）', 'https://www.docomo.ne.jp/internet/hikari/collabo_change/'],
   '光回線再利用': ['他社光サービスからのきりかえ（光回線再利用）', 'https://www.docomo.ne.jp/internet/hikari/hikari_reuse/'],
   phone: ['ドコモ光電話', 'https://www.docomo.ne.jp/internet/hikari/tell_service/'],
-  cancellation: ['解約・他社光サービスへのきりかえ', 'https://www.docomo.ne.jp/internet/hikari/procedure/cancellation/']
+  cancellation: ['解約・他社光サービスへのきりかえ', 'https://www.docomo.ne.jp/internet/hikari/procedure/cancellation/'],
+  tv: ['ドコモ光テレビオプション', 'https://www.docomo.ne.jp/internet/hikari/eizo_service/tv_option/']
 };
 const procedureDescriptions = {
   '新規': '新しい回線の提供可否・設備・工事内容を確認して申込みます。工事日や立会いの要否は確定した案内を優先します。',
@@ -327,6 +336,68 @@ const consentNames = {'転用':'転用承諾番号','事業者変更':'事業者
 const customerFlowNames = {'他社奪還':'他社からのお乗り換え','解約新規':'旧回線の廃止と新回線のお申込み'};
 const val = id => document.getElementById(id).value.trim();
 function scheduleRoute(flow=val('scFlow')){ return flow==='他社奪還' ? val('scSwitchMethod') : flow==='解約新規' ? '新規' : flow; }
+let wizardStep=1;
+function currentContractLabel(){
+  return [val('scOldCarrier'),val('scOldProvider')].filter(Boolean).join(' ／ ')||'契約先を確認中';
+}
+function setWizardStep(step,scroll=true){
+  wizardStep=Math.max(1,Math.min(4,Number(step)));
+  document.querySelectorAll('.wizard-panel').forEach(panel=>panel.hidden=Number(panel.dataset.step)!==wizardStep);
+  document.querySelectorAll('.wizard-tab').forEach(tab=>{
+    if(Number(tab.dataset.step)===wizardStep)tab.setAttribute('aria-current','step');
+    else tab.removeAttribute('aria-current');
+  });
+  document.getElementById('wizardPrev').disabled=wizardStep===1;
+  document.getElementById('wizardNext').hidden=wizardStep===4;
+  document.getElementById('wizardCounter').textContent=wizardStep+' / 4';
+  renderReviewSummary();
+  if(scroll)document.getElementById('wizardProgress').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function nextWizardStep(){
+  if(wizardStep===2 && !val('scProvider'))return scheduleError('対応プロバイダを選択してから次へ進んでください。','scProvider');
+  setWizardStep(wizardStep+1);
+}
+function revealWizardField(field){
+  const panel=field.closest('.wizard-panel');
+  if(panel)setWizardStep(Number(panel.dataset.step),false);
+  let parent=field.parentElement;
+  while(parent && parent.id!=='scForm'){
+    if(parent.tagName==='DETAILS')parent.open=true;
+    parent=parent.parentElement;
+  }
+  field.scrollIntoView({behavior:'smooth',block:'center'});
+}
+function renderReviewSummary(){
+  const ctx=guideContext();
+  const rows=[['お客様',val('scName')||'お客様名なし'],['お手続き',ctx.flow]];
+  if(ctx.flow!=='新規')rows.push(['現在の回線',currentContractLabel()]);
+  rows.push(['受付区分',ctx.route==='要確認'?'未確認・準備用':ctx.route],['新しい回線',ctx.speed],['プロバイダ',val('scProvider')||'未選択'],['電話',ctx.phone],['テレビ',ctx.tv==='継続希望'?'現在のテレビを継続・切替':ctx.tv],['申込日',jpDate(val('scApply'))],['開通・切替日',jpDate(val('scWork'))]);
+  if(ctx.flow==='解約新規'||(ctx.flow==='他社奪還'&&ctx.route==='新規'))rows.push(['解約の順序',ctx.order],['旧回線の解約希望日',jpDate(val('scCancel'))]);
+  document.getElementById('scReviewSummary').innerHTML='<dl>'+rows.map(([label,value])=>`<div class="review-row"><dt>${esc(label)}</dt><dd>${esc(value)}</dd></div>`).join('')+'</dl>';
+  const points=[];
+  if(ctx.flow!=='新規')points.push('切替方法・日程を確認するまで、旧回線を先に解約しないでください。');
+  if(ctx.phone==='継続希望')points.push('電話番号を引き継ぐ場合は、継続可否と移行手続きを事前に確認します。');
+  if(ctx.tv==='新規申し込み')points.push('テレビは新規申し込み。提供可否・工事・料金を別途確認します。');
+  if(ctx.tv==='テレビ申し込みなし' && ctx.flow!=='新規')points.push('テレビ申し込みなしでも、旧テレビの契約・視聴方法は別途確認します。');
+  points.push('工事日・費用・番号引継ぎは、確定した受付案内を優先します。');
+  document.getElementById('scKeyWarnings').innerHTML='<strong>作成前の大切な確認</strong>'+points.map(text=>'<p>'+esc(text)+'</p>').join('');
+}
+function updateTVHelp(){
+  const descriptions={
+    '未確認':'テレビを新しく申し込むか、申し込まないかを確認してください。',
+    '新規申し込み':'テレビサービスを新しく申し込みます。提供エリア・設備・対応プラン・工事と料金を確認します。',
+    'テレビ申し込みなし':'今回は新しいテレビサービスを申し込みません。現在利用中のテレビがあれば、旧契約の解約や今後の視聴方法は別途確認します。',
+    '継続希望':'現在のテレビを継続・切替できるか確認します。そのまま利用できるとは限りません。'
+  };
+  document.getElementById('scTVHelp').textContent=descriptions[val('scTV')]||descriptions['未確認'];
+}
+function changeOldCarrier(){
+  ['scOldProvider','scOldOptions','scFees','scReturn','scConsent','scConsentExpiry','scCancel'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('scCancelOrder').selectedIndex=0;
+  document.getElementById('scCarrierDetails').open=val('scOldCarrier')==='その他';
+  if(val('scFlow')==='他社奪還')document.getElementById('scSwitchMethod').value='要確認';
+}
+
 function guideContext(){
   return {flow:val('scFlow'),route:scheduleRoute(),phone:val('scPhone'),tv:val('scTV'),order:val('scCancelOrder'),speed:val('scSpeed')};
 }
@@ -361,7 +432,14 @@ function guideWarnings(ctx){
     if(ctx.flow==='解約新規') notes.push(['解約新規と電話番号', '回線解約だけで番号を引き継げるわけではありません。現在の電話サービスの移行・番号ポータビリティを事前に調整します。アナログ戻しなどを自己判断で実行せず、必要性と可否を確認してください。']);
   }else if(ctx.phone==='未確認') notes.push(['固定電話の確認', '固定電話を利用しているか、番号継続を希望するかを確認してください。未確認のまま旧電話・旧回線を解約すると番号が失われる場合があります。']);
   else if(ctx.phone==='新番号希望') notes.push(['電話を新番号にする場合', '旧電話の解約と新しい電話サービスの申込みは別途確認します。旧番号が利用できなくなる時期、関係先への番号変更連絡を確認してください。']);
-  if(ctx.tv!=='利用なし') notes.push(['テレビ・有料放送', '地デジ・BS・CATV・ひかりTV・スカパー！等の利用状況と継続可否を確認してください。回線解約でテレビが見られなくなる場合があります。有料放送の契約・機器返却は回線解約とは別に手続きが必要な場合があります。']);
+  if(ctx.tv==='新規申し込み'){
+    notes.push(['テレビの新規申し込み', '新しいテレビサービスを申し込みます。提供エリア・建物設備・対応プラン・テレビ台数・接続工事・初期費用・月額料金を確認してください。インターネットの契約だけではテレビは利用開始できません。有料BS・CS・スカパー！等の契約と料金は別途確認します。']);
+    if(legacy)notes.push(['現在のテレビ契約', 'テレビを新規で申し込んでも、旧テレビ・有料放送の契約は自動で解約された扱いにはなりません。旧契約の終了方法・機器返却・視聴できない期間を別途確認してください。']);
+  }else if(ctx.tv==='テレビ申し込みなし'||ctx.tv==='利用なし'){
+    if(legacy)notes.push(['テレビの旧契約を確認', '今回は新しいテレビサービスを申し込みません。旧回線でテレビ・CATV・有料放送を利用中なら、解約に伴う視聴停止、別契約の解約、機器返却と今後の視聴方法を確認してください。申込みなしは旧テレビの解約完了を示しません。']);
+  }else{
+    notes.push(['テレビ・有料放送', ctx.tv==='継続希望'?'現在のテレビを継続・切替できるか、サービス・設備・提供エリアを個別に確認します。そのまま引き継げるとは限りません。回線解約で視聴できなくなる場合があり、有料放送の契約や機器返却も別途確認してください。':'テレビを新規で申し込むか、申し込まないか、現在のテレビを継続・切替するかを確認します。旧回線の解約でテレビが見られなくなる場合があります。']);
+  }
   if(ctx.route==='転用' || ctx.route==='事業者変更' || ctx.route==='光回線再利用') notes.push(['設定・IPoE・速度変更', '同じプロバイダを継続する場合は設定変更が不要なケースもあります。変更する場合はIPoE廃止・開通時期を確認してください。10ギガ・ahamo光・プロバイダ変更等では通信の一部または全部が数時間〜数日使えない場合があります。']);
   if(ctx.speed.includes('10ギガ')) notes.push(['10ギガの個別確認', '10ギガの提供エリア、対応ONU・ルーター、電話・テレビの提供条件と引継ぎ方法を、現在の設備も含め受付時に確認してください。1ギガと同じ設備・条件で使えるとは限りません。']);
   if(ctx.speed.startsWith('ahamo光')) notes.push(['ahamo光', 'ahamo光は専用プロバイダへの切替とOCNバーチャルコネクト対応ルーターが必要です。IPoEやIPv4接続の開通時期を確認してください。ドコモ光のプロバイダ特典やセット割とは条件が異なります。']);
@@ -371,14 +449,14 @@ function warningMarkup(ctx){
   return `<h3>お客様への注意事項</h3><ul>${guideWarnings(ctx).map(([title,text])=>`<li><b>${esc(title)}</b><br>${esc(text)}</li>`).join('')}</ul>`;
 }
 function sourceMarkup(route){
-  const keys=[procedureSources[route]?route:'新規','転用','事業者変更','光回線再利用','phone','cancellation'];
+  const keys=[procedureSources[route]?route:'新規','転用','事業者変更','光回線再利用','phone','cancellation','tv'];
   const sources=[...new Set(keys)].map(key=>procedureSources[key]);
   return `<div class="guide-sources"><b>公式確認日：2026年10月7日</b><br>${sources.map(([label,url])=>`<a href="${url}" target="_blank" rel="noopener noreferrer">${esc(label)}</a>`).join(' ／ ')}<br>提供条件・特典は変更される場合があります。最終受付は最新の公式情報・確定した案内を優先してください。</div>`;
 }
 function invalidateSchedule(){
   document.getElementById('scheduleSheet').style.display='none';
   document.getElementById('schedulePrint').disabled=true;
-  document.getElementById('scStatus').textContent='入力内容を確認し、「この内容で案内を作成」を押してください。';
+  document.getElementById('scStatus').textContent='入力内容は戻る・次へでも保持されます。最後に「お客様用の案内を作成」を押してください。';
 }
 let previousProcedureRoute=null;
 let previousProcedureFlow=null;
@@ -397,6 +475,7 @@ function updateProcedureForm(){
   const needsCancel=ctx.flow==='解約新規'||(ctx.flow==='他社奪還'&&ctx.route==='新規');
   document.getElementById('scMethodWrap').hidden=ctx.flow!=='他社奪還';
   document.getElementById('scLegacyFields').hidden=ctx.flow==='新規';
+  document.getElementById('scLegacyDetails').hidden=ctx.flow==='新規';
   document.getElementById('scConsentFields').hidden=!consentNames[ctx.route];
   document.getElementById('scCancelFields').hidden=!needsCancel;
   document.getElementById('scConsentHeading').textContent=consentNames[ctx.route]||'承諾番号の確認';
@@ -406,7 +485,10 @@ function updateProcedureForm(){
   document.getElementById('scWorkLabel').textContent=isSwitch?'切替日・工事日':ctx.route==='要確認'?'切替・工事の予定日':'工事日';
   document.getElementById('scWorkHelp').textContent=isSwitch?'通常の切替では立会い工事が不要な場合があります。速度・設備・オプション変更等があれば別途工事と費用が発生する場合があります。':ctx.route==='光回線再利用'?'対象設備を再利用する場合も工事が必要です。立会い・工事日を確定案内で確認してください。':'設備状況により工事内容・立会いが異なります。確定した案内を優先してください。';
   document.getElementById('scheduleTitle').textContent=ctx.flow+'｜開通・切替案内を作成';
-  document.getElementById('scRouteHelp').textContent=procedureDescriptions[ctx.flow]+(ctx.flow==='他社奪還'?' 現在の選択：'+ctx.route+'。'+procedureDescriptions[ctx.route]:'');
+  const shortHelp={'新規':'新しい回線の開通・設定を案内します。','転用':'フレッツ光から切替。転用承諾番号を確認します。','事業者変更':'光コラボから切替。事業者変更承諾番号を確認します。','解約新規':'旧回線の解約と、新回線の開通を別々に調整します。'};
+  document.getElementById('scRouteHelp').textContent=ctx.flow==='他社奪還'?(ctx.route==='要確認'?'切替方法は未確認。準備用の案内として作成できます。':'選んだ切替方法：'+ctx.route+'。契約・設備を確認してから確定します。'):shortHelp[ctx.flow];
+  document.getElementById('scRouteDetails').textContent=procedureDescriptions[ctx.flow]+(ctx.flow==='他社奪還'?' '+procedureDescriptions[ctx.route]:'');
+  updateTVHelp();renderReviewSummary();
   document.getElementById('scCautionPreview').innerHTML=warningMarkup(ctx);
 }
 function openScheduleBuilder(){
@@ -419,7 +501,7 @@ function openScheduleBuilder(){
     const now=new Date();
     document.getElementById('scApply').value=[now.getFullYear(),String(now.getMonth()+1).padStart(2,'0'),String(now.getDate()).padStart(2,'0')].join('-');
   }
-  updateProcedureForm();invalidateSchedule();show('scheduleBuilder');
+  updateProcedureForm();invalidateSchedule();show('scheduleBuilder');setWizardStep(1,false);
 }
 function returnFromSchedule(){current=val('scFlow');openService(currentService||'net');}
 function openPrecautions(){
@@ -431,7 +513,7 @@ function openPrecautions(){
 }
 function resetCustomerFields(){
   document.querySelectorAll('#scForm input,#scForm textarea').forEach(field=>field.value='');
-  ['scSwitchMethod','scCancelOrder','scPhone','scTV','scAttend'].forEach(id=>document.getElementById(id).selectedIndex=0);
+  ['scOldCarrier','scSwitchMethod','scCancelOrder','scPhone','scTV','scAttend'].forEach(id=>document.getElementById(id).selectedIndex=0);
   document.getElementById('scSpeed').selectedIndex=0;
   const provider=document.getElementById('scProvider');
   provider.value='';
@@ -445,12 +527,14 @@ function clearScheduleForm(){
   document.getElementById('scFlow').value=['新規','他社奪還','転用','事業者変更','解約新規'].includes(current)?current:'新規';
   document.getElementById('scheduleSheet').innerHTML='';
   updateProcedureForm();invalidateSchedule();
+  document.querySelectorAll('#scForm details').forEach(details=>details.open=false);
+  setWizardStep(1,false);
   document.getElementById('scStatus').textContent='お客様名・日付・承諾番号などの入力を消去しました。';
 }
 function jpDate(v){if(!v)return '未定';const [y,m,d]=v.split('-');return `${y}年${Number(m)}月${Number(d)}日`;}
 function scheduleError(message,id){
   invalidateSchedule();document.getElementById('scStatus').textContent=message;
-  const field=document.getElementById(id);field.setAttribute('aria-invalid','true');field.focus();return false;
+  const field=document.getElementById(id);revealWizardField(field);field.setAttribute('aria-invalid','true');field.focus();return false;
 }
 function buildSchedule(){
   const ctx=guideContext();
@@ -468,7 +552,7 @@ function buildSchedule(){
   const name=read('scName')||'お客様',provider=read('scProvider'),speed=read('scSpeed');
   const brand=ctx.speed.startsWith('ahamo光')?'ahamo光':'ドコモ光';
   const apply=jpDate(val('scApply')),work=jpDate(val('scWork')),support=jpDate(val('scSupport'));
-  const old=read('scOldProvider')||'契約先を確認中';
+  const old=esc(currentContractLabel());
   const draft=ctx.route==='要確認'||(needsCancel&&ctx.order==='未定・要確認');
   const steps=[];
   const add=(date,title,note,visual)=>steps.push({date,title,note,visual});
@@ -478,9 +562,11 @@ function buildSchedule(){
   if(ctx.route==='要確認'){
     add('確認中','正式な受付区分・必要な手続きを確認','転用・事業者変更・新規・光回線再利用など、現在の契約と設備に合う方法を受付先で確認します。通常の解約は先に行いません。','受付確認');
     add(apply,'申込み予定と引継ぎ内容を相談',`${speed}<br>プロバイダ：${provider}<br>正式な区分と日程が未確認のため、申込み済み・解約済みという意味ではありません。`,'申込相談');
+    if(ctx.tv==='新規申し込み')add('申込み方法を確認','テレビサービスの新規申し込み希望を確認','テレビの新規申し込みを希望されています。提供エリア・設備・受付方法・必要な工事と料金を確認してから、正式に申し込みます。申込み完了を示すものではありません。','テレビ新規');
     add('確認後','切替・工事・利用確認・旧契約の整理を調整','必要な工事、接続設定、電話・テレビの引継ぎ、旧契約の終了方法・返却を正式な案内で確認します。','日程調整');
   }else{
     add(apply,`${brand} お申込み`,`${speed}<br>プロバイダ：${provider}<br>受付区分：${esc(ctx.route)}。必要書類・本人確認・提供可否を受付先で確認します。`,'お申込み');
+    if(ctx.tv==='新規申し込み')add('回線申込み時','テレビサービスの新規申し込みを確認','テレビサービスを新しく申し込みます。エリア・設備・対応プラン・テレビ台数、必要な工事と料金を受付先で確認してください。','テレビ新規');
     add(read('scDocs')||'未定','必要な書類・機器を受け取る',`ドコモやプロバイダから届く必要な案内を保管します。ID・機器の送付がない契約もあります。<br>${providerNote}`,'書類・機器');
     add(jpDate(val('scSupportBook')),'訪問サポートを予約（利用する場合）','提供条件・費用を確認し、実施日が開通・切替後になるよう調整します。利用しない場合は手続き不要です。','予約');
     if(needsCancel && ctx.order==='旧回線の廃止後に新回線を開通（停止期間あり）') add(jpDate(val('scCancel')),'旧回線の廃止日を調整（廃止先行）',`契約先：${old}<br>これは解約希望日です。番号の移行を事前に調整し、通信停止期間・テレビ・代替通信手段を確認したうえで廃止日を確定します。`,'旧契約の廃止');
@@ -494,14 +580,15 @@ function buildSchedule(){
   const timeline=steps.map((step,i)=>`<div class="step-card"><div class="step-visual"><div class="guide-step-symbol">${i+1}</div><div class="lbl">${esc(step.visual)}</div></div><div class="step-content"><div class="step-heading"><span class="step-badge">${i+1}</span><span class="step-date">${step.date}</span><span class="step-title">${esc(step.title)}</span></div><div class="step-note">${step.note}</div></div></div>${i<steps.length-1?'<div class="timeline-arrow" aria-hidden="true">↓</div>':''}`).join('');
   const title=ctx.flow==='新規'?`${brand} 開通までの流れ`:`${brand} ${esc(customerFlowNames[ctx.flow]||ctx.flow)}の流れ`;
   const sheet=document.getElementById('scheduleSheet');
-  sheet.innerHTML=`<div class="guide-brand">CUSTOMER GUIDE</div><h2>${title}</h2><div class="schedule-meta">${name}　｜　${speed}　｜　プロバイダ：${provider}<br>お手続き：${esc(customerFlowNames[ctx.flow]||ctx.flow)}　｜　受付区分：${esc(ctx.route)}${draft?'　｜　準備用・未確認事項あり':''}</div><div class="schedule-hero"><div class="schedule-hero-copy">お申込み・切替・確認事項を、順番にご案内します。<br>${draft?'受付区分または解約順序が未確定です。確定した受付案内で再確認してください。':'未定の日程は、確定した受付案内でご確認ください。'}</div></div><div class="timeline">${timeline}</div><div class="schedule-finish">${draft?'未確認事項を確認してから、日程と手続きを確定します':'接続・通信を確認してご利用開始'}</div><section class="guide-warning">${warningMarkup(ctx)}</section>${read('scMemo')?`<div class="box warning"><b>ご案内・メモ</b><br>${read('scMemo').replace(/\n/g,'<br>')}</div>`:''}${sourceMarkup(ctx.route)}<div class="placeholder">※本書は説明用の案内です。申込み・解約・承諾番号取得・機器返却を実行したことを示すものではありません。空欄の日時は未定です。</div>`;
+  sheet.innerHTML=`<div class="guide-brand">CUSTOMER GUIDE</div><h2>${title}</h2><div class="schedule-meta">${name}　｜　${speed}　｜　プロバイダ：${provider}<br>お手続き：${esc(customerFlowNames[ctx.flow]||ctx.flow)}　｜　受付区分：${esc(ctx.route)}${draft?'　｜　準備用・未確認事項あり':''}${ctx.flow!=='新規'?`<br>現在の回線：${old}`:''}<br>電話：${esc(ctx.phone)}　｜　テレビ：${esc(ctx.tv==='継続希望'?'現在のテレビを継続・切替':ctx.tv)}</div><div class="schedule-hero"><div class="schedule-hero-copy">お申込み・切替・確認事項を、順番にご案内します。<br>${draft?'受付区分または解約順序が未確定です。確定した受付案内で再確認してください。':'未定の日程は、確定した受付案内でご確認ください。'}</div></div><div class="timeline">${timeline}</div><div class="schedule-finish">${draft?'未確認事項を確認してから、日程と手続きを確定します':'接続・通信を確認してご利用開始'}</div><section class="guide-warning">${warningMarkup(ctx)}</section>${read('scMemo')?`<div class="box warning"><b>ご案内・メモ</b><br>${read('scMemo').replace(/\n/g,'<br>')}</div>`:''}${sourceMarkup(ctx.route)}<div class="placeholder">※本書は説明用の案内です。申込み・解約・承諾番号取得・機器返却を実行したことを示すものではありません。空欄の日時は未定です。</div>`;
   sheet.style.display='block';document.getElementById('schedulePrint').disabled=false;
   document.getElementById('scStatus').textContent=draft?'準備用の案内を作成しました。未確認事項を確定したら作り直してください。':'注意事項付きの案内を作成しました。印刷・PDF保存できます。';
   sheet.scrollIntoView({behavior:'smooth',block:'start'});return true;
 }
+document.getElementById('scOldCarrier').addEventListener('change',changeOldCarrier);
 document.getElementById('scForm').addEventListener('input',()=>{invalidateSchedule();updateProcedureForm();});
 document.getElementById('scForm').addEventListener('change',()=>{invalidateSchedule();updateProcedureForm();});
-updateProcedureForm();
+updateProcedureForm();setWizardStep(1,false);
 
 // 既存の仮回答を手続き別Q&Aへ更新する。料金・工事の確定判断は公式受付で行う。
 ['他社奪還','転用','事業者変更','解約新規'].forEach(flow=>{
