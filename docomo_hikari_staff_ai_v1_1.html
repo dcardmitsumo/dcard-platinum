@@ -44,6 +44,8 @@ body.guide-building header{padding:12px 14px 14px}body.guide-building header .ti
 #scForm.upgrade-mode #upgradeHearingSlot{margin-top:8px;padding-top:8px;border-top:0}
 @media print{#scheduleSheet .guide-warning{font-size:9.5pt;line-height:1.55}#scheduleSheet .guide-warning li{margin:6px 0}#scheduleSheet .guide-warning h3{margin-bottom:6px}#scheduleSheet .guide-sources{font-size:7.5pt;line-height:1.5;margin-top:2mm}#scheduleSheet .placeholder{font-size:7.5pt;line-height:1.5;margin-top:2mm;padding-top:2mm}}
 </style>
+<style id="transferBenefitsStyle">.transfer-panel{margin:20px 0;padding:20px;box-sizing:border-box;border:1px solid #e8cbd1;border-radius:18px;background:#fff;min-width:0}.transfer-panel .form-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}.transfer-contact{margin-top:16px;padding:16px;background:#fff7f8;border-left:4px solid #b51f3d;border-radius:10px;overflow-wrap:anywhere}.transfer-contact p{margin:8px 0;font-size:15px;line-height:1.65}.transfer-contact a,.benefit-qr a{color:#a40029;font-weight:700}.campaign-text{white-space:pre-wrap;overflow-wrap:anywhere}.benefit-qr{display:flex;align-items:center;gap:20px;margin:20px 0;padding:20px;border:1px solid #e0cad1;border-radius:14px;background:#fff}.benefit-qr img{display:block;width:172px;height:172px;flex:none;image-rendering:pixelated;background:white}.benefit-qr h3{margin:0 0 10px}.benefit-qr p{margin:8px 0;line-height:1.6}.qr-url{display:block;font-size:11px;overflow-wrap:anywhere;color:#555}.store-campaign-output{margin:20px 0;padding:20px;border:1px solid #ddced2;border-radius:14px;background:#fff9fa}.store-campaign-output h3{margin:0 0 10px}.store-campaign-output p{line-height:1.65}.store-campaign-output .mini{font-size:12px;color:#626262}#scStoreCampaign{width:100%;box-sizing:border-box;font:inherit;font-size:16px;line-height:1.6;min-width:0;border:1px solid #d9d9dd;border-radius:12px;padding:14px;resize:vertical}@media(max-width:560px){.benefit-qr{flex-direction:column;align-items:flex-start;gap:12px}.transfer-contact{padding:12px}.transfer-contact p{font-size:14px}}@media print{.benefit-qr{display:flex;flex-direction:row;padding:12px;gap:14px;break-inside:avoid}.benefit-qr img{width:132px;height:132px}.benefit-qr h3{font-size:14px}.benefit-qr p{font-size:10px}.benefit-qr .qr-url{font-size:8px}.store-campaign-output{break-inside:avoid;padding:12px}.store-campaign-output h3{font-size:14px}.store-campaign-output p{font-size:10px}}
+</style>
 </head>
 <body><header><div class="head"><a href="./othercarrier_docomo_compare_v58_independent_routes.html" style="display:inline-flex;align-items:center;min-height:40px;margin-bottom:12px;padding:8px 14px;border:1px solid #ffffff66;border-radius:999px;background:#ffffff18;color:#fff;text-decoration:none;font-size:13px;font-weight:800">← 店頭メニューへ戻る</a><div class="brand">DOCOMO HIKARI</div><div class="title">ドコモ光 STAFF SUPPORT</div><div class="sub">現場スタッフ向け 接客・受付サポートツール</div></div></header>
 <main>
@@ -135,7 +137,7 @@ body.guide-building header{padding:12px 14px 14px}body.guide-building header .ti
         <div class="panel-kicker">STEP 2 / 4</div><h2 id="wizardHeading2">新しい契約とサービス</h2><p class="panel-description">回線・プロバイダを選び、電話とテレビの希望を確認します。</p>
         <div class="form-grid"><div class="field"><label for="scSpeed">お申し込みする回線</label><select id="scSpeed"><option>ドコモ光 1ギガ</option><option>ドコモ光 10ギガ</option><option>ahamo光 1ギガ</option><option>ahamo光 10ギガ</option></select></div><div class="field"><label for="scProvider">プロバイダ</label><select id="scProvider" aria-describedby="scProviderHelp"><option>GMOとくとくBB</option></select><p id="scProviderHelp" class="field-help" aria-live="polite"></p></div></div>
         <details class="form-details"><summary>プロバイダ一覧・タイプC・単独タイプについて</summary><p class="field-help">対応一覧：2026年10月6日確認。新規受付終了のドコモnet・plala・旧OCNは含みません。タイプC・単独タイプは「その他」を選び、契約先を追記事項に入力してください。<br><a href="https://www.docomo.ne.jp/internet/hikari/provider_list/" target="_blank" rel="noopener noreferrer">ドコモ公式の対応一覧</a></p></details>
-        <div class="form-section"><h3>電話・テレビのご希望</h3><div class="form-grid"><div class="field"><label for="scPhone">固定電話番号の引継ぎ</label><select id="scPhone"><option>未確認</option><option>継続希望</option><option>新番号希望</option><option>利用なし</option></select><p class="field-help">番号を引き継ぐ場合は、現在の電話を先に解約しないでください。</p></div><div class="field"><label for="scTV">テレビのお申し込み</label><select id="scTV" aria-describedby="scTVHelp"><option>未確認</option><option>新規申し込み</option><option>テレビ申し込みなし</option><option value="継続希望">現在のテレビを継続・切替</option></select><p id="scTVHelp" class="field-help" aria-live="polite"></p></div></div></div>
+        <div class="form-section"><h3>電話・テレビのご希望</h3><div class="form-grid"><div class="field"><label for="scPhone">固定電話番号の引継ぎ</label><select id="scPhone" aria-describedby="scPhoneHelp"><option>未確認</option><option>継続希望</option><option id="scPhoneTransferOption" value="光電話のせかえ" disabled>光電話のせかえ</option><option>新番号希望</option><option>利用なし</option></select><p id="scPhoneHelp" class="field-help" aria-live="polite">番号を引き継ぐ場合は、現在の電話を先に解約しないでください。</p></div><div class="field"><label for="scTV">テレビのお申し込み</label><select id="scTV" aria-describedby="scTVHelp"><option>未確認</option><option>新規申し込み</option><option>テレビ申し込みなし</option><option value="継続希望">現在のテレビを継続・切替</option></select><p id="scTVHelp" class="field-help" aria-live="polite"></p></div></div></div>
       </section>
       <section id="wizardPanel3" class="wizard-panel" data-step="3" aria-labelledby="wizardHeading3" hidden>
         <div class="panel-kicker">STEP 3 / 4</div><h2 id="wizardHeading3">日程を入力</h2><p class="panel-description">分かっている日付だけ入力してください。未定の項目は空欄で大丈夫です。</p>
@@ -718,7 +720,11 @@ document.getElementById('aiInput').addEventListener('keydown',e=>{if(e.key==='En
     if(!isUpgrade()){resetCustomerFields();el('scFlow').value='解約新規';}
     updateProcedureForm();
   }
-  guideContext=function(){return {...base.guideContext(),hearing:hearing()};};
+  guideContext=function(){
+    const ctx=base.guideContext();
+    // 表示名は明示的な選択を保持し、判定は既存の番号継続ロジックへ渡す。
+    return {...ctx,phone:ctx.phone==='光電話のせかえ'?'継続希望':ctx.phone,phoneChoice:ctx.phone,hearing:hearing()};
+  };
   guideWarnings=function(ctx){return ctx.flow==='解約新規'?upgradeNotes({...ctx,hearing:ctx.hearing||hearing()}):base.guideWarnings(ctx);};
   currentContractLabel=function(){return isUpgrade()?'ドコモ光1ギガ タイプ'+(read('upOldType')||'未確認'):base.currentContractLabel();};
   updateScheduleProviders=function(){
@@ -740,6 +746,10 @@ document.getElementById('aiInput').addEventListener('keydown',e=>{if(e.key==='En
   };
   function configure(){
     const active=isUpgrade(),h=hearing();
+    const transferOption=el('scPhoneTransferOption');
+    transferOption.disabled=!active||!['A','B'].includes(h.type);
+    if(transferOption.disabled&&read('scPhone')==='光電話のせかえ')el('scPhone').value='継続希望';
+    el('scPhoneHelp').textContent=read('scPhone')==='光電話のせかえ'?(h.phone==='光電話を利用中'?'光電話を1ギガから10ギガへ移す希望です。工事後の来店・のせかえ完了確認を案内に追加します。旧1ギガは通話確認後に解約します。':'光電話のせかえを希望しています。ステップ1で現在の光電話の利用有無・移行の適用可否を確認してください。未確認のまま旧1ギガを解約しないでください。'):active&&h.type==='C'?'電話番号を残す場合は「継続希望」を選び、タイプC側で番号移行・発着信を確認してから旧1ギガを解約します。':'番号を引き継ぐ場合は、現在の電話を先に解約しないでください。';
     el('scForm').classList.toggle('upgrade-mode',active);
     document.querySelector('.wizard-tab[data-step="1"] b').textContent=active?'ヒアリング':'現在の契約';
     el('wizardHeading1').textContent=active?'タイプ選択・事前ヒアリング':'いまのご契約を確認';
@@ -804,7 +814,7 @@ document.getElementById('aiInput').addEventListener('keydown',e=>{if(e.key==='En
     if(!isUpgrade())return base.renderReviewSummary();
     const ctx=guideContext(),h=ctx.hearing;
     const provider=h.type==='C'?(h.company||'提携CATV会社を確認中'):(read('scProvider')||'未選択');
-    const rows=[['お客様',read('scName')||'お客様名なし'],['旧回線','ドコモ光1ギガ タイプ'+(h.oldType||'未確認')],['新しい回線','ドコモ光10ギガ タイプ'+(h.type||'未選択')],['申込先',provider],['プロバイダーメール',h.email],['メール残し',h.email==='利用あり'?h.mailKeep:'対象外／未確認'],['現在の光電話',h.phone],['番号のご希望',ctx.phone],['現在のテレビ',h.tv],['新しいテレビ',ctx.tv],['1ギガの解約金',feeEstimate(h)],['申込日',jpDate(read('scApply'))],['10ギガ工事日',jpDate(read('scWork'))]];
+    const rows=[['お客様',read('scName')||'お客様名なし'],['旧回線','ドコモ光1ギガ タイプ'+(h.oldType||'未確認')],['新しい回線','ドコモ光10ギガ タイプ'+(h.type||'未選択')],['申込先',provider],['プロバイダーメール',h.email],['メール残し',h.email==='利用あり'?h.mailKeep:'対象外／未確認'],['現在の光電話',h.phone],['番号のご希望',ctx.phoneChoice||ctx.phone],['現在のテレビ',h.tv],['新しいテレビ',ctx.tv],['1ギガの解約金',feeEstimate(h)],['申込日',jpDate(read('scApply'))],['10ギガ工事日',jpDate(read('scWork'))]];
     if(needsPhoneMove(ctx)){if(h.type!=='C'&&abNosekae(ctx))rows.push(['来店手続き',visitLabel(h)]);rows.push(['電話移行完了',portLabel(h)],['完了確認',h.portStatus==='confirmed'?'確認済み':'未完了・予定']);}
     rows.push(['旧1ギガの解約希望日',h.cancel?jpDate(h.cancel):'移行・利用確認後に調整']);
     el('scReviewSummary').innerHTML='<dl>'+rows.map(([label,value])=>`<div class="review-row"><dt>${esc(label)}</dt><dd>${esc(value)}</dd></div>`).join('')+'</dl>';
@@ -873,7 +883,7 @@ document.getElementById('aiInput').addEventListener('keydown',e=>{if(e.key==='En
     }
     const draft=pending(ctx);
     const timeline=steps.map((step,i)=>`<div class="step-card"><div class="step-content"><div class="step-heading"><span class="step-badge">${i+1}</span><span class="step-date">${esc(step.date)}</span><span class="step-title">${esc(step.title)}</span></div><div class="step-note">${step.note}</div></div></div>${i<steps.length-1?'<div class="timeline-arrow" aria-hidden="true">↓</div>':''}`).join('');
-    const hearingSummary=`メール：${esc(h.email)}${h.email==='利用あり'?'／メール残し：'+esc(h.mailKeep):''}<br>現在の電話：${esc(h.phone)}／番号のご希望：${esc(ctx.phone)}<br>現在のテレビ：${esc(h.tv)}／新しいテレビ：${esc(ctx.tv)}`;
+    const hearingSummary=`メール：${esc(h.email)}${h.email==='利用あり'?'／メール残し：'+esc(h.mailKeep):''}<br>現在の電話：${esc(h.phone)}／番号のご希望：${esc(ctx.phoneChoice||ctx.phone)}<br>現在のテレビ：${esc(h.tv)}／新しいテレビ：${esc(ctx.tv)}`;
     const legacyMemo=['scOldOptions','scFees','scReturn'].some(id=>read(id))?`<div class="box staff"><b>旧契約の確認メモ</b><br>オプション：${clean('scOldOptions')||'未確認'}<br>費用メモ：${clean('scFees')||'未確認'}<br>返却期限：${jpDate(read('scReturn'))}</div>`:'';
     el('scheduleSheet').innerHTML=`<div class="guide-brand">CUSTOMER GUIDE</div><h2>ドコモ光1ギガ → 10ギガ タイプ${esc(h.type)}の流れ</h2><div class="schedule-meta">${clean('scName')||'お客様'}　｜　旧1ギガ タイプ${esc(h.oldType||'未確認')} → 新10ギガ タイプ${esc(h.type)}<br>申し込み先：${provider}<br>${hearingSummary}<br>入力条件の1ギガ解約金：${esc(feeEstimate(h))}${draft?'<br><b>準備用・未確認事項あり</b>':''}</div><div class="schedule-hero"><div class="schedule-hero-copy">${h.type==='C'?'タイプCへの切替を4つの工程でご案内します。':'必要な電話のせかえを含む工程でご案内します。'}<br>旧1ギガは、必要な電話・テレビ・メールの移行を確認してから解約します。日付は予定・目安であり、手続き完了を示しません。</div></div><div class="timeline">${timeline}</div><section class="guide-warning">${warningMarkup(ctx)}</section>${legacyMemo}${clean('scMemo')?'<div class="box warning"><b>追記事項</b><br>'+clean('scMemo').replace(/\n/g,'<br>')+'</div>':''}${sourceHTML()}<div class="placeholder">本書は説明用です。申込み・電話移行・解約を実行したことを示しません。未定の日時は受付先の確定案内で確認してください。</div>`;
     el('scheduleSheet').style.display='block';el('schedulePrint').disabled=false;
@@ -932,4 +942,203 @@ document.getElementById('aiInput').addEventListener('keydown',e=>{if(e.key==='En
   updateProcedureForm();
 })();
 
-</script></body></html>
+</script><script id="transferBenefitsModule">
+// 転用・事業者変更の統合、問い合わせ先、特典と店舗入力（2026-10-07確認）
+(function installTransferAndBenefits(){
+  const contacts=[{"name": "SoftBank 光", "url": "https://www.softbank.jp/support/faq/view/53622", "label": "SoftBank 光の事業者変更窓口", "notes": ["通常解約は先にせず、事業者変更承諾番号を取得します。電話サービスの種類、テレビ、@ybb.ne.jpメール、有料オプション、解除料・工事費残金と機器返却を確認します。"], "tenGigNote": "変更元がSoftBank 光・10ギガの場合、公式FAQに転出対象外の記載があるため、現在の受付窓口で事業者変更の対応可否・適切な切替方法を確認します。"}, {"name": "ビッグローブ光", "url": "https://support.biglobe.ne.jp/jimu/keiyaku/kaiyaku/bighikari-kaiyakuchuui.html", "label": "BIGLOBE光の事業者変更・転出窓口", "notes": ["通常解約は回線廃止となり番号等を引き継げない場合があります。「事業者変更（転出）」で承諾番号を取得します。", "BIGLOBEメール、電話・テレビ、レンタル無線LAN等の個別契約、解約費用と返却対象を確認します。"]}, {"name": "So-net 光", "url": "https://support.so-net.ne.jp/fa/faq/web/knowledge1700.html", "label": "So-net 光の事業者変更窓口", "notes": ["現在契約しているSo-net 光の正式なサービス名を確認し、事業者変更承諾番号を取得します。電話・テレビ・メール・有料オプションと解約費用、貸出機器の返却を個別に確認します。"]}, {"name": "楽天ひかり", "url": "https://network.mobile.rakuten.co.jp/hikari/form/number-request/", "label": "楽天ひかりの事業者変更承諾番号申請", "notes": ["通常解約を先にせず、事業者変更完了による契約終了を確認します。楽天ひかりのメール等のオプションは利用停止となるため、必要なデータを移行します。", "ひかり電話・フレッツ・テレビ等のNTT提供サービスの契約先・継続条件、解除料・工事費残債・最終請求と機器返却を確認します。"]}, {"name": "@nifty光", "url": "https://support.nifty.com/support/auth/a_7.htm", "label": "@nifty光の事業者変更承諾番号取得", "notes": ["承諾番号を取得しただけでは切替完了ではありません。変更先の開通による@nifty光の解除を確認し、先に通常解約しません。", "@niftyメール、光電話・光テレビ、有料オプション、解約金と機器返却の要否を現在の窓口で確認します。"]}, {"name": "OCN光", "url": "https://service.ocn.ne.jp/hikari/change/move_out/", "label": "OCN光の事業者変更・転出窓口", "notes": ["事業者変更承諾番号を取得してから申し込みます。OCN光のオプションは原則解約となるため、電話・テレビが変更先またはNTTの直接契約に変わる場合の継続条件を確認します。", "メールを残す場合はOCNバリュープラン等を確認します。旧サービスの移管通知・請求書で現在の契約窓口を確認し、解約金・工事費残債・返却も確認します。"]}, {"name": "enひかり", "url": "https://enhikari.jp/", "label": "enひかりカスタマーセンター", "notes": ["解約後では事業者変更の手続きができないため、通常解約を先にせず承諾番号を取得します。", "電話・テレビなどのオプション廃止に別途申出が必要な場合があります。継続・廃止、メール関連、費用と機器返却を確認します。"]}, {"name": "IIJmioひかり", "url": "https://www.iijmio.jp/imh/cancel/collabo_change_notice.html", "label": "IIJmioひかりの事業者変更・転出窓口", "notes": ["会員専用ページで事業者変更承諾番号を取得してから変更先へ申し込み、切替完了を確認します。通常解約を先に行いません。", "電話・テレビ・メール・有料オプションの継続と解約条件、契約解除料・最終請求・貸出機器の返却を確認します。"]}];
+  const qr='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZoAAAGaAQAAAAAefbjOAAADQElEQVR4nO2bQW7jOgyGPz4b6FICeoAeRb5ZMUd6N7CPkgMEkJYBZHAWlFpnZjXNjJ001MKIE38wiRgU+ZMW5Y/X8t+fM+CQQw455JBDDn1PSNoakclOR1hkbJ8o/YLpEPMc2h9KqqqaQecioqoVklYgVIBBVVX1GtrPPIf2h0oLACJxUJa4ikhcReciAvS4cZR5Dh0G6Rwq8p4H1bm8KDCoTP/iTg49CJROIyxxFVIGUgad/8mdHLprKKjqDMjEKqoZWCKIRJAJsNziKPMc2htaREQkArZNlBeV94zFCGC1UuMo8xzaD7Js8VPK1uWtAqwC4SJKAd1esK95Dh0EyVSa7EB7GFR1ZlCZwkVkYhUoTa14EJ8c+hrEVmcIqu1hCFd6RMqDfWeqxHznPjn0F6CklaY9lBF5z6A/IkD5UCHKS69DH8Mnh27II9oK5xHCWXSJWSWdRkj/RyBcBELe3zyHdof6rtGrz7aCqmoetO0kXcX2XeN5oDJi/37K0PSIt4uQTiKkvIoVqNNB5jm0G9STxVDbc/ARLazxZQdtSaV1xDxGfGdok0cIoY5QBIWhQug1yDKBEHKXJe7cJ4dugXqMYLBDEymt+mxBoTU3vPp8LmiVNgsRVFVPoynbLHEV/RGHqy7oo/jk0FdWqx/yYDuCiVPthyZTWR5hEcRjxHeHeh5hisN5JJ3Gni6UaAeBQYVw9k7X00AicVCdrQStfewyDtpV7FU+w8iD+OTQLZAJ2Em3ahRJL8IS+5Wfnx7DJ4du7HT1PMLGb0PvflkekQclZc8jngdquWOoPRRYyKjYsKUVHG8XzyOeALLM0v7qdBoBhiopv1ahRCTN1X6VlFHZ2zyHdoeuZ6gUSfkVKz2WtzrqEs8jae4Pzd7mObQ7tI0Rpl2zCouAwgoWGcprZZGhj97euU8O3QJtO1iat1L2ZpDKihBXsZ8KKh+t7lD7+JT1Omh6dpvKPsY8hw6EbIxuUGwmP4LJVEtsb248oE8OfR2ytzSgvdO17Yf+5Ts5dJ/QR19DgQK6RISkYC2NdBpr63DgKvYzQFfT+b27+et8hK3gM1TPAP32Tlc/6PUp2+vu3CeHHHLIIYcccmgf6Ccgsf4gFg4QFwAAAABJRU5ErkJggg==';
+  const urls={free:'https://www.docomo.ne.jp/campaign_event/hikari_10g_plan_change_kojiryo/',benefit:'https://www.docomo.ne.jp/campaign_event/hikari_norikae/',simulation:'https://docomohikari-koujiryo.ac.at.nttdocomo.co.jp/',phone:'https://www.docomo.ne.jp/internet/hikari/tell_service/',east:'https://flets.com/tenyou/',west:'https://flets-w.com/collabo/'};
+  const el=id=>document.getElementById(id),text=id=>el(id).value.trim();
+  const integrated=flow=>['転用','事業者変更'].includes(flow);
+  const base={show,openFlow,openService,serviceMatch,updateProcedureForm,guideContext,guideWarnings,renderReviewSummary,resetCustomerFields,buildSchedule,sourceMarkup,items};
+  const carrier=el('scOldCarrier'),carrierField=carrier.closest('.field'),originalOptions=carrier.innerHTML;
+  const carrierLabel=carrierField.querySelector('label')||carrierField.querySelector('.field-label');
+  const originalLabel=carrierLabel.textContent;const carrierHelp=carrierField.querySelector('.field-help');const originalHelp=carrierHelp?carrierHelp.textContent:'';
+  const origin=document.createComment('現在の回線会社入力の元位置');carrierField.before(origin);
+  const panel=document.createElement('section');panel.id='transferPanel';panel.className='form-section transfer-panel';panel.hidden=true;
+  panel.innerHTML='<h3 id="transferPanelTitle">現在の契約をまとめて確認</h3><p class="mini">ネット・電話・テレビ・CSを、この画面でまとめて確認できます。変更元を選ぶと、公式窓口と注意事項が表示されます。</p><div class="form-grid"><div id="transferCarrierSlot" class="full"></div><div class="field full"><label class="field-label" for="tfOldSpeed">現在の回線速度</label><select id="tfOldSpeed"><option value="">未確認</option><option>1ギガ</option><option>10ギガ</option><option>100メガ・200メガ等</option></select></div></div><div id="transferContact" class="transfer-contact" aria-live="polite"></div>';
+  el('flow').insertBefore(panel,el('flow').children[1]);
+  const cs=document.createElement('div');cs.id='tfCSBlock';cs.className='field full';cs.hidden=true;
+  cs.innerHTML='<label class="field-label" for="tfCS">CS・スカパー！等の有料放送</label><select id="tfCS"><option>未確認</option><option>継続希望</option><option>新規申し込み</option><option>利用なし</option></select><p class="field-help">テレビの受信サービスとは別契約です。希望チャンネル・契約商品・B-CAS/ACAS等の変更手続きと料金を確認します。</p>';
+  el('scTV').closest('.form-grid').appendChild(cs);
+  const store=document.createElement('section');store.id='storeCampaignFields';store.className='form-section';
+  store.innerHTML='<h3>店舗独自キャンペーン（任意）</h3><label class="field-label" for="scStoreCampaign">内容・条件・期限・受取方法</label><textarea id="scStoreCampaign" rows="4" maxlength="3000" placeholder="例：キャンペーン名／特典内容／対象条件／申込期限／受取方法"></textarea><p class="field-help">公式特典とは別の店舗入力です。適用条件・併用可否・期限を確認して記入してください。空欄なら案内には掲載しません。</p>';
+  el('scReviewSummary').before(store);
+  serviceNames.all='ネット・電話・テレビ・CS';
+  const link=(url,label)=>'<a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">'+esc(label)+'</a>';
+  function norm(s){return s.replace(/ソフトバンク/g,'SoftBank').replace(/BIGLOBE/gi,'ビッグローブ').replace(/\s/g,'').toLowerCase();}
+  function getContact(ctx){
+    const name=text('scOldCarrier');
+    if(ctx.route==='転用'){
+      if(name==='NTT東日本')return {name,url:urls.east,label:'NTT東日本の転用承諾番号取得',notes:['ご契約中のフレッツ光・ひかり電話・フレッツ・テレビと別契約のプロバイダーを確認します。フレッツ光を先に通常解約しないでください。']};
+      if(name==='NTT西日本')return {name,url:urls.west,label:'NTT西日本の転用承諾番号取得',notes:['ご契約中のフレッツ光・ひかり電話・フレッツ・テレビと別契約のプロバイダーを確認します。フレッツ光を先に通常解約しないでください。']};
+      return {name:'ご契約中のNTT東日本／NTT西日本',url:procedureSources['転用'][1],label:'転用の公式窓口案内',notes:['請求書・開通案内でNTT東／西と契約名義を確認し、契約先から転用承諾番号を取得します。']};
+    }
+    if(ctx.route==='事業者変更')return contacts.find(c=>norm(c.name)===norm(name))||{name:currentContractLabel(),url:'https://flets.com/collabo/list/',label:'NTT公式・光コラボ事業者一覧',notes:['請求書・契約通知で実際の回線契約先を確認してください。NTTの設備だからといって、NTTが承諾番号の発行元とは限りません。現在の光コラボ事業者に事業者変更承諾番号を依頼します。']};
+    return null;
+  }
+  function configure(){
+    const ctx=guideContext(),active=integrated(ctx.flow);
+    if(active){
+      const key=ctx.flow;
+      if(carrier.dataset.transferOptions!==key){
+        const previous=carrier.value;carrier.replaceChildren(new Option('変更元を選択してください',''));
+        const names=key==='転用'?['NTT東日本','NTT西日本']:contacts.map(c=>c.name).concat('その他');
+        names.forEach(name=>carrier.add(new Option(name,name)));
+        carrier.value=names.includes(previous)?previous:'';carrier.dataset.transferOptions=key;
+      }
+      carrierLabel.textContent=ctx.flow==='転用'?'フレッツ光の契約先':'変更元の光回線（大元の契約先）';
+      el('transferCarrierSlot').appendChild(carrierField);
+      if(el('flow').classList.contains('active'))el('flow').insertBefore(panel,el('flow').children[1]);
+      else el('scLegacyFields').appendChild(panel);
+      if(carrierHelp)carrierHelp.textContent=el('flow').classList.contains('active')?'一覧にない契約先は「その他」を選び、案内作成画面で会社名を補足してください。':originalHelp;
+      panel.hidden=false;el('transferPanelTitle').textContent=ctx.flow+'｜現在の契約・問い合わせ先';
+      const c=getContact(ctx),notes=[...c.notes];
+      if(c.tenGigNote&&text('tfOldSpeed')==='10ギガ')notes.push(c.tenGigNote);
+      el('transferContact').innerHTML='<b>お問い合わせ・承諾番号の取得先</b><p>'+link(c.url,c.label)+'</p>'+notes.map(n=>'<p>'+esc(n)+'</p>').join('')+'<p class="mini">ネット・電話・テレビ・CSの継続方法、メール、解約費用、返却対象を変更元で確認します。承諾番号は取得・発行日を含む15日間です。窓口の最新案内を優先してください。</p>';
+    }else{
+      if(carrier.dataset.transferOptions){
+        const previous=carrier.value;carrier.innerHTML=originalOptions;
+        carrier.value=[...carrier.options].some(o=>o.value===previous)?previous:'';
+        delete carrier.dataset.transferOptions;
+      }
+      carrierLabel.textContent=originalLabel;if(carrierHelp)carrierHelp.textContent=originalHelp;origin.after(carrierField);panel.hidden=true;
+    }
+    cs.hidden=!integrated(ctx.route);
+    if(integrated(ctx.route)&&ctx.speed.includes('10ギガ'))el('scWorkHelp').textContent=ctx.oldSpeed==='10ギガ'?'同速度・設備維持の切替は通常立会い工事不要です。オプション・設備変更等は工事・費用を確認します。':'1ギガ等から10ギガへ速度を変更する場合は工事が必要です。工事内容・立会い・工事料無料特典の条件と対象外費用を受付先で確認します。';
+    if(integrated(ctx.flow)&&el('flow').classList.contains('active')){
+      el('flowPill').textContent=ctx.flow+' / まとめて確認';el('flowTitle').textContent=ctx.flow+'｜ネット・電話・テレビ・CS';
+      el('scheduleBtn').style.display='inline-block';el('channelBtn').style.display='inline-block';
+    }
+  }
+  guideContext=function(){const ctx=base.guideContext();return {...ctx,oldSpeed:integrated(ctx.route)?text('tfOldSpeed'):'',cs:integrated(ctx.route)?text('tfCS'):''};};
+  show=function(id){base.show(id);configure();};
+  serviceMatch=function(x,service){return service==='all'?true:base.serviceMatch(x,service);};
+  openService=function(service){const result=base.openService(integrated(current)?'all':service);configure();return result;};
+  openFlow=function(cat){
+    if(['新規','他社奪還','転用','事業者変更','解約新規'].includes(cat)&&text('scFlow')!==cat){resetCustomerFields();el('scFlow').value=cat;updateProcedureForm();invalidateSchedule();}
+    base.openFlow(cat);if(integrated(cat))openService('all');
+  };
+  updateProcedureForm=function(){base.updateProcedureForm();configure();};
+  resetCustomerFields=function(){
+    origin.after(carrierField);base.resetCustomerFields();el('tfOldSpeed').value='';el('tfCS').selectedIndex=0;el('scStoreCampaign').value='';el('transferContact').innerHTML='';
+  };
+  function benefitAllowed(ctx){return !ctx.speed.startsWith('ahamo光')&&['他社奪還','事業者変更'].includes(ctx.flow)&&['新規','事業者変更','光回線再利用'].includes(ctx.route);}
+  guideWarnings=function(ctx){
+    const notes=base.guideWarnings(ctx);
+    if(integrated(ctx.route)){
+      const c=getContact(ctx);notes.push(['変更元の問い合わせ先',c.name+'：'+c.url]);
+      c.notes.forEach((n,i)=>notes.push([c.name+'の確認'+(i+1),n]));
+      if(c.tenGigNote&&ctx.oldSpeed==='10ギガ')notes.push(['変更元10ギガの受付確認',c.tenGigNote]);
+      if(ctx.cs)notes.push(['CS・スカパー！の希望：'+ctx.cs,'テレビの受信サービスと有料チャンネル契約は別です。現在の契約商品・B-CAS/ACAS・機器・料金と、継続・変更・解約の必要手続きを提供元に確認します。テレビを申し込まないことは、有料放送の解約完了を示しません。']);
+      if(ctx.speed.includes('10ギガ'))notes.push(['10ギガ同時変更の工事と特典','現在1ギガ等から10ギガへ速度を変更する場合は工事が必要です。同一住所での同時速度変更は、ドコモ光の料金プラン変更工事料無料特典の対象条件を満たせば通常工事料無料となります。移転同時、土日祝等の追加、オプション・特殊工事料は対象外です。タイプCは工事料相当のポイント還元の扱いを確認。工事内容は公式シミュレーションと確定見積で確認し、17,000ptの別特典も自動適用しません。ahamo光は同じ特典と扱わず別条件を確認します。']);
+    }
+    if(benefitAllowed(ctx))notes.push(['他社解約費用の乗り換え特典','条件を満たすドコモ光2年定期契約への乗り換えで、対象の解約金・撤去工事費・工事費や機器代残債等の実費相当をdポイント（期間・用途限定）最大100,000ptで還元します。満額や現金返金を保証するものではありません。申込み時の他社利用、開通期限、契約継続等を確認し、利用開始月の4か月後の月末までに不備のない証明書を提出します。条件を満たす場合、利用開始月の6か月後の月に進呈。期限・金額・条件は申込時点の公式で確認します。']);
+    else if(ctx.flow==='他社奪還')notes.push(['乗り換え特典の対象確認',ctx.route==='転用'?'転用は、他社解約費用相当のドコモ光乗り換え特典の対象外です。他の特典を自動で対象と扱わず個別確認します。':'正式な受付区分・申込先・特典条件が未確認です。乗り換え特典の対象として確定せず、公式条件を確認します。ahamo光は別条件です。']);
+    if(text('scStoreCampaign'))notes.push(['店舗独自キャンペーン','店舗入力の特典はドコモ公式特典とは別です。適用条件、併用可否、申込期限・受取方法を店舗で確認し、適用が確定したものと扱わないでください。']);
+    return notes;
+  };
+  renderReviewSummary=function(){
+    base.renderReviewSummary();const ctx=guideContext(),dl=el('scReviewSummary').querySelector('dl');if(!dl)return;
+    const rows=[];
+    if(integrated(ctx.route))rows.push(['変更元窓口',getContact(ctx).name],['現在の速度',ctx.oldSpeed||'未確認'],['CS・有料放送',ctx.cs||'未確認']);
+    if(text('scStoreCampaign'))rows.push(['店舗独自キャンペーン（入力内容）',text('scStoreCampaign')]);
+    rows.forEach(([k,v])=>{const row=document.createElement('div');row.className='review-row';row.innerHTML='<dt>'+esc(k)+'</dt><dd class="campaign-text">'+esc(v)+'</dd>';dl.appendChild(row);});
+  };
+  sourceMarkup=function(route){return base.sourceMarkup(route)+'<div class="guide-sources">追加確認：'+link(urls.free,'同時速度変更の工事料特典')+' ／ '+link(urls.simulation,'工事料金シミュレーション')+' ／ '+link(urls.benefit,'乗り換え特典・証明書条件')+'</div>';};
+  function step(date,title,note,visual){
+    const node=document.createElement('div');node.className='step-card';
+    node.innerHTML='<div class="step-visual"><div class="guide-step-symbol"></div><div class="lbl">'+esc(visual)+'</div></div><div class="step-content"><div class="step-heading"><span class="step-badge"></span><span class="step-date">'+esc(date)+'</span><span class="step-title">'+esc(title)+'</span></div><div class="step-note">'+note+'</div></div>';
+    return node;
+  }
+  function rebuildArrows(timeline){
+    timeline.querySelectorAll('.timeline-arrow').forEach(n=>n.remove());
+    [...timeline.querySelectorAll('.step-card')].forEach((node,i,arr)=>{
+      if(node.querySelector('.guide-step-symbol'))node.querySelector('.guide-step-symbol').textContent=i+1;node.querySelector('.step-badge').textContent=i+1;
+      if(i<arr.length-1){const arrow=document.createElement('div');arrow.className='timeline-arrow';arrow.setAttribute('aria-hidden','true');arrow.textContent='↓';node.after(arrow);}
+    });
+  }
+  buildSchedule=function(){
+    const result=base.buildSchedule();if(result!==true)return result;
+    const ctx=guideContext(),sheet=el('scheduleSheet'),timeline=sheet.querySelector('.timeline');
+    if(integrated(ctx.route)){
+      const c=getContact(ctx),card=[...timeline.querySelectorAll('.step-card')].find(n=>n.querySelector('.step-title').textContent.includes('承諾番号'));
+      if(card)card.querySelector('.step-note').insertAdjacentHTML('beforeend','<br><b>選択した変更元の公式窓口：</b>'+esc(c.name)+'：'+link(c.url,c.label)+'<br>'+c.notes.map(esc).join('<br>'));
+      timeline.appendChild(step('切替・設定後','電話・テレビ・CSの継続を確認','固定電話：'+esc(ctx.phone)+'／テレビ：'+esc(ctx.tv)+'／CS：'+esc(ctx.cs||'未確認')+'<br>電話の発着信、テレビの映像、有料放送の対象商品を確認します。変更・解約・返却が別手続きの場合は、各提供元の確定案内に従います。','まとめて確認'));
+    }
+    if(benefitAllowed(ctx)){
+      timeline.prepend(step('申込み前','他社解約費用の乗り換え特典を確認','対象条件を満たす場合のご案内です。ドコモ光2年定期契約・受付区分・申込み時の他社利用・開通期限・継続条件などを確認します。対象の実費相当を期間・用途限定dポイント最大100,000ptで還元。現金返金や満額進呈ではありません。','特典条件'));
+      timeline.appendChild(step('旧契約の終了・請求確認後','他社の解約費用証明書を準備','変更元に、契約者名・サービス名・解約月・対象費用の項目と金額が分かる請求書等を確認します。紙やWeb明細を保管し、公式の証明書条件を確認します。','費用の証明'));
+      timeline.appendChild(step('利用開始月の4か月後の月末まで','期限内に不備のない証明書を提出','下のQRから公式案内を開き、証明書アップロードフォームと条件を確認して提出します。不備がある場合は期限内に再提出が必要です。この案内の作成だけでは申請されません。','特典申請'));
+      timeline.appendChild(step('条件を満たす場合・利用開始月の6か月後','対象額のdポイント進呈を確認','審査・契約継続等の条件を満たす場合の進呈です。進呈額は対象の実費と上限によります。dポイント（期間・用途限定）の期限も確認してください。申込時点の公式条件を優先します。','ポイント確認'));
+    }
+    rebuildArrows(timeline);
+    if(ctx.flow==='他社奪還'||ctx.flow==='事業者変更'){
+      const section=document.createElement('section');section.className='benefit-qr';
+      section.innerHTML='<img src="'+qr+'" width="172" height="172" alt="ドコモ光乗り換え特典の公式ページを開くQRコード"><div><h3>ドコモ光 乗り換え特典</h3><p>'+link(urls.benefit,'公式の条件・証明書提出方法を確認')+'</p><p class="mini">'+(benefitAllowed(ctx)?'対象の場合、他社解約費用相当の期間・用途限定dポイントを最大100,000ptで還元。':'対象区分・条件を確認してください。転用は本特典の対象外。ahamo光は別条件です。')+'<br>確認日：2026年10月7日。キャンペーンは変更・終了する場合があります。</p><span class="qr-url">'+esc(urls.benefit)+'</span></div>';
+      sheet.querySelector('.guide-warning').before(section);
+    }
+    if(text('scStoreCampaign')){
+      const section=document.createElement('section');section.className='store-campaign-output';section.innerHTML='<h3>店舗独自キャンペーン（店舗入力）</h3><p class="campaign-text">'+esc(text('scStoreCampaign'))+'</p><p class="mini">ドコモ公式特典とは別です。適用条件・併用可否・期限・受取方法を店舗で確認してください。</p>';sheet.querySelector('.guide-warning').before(section);
+    }
+    return true;
+  };
+  items=function(category){
+    const list=base.items(category),ctx=guideContext();
+    if(integrated(category)&&ctx.flow===category){
+      const c=getContact(ctx);
+      list.unshift({level:'basic',cat:'変更元の確認',q:'選択した変更元の問い合わせ先と注意事項は？',keys:['問い合わせ','変更元','承諾番号'],a:'現在の契約先：'+esc(c.name)+'<br>'+link(c.url,c.label),warn:c.notes.map(esc).join('<br>'),source:link(c.url,'選択した会社の公式窓口'),updated:'2026-10-07',services:['all','net','phone','tv','cs']});
+    }
+    return list;
+  };
+  function refresh(){invalidateSchedule();updateProcedureForm();if(integrated(current)&&el('flow').classList.contains('active')){el('answer').className='answer';renderCurrent();}}
+  carrier.addEventListener('change',()=>{el('tfOldSpeed').value='';refresh();});
+  el('tfOldSpeed').addEventListener('change',refresh);
+  function qa(cat,q,a,warn,source){return {level:'basic',cat,q,keys:[cat,'10ギガ','工事','キャンペーン',q],a,warn,source,updated:'2026-10-07',services:['all','net','phone','tv','cs']};}
+  ['転用','事業者変更'].forEach(flow=>{
+    const url=procedureSources[flow][1];
+    const rows=[
+      qa('手続き',flow+'の進め方と注意事項は？','現在の契約先・電話・テレビ・CS・メールを確認し、'+(flow==='転用'?'NTT東日本／西日本から転用承諾番号':'現在の光コラボ事業者から事業者変更承諾番号')+'を取得。期限内に申込み、必要な書類・機器を受け取り、切替・工事・接続と各サービスを確認します。','通常解約を先に行わないでください。番号は取得・発行日を含む15日間。ネット、電話、テレビ、CSの変更・契約先は同一とは限りません。',link(url,'ドコモ公式：'+flow)),
+      qa('10ギガの工事',flow+'と同時に1ギガから10ギガへ変えると、工事は必要？','速度を変えず同じ設備を使う通常の'+flow+'と異なり、1ギガ等から10ギガへの速度変更では工事が必要です。提供エリア、設備・ONU・10ギガ対応ルーター、立会いと工事日を確認します。','「切替だから工事不要」とは案内しません。すでに10ギガの同速度切替でも、設備・オプション変更等は個別確認。電話番号の継続可否も受付先へ確認し、先に廃止しないでください。',link(url,'公式の工事条件')+' ／ '+link(urls.phone,'10ギガの光電話の条件')),
+      qa('10ギガの工事費',flow+'と同時に10ギガへ変える工事費はいくら？無料特典はある？','あります。公式の「料金プラン変更工事料無料特典」は、転用・事業者変更と同時に1ギガから10ギガへ速度変更する場合も対象です。同一住所・実施期間中の利用開始など条件を満たせば、通常工事料が無料となります。','移転同時は対象外。土日祝・追加工事・電話やテレビ等のオプション工事料は別です。タイプCは相当額のポイント還元。特典なしの工事料は工事内容によるため公式シミュレーションと確定見積で確認。契約事務手数料4,950円（税込）も別です。',link(urls.free,'特典②の適用条件')+' ／ '+link(urls.simulation,'工事料金シミュレーション')),
+      qa('特典の違い',flow+'と10ギガ同時変更で、17,000ptや乗り換え特典も付く？','工事料無料の「特典②」と17,000ptの「特典①」は条件が別です。特典①は現在ドコモ光1ギガを契約中のお客様のプラン変更等が条件のため、'+flow+'で自動的に17,000ptが付くとは案内しません。'+(flow==='転用'?'他社解約費用相当の乗り換え特典は転用が対象外です。':'他社解約費用相当の乗り換え特典は、事業者変更で条件を満たす2年定期契約なら対象になり得ます。対象実費相当を最大100,000pt、証明提出等が必要です。'),'特典の併用、申込窓口・時期・契約条件を別々に確認します。ポイントの満額・進呈を保証しません。ahamo光は別条件です。',link(urls.free,'工事料と17,000ptの条件')+' ／ '+link(urls.benefit,'乗り換え特典の条件')),
+      qa('サービスをまとめて確認',flow+'で電話・テレビ・CSは全部そのまま引き継げる？','一括で確認できますが、全サービスが自動で同じ条件になるとは限りません。電話の正式なサービス名と番号継続、テレビの受信方法・契約先、CSや有料BSの契約商品・機器を確認し、各提供元に必要な変更を依頼します。','ネットの切替やテレビの申込みは、別契約のCS等の解約完了を示しません。電話・テレビ・メールを失わないよう、通常解約や機器返却を先にしないでください。',link(url,'ドコモ公式：引継ぎ条件'))
+    ];
+    const questions=new Set(rows.map(r=>r.q));specific[flow]=[...rows,...specific[flow].filter(q=>!questions.has(q.q))];
+  });
+  { const existing=specific['転用'].find(q=>q.q==='転用とは何ですか？'); if(existing) existing.a='NTT東日本／西日本のフレッツ光からドコモ光へ、設備を引き継いで契約先を切り替える手続きです。転用承諾番号と現在の契約・オプションを確認します。速度や設備・オプション変更があれば工事が必要です。'; }
+  { const existing=specific['事業者変更'].find(q=>q.q==='事業者変更で必要なものは？'); if(existing) existing.a='現在の光コラボ事業者から取得する事業者変更承諾番号、契約名義・住所等を確認します。番号の有効期間は発行日を含め15日間、契約事務手数料は4,950円（税込）。電話・テレビ・CS・メール等と、必要な情報開示同意も確認します。'; }
+  specific['他社奪還'].unshift(qa('乗り換え特典','他社の解約金はのりかえ特典でポイント還元できる？','対象条件を満たすドコモ光2年定期契約への新規・事業者変更・光回線再利用の乗り換えでは、対象の解約金・撤去工事費・工事費／機器代残債等の実費相当を、期間・用途限定dポイント最大100,000ptで還元する特典があります。','転用は対象外。旧ドコモ光の解約新規に自動適用しません。満額・現金還元ではありません。利用開始月の4か月後の月末までに不備のない証明書を提出するなど条件があり、満たす場合6か月後の月に進呈。申込時点の公式で確認します。',link(urls.benefit,'ドコモ光乗り換え特典・提出方法')));
+  configure();renderReviewSummary();
+})();
+
+// 4手続きの主な実務項目を点検して追加。全ケースの完全網羅を保証するものではない。
+(function addAuditedFAQ(){
+  const rows={
+    '解約新規':[
+      ['10ギガの工事が延期・取消しになったら、旧1ギガはどうする？','申込先へ早めに連絡し、新しい工事日・取消し可否・費用を確認します。旧1ギガは先に解約しません。A/Bで電話をのせかえる場合は移行完了・10ギガ側での発着信、Cで番号を引き継ぐ場合はC側でまとまって利用できることを確認してから旧契約を整理します。','予定日が過ぎただけでは開通・電話移行完了ではありません。申込取消しや工事延期の期限は確定案内で確認します。','https://www.docomo.ne.jp/binary/pdf/internet/hikari/notice/docomohikari_notice.pdf'],
+      ['旧1ギガから10ギガ別契約へ移ると、契約名義・ペア回線・セット割はどうなる？','旧回線・新回線・プロバイダーの契約名義、ドコモ携帯電話とのペア回線、家族の対象料金プランを確認します。新契約への紐付けと、旧回線の解約・割引終了時期を店舗で調整します。旧回線のペア設定が自動で新回線へ移ったとは扱いません。','新旧の月額が重なる期間があります。割引額・適用時期・名義変更の可否は契約ごとに確認し、2回線分の割引を保証しません。','https://www.docomo.ne.jp/binary/pdf/internet/hikari/notice/docomohikari_notice.pdf']
+    ],
+    '他社奪還':[
+      ['工事日の延期・取消しになったら、他社回線はいつ解約する？','変更先と旧契約先へ連絡し、正式な受付区分・工事日・旧契約終了方法を調整します。別回線を新設する場合は併設可否を確認し、必要なネット・電話・テレビが新しい側で利用できることを確認してから旧回線の解約日を決めます。転用・事業者変更では通常解約を先にしません。','設備によって廃止先行が必要な場合は停止期間と番号移行を事前に調整します。取消しの期限・工事費の発生は申込先の確定案内を確認してください。','https://www.docomo.ne.jp/internet/hikari/notice/'],
+      ['申込み後に初期契約解除すると、旧回線やプロバイダーも自動で戻る？','初期契約解除と旧回線・プロバイダーの契約は別に確認します。解除により旧契約が自動復元したり、新旧すべての契約が自動解約になったりするとは限りません。期限・対象・窓口をドコモの契約書面で確認し、旧契約先にも通信・電話番号・テレビの状態を確認します。','初期契約解除でも事務手数料、利用分、実施済み工事料等が請求される場合があります。特典や旧契約の違約金も個別確認してください。','https://www.docomo.ne.jp/internet/hikari/procedure/initial_cancellation/']
+    ],
+    '転用':[
+      ['転用の契約事務手数料と請求時期は？','契約事務手数料は4,950円（税込）で、ドコモ光の利用開始月の翌月に利用料金と合わせて請求される公式案内です。同時速度変更や電話・テレビ等の工事費は別途確認します。','工事料無料特典があっても、契約事務手数料まで無料とは限りません。金額・特典・請求は申込時点の公式と確定案内で再確認します。','https://www.docomo.ne.jp/internet/hikari/tenyou/'],
+      ['フレッツ光のひかり電話・フレッツ・テレビは転用後どうなる？','現在NTT東西で契約しているひかり電話とフレッツ・テレビは、原則ドコモ光電話・テレビオプションへ引き継ぐ案内です。ただし速度変更、設備、契約している電話プラン・オプションで条件が異なります。CS・有料BSの契約は別に確認します。','10ギガの電話は現行のドコモ光電話の提供エリア・受付条件を確認します。番号を残すため、旧電話を自己判断で廃止しないでください。タイプCは提携CATVの別サービスです。','https://www.docomo.ne.jp/internet/hikari/tell_service/'],
+      ['転用でプロバイダーを変えると、ネットが使えない期間はある？','旧プロバイダーのIPoE廃止、新プロバイダーの開通と対応ルーターの設定時期を確認します。変更内容によってIPv4・IPv6通信の一部または全部が一時利用できない場合があります。工事・切替日だけで、全通信がすぐ利用できるとは限りません。','旧プロバイダー解約のタイミング、メール残し、ID・機器の発送や設定方法も両社に確認します。通信断の有無・期間は確約せず、必要なら代替通信を用意します。','https://www.docomo.ne.jp/internet/hikari/tenyou/']
+    ],
+    '事業者変更':[
+      ['契約名義と申込者が違うとき、何を準備する？','変更元の回線・電話等の契約名義、住所と、ドコモ光の申込者を確認します。名義相違、代理人、未成年の申込みは、本人確認書類・同意書・委任状や名義変更の要否を受付窓口で確認してください。','名義が違うだけで事業者変更や電話番号継続ができるとは断定しません。承諾番号・電話名義と申込内容を一致させる必要がある場合があります。','https://www.docomo.ne.jp/internet/hikari/collabo_change/'],
+      ['事業者変更の契約事務手数料はいくら？いつ請求される？','契約事務手数料は4,950円（税込）で、切替月の翌月に利用料金と合わせて請求される公式案内です。変更元の解約金・工事費残債・機器代、速度変更やオプションの工事費は別に確認します。','通常の事業者変更で工事が不要な場合でも手数料は別です。キャンペーン適用と対象外費用は申込時点で確認します。','https://www.docomo.ne.jp/internet/hikari/collabo_change/'],
+      ['切替工事が延期・キャンセルになったら、旧回線と承諾番号はどうする？','変更先へ延期理由と新日程を確認し、旧回線は先に通常解約しません。承諾番号の有効期限と再取得の要否を現在の契約先・申込先に確認して手続きを調整します。別契約の電話・テレビ等がある場合は、それぞれの停止・工事予定も見直します。','承諾番号は取得・発行日を含め15日間です。申込済み案件の再取得・取消しは窓口の指示を確認します。NTT東西のオプション確認電話に出られず切替が延期される場合もあります。','https://www.docomo.ne.jp/internet/hikari/collabo_change/']
+    ]
+  };
+  Object.entries(rows).forEach(([flow,entries])=>entries.forEach(([q,a,warn,url])=>{
+    if(specific[flow].some(item=>item.q===q))return;
+    specific[flow].push({level:'basic',cat:'よくある質問・追加確認',q,a,warn,keys:[flow,q,'よくある質問','延期','取消し','名義','請求'],source:'<a href="'+url+'" target="_blank" rel="noopener noreferrer">ドコモ公式・提供条件／手続き案内</a>',updated:'2026-10-07',services:['net','phone','tv','cs','all']});
+  }));
+})();
+common.push({level:'basic',cat:'初期契約解除',q:'初期契約解除の8日は、申込日から？プロバイダーも自動で解約になる？',keys:['初期契約解除','8日','受領','プロバイダー','キャンセル'],a:'ドコモ光／ahamo光の新規契約・プラン変更の対象注文では、郵送される「ドコモ光契約申込書」を受領した日を含む8日以内に、書面で初期契約解除を行える公式案内です。申込日からと決めつけず、対象注文と契約書面の受取日を確認します。',warn:'ドコモ光の解除だけでプロバイダーが自動解約にならず、料金や違約金が続く場合があります。実施済み工事料・事務手数料・利用分等の請求もあります。以前の事業者へ自動復帰はしません。解除と復帰・別契約の手続きはそれぞれ窓口で確認してください。',source:'<a href="https://www.docomo.ne.jp/internet/hikari/procedure/initial_cancellation/" target="_blank" rel="noopener noreferrer">ドコモ公式・初期契約解除</a>',updated:'2026-10-07',services:['net','phone','tv','cs','all']});
+</script>
+</body></html>
