@@ -36,6 +36,14 @@ body.guide-building header{padding:12px 14px 14px}body.guide-building header .ti
 @media(max-width:360px){.wizard-body{padding:18px 12px 6px}.wizard-footer{padding:14px 12px}.wizard-progress{padding:12px 5px;gap:2px}.wizard-tab b{font-size:10px}.wizard-panel h2{font-size:21px}.review-row{gap:10px}.review-row dt{flex-basis:75px}}
 @media print{#scheduleSheet{padding:0!important}#scheduleSheet .step-card{border-left:2px solid #cc0033;padding:3mm;background:#fff}#scheduleSheet .step-note{font-size:9pt}#scheduleSheet .step-title{font-size:11pt!important}#scheduleSheet .schedule-meta{font-size:9pt}#scheduleSheet h2{font-size:17pt}.builder-lead{display:none!important}}
 </style>
+<style id="one-to-ten-giga-style">
+#upgradePanelHome>.upgrade-hearing{border:1px solid #e5e5ec;border-radius:16px;background:#fff;padding:20px 18px;margin-bottom:20px}.upgrade-hearing h3{font-size:21px;line-height:1.5;margin:0 0 8px}.upgrade-hearing>.field-help{margin-bottom:20px}.upgrade-hearing .field{min-width:0;margin-top:16px;margin-bottom:16px}.upgrade-hearing .field label{font-size:13px;font-weight:800;line-height:1.55;margin-bottom:8px}.upgrade-hearing .field input[type=text],.upgrade-hearing .field input:not([type]),.upgrade-hearing .field select{font-size:16px;min-height:48px;min-width:0;max-width:100%;width:100%;padding:12px;border-radius:12px;background:white;border:1px solid #d8d8e2}.upgrade-hearing .form-grid{gap:12px}.hearing-item{border-top:1px solid #e8e8ef;padding-top:18px;margin-top:20px}.hearing-item h4{font-size:15px;line-height:1.7;margin:0 0 14px;font-weight:800}.hearing-item h4 span{display:inline-flex;width:23px;height:23px;align-items:center;justify-content:center;border-radius:50%;background:#cc0033;color:white;font-size:12px;margin-right:5px}.upgrade-check{display:flex;gap:10px;align-items:flex-start;border-top:1px solid #eee;padding-top:18px;margin-top:20px;font-size:12px;line-height:1.7;color:#555865}.upgrade-check input{width:20px;min-width:20px;height:20px;margin-top:2px;accent-color:#cc0033}.upgrade-hearing input:focus,.upgrade-hearing select:focus{outline:2px solid #ecc0cc;border-color:#cc0033}#upgradeHearingSlot:not(:empty){margin-top:18px;padding-top:20px;border-top:1px solid #e8e8ef}#upgradeHearingSlot .upgrade-hearing{margin-bottom:16px}#upgradeHearingPanel [aria-invalid=true]{outline:2px solid #f5b6c5;border-color:#b00020}#upPhoneDates [hidden]{display:none!important}
+@media print{#upgradeHearingPanel,#upgradePanelHome{display:none!important}}
+
+#scForm.upgrade-mode #upgradeHearingPanel>.panel-kicker,#scForm.upgrade-mode #upgradeHearingPanel>h3,#scForm.upgrade-mode #upgradeHearingPanel>p.field-help{display:none}
+#scForm.upgrade-mode #upgradeHearingSlot{margin-top:8px;padding-top:8px;border-top:0}
+@media print{#scheduleSheet .guide-warning{font-size:9.5pt;line-height:1.55}#scheduleSheet .guide-warning li{margin:6px 0}#scheduleSheet .guide-warning h3{margin-bottom:6px}#scheduleSheet .guide-sources{font-size:7.5pt;line-height:1.5;margin-top:2mm}#scheduleSheet .placeholder{font-size:7.5pt;line-height:1.5;margin-top:2mm;padding-top:2mm}}
+</style>
 </head>
 <body><header><div class="head"><a href="./othercarrier_docomo_compare_v58_independent_routes.html" style="display:inline-flex;align-items:center;min-height:40px;margin-bottom:12px;padding:8px 14px;border:1px solid #ffffff66;border-radius:999px;background:#ffffff18;color:#fff;text-decoration:none;font-size:13px;font-weight:800">← 店頭メニューへ戻る</a><div class="brand">DOCOMO HIKARI</div><div class="title">ドコモ光 STAFF SUPPORT</div><div class="sub">現場スタッフ向け 接客・受付サポートツール</div></div></header>
 <main>
@@ -47,7 +55,7 @@ body.guide-building header{padding:12px 14px 14px}body.guide-building header .ti
 <button class="card" onclick="openFlow('他社奪還')"><div class="icon">🔄</div><h3>他社奪還</h3><p>他社固定回線からドコモ光をご提案</p></button>
 <button class="card" onclick="openFlow('転用')"><div class="icon">↪️</div><h3>転用</h3><p>フレッツ光からドコモ光へ</p></button>
 <button class="card" onclick="openFlow('事業者変更')"><div class="icon">🔁</div><h3>事業者変更</h3><p>他社光コラボからドコモ光へ</p></button>
-<button class="card" onclick="openFlow('解約新規')"><div class="icon">🧾</div><h3>解約新規</h3><p>既存回線を解約し、新規でお申込み</p></button>
+<button class="card" onclick="openFlow('解約新規')"><div class="icon">🧾</div><h3>解約新規</h3><p>1ギガ→10ギガ。A/BとCの流れを分けて案内</p></button>
 <button class="card ai" onclick="openAI()"><div class="icon">🤖</div><h3>ドコモ光 AIアシスタント</h3><p>複雑なケースや分からない内容を自然な文章で質問。将来AI APIと接続します。</p></button>
 </div></section>
 
@@ -61,6 +69,21 @@ body.guide-building header{padding:12px 14px 14px}body.guide-building header .ti
 </div></section>
 
 <section id="flow" class="view"><div class="topbar"><button class="back" onclick="backToServices()">← サービス選択</button><div><div class="pill" id="flowPill"></div><div class="view-title" id="flowTitle"></div></div></div>
+<div id="upgradePanelHome">
+  <div id="upgradeHearingPanel" class="upgrade-hearing" hidden>
+    <div class="panel-kicker">1ギガ → 10ギガ</div><h3>解約新規の事前ヒアリング</h3>
+    <p class="field-help">10ギガを先に開通し、電話などの移行を確認してから旧1ギガを解約する案内です。</p>
+    <div class="form-grid"><div class="field"><label for="upType">新しく申し込む10ギガのタイプ</label><select id="upType"><option value="">選択してください</option><option value="A">タイプA</option><option value="B">タイプB</option><option value="C">タイプC（提携CATV）</option></select></div><div class="field"><label for="upOldType">現在の1ギガのタイプ（解約する契約）</label><select id="upOldType"><option value="A">タイプA</option><option value="B">タイプB</option><option value="">未確認</option></select></div></div><p id="upTypeHelp" class="route-callout"></p>
+    <div id="upCATVDetails" class="field" hidden><label for="upCATVCompany">申し込み先のタイプC会社 <span class="optional-tag">未定なら空欄</span></label><input id="upCATVCompany" autocomplete="off" placeholder="例：申し込み先のケーブルテレビ会社"><p class="field-help">電話・テレビはこの会社のサービスを確認します。ドコモ光電話・ドコモ光テレビオプションは申し込めません。</p></div>
+    <div class="hearing-item"><h4><span>1</span> プロバイダーのメールアドレスを利用していますか？</h4><div class="field"><label for="upEmailUse">メールアドレスの利用</label><select id="upEmailUse"><option>未確認</option><option>利用あり</option><option>利用なし</option></select></div><div id="upMailDetails" hidden><div class="field"><label for="upOldProvider">現在のプロバイダー名 <span class="optional-tag">任意</span></label><input id="upOldProvider" autocomplete="off" placeholder="例：OCN／@nifty／BIGLOBE"></div><div class="field"><label for="upMailKeep">メールアドレスを残せるか確認しましたか？</label><select id="upMailKeep"><option>未確認</option><option>残せることを確認済み</option><option>残せないことを確認済み</option><option>残す必要なし</option></select><p class="field-help">1ギガ解約前に、メールだけ残す契約・費用・必要な手続きをプロバイダーへ確認します。同じ会社でも別契約なら自動継続とは限りません。</p></div></div></div>
+    <div class="hearing-item"><h4><span>2</span> 光電話を利用していますか？</h4><div class="field"><label for="upPhoneUse">現在の電話</label><select id="upPhoneUse"><option>未確認</option><option>光電話を利用中</option><option>光電話利用なし</option><option>その他の電話（CATV等）</option></select><p class="field-help">利用中なら、次の「新しい契約」で番号を残すか確認します。電話会社・名義・番号の引継ぎ可否も確認してください。</p></div></div>
+    <div class="hearing-item"><h4><span>3</span> テレビはアンテナですか？ 光テレビオプションですか？</h4><div class="field"><label for="upTVUse">現在のテレビの視聴方法</label><select id="upTVUse"><option>未確認</option><option>アンテナ</option><option>ドコモ光テレビオプション</option><option>その他（CATV・ひかりTV等）</option><option>テレビ利用なし</option></select><p id="upTVHearingHelp" class="field-help"></p></div></div>
+    <details class="form-details"><summary>1ギガの解約金を確認する</summary><div class="form-grid"><div class="field"><label for="upHome">現在の住居区分</label><select id="upHome"><option>未確認</option><option>戸建</option><option>マンション</option></select></div><div class="field"><label for="upRule">現在の契約に適用されるルール</label><select id="upRule"><option value="">未確認</option><option value="new">2022年7月1日以降のルール</option><option value="old">2022年6月30日以前のルール</option><option value="none">定期契約なし</option></select></div><div class="field"><label for="upRenewal">解約予定月の更新期間</label><select id="upRenewal"><option>未確認</option><option>更新期間内</option><option>更新期間外</option></select></div></div><p id="upFeeResult" class="route-callout"></p><p class="field-help">実際の契約プラン・更新期間をMy docomo／受付先で確認します。解約月は日割りなし。工事料残債・機器代・オプション等は別です。</p></details>
+    <label class="upgrade-check"><input id="upMethodConfirmed" type="checkbox"><span id="upMethodLabel">旧1ギガを残して新回線を先に開通できること・今回の手続き方法を受付先で確認済み</span></label>
+    <div id="upHearingStatus" class="route-callout" aria-live="polite"></div>
+  </div>
+</div>
+
 <div class="search"><input id="flowSearch" placeholder="この項目について質問を検索"><button onclick="searchFlow()">検索</button></div>
 <div id="levelTabs" style="display:flex;gap:8px;margin:14px 0;flex-wrap:wrap"><button class="back" onclick="setLevel('basic')">基本編</button><button class="back" onclick="setLevel('advanced')">応用編</button><button class="back" onclick="setLevel('all')">全質問</button><button id="channelBtn" class="back" onclick="openChannelFinder()" style="display:none">📺 チャンネル逆引き</button><button id="scheduleBtn" class="back" onclick="openScheduleBuilder()" style="display:none">開通・切替案内を作成</button><button class="back" onclick="openPrecautions()">手続き別の注意事項</button></div>
 <div class="section-title" id="questionHeading">よくある質問</div><div id="questions" class="q-list"></div><div id="answer" class="answer"></div></section>
@@ -98,6 +121,7 @@ body.guide-building header{padding:12px 14px 14px}body.guide-building header .ti
         <div class="flow-choice">
           <div class="field"><label for="scFlow">お手続き</label><select id="scFlow"><option>新規</option><option>他社奪還</option><option>転用</option><option>事業者変更</option><option>解約新規</option></select></div>
         </div>
+        <div id="upgradeHearingSlot"></div>
         <div id="scLegacyFields" class="form-section" hidden>
           <div class="field"><label for="scOldCarrier">現在お使いの回線・会社</label><select id="scOldCarrier" aria-describedby="scCarrierHelp"><option value="">未確認・選択してください</option><optgroup label="よく使う回線"><option value="eo光">eo光</option><option value="J:COM">J:COM（ジェイコム）</option><option value="NURO 光">NURO 光（ニューロ光）</option><option>auひかり</option><option>SoftBank 光</option><option>ビッグローブ光</option><option>So-net 光</option><option>楽天ひかり</option></optgroup><optgroup label="その他の主な回線"><option>@nifty光</option><option>GMOとくとくBB光</option><option>enひかり</option><option>コミュファ光</option><option>メガ・エッグ</option><option>ピカラ光</option><option>BBIQ</option><option>フレッツ光（NTT東日本）</option><option>フレッツ光（NTT西日本）</option><option>地域のケーブルテレビ回線</option></optgroup><option>その他</option></select><p id="scCarrierHelp" class="field-help">一覧にない回線は「その他」を選び、下の補足欄に入力してください。</p></div>
           <details id="scCarrierDetails" class="form-details"><summary>プラン・プロバイダ・回線名を補足する <span class="optional-tag">任意</span></summary><div class="field"><label for="scOldProvider">ご契約の補足</label><input id="scOldProvider" autocomplete="off" placeholder="例：契約プラン／その他の回線名"></div></details>
@@ -118,6 +142,13 @@ body.guide-building header{padding:12px 14px 14px}body.guide-building header .ti
         <div class="field"><label for="scApply">申込日・申込予定日</label><input id="scApply" type="date"></div>
         <div class="form-section"><h3 id="scWorkHeading">開通工事</h3><div class="form-grid"><div class="field"><label for="scWork" id="scWorkLabel">工事日</label><input id="scWork" type="date"></div><div class="field"><label for="scWorkTime">時間帯 <span class="optional-tag">任意</span></label><input id="scWorkTime" placeholder="例：午前／9:00〜12:00"></div><div class="field"><label for="scAttend">立会い</label><select id="scAttend"><option>未定・要確認</option><option>必要</option><option>不要</option></select></div></div><p id="scWorkHelp" class="field-help"></p></div>
         <div id="scCancelFields" class="form-section" hidden><h3>旧回線を解約する順序</h3><div class="field"><label for="scCancelOrder">解約・開通の順序</label><select id="scCancelOrder"><option>未定・要確認</option><option value="新回線の利用確認後に旧回線を解約">新回線を確認してから解約</option><option value="旧回線の廃止後に新回線を開通（停止期間あり）">旧回線を解約してから開通</option></select></div><div class="field"><label for="scCancel">旧回線の解約希望日</label><input id="scCancel" type="date"><p class="field-help">希望日であり、確定日・解約完了ではありません。</p></div><p class="compact-warning">新旧回線を併設できるとは限りません。解約が先なら、通信停止期間・電話番号・テレビを事前に確認してください。</p></div>
+<div id="upgradeDates" class="form-section" hidden>
+  <h3 id="upDatesHeading">電話移行と1ギガ解約の日程</h3>
+  <div id="upPhoneDates"><div class="form-grid"><div id="upVisitWrap" class="field"><label for="upVisit">ドコモショップ来店・のせかえ手続き日</label><input id="upVisit" type="date"></div><div class="field"><label id="upPortLabel" for="upPort">電話移行の完了予定日</label><input id="upPort" type="date"></div></div><div class="field"><label id="upPortStatusLabel" for="upPortStatus">電話移行の完了確認</label><select id="upPortStatus"><option value="pending">未完了・予定</option><option value="confirmed">完了確認済み（移行先で通話確認）</option></select></div><p id="upPhoneTiming" class="field-help"></p></div>
+  <div class="field"><label for="upCancelDate">旧ドコモ光1ギガの解約希望日</label><input id="upCancelDate" type="date"><p id="upCancelHelp" class="field-help"></p></div>
+  <p class="compact-warning">旧1ギガを先に解約しないでください。新回線の通信、必要な電話・テレビ、プロバイダーメールを確認してから解約・機器返却を行います。</p>
+</div>
+
         <details class="form-details"><summary>書類の到着・訪問サポートの日程 <span class="optional-tag">任意</span></summary><div class="field"><label for="scDocs">書類・機器の到着予定</label><input id="scDocs" placeholder="例：10月10日ごろ"></div><div class="form-grid"><div class="field"><label for="scSupportBook">訪問サポート予約日</label><input id="scSupportBook" type="date"></div><div class="field"><label for="scSupport">訪問サポート実施日</label><input id="scSupport" type="date"></div></div><p class="field-help">利用する場合のみ入力。提供条件・費用を確認し、実施日は開通・切替後に調整します。</p></details>
         <details id="scLegacyDetails" class="form-details" hidden><summary>旧契約の費用・オプション・返却メモ <span class="optional-tag">任意</span></summary><div class="field"><label for="scOldOptions">残す／終了する有料オプション</label><input id="scOldOptions" placeholder="例：メール、セキュリティ、動画"></div><div class="field"><label for="scFees">解約金・工事料残債・撤去費等</label><input id="scFees" placeholder="例：旧契約先へ確認中"></div><div class="field"><label for="scReturn">旧レンタル機器の返却期限</label><input id="scReturn" type="date"></div></details>
       </section>
@@ -328,7 +359,7 @@ const procedureDescriptions = {
   '他社奪還': '「他社奪還」は提案上の区分です。現在の回線に応じて、新規・転用・事業者変更・光回線再利用を選びます。受付区分が未確認なら準備用の案内にします。',
   '転用': 'フレッツ光からの切替です。NTT東西から転用承諾番号を取得します。原則設備を引き継ぎますが、速度変更やオプション等で工事・費用が発生する場合があります。',
   '事業者変更': '他社光コラボからの切替です。現在の事業者から事業者変更承諾番号を取得します。変更元の回線契約は切替工事完了をもって終了しますが、別契約のオプション等は別途確認が必要です。',
-  '解約新規': '既存回線の廃止と新しい回線の新規申込みを別々に調整するケースです。移転・速度変更・転用・事業者変更等で扱える場合もあるため、解約新規が必要か確認してから進めます。',
+  '解約新規': 'ドコモ光1ギガから10ギガへの別契約の新設です。A/Bは必要な電話のせかえを含む工程、Cは提携CATVへの切替工程を案内し、電話・テレビ・メールの確認後に旧1ギガを解約します。通常の速度プラン変更とは別です。',
   '光回線再利用': '対象のシェアドアクセス設備を利用する切替です。対象事業者・戸建プラン・設備の適否を確認し、光回線再利用承諾番号を取得します。工事は必要です。',
   '要確認': '受付区分が未確認です。現在の契約・設備・引継ぎサービスを確認し、正式な手続きと日程を決めてから案内を確定してください。'
 };
@@ -611,4 +642,294 @@ function searchChannels(){let s=document.getElementById('channelSearch').value.t
 function showChannel(x){const a=document.getElementById('channelAnswer');let plan=x.basic?'基本プラン対象':'基本プラン対象外／個別商品を確認';a.innerHTML=`<h3>${x.name}</h3><div class="box conclusion"><b>📺 視聴方法の目安</b><br>${x.channel}｜${x.genre}<br><b>商品料金：</b>${x.single}<br><b>基本プラン：</b>${plan}</div><div class="box staff"><b>💰 光回線テレビでの料金構成</b><br>ドコモ光／ahamo光料金 ＋ ドコモ光テレビオプション990円／月 ＋ スカパー！基本料429円／月 ＋ 選択商品料金</div><div class="box warning"><b>⚠️ 商品選択の注意</b><br>${x.note}<br><br>チャンネル編成・料金・セレクト対象は変更される場合があります。申込時はスカパー！公式の最新商品一覧で最終確認してください。</div><div class="placeholder"><b>根拠：</b>ドコモ公式「スカパー！」／スカパー！公式「料金・商品」「チャンネル一覧」<br><b>情報確認日：</b>2026-10-05</div>`;a.className='answer show';a.scrollIntoView({behavior:'smooth',block:'start'})}
 function esc(s){return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
 document.getElementById('aiInput').addEventListener('keydown',e=>{if(e.key==='Enter')askAI()});document.getElementById('globalSearch').addEventListener('keydown',e=>{if(e.key==='Enter')searchAll()});
+
+// 解約新規専用。通常の新規・他社奪還・転用・事業者変更は既存処理を使用する。
+(function installOneToTenGigaGuide(){
+  const base={openService,openScheduleBuilder,updateProcedureForm,updateScheduleProviders,guideContext,guideWarnings,renderReviewSummary,buildSchedule,resetCustomerFields,openPrecautions,currentContractLabel,items};
+  const el=id=>document.getElementById(id);
+  const read=id=>el(id).value.trim();
+  const isUpgrade=()=>read('scFlow')==='解約新規';
+  const phoneFee=[2200,1100,2200].reduce((sum,cost)=>sum+cost,0).toLocaleString('ja-JP');
+  const feeRules='ドコモ光1ギガの解約金（税込）：2022年7月1日以降のルールは戸建5,500円・マンション4,180円、2022年6月30日以前のルールは戸建14,300円・マンション8,800円です。定期契約なし、または契約満了月・翌月・翌々月は解約金がかかりません。適用中の契約ルールと更新期間を受付先で確認してください。解約月は日割りなし、工事料残債・機器代・オプション等は別です。';
+  const ABFlow='<ol><li>ドコモ光10ギガの申し込み（ネット・必要なテレビ）</li><li>プロバイダーから契約書・必要な案内が届く</li><li>必要な場合、プロバイダーへ訪問サポートを依頼</li><li>ドコモ光10ギガの工事・ネットとテレビの利用確認</li><li>工事完了から約1週間後にショップで光電話のせかえ手続き（目安）</li><li>手続きから約2週間を目安に、1ギガ→10ギガのせかえ完了・発着信を確認</li><li>確認後にドコモ光1ギガを解約</li></ol>';
+  const CFlow='<ol><li>ドコモ光10ギガタイプCを申し込む</li><li>タイプCの会社から契約書・必要な案内が届く</li><li>ドコモ光タイプCの工事・利用確認</li><li>電話番号を移す場合はタイプC側で番号移行・発着信を確認してから、旧ドコモ光タイプA/B（1ギガ）を解約</li></ol>';
+  const hearing=()=>({type:read('upType'),oldType:read('upOldType'),company:read('upCATVCompany'),email:read('upEmailUse'),oldProvider:read('upOldProvider'),mailKeep:read('upMailKeep'),phone:read('upPhoneUse'),tv:read('upTVUse'),home:read('upHome'),rule:read('upRule'),renewal:read('upRenewal'),confirmed:el('upMethodConfirmed').checked,visit:read('upVisit'),port:read('upPort'),portStatus:read('upPortStatus'),cancel:read('upCancelDate')});
+  const needsPhoneMove=ctx=>ctx.phone==='継続希望';
+  const abNosekae=ctx=>needsPhoneMove(ctx)&&ctx.hearing.phone==='光電話を利用中';
+  let wasUpgrade=false;
+  const wantsTV=ctx=>ctx.tv==='新規申し込み'||ctx.tv==='継続希望';
+  function feeEstimate(h){
+    if(h.rule==='none'||h.renewal==='更新期間内')return '0円（解約金のみ）';
+    if(h.renewal!=='更新期間外'||!['戸建','マンション'].includes(h.home)||!['new','old'].includes(h.rule))return '要確認';
+    const fees=h.rule==='old'?{'戸建':14300,'マンション':8800}:{'戸建':5500,'マンション':4180};
+    return fees[h.home].toLocaleString('ja-JP')+'円（税込・解約金のみ）';
+  }
+  function pending(ctx){
+    const h=ctx.hearing;
+    return !h.type||!h.oldType||!h.confirmed||[h.email,h.phone,h.tv,ctx.phone,ctx.tv].some(value=>value==='未確認')||(h.email==='利用あり'&&h.mailKeep==='未確認')||(h.type==='C'?!h.company:!read('scProvider')||read('scProvider')==='その他')||(needsPhoneMove(ctx)&&!['光電話を利用中','その他の電話（CATV等）'].includes(h.phone))||(h.type!=='C'&&needsPhoneMove(ctx)&&!abNosekae(ctx));
+  }
+  function offsetDate(value,days){
+    if(!value)return '';
+    const date=new Date(value+'T12:00:00Z');date.setUTCDate(date.getUTCDate()+days);return date.toISOString().slice(0,10);
+  }
+  function visitLabel(h){return h.visit?jpDate(h.visit):read('scWork')?jpDate(offsetDate(read('scWork'),7))+'ごろ（目安）':'工事完了から約1週間後（目安）';}
+  function portLabel(h){
+    if(h.port)return jpDate(h.port);
+    if(h.portStatus==='confirmed')return '完了確認済み（日付未入力）';
+    if(h.type==='C')return 'タイプCの会社へ完了日を確認';
+    if(h.phone!=='光電話を利用中')return '移行先へ完了日を確認';
+    const estimate=h.visit?offsetDate(h.visit,14):read('scWork')?offsetDate(read('scWork'),21):'';
+    return estimate?jpDate(estimate)+'ごろ（目安）':'来店手続きから約2週間（目安）';
+  }
+  function sourceHTML(){
+    const sources=[['1ギガの解約と解約金','https://www.docomo.ne.jp/internet/hikari/procedure/cancellation/'],['光電話の初期費用・工事料','https://www.docomo.ne.jp/internet/hikari/tell_service/initial_cost/'],['テレビオプション','https://www.docomo.ne.jp/internet/hikari/eizo_service/tv_option/'],['プロバイダ提供条件','https://www.docomo.ne.jp/internet/hikari/notice/'],['10ギガタイプC','https://www.docomo.ne.jp/internet/hikari/charge/10g_type_c/'],['通常の1ギガ→10ギガプラン変更','https://www.docomo.ne.jp/internet/hikari/10g_plan_change/']];
+    return '<div class="guide-sources"><b>公式確認日：2026年10月7日</b><br>'+sources.map(([label,url])=>`<a href="${url}" target="_blank" rel="noopener noreferrer">${label}</a>`).join(' ／ ')+'<br>'+(read('upType')==='C'?'電話・テレビの移行と完了はタイプC会社へ確認してください。':'A/Bの来店・のせかえ日程は店舗案内の目安です。')+'受付方法、設備、工事内容、費用、日程は確定した受付案内を優先してください。</div>';
+  }
+  function upgradeNotes(ctx){
+    const h=ctx.hearing;
+    const notes=[['今回の目的・手続きの確認','ドコモ光1ギガを残したまま10ギガを別契約で開通し、必要な移行を確認後に旧1ギガを解約する案内です。通常の速度プラン変更とは別です。提供エリア、新旧回線の併設、建物設備、申込方法・特典の適用を事前に確認してください。'],['ドコモ光1ギガの解約金',feeRules],['解約費用・二重請求','旧1ギガと新10ギガの料金が重なる期間、工事料・機器代の残債、撤去費、解約月の料金を確認します。解約金と新回線の工事料・契約事務手数料・オプション料金は別です。'],['返却・メール・割引','電話・テレビ・メールを確認した後、貸出元ごとの返却機器・返却先・期限を確認します。10ギガで使う機器を誤って返却しないでください。旧契約の有料オプション、スマホとのペア回線・セット割の変更も確認します。']];
+    if(pending(ctx))notes.push(['準備用・未確認事項あり','ヒアリング、申込先、設備・手続き方法等に未確認事項があります。これは予定・説明用の案内です。この案内だけで旧1ギガの解約や返却を実行せず、正式な受付案内で確認してください。']);
+    if(h.email==='利用あり')notes.push(['プロバイダーメールを残せるか確認','現在のプロバイダー：'+(h.oldProvider||'未確認')+'。メール残しの確認：'+h.mailKeep+'。1ギガを解約する前に、メールだけ残せる契約・月額費用・必要な変更手続きと期限をプロバイダーへ確認します。同じプロバイダーへ新規申込みしても、別契約では既存メールが自動で残るとは限りません。']);
+    else if(h.email==='未確認')notes.push(['プロバイダーメールのヒアリング','メールアドレスを利用しているか確認してください。利用中なら、解約前にメールアドレスを残せるか、費用・手続きを確認します。']);
+    if(h.type==='C'){
+      notes.push(['タイプCの電話・テレビ','電話とテレビは提携CATV会社のサービスです。ドコモ光10ギガタイプCではドコモ光電話・ドコモ光テレビオプションを申し込めません。電話の番号ポータビリティ、テレビの契約・工事・料金は申し込み先のタイプC会社へ確認してください。']);
+      if(needsPhoneMove(ctx))notes.push(['タイプC側への番号移行を確認してから解約','電話番号を残す場合、タイプC会社で番号ポータビリティの完了、契約の集約、タイプC側での発信・着信を確認してから旧タイプA/B（1ギガ）を解約します。工事日が過ぎただけでは番号移行完了とは扱いません。旧電話を先に解約しないでください。']);
+      else if(ctx.phone==='未確認')notes.push(['電話番号ポータビリティの確認','現在の光電話と番号継続の希望を確認してください。番号移行が必要なら、タイプC側で移行・通話確認が終わるまで旧回線を解約しません。']);
+      if(h.tv==='ドコモ光テレビオプション')notes.push(['旧テレビの今後の視聴方法','旧光テレビオプションはタイプCへ自動で移るサービスではありません。タイプC会社のテレビサービス等を利用するか、設備・契約・視聴できない期間を確認してから旧1ギガを解約します。']);
+    }else if(['A','B'].includes(h.type)){
+      if(abNosekae(ctx)){
+        notes.push(['固定電話番号を継続したい場合','10ギガ申込み時に番号を残す希望とのせかえの適用可否を伝えます。旧1ギガと旧電話を先に解約しないでください。新回線へ電話を移した後、10ギガ側で発信・着信を確認してから旧1ギガを解約します。']);
+        notes.push(['光電話のせかえ費用のご案内',phoneFee+'円（税込）を案内額の目安として記載しています。電話工事料は工事内容で異なり、派遣・機器設置・設定等で追加料金がかかる場合があります。最終金額は受付先の見積り・確定案内で確認してください。']);
+        notes.push(['来店・のせかえの日程目安','工事完了から約1週間後にドコモショップへ来店し、のせかえ手続きを行います。その手続きから完了まで約2週間が店舗案内の目安です。一律の確定日数ではなく、設備・受付状況により前後します。']);
+      }else if(needsPhoneMove(ctx))notes.push(['電話移行の方法を個別確認','現在の電話サービスがドコモ光電話ののせかえ対象か未確認です。現在の電話会社・サービス名・名義を確認し、移行先で番号継続の方法・工事・費用・完了日を確認します。のせかえの費用・期間を一律に適用せず、通話確認前に旧1ギガを解約しません。']);
+      else if(ctx.phone==='未確認')notes.push(['光電話のヒアリング','光電話を利用しているか、番号を残すかを確認してください。番号継続を希望する場合は、のせかえ手続き・費用を確認し、完了前に旧1ギガを解約しません。']);
+      if(h.tv==='ドコモ光テレビオプション'&&wantsTV(ctx))notes.push(['光テレビオプションを再度申し込む','アンテナではなく旧1ギガの光テレビオプションでテレビを視聴し、今後も使う場合は、新しい10ギガ回線で光テレビオプションを再度申し込みます。提供エリア・設備・台数・テレビ工事・初期費用・月額料金を別途確認します。']);
+      else if(wantsTV(ctx))notes.push(['テレビの新規申し込み','10ギガで利用するテレビサービスの提供条件・設備・工事・費用を確認して申し込みます。有料放送の契約・料金は別です。']);
+      if(h.tv==='ドコモ光テレビオプション'&&!wantsTV(ctx))notes.push(['テレビ申し込みなしの場合','旧1ギガを解約すると旧光テレビオプションが使えなくなる場合があります。アンテナ等、今後の視聴方法を確認してください。']);
+    }else notes.push(['申し込み先のタイプを選ぶ','A/Bではのせかえを含む工程、Cでは提携CATVへの切替工程です。タイプと電話・テレビの移行方法を確認してください。']);
+    if(h.tv==='その他（CATV・ひかりTV等）')notes.push(['CATV・ひかりTV等の確認','アンテナ以外のサービスを一律に光テレビオプションとは扱いません。現在の提供会社へ、継続・解約・返却・新回線での視聴可否を確認します。']);
+    notes.push(['書類・サポート・完了の意味','契約書・ID・機器の送付やサポートの提供条件・料金は申込先で異なります。書類到着・工事日経過・入力した予定日だけで、電話移行や解約が完了したとは扱いません。']);
+    return notes;
+  }
+  function mountHearing(destination,visible){
+    const panel=el('upgradeHearingPanel');el(destination).appendChild(panel);panel.hidden=!visible;
+  }
+  function prepareUpgrade(){
+    if(!isUpgrade()){resetCustomerFields();el('scFlow').value='解約新規';}
+    updateProcedureForm();
+  }
+  guideContext=function(){return {...base.guideContext(),hearing:hearing()};};
+  guideWarnings=function(ctx){return ctx.flow==='解約新規'?upgradeNotes({...ctx,hearing:ctx.hearing||hearing()}):base.guideWarnings(ctx);};
+  currentContractLabel=function(){return isUpgrade()?'ドコモ光1ギガ タイプ'+(read('upOldType')||'未確認'):base.currentContractLabel();};
+  updateScheduleProviders=function(){
+    if(!isUpgrade())return base.updateScheduleProviders();
+    const h=hearing(),select=el('scProvider'),previous=select.value;
+    if(h.type==='C'){
+      select.replaceChildren(new Option('タイプCの提携CATV会社','タイプC（提携CATV）'));select.disabled=true;
+      el('scProviderHelp').textContent='タイプCは提携CATVのプロバイダー機能です。最初のヒアリングで申し込み先の会社名を入力してください。';return;
+    }
+    select.disabled=false;
+    base.updateScheduleProviders();
+    if(!['A','B'].includes(h.type))return;
+    const allowed=scheduleProviders.filter(p=>p.tenGig===h.type);
+    select.replaceChildren();
+    const prompt=new Option('プロバイダを選択してください','');prompt.disabled=true;select.add(prompt);
+    allowed.forEach(p=>select.add(new Option(p.name,p.name)));
+    select.value=allowed.some(p=>p.name===previous)?previous:'';
+    el('scProviderHelp').textContent='10ギガ タイプ'+h.type+'の対応プロバイダーを表示しています。';
+  };
+  function configure(){
+    const active=isUpgrade(),h=hearing();
+    el('scForm').classList.toggle('upgrade-mode',active);
+    document.querySelector('.wizard-tab[data-step="1"] b').textContent=active?'ヒアリング':'現在の契約';
+    el('wizardHeading1').textContent=active?'タイプ選択・事前ヒアリング':'いまのご契約を確認';
+    document.querySelector('#wizardPanel1 .panel-description').textContent=active?'新しい10ギガのタイプと、現在のメール・電話・テレビを確認します。旧1ギガの解約は最後です。':'お手続きと、現在お使いの回線を選んでください。';
+    [...el('scSpeed').options].forEach(option=>option.disabled=active&&option.value!=='ドコモ光 10ギガ');
+    if(active&&read('scSpeed')!=='ドコモ光 10ギガ')el('scSpeed').value='ドコモ光 10ギガ';
+    if(active)updateScheduleProviders();
+    el('upgradeDates').hidden=!active;
+    el('upgradeHearingPanel').hidden=!active;
+    el('scLegacyFields').hidden=active||read('scFlow')==='新規';
+    if(!active){
+      const supportDetails=el('scDocs').closest('details');
+      el('scSupportBook').closest('.form-grid').hidden=false;supportDetails.querySelector('.field-help').hidden=false;
+      supportDetails.querySelector('summary').innerHTML='書類の到着・訪問サポートの日程 <span class="optional-tag">任意</span>';
+      document.querySelector('label[for="scTV"]').textContent='テレビのお申し込み';
+      return;
+    }
+    el('scCancelFields').hidden=true;
+    el('scRouteHelp').textContent='旧1ギガを先に解約せず、新しい10ギガと電話・テレビを確認してから解約します。';
+    el('scheduleTitle').textContent='1ギガ → 10ギガ｜解約新規の案内';
+    el('upCATVDetails').hidden=h.type!=='C';el('upMailDetails').hidden=h.email!=='利用あり';
+    el('upTypeHelp').textContent=h.type==='C'?'タイプCは4工程。電話番号を移す場合は、タイプC側で移行・通話確認が完了してから旧タイプA/Bを解約します。':['A','B'].includes(h.type)?'タイプA/Bは、必要な電話のせかえを含む最大7工程。新回線と電話の確認後に旧1ギガを解約します。':'新しく申し込むタイプを選ぶと、質問・注意事項・案内の工程を切り替えます。';
+    el('upTVHearingHelp').textContent=h.type==='C'?'テレビはタイプC会社のサービスを確認します。ドコモ光テレビオプションをそのまま引き継ぐことはできません。':'アンテナではなく光テレビオプションを今後も使う場合は、新しい10ギガ回線で再度申し込みます。CATV等は提供元へ別途確認します。';
+    el('upFeeResult').textContent='入力条件による解約金：'+feeEstimate(h)+'。工事料残債等は別です。';
+    el('upHearingStatus').textContent=[['メール',h.email],['光電話',h.phone],['テレビ',h.tv]].map(([name,value])=>name+'：'+value).join(' ／ ');
+    const moving=needsPhoneMove(guideContext());
+    el('upPhoneDates').hidden=!moving;el('upVisitWrap').hidden=h.type==='C'||!abNosekae(guideContext());
+    el('upPortLabel').textContent=h.type==='C'?'タイプC側の番号ポータビリティ完了予定日':'1ギガ→10ギガのせかえ完了予定日';
+    el('upPortStatusLabel').textContent=h.type==='C'?'タイプC側での番号移行・発着信の確認':'10ギガでののせかえ・発着信の確認';
+    el('upPortStatus').options[1].textContent=h.type==='C'?'完了確認済み（タイプC側で通話確認）':'完了確認済み（10ギガで通話確認）';
+    el('upPhoneTiming').textContent=h.type==='C'?'完了時期はタイプC会社へ確認してください。工事日が過ぎただけでは番号移行完了とは扱いません。':!abNosekae(guideContext())?'現在の電話サービスと移行方法・完了日を受付先で個別確認してください。':'来店の目安：'+visitLabel(h)+'。のせかえ完了の目安：'+portLabel(h)+'。確定日ではありません。';
+    el('upCancelHelp').textContent=moving?(h.type==='C'?'タイプC側に電話番号が移り、発信・着信を確認してから解約します。':'電話のせかえが完了し、10ギガで発信・着信を確認してから解約します。'):'新しい10ギガのネット・必要なテレビとメールを確認してから旧1ギガを解約します。';
+    const supportDetails=el('scDocs').closest('details');
+    el('scSupportBook').closest('.form-grid').hidden=h.type==='C';
+    supportDetails.querySelector('.field-help').hidden=h.type==='C';
+    supportDetails.querySelector('summary').innerHTML=(h.type==='C'?'タイプC会社の書類の到着予定':'書類の到着・訪問サポートの日程')+' <span class="optional-tag">任意</span>';
+    document.querySelector('label[for="scTV"]').textContent=h.type==='C'?'タイプC会社のテレビサービス':'テレビのお申し込み';
+    if(h.type==='C')el('scTVHelp').textContent='テレビはタイプC会社への申込み・継続確認です。ドコモ光テレビオプションの申込みではありません。';
+    else if(read('scTV')==='継続希望')el('scTVHelp').textContent='光テレビオプションを継続して使う場合も、別契約の10ギガ回線で再度申し込みます。';
+  }
+  updateProcedureForm=function(){
+    const active=isUpgrade();
+    if(wasUpgrade&&!active){
+      const select=el('scProvider');select.disabled=false;select.value='';base.updateScheduleProviders();
+      const prompt=new Option('プロバイダを選択してください','');prompt.disabled=true;select.insertBefore(prompt,select.firstChild);select.value='';
+    }
+    wasUpgrade=active;
+    if(active&&read('scSpeed')!=='ドコモ光 10ギガ'){el('scSpeed').value='ドコモ光 10ギガ';updateScheduleProviders();}
+    base.updateProcedureForm();configure();
+    if(active)renderReviewSummary();
+  };
+  openService=function(service){
+    if(current==='解約新規')prepareUpgrade();
+    base.openService(service);
+    mountHearing('upgradePanelHome',current==='解約新規'&&service==='net');
+  };
+  openScheduleBuilder=function(){
+    base.openScheduleBuilder();
+    if(isUpgrade()){mountHearing('upgradeHearingSlot',true);updateProcedureForm();}
+  };
+  renderReviewSummary=function(){
+    if(!isUpgrade())return base.renderReviewSummary();
+    const ctx=guideContext(),h=ctx.hearing;
+    const provider=h.type==='C'?(h.company||'提携CATV会社を確認中'):(read('scProvider')||'未選択');
+    const rows=[['お客様',read('scName')||'お客様名なし'],['旧回線','ドコモ光1ギガ タイプ'+(h.oldType||'未確認')],['新しい回線','ドコモ光10ギガ タイプ'+(h.type||'未選択')],['申込先',provider],['プロバイダーメール',h.email],['メール残し',h.email==='利用あり'?h.mailKeep:'対象外／未確認'],['現在の光電話',h.phone],['番号のご希望',ctx.phone],['現在のテレビ',h.tv],['新しいテレビ',ctx.tv],['1ギガの解約金',feeEstimate(h)],['申込日',jpDate(read('scApply'))],['10ギガ工事日',jpDate(read('scWork'))]];
+    if(needsPhoneMove(ctx)){if(h.type!=='C'&&abNosekae(ctx))rows.push(['来店手続き',visitLabel(h)]);rows.push(['電話移行完了',portLabel(h)],['完了確認',h.portStatus==='confirmed'?'確認済み':'未完了・予定']);}
+    rows.push(['旧1ギガの解約希望日',h.cancel?jpDate(h.cancel):'移行・利用確認後に調整']);
+    el('scReviewSummary').innerHTML='<dl>'+rows.map(([label,value])=>`<div class="review-row"><dt>${esc(label)}</dt><dd>${esc(value)}</dd></div>`).join('')+'</dl>';
+    const points=['旧1ギガを先に解約しないでください。'];
+    if(needsPhoneMove(ctx))points.push(h.type==='C'?'タイプC側に番号移行がまとまり、発着信できることを確認してから解約します。':'のせかえ完了と10ギガでの発着信を確認してから解約します。');
+    if(h.email==='利用あり')points.push('プロバイダーメールを残せるか、旧契約の解約前に確認します。');
+    if(h.type==='C')points.push('電話・テレビはタイプC会社のサービスです。ドコモ光電話・テレビオプションの申込みではありません。');
+    else if(h.tv==='ドコモ光テレビオプション'&&wantsTV(ctx))points.push('新しい10ギガで光テレビオプションの再申込みが必要です。');
+    if(pending(ctx))points.push('未確認事項があるため、作成する案内は準備用です。');
+    el('scKeyWarnings').innerHTML='<strong>解約前の大切な確認</strong>'+points.map(value=>'<p>'+esc(value)+'</p>').join('');
+  };
+  function resetUpgradeFields(){
+    ['upType','upEmailUse','upMailKeep','upPhoneUse','upTVUse','upHome','upRule','upRenewal','upPortStatus'].forEach(id=>el(id).selectedIndex=0);
+    el('upOldType').value='A';
+    ['upCATVCompany','upOldProvider','upVisit','upPort','upCancelDate'].forEach(id=>el(id).value='');
+    el('upMethodConfirmed').checked=false;
+  }
+  resetCustomerFields=function(){resetUpgradeFields();base.resetCustomerFields();};
+  function resetDestinationDates(){
+    ['scApply','scDocs','scWork','scWorkTime','scSupportBook','scSupport','upVisit','upPort','upCancelDate'].forEach(id=>el(id).value='');
+    el('scAttend').selectedIndex=0;el('upPortStatus').value='pending';el('upMethodConfirmed').checked=false;
+  }
+  function validateUpgrade(ctx){
+    const h=ctx.hearing;
+    if(!['A','B','C'].includes(h.type))return scheduleError('新しく申し込む10ギガのタイプA/B/Cを選択してください。','upType');
+    if(ctx.speed!=='ドコモ光 10ギガ')return scheduleError('今回はドコモ光1ギガから10ギガへの案内です。','scSpeed');
+    if(h.type!=='C'&&!read('scProvider'))return scheduleError('選んだタイプの10ギガ対応プロバイダーを選択してください。','scProvider');
+    if(read('scApply')&&read('scWork')&&read('scWork')<read('scApply'))return scheduleError('10ギガ工事日が申込日より前です。日付を確認してください。','scWork');
+    if(needsPhoneMove(ctx)){
+      if(h.cancel&&!h.port&&h.portStatus!=='confirmed')return scheduleError('電話移行の完了予定日が未確認です。解約希望日を入れる場合は移行完了予定日も確認してください。未定なら解約希望日も空欄にします。','upPort');
+      const now=new Date();const today=[now.getFullYear(),String(now.getMonth()+1).padStart(2,'0'),String(now.getDate()).padStart(2,'0')].join('-');
+      if(h.portStatus==='confirmed'&&((h.port&&h.port>today)||(h.type!=='C'&&abNosekae(ctx)&&((read('scWork')&&read('scWork')>today)||(h.visit&&h.visit>today)))))return scheduleError('完了確認済みですが、電話移行または必要な前工程の日付が未来です。確認状態・日付を見直してください。','upPortStatus');
+      if(h.type!=='C'&&abNosekae(ctx)&&h.visit&&read('scWork')&&h.visit<read('scWork'))return scheduleError('のせかえ来店日が10ギガ工事日より前です。','upVisit');
+      if(h.type!=='C'&&abNosekae(ctx)&&h.port&&h.visit&&h.port<h.visit)return scheduleError('のせかえ完了予定日が来店手続き日より前です。','upPort');
+      if(h.type!=='C'&&abNosekae(ctx)&&h.port&&read('scWork')&&h.port<read('scWork'))return scheduleError('のせかえ完了予定日が10ギガ工事日より前です。','upPort');
+      if(h.cancel&&h.port&&h.cancel<h.port)return scheduleError('旧1ギガの解約希望日が電話移行完了予定日より前です。電話移行・通話確認後に解約します。','upCancelDate');
+    }
+    if(h.cancel&&read('scWork')&&h.cancel<read('scWork'))return scheduleError('旧1ギガの解約希望日が10ギガ工事日より前です。新回線の確認後に解約します。','upCancelDate');
+    return true;
+  }
+  buildSchedule=function(){
+    if(!isUpgrade())return base.buildSchedule();
+    const ctx=guideContext(),h=ctx.hearing;
+    if(!validateUpgrade(ctx))return false;
+    const clean=id=>esc(read(id));
+    const company=esc(h.company||'申し込み先のタイプC会社を確認中');
+    const provider=h.type==='C'?company:clean('scProvider');
+    const steps=[];
+    const add=(date,title,note)=>steps.push({date,title,note});
+    if(h.type==='C'){
+      add(jpDate(read('scApply')),'ドコモ光10ギガ タイプCを申し込む',`申し込み先：${company}<br>ネットと必要な電話・テレビをタイプC会社へ相談します。番号ポータビリティの希望は初回申込み時に伝え、旧1ギガ・旧電話は残します。`);
+      add(clean('scDocs')||'未定','タイプCの会社から契約書が届く','契約書・登録確認書・必要な案内を確認し、保管します。発送時期・受取方法はタイプCの会社へ確認してください。');
+      add(jpDate(read('scWork')),'ドコモ光タイプCの工事日',`時間帯：${clean('scWorkTime')||'未定'}／立会い：${clean('scAttend')}<br>ネット・必要なテレビの利用を確認します。${needsPhoneMove(ctx)?`<br><b>電話番号ポータビリティの完了と、タイプC側での発信・着信も確認します。</b><br>番号移行完了予定：${esc(portLabel(h))}／確認状態：${h.portStatus==='confirmed'?'タイプC側で確認済み':'未完了・予定（確認するまで解約しない）'}`:'<br>電話番号の移行が必要かを確認し、必要な手続きをタイプC会社へ依頼します。'}`);
+      add(h.cancel?jpDate(h.cancel):'タイプC側の利用・移行確認後','旧ドコモ光タイプA/B（1ギガ）を解約',`旧契約：タイプ${esc(h.oldType||'未確認')}<br>${needsPhoneMove(ctx)?'<b>電話番号がタイプC側にまとまり、発信・着信できることを確認してから解約します。</b> 工事日が過ぎただけでは解約しません。':'新回線のネット・必要な電話・テレビの利用を確認してから解約します。'}<br>プロバイダーメール、解約金・残債、旧テレビ、オプションと機器返却も確認します。希望日は解約完了を示しません。`);
+    }else{
+      add(jpDate(read('scApply')),wantsTV(ctx)?'ドコモ光10ギガを申し込む（ネット・テレビ）':'ドコモ光10ギガを申し込む（ネット）',`タイプ${esc(h.type)}／プロバイダー：${provider}<br>${wantsTV(ctx)?'新しい回線のネットと必要な光テレビオプションを申し込みます。':'新しい回線のネットを申し込みます。テレビを申し込まない場合は今後の視聴方法を確認します。'}${abNosekae(ctx)?'<br>電話は後日、新10ギガへののせかえを行う希望を初回申込み時に相談します。旧1ギガ・旧電話は残します。':needsPhoneMove(ctx)?'<br>現在の電話サービスと番号移行方法を、初回申込み時に受付先へ確認します。旧1ギガ・旧電話は残します。':''}`);
+      add(clean('scDocs')||'未定','プロバイダーから契約書が届く','契約書・ID・機器など、必要な案内を受け取ります。送付内容や送付がない契約もあるため、プロバイダーへ確認して保管します。');
+      add(jpDate(read('scSupportBook')),'必要ならプロバイダーへ訪問サポートを依頼','訪問サポートが必要な場合はプロバイダーへ連絡します。対象・費用を確認し、実施日は工事完了後に調整します。利用しない場合は依頼不要です。');
+      add(jpDate(read('scWork')),'ドコモ光10ギガの工事日',`時間帯：${clean('scWorkTime')||'未定'}／立会い：${clean('scAttend')}<br>10ギガ対応機器の接続・設定を行い、ネット${wantsTV(ctx)?'・テレビ':''}の利用を確認します。${read('scSupport')?'<br>訪問サポート実施予定：'+jpDate(read('scSupport')):''}<br>この時点では、旧1ギガの電話番号移行完了・旧回線解約を意味しません。`);
+      if(abNosekae(ctx)){
+        add(visitLabel(h),'ドコモショップで光電話のせかえ手続き',`工事完了から約1週間空けて来店する店舗案内の目安です。1ギガから10ギガへののせかえを依頼します。<br>のせかえ費用の案内額：${phoneFee}円（税込・追加費用がある場合あり）<br><b>手続きから完了まで約2週間が目安です。</b> 正式な手続き方法・日程・費用は受付先へ確認します。旧1ギガはまだ解約しません。`);
+        add(portLabel(h),'光電話のせかえ完了を確認（1ギガ→10ギガ）',`10ギガ側で電話番号の移行と発信・着信を確認します。<br>確認状態：${h.portStatus==='confirmed'?'10ギガ側で完了確認済み':'未完了・予定（完了確認後に次へ）'}<br>予定日が過ぎただけでは完了とは扱いません。`);
+      }
+      if(needsPhoneMove(ctx)&&!abNosekae(ctx))add(portLabel(h),'電話の引継ぎ方法・移行完了を確認','現在の電話サービスと番号継続の方法・費用・日程を個別に確認し、新回線側で発信・着信を確認します。のせかえの代表的な費用・期間を一律に適用しません。');
+      add(h.cancel?jpDate(h.cancel):needsPhoneMove(ctx)?'電話移行完了・通話確認後':'新10ギガの利用確認後','ドコモ光1ギガを解約',`${needsPhoneMove(ctx)?'<b>電話のせかえ完了と10ギガでの発着信を確認してから</b>':'新回線のネット・必要なテレビを確認してから'}旧1ギガを解約します。プロバイダーメールを残せるか、解約金・工事料残債・旧オプション・機器返却も確認してください。希望日は解約完了を示しません。`);
+    }
+    const draft=pending(ctx);
+    const timeline=steps.map((step,i)=>`<div class="step-card"><div class="step-content"><div class="step-heading"><span class="step-badge">${i+1}</span><span class="step-date">${esc(step.date)}</span><span class="step-title">${esc(step.title)}</span></div><div class="step-note">${step.note}</div></div></div>${i<steps.length-1?'<div class="timeline-arrow" aria-hidden="true">↓</div>':''}`).join('');
+    const hearingSummary=`メール：${esc(h.email)}${h.email==='利用あり'?'／メール残し：'+esc(h.mailKeep):''}<br>現在の電話：${esc(h.phone)}／番号のご希望：${esc(ctx.phone)}<br>現在のテレビ：${esc(h.tv)}／新しいテレビ：${esc(ctx.tv)}`;
+    const legacyMemo=['scOldOptions','scFees','scReturn'].some(id=>read(id))?`<div class="box staff"><b>旧契約の確認メモ</b><br>オプション：${clean('scOldOptions')||'未確認'}<br>費用メモ：${clean('scFees')||'未確認'}<br>返却期限：${jpDate(read('scReturn'))}</div>`:'';
+    el('scheduleSheet').innerHTML=`<div class="guide-brand">CUSTOMER GUIDE</div><h2>ドコモ光1ギガ → 10ギガ タイプ${esc(h.type)}の流れ</h2><div class="schedule-meta">${clean('scName')||'お客様'}　｜　旧1ギガ タイプ${esc(h.oldType||'未確認')} → 新10ギガ タイプ${esc(h.type)}<br>申し込み先：${provider}<br>${hearingSummary}<br>入力条件の1ギガ解約金：${esc(feeEstimate(h))}${draft?'<br><b>準備用・未確認事項あり</b>':''}</div><div class="schedule-hero"><div class="schedule-hero-copy">${h.type==='C'?'タイプCへの切替を4つの工程でご案内します。':'必要な電話のせかえを含む工程でご案内します。'}<br>旧1ギガは、必要な電話・テレビ・メールの移行を確認してから解約します。日付は予定・目安であり、手続き完了を示しません。</div></div><div class="timeline">${timeline}</div><section class="guide-warning">${warningMarkup(ctx)}</section>${legacyMemo}${clean('scMemo')?'<div class="box warning"><b>追記事項</b><br>'+clean('scMemo').replace(/\n/g,'<br>')+'</div>':''}${sourceHTML()}<div class="placeholder">本書は説明用です。申込み・電話移行・解約を実行したことを示しません。未定の日時は受付先の確定案内で確認してください。</div>`;
+    el('scheduleSheet').style.display='block';el('schedulePrint').disabled=false;
+    el('scStatus').textContent=draft?'準備用の案内を作成しました。未確認事項を確定したら作り直してください。':'タイプ別の注意事項付き案内を作成しました。印刷・PDF保存できます。';
+    el('scheduleSheet').scrollIntoView({behavior:'smooth',block:'start'});return true;
+  };
+  openPrecautions=function(){
+    if(current!=='解約新規')return base.openPrecautions();
+    prepareUpgrade();const ctx=guideContext();
+    el('procedureNoticeContent').innerHTML='<h2>1ギガ→10ギガ 解約新規の注意事項</h2><p>申し込み先のA/B/Cで工程を分けます。旧1ギガを先に解約しないでください。</p><div class="guide-warning">'+warningMarkup(ctx)+'</div>'+sourceHTML();show('precautionsView');
+  };
+  const abSource='ドコモ公式「光電話の初期費用」「解約」「テレビオプション」／来店・のせかえ日程は店舗案内の目安';
+  specific['解約新規']=[
+    {level:'basic',services:['net'],kind:'upgradeFlow',q:'解約新規の進め方は？',keys:['解約新規','流れ','1ギガ','10ギガ','タイプA','タイプB','タイプC'],a:'新しく申し込む10ギガのタイプA/B/Cを選ぶと、工程を切り替えます。A/Bは必要な電話のせかえを含む最大7工程、Cは4工程です。',warn:'旧1ギガの解約は最後です。番号継続時は移行先の発着信を確認してから解約します。',source:'ドコモ公式「解約」「10ギガタイプC」／店舗ご指定の工程例',updated:'2026-10-07'},
+    {level:'basic',services:['net'],q:'最初にヒアリングする3つの項目は？',keys:['ヒアリング','メール','電話','テレビ','アンテナ'],a:'①プロバイダーのメールアドレスを利用しているか、②光電話を利用しているか、③テレビはアンテナか光テレビオプションか、の3つを確認します。',staff:'メールは残せるか、電話は番号を残すか、テレビは新回線でどう視聴するかまで確認します。CATV・ひかりTV等は別サービスとして確認します。',source:'ドコモ公式「解約」「プロバイダ提供条件」「テレビオプション」',updated:'2026-10-07'},
+    {level:'basic',services:['net'],q:'ドコモ光1ギガの解約金はいくら？',keys:['1ギガ','解約金','5500','4180','14300','8800','更新期間'],a:feeRules,staff:'契約に適用されるルール、戸建／マンション、更新期間を確認します。メールやオプション等の別費用にも注意します。',source:'ドコモ公式「解約・他社光サービスへのきりかえ」',updated:'2026-10-07'},
+    {level:'basic',services:['net'],q:'プロバイダーのメールアドレスは残せる？',keys:['プロバイダ','メールアドレス','メール残し','保持','残す'],a:'メールを利用中なら、1ギガを解約する前に、現在のプロバイダーへメールアドレスを残せるか確認します。メールのみの契約・コース変更、月額費用、変更手続きの時期を確認してください。',warn:'同じプロバイダーへ新規申込みしても、別契約なら既存のメールアドレスが自動で残るとは限りません。確認前に退会・解約を進めないでください。',source:'ドコモ公式「解約」「プロバイダ提供条件」',updated:'2026-10-07'},
+    {level:'basic',services:['net','phone'],targets:['A','B'],q:'【タイプA/B】電話番号を残す場合ののせかえと費用は？',keys:['電話','のせかえ','載せ替え','5500','番号','手数料'],a:'現在のドコモ光電話の番号を残す場合は、新しい10ギガへの光電話のせかえ手続きを受付先で確認します。のせかえ費用のご案内額は'+phoneFee+'円（税込・目安）です。',staff:'10ギガ申込み時に電話番号を残す希望を伝え、工事完了後のショップ手続きを調整します。',warn:'工事内容によって派遣・機器設置・設定等の追加料金がかかる場合があります。正式な費用・移行可否は受付先で確認します。旧電話を先に解約しないでください。',source:abSource,updated:'2026-10-07'},
+    {level:'basic',services:['net','phone'],targets:['A','B'],q:'【タイプA/B】のせかえの来店・完了はいつ？',keys:['1週間','2週間','来店','ショップ','のせかえ','期間'],a:'店舗案内の目安は、工事完了から約1週間後にドコモショップへ来店してのせかえ手続き、その手続きから約2週間で完了です。',warn:'確定日数ではありません。正式な日程は受付先へ確認し、10ギガでの発着信を確認してから旧1ギガを解約します。',source:abSource,updated:'2026-10-07'},
+    {level:'basic',services:['net','tv'],targets:['A','B'],q:'【タイプA/B】アンテナではなく光テレビなら再申込みが必要？',keys:['テレビ','アンテナ','光テレビオプション','再申込み'],a:'旧1ギガの光テレビオプションを利用し、今後も視聴する場合は、新しい10ギガ回線で光テレビオプションを再度申し込みます。',staff:'ネットとテレビを申し込み、提供条件・設備・テレビ台数・接続工事・初期費用・月額料金を確認します。',warn:'CATV・ひかりTV等を一律に光テレビオプションとは扱いません。有料放送の契約・返却も別途確認します。',source:'ドコモ公式「テレビオプション」「解約」',updated:'2026-10-07'},
+    {level:'basic',services:['net','phone'],targets:['C'],q:'【タイプC】電話番号ポータビリティがある場合、いつ旧回線を解約する？',keys:['タイプC','電話','番号ポータビリティ','解約','まとめる'],a:'タイプCの会社で番号ポータビリティが完了し、電話番号・契約がタイプC側にまとまって、発信・着信できることを確認してから旧タイプA/B（1ギガ）を解約します。',warn:'工事日が過ぎただけでは電話番号の移行完了とは扱いません。移行期間・費用・手続きはタイプC会社へ確認してください。',source:'ドコモ公式「10ギガタイプC」「解約」',updated:'2026-10-07'},
+    {level:'basic',services:['net','tv','phone'],targets:['C'],q:'【タイプC】電話・テレビはどこに申し込む？',keys:['タイプC','CATV','電話','テレビ','申込み'],a:'タイプCの電話・テレビは提携CATV会社のサービスです。ドコモ光電話・ドコモ光テレビオプションは申し込めません。',staff:'タイプC会社へ、電話番号の引継ぎ、テレビの視聴方法、必要な申込み・工事・費用を確認します。旧光テレビオプションがそのまま移るとは案内しません。',source:'ドコモ公式「ドコモ光10ギガタイプC」',updated:'2026-10-07'},
+    {level:'advanced',services:['net'],q:'通常の速度プラン変更と解約新規は同じ？',keys:['プラン変更','解約新規','速度変更','特典','再契約'],a:'別の手続きです。この画面は10ギガを別契約で新設して旧1ギガを後から解約する工程例です。通常の1ギガ→10ギガの速度プラン変更でも対応できるため、契約・設備・メール・電話・費用を比較して受付先で確認します。',warn:'新規・乗換え特典や工事料還元が必ず適用されるとは案内しません。申込方法と再契約の条件を確認してください。',source:'ドコモ公式「10ギガへの料金プラン変更」「10ギガタイプC」',updated:'2026-10-07'}
+  ];
+  items=function(cat){
+    const list=base.items(cat);
+    if(cat!=='解約新規')return list;
+    const type=read('upType');
+    return list.filter(item=>!item.targets||!type||item.targets.includes(type)).map(item=>item.kind==='upgradeFlow'&&type?{...item,a:type==='C'?CFlow:ABFlow,staff:type==='C'?'番号ポータビリティがある場合は、タイプC側で契約・番号移行・発着信の確認後に旧回線を解約します。':'電話を残す場合の店舗案内目安は、工事完了から約1週間後に来店、その手続きから約2週間でのせかえ完了です。'}:item);
+  };
+  el('upgradeHearingPanel').addEventListener('change',event=>{
+    event.stopPropagation();
+    if(event.target.id==='upType'){
+      el('upCATVCompany').value='';resetDestinationDates();el('scProvider').value='';
+    }
+    if(event.target.id==='upOldType'){
+      ['upOldProvider','upVisit','upPort','upCancelDate','scFees','scOldOptions','scReturn'].forEach(id=>el(id).value='');
+      ['upEmailUse','upMailKeep','upPhoneUse','upTVUse','upHome','upRule','upRenewal'].forEach(id=>el(id).selectedIndex=0);
+      el('upMethodConfirmed').checked=false;el('upPortStatus').value='pending';
+    }
+    if(event.target.id==='upEmailUse')el('upMailKeep').selectedIndex=0;
+    if(event.target.id==='upPhoneUse'){
+      el('scPhone').value=read('upPhoneUse')==='光電話利用なし'?'利用なし':'未確認';el('upPortStatus').value='pending';
+    }
+    if(event.target.id==='upTVUse')el('scTV').value=read('upTVUse')==='ドコモ光テレビオプション'?'新規申し込み':['アンテナ','テレビ利用なし'].includes(read('upTVUse'))?'テレビ申し込みなし':'未確認';
+    invalidateSchedule();updateProcedureForm();
+    if(el('flow').classList.contains('active')){el('answer').className='answer';renderCurrent();}
+  });
+  el('upgradeHearingPanel').addEventListener('input',event=>{
+    event.stopPropagation();
+    if(event.target.id==='upOldProvider')el('upMailKeep').selectedIndex=0;
+    if(event.target.id==='upCATVCompany')resetDestinationDates();
+    invalidateSchedule();updateProcedureForm();
+  });
+  el('scPhone').addEventListener('change',()=>{el('upPortStatus').value='pending';});
+  updateProcedureForm();
+})();
+
 </script></body></html>
