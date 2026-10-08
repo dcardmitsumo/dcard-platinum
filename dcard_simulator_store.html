@@ -864,7 +864,13 @@ input:focus,select:focus{
 <option value="u15">ドコモ スマホデビュープラン U15</option>
 <option value="mini4">ドコモ mini 4GB（現在6GB増量中）</option>
 <option value="mini10">ドコモ mini 10GB（現在12GB増量中）</option>
+<option value="mini2_6">ドコモ mini2 6GB（2026/12/1開始予定）</option>
+<option value="mini2_12">ドコモ mini2 12GB（2026/12/1開始予定）</option>
 <option value="ahamo">ahamo</option>
+<option value="ahamo_40">新ahamo 40GB（2026/12/1開始予定）</option>
+<option value="ahamo_60">新ahamo 60GB（2026/12/1開始予定）</option>
+<option value="ahamo_120">新ahamo 120GB（2026/12/1開始予定）</option>
+<option value="ahamo_poi120">新ahamo ポイ活 120GB（2026/12/1開始予定）</option>
 <option value="eximo">eximo（受付終了）</option>
 <option value="eximo_poikatsu">eximo ポイ活（受付終了）</option>
 <option value="gigaho_premier">ギガホ プレミア（受付終了）</option>
@@ -872,6 +878,7 @@ input:focus,select:focus{
 <option value="gigalite">ギガライト（受付終了）</option>
 <option value="g5_gigalite">5Gギガライト（受付終了）</option>
 </select>
+<div class="note" style="margin:8px 0"><b>2026年料金改定（確認日：2026/10/8）</b>：ドコモ mini2・新ahamoは2026/12/1開始予定、ドコモ MAX 60歳以上割は2026/10/1開始。価格は税込。<a href="https://www.docomo.ne.jp/info/news_release/2026/09/25_00.html" target="_blank" rel="noopener">公式発表</a> / <a href="https://ahamo.com/new-ahamo" target="_blank" rel="noopener">新ahamo公式</a></div>
 
 <div id="maxStepArea">
 <label>ドコモ MAX データ量</label>
@@ -880,6 +887,14 @@ input:focus,select:focus{
 <option value="6798">STEP 2：1GB超～3GB</option>
 <option value="8448">STEP 3：3GB超～無制限</option>
 </select>
+</div>
+
+<div id="max60Area" class="hidden">
+<label>ドコモ MAX 60歳以上割：対象オーダー確認</label>
+<select id="max60OrderCheck" onchange="max60Changed()"><option value="unconfirmed" selected>未確認（割引を自動適用しない）</option><option value="confirmed">確認済み（個人名義5G・登録利用者満60歳以上・対象オーダー）</option></select>
+<label>MAX 60歳以上割の見積月</label>
+<select id="max60Period" onchange="max60Changed()"><option value="first3" selected>初回適用月～3か月目（27GBボーナス・期間割あり）</option><option value="month4">4か月目以降（ボーナス・期間割終了）</option></select>
+<div class="note">対象オーダーは新規（MNP含む）・Xi→5G契約変更・機種変更・対象外料金プランからの料金プラン変更。確認済みの場合のみ割引を計上します。1～3か月目は通常の1GB/3GB段階ではなく、27GBボーナス後の28GB/30GB段階で表示します。でんき・長期利用割など表にない併用は自動計上しません。</div>
 </div>
 
 <div id="poiMaxArea" class="hidden">
@@ -1028,6 +1043,7 @@ input:focus,select:focus{
 <option value="u22">ドコモU22割（最大7か月）</option>
 <option value="u29">ドコモU29割（最大3か月）</option>
 <option value="ahamo_max">ahamo→MAXのりかえ割（最大12か月）</option>
+<option value="max60">ドコモ MAX 60歳以上割（2026/10/1開始・確認後）</option>
 </select>
 <div class="mini" id="specialHint">条件を満たす場合のみ選択。対象プラン・併用不可項目は自動判定します。</div>
 </div>
@@ -1044,14 +1060,16 @@ input:focus,select:focus{
 <div class="mini" id="dcardPayHint">支払いに設定するdカードを選択してください。</div>
 </div>
 <div><label>通話オプション</label><select id="voice" onchange="calcAll()"><option value="0">なし</option><option value="880">5分通話無料 ＋880円</option><option value="1980">かけ放題 ＋1,980円</option></select></div>
+<div id="mini2VoiceArea" class="hidden"><label>mini2 60歳以上かけ放題割の確認</label><select id="mini2VoiceCheck" onchange="mini2VoiceCheckChanged()"><option value="unconfirmed" selected>未確認（かけ放題は1,980円）</option><option value="confirmed">確認済み（かけ放題を990円で見積）</option></select><div class="mini">利用者が満60歳以上で、mini2契約中に新たにかけ放題を申込みの場合に対象。かけ放題契約後に60歳になった場合は別途「mini2 60歳以上かけ放題割」の申込みが必要です。SMS・対象外通話は別料金です。</div></div>
 <div><label>その他追加料金 / 月</label><input id="extra" type="number" value="0" min="0" step="100" oninput="calcAll()" onchange="calcAll()"></div>
 </div>
 
 <div class="summary">
 <div class="row"><span>基本料金</span><b id="billBase">5,698円</b></div>
 <div class="row"><span>dカード支払い</span><b id="billDcardPay">設定なし</b></div>
-<div class="row"><span>店頭特殊割引（月額）</span><b id="billSpecial">−0円</b></div>
-<div class="row"><span>特殊割引 期間合計</span><b id="billSpecialPeriod">0円</b></div>
+<div class="row"><span>期間限定割引（月額）</span><b id="billSpecial">−0円</b></div>
+<div class="row"><span>期間限定割引 期間合計</span><b id="billSpecialPeriod">0円</b></div>
+<div class="row hidden" id="max60StatusRow"><span>MAX 60歳以上割の状態</span><b id="max60Status">—</b></div>
 <div class="row"><span>子育て/ハーティ 音声OP割引</span><b id="billSupportVoice">−0円</b></div>
 <div class="row"><span>ドコモ親子割（U15）</span><b id="billOyakoU15">−0円</b></div>
 <div class="row"><span>ドコモ親子割（家族）</span><b id="billOyakoFamily">−0円</b></div>
@@ -1617,7 +1635,7 @@ input:focus,select:focus{
 <b>ご利用前にご確認ください</b><br>
 このシミュレーターは料金・ポイント等の目安を確認するための概算ツールです。
 実際の請求額、ポイント進呈、割引・キャンペーンの適用可否は、契約内容や適用条件、時期などにより異なる場合があります。
-最終的な条件はNTTドコモ・dカード等の公式案内をご確認ください。本版は2026年9月1日に発表された改定後条件を基準にしています。通常dカードの2027年1月以降の通常決済還元率・年会費など、施行時期がさらに先の項目は別途表示・更新が必要になる場合があります。入力した内容を送信するための氏名・電話番号・メールアドレス等の入力欄は設けていません。
+最終的な条件はNTTドコモ・dカード等の公式案内をご確認ください。本版は2026年10月8日確認の公式情報を基準にしています。mini2・新ahamoは2026年12月1日開始予定、MAX 60歳以上割は2026年10月1日開始です。通常dカードの2027年1月以降の通常決済還元率・年会費など、施行時期がさらに先の項目は別途表示・更新が必要になる場合があります。入力した内容を送信するための氏名・電話番号・メールアドレス等の入力欄は設けていません。
 </section>
 
 <script>
@@ -1638,7 +1656,13 @@ function currentBase(){
   if(plan==="u15"){return num("u15Step");}
   if(plan==="mini4"){return 2750;}
   if(plan==="mini10"){return 3850;}
+  if(plan==="mini2_6"){return 3278;}
+  if(plan==="mini2_12"){return 4598;}
   if(plan==="ahamo"){return num("ahamoStep");}
+  if(plan==="ahamo_40"){return 3135;}
+  if(plan==="ahamo_60"){return 4125;}
+  if(plan==="ahamo_120"){return 5115;}
+  if(plan==="ahamo_poi120"){return 7315;}
   if(plan==="eximo"){return num("eximoStep");}
   if(plan==="eximo_poikatsu"){return 10615;}
   if(plan==="gigaho_premier"){return num("gigahoPremierStep");}
@@ -1657,7 +1681,13 @@ function currentDataName(){
   if(plan==="u15"){return g("u15Step").options[g("u15Step").selectedIndex].text;}
   if(plan==="mini4"){return "6GB（通常4GB＋増量2GB）";}
   if(plan==="mini10"){return "12GB（通常10GB＋増量2GB）";}
+  if(plan==="mini2_6"){return "～6GB（2026/12/1開始予定）";}
+  if(plan==="mini2_12"){return "6GB超～12GB（2026/12/1開始予定）";}
   if(plan==="ahamo"){return g("ahamoStep").options[g("ahamoStep").selectedIndex].text;}
+  if(plan==="ahamo_40"){return "～40GB（2026/12/1開始予定）";}
+  if(plan==="ahamo_60"){return "40GB超～60GB（2026/12/1開始予定）";}
+  if(plan==="ahamo_120"){return "60GB超～120GB（2026/12/1開始予定）";}
+  if(plan==="ahamo_poi120"){return "～120GB＋ポイ活オプション（2026/12/1開始予定）";}
   if(plan==="eximo"){return g("eximoStep").options[g("eximoStep").selectedIndex].text;}
   if(plan==="eximo_poikatsu"){return "無制限";}
   if(plan==="gigaho_premier"){return g("gigahoPremierStep").options[g("gigahoPremierStep").selectedIndex].text;}
@@ -1747,6 +1777,7 @@ function oyakoFamilyEligiblePlan(plan){
   return plan==="max" || plan==="poimax" || plan==="ahamo";
 }
 function oyakoFamilyMonthly(plan){
+  if(max60IsConfirmed && max60IsConfirmed() && g("max60Period").value==="first3") return 0;
   return householdHasOyakowariU15() && oyakoFamilyEligiblePlan(plan) ? 550 : 0;
 }
 function oyakoStateMonthly(st){
@@ -1797,7 +1828,7 @@ function applyOyakoUI(){
 
 function setDiscountAmount(plan){
   var step;
-  if(["max","poimax","poi20","mini4","mini10"].indexOf(plan)>=0) return 1210;
+  if(["max","poimax","poi20","mini4","mini10","mini2_6","mini2_12"].indexOf(plan)>=0) return 1210;
   if(["eximo","eximo_poikatsu","gigaho_premier","g5_gigaho_premier"].indexOf(plan)>=0) return 1100;
   if(plan==="gigalite" || plan==="g5_gigalite"){
     step=Number(g(plan==="gigalite"?"gigaliteStep":"g5GigaliteStep").value);
@@ -1808,7 +1839,7 @@ function setDiscountAmount(plan){
   return 0; // U15 / ahamo etc.
 }
 function electricityDiscountEligible(plan){
-  return ["max","poimax","poi20","mini4","mini10"].indexOf(plan)>=0;
+  return ["max","poimax","poi20","mini4","mini10","mini2_6","mini2_12"].indexOf(plan)>=0;
 }
 function applySetAndElectricityRules(){
   var plan=g("plan").value;
@@ -1838,6 +1869,7 @@ function applySetAndElectricityRules(){
 
 function setSourceChanged(){
   applySetAndElectricityRules();
+  updateMax60UI();
   calcAll();
 }
 function syncSetSource(){
@@ -1868,6 +1900,35 @@ function ahamoMaxDiscount(plan){
   if(step===6798) return 1100;
   return 2750;
 }
+function max60DiscountAmount(){
+  var step=Number(g("maxStep").value);
+  if(step===5698) return 1870;
+  if(step===6798) return 2970;
+  return 550;
+}
+function max60IsConfirmed(){
+  return g("plan").value==="max" && g("specialDiscount").value==="max60" && g("max60OrderCheck").value==="confirmed";
+}
+function updateMax60StepLabels(){
+  var sel=g("maxStep"); if(!sel) return;
+  var active=g("plan").value==="max" && g("specialDiscount").value==="max60";
+  var first3=active && max60IsConfirmed() && g("max60Period").value==="first3";
+  var labels=first3 ? ["ボーナス期間（1～3か月目）：～28GB（通常～1GB＋27GB）","ボーナス期間（1～3か月目）：28GB超～30GB（通常1GB超～3GB＋27GB）","ボーナス期間（1～3か月目）：30GB超～無制限"] : ["STEP 1：～1GB","STEP 2：1GB超～3GB","STEP 3：3GB超～無制限"];
+  Array.prototype.forEach.call(sel.options,function(o,i){o.text=labels[i]||o.text;});
+}
+function updateMax60UI(){
+  var plan=g("plan").value, selected=plan==="max" && g("specialDiscount").value==="max60";
+  if(g("max60Area")) g("max60Area").className=selected?"":"hidden";
+  updateMax60StepLabels();
+  if(max60IsConfirmed() && g("max60Period").value==="first3"){
+    // 公式表に明記されないでんき・長期利用割および他の未確認重畳は期間割と合算しない。
+    g("denkiDisc").value="0"; g("denkiDisc").disabled=true;
+    g("longDisc").value="0"; g("longDisc").disabled=true;
+    g("hearty").value="0"; g("hearty").disabled=true;
+    if(g("heartyHint")) g("heartyHint").textContent="MAX 60歳以上割の期間中は、公式表に明記されない重畳を自動計算しません。";
+  }
+}
+function max60Changed(){ planChanged(); }
 function specialDiscountInfo(){
   var type=g("specialDiscount")?g("specialDiscount").value:"none";
   var plan=g("plan").value, monthly=0, months=0, label="";
@@ -1879,13 +1940,13 @@ function specialDiscountInfo(){
     monthly=maxStepSpecialAmount(); months=3; label="ドコモU29割";
   }else if(type==="ahamo_max" && (plan==="max"||plan==="poimax")){
     monthly=ahamoMaxDiscount(plan); months=12; label="ahamo→MAXのりかえ割";
+  }else if(type==="max60" && plan==="max"){
+    label=g("max60Period").value==="first3" ? "ドコモ MAX 60歳以上割（初回～3か月目）" : "ドコモ MAX 60歳以上割（4か月目以降：終了）";
+    if(max60IsConfirmed() && g("max60Period").value==="first3"){ monthly=max60DiscountAmount(); months=3; }
   }
   return {type:type,monthly:monthly,months:months,total:monthly*months,label:label};
 }
-function specialDiscountChanged(){
-  applySpecialDiscountUI();
-  calcAll();
-}
+function specialDiscountChanged(){ planChanged(); }
 function applySpecialDiscountUI(){
   var sel=g("specialDiscount"), plan=g("plan").value;
   if(!sel) return;
@@ -1893,7 +1954,8 @@ function applySpecialDiscountUI(){
   var valid=(type==="none") ||
     (type==="kosodate"&&kosodateEligible(plan)) ||
     ((type==="u22"||type==="u29")&&plan==="max") ||
-    (type==="ahamo_max"&&(plan==="max"||plan==="poimax"));
+    (type==="ahamo_max"&&(plan==="max"||plan==="poimax")) ||
+    (type==="max60"&&plan==="max");
   if(!valid){ sel.value="none"; type="none"; }
   // 子育てとハーティは重畳不可。双方条件時はハーティ優先。
   if(type==="kosodate" && g("hearty") && g("hearty").value==="1"){
@@ -1912,6 +1974,8 @@ function applySpecialDiscountUI(){
     g("specialHint").textContent="U29：23～29歳・MAXのみ・最大3か月。ハーティとの重畳時は公式優先関係を反映します。";
   }else if(type==="ahamo_max"){
     g("specialHint").textContent="ahamoを連続12か月以上利用→MAX/ポイ活MAXへ変更時。最大12か月。MAXはSTEPにより0/1,100/2,750円、ポイ活MAX2,200円/月。";
+  }else if(type==="max60"){
+    g("specialHint").textContent="MAX 60歳以上割：対象オーダー・個人名義5G・登録利用者の満60歳以上を確認後、初回適用月から最大3か月。表に明記されないでんき・長期利用割等は自動合算しません。";
   }else{
     g("specialHint").textContent="条件を満たす場合のみ選択。対象プラン・併用不可項目は自動判定します。";
   }
@@ -1919,18 +1983,27 @@ function applySpecialDiscountUI(){
 
 function syncVoiceOptions(plan){
   var v=g("voice"), old=v.value;
-  if(plan==="ahamo"){
+  if(isAnyAhamoPlan(plan)){
     v.innerHTML='<option value="0">5分無料（基本料金込み）</option><option value="1100">かけ放題 ＋1,100円</option>';
     if(old==="1100") v.value="1100"; else v.value="0";
+  }else if(isMini2Plan(plan)){
+    var qualified=g("mini2VoiceCheck") && g("mini2VoiceCheck").value==="confirmed";
+    v.innerHTML='<option value="0">なし</option><option value="880">5分通話無料 ＋880円</option><option value="1980">かけ放題 ＋1,980円</option>'+
+      (qualified?'<option value="990">かけ放題（60歳以上割・確認済み）＋990円</option>':'');
+    if(old==="880" || old==="1980" || (qualified && old==="990")) v.value=old; else v.value="0";
   }else{
     v.innerHTML='<option value="0">なし</option><option value="880">5分通話無料 ＋880円</option><option value="1980">かけ放題 ＋1,980円</option>';
     if(old==="880" || old==="1980") v.value=old; else v.value="0";
   }
 }
+function mini2VoiceCheckChanged(){ syncVoiceOptions(g("plan").value); calcAll(); }
 
 function isLegacyPlan(plan){
   return ["eximo","eximo_poikatsu","gigaho_premier","g5_gigaho_premier","gigalite","g5_gigalite"].indexOf(plan)>=0;
 }
+function isMini2Plan(plan){ return plan==="mini2_6" || plan==="mini2_12"; }
+function isNewAhamoPlan(plan){ return ["ahamo_40","ahamo_60","ahamo_120","ahamo_poi120"].indexOf(plan)>=0; }
+function isAnyAhamoPlan(plan){ return plan==="ahamo" || isNewAhamoPlan(plan); }
 function setSelectOptions(id,items,keep){
   var el=g(id); if(!el)return;
   var old=keep?el.value:"0";
@@ -1940,7 +2013,9 @@ function setSelectOptions(id,items,keep){
 }
 function refreshPlanDiscounts(){
   var plan=g("plan").value, legacy=isLegacyPlan(plan);
-  if(legacy){
+  if(isMini2Plan(plan)){
+    setSelectOptions("minnaDisc",[["0","1回線（なし）"],["550","2回線以上 −550円"]],true);
+  }else if(legacy){
     setSelectOptions("minnaDisc",[["0","1回線（なし）"],["550","2回線 −550円"],["1100","3回線以上 −1,100円"]],true);
   }else{
     setSelectOptions("minnaDisc",[["0","1回線（なし）"],["550","2回線 −550円"],["1210","3回線以上 −1,210円"]],true);
@@ -1957,7 +2032,7 @@ function refreshPlanDiscounts(){
   }
 
   var pay=g("dcardPay");
-  if(pay && plan!=="ahamo"){
+  if(pay && !isAnyAhamoPlan(plan)){
     var old=pay.value;
     if(legacy){
       pay.innerHTML='<option value="none">設定なし</option>'+
@@ -1983,6 +2058,8 @@ function planChanged(){
   var plan=g("plan").value;
   refreshPlanDiscounts();
   g("maxStepArea").className = plan==="max" ? "" : "hidden";
+  g("max60Area").className = plan==="max" && g("specialDiscount").value==="max60" ? "" : "hidden";
+  g("mini2VoiceArea").className = isMini2Plan(plan) ? "" : "hidden";
   g("poiMaxArea").className = plan==="poimax" ? "" : "hidden";
   g("poi20Area").className = plan==="poi20" ? "" : "hidden";
   g("u15Area").className = plan==="u15" ? "" : "hidden";
@@ -1997,13 +2074,15 @@ function planChanged(){
   g("g5GigaliteArea").className = plan==="g5_gigalite" ? "" : "hidden";
   g("poiCard").className = (plan==="poimax" || plan==="poi20" || plan==="eximo_poikatsu") ? "card" : "card hidden";
 
-  var isAhamo=plan==="ahamo", isMini=(plan==="mini4" || plan==="mini10"), isU15=(plan==="u15");
+  var isAhamo=isAnyAhamoPlan(plan), isMini=(plan==="mini4" || plan==="mini10"), isMini2=isMini2Plan(plan), isU15=(plan==="u15");
   ["hikariDisc","minnaDisc","denkiDisc","longDisc"].forEach(function(id){g(id).disabled=false;});
   if(isAhamo){
     ["hikariDisc","minnaDisc","denkiDisc","longDisc"].forEach(function(id){g(id).value="0";g(id).disabled=true;});
   }else if(isU15){
     g("hikariDisc").value="0"; g("hikariDisc").disabled=true;
     g("minnaDisc").value="0"; g("minnaDisc").disabled=true;
+    g("longDisc").value="0"; g("longDisc").disabled=true;
+  }else if(isMini2){
     g("longDisc").value="0"; g("longDisc").disabled=true;
   }else if(isMini){
     g("minnaDisc").value="0"; g("minnaDisc").disabled=true;
@@ -2016,7 +2095,7 @@ function planChanged(){
     if(isAhamo){
       g("dcardPay").value="none";
       g("dcardPay").disabled=true;
-      if(g("dcardPayHint")) g("dcardPayHint").textContent="ahamoはdカードお支払割の対象外として計算します。";
+      if(g("dcardPayHint")) g("dcardPayHint").textContent=(isNewAhamoPlan(plan)?"新ahamoはdカードお支払割・みんなドコモ割・ドコモ光/home 5G・でんき等を適用せず計算します。":"ahamoはdカードお支払割の対象外として計算します。");
     }else{
       g("dcardPay").disabled=false;
       if(g("dcardPayHint")) g("dcardPayHint").textContent="支払いに設定するdカードを選択してください。";
@@ -2027,6 +2106,7 @@ function planChanged(){
   syncSetSource();
   applySpecialDiscountUI();
   applySetAndElectricityRules();
+  updateMax60UI();
   var maxEligible=(plan==="max" || plan==="poimax");
   ["maxBenefit1","maxBenefit2"].forEach(function(id){if(g(id)){g(id).disabled=!maxEligible;if(!maxEligible)g(id).value="";}});
   calcAll();
@@ -2169,7 +2249,7 @@ function phoneOptionTotal(){
     var parts=v.split("|"), key=parts[0], amt=parseFloat(parts[1])||0;
     if(!seen[key]){
       seen[key]=1;
-      var voiceFree=(num("voice")===880 || num("voice")===1980);
+      var voiceFree=(num("voice")===880 || num("voice")===1980 || num("voice")===990);
       if(voiceFree && (key==="vm330" || key==="catch220")) amt=0;
       total+=amt;
     }
@@ -2237,7 +2317,7 @@ var bakuData={
 function bakuDcardEligibleMonthly(){
   var plan=g("plan").value;
   // dカードのケータイ料金高還元自体が対象外/別率のプランはここでは加算しない
-  if(plan==="ahamo" || plan==="mini4" || plan==="mini10") return 0;
+  if(isAnyAhamoPlan(plan) || plan==="mini4" || plan==="mini10" || isMini2Plan(plan)) return 0;
 
   // MAX選べる特典・Amazon無料特典で実際に請求されない部分は除く
   var paid=Math.max(0,bakuMonthlyFee()-maxBenefitDiscount()-amazonFreeDiscount());
@@ -2306,17 +2386,17 @@ function refreshFamilyCardUI(){
 
 function cardPayDiscountMonthly(card, plan){
   if(g("hearty") && g("hearty").value==="1" && heartyEligible(plan)) return 0;
-  if(plan==="ahamo") return 0;
+  if(isAnyAhamoPlan(plan)) return 0;
   if(isLegacyPlan(plan)) return 187;
-  if(["max","poimax","poi20","mini4","mini10","u15"].indexOf(plan)>=0) return card==="silver" ? 220 : 550;
+  if(["max","poimax","poi20","mini4","mini10","mini2_6","mini2_12","u15"].indexOf(plan)>=0) return card==="silver" ? 220 : 550;
   return 0;
 }
 
 function planPayDiscountMonthlyForCard(card, plan, hearty){
   if(String(hearty)==="1" && heartyEligible(plan)) return 0;
-  if(plan==="ahamo") return 0;
+  if(isAnyAhamoPlan(plan)) return 0;
   if(isLegacyPlan(plan)) return 187;
-  if(["max","poimax","poi20","mini4","mini10","u15"].indexOf(plan)>=0) return card==="silver" ? 220 : 550;
+  if(["max","poimax","poi20","mini4","mini10","mini2_6","mini2_12","u15"].indexOf(plan)>=0) return card==="silver" ? 220 : 550;
   return 0;
 }
 function familyPaymentDiscountTotal(card){
@@ -2372,6 +2452,11 @@ function mobileEligibleTaxForCard(card,grossEligible,plan){
 }
 function specialRuleAudit(){
   var type=g("specialDiscount")?g("specialDiscount").value:"none";
+  if(max60IsConfirmed && max60IsConfirmed() && g("max60Period").value==="first3"){
+    if(g("denkiDisc")){g("denkiDisc").value="0";g("denkiDisc").disabled=true;}
+    if(g("longDisc")){g("longDisc").value="0";g("longDisc").disabled=true;}
+    if(g("hearty")){g("hearty").value="0";g("hearty").disabled=true;}
+  }
   // U22/U29期間中はでんきセット割・長期利用割を同時に差し引かない。
   if(type==="u22" || type==="u29"){
     if(g("denkiDisc")){g("denkiDisc").value="0";g("denkiDisc").disabled=true;}
@@ -2421,7 +2506,7 @@ function calcAll(){
   var base=currentBase();
   var plan=g("plan").value;
   var dcardDisc=0;
-  if(plan!=="ahamo" && g("dcardPay")){
+  if(!isAnyAhamoPlan(plan) && g("dcardPay")){
     var dpay=g("dcardPay").value;
     if(isLegacyPlan(plan)){
       if(dpay!=="none") dcardDisc=187;
@@ -2453,13 +2538,20 @@ function calcAll(){
   g("currentPlanPtYear").textContent=p(currentPlanPtYear);
   g("resultCurrentPlanPt").textContent=p(currentPlanPtYear)+" / 年";
   var dpayName={"none":"設定なし","silver":"dカード","goldu":"GOLD U","gold":"GOLD","plat":"PLATINUM"};
-  if(g("billDcardPay")) g("billDcardPay").textContent=(plan==="ahamo"?"対象外":(dpayName[g("dcardPay").value]||"設定なし"));
+  if(g("billDcardPay")) g("billDcardPay").textContent=(isAnyAhamoPlan(plan)?"対象外":(dpayName[g("dcardPay").value]||"設定なし"));
   var heartyYear=(heartyBase+heartyVoice)*12;
   var heartyHouseholdYear=heartyYear+(currentMember===0?householdHeartyAnnual():0);
   var oyakoYear=(oyakoU15Disc+oyakoFamilyDisc)*12;
   var oyakoHouseholdYear=currentMember===0?householdOyakoAnnual():oyakoYear;
   g("billSpecial").textContent=special.monthly?"−"+y(special.monthly):"−0円";
   g("billSpecialPeriod").textContent=special.total?y(special.total)+"（"+special.months+"か月）":"0円";
+  if(g("max60StatusRow")){
+    var max60Selected=(plan==="max" && g("specialDiscount").value==="max60");
+    g("max60StatusRow").className=max60Selected?"row":"row hidden";
+    if(max60Selected){
+      g("max60Status").textContent=!max60IsConfirmed()?"対象オーダー確認前：割引未計上":(g("max60Period").value==="first3"?"初回～3か月目：27GBボーナス・割引を計上":"4か月目以降：27GBボーナス・期間割終了（通常段階）");
+    }
+  }
   g("billSupportVoice").textContent=supportVoice?"−"+y(supportVoice):"−0円";
   g("billBase").textContent=y(base);
   g("billOyakoU15").textContent=oyakoU15Disc?"−"+y(oyakoU15Disc):"−0円";
@@ -2557,8 +2649,10 @@ function calcAll(){
   if(plan==="u15"){ gMobileRate=0; pMobileRate=0; }
   // miniは高還元対象外だが、定期クレジット設定時はGOLD U/GOLD/PLATINUM 1%。
   if(plan==="mini4" || plan==="mini10"){ gMobileRate=.01; pMobileRate=.01; }
+  // mini2のケータイ料金高還元の対象可否は今回の確認資料にないため、自動加算しない。
+  if(isMini2Plan(plan)){ gMobileRate=0; pMobileRate=0; }
   // ahamo利用料金自体はdポイントクラブご優待の対象外。
-  if(plan==="ahamo"){ gMobileRate=0; pMobileRate=0; }
+  if(isAnyAhamoPlan(plan)){ gMobileRate=0; pMobileRate=0; }
   var gMobile=mobileTaxGold*gMobileRate*12, gHikari=hikariTax*.10*12, gDenki=denkiTax*gDenkiRate*12;
   var pMobile=mobileTaxPlat*pMobileRate*12, pHikari=hikariTax*pHikariRate*12, pDenki=denkiTax*pDenkiRate*12;
 
@@ -2618,7 +2712,8 @@ function calcAll(){
   var sMobileRate=.01, uMobileRate=(familyMode?.01:.05);
   if(plan==="u15"){ sMobileRate=0; uMobileRate=0; }
   if(plan==="mini4" || plan==="mini10"){ sMobileRate=.005; uMobileRate=.01; }
-  if(plan==="ahamo"){ sMobileRate=0; uMobileRate=0; }
+  if(isMini2Plan(plan)){ sMobileRate=0; uMobileRate=0; }
+  if(isAnyAhamoPlan(plan)){ sMobileRate=0; uMobileRate=0; }
   var sMobile=mobileTaxSilver*sMobileRate*12;
   var uMobile=mobileTaxGoldu*uMobileRate*12;
   var sHikari=hikariTax*.01*12, uHikari=hikariTax*(familyMode?.01:.05)*12;
@@ -2743,6 +2838,11 @@ function captureEstimate(){
 }
 function restoreEstimate(o){
   if(!o) return;
+  // 更新前の保存見積には新しい確認項目がない。現在画面の確認済み状態を流用しない。
+  var safeDefaults={max60OrderCheck:"unconfirmed",max60Period:"first3",mini2VoiceCheck:"unconfirmed"};
+  Object.keys(safeDefaults).forEach(function(id){
+    if(g(id) && !Object.prototype.hasOwnProperty.call(o,id)) g(id).value=safeDefaults[id];
+  });
   editableFields().forEach(function(el){if(Object.prototype.hasOwnProperty.call(o,el.id)) el.value=o[el.id];});
   planChanged(); toggleUtilityMode(); calcAll();
 }
@@ -2966,7 +3066,7 @@ function selectedPhoneOptionRows(){
     seen[key]=1;
 
     // 通話OP契約中は留守番電話・キャッチホンの定額料割引を反映
-    var voiceFree=(num("voice")===880 || num("voice")===1980);
+    var voiceFree=(num("voice")===880 || num("voice")===1980 || num("voice")===990);
     if(voiceFree && (key==="vm330" || key==="catch220")) amount=0;
 
     var label=el.options[el.selectedIndex].text.replace(/\s+\d[\d,]*円.*$/,"");
@@ -3022,7 +3122,7 @@ function discountQuoteRows(plan, base){
   var payDisc=0;
   if(g("dcardPay").value!=="none"){
     if(isLegacyPlan(plan)) payDisc=187;
-    else if(plan!=="ahamo"){
+    else if(!isAnyAhamoPlan(plan)){
       payDisc=(g("dcardPay").value==="silver")?220:550;
     }
     if(heartyOn) payDisc=0;
@@ -3537,7 +3637,7 @@ function buildPrintReport(){
     });
 
     html+='</tbody></table>'+
-      '<div class="print-note" style="margin-top:4px">対象：割引後の基本使用料・通話/通信料・対象の付加機能使用料・対象のドコモ月額サービス料金。爆アゲ独自還元は別枠。2026年12月利用分以降のポイ活プランは、ポイ活特典の進呈ポイントをケータイ料金ポイント算定額から減額。miniはカード別0.5%/1%、ahamoはケータイ料金高還元対象外として計算。</div>'+
+      '<div class="print-note" style="margin-top:4px">対象：割引後の基本使用料・通話/通信料・対象の付加機能使用料・対象のドコモ月額サービス料金。爆アゲ独自還元は別枠。2026年12月利用分以降のポイ活プランは、ポイ活特典の進呈ポイントをケータイ料金ポイント算定額から減額。miniはカード別0.5%/1%、ahamo（新ahamoを含む）はケータイ料金高還元対象外として計算。mini2の高還元対象可否は今回の確認資料にないため自動加算しません。</div>'+
       '</div>';
   });
 
