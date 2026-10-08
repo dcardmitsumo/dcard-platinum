@@ -2053,4 +2053,666 @@ common.push({level:'basic',cat:'初期契約解除',q:'初期契約解除の8日
 })();
 
 </script>
+
+<style id="providerServicesStyle">
+/* Provider email / router detail cards. Kept scoped so existing staff forms retain their design. */
+.provider-service-card{
+  margin:14px 0 0;
+  padding:14px;
+  border:1px solid #e8b8c4;
+  border-left:4px solid #cc0033;
+  border-radius:14px;
+  background:#fff;
+  color:#25252c;
+  box-shadow:0 3px 12px rgba(117,0,37,.05);
+}
+.provider-service-card[hidden]{display:none!important}
+.provider-service-kicker{
+  margin:0 0 5px;
+  color:#a40029;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.08em;
+}
+.provider-service-card h3{
+  margin:0 0 7px;
+  color:#6e1028;
+  font-size:16px;
+  line-height:1.5;
+}
+.provider-service-summary{
+  margin:0;
+  color:#363640;
+  font-size:13px;
+  font-weight:700;
+  line-height:1.7;
+}
+.provider-service-card details{
+  margin-top:10px;
+  border:1px solid #efd5db;
+  border-radius:10px;
+  background:#fff8fa;
+}
+.provider-service-card summary{
+  padding:10px 11px;
+  color:#7c1732;
+  font-size:12px;
+  font-weight:850;
+  line-height:1.5;
+  cursor:pointer;
+}
+.provider-service-card details[open]{padding-bottom:10px}
+.provider-service-list{
+  display:grid;
+  grid-template-columns:92px minmax(0,1fr);
+  gap:7px 10px;
+  margin:0;
+  padding:0 11px;
+  font-size:12px;
+  line-height:1.65;
+}
+.provider-service-list dt{color:#7a5360;font-weight:850}
+.provider-service-list dd{min-width:0;margin:0;overflow-wrap:anywhere}
+.provider-service-links{display:grid;gap:5px;margin:10px 11px 0;font-size:12px}
+.provider-service-links a{color:#a40029;font-weight:800;overflow-wrap:anywhere}
+.provider-service-note{margin:8px 0 0;color:#676772;font-size:12px;line-height:1.65}
+.provider-service-unknown{background:#fff8e8;border-color:#ebd29f;border-left-color:#d39a34}
+.provider-service-sheet{break-inside:avoid;page-break-inside:avoid}
+.provider-service-sheet .provider-service-card{margin:13px 0}
+.provider-service-old-details{margin-top:16px}
+.provider-service-old-details .field{margin-top:14px}
+@media(max-width:420px){
+  .provider-service-list{grid-template-columns:1fr;gap:2px}
+  .provider-service-list dd{margin-bottom:7px}
+}
+@media print{
+  .provider-service-card{box-shadow:none;break-inside:avoid;page-break-inside:avoid}
+  .provider-service-card details{display:block!important}
+  .provider-service-card details>summary{display:none}
+  .provider-service-card details>*:not(summary){display:block!important}
+  .provider-service-list,.provider-service-links{font-size:9pt}
+}
+
+</style>
+<script id="providerServiceCatalog" type="application/json">[{"checked":"2026-10-08","mail":{"status":"継続可（ただしネット回線解約後にメールだけを残す専用プランの案内ではなく、GMOとくとくBBの現契約継続または他の基本接続サービスへの乗換えが必要）","plan":"専用のメール継続プラン名は公式本文で確認できず。現在のGMOとくとくBB契約を継続、または他の接続サービスへ乗換え（会員IDを維持）","fee":"メール継続専用の税込月額・年額は公式本文で確認できないため契約先へ確認。元の接続サービス料金は別途発生し、料金を保証しない","conditions":"ドコモ光の解約でGMOとくとくBBのプロバイダーサービスも終了。別の基本接続サービスがなければ自動的に会員解約となり、WEBメールも利用不可。メールアドレスのドメイン、既存メール専用プランの有無・料金、申込期限は公式本文に掲載なし。メールアドレスを削除（解約）すると永久に再利用・復旧不可、サーバー内メールデータも削除。ネット契約の解約と会員退会は別だが、会員退会を避ける必要がある。新規メール発行条件と既存メール継続を混同しないこと","procedure":"ドコモ光の解約完了前に、現在の会員IDでBBnaviマイページから他の接続サービスを追加契約（または現契約を継続）。解約前に必要なメールをバックアップ。ドコモ光解約だけで会員退会となるケースでは継続不可","contact":"GMOとくとくBB入会後サポート：0570-045-109（有料、10:00～19:00。手続きは平日、設定は年中無休）。公式AIチャットは24時間。メール継続の手続き・適用可否は契約先へ確認。","contactUrl":"https://gmobb.jp/support/chat/","sources":["https://help.gmobb.jp/faq/faq_detail.html?id=1015366","https://help.gmobb.jp/faq/faq_detail.html?id=1014377","https://www.docomo.ne.jp/binary/pdf/internet/hikari/common/docomo_hikari_10g_router.pdf"]},"router1":{"status":"提供あり（GMOとくとくBB提供のドコモ光1ギガ向けレンタル）","fee":"0円（税込）","conditions":"GMOとくとくBBのドコモ光2年契約（1Gbps）利用者向け。v6プラス対応機種から選択。公式掲載機種はTP-LINK Archer BE5000/BE3600/Archer AX5400、BUFFALO WSR-3600BE4P等（掲載機種は時期・在庫で変動）。GMOのサービスページにNTT/ドコモ共通レンタルの料金としての550円は確認できず、独自レンタルと混同しない。解約後は通常、翌月20日までにGMOへ送料負担で返却、期限超過時は端末損害金11,000円（税込）。端末発送月を含む37か月利用なら返却不要。申込・機種選択条件は申込ページで確認。NTTレンタル機器（ONU・ホームゲートウェイ等）はGMO返却品と別。旧契約3社の機器は現行新規レンタル対象として扱わない","contact":"GMOとくとくBB入会後サポート：0570-045-109（有料、10:00～19:00。手続きは平日、設定は年中無休）。公式AIチャットは24時間。メール継続の手続き・適用可否は契約先へ確認。","sources":["https://gmobb.jp/service/docomohikari/bbr-spec/","https://help.gmobb.jp/faq/faq_detail.html?id=1019997"],"kind":"provider"},"router10":{"status":"提供あり（GMOとくとくBB提供のドコモ光10ギガ向けレンタル）","fee":"月額190円（税込）。ドコモ光10ギガ接続サービス削除後もレンタルだけ継続する場合は月額390円（税込）。出荷月は無料、翌月から発生、日割りなし","conditions":"GMOとくとくBBのドコモ光10ギガ接続サービス利用者向けで、申込みが必要。10ギガ対応機種（TP-LINK Archer BE450W、BUFFALO WSR-6500BE6P-10G等）から選択し、申込後の希望端末変更不可。東日本のNTT/ドコモ、西日本のNTT西日本による共通レンタルは別契約で、GMO独自レンタルと区別。GMOレンタルは契約後37か月目まで料金発生、38か月目以降は無料で、期間経過後は所有権が利用者へ譲渡。回線の開通前キャンセルまたは解約時は返却（解約・キャンセル月の翌月20日必着）、未返却は補償料22,000円（税込）。月末申請などでGMOへの通知が遅れると解約後も翌月分190円が発生する場合あり。10ギガ提供エリア制限あり。短期利用は日割りなし。旧契約3社の機器は現行新規レンタル対象として扱わない","contact":"GMOとくとくBB入会後サポート：0570-045-109（有料、10:00～19:00。手続きは平日、設定は年中無休）。公式AIチャットは24時間。メール継続の手続き・適用可否は契約先へ確認。","sources":["https://gmobb.jp/service/docomohikari/bbr-spec/10g/","https://help.gmobb.jp/faq/faq_detail.html?id=1020630","https://help.gmobb.jp/faq/faq_detail.html?id=1019997"],"kind":"provider"},"id":"gmo","name":"GMOとくとくBB"},{"checked":"2026-10-08","mail":{"status":"継続可能","plan":"OCN バリュープラン（既存のOCNメールアドレスを引継ぎ、メール単体で継続）","fee":"月額275円（税込）。年額の公式表示は確認できず（月額×12なら3,300円だが料金保証ではない）","conditions":"対象はOCNインターネット／OCN for ドコモ光のネット契約を解約後も既存OCNメールを使い続けるケース。メールアドレス1個が利用可能。現在利用中のプロバイダーがOCN以外でも利用できる。既存アドレスの具体的なドメイン表記、申込期限、解約前の必須日数、再取得不可条件は公式本文で確認できず、契約先へ確認。ネット契約の解約とOCN会員退会・メール廃止は別手続きで、メール廃止／会員退会を先に行わない。新規にメールだけを発行する一般プランの条件と、既存アドレス引継ぎを混同しないこと。","procedure":"OCN公式FAQではWeb手続き不可。ネット解約前に、またはメールを失わないようカスタマーズフロントへOCNバリュープランへの変更と既存メールアドレス引継ぎを相談。プラン変更・解約時期の詳細は窓口確認。","contact":"カスタマーズフロント：0120-506506（10:00～19:00、日曜・祝日・年末年始を除く）","contactUrl":"https://support.ocn.ne.jp/personal/inquiry/detail/pid2200001uwl/","sources":["https://support.ocn.ne.jp/personal/faq/detail/pid23000024kf/","https://service.ocn.ne.jp/option/mail/valueplan/","https://support.ocn.ne.jp/personal/inquiry/detail/pid2200001uwl/"]},"router1":{"status":"OCN提供の無償レンタルあり","fee":"無償（OCNインターネット×ドコモ光1ギガとのセット。公式本文に月額請求なし）","conditions":"1ギガ申込後、OCN会員登録証到着後に別途Web申込が必要（Nから始まる10桁のお客さま番号）。機種はBUFFALO WSR3600BE／TP-Link Archer BE5000（いずれもWi-Fi 7）等、OCNの指定機種。IPoE通信対応の案内あり。最低利用期限はなく、契約期間中の解約でも違約金なし。発送メール到達日からレンタル契約期間は1年間、1年経過した機器は所有権が利用者へ譲渡。1年未満で契約終了時の返却費用は利用者負担。工事日の4日前までなら工事日までに発送、3日前以降は申込日から4日後目途。公式本文で短期利用の追加費用・返却送料の金額は確認できず。NTT／ドコモの共通レンタル550円をOCNレンタルと混同しない。","contact":"レンタル申込：OCN公式から案内されるNTTX申込サイト。料金・返却の金額は公式本文で確認できないため契約先へ確認","sources":["https://service.ocn.ne.jp/hikari/ocn-internet/router/","https://service.ocn.ne.jp/hikari/ocn-internet/","https://nttxstore.jp/shop/pages/1g_router.aspx"],"kind":"provider"},"router10":{"status":"OCN独自のレンタルではなく、公式案内は対応ルーターの優待販売。独自レンタルの提供を確認できず","fee":"優待販売（税込）：TP-Link Archer BE7200 6,780円、BUFFALO WXR9300BE6P 17,980円、BUFFALO WXR-11000XE12/D 19,980円、TP-Link Archer BE700 20,980円。価格・在庫は変動の場合あり。ドコモ光の共通レンタル550円等の適用可否・金額はOCN公式本文で確認できないため契約先へ確認","conditions":"ドコモ光10ギガの最大速度利用には10ギガ対応ルーターが必要。OCNインターネット10ギガ契約者限定で、OCN会員登録証到着後に専用Web（OCNオンラインショップ／NTTX）から申込。電話注文は可能だが代引のみ、申込は1契約者1回1台。優待品は購入でありレンタルではないため、OCNの返却・短期利用費用・譲渡条件は該当なし（販売店の保証・返品・交換は販売条件を確認）。IPv6/IPoE利用や対応機種は選択機種の仕様・契約環境を確認。旧OCN契約3社向けの従来ルーター施策は現行新規対象外として扱い、メール継続案内を優先。","contact":"OCNオンラインショップ商品問い合わせ：0120-003-104（平日・土日祝10:00～18:00、年末年始除く）。回線・お客さま番号：0120-506506（10:00～19:00、日曜・祝日・年末年始除く）","sources":["https://service.ocn.ne.jp/hikari/ocn-internet/docomohikari/tokuten/10g.html","https://service.ocn.ne.jp/hikari/ocn-internet/","https://www.docomo.ne.jp/internet/hikari/charge/"],"kind":"purchase"},"id":"ocn-internet","name":"OCN インターネット"},{"checked":"2026-10-08","mail":{"status":"継続可能（ネット契約の解約と@nifty ID／会員退会は別）。@nifty IDを解約するとメールも利用不可。","plan":"@nifty基本料金（既存@nifty IDのメール継続用。メールドメインは@nifty.com）。税込275円/月（公式表示は月額。12か月利用時の年額換算は3,300円）。","fee":"税込275円/月（年額換算3,300円。年払い料金の公式掲載は確認できず）。無料ではない。","conditions":"@nifty ID 1つにつきメールアドレス1つ。ドコモ光解除データ連携後、@niftyメール宛てに『【重要】光回線サービス解除後の＠niftyID利用継続について』が配信されるため、その記載に従い継続手続きが必要。手続きしないと一定期間経過後に自動解約。契約コース変更済み、有料コンテンツ・保険・でんき/ガス・NifMo利用中、ファミリープラン手続き中、料金滞納中などは自動解約されない。メールのみ利用する場合は回線解除時に翌月からのプランとして@​nifty基本料金を選択する（ドコモ光解除後の案内メール方式では個別の申込期限・日数は公式本文に掲載なし）。他社回線で@niftyメール（@nifty.com）を使う場合、送信設定変更が必要になることがある。メールの新規追加申込と、既存メールを継続するための基本料金を混同しないこと。ネット契約を解約しても@nifty IDを退会しなければ継続可能だが、会員退会は別手続き。","procedure":"ドコモ光の回線解除は@niftyでは受け付けず、ドコモショップまたはドコモインフォメーションセンターで手続き。解除データ連携後に@niftyから届く継続案内メールを確認し、メール記載内容に従って@nifty IDを継続。メールのみなら、接続サービスの解除手続き中に『解除翌月からのプラン』で@​nifty基本料金を選択。料金コース変更後もメールアドレスはそのまま利用可能。","contact":"@niftyカスタマーサービスデスク（公式窓口ページでメール問い合わせは24時間365日受付。電話番号・営業時間は、メール継続案内の本文では確認できなかったため記載しない）。","contactUrl":"https://support.nifty.com/support/madoguchi/","sources":["https://support.nifty.com/support/service/docomohikari/index.htm","https://faq.support.nifty.com/4235","https://support.nifty.com/support/madoguchi/"]},"router1":{"status":"提供あり（@nifty提供のWi-Fiルーターレンタル）。旧プランの機種・サービスは新規受付終了のため、現行新規対象と区別。","fee":"@nifty with ドコモ光契約中は無料（0円/月）。ドコモ光解除後も継続利用する場合は税込550円/月。","conditions":"『Wi-Fiルーター』プランは@nifty会員専用アプリから申込（アプリ不可・スマホなしは案内されたWeb申込）。1つの@nifty IDにつき1契約・1台。機器は選択不可で、現行掲載はBUFFALO WSR-3000AX4L、TP-Link Archer AX1800、ELECOM WRC-X1500GS2-BH/WRC-X1800GS2-B。@nifty v6サービス（無料）でIPv4 over IPv6通信が確認されるとPPPoE提供終了。『ドコモ光ルーター01』などIPv4 over IPv6対応機器ならレンタル不要。開通予定日5日前目安（開通済みは申込受付翌日以降）発送。不要時は自分で解除手続き。解除後も@nifty接続サービス申込がなければ解除日の翌月末に自動解除。解除後は返却必要（解除受付完了メールで方法案内）、30か月利用なら返却不要（中継機除く）。メーカー保証後の故障交換は税込1,100円。『Wi-Fi6対応ルーター』『ルーター安心パック』『Wi-Fi中継機』『つながるWi-Fi中継機』は新規受付終了。@niftyの単独光向けレンタルをドコモ光へ流用する案内ではない。","contact":"設定・故障はメーカー窓口（現行機種の案内：BUFFALO 0570-086-086、月～土・祝9:30～19:00／日9:30～17:30、TP-Link 0120-095-156または0570-066-881、平日9:00～18:00・土日祝10:00～18:00、ELECOM 0570-050-060、10:00～19:00年中無休）。料金・解除は@niftyカスタマーサービスデスク。","sources":["https://setsuzoku.nifty.com/docomo/option/router/","https://faq.support.nifty.com/3864","https://faq.support.nifty.com/3865","https://faq.support.nifty.com/5417"],"kind":"provider"},"router10":{"status":"提供あり。ただし@nifty独自レンタルではなくNTTドコモ提供の共通レンタル（NTT XG-100NE）。","fee":"税込550円/月（500円/月）。@nifty公式はNTTドコモ提供と明記。","conditions":"光回線と同時申込なら@niftyが取次ぎ、後からの申込はNTTドコモへ直接申込。10Gbps接続には対応ルーターが必要。自前機器の場合はDHCPv6-PD、IPv4 over IPv6、10GBASE-T WAN/LAN（有線時）、v6プラスまたはOCNバーチャルコネクト対応が条件で、@niftyは両方対応を推奨。レンタル機器はNTT東日本／西日本から工事日前日までに送付。短期利用の@nifty独自契約解除料・返却条件・譲渡条件は@nifty公式本文で確認できず、NTTドコモのレンタル契約条件を確認。@nifty公式に独自10ギガレンタルの提供は確認できず（掲載はNTTドコモレンタルと購入プラン）。購入プラン（レンタルではない）は別物で、機器所有権は賦払金完済時に移転し、回線解除等で残金一括。","contact":"@nifty with ドコモ光お申し込み受付デスク 0120-990-501（10:00～20:00、12/29～1/4除く）。後からの10ギガ共通レンタル申込はNTTドコモへ直接確認。","sources":["https://setsuzoku.nifty.com/docomo/","https://setsuzoku.nifty.com/docomo/flow/10g/","https://setsuzoku.nifty.com/docomo/option/router_10g/"],"kind":"common"},"id":"nifty","name":"@nifty"},{"checked":"2026-10-08","mail":{"status":"既存アドレスを残せるかは解約前の個別確認が必要（無料プランの継続だけでメール維持を保証しない）。","plan":"andlineプロバイダー無料プラン（ドコモ光解約時・プロバイダー変更時はプロバイダー契約が継続し無料プランへ変更）。メールはandline-*.net（*は申込時期等により指定英数字。設定案内にはandline.jp／andline-two.netも掲載）。","fee":"無料プランは月額0円・年額換算0円。既存メール継続の別料金・年額は公式で金額を確認できないため契約先へ確認。新規メールは契約時には発行されず、申請により5個まで無料（既存メール継続条件とは別）。","conditions":"ネット契約の解約／プロバイダー変更とandline会員・プロバイダー契約の解約は別。無料プランへ自動変更後もプロバイダー契約を残すことが前提で、プロバイダー自体を解約する場合は別途窓口へ申し出る必要があります。申込期限・解約前のメール継続手続き・無料プランでの既存メール保持期間・再取得不可条件は公式で確認できません。新規発行は公式メール申請フォームから申請（希望アドレスの記号・32文字以内等の入力条件あり）。","procedure":"ドコモ光解約／プロバイダー変更だけなら提供条件書上はプロバイダー契約が無料プランへ変更。andlineプロバイダー契約も解約したい場合は、別途andline窓口へ申し出。メール新規発行は公式の「メールアドレス利用申請」から行い、利用中メールアドレスがない場合は電話受付。","contact":"ドコモ光andlineカスタマーサポートデスク（サポートセンター）03-6809-3392（有料）、10:00～19:00（年末年始除く）","contactUrl":"https://www.andline.net/contact/","sources":["https://www.docomo.ne.jp/binary/pdf/internet/hikari/notice/andline.pdf?ver=1788310819","https://www.andline.net/often-question/48576/2022/06/15/","https://www.andline.net/mail/","https://www.andline.net/often-question/49154/2022/06/15/","https://www.andline.net/corp/"]},"router1":{"status":"提供あり（andline独自の永年無料オプションWi-Fiルーター。ドコモ光1ギガ向け）。","fee":"事務手数料0円・月額0円（税込）。ドコモの共通レンタルは別制度で、ドコモ光電話契約時の無線LAN機能付きルーターは月額330円（税込）と公式案内されています。","conditions":"andline公式オプション申込フォームから手動申込（電話申込も可との1ギガ提供条件書）。1回線につき無料オプションは1点で、選択後の途中変更不可。IPv6利用にはIPv6対応機器が必要。機種は公式本文で固定掲載なし。ドコモ光10ギガの新規契約者はこの無料Wi-Fiルーター対象外。解約／キャンセル・プロバイダー変更時は指定先へ元払いで14日以内（キャンペーン案内は2週間以内）に返却、未返却時は有料レンタルへ移行し得る。無料レンタルの高速タイプは発送月を含む30か月最低利用期間・期間内解約違約金10,000円（不課税）と規約別紙に記載されるが、通常タイプの短期費用は公式で金額を確認できないため契約先へ確認。機器の所有権はandline側で譲渡不可。","contact":"申込はhttps://www.andline.net/apply/。問い合わせはandline for ドコモ光カスタマーサポートデスク 03-6809-3392、10:00～19:00（年末年始除く）。","sources":["https://www.andline.net/","https://www.docomo.ne.jp/binary/pdf/internet/hikari/notice/andline.pdf?ver=1788310819","https://www.andline.net/often-question/48584/2022/06/15/","https://www.andline.net/often-question/48635/2022/06/15/","https://www.andline.net/campaign/","https://www.andline.net/v2/wp-content/themes/docomo_andline_original/pdf/2024_10andline_for_docomo_riyoukiyaku.pdf","https://www.docomo.ne.jp/internet/hikari/collabo_change/"],"kind":"provider"},"router10":{"status":"提供あり（andline独自の10ギガ対応Wi-Fi 7有料レンタル）。1ギガ無料ルーターの流用不可。","fee":"キャンペーン対象の新規申込は月額495円（税込・終了時期未定）。10ギガ解約または1ギガへ変更後も継続する場合は月額748円（税込）。ドコモの共通レンタルは別制度で、ドコモ光10ギガ（ドコモ光電話契約時）の無線LAN機能付きルーターは月額550円（税込）。","conditions":"2026年7月15日以降、10ギガ利用中／申込中の人が新規で10ギガ対応Wi-Fi有料レンタルを申し込む場合。既に有料レンタル中、または過去にandline 10ギガ有料ルーターを利用した人はキャンペーン対象外。機種は指定Wi-Fi 7（選択不可、在庫により変動）、端末側もWi-Fi 7対応が必要。1ギガ契約者は申込不可。契約解約時は指定方法で返却、所有権はandline。短期利用の違約金・最低利用期間・返却未了の買い取り額は10ギガページで確認できないため契約先へ確認。","contact":"申込は公式10ギガルーター申込フォーム（https://www.andline.net/apply/?entry=10G）。問い合わせはandline for ドコモ光カスタマーサポートデスク 03-6809-3392、10:00～19:00（年末年始除く）。","sources":["https://www.andline.net/next/","https://www.andline.net/corp/","https://www.docomo.ne.jp/internet/hikari/collabo_change/"],"kind":"provider"},"id":"andline","name":"ANDLINE"},{"checked":"2026-10-08","mail":{"status":"継続可能（ネット接続サービスの解約とBIGLOBE会員の退会は別。退会すると退会月末でメール停止）","plan":"BIGLOBEメール スタンダードプラン（有料）。接続サービスだけを解約して会員を残す場合はライトプランへ移行。既存メールアドレスを継続利用する案内であり、新規会員登録で無料メールを発行する条件とは別。","fee":"スタンダード：税込220円/月（年額換算2,640円、公式掲載は月額）。ライト：無料。固定回線・モバイル/WiMAXの接続契約者に自動適用される「スタンダード 接続契約者」も無料だが、接続サービス解約後はライト扱い。料金は将来変更される可能性があるため申込時に要確認。","conditions":"既存のBIGLOBEメールアドレスを対象とし、BIGLOBEを退会せず、(1)スタンダードプランを申し込む、または(2)接続サービスだけ解約する。スタンダードはメールソフト／アプリ利用可・保存期間無制限、ライトはWebメールのみ・保存期間30日。ドコモ光利用中も取得済みBIGLOBEメールアドレスは継続利用可。メールドメインは利用中アドレスのもの（確認した公式本文にドメイン文字列の記載なし）。解約前の申込期限・年額料金・変更期限は公式本文で確認できず。BIGLOBEを退会すると再入会しても同じアドレスは再取得不可。","procedure":"BIGLOBE会員の退会ではなく、マイページでBIGLOBEメールをスタンダードへプラン変更、または接続サービスのみを解約する。ドコモ光の解約受付はBIGLOBEではなくドコモ。会員退会とネット契約解約を混同しない。","contact":"BIGLOBEカスタマーサポート（メール継続の個別確認。確認した公式本文に電話番号・営業時間の記載なし）","contactUrl":"https://support.biglobe.ne.jp/ask/info_desk.html","sources":["https://faq.support.biglobe.ne.jp/faq_detail.html?faq_id=12068","https://email.biglobe.ne.jp/","https://faq.support.biglobe.ne.jp/faq_detail.html?faq_id=10061","https://faq.support.biglobe.ne.jp/faq_detail.html?faq_id=11623"]},"router1":{"status":"レンタル可能（BIGLOBE提供「接続機器(無線LAN付き)」）。ドコモ光1ギガ向けの1台目は適用条件を満たせば無料。","fee":"1台目：税込0円/月（標準550円/月を特典で値引き）。2台目以降：税込550円/月・1台。最大5台。解約時の返送手数料：税込1,430円/台。1か月超未返却時は機種により未返却費用（Aterm WG1810HP(JE) 16,000円不課税、それ以外6,000円不課税）。","conditions":"2018年8月29日以降にドコモ光を申し込み、開通すること。支払方法登録完了後にWebから手動申込（電話申込不可）。BIGLOBE会員は登録済みなら申込可、新規会員はNTTファイナンス回収代行の登録完了が必要（通常1週間～10日）。機種指定不可・時期により変更。Aterm 3000D4AXの案内例はIPv6(IPv4 over IPv6)対応。1ギガ用なので10ギガでは性能を発揮できない。ドコモ光が開通しない／BIGLOBEのドコモ光以外へ変更時は返却。無料レンタル解約はBIGLOBEカスタマーサポートへ連絡。","contact":"BIGLOBEカスタマーサポート（無料レンタル解約窓口。確認した公式本文に電話番号・営業時間の記載なし）","sources":["https://join.biglobe.ne.jp/docomo_hikari/router.html","https://faq.support.biglobe.ne.jp/faq_detail.html?faq_id=12615","https://join.biglobe.ne.jp/docomo_hikari/"],"kind":"provider"},"router10":{"status":"BIGLOBE独自の10ギガ向けレンタル提供は確認できず。公式のドコモ光×BIGLOBE案内は10ギガ向けを高機能無線LANルーターの購入（660円～・48回払い等）として案内。1ギガ無料レンタルの流用不可。","fee":"BIGLOBE独自レンタルの金額は公式で確認できないため契約先へ確認。公式掲載の購入例はWXR-9300BE6P、48回払い税込660円～（総額税込31,680円～、実質年率0%）。購入品はBIGLOBE退会時に残金一括。NTT/ドコモ側の共通レンタルを利用できるか・料金は契約先へ確認。","conditions":"ドコモ光10ギガはIPv6(IPoE)通信のみ。10ギガ対応ルーターが必要で、端末側も対応が必要。BIGLOBE公式はNTTドコモからのレンタルやBIGLOBE提供ルーターを確認するよう案内するが、10ギガのBIGLOBE独自レンタル条件・返却費・譲渡条件は本文で確認できず。1ギガ用無料レンタルは10ギガで本来の性能を発揮しないため対象外。","contact":"ドコモ光インフォメーションセンター（サービス・機器接続・解約：ドコモ携帯151／一般電話0120-800-000、9:00～20:00・365日）。BIGLOBE独自レンタルの有無はBIGLOBEカスタマーサポートへ確認。","sources":["https://join.biglobe.ne.jp/docomo_hikari/","https://faq.support.biglobe.ne.jp/faq_detail.html?faq_id=12615","https://faq.support.biglobe.ne.jp/faq_detail.html?faq_id=11633"],"kind":"purchase"},"id":"biglobe","name":"BIGLOBE"},{"checked":"2026-10-08","mail":{"status":"ドコモ光解約・プロバイダ変更後に既存のSISメールアドレスを同じまま継続できる専用プランは、公式本文で確認できません。ドコモ光解約時はSISプロバイダ契約が解約となり、継続希望はSISへの新規申込み扱いです。","plan":"既存メール継続用プラン名の掲載なし。新規のSIS for ドコモ光ではメール（最大18アカウント、@m.speedia.jp、メールBOX 3GB）が付帯。SIS単独の『メールパック』は新規にメールアドレス3個を追加するオプションで、既存アドレス持ち運びプランではありません。","fee":"既存メール継続用の税込月額・年額は公式で金額を確認できないため契約先へ確認。参考として、新規SIS単独のメールパックは税込330円/月（年額3,960円相当、日割りなし）だが、既存メール継続料金とは別物です。","conditions":"対象ドメインは公式掲載上 @m.speedia.jp。ドコモ光解約またはプロバイダ変更ではネット契約（SISプロバイダ契約）が終了し、SISを続ける場合は新規契約。SIS利用規約は基本サービス変更時にネットワークID・パスワード・メールアドレス等を継続利用できないと明記。新規契約で同じアドレスを再取得できるか、再取得不可となる条件、申込期限は公式本文で確認できないため断定不可。ネット契約の解約と会員退会は別手続きだが、メールパックはSIS退会時に自動解約。無料付帯メール（新規ドコモ光契約）と有料メールパックを既存メール継続と混同しないこと。","procedure":"ドコモ光の解約・プロバイダ変更はドコモで手続き。SISメールを引き続き使いたい場合は、解約前にSISサポートセンターへ新規SIS契約の可否・同一アドレス再取得可否を確認して申込み。メールパックの解約は毎月15日までなら当月末、16日以降は翌月末（ただしこれはメールパックの解約手続き）。","contact":"SISサポートセンター（1ギガ）0120-540-860、10:00～19:00（年末年始除く）。メールパック（SIS単独）申込・解約はSISサポートセンター 0120-55-7343、10:00～18:00（年末年始除く）。","contactUrl":"https://www.speedia.jp/docomoHikari_detail/","sources":["https://www.speedia.jp/docomoHikari_detail/","https://www.speedia.jp/docomoHikari_detail/Option","https://www.speedia.jp/SIS/Option/Mailpack","https://www.docomo.ne.jp/binary/pdf/internet/hikari/notice/sis.pdf","https://www.speedia.jp/application/sis/kiyaku.pdf"]},"router1":{"status":"SIS提供のIPv6対応Wi-Fiルーターを、ドコモ光1ギガの契約期間中は無償レンタル可能です。","fee":"無料（税込0円/月）。","conditions":"1ギガプランのみ。ドコモ光/SIS for ドコモ光の申込時にSIS指定Webフォームで事前申告し、または契約後にUserToolから手動申込。原則工事日前に発送。IPv6対応機器だが、在庫によりメーカーが変わり受領後交換不可。利用開始日または発送日の遅い日から13か月未満で解約すると、送料利用者負担で返却またはルーター費用相当額11,000円（税込）請求の場合あり。13か月以上利用なら返却義務免除。解約・プロバイダ変更で提供終了。返却時の送料は利用者負担。SIS単独光商品のルーターをドコモ光へ流用する扱いは確認していません。","contact":"SISサポートセンター（1ギガ）0120-540-860、10:00～19:00（年末年始除く）。","sources":["https://www.speedia.jp/docomoHikari_detail/Option","https://www.speedia.jp/docomoHikari_detail/docomoHikariFAQ/FAQ-detail/3/4","https://www.docomo.ne.jp/binary/pdf/internet/hikari/notice/sis.pdf"],"kind":"provider"},"router10":{"status":"SISの10ギガプランでは独自のWi-Fiルーター無料レンタルは提供されていません。10ギガ対応ルーターはドコモからレンタルするか利用者が用意します。","fee":"ドコモ提供の10Gbps対応無線LANルーターは税込550円/月（SIS提供料金ではなくドコモの共通レンタル）。SIS独自レンタルの料金は公式で確認できません（SIS公式FAQは無料レンタルなしと明記）。","conditions":"SIS公式FAQで『SISの10ギガプランでは、Wi-Fiルータ無料レンタルの提供はございません』。ドコモレンタルを利用する場合の申込・返却・短期利用費用・譲渡条件は、SIS公式本文では確認できないためドコモへ確認。対応は10ギガ対応機器が必要で、ドコモ資料はフレッツ光クロス対応レンタルルーターまたはv6プラス対応かつフレッツ光クロス対応ルーター等を示す。自前機器の利用可否はプロバイダーへ確認。1ギガのSIS無償レンタル機器を10ギガへ流用しない。","contact":"SISサポートセンター（10ギガ）0120-330-663、10:00～19:00（年末年始除く）。ドコモ光の回線・共通レンタルはドコモインフォメーションセンター 0120-800-000、9:00～20:00（年中無休）。","sources":["https://www.speedia.jp/docomoHikari_detail/docomoHikariFAQ/10G/FAQ-detail/3/3","https://www.speedia.jp/docomoHikari_detail/10G","https://www.docomo.ne.jp/internet/hikari/10g_plan/","https://www.docomo.ne.jp/binary/pdf/internet/hikari/common/docomo_hikari_10g_router.pdf"],"kind":"common"},"id":"sis","name":"SIS"},{"checked":"2026-10-08","mail":{"status":"継続可能（ネット契約の解約と会員退会は別）。BB.exciteの各種通信サービスを解約しても、BB.exciteメンバーIDを保持していればBB.exciteメール契約は継続される。ドコモ光解約時もBB.exciteメールは自動解約されず、メールだけ残す場合はメール契約を解約しない。無料のエキサイトメールは2018年9月18日に提供終了しており、BB.exciteメール（有料）と混同しないこと。","plan":"BB.exciteメール（通信サービス解約後の単独契約／通常価格）。新規発行もBB.exciteメンバーID（登録無料）があれば他プロバイダー利用者を含め申込可能だが、既存アドレス継続とは別手続き。","fee":"月額418円（税込）（通信サービスとのセット価格ではない通常価格）。公式掲載は月額のみ（年額換算5,016円だが料金保証ではない）。通信サービスとセット時は1メールアドレス月額308円（税込）。","conditions":"既存のBB.exciteメールアドレスは@以降のサブドメインを含めカスタマイズ可能。以前利用したアドレス、または既に取得済みのアドレスは再取得不可。BB.exciteメンバーIDを退会すると継続条件を満たさない。BB.excite光 with フレッツのパック契約解除だけは自動解約の可能性があり、事前案内メール（「[重要]BB.Excite:Withフレッツ契約について」）受信後、解約前にクレジットカード登録・決済変更とメール返信が必要。ドコモ光では特別な申込期限の掲載は確認できず、回線解約とBB.exciteメール解約は別。","procedure":"ドコモ光の解約はドコモで手続きし、BB.exciteメールを残す場合はメールを別途解約しない。ネット契約解約後もBB.exciteメンバーIDを保持する。BB.excite光 with フレッツの対象者は事前案内メール確認→クレジットカード決済へ変更→案内メールへ継続希望を返信。新規メール取得はBB.exciteメール申込ページから行う。","contact":"エキサイトカスタマーサービスセンター／0570-783-812（ナビダイヤル）／営業時間10:00～18:00（年末年始除く）。メール・電話とも契約者本人確認あり。","contactUrl":"https://bbhelp.excite.co.jp/hc/ja/articles/900000233863","sources":["https://bbhelp.excite.co.jp/hc/ja/articles/115000057461","https://bbhelp.excite.co.jp/hc/ja/articles/115004258627","https://bb.excite.co.jp/option/mail/","https://bbhelp.excite.co.jp/hc/ja/articles/900000233863","https://bb.excite.co.jp/info/detail/324/"]},"router1":{"status":"BB.excite提供のWi-Fiルーターレンタルあり（ドコモ光1ギガのみ）。","fee":"無料（BB.exciteコネクト with ドコモ光の契約期間中、24か月間無償）。25か月目以降も継続利用する場合は返却不要。","conditions":"2021年4月1日以降にBB.exciteコネクト with ドコモ光（1ギガ）を契約した人が対象。2021年3月31日以前の申込は利用不可。専用受付フォームから手動申込が必要（クレジットカード未登録なら登録）。申込確認後、発送は10日程度。貸与機器はWi-Fi 5対応 Buffalo WCR-1166DHPL。1ギガIPoEは申込時期により2021年6月1日以降クロスパス、同年5月31日以前transixで、対応ルーターが必要。機器はIPv4 over IPv6対応だが、ひかりTV非対応・マルチPPPoE非対応。24か月未満で解約またはプロバイダー変更する場合は送料自己負担で返却（解約通知日から1か月以内）。未返却時は補償金4,000円（不課税）。譲渡条件の公式記載は確認できず。","contact":"エキサイトカスタマーサービスセンター（0570-783-812、10:00～18:00・年末年始除く）または専用受付フォーム。","sources":["https://bb.excite.co.jp/docomohikari/","https://bbhelp.excite.co.jp/hc/ja/articles/900006677786","https://bbhelp.excite.co.jp/hc/ja/articles/900000381506","https://bbhelp.excite.co.jp/hc/ja/articles/115004258627","https://bbhelp.excite.co.jp/hc/ja/articles/900000233863"],"kind":"provider"},"router10":{"status":"BB.excite独自レンタルの提供を確認できず。ドコモ公式の共通レンタルは利用可能と公式本文で確認できるが、BB.exciteのプロバイダー提供とは区別する。","fee":"ドコモ提供の10Gbps対応無線LANルーターは月額550円（税込）。BB.excite独自レンタルの金額は公式で確認できないため契約先へ確認。","conditions":"BB.excite公式のドコモ光ページではルーター等接続機器は自身で用意する旨が案内され、BB.exciteの1ギガ無償レンタル対象を10ギガへ流用できる記載はない。ドコモ公式は10ギガに対応ルーターが必要で、ドコモからレンタルする場合は別途月額550円（税込）と案内。BB.exciteコネクト10ギガはIPv6 IPoEかつDHCPv6-PD方式対応が必要で、十分な速度には10GBASE-T・カテゴリ6A・Wi-Fi 6推奨、transix対応が必要。BB.excite独自レンタルの手動申込、対応機種、返却・短期利用費用・譲渡条件は公式本文で確認できず、ドコモ提供レンタルの詳細はドコモへ確認。","contact":"ドコモ提供レンタルの契約・返却条件はドコモ窓口へ、BB.exciteの接続条件はエキサイトカスタマーサービスセンター（0570-783-812、10:00～18:00・年末年始除く）へ確認。","sources":["https://www.docomo.ne.jp/internet/hikari/10g_plan/","https://bb.excite.co.jp/docomohikari/","https://bbhelp.excite.co.jp/hc/ja/articles/900000381506","https://bbhelp.excite.co.jp/hc/ja/articles/900000233863"],"kind":"common"},"id":"excite","name":"BB.excite"},{"checked":"2026-10-08","mail":{"status":"継続可。ドコモ光解約またはプロバイダー変更後も、既存のhi-hoメールアドレスは原則「ちょこっとコース」へ移行して継続できます。完全な退会をすると退会月末までで、現在のメールアドレスは再取得不可です。","plan":"ちょこっとコース（既存会員のメールアドレス継続用。メールアドレス1個・1GB、メール保持期間無制限）。","fee":"月額220円（税込、税抜200円）。年額の公式表示はありません（単純換算2,640円/年だが料金保証ではありません）。","conditions":"対象の現契約はhi-ho for ドコモ光。ドコモ光の解約またはプロバイダー変更の申込受付の翌月1日からhi-ho契約をちょこっとコースへ変更。hi-hoへの有効な支払方法未登録の場合は、解約連絡の翌々月25日または指定期日で退会・停止となる場合があり、継続希望ならhi-hoへ申出が必要。既存メールアドレスのドメインは公式本文に掲載なし。1ギガから10ギガへの料金プラン変更ではメールアドレスをそのまま利用可。モバイル各コースからちょこっとコースへの変更不可。現在のhi-hoひかり利用者はインフォメーションデスクへ連絡。無料の追加メールアドレス（2018年6月1日以降申込のfor ドコモ光、最大5個）は新規追加特典であり、既存メール継続用のちょこっとコースと混同しない。","procedure":"ネット回線の解約・プロバイダー変更とhi-ho会員退会は別手続き。for ドコモ光の解約はドコモショップで行い、その後hi-hoインフォメーションデスクへ連絡。退会せずちょこっとコース継続を確認し、有効な支払方法を登録。完全退会の場合は当月1日～末日18:00（コース等により電話受付）で、退会後はメール・サーバーデータ削除かつアドレス再取得不可。ちょこっとコース変更は原則翌月1日適用。","contact":"hi-ho インフォメーションデスク 0570-064800（ナビダイヤル有料）／平日10:00～18:00（年末年始除く）","contactUrl":"https://hi-ho.jp/support/contact/infodesk.php","sources":["https://hi-ho.jp/course/hikari/dhikari/","https://hi-ho.jp/course/hikari/dhikari/10g/","https://hi-ho.jp/support/edit/course/chokotto.php","https://hi-ho.jp/support/edit/quit/resign.php","https://hi-ho.jp/support/faq/ans/003750.php","https://faq.hi-ho.jp/faq/358/","https://hi-ho.jp/support/contact/infodesk.php"]},"router1":{"status":"提供あり（hi-ho独自レンタル）。","fee":"通常は月額330円（税込、税抜300円）。hi-ho for ドコモ光利用中はドコモ光利用中の月額利用料が無料。","conditions":"2018年6月1日以降にhi-ho for ドコモ光を利用開始（新規・コース変更）し、hi-hoへの支払方法登録確認ができる人が対象。MYサポートから手動申込が必要。ギガルータ（公式リンク先機種：TP-Link Archer AX1800）。最低利用期間は利用開始日から3年。3年以内の解約は返却必須、元払い。未返却は11,000円（税込、税抜10,000円）。3年満了後は返却不要。hi-ho for ドコモ光退会・他コース変更で自動解約。IPv6対応可否・対応機種の詳細制限は公式本文で確認できず、短期利用の別料金・譲渡条件も公式本文で確認できない。","contact":"申込・解約：MYサポート。問い合わせ：hi-ho インフォメーションデスク 0570-064800（平日10:00～18:00、年末年始除く）。","sources":["https://hi-ho.jp/course/hikari/dhikari/","https://hi-ho.jp/service/internet/docomo-wifi/","https://faq.hi-ho.jp/faq/177/","https://faq.hi-ho.jp/faq/178/","https://faq.hi-ho.jp/faq/182/","https://hi-ho.jp/support/contact/infodesk.php"],"kind":"provider"},"router10":{"status":"hi-ho独自レンタルは提供なし（公式に「hi-hoで提供しているレンタルWi-Fiルーターはドコモ光10ギガに対応していない」と記載）。対応ルーターはNTTドコモまたはNTT西日本の共通レンタルを利用。","fee":"NTTドコモ／NTT西日本の10Gbps対応ルーターレンタルは月額550円（税込、税抜500円）。","conditions":"hi-ho for ドコモ光10ギガではhi-ho独自レンタルを流用不可。NTT西日本エリアは顧客がNTT西日本へ申込（新規のドコモ光10ギガ申込時など、ドコモから取次可能）。東日本側の申込方法詳細はhi-ho本文で確認できないため、公式で金額以外の条件が不明な点は契約先へ確認。返却・解約・短期利用費用・譲渡条件、対応機種の詳細はhi-ho公式本文で確認できない。1ギガから10ギガへの料金プラン変更は上記窓口への連絡が必要で、メールアドレスは継続可。","contact":"申込窓口：ドコモインフォメーションセンター（携帯151／一般電話0120-800-000、9:00～20:00年中無休）またはドコモショップ。hi-ho独自レンタルの10ギガ申込窓口はなし。","sources":["https://hi-ho.jp/course/hikari/dhikari/","https://hi-ho.jp/course/hikari/dhikari/10g/","https://hi-ho.jp/support/contact/infodesk.php"],"kind":"common"},"id":"hiho","name":"hi-ho"},{"checked":"2026-10-08","mail":{"status":"ドコモ光（回線）を解約しても、Tigers-net.com会員を退会せず、解約前に『ベーシック』へコース変更すれば既存メールを継続利用できる案内があります。ネット契約の解約とTigers-net.com会員退会は別です。会員退会するとメール（@tigers-net.com、@t-bb.jp）は自動解約・サーバー上のデータ消去となります。","plan":"ベーシック（他社インターネット利用者向けの会員サービス）","fee":"税込月額330円（公式表示は月額のみ。年額換算3,960円）。日割りなし。","conditions":"継続対象ドメインは@tigers-net.comおよび@t-bb.jp。ベーシックはインターネット接続を提供しないため、別途ネット環境が必要です。基本メールアドレスのほか、@t-bb.jpは無料取得可、追加メールは1アドレス税込月額110円。新規加入・再申込みでは既存継続と混同しない注意が必要で、解約後3か月間は再申込み不可、再申込み時はメールアドレスが新規再発行となります。","procedure":"ドコモ光の解約受付はTigers-net.comではなくドコモ公式サイトまたはドコモショップ。Tigers-net.comを退会せず、先にマイページ等でベーシックへのコース変更を完了してからドコモ光を解約してください。ベーシック変更の申込期限・既存アドレス保持の細かな適用条件は公式本文で確認できないため、解約前に窓口へ確認。解約申込書でTigers-net.com自体を解約するとメールも終了します。","contact":"インフォメーションセンター 0120-650-633（9:00～18:00、日・月定休）","contactUrl":"https://secure.tigers-net.com/form/inquiry/","sources":["https://www.tigers-net.com/service/basic.html","https://www.tigers-net.com/support/cancellation/","https://www.tigers-net.com/support/cancellation/process.html"]},"router1":{"status":"提供あり（Tigers-net.com提供の無料Wi-Fiルーターレンタル）。ドコモ光1ギガの新規申込またはコース変更が対象です。NTT/ドコモの共通レンタルとは別のプロバイダー提供です。","fee":"無料（通常利用時の料金なし）。利用者責任の故障・破損・紛失時は弁済金5,500円の場合あり。","conditions":"加入後に別途申込（会員登録証到着後、会員番号・パスワードでWeb申込。ドコモ光は開通の案内のお客さまID・アクセスキーも必要）。IPv6接続『クロスパス』必須。機種はBuffalo WCR-1166DHPL。申込は1回のみで、受取拒否・利用者都合キャンセル後の再申込不可。既にIPv6対応ルーター利用中は不要。利用開始後1年以内にTigers-net.comを解約する場合は返却（返送料利用者負担）。規約上、利用開始から暦月12か月経過した機器は所有権譲渡。譲渡・転貸は禁止。","contact":"Tigers-net.comインフォメーションセンター 0120-650-633（9:00～18:00、日・月定休）。設定相談はサポートセンター 0120-650-966（9:00～18:00、年中無休）。","sources":["https://www.tigers-net.com/campaign/article/000005.html","https://www.tigers-net.com/service/docomo.html","https://www.tigers-net.com/rules/router_terms.html","https://www.tigers-net.com/support/cancellation/process.html"],"kind":"provider"},"router10":{"status":"NTT/ドコモの共通レンタルは提供あり。Tigers-net.com独自の10ギガ対応ルーターレンタルは公式で確認できず、独自レンタルの提供を確認できず。","fee":"共通レンタルはドコモ公式で月額550円（税込）。Tigers-net.com公式ページには月額500円（税込）の記載もあり不一致のため、適用額は貸与元へ確認。","conditions":"10ギガ利用者は10ギガ対応ルーターを用意。自前の場合はフレッツ光クロス（10ギガ）対応機種が必要で、公式の対応機器一覧を確認。Tigers-net.comの1ギガ無料ルーター（WCR-1166DHPL）を10ギガへ流用しない。返却・短期利用費用・譲渡条件はNTT/ドコモのレンタル契約条件を確認（Tigers-net.com公式本文では確認できないため契約先へ確認）。 税込500円を確定料金として案内しません。","contact":"ルーターレンタルの契約先（東日本はNTTドコモ、西日本はNTT西日本）へ確認。Tigers-net.com窓口はインフォメーションセンター 0120-650-633（9:00～18:00、日・月定休）。","sources":["https://www.tigers-net.com/service/docomo.html","https://www.docomo.ne.jp/internet/hikari/10g_plan/"],"kind":"common"},"id":"tigers","name":"Tigers-net.com"},{"checked":"2026-10-08","mail":{"status":"既存会員向けメールコースあり。同じアドレスの維持・移行時期は、完全退会前に窓口で確認。","plan":"メールコース（IC-NET既存会員のコース変更時のみ利用可能）","fee":"月額990円（税込、年額換算11,880円）。公式に年額プランの記載はなく、月額表示のみ。","conditions":"メールアドレス1つ、メール転送は無料（要申込）。公式のコース一覧ではドメイン名・申込期限・既存アドレスを必ず同一文字列で維持できるかの明記は確認できない。退会案内は『退会するとIC-NETのメールアドレスがお使いいただけなくなる』としている。新規発行の一般受付ではなく、既存会員のコース変更時のみ。再入会時は新規接続IDとなり、一度使った接続IDは使用不可。","procedure":"IC-NET接続サービスを完全退会せず、退会前に『各種変更申込』の会員区分（コース）変更としてメールコースへの変更可否・切替日をサポート窓口へ確認。退会受付は本人の電話のみで、毎月20日まで受付分は当月末、21日以降は翌月末退会。退会処理月末まではメール利用可。メールコースは既存会員のみで、新規会員のメールだけ発行条件とは別。","contact":"IC-NET お客様相談室／IC-NETサポート窓口：0120-45-3133。受付時間は公式ページ間で表記が異なり、問い合わせページは平日9:15～20:00・土日祝10:30～19:00、退会申込ページは平日9:00～20:00・土日祝10:00～18:00。退会・コース変更の具体的条件は電話確認。","contactUrl":"https://www.ic-net.or.jp/contact","sources":["https://www.ic-net.or.jp/service/connect","https://www.ic-net.or.jp/member/application/info_resign","https://www.ic-net.or.jp/member/application","https://www.ic-net.or.jp/member/application/resign","https://www.ic-net.or.jp/contact"]},"router1":{"status":"提供あり（IC-NETプロバイダー提供の独自レンタル）。","fee":"無料（税込0円）：新規申込者に契約期間中に限り無償レンタル。","conditions":"ドコモ光1ギガの新規申込者向け、プロバイダー接続設定済みWi-Fiルーター。基本スペックはIEEE802.11ac/11n/11a（5GHz）1300Mbps＋11n/11g/11b（2.4GHz）600Mbps、戸建3階・マンション4LDK、利用台数36台。追加オプション（中継機等）はルーターとのセットで、追加だけは不可。解約はIC-NETサポート窓口へ電話。返却送料は利用者負担、紛失・破損・解約後未返却はルーター11,000円（税込）請求、解約後は再契約不可。IPv6（IPoE／v6プラス）対応ページだが、レンタル機器のIPv6対応機種制限・短期利用料・譲渡条件は公式本文で確認できないため要確認。","contact":"IC-NET お客様相談室／サポート窓口 0120-45-3133（問い合わせページ：平日9:15～20:00、土日祝10:30～19:00）。解約は電話申込。","sources":["https://www.ic-net.ne.jp/service/docomo_hikari","https://www.ic-net.or.jp/contact"],"kind":"provider"},"router10":{"status":"IC-NET独自のWi-Fiルーターレンタルはドコモ光10ギガ非対応。10ギガ対応ルーターはNTTドコモ／NTT西日本の共通レンタルを案内。","fee":"月額550円（税込）が別途。IC-NET独自レンタルの10ギガ料金は掲載なし（独自レンタルの提供を確認できず）。","conditions":"10Gbps対応ルーターは東日本エリアはNTTドコモ、西日本エリアはNTT西日本が提供。西日本は利用者からNTT西日本への申込が必要だが、ドコモ光10ギガ新規申込時などはドコモから取次可能。IC-NETの追加オプションのWi-Fi中継機は1ギガ相当で10ギガ対応ではない。対応機種、返却・解約、短期利用費用、譲渡条件はIC-NET本文で確認できないため提供元へ確認。","contact":"ドコモインフォメーションセンター（ドコモ光の各種問い合わせ）：ドコモ携帯から151（無料）、一般電話0120-800-000。受付時間9:00～20:00（年中無休）。IC-NET独自レンタルではないため、レンタル契約条件はNTTドコモ／NTT西日本へ確認。","sources":["https://www.ic-net.or.jp/service/docomo_hikari/10g"],"kind":"common"},"id":"icnet","name":"IC-NET"},{"checked":"2026-10-08","mail":{"status":"条件付きで継続可。公式はドコモ光コラボプラン契約終了後もメール機能を有料（月額220円）にすると記載。ただし、ドコモ光コラボプランは通常のサービス休止の対象外であり、メールだけへ移行する具体的手続き・申込期限は公式本文で確認できないため、解約前に窓口へ確認が必要。ネット契約の解約とエディオンネット会員退会は別扱いで、ドコモ光のみの利用者はドコモへの解約申込によりエディオンネット退会となる。退会するとメール等のデータは削除されるため、会員退会ではなくメール継続の手続きを確認すること。","plan":"メールアドレスのみ継続利用（公式のサービス休止説明）／ドコモ光コラボプラン終了後のメール機能（有料化）。メールアドレスはドコモ光コラボプラン契約中に1つ無償提供。メールドメインは公式本文に記載なし。無料の既存会員メールと新規発行条件は別で、ドコモ光契約中の1アドレス無償提供を確認できるが、新規発行・再取得条件は確認できない。","fee":"ドコモ光コラボプラン契約中は1アドレス無償。契約終了後はメール関連機能（ウイルスチェック／迷惑メールフィルタ）が月額220円（税込）との記載。メールアドレスのみ継続利用のサービス休止はサービス基本料月額330円（税込）＋メール関連有料オプション料だが、ドコモ光コラボプランはサービス休止不可と明記されており、実際の移行後総額・年額は公式で確認できないため契約先へ確認。料金は保証されない。","conditions":"現契約がドコモ光コラボプランの場合、通常のサービス休止制度は対象外。契約終了後にメールが有料化する記載はあるが、メールドメイン、継続できる既存アドレスの範囲、申込期限、解約前の必須手続き、プラン変更方法、再取得不可となる条件は公式本文で未掲載。メールアドレス追加サービス利用者は追加した全アドレスが継続となる旨はサービス休止ページに記載。退会（全解約）後は全サービスとメールデータが削除され再入会は新規加入手続き。","procedure":"ドコモ光コラボプランの回線解約はNTTドコモへ申し込む。メールを残したい場合は、先にエディオンネットカスタマーセンターへ、会員退会にせず継続できるか・必要なプラン変更／申込期限を確認する。公式の通常サービス休止手続きは電話受付だが、ドコモ光コラボプランは休止不可のため、そのまま適用できるとは扱わない。","contact":"エディオンネットカスタマーセンター（会員）0120-71-2133、受付10:00～19:00（年末年始除く）。IP電話等は082-553-5523（有料）。ドコモ光の解約窓口はドコモ インフォメーションセンター、ドコモ携帯151（無料）／一般電話0120-800-000、9:00～20:00。","contactUrl":"https://www.enjoy.jp/inquiry/","sources":["https://www.enjoy.jp/plan/docomo/","https://www.enjoy.jp/cs/control/cancel.html","https://www.enjoy.jp/inquiry/"]},"router1":{"status":"独自レンタルの提供を確認できず。エディオンネットのドコモ光1ギガはIPoE対応機器（OCNバーチャルコネクト対応）が必要で、対応機器一覧は市販ルーターとホームゲートウェイを案内するが、エディオンネット提供の1ギガルーターレンタル・料金は公式本文に掲載なし。","fee":"公式で金額を確認できないため契約先へ確認。IPoE接続機能自体の追加料金はなし。","conditions":"対応機器・最新ファームウェアが必要。IPv6（IPv4 over IPv6）方式で、IPoEでは一部サービス（特定ポート、PPTP/SCTP等）が利用不可。ホームゲートウェイ利用への変更は光回線提供元（ドコモ光ならNTTドコモ）へ問い合わせ。エディオン光等の単独光商品のレンタル情報をドコモ光へ流用しない。返却・解約・短期利用費用・譲渡条件は1ギガの独自レンタルが確認できないため公式で不明。","contact":"NTTドコモ（ドコモ光の回線・ホームゲートウェイ窓口）一般電話0120-766-156、受付10:00～20:00（年中無休）／ドコモ携帯15715。エディオンネット会員窓口0120-71-2133、10:00～19:00（年末年始除く）。","sources":["https://www.enjoy.jp/plan/docomo/","https://www.enjoy.jp/plan/ipoe/","https://www.enjoy.jp/inquiry/"],"kind":"unconfirmed"},"router10":{"status":"レンタル可（プロバイダー独自ではなくNTTドコモ／NTT西日本提供の共通レンタル）。エディオンネット公式は10ギガ対応ルーターをレンタルまたは自己用意とし、レンタル月額550円（税込）を掲載。","fee":"月額550円（税込）。10ギガの基本料金とは別。","conditions":"NTT東日本エリアはドコモからレンタル、NTT西日本エリアはNTT西日本提供で利用者から申込が必要（ドコモ光10ギガ新規申込時などはドコモから取次可能）。フレッツ光クロス対応かつOCNバーチャルコネクト対応機器等の制限があり、利用可否はプロバイダーへ確認。エディオンネットの10ギガページには手動申込・Web限定の独自レンタル条件、返却・解約・短期利用費用・譲渡条件は掲載なし。ドコモ公式はレンタル料金別途と案内。旧契約3社のルーター情報は現行新規対象として扱わず、メール継続確認を優先。","contact":"エディオンネット公式窓口（10ギガ対応状況・ISP確認）0120-12-9909、10:00～19:00（年末年始除く）。ドコモ光解約・共通レンタルの回線窓口はドコモ携帯151（無料）／一般電話0120-800-000、9:00～20:00。NTT西日本エリアのレンタル申込先はNTT西日本（公式ページは申込が必要とするが個別電話番号は未掲載）。","sources":["https://www.enjoy.jp/plan/docomo/","https://www.docomo.ne.jp/internet/hikari/10g_plan/","https://www.docomo.ne.jp/binary/pdf/internet/hikari/common/docomo_hikari_10g_router.pdf","https://www.enjoy.jp/inquiry/"],"kind":"common"},"id":"edion","name":"エディオンネット"},{"checked":"2026-10-08","mail":{"status":"継続可能（ネット回線の解約とシナプス会員退会は別。退会せず、回線解約前にメニュー変更が必要）","plan":"シナプス・シンプル（既存メール1個）またはシナプス・チョイス（既存メール最大3個・ホームページアドレスも保持）","fee":"シンプル：月額308円（税込、年額換算3,696円・公式は月額表示）。チョイス：月額550円（税込、年額換算6,600円・公式は月額表示）。既存シナプス利用者の契約ID登録料は不要と公式記載。","conditions":"現契約の回線を他社へ変更しても、シナプス公式はシナプス・シンプルまたはシナプス・チョイスへのサービスメニュー変更でメールアドレスをそのまま利用できると案内。ドコモ光タイプAの標準メールは1個（最大1GB）で、一般向け旧メニューからドコモ光へ変更すると追加メール等は有料オプション、シナプスWEBメール等は当面無料（予告なく有料化の場合あり）。メールドメインは公式本文で特定表示なし。無料の新規発行条件ではなく、既存アドレス継続の案内。退会すると継続できるとの記載はなく、ネット契約解約と会員退会を混同しないこと。","procedure":"回線解約・退会ではなく、解約前にシナプスのお客様サービスカウンター（https://www.synapse.jp/sc/）でサービスメニュー変更と住所変更を手続き。公式本文に申込期限、解約前の具体的日数、プラン変更後の再取得不可条件の掲載は確認できないため契約先へ確認。シンプルは1メール、チョイスは3メール。","contact":"シナプスサポートセンター 099-813-8699（9:00～21:00、年中無休）","contactUrl":"https://www.synapse.jp/contact/","sources":["https://www.synapse.jp/support/move/qa/common-04/","https://www.synapse.jp/menu/general/s_simple.html","https://www.synapse.jp/menu/general/s_choice.html","https://www.synapse.jp/services/d_hikari/","https://www.synapse.jp/services/d_hikari/d_hikari_faq/"]},"router1":{"status":"ドコモ／NTTの共通レンタルは利用可能（シナプス独自レンタルとは区別）。","fee":"ドコモ光電話を契約し無線LAN機能付ルーターを選ぶ場合、月額330円（税込）。無線機能なしは無料。シナプス提供のドコモ光1ギガ向け独自レンタル料金は公式で確認できないため契約先へ確認。","conditions":"シナプス公式はドコモ光でHGWのルーター機能／Wi-Fi親機機能を利用できると案内し、IPv6接続オプションを標準サービスとして掲載。ドコモ公式の330円案内はドコモ光電話契約時の無線LAN機能付ルーター。対応機種、手動申込方法、返却期限・短期利用費用・譲渡条件は確認した公式本文に掲載なし。ドコモ光1ギガの接続には対応ルーターが必要。","contact":"ドコモ光のレンタルはドコモ／ドコモ光電話の契約窓口へ、シナプスサービスはシナプスサポートセンター（099-813-8699、9:00～21:00、年中無休）へ確認。","sources":["https://www.docomo.ne.jp/internet/hikari/collabo_change/","https://www.docomo.ne.jp/internet/hikari/1g_plan/","https://www.synapse.jp/services/d_hikari/d_hikari_faq/","https://www.synapse.jp/services/d_hikari/"],"kind":"common"},"router10":{"status":"このプロバイダーは現行ドコモ光10ギガの対応一覧に掲載なし。1ギガの条件を10ギガへ適用しません。","fee":"ドコモ光10ギガではこのプロバイダーを選べません。申込先の対応プロバイダーの料金を確認。","conditions":"ドコモ共通の10ギガルーターがレンタルできることは、このプロバイダーでドコモ光10ギガを契約できることを意味しません。プロバイダー自体の他の10ギガサービスと、ドコモ光10ギガを区別してください。","contact":"ドコモ光10ギガの共通レンタルはドコモ／ドコモ光電話の契約窓口へ確認。シナプスサービスはシナプスサポートセンター（099-813-8699、9:00～21:00、年中無休）へ確認。","sources":["https://www.docomo.ne.jp/internet/hikari/provider_list/","https://www.docomo.ne.jp/binary/pdf/internet/hikari/common/docomo_hikari_10g_router.pdf"],"kind":"not-applicable"},"id":"synapse","name":"シナプス"},{"checked":"2026-10-08","mail":{"status":"楽天ブロードバンド（通常のドコモ光プロバイダー契約）は解約後に既存メールを引き継げません。公式には、ドコモ光解約時にプロバイダー契約も解約となり、アカウント情報・メールアドレス等は引継不可とあります。なお、旧GOL系の楽天ブロードバンドプレミアム（@gol.com）は別サービスで、プレミアムのフレッツ接続を解約してメールを残す場合だけスーパーライトプランが案内されています。","plan":"楽天ブロードバンドプレミアム（旧GOL）のスーパーライトプラン。通常の楽天ブロードバンドには適用しない。","fee":"通常の楽天ブロードバンドの解約後メール継続料金は公式確認できず。プレミアムのスーパーライトは月額550円（税込：公式表示は500円・税別）。年額は公式記載なし。","conditions":"通常の楽天ブロードバンドの無料メールは契約者1ユーザーIDにつきgol.comを10個まで無料提供する現行契約中のサービスで、解約後の継続とは別です。ドコモ光のプロバイダー解約ではメール引継不可。プレミアムのスーパーライトは「フレッツ」接続サービスを解約しeメールアドレスを継続利用する既存プレミアム契約向けで、@gol.comのプレミアム会員ページに案内があります。申込期限、解約前の具体的期限、変更後の最低利用期間、同一アドレス再取得不可条件は公式本文で確認できないため契約先へ確認してください。ネット契約の解約と会員退会は別扱いです。","procedure":"通常の楽天ブロードバンドをドコモ光から解約してメールだけ残す手続きは公式に確認できず、メール引継不可。プレミアム既存契約は、接続サービスを解約する前にメンバーズステーションへログインし「サービスタイプ変更」→「スーパーライトプラン」で変更する案内。申込期限や解約後の受付可否は公式で不明のため、先に契約先へ確認してください。","contact":"楽天ブロードバンドカスタマーセンター 0120-987-300（9:00〜18:00、年中無休）。プレミアムのメール継続可否・契約条件はFAQ上の問い合わせ窓口または契約先へ確認。","contactUrl":"https://broadband.rakuten.co.jp/customer_center.html","sources":["https://broadband.rakuten.co.jp/docomohikari/index.html","https://faq.comm.rakuten.net/s/article/000002456","https://broadband.rakuten.co.jp/option/mail_address.html","https://broadband.rakuten.co.jp/customer_center.html"]},"router1":{"status":"楽天ブロードバンド独自のドコモ光1ギガ用ルーターレンタルは公式で確認できず。NTTドコモ側の共通レンタル（ドコモ光電話対応ルーター等）は別途利用可能。","fee":"NTT東西の機器使用料表では、無線LAN機能を使わないドコモ光電話対応ルーターは無料、無線LAN利用時の1ギガ対応無線LANルーターは月額330円（税込）。","conditions":"楽天ブロードバンドの案内はIPv6(IPoE)をメンバーズステーションから申込む方式で、手持ちのIPv6(IPoE)対応ルーターまたはNTTホームゲートウェイを使う説明です。対応機器・IPv6パススルー等の制限あり。ドコモ共通レンタルの申込・返却・解約はドコモ側。解約はMy docomo等で行い、機器返却が必要、料金は日割り。東日本で1Gbps利用時は廃止工事料3,300円（税込）の注意あり。短期利用・譲渡条件は確認できず、料金や可否はドコモへ確認してください。","contact":"ドコモ インフォメーションセンター／ドコモショップ・d garden（共通レンタルの申込・解約・返却）。楽天ブロードバンドの接続・IPv6確認はカスタマーセンター 0120-987-300（9:00〜18:00、年中無休）。","sources":["https://broadband.rakuten.co.jp/docomohikari/index.html","https://broadband.rakuten.co.jp/rbbsupport/manual_internet/dcmhikari_ipv6/","https://www.docomo.ne.jp/internet/hikari/1g_plan/","https://www.docomo.ne.jp/internet/hikari/tell_service/service/table_02_zoom/","https://www.docomo.ne.jp/faq/detail?faqId=286817"],"kind":"common"},"router10":{"status":"このプロバイダーは現行ドコモ光10ギガの対応一覧に掲載なし。1ギガの条件を10ギガへ適用しません。","fee":"ドコモ光10ギガではこのプロバイダーを選べません。申込先の対応プロバイダーの料金を確認。","conditions":"ドコモ共通の10ギガルーターがレンタルできることは、このプロバイダーでドコモ光10ギガを契約できることを意味しません。プロバイダー自体の他の10ギガサービスと、ドコモ光10ギガを区別してください。","contact":"ドコモ インフォメーションセンター／ドコモショップ・d garden（ドコモ共通10ギガルーター）。楽天ブロードバンドの10ギガ対応可否は公式で不明のため契約先へ確認。","sources":["https://www.docomo.ne.jp/internet/hikari/provider_list/","https://www.docomo.ne.jp/binary/pdf/internet/hikari/common/docomo_hikari_10g_router.pdf"],"kind":"not-applicable"},"id":"rakuten","name":"楽天ブロードバンド"},{"checked":"2026-10-08","mail":{"status":"継続可能（ネット契約の解約・DTI会員退会とは別に、解約前にUbicプランへプラン変更が必要）","plan":"Ubicプラン。DTIサービス解約時に現在のプランからUbicプランへ変更すれば、既存のDTIメールアドレスを継続利用できる。DTI with ドコモ光の主契約に付帯するメールは主契約解約と同時に解約されるが、主契約以外でUbicオプションとして使うメールは有料で継続される。","fee":"月額330円（税込）、年額の掲載なし。利用開始月（プラン変更申請月）と翌月は最大2か月無料特典。ただし無料期間中に同月内で解約・プラン変更すると通常料金。旧『契約プランの解約退会』ページには月額220円（税込）との旧記載があるため、現行料金はUbicプラン現行ページを基準にし、申込時に確認。","conditions":"メールアドレスは原則『希望文字列@dream.jp』。Ubicはインターネット接続不可で、DTI会員のプラン追加・プラン変更としてのみ申込可（DTIサービスを利用していない人のUbic単独申込は受付なし）。新規発行と既存メール継続を混同しない：無料メール付与のないサービス利用者や追加アドレス希望者にもUbicで1アドレス発行。再取得不可となる個別条件・既存アドレスの再取得可否は確認できず。","procedure":"ドコモ光の回線契約解約はドコモ側、メール（Ubicを含む）の変更・解約はDTI側。回線解約前にMyDTIで現契約からUbicプランへプラン変更する。Ubicの解約はMyDTIで25日までの申請なら当月末、26日以降は翌月末（いずれも日割りなし）。DTI with ドコモ光の無料メール特典は主契約解約で消滅し、継続希望分は有料Ubicとして残る。","contact":"DTI カスタマーサービス（CS）0570-00-4740（ナビダイヤル有料、平日10:00～17:00）。メールの技術的不具合・設定はDTI エンジニアリングサポート（ES）0570-00-4741、10:00～19:00（年末年始除く）。","contactUrl":"https://dream.jp/support/inquiry/","sources":["https://dream.jp/mail/ubic/","https://dream.jp/ftth/docomohikari/","https://dream.jp/support/process/cancellation3.html","https://dream.jp/support/inquiry/call.html"]},"router1":{"status":"DTI独自レンタルの新規受付は確認できず（旧オプションは2021年1月11日で受付終了）。ドコモ光1ギガのドコモ共通レンタル料金は公式1ギガページで確認できないため、契約先へ確認。DTI光など単独光商品のルーターはドコモ光へ流用しない。","fee":"DTI独自：新規申込不可。既存契約者の料金は公式本文で確認できないため契約先へ確認。ドコモ共通：公式1ギガページにレンタル金額の掲載なし。","conditions":"2021年1月12日以降にDTI with ドコモ光を申し込んだ人はDTIルーターレンタルオプションを申込不可。2021年1月11日までの申込者は継続利用・申込可とする旧告知。1ギガは対応ルーターが必要だが、DTIの現行新規レンタル、手動申込、IPv6対応機種、返却・解約・短期利用費用・譲渡条件は確認できず。旧契約3社は現行新規ルーター対象外としてメール確認を優先。","contact":"DTI カスタマーサービス 0570-00-4740（有料、平日10:00～17:00）。ドコモ光の回線・共通レンタルはドコモ インフォメーションセンター（151／0120-800-000、年中無休9:00～20:00）へ確認。","sources":["https://dream.jp/ftth/docomohikari/option/router/index.html","https://www.docomo.ne.jp/internet/hikari/1g_plan/","https://dream.jp/support/inquiry/call.html","https://dream.jp/ftth/docomohikari/"],"kind":"unconfirmed"},"router10":{"status":"このプロバイダーは現行ドコモ光10ギガの対応一覧に掲載なし。1ギガの条件を10ギガへ適用しません。","fee":"ドコモ光10ギガではこのプロバイダーを選べません。申込先の対応プロバイダーの料金を確認。","conditions":"ドコモ共通の10ギガルーターがレンタルできることは、このプロバイダーでドコモ光10ギガを契約できることを意味しません。プロバイダー自体の他の10ギガサービスと、ドコモ光10ギガを区別してください。","contact":"ドコモ インフォメーションセンター（ドコモ携帯151・無料／一般電話0120-800-000、年中無休9:00～20:00）。DTI独自オプションの旧契約確認はDTI カスタマーサービス 0570-00-4740（有料、平日10:00～17:00）。","sources":["https://www.docomo.ne.jp/internet/hikari/provider_list/","https://www.docomo.ne.jp/binary/pdf/internet/hikari/common/docomo_hikari_10g_router.pdf"],"kind":"not-applicable"},"id":"dti","name":"DTI"},{"checked":"2026-10-08","mail":{"status":"回線／ドコモ光の接続契約を解約後も、既存利用者は『ネスク・シンプルコース』へ変更してメールを継続利用できます。新規発行専用のメールコースではなく、ネスクのサービス利用中の既契約者向けです。","plan":"ネスク・シンプルコース（既契約者様用）","fee":"公式申込本文に具体的な税込月額・年額の金額掲載を確認できないため契約先へ確認。公式本文は『料金（すべて税込）は、現在と同じお支払い方法となります』とのみ記載。ねん割は1年契約・2年契約・3年契約・利用しない（月払い）の選択肢があるが、金額は未掲載。","conditions":"対象はネスクのサービスを利用中でメール継続を希望する契約者。申込フォームの現契約選択肢にはネスク・シンプル、フレッツADSL専用、ネスク光各種、フレッツISDN専用、マンション専用、ネスクかがやきWiMAX等が掲載。契約内容変更で接続用ID（PPP接続用ID）が変わり、切替日は後日メール連絡。切替前に約20分メール送受信できない時間帯あり。メールドメイン、申込期限、旧メールの再取得不可条件は公式本文で確認できず。回線契約の解約と会員退会は別扱いで、会員退会まで行うと継続可否は保証されないため契約先確認。","procedure":"回線／接続契約の解約前に、既契約者用『ネスク・シンプルコースへの変更』フォームから申し込む。通常の解約は予定日の1か月前までに通知が必要で、解約届の送付・返送が必要。メール継続のコース変更と会員退会を混同しない。","contact":"ネスク（申込・サービス内容）0120-917-334、平日9:00～17:30。接続エラー・トラブルはネスクサポートセンター 076-224-1800、9:00～17:30（年中無休）。","contactUrl":"https://kagayaki.nsk.ad.jp/form/?form=inquiry","sources":["https://kagayaki.nsk.ad.jp/support/","https://kagayaki.nsk.ad.jp/form/?form=nsk_simple"]},"router1":{"status":"ドコモ光1ギガの公式プロバイダー一覧にネスクは掲載されていますが、公式一覧でネスク独自のWi-Fiルーターレンタル提供を確認できず。ドコモ共通レンタルは別契約です。","fee":"ネスク独自レンタルの公式金額を確認できないため契約先へ確認。ドコモ公式の無線LAN機能付きルーターは月額330円（税込）（ドコモ光1ギガ、ドコモ光電話契約時の機器レンタル案内）。","conditions":"ネスクの単独光商品・旧契約向け機器をドコモ光へ流用しない。ネスクの1ギガ用IPv6／対応機種・手動申込条件、返却・解約・短期利用費用・譲渡条件は公式本文で確認できない。ドコモ側の共通レンタルはドコモへの申込が必要で、ネスク提供とは区別する。","contact":"ネスク（申込・サービス内容）0120-917-334、平日9:00～17:30。ドコモ共通レンタルの契約条件はドコモへ確認。","sources":["https://www.docomo.ne.jp/internet/hikari/provider_list/","https://www.docomo.ne.jp/binary/pdf/internet/hikari/common/docomo_hikari_provider.pdf","https://www.docomo.ne.jp/internet/hikari/notice/"],"kind":"common"},"router10":{"status":"このプロバイダーは現行ドコモ光10ギガの対応一覧に掲載なし。1ギガの条件を10ギガへ適用しません。","fee":"ドコモ光10ギガではこのプロバイダーを選べません。申込先の対応プロバイダーの料金を確認。","conditions":"ドコモ共通の10ギガルーターがレンタルできることは、このプロバイダーでドコモ光10ギガを契約できることを意味しません。プロバイダー自体の他の10ギガサービスと、ドコモ光10ギガを区別してください。","contact":"ネスク（申込・サービス内容）0120-917-334、平日9:00～17:30。ドコモ共通レンタルの契約条件はドコモへ確認。","sources":["https://www.docomo.ne.jp/internet/hikari/provider_list/","https://www.docomo.ne.jp/binary/pdf/internet/hikari/common/docomo_hikari_10g_router.pdf"],"kind":"not-applicable"},"id":"nesq","name":"ネスク"},{"checked":"2026-10-08","mail":{"status":"継続可（ネット接続コースを解約する前に、メールアドレスコースへコース変更）","plan":"メールアドレスコース","fee":"月契約385円（税込）／年契約4,620円（税込）。既存会員のコース変更手数料は通常2,200円（税込）だが、公式記載では2027年1月31日まで0円。月額・年額の併用請求ではなく契約形態を選択。","conditions":"TikiTikiの他コースから変更して、他プロバイダへ乗り換えた後も現在利用中のTikiTikiメールアドレスを継続できる。公式FAQはコース変更後も同じメールアドレスを引き続き利用できると案内。メールID変更では@より前を変更できるが、@以降（ドメイン部分）は変更不可。公式本文で具体的なメールドメイン名、再取得不可条件、短期利用費用は確認できず。ネット契約の解約と会員退会は別手続きで、基本契約を解約すると追加メール等のオプションも終了し、オプションのみの提供は不可。","procedure":"ネット回線・プロバイダ契約の解約前に、メールアドレスコースへのコース変更を申請する。一般の解約は希望日の30日前まで（期限を過ぎると自動更新）。年契約の更新・支払形態変更・解約も更新日の30日前まで。メールアドレスコースへの新規申込と、既存会員が現在のメールを残すためのコース変更を混同しない。","contact":"TikiTikiインターネット サポートセンター 086-265-9547（設定サポート・各種手続きサポート、10:00～18:00、日曜・祝日休み）","contactUrl":"https://www.tiki.ne.jp/faq/jimu.html","sources":["https://www.tiki.ne.jp/support/apply6chg_kaiyaku3.html","https://www.tiki.ne.jp/mailadd/fee.html","https://www.tiki.ne.jp/mailadd/faq.html","https://www.tiki.ne.jp/faq/jimu.html"]},"router1":{"status":"ドコモ光1ギガについて、TikiTiki独自のルーターレンタル提供を公式本文で確認できず。Tiki公式はドコモ光の機器についてNTTドコモへ問い合わせるよう案内しており、Tiki光コラボのレンタルをドコモ光へ流用しない。","fee":"公式でドコモ光1ギガのルーターレンタル金額を確認できないため契約先（NTTドコモ）へ確認。NTTドコモ側の共通レンタル料金も本調査のTiki公式本文では確認できず。","conditions":"Tiki公式の設定案内では、ドコモ光契約者はNTTドコモへ問い合わせるよう明記。Tiki光コラボ（別商品）にはホームゲートウェイ等の有料レンタル記載があるが、ドコモ光への適用根拠ではない。ドコモ光1ギガの手動申込・Web限定、IPv6対応機種、返却・解約・短期利用費用・譲渡条件はTiki公式本文で未確認。","contact":"NTTドコモ（ドコモ光の機器・レンタル契約先。Tiki公式の案内先）","sources":["https://www.tiki.ne.jp/hikari/docomo/index.html","https://www.tiki.ne.jp/setup/ipv6/ipoe/hgw.html","https://www.tiki.ne.jp/hikari/collabo/faq.html"],"kind":"unconfirmed"},"router10":{"status":"このプロバイダーは現行ドコモ光10ギガの対応一覧に掲載なし。1ギガの条件を10ギガへ適用しません。","fee":"ドコモ光10ギガではこのプロバイダーを選べません。申込先の対応プロバイダーの料金を確認。","conditions":"ドコモ共通の10ギガルーターがレンタルできることは、このプロバイダーでドコモ光10ギガを契約できることを意味しません。プロバイダー自体の他の10ギガサービスと、ドコモ光10ギガを区別してください。","contact":"NTTドコモ（ドコモ光の機器・レンタル契約先。Tiki公式の案内先）","sources":["https://www.docomo.ne.jp/internet/hikari/provider_list/","https://www.docomo.ne.jp/binary/pdf/internet/hikari/common/docomo_hikari_10g_router.pdf"],"kind":"not-applicable"},"id":"tiki","name":"TikiTikiインターネット"},{"checked":"2026-10-08","mail":{"status":"継続可：ネット接続サービスを解約しても、既存の@T COMメールアドレスをメールコースで継続利用できます。メールが元々ない会社ではありません。ネット契約の解約と会員退会は別で、会員退会まで行うと継続できません。","plan":"メールコース（既存メールアドレス継続用の専用コース）","fee":"330円（税込）/月（公式表示は月額のみ。年額換算3,960円だが、年額契約・年額料金は公式本文で確認できないため保証しない）","conditions":"既存の@T COMメールアドレス（形式：########@***.t-com.ne.jp）が対象。ドメインはt-com.ne.jp、サブドメインとも変更不可。利用できるのはメールアドレス、Webmail等。新規入会時にメールコースは申込不可で、無料の新規発行条件ではない。申込期限、メールアドレス再取得不可となる条件、ネット解約後の申込猶予、プラン変更可否は公式本文で確認できないため、解約前に窓口へ確認。標準メールボックスは無制限/60日間、拡張は5GB/無期限（拡張変更は別申込）。","procedure":"メールコース利用希望者は@T COMへ連絡する。ネット接続サービスの解約手続きと会員退会を混同せず、既存メールを残す場合は退会せず、申込期限・切替タイミングを解約前に確認する。支払方法はクレジットカードまたは口座振替（登録が確認できない場合は請求書発行手数料の可能性）。","contact":"＠TCOM（アットティーコム）インフォメーション窓口 0120-805633（通話料無料）／受付：10:00～19:00（平日）、10:00～18:00（土日祝。メンテナンス休止の場合あり）","contactUrl":"https://support.t-com.ne.jp/contact/tel","sources":["https://service.t-com.ne.jp/mail/basic_spec","https://support.t-com.ne.jp/contact/tel"]},"router1":{"status":"レンタル可：@T COM提供のルーターレンタルはドコモ光【@T COM】1ギガが申込可能。ライト／スタンダード（既存のプレミアムは新規・プラン変更受付停止）を区別。","fee":"@T COM提供：ライト（WN-SX300FR）220円（税込）/月、スタンダード（WSR-3000AX4L）440円（税込）/月。10ギガプランのPA-7200D8BEも1ギガ回線で利用可（550円（税込）/月、初回新規は課金開始月を含む2か月無料）。別系統のドコモ共通レンタルは、ドコモ光電話対応ルーターの無線LAN機能なし無料、無線LAN機能あり1ギガ330円（税込）/月（ドコモ公式）。","conditions":"@T COM提供レンタルはWebの申込ボタンから手動申込（@T COMユーザID・パスワード必須）。利用開始月の翌月から課金、過去12か月以内に本サービスを解約している場合は申込不可。ドコモ光1ギガの一部エリア（東京都・神奈川県・埼玉県・千葉県・茨城県・栃木県・群馬県・山梨県・静岡県・愛知県・大阪府）以外は申込時にIPv6 IPoE自動適用、対象外エリアは別途申込。ルーター解約後1か月以内に返却確認できないと端末保証金（ライト2,500円、スタンダード4,000円）請求。レンタル機器は返却が必要で、紛失・未返却時の機器代金請求の可能性あり。プレミアム（880円/月、保証金9,000円）は新規受付停止。NTT/ドコモの共通レンタルを@T COM提供品と混同しない。","contact":"@T COM提供品の契約・申込確認：＠TCOM（アットティーコム）インフォメーション窓口 0120-805633（通話料無料、平日10:00～19:00／土日祝10:00～18:00）。ドコモ共通レンタルはドコモへ確認。","sources":["https://service.t-com.ne.jp/option/rr/service/index","https://service.t-com.ne.jp/option/rr/apply/index","https://support.t-com.ne.jp/contact/tel","https://www.docomo.ne.jp/internet/hikari/tell_service/service/table_02_zoom/"],"kind":"provider"},"router10":{"status":"レンタル可：@T COM提供の10ギガプラン（NECプラットフォームズ PA-7200D8BE、Wi-Fi 7）がドコモ光 10ギガ対応。","fee":"@T COM提供：550円（税込）/月（初回新規申込は課金開始月を含む2か月無料、端末保証金21,000円・不課税）。別系統のドコモ共通レンタル：10ギガ対応無線LANルーター550円（税込）/月（ドコモ公式）。","conditions":"@T COM提供品はドコモ光【@T COM】コースのルーターレンタルとしてWeb申込（ユーザID・パスワード必須）。10ギガ回線対応だが有線LANポートは最大2.5Gbps。1ギガ回線でも利用可。過去12か月以内に本サービスを解約している場合は申込不可。解約後1か月以内に返却確認できない場合は所定の端末保証金を請求。リファビッシュ品の場合あり。ドコモ共通レンタルとは契約・請求元が異なるため、@T COM単独光商品のレンタルをドコモ光へ流用しない。短期利用の追加費用・譲渡可否は公式本文で確認できないため契約先へ確認。","contact":"@T COM提供品の契約・申込確認：＠TCOM（アットティーコム）インフォメーション窓口 0120-805633（通話料無料、平日10:00～19:00／土日祝10:00～18:00）。ドコモ共通レンタルはドコモへ確認。","sources":["https://service.t-com.ne.jp/option/rr/service/index","https://service.t-com.ne.jp/option/rr/apply/index","https://support.t-com.ne.jp/contact/tel","https://www.docomo.ne.jp/internet/hikari/tell_service/service/table_02_zoom/"],"kind":"provider"},"id":"tcom","name":"@T COM"},{"checked":"2026-10-08","mail":{"status":"継続可（回線を解約しても、ASAHIネットを退会せずメール・ブログコースへ変更すれば既存メールを継続利用）","plan":"メール・ブログコース（新規発行条件ではなく、既存会員が回線サービス解約後にメールを残すための変更先）","fee":"税込330円／月（年額換算3,960円。公式は月額のみ掲載、年額請求を保証するものではない）","conditions":"ASAHIネット ドコモ光の解約はNTTドコモで手続きし、ASAHIネットの退会とは別。ASAHIネットの退会後はメールアドレスを使用できないため、退会せずにメール・ブログコースへ変更する。既存メールのドメイン名、変更後も同一アドレスを維持できるか、再取得不可条件は公式本文で明記を確認できず、契約先へ確認。退会日は当月末なら毎月15日までの受付、16日以降は翌月末。アサブロは2026年3月24日で新規申込終了（メール・ブログコース自体は提供中）。","procedure":"ドコモ光の解約はNTTドコモで行い、ASAHIネットの退会手続きはしない。メール・ブログコースへの変更はASAHIネット会員向けマイページから申込（公式上、メール・ブログは他サービスへの変更時に新サービス契約開始と同時に解約）。退会前に変更完了を確認する。","contact":"ASAHIネット カスタマーサポート／0120-577-108、10:00～17:00（年末年始を除く）","contactUrl":"https://asahi-net.jp/contact/phone/","sources":["https://asahi-net.jp/support/service/docomohikari/","https://asahi-net.jp/support/account/resign_navi.html","https://asahi-net.jp/service/other/melblo/","https://asahi-net.jp/support/account/cancellation.html","https://asahi-net.jp/contact/phone/"]},"router1":{"status":"ASAHIネット独自レンタルの提供を確認できず。ドコモ共通レンタルは条件付きで利用可","fee":"ドコモ光電話契約者向けの無線LAN機能付対応ルーターは税込330円／月（無線LAN機能なしは無料）。ASAHIネット提供料金ではない。ドコモ光電話なしの場合の適用可否・料金は公式本文で確認できないため契約先へ確認","conditions":"ASAHIネット ドコモ光はIPv6接続機能を標準提供。対応ルーターが必要。NTTドコモ公式はドコモ光電話契約者向けに、無線LAN機能付ルーターを1ギガ330円／月、無線LAN機能なしを無料と記載。申込・設置・解約・返却、短期利用費用、譲渡条件は本文で確認できず契約先へ確認。ASAHIネットの単独光商品のルーターをドコモ光へ流用しないこと。","contact":"ルーターの共通レンタルはNTTドコモへ確認。ASAHIネットの接続設定・技術サポート：0120-577-126（携帯・IP電話等0570-071-085）、年中無休10:00～17:00","sources":["https://www.docomo.ne.jp/internet/hikari/subscribe/","https://www.docomo.ne.jp/internet/hikari/collabo_change/","https://asahi-net.jp/service/ftth/docomohikari/","https://asahi-net.jp/contact/phone/"],"kind":"common"},"router10":{"status":"ASAHIネット独自レンタルの提供を確認できず。ドコモ共通レンタルは利用可","fee":"NTTドコモ提供の10Gbps対応無線LANルーターは税込550円／月（ASAHIネット提供料金ではない）","conditions":"ドコモ光10ギガはIPv6接続機能の利用が必須で、10Gbps対応ルーターが必要。NTTドコモ公式はレンタルを別途月額550円（税込）と記載。ASAHIネット公式設定ガイドはレンタル機種例としてXG-100NE／XG-200KIを掲載し、10Gbps対応ポートはLAN4の1ポートのみの場合があると注意。申込方法の手動/Web限定条件、解約・返却、短期利用費用、譲渡条件は公式本文で確認できず契約先へ確認。ASAHIネット単独光のレンタルをドコモ光へ流用しないこと。","contact":"ルーターの共通レンタルはNTTドコモへ確認。ASAHIネットの接続設定・技術サポート：0120-577-126（携帯・IP電話等0570-071-085）、年中無休10:00～17:00","sources":["https://www.docomo.ne.jp/internet/hikari/10g_plan/","https://www.docomo.ne.jp/internet/hikari/subscribe/","https://asahi-net.jp/support/guide/flets_cross/","https://asahi-net.jp/service/ftth/docomohikari/","https://asahi-net.jp/contact/phone/"],"kind":"common"},"id":"asahi","name":"AsahiNet"},{"checked":"2026-10-08","mail":{"status":"継続可能（TNCのネット契約を解約・会員退会する場合でも、TNC接続サービスの契約を残すコース変更が必要）。TNCは元々メール提供あり。回線解約とTNC会員退会は別扱い。","plan":"TNC接続サービスの現行最安モバイルプラン（N）へコース変更。TNC公式は「現在提供しているTNC接続サービスの中で一番月額料金がお安いモバイルプラン」と案内。","fee":"モバイルプラン（N）：税込641円/月（年額換算7,692円、公式掲載は月額のみ）。ソク割15（N）は税込544円/月だが、12か月更新・更新期間外の解約/変更は440円（税込）のため、適用可否と総額は契約先へ確認。","conditions":"TNCのメールアドレス形式は########@***.tnc.ne.jp（***は自動割当サブドメイン）。TNC公式は、解約手続き完了後はメールが使えなくなるため、残す場合はモバイルプランへコース変更する方法を案内。事業者変更ではTNCは退会となるが、変更後もメールを使う場合は事前にTNC事務局へ連絡し、他プランでTNCサービスを継続する必要がある。旧サービスの無料既存会員メールと新規発行条件は別であり、無料メールのみの会員プラン名・再取得条件・申込期限は公式本文で確認できない。ネット回線の解約と会員退会を同時に完了させないこと。","procedure":"回線事業者側（ドコモ光）の解約/事業者変更手続きとは別に、TNCの解約前に専用チャットまたはTNC事務局へ、モバイルプラン（N）へのコース変更とメール継続を申し込む。TNC公式の事業者変更は専用チャット（マイページログイン）が基本。TNCとの契約を他プランで継続しない場合、メールは利用不可。申込期限、現在のメールの再取得不可条件、年額プランは公式本文で確認できないため契約先へ確認。","contact":"TOKAIネットワーククラブ事務局 0120-696927（通話料無料）。接続・設定はTNCテクニカルサポートセンター 0800-600-1234（通話料無料）。受付時間：月～金10:00～19:00、土日祝10:00～18:00（年間数日休業）。","contactUrl":"https://www.tnc.ne.jp/support/contact/","sources":["https://www.tnc.ne.jp/support/kaiyaku/","https://www.tnc.ne.jp/rakuraku/ryokin/","https://www.tnc.ne.jp/support/kaiyaku/collabo_change_out/","https://www.tnc.ne.jp/mail/basic_spec/","https://www.tnc.ne.jp/rakuraku/online/index.html?action_type=3"]},"router1":{"status":"TNC独自のドコモ光1ギガ向けルーターレンタル提供は公式本文で確認できず。TNC公式ドコモ光ページは1Gbpsのサービス案内とTNC有料オプションの請求を記載するが、ルーターレンタルを掲載していない。","fee":"TNC独自レンタルの金額は公式で確認できないため契約先へ確認。ドコモ共通の機器は別物で、ドコモ光電話対応ルーターは無線LANを使わない場合無料、無線LAN利用時の1ギガ対応無線LANルーターは月額330円（税込）。2026年3月3日以前のNTT西日本エリア契約は月額110円（税込）とのドコモ公式注記あり。","conditions":"TNCのIPv6利用時は対応機器等の条件があるため、機種・申込要否はTNC/ドコモへ確認。ドコモの330円等はNTT/ドコモ側の共通レンタルであり、TNCの単独光商品ルーターをドコモ光へ流用しない。返却・解約・短期利用費用・譲渡条件は今回確認したTNC公式本文に掲載なし。","contact":"ルーターのTNC独自提供は確認できないため、契約先へ確認。TNC事務局 0120-696927、TNCテクニカルサポートセンター 0800-600-1234（受付：月～金10:00～19:00、土日祝10:00～18:00）。ドコモ共通レンタルの申込・解約はドコモへ確認。","sources":["https://www.tnc.ne.jp/docomohikari/","https://www.docomo.ne.jp/internet/hikari/tell_service/service/table_02_zoom/","https://www.docomo.ne.jp/internet/hikari/provider_list/ipv6/","https://www.tnc.ne.jp/flets/v6wireless/"],"kind":"common"},"router10":{"status":"このプロバイダーは現行ドコモ光10ギガの対応一覧に掲載なし。1ギガの条件を10ギガへ適用しません。","fee":"ドコモ光10ギガではこのプロバイダーを選べません。申込先の対応プロバイダーの料金を確認。","conditions":"ドコモ共通の10ギガルーターがレンタルできることは、このプロバイダーでドコモ光10ギガを契約できることを意味しません。プロバイダー自体の他の10ギガサービスと、ドコモ光10ギガを区別してください。","contact":"TNCの10ギガ提供・レンタル窓口は公式で確認できないため契約先へ確認。TNC事務局 0120-696927、TNCテクニカルサポートセンター 0800-600-1234（受付：月～金10:00～19:00、土日祝10:00～18:00）。","sources":["https://www.docomo.ne.jp/internet/hikari/provider_list/","https://www.docomo.ne.jp/binary/pdf/internet/hikari/common/docomo_hikari_10g_router.pdf"],"kind":"not-applicable"},"id":"tnc","name":"TNC"},{"checked":"2026-10-08","mail":{"status":"継続可能（回線契約を解約しても、WAKWAKを退会せずメール専用コースへ変更する場合）","plan":"WAKWAK メール専用コース","fee":"月額220円（税込・年額2,640円相当、公式は月額表示）。初期費用不要。メールのみ利用ならダイヤルアップ接続料金なし。","conditions":"WAKWAK以外のプロバイダ利用中でも、従来のWAKWAK電子メールアドレスを利用可能。元の接続サービスを退会するとメールも使えなくなるため、退会前にメール専用コースへ変更する。ドコモ光タイプBはNTTドコモで解約後、WAKWAKから案内メールが届きオンライン会員サポートで退会手続きを行う流れで、ドコモ光解約月の月末にWAKWAK退会となる。メール専用コースは電子メールアドレス1個まで無料（新規入会時の条件）で、既存アドレス継続と新規発行を混同しない。公式本文でメールドメイン文字列（@以降）は明記確認できず。一度退会すると同じ電子メールアドレスは再利用不可。回線解約とWAKWAK会員退会は別手続き。","procedure":"回線の解約前に、オンライン会員サポートのコース変更でWAKWAK メール専用コースへ変更（郵送申込も可）。WAKWAKの退会手続きだけでは回線は解約されず、回線解約だけでもWAKWAKは自動退会しない。月途中変更・退会の日割りはなく、公式本文で当月申込期限はメール専用コース変更について確認できない（ドコモ光退会は解約月末退会）。","contact":"WAKWAKヘルプデスク：0120-309092／携帯電話など050-3646-1010（有料）、10:00～18:00（年末年始除く）","contactUrl":"https://www.wakwak.com/prl/support/help/index.html","sources":["https://www.wakwak.com/prl/support/status/cancel_wakwak.html","https://www.wakwak.com/prl/course/petit.html","https://www.wakwak.com/common/mail/index.html","https://www.wakwak.com/prl/support/help/index.html"]},"router1":{"status":"レンタル可能（WAKWAK独自ではなく、ドコモの共通レンタル。WAKWAKのドコモ光ページでプロバイダー独自レンタルは確認できず）","fee":"無線LAN機能付ルーターは月額330円（税込）。無線機能なしをドコモ光電話契約者が借りる場合は無料。","conditions":"ドコモ公式の案内では、ドコモ光電話契約者向けの対応ルーターについて無線機能なしは無料、無線LAN機能付は1ギガ月額330円。WAKWAK提供の独自レンタルとしての申込方法・対応機種・短期利用費用・譲渡条件は公式で確認できず、ドコモへ確認。WAKWAKの単独光商品・フレッツ光クロスのルーター情報をドコモ光へ流用しない。返却・解約時の詳細はドコモ契約条件を確認。","contact":"ドコモ光（NTTドコモ）へ確認（WAKWAK独自レンタルの提供を確認できず）","sources":["https://www.docomo.ne.jp/internet/hikari/collabo_change/","https://www.wakwak.com/prl/course/docomo.html","https://www.wakwak.com/prl/support/faq/collabo.html"],"kind":"common"},"router10":{"status":"このプロバイダーは現行ドコモ光10ギガの対応一覧に掲載なし。1ギガの条件を10ギガへ適用しません。","fee":"ドコモ光10ギガではこのプロバイダーを選べません。申込先の対応プロバイダーの料金を確認。","conditions":"ドコモ共通の10ギガルーターがレンタルできることは、このプロバイダーでドコモ光10ギガを契約できることを意味しません。プロバイダー自体の他の10ギガサービスと、ドコモ光10ギガを区別してください。","contact":"ドコモ光（NTTドコモ）へ確認（WAKWAK独自レンタルの提供を確認できず）","sources":["https://www.docomo.ne.jp/internet/hikari/provider_list/","https://www.docomo.ne.jp/binary/pdf/internet/hikari/common/docomo_hikari_10g_router.pdf"],"kind":"not-applicable"},"id":"wakwak","name":"WAKWAK"},{"checked":"2026-10-08","mail":{"status":"メール専用プランあり。ただし現在のメールアドレスを同じまま引き継げるかは個別確認が必要。","plan":"ちゃんぷるネットメールプラン（メールアドレスのみ）。会員向け料金の記載は月額220円（税込）。新規・既存接続プラン会員のいずれも申込可。接続サービス契約者には無料で1アカウントのメール提供があるため、無料既存会員メールと有料メールプランの新規発行条件を混同しないこと。","fee":"月額220円（税込・会員様）。一般料金は月額330円（税込）。年額の公式記載なし。申込月は月額無料だが、申込月に解約した場合は有料。日割りなし、最低利用期間なし。","conditions":"公式仕様のメールドメインは、Cloud Mailが@chanple.net／@isp.okinawa.jp、ちゃんぷるネット Mailが@mco.ne.jp。新規メールアドレスは希望文字列3～24文字等の条件が記載されています。メールプランはインターネット接続不可。MailとCloud Mailを切り替えると切替前メールボックスのデータ削除。ドコモ光基本プランの申込・変更・解約はNTTドコモ窓口のみで、ちゃんぷるネットでは受付不可。メールプランの解約はちゃんぷるネットサポートへ要問い合わせ。ドコモ光解約後の既存アドレス維持について、申込期限・切替手順・再取得不可条件は公式本文で未確認。","procedure":"ネット回線だけを解約し会員退会はしない前提で、解約前にちゃんぷるネットへ既存メールアドレスをメールプランへ切り替えられるか確認し、必要な手続きを完了してください。ドコモ光の回線契約の解約はNTTドコモ窓口で行います。メールプラン申込は公式Webフォーム、解約はサポートへ問い合わせ。料金・引継ぎを保証せず、退会手続きとは区別してください。","contact":"ちゃんぷるネットサポート／(有)メディアちゃんぷる沖縄：098-851-2800（平日10:00～19:00、土曜10:00～18:00、日曜・祝祭日休。平日の店頭対応は18:00まで）。","contactUrl":"https://www.mco.ne.jp/mailplan/","sources":["https://www.mco.ne.jp/mailplan/","https://www.mco.ne.jp/tech/support","https://www.mco.ne.jp/tech/mco-with-docomo"]},"router1":{"status":"レンタル可（ちゃんぷるネット提供のIPv6(IPoE)対応機器）。ドコモ光契約中に限る無償レンタルとして公式確認。","fee":"無料（ドコモ光契約中に限る）。","conditions":"電話申込が必要。Wi-Fiルーター申込でIPv6(IPoE)接続サービスも無料で同時適用。対応機種はI-O DATA WN-SX300FR（公式掲載）。申込後、送付まで1週間前後の目安。ドコモ光電話利用者はホームゲートウェイで利用できる場合あり。プロバイダー変更またはドコモ光解約時は返却必須、返送料は利用者負担。半年以上利用が必要とする別の『無線LANレンタル』はちゃんぷるNet接続サービス向けであり、ドコモ光へ流用しない。短期利用費用・譲渡条件は公式本文で確認できず。","contact":"＠ちゃんぷるネット：098-851-2800（平日10:00～19:00、土曜10:00～18:00、日曜・祝祭日休。電話申込）。","sources":["https://www.mco.ne.jp/tech/mco-with-docomo","https://www.mco.ne.jp/ipv6_router/","https://www.docomo.ne.jp/internet/hikari/provider_list/"],"kind":"provider"},"router10":{"status":"このプロバイダーは現行ドコモ光10ギガの対応一覧に掲載なし。1ギガの条件を10ギガへ適用しません。","fee":"ドコモ光10ギガではこのプロバイダーを選べません。申込先の対応プロバイダーの料金を確認。","conditions":"ドコモ共通の10ギガルーターがレンタルできることは、このプロバイダーでドコモ光10ギガを契約できることを意味しません。プロバイダー自体の他の10ギガサービスと、ドコモ光10ギガを区別してください。","contact":"ドコモ光の契約条件はNTTドコモ窓口、プロバイダー提供機器の可否・料金は＠ちゃんぷるネット（098-851-2800、平日10:00～19:00、土曜10:00～18:00）へ確認。","sources":["https://www.docomo.ne.jp/internet/hikari/provider_list/","https://www.docomo.ne.jp/binary/pdf/internet/hikari/common/docomo_hikari_10g_router.pdf"],"kind":"not-applicable"},"id":"chanpuru","name":"@ちゃんぷるネット"},{"checked":"2026-10-08","mail":{"status":"既存ぷらら会員はぷらコミ0へコース変更して継続可能。ただし2028年3月31日で提供終了予定。","plan":"ぷらコミ0（既存会員のコース変更は受付継続）。外部からの新規受付は2026年5月27日終了。","fee":"ぷらコミ0：月額220円（税込、年額換算2,640円）。複数メールアドレスを継続する場合は別途1アドレスあたり月額220円（税込）。日割り、年払いの公式記載は確認できません。料金は将来変更される場合があります。","conditions":"ぷらコミ0の新規受付は2026年5月27日で終了、サービスは2028年3月31日で終了予定。現契約がぷらら光／ドコモ光の場合は、必要手続きの案内を受けるため、ぷららダイヤルへ『メールアドレスを残したい』と伝える。その他の契約は会員専用コース変更申込み。複数メールアドレスはドメインが『*.mail.plala.or.jp』または『*.post.plala.or.jp』で、最大99アドレス（取得履歴含む）、解約は月末締め、申込月と翌月2日までは解約不可。ぷらら（ドコモ光）は2027年6月から順次OCNインターネットへ統合され、統合後はぷららメールを利用できず、2028年3月31日まで受信可・2028年4月1日以降終了。新規のplala（ドコモ光）申込自体も2024年2月29日で終了。 新規受付終了と既存会員のコース変更を区別。2028年4月1日以降は送受信・過去メールの閲覧不可。解約または提供終了前に各登録先のアドレス変更と過去メールの保存が必要。OCNへの移行で新しく発行するアドレスは、同じぷららアドレスの引継ぎではありません。","procedure":"ドコモ光／ぷらら光の回線解約だけでなく、会員退会をする前に手続き。FAQ記載のとおり、ぷらら光・ドコモ光利用者はぷららダイヤルへ電話し、その他の契約は会員専用『コース変更お申込み』を利用。ぷらコミ0終了後はメール継続不可。退会後はメールアドレスが順次削除され、翌月中は受信できる場合があるが、継続プラン契約なしの一時猶予であり継続利用の根拠にはしない。","contact":"ぷららダイヤル（AI音声自動受付／オペレーター）。電話：0120-971391（通話無料）、0570-008-887（ナビダイヤル・通話料発生）。AI音声は24時間365日、オペレーター対応は10:00～19:00（年中無休）。","contactUrl":"https://www.plala.or.jp/support/contact/tel/","sources":["https://help.plala.or.jp/as/scope3/ispfaq/web/Detail.aspx?id=83","https://help.plala.or.jp/as/scope3/ispfaq/web/Detail.aspx?id=88","https://www.plala.or.jp/option/multi/attend/","https://www.plala.or.jp/togo/d_hikari.html","https://www.plala.or.jp/support/contact/tel/","https://www.docomo.ne.jp/info/notice/page/260331_01.html"]},"router1":{"status":"旧契約の機器条件は個別確認。現行新規レンタル特典を自動適用しない。","fee":"既存契約の実額は契約先へ確認。現行新規特典の金額を旧契約に流用しません。","conditions":"旧契約の機器・契約条件と現行OCNインターネット等の新規特典は別です。既存利用者の貸与・譲渡・返却・料金は現在の契約先へ確認してください。新しく申し込むドコモ光では現行プロバイダーを選び直してください。","contact":"申込・利用可否はぷららダイヤル（0120-971391／0570-008-887、AI音声24時間365日、オペレーター10:00～19:00年中無休）またはマイページで確認。","sources":["https://www.plala.or.jp/d_hikari/","https://www.plala.or.jp/campaign/router/","https://www.plala.or.jp/support/contact/tel/"],"kind":"legacy"},"router10":{"status":"旧契約の機器条件は個別確認。現行新規レンタル特典を自動適用しない。","fee":"既存契約の実額は契約先へ確認。現行新規特典の金額を旧契約に流用しません。","conditions":"旧契約の機器・契約条件と現行OCNインターネット等の新規特典は別です。既存利用者の貸与・譲渡・返却・料金は現在の契約先へ確認してください。新しく申し込むドコモ光では現行プロバイダーを選び直してください。","contact":"共通レンタルの申込・返却条件はドコモ光（ドコモ）窓口へ、plalaの既存契約・GGGG光はぷららダイヤル（0120-971391／0570-008-887、AI音声24時間365日、オペレーター10:00～19:00年中無休）へ確認。","sources":["https://www.plala.or.jp/option/gggg/apply/index.html","https://www.docomo.ne.jp/internet/hikari/10g_plan/","https://www.plala.or.jp/d_hikari/","https://www.plala.or.jp/support/contact/tel/"],"kind":"legacy"},"id":"plala","name":"ぷらら（旧契約）"},{"checked":"2026-10-08","mail":{"status":"既存メールを解約後も同じまま維持できるプランは確認できず。残せる前提にせず解約前にドコモへ確認。","plan":"該当する継続プランなし。ドコモnetは2023年6月30日に新規申込み受付終了、既契約者のみ継続利用可。なおサービス統合後はOCNメールアドレスを新規払出し、ドコモnetメールは2027年3月31日で終了予定。","fee":"解約後のメール維持プランの料金は未確認。継続無料として案内しません。","conditions":"現契約中のドコモnetメールは@docomonet.jp（メールBOX 10GB、保存期限無制限）だが、ドコモnetを解約するとサーバー保存メールはすべて削除される。回線解約／ドコモ光のプロバイダー解約と会員退会は別手続きだが、解約後に既存アドレスを継続できる条件は公式で確認できない。サービス統合（2026年12月より順次）は解約後持ち運びではなく、統合時にOCNメールアドレスを新規払出し。ドコモnetメールアドレスは2027年3月31日以降利用不可で過去メール閲覧も不可。","procedure":"解約前に利用中アドレスを別アドレスへ変更し、必要な過去メールを保管。ドコモnet解約後の再取得・持ち運び申込み手順は公式で確認できず。統合対象者は個別案内（2026年12月より順次）に従い、OCN会員登録証の案内で新メールを設定。","contact":"ドコモ光／ドコモnet：ドコモ光のお問い合わせ窓口（ドコモ光サービスセンター等）。電話番号は公式本文では表示されず、公式ページの「電話番号を確認する」から契約内容に応じて確認。サービス統合の個別案内発信番号0120-506355（通話無料、午前10時～午後7時、日祝・年末年始除く）は郵便未着者への案内専用。","contactUrl":"https://www.docomo.ne.jp/support/inquiry/hikari/","sources":["https://www.docomo.ne.jp/internet/hikari/provider_list/docomo_net/mail/","https://www.docomo.ne.jp/internet/hikari/provider_list/docomo_net/","https://www.docomo.ne.jp/support/inquiry/hikari/"]},"router1":{"status":"旧契約の機器条件は個別確認。現行新規レンタル特典を自動適用しない。","fee":"既存契約の実額は契約先へ確認。現行新規特典の金額を旧契約に流用しません。","conditions":"旧契約の機器・契約条件と現行OCNインターネット等の新規特典は別です。既存利用者の貸与・譲渡・返却・料金は現在の契約先へ確認してください。新しく申し込むドコモ光では現行プロバイダーを選び直してください。","contact":"ドコモ光／ドコモnet：ドコモ光のお問い合わせ窓口（受付時間の公式本文記載：午前9時～午後8時の項目あり）。電話番号は公式本文では表示されず、窓口ページの「電話番号を確認する」で確認。","sources":["https://www.docomo.ne.jp/internet/hikari/tell_service/service/","https://www.docomo.ne.jp/internet/hikari/provider_list/docomo_net/ipv6/","https://www.docomo.ne.jp/internet/hikari/provider_list/docomo_net/","https://www.docomo.ne.jp/support/inquiry/hikari/"],"kind":"legacy"},"router10":{"status":"旧契約の機器条件は個別確認。現行新規レンタル特典を自動適用しない。","fee":"既存契約の実額は契約先へ確認。現行新規特典の金額を旧契約に流用しません。","conditions":"旧契約の機器・契約条件と現行OCNインターネット等の新規特典は別です。既存利用者の貸与・譲渡・返却・料金は現在の契約先へ確認してください。新しく申し込むドコモ光では現行プロバイダーを選び直してください。","contact":"ドコモ光／ドコモnet：ドコモ光のお問い合わせ窓口。受付時間は申込み・解約等の公式本文で午前9時～午後8時。電話番号は公式本文では表示されず、「電話番号を確認する」リンク先で確認。","sources":["https://www.docomo.ne.jp/internet/hikari/10g_plan/","https://www.docomo.ne.jp/internet/hikari/provider_list/docomo_net/","https://www.docomo.ne.jp/support/inquiry/hikari/"],"kind":"legacy"},"id":"docomonet","name":"ドコモnet（旧契約）"},{"checked":"2026-10-08","mail":{"status":"継続可能。ネット契約を解約しても会員退会とは別に、OCNメールを残す場合はOCNバリュープランへ変更し、これまでのメールアドレスを引き継ぎます。","plan":"OCNバリュープラン（OCNメール単体利用）。旧OCN for ドコモ光の公式提供メールは1個・主なドメインocn.ne.jp。新規発行の無料会員メール条件ではなく、既存アドレスの継続手続きです。","fee":"275円（税込）/月。公式に年額表示はありません（単純年換算3,300円ですが、料金を保証するものではありません）。初期費用無料。","conditions":"旧OCN for ドコモ光／OCN光は新規受付終了。現在のOCN インターネットとは契約を区別。回線解約と会員退会を同時に行わず、既存のメールの引継ぎ・手続き期限を窓口へ確認。","procedure":"OCNインターネット／OCN for ドコモ光の解約後も継続する場合、公式FAQはWeb手続き不可としてカスタマーズフロントへの問い合わせを案内。OCNバリュープランへの変更と既存アドレス引継ぎを依頼します。一般FAQではMNP利用時はオペレーター chat、MNPなしはOCN解約申込の注意事項を確認して手続きと案内されています。","contact":"カスタマーズフロント（各種お申し込み・お問い合わせ）0120-506506。受付10:00～19:00（日曜・祝日・年末年始を除く）。","contactUrl":"https://support.ocn.ne.jp/personal/inquiry/detail/pid2200001uwl/","sources":["https://support.ocn.ne.jp/personal/faq/detail/pid23000024kf/","https://service.ocn.ne.jp/option/mail/valueplan/","https://service.ocn.ne.jp/hikari/docomo/details/","https://support.ocn.ne.jp/personal/faq/detail/pid23000024kc/","https://support.ocn.ne.jp/personal/inquiry/detail/pid2200001uwl/"]},"router1":{"status":"旧契約の機器条件は個別確認。現行新規レンタル特典を自動適用しない。","fee":"既存契約の実額は契約先へ確認。現行新規特典の金額を旧契約に流用しません。","conditions":"旧契約の機器・契約条件と現行OCNインターネット等の新規特典は別です。既存利用者の貸与・譲渡・返却・料金は現在の契約先へ確認してください。新しく申し込むドコモ光では現行プロバイダーを選び直してください。","contact":"レンタル申込は公式ページのNTT-X Store専用Web。専用電話番号は公式本文で確認できず。OCNカスタマーズフロント（0120-506506、10:00～19:00・日祝年末年始除く）は一般窓口。","sources":["https://service.ocn.ne.jp/hikari/ocn-internet/router/","https://service.ocn.ne.jp/hikari/docomo/details/","https://service.ocn.ne.jp/hikari/"],"kind":"legacy"},"router10":{"status":"旧契約の機器条件は個別確認。現行新規レンタル特典を自動適用しない。","fee":"既存契約の実額は契約先へ確認。現行新規特典の金額を旧契約に流用しません。","conditions":"旧契約の機器・契約条件と現行OCNインターネット等の新規特典は別です。既存利用者の貸与・譲渡・返却・料金は現在の契約先へ確認してください。新しく申し込むドコモ光では現行プロバイダーを選び直してください。","contact":"優待販売はOCNオンラインショップのWeb申込。レンタル専用窓口電話は公式本文で確認できず。一般問い合わせはOCNカスタマーズフロント0120-506506（10:00～19:00、日曜・祝日・年末年始除く）。","sources":["https://service.ocn.ne.jp/hikari/ocn-internet/router/10g.html","https://service.ocn.ne.jp/hikari/docomo/details/","https://service.ocn.ne.jp/hikari/"],"kind":"legacy"},"id":"ocn-old","name":"OCN（旧契約）"},{"id":"eo","name":"eo光","checked":"2026-10-08","mail":{"status":"eo光ネット解約後は、回線付帯のeoメールを利用できません。","plan":"解約後に同じeoメールを残す専用プランは確認できず。別メールへの移行が必要。","fee":"解約後のメール継続プラン料金は該当する公式案内を確認できず。0円で継続できる意味ではありません。","conditions":"eo光ネットを解約すると@xxx.eonet.ne.jp等のeoの契約メールを利用できなくなります。テレビ等の別サービスを残すだけではメールも残ると案内しません。","procedure":"解約前に必要なメール・連絡先を保存し、銀行・通販等の登録アドレスを変更してテスト送受信。例外や個別契約はeoへ確認。","contact":"eoサポートダイヤル：0120-919-151／eo光電話・LaLa Callから1518／他の電話050-7105-6333（9:00～18:00、年中無休）。","contactUrl":"https://support.eonet.jp/inquiry/","sources":["https://support.eonet.jp/inquiry/cancel/","https://eonet.jp/service/option/net/mail.html"]}},{"id":"jcom","name":"J:COM","checked":"2026-10-08","mail":{"status":"J:COMメールの同一アドレス継続は、契約先へ個別確認が必要。","plan":"J:COMの解約後メール専用継続プランは今回の公式資料で確認できず。","fee":"メールのみの継続料金は未確認。無料継続として案内しません。","conditions":"一般の乗換Q&Aはプロバイダーメールが解約後使えないこと、会社によりメールだけの継続サービスがあることを説明。J:COMの個別契約に継続できると断定しません。Gmail等の別契約メールは別扱い。","procedure":"ネット解約前にメールの提供会社・ドメイン・継続可否・料金・期限を確認し、保存と登録先変更を準備。","contact":"J:COM問い合わせ：0120-999-000（9:00～18:00、年中無休。地域・契約の専用窓口は公式で再確認）。","contactUrl":"https://www.jcom.co.jp/contactus/call_rgu.html","sources":["https://www.jcom.co.jp/service/net/guide/qa/","https://support.myjcom.jp/support/cancellation/"]}},{"id":"nuro","name":"NURO 光（回線付帯メール）","checked":"2026-10-08","mail":{"status":"NURO 光回線に付帯するSo-net Webメールは回線解約時に失効・メールボックス削除。継続・復活はできない案内。","plan":"NURO回線付帯メールの持ち運びプランなし。別のSo-net会員契約がある場合は下の「So-net（別契約）」と区別。","fee":"NURO回線付帯メールだけの継続料金は該当なし。So-netの別契約の料金を適用しません。","conditions":"NURO回線付帯のメールと、So-netベーシック等の別契約を混同しない。現在の契約書・メールの提供元を確認。","procedure":"解約前にメールを保存し各サービス登録先を別アドレスへ変更。別契約がある場合はNURO・So-net双方で確認。","contact":"NUROサポート：0570-099-118／IP電話等03-6705-5839（9:00～18:00、月～土・祝日等除く）。チャットは公式案内を確認。","contactUrl":"https://support.nuro.jp/faqsupport/nuro/web/knowledge6739.html","sources":["https://support.nuro.jp/faqsupport/nuro/web/knowledge7067.html","https://support.nuro.jp/faqsupport/nuro/web/knowledge10403.html"]}},{"id":"au-one-net","name":"au one net","checked":"2026-10-08","mail":{"status":"au one netの既存メールは、退会せずメール専用コースへの変更を確認して残す方法があります。","plan":"メール専用コース（インターネット接続機能なし）。auひかりの別プロバイダーには適用しません。","fee":"月額550円（税込）。現在の契約・変更時の適用条件は窓口で確認。","conditions":"現在のメール提供元がau one netであることを確認。auひかり回線の解約だけで自動的に残るとは案内しない。","procedure":"回線解約前にメール専用コースへの変更可否・切替日・保存方法を確認。au one net以外はその会社を選び直す。","contact":"KDDIお客さまセンター：0077-7068（9:00～18:00、年中無休）。コース変更はMy au・公式窓口で確認。","contactUrl":"https://www.au.com/support/inquiry/","sources":["https://www.au.com/internet/auonenet/mail/","https://www.au.com/support/service/internet/procedure/contract/cancel/"]}},{"id":"sonet","name":"So-net（別契約）","checked":"2026-10-08","mail":{"status":"So-netの接続コース／会員契約の既存メールは、退会せずベーシックコースへ変更して維持する方法があります。","plan":"So-net ベーシックコース（メール・ユーザーIDの維持）。So-net 光 アクセスは別プラン。NURO回線付帯メールには適用しません。","fee":"ベーシックコース月額330円（税込）。アクセスコース等は別料金・条件。","conditions":"ベーシックへの変更で接続コースが解約されるため、変更の時期・ネット終了日・各有料オプションを事前確認。So-net退会後は同じメールを利用できません。","procedure":"現在のSo-netコースを特定し、事業者変更・回線解約との順序、ベーシック変更時期、支払方法を公式窓口へ確認してから実行。","contact":"So-net公式サポート：会員の契約コース別に窓口を確認。メール専用への変更はマイページ・公式サポートで確認。","contactUrl":"https://support.so-net.ne.jp/","sources":["https://support.so-net.ne.jp/fa/faq/web/knowledge1879.html","https://www.so-net.ne.jp/guide/collabo/applications/change_toisp.html"]}}]</script>
+<script id="providerServicesRuntime">
+/* Provider email continuity and router-service renderer.
+ * This is embedded by apply_provider_services.py after every existing buildSchedule
+ * wrapper, so it intentionally decorates — rather than replaces — the staff page.
+ */
+(function providerServicesRuntime() {
+  'use strict';
+
+  const PROVIDERS = [
+    ['gmo', 'GMOとくとくBB', ['gmo-tokutoku-bb']],
+    ['ocn-internet', 'OCN インターネット', []],
+    ['nifty', '@nifty', []],
+    ['andline', 'ANDLINE', []],
+    ['biglobe', 'BIGLOBE', []],
+    ['sis', 'SIS', ['SIS（スピーディア）']],
+    ['excite', 'BB.excite', []],
+    ['hiho', 'hi-ho', []],
+    ['tigers', 'Tigers-net.com', ['tigers-net.com']],
+    ['icnet', 'IC-NET', ['IC-NET']],
+    ['edion', 'エディオンネット', ['edion-net']],
+    ['synapse', 'シナプス', []],
+    ['rakuten', '楽天ブロードバンド', ['rakuten-broadband']],
+    ['dti', 'DTI', []],
+    ['nesq', 'ネスク', []],
+    ['tiki', 'TikiTikiインターネット', ['tikitiki']],
+    ['tcom', '@T COM', ['t-com', '@T COM（アットティーコム）']],
+    ['asahi', 'AsahiNet', ['asahinet']],
+    ['tnc', 'TNC', ['TNC（TOKAIネットワーククラブ）']],
+    ['wakwak', 'WAKWAK', []],
+    ['chanpuru', '@ちゃんぷるネット', []],
+    ['plala', 'ぷらら（旧契約）', ['ぷらら', 'plala', 'plala（旧契約）']],
+    ['docomonet', 'ドコモnet（旧契約）', ['ドコモnet', 'docomonet']],
+    ['ocn-old', 'OCN（旧契約）', ['OCN光', 'OCN（旧サービス）', 'OCN（旧OCN光・OCN for ドコモ光）']]
+  ].map(([id, name, aliases]) => ({ id, name, aliases }));
+
+  const byId = new Map(PROVIDERS.map(provider => [provider.id, provider]));
+  const $ = id => document.getElementById(id);
+  const text = value => String(value == null ? '' : value).trim();
+  const htmlEscape = value => text(value).replace(/[&<>"']/g, char => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[char]));
+
+  function safeHttpUrl(value) {
+    try {
+      const url = new URL(text(value));
+      return url.protocol === 'https:' && !url.username && !url.password ? url.href : '';
+    } catch (_) {
+      return '';
+    }
+  }
+
+  function readCatalog() {
+    if (Array.isArray(window.providerServiceCatalog)) return window.providerServiceCatalog;
+    const node = $('providerServiceCatalog');
+    if (!node) return [];
+    try {
+      const parsed = JSON.parse(node.textContent || '[]');
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (error) {
+      // A malformed catalog must not break the existing customer-guidance form.
+      console.warn('providerServiceCatalog could not be parsed; provider details are hidden.', error);
+      return [];
+    }
+  }
+
+  const catalog = readCatalog().filter(record => record && typeof record === 'object');
+  window.providerServiceCatalog = catalog;
+
+  function normalized(value) {
+    return text(value).toLowerCase().replace(/[\s　・()（）_-]/g, '');
+  }
+
+  function canonicalProvider(value) {
+    const key = normalized(value);
+    return PROVIDERS.find(provider => [provider.id, provider.name, ...provider.aliases]
+      .some(candidate => normalized(candidate) === key)) || null;
+  }
+
+  function catalogRecord(value) {
+    const provider = canonicalProvider(value);
+    const candidates = provider ? [provider.id, provider.name, ...provider.aliases] : [value];
+    const wanted = candidates.map(normalized);
+    return catalog.find(record => wanted.includes(normalized(record.id)) || wanted.includes(normalized(record.name))) || null;
+  }
+
+  function providerLabel(value) {
+    const provider = canonicalProvider(value);
+    return provider ? provider.name : text(value);
+  }
+
+  function selectOptions(select, selectedValue) {
+    if (!select) return;
+    const names = PROVIDERS.map(provider => provider.name);
+    catalog.forEach(record => {
+      const name = text(record.name);
+      if (name && !names.some(existing => normalized(existing) === normalized(name))) names.push(name);
+    });
+    select.replaceChildren();
+    select.add(new Option('プロバイダーを選択してください', ''));
+    names.forEach(name => select.add(new Option(name, name)));
+    select.add(new Option('その他・一覧外（要確認）', 'その他・一覧外'));
+    if (names.some(name => normalized(name) === normalized(selectedValue)) || selectedValue === 'その他・一覧外') {
+      select.value = selectedValue;
+    }
+  }
+
+  function makeCard(id, title, kicker) {
+    const section = document.createElement('section');
+    section.id = id;
+    section.className = 'provider-service-card';
+    section.hidden = true;
+    section.setAttribute('aria-live', 'polite');
+    const heading = document.createElement('h3');
+    heading.textContent = title;
+    const label = document.createElement('p');
+    label.className = 'provider-service-kicker';
+    label.textContent = kicker;
+    const summary = document.createElement('p');
+    summary.className = 'provider-service-summary';
+    summary.dataset.providerServiceSummary = 'true';
+    section.append(label, heading, summary);
+    return section;
+  }
+
+  function clearCard(card) {
+    if (!card) return;
+    [...card.querySelectorAll('[data-provider-service-generated]')].forEach(node => node.remove());
+    const summary = card.querySelector('[data-provider-service-summary]');
+    if (summary) summary.textContent = '';
+    card.classList.remove('provider-service-unknown');
+  }
+
+  function addDetails(card, rows, urls) {
+    const details = document.createElement('details');
+    details.dataset.providerServiceGenerated = 'true';
+    const summary = document.createElement('summary');
+    summary.textContent = '条件・手順・公式窓口を確認';
+    details.appendChild(summary);
+    const list = document.createElement('dl');
+    list.className = 'provider-service-list';
+    rows.forEach(([label, value]) => {
+      if (!text(value)) return;
+      const dt = document.createElement('dt');
+      const dd = document.createElement('dd');
+      dt.textContent = label;
+      dd.textContent = text(value);
+      list.append(dt, dd);
+    });
+    details.appendChild(list);
+    const validLinks = urls.map(([label, url]) => [label, safeHttpUrl(url)]).filter(([, url]) => url);
+    if (validLinks.length) {
+      const links = document.createElement('div');
+      links.className = 'provider-service-links';
+      validLinks.forEach(([label, url]) => {
+        const link = document.createElement('a');
+        link.href = url;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.textContent = label;
+        links.appendChild(link);
+      });
+      details.appendChild(links);
+    }
+    card.appendChild(details);
+  }
+
+  function addPrimaryMeta(card, contact, checked) {
+    const note = document.createElement('p');
+    note.className = 'provider-service-note';
+    note.dataset.providerServiceGenerated = 'true';
+    note.textContent = `問い合わせ：${text(contact) || '公式窓口を確認'} ｜ 確認日：${text(checked) || '未記載'}`;
+    const summary = card.querySelector('[data-provider-service-summary]');
+    if (summary) summary.after(note);
+    else card.appendChild(note);
+  }
+
+  function renderUnavailable(card, message) {
+    clearCard(card);
+    card.hidden = false;
+    card.classList.add('provider-service-unknown');
+    card.querySelector('[data-provider-service-summary]').textContent = message;
+  }
+
+  function renderMailCard(card, providerValue) {
+    if (!card) return;
+    clearCard(card);
+    const name = providerLabel(providerValue);
+    if (!name || name === 'その他・一覧外') {
+      card.hidden = true;
+      return;
+    }
+    const record = catalogRecord(providerValue);
+    if (!record || !record.mail || typeof record.mail !== 'object') {
+      renderUnavailable(card, `${name}のメール継続条件はこの案内では未登録です。解約前に現在の会社の公式窓口で確認してください。`);
+      return;
+    }
+    const mail = record.mail;
+    card.hidden = false;
+    card.querySelector('[data-provider-service-summary]').textContent = `${name}｜${text(mail.status) || '継続可否を確認中'}${text(mail.fee) ? `｜${text(mail.fee)}` : ''}`;
+    addPrimaryMeta(card, mail.contact, record.checked);
+    addDetails(card, [
+      ['メール維持プラン', mail.plan],
+      ['税込費用', mail.fee],
+      ['条件', mail.conditions],
+      ['解約前の手順', mail.procedure],
+      ['問い合わせ', mail.contact]
+    ], [
+      ['公式の問い合わせ先', mail.contactUrl],
+      ...(Array.isArray(mail.sources) ? mail.sources.map((url, index) => [`公式根拠 ${index + 1}`, url]) : [])
+    ]);
+  }
+
+  function routerKind(router) {
+    const kinds = {
+      provider: 'プロバイダー独自レンタル',
+      purchase: 'プロバイダー独自購入・販売',
+      common: 'ドコモ・NTT共通レンタル',
+      unconfirmed: '提供形態を公式確認',
+      'not-applicable': '対象外'
+    };
+    if (Object.prototype.hasOwnProperty.call(kinds, text(router.kind))) return kinds[text(router.kind)];
+    const declaration = text(router.kind || router.category || router.status);
+    if (/共通|NTT|ドコモ提供/.test(declaration)) return 'ドコモ・NTT共通レンタル';
+    if (/購入|販売/.test(declaration)) return 'プロバイダー独自購入・販売';
+    if (/提供なし|対象外|未提供/.test(declaration)) return '提供状況';
+    return 'プロバイダー独自の案内';
+  }
+
+  function isRouterEligible() {
+    const speed = text($('scSpeed') && $('scSpeed').value);
+    const provider = text($('scProvider') && $('scProvider').value);
+    if (!speed || !provider || provider === 'その他' || provider === '選択不要（ahamo光専用）') return false;
+    if (speed.startsWith('ahamo光')) return false;
+    // Type C in the existing form is represented by the disabled provider value below.
+    if (provider === 'タイプC（提携CATV）') return false;
+    return true;
+  }
+
+  function renderRouterCard(card) {
+    if (!card) return;
+    clearCard(card);
+    if (!isRouterEligible()) {
+      card.hidden = true;
+      return;
+    }
+    const providerValue = $('scProvider').value;
+    const record = catalogRecord(providerValue);
+    const speed = $('scSpeed').value;
+    const router = record && (speed.includes('10ギガ') ? record.router10 : record.router1);
+    if (!router || typeof router !== 'object') {
+      // Unknown is useful only after a real provider/speed pair was selected.  Do not
+      // render it for ahamo, Type C, or placeholder values where it could mislead.
+      renderUnavailable(card, `${providerLabel(providerValue)}の${speed.includes('10ギガ') ? '10ギガ' : '1ギガ'}向けルーター条件はこの案内では未登録です。プロバイダーとドコモの公式案内を確認してください。`);
+      return;
+    }
+    card.hidden = false;
+    card.querySelector('[data-provider-service-summary]').textContent = `${providerLabel(providerValue)}｜${routerKind(router)}｜${text(router.status) || '提供条件を確認'}${text(router.fee) ? `｜${text(router.fee)}` : ''}`;
+    addPrimaryMeta(card, router.contact, record.checked);
+    addDetails(card, [
+      ['提供区分', routerKind(router)],
+      ['提供状況', router.status],
+      ['税込費用', router.fee],
+      ['適用条件・返却', router.conditions],
+      ['問い合わせ', router.contact]
+    ], (Array.isArray(router.sources) ? router.sources.map((url, index) => [`公式根拠 ${index + 1}`, url]) : []));
+  }
+
+  function oldMailState() {
+    const use = $('scOldEmailUse');
+    const provider = $('scOldMailProvider');
+    return { use: use ? use.value : '未確認', provider: provider ? provider.value : '' };
+  }
+
+  function addOldMailSection() {
+    if ($('scOldDetails')) return;
+    const legacy = $('scLegacyFields');
+    if (!legacy || !legacy.parentNode) return;
+    const details = document.createElement('details');
+    details.id = 'scOldDetails';
+    details.className = 'form-details provider-service-old-details';
+    const summary = document.createElement('summary');
+    summary.textContent = '現在のメール利用（必要な場合）';
+    details.appendChild(summary);
+
+    const useField = document.createElement('div');
+    useField.className = 'field';
+    const useLabel = document.createElement('label');
+    useLabel.htmlFor = 'scOldEmailUse';
+    useLabel.textContent = '現在のメール利用';
+    const use = document.createElement('select');
+    use.id = 'scOldEmailUse';
+    ['未確認', '利用あり', '利用なし'].forEach(value => use.add(new Option(value, value)));
+    useField.append(useLabel, use);
+
+    const providerField = document.createElement('div');
+    providerField.className = 'field';
+    const providerLabelNode = document.createElement('label');
+    providerLabelNode.htmlFor = 'scOldMailProvider';
+    providerLabelNode.textContent = '現在のメール会社';
+    const provider = document.createElement('select');
+    provider.id = 'scOldMailProvider';
+    provider.disabled = true;
+    selectOptions(provider, '');
+    providerField.append(providerLabelNode, provider);
+
+    const card = makeCard('scOldMailProviderInfo', '現在のメールの継続確認', 'CURRENT MAIL');
+    details.append(useField, providerField, card);
+    legacy.after(details);
+  }
+
+  function replaceUpgradeProviderInput() {
+    const old = $('upOldProvider');
+    if (!old || old.tagName === 'SELECT') return;
+    const select = document.createElement('select');
+    ['id', 'name', 'aria-describedby'].forEach(attribute => {
+      if (old.hasAttribute(attribute)) select.setAttribute(attribute, old.getAttribute(attribute));
+    });
+    // Preserve the exact ID and string value contract used by the existing workflow.
+    select.id = 'upOldProvider';
+    select.setAttribute('autocomplete', 'off');
+    selectOptions(select, old.value);
+    old.replaceWith(select);
+  }
+
+  function installPanels() {
+    replaceUpgradeProviderInput();
+    addOldMailSection();
+    const upDetails = $('upMailDetails');
+    if (upDetails && !$('upMailProviderInfo')) {
+      upDetails.appendChild(makeCard('upMailProviderInfo', 'メールアドレスを残す場合の確認', 'CURRENT MAIL'));
+    }
+    const providerHelp = $('scProviderHelp');
+    if (providerHelp && !$('scRouterInfo')) {
+      const card = makeCard('scRouterInfo', '選択した回線のルーターレンタル', 'ROUTER RENTAL');
+      const grid = providerHelp.closest('.form-grid');
+      if (grid && grid.parentNode) grid.after(card);
+      else providerHelp.after(card);
+    }
+  }
+
+  function updateOldMailVisibility() {
+    const details = $('scOldDetails');
+    const oldUse = $('scOldEmailUse');
+    const oldProvider = $('scOldMailProvider');
+    const oldCard = $('scOldMailProviderInfo');
+    const flow = text($('scFlow') && $('scFlow').value);
+    if (!details || !oldUse || !oldProvider) return;
+    // 解約新規 has the dedicated up* hearing. New contracts have no current carrier.
+    details.hidden = flow === '新規' || flow === '解約新規';
+    oldProvider.disabled = oldUse.value !== '利用あり';
+    if (oldUse.value !== '利用あり') {
+      oldProvider.value = '';
+      if (oldCard) oldCard.hidden = true;
+      return;
+    }
+    renderMailCard(oldCard, oldProvider.value);
+  }
+
+  function updatePanels() {
+    updateOldMailVisibility();
+    const upUse = $('upEmailUse');
+    const upProvider = $('upOldProvider');
+    const upCard = $('upMailProviderInfo');
+    if (upCard) {
+      if (upUse && upUse.value === '利用あり') renderMailCard(upCard, upProvider && upProvider.value);
+      else upCard.hidden = true;
+    }
+    renderRouterCard($('scRouterInfo'));
+  }
+
+  function resetMailConfirmation() {
+    const keep = $('upMailKeep');
+    if (keep) keep.value = '未確認';
+  }
+
+  function appendReviewRow(dl, label, value) {
+    if (!dl) return;
+    const row = document.createElement('div');
+    row.className = 'review-row provider-service-review';
+    const dt = document.createElement('dt');
+    const dd = document.createElement('dd');
+    dt.textContent = label;
+    dd.textContent = value;
+    row.append(dt, dd);
+    dl.appendChild(row);
+  }
+
+  function appendProviderReview() {
+    const summary = $('scReviewSummary');
+    if (!summary) return;
+    summary.querySelectorAll('.provider-service-review').forEach(node => node.remove());
+    const dl = summary.querySelector('dl');
+    if (!dl) return;
+    const flow = text($('scFlow') && $('scFlow').value);
+    if (flow === '解約新規') {
+      const use = text($('upEmailUse') && $('upEmailUse').value);
+      const provider = text($('upOldProvider') && $('upOldProvider').value);
+      appendReviewRow(dl, '現在のメール利用', use || '未確認');
+      if (use === '利用あり') appendReviewRow(dl, '現在のメール会社', providerLabel(provider) || '未選択');
+    } else if (flow !== '新規') {
+      const state = oldMailState();
+      appendReviewRow(dl, '現在のメール利用', state.use || '未確認');
+      if (state.use === '利用あり') appendReviewRow(dl, '現在のメール会社', providerLabel(state.provider) || '未選択');
+    }
+  }
+
+  function cloneServiceCard(card, outputId) {
+    if (!card || card.hidden) return null;
+    const clone = card.cloneNode(true);
+    clone.id = outputId;
+    clone.hidden = false;
+    clone.classList.add('provider-service-sheet');
+    clone.querySelectorAll('[id]').forEach(node => node.removeAttribute('id'));
+    clone.querySelectorAll('details').forEach(details => { details.open = true; });
+    return clone;
+  }
+
+  function appendSchedulePanels() {
+    const sheet = $('scheduleSheet');
+    if (!sheet) return;
+    sheet.querySelectorAll('.provider-service-sheet').forEach(node => node.remove());
+    const fragment = document.createDocumentFragment();
+    const flow = text($('scFlow') && $('scFlow').value);
+    const mailUse = flow === '解約新規' ? text($('upEmailUse') && $('upEmailUse').value) : oldMailState().use;
+    if (mailUse === '利用あり') {
+      const mailCard = flow === '解約新規' ? $('upMailProviderInfo') : $('scOldMailProviderInfo');
+      const clone = cloneServiceCard(mailCard, 'scheduleMailProviderInfo');
+      if (clone) fragment.appendChild(clone);
+    }
+    const routerClone = cloneServiceCard($('scRouterInfo'), 'scheduleRouterInfo');
+    if (routerClone) fragment.appendChild(routerClone);
+    if (!fragment.childNodes.length) return;
+    const before = sheet.querySelector('.guide-sources, .placeholder');
+    sheet.insertBefore(fragment, before || null);
+  }
+
+  function officialLinks(record, part) {
+    const urls = [];
+    if (part && safeHttpUrl(part.contactUrl)) urls.push(['公式の問い合わせ先', safeHttpUrl(part.contactUrl)]);
+    if (part && Array.isArray(part.sources)) {
+      part.sources.forEach((url, index) => {
+        const safe = safeHttpUrl(url);
+        if (safe) urls.push([`公式根拠 ${index + 1}`, safe]);
+      });
+    }
+    return urls;
+  }
+
+  function faqItems() {
+    const out = [];
+    catalog.forEach(record => {
+      const name = text(record.name) || text(record.id);
+      if (!name) return;
+      if (record.mail && typeof record.mail === 'object') {
+        const mail = record.mail;
+        const links = officialLinks(record, mail);
+        const source = links.map(([label, url]) => `<a href="${htmlEscape(url)}" target="_blank" rel="noopener noreferrer">${htmlEscape(label)}</a>`).join(' ／ ');
+        out.push({
+          level: 'basic', cat: '共通', services: ['net', 'all'],
+          q: `${name}のメールアドレスは回線解約後も残せる？`,
+          keys: [name, 'メール', '継続', '解約', 'メールアドレス', '公式'],
+          a: htmlEscape(mail.status || '公式条件を確認中') + (mail.plan ? `<br>メール維持プラン：${htmlEscape(mail.plan)}` : '') + (mail.fee ? `<br>税込費用：${htmlEscape(mail.fee)}` : ''),
+          staff: htmlEscape(mail.procedure || '') + (mail.contact ? `<br>問い合わせ：${htmlEscape(mail.contact)}` : ''),
+          warn: htmlEscape(mail.conditions || '解約前に条件・手順・期限を公式窓口で確認してください。'),
+          source: source || '公式窓口で確認', updated: text(record.checked) || ''
+        });
+      }
+      [['router1', '1ギガ'], ['router10', '10ギガ']].forEach(([key, speed]) => {
+        const router = record[key];
+        if (!router || typeof router !== 'object') return;
+        const links = officialLinks(record, router);
+        const source = links.map(([label, url]) => `<a href="${htmlEscape(url)}" target="_blank" rel="noopener noreferrer">${htmlEscape(label)}</a>`).join(' ／ ');
+        out.push({
+          level: 'basic', cat: '共通', services: ['net', 'all'], targets: ['A', 'B'],
+          q: `${name}の${speed}ルーターレンタルは？`,
+          keys: [name, speed, 'ルーター', 'レンタル', '返却', '公式'],
+          a: htmlEscape(router.status || '提供条件を確認中') + (router.fee ? `<br>税込費用：${htmlEscape(router.fee)}` : ''),
+          staff: htmlEscape(router.contact ? `問い合わせ：${router.contact}` : '問い合わせ先を公式案内で確認'),
+          warn: htmlEscape(router.conditions || '申込み条件・返却先・返却期限を公式案内で確認してください。'),
+          source: source || '公式窓口で確認', updated: text(record.checked) || ''
+        });
+      });
+    });
+    return out;
+  }
+
+  function decorateFunctions() {
+    if (typeof window.renderReviewSummary === 'function') {
+      const baseReview = window.renderReviewSummary;
+      window.renderReviewSummary = function providerServicesReview() {
+        const result = baseReview.apply(this, arguments);
+        appendProviderReview();
+        return result;
+      };
+    }
+    if (typeof window.updateProcedureForm === 'function') {
+      const baseUpdate = window.updateProcedureForm;
+      window.updateProcedureForm = function providerServicesUpdate() {
+        const result = baseUpdate.apply(this, arguments);
+        updatePanels();
+        appendProviderReview();
+        return result;
+      };
+    }
+    if (typeof window.resetCustomerFields === 'function') {
+      const baseReset = window.resetCustomerFields;
+      window.resetCustomerFields = function providerServicesReset() {
+        const result = baseReset.apply(this, arguments);
+        const oldUse = $('scOldEmailUse');
+        const oldProvider = $('scOldMailProvider');
+        if (oldUse) oldUse.value = '未確認';
+        if (oldProvider) oldProvider.value = '';
+        const upProvider = $('upOldProvider');
+        if (upProvider) upProvider.value = '';
+        resetMailConfirmation();
+        document.querySelectorAll('#scForm [aria-invalid], #upgradeHearingPanel [aria-invalid]').forEach(node => node.removeAttribute('aria-invalid'));
+        updatePanels();
+        appendProviderReview();
+        return result;
+      };
+    }
+    if (typeof window.buildSchedule === 'function') {
+      const baseBuild = window.buildSchedule;
+      window.buildSchedule = function providerServicesBuild() {
+        const result = baseBuild.apply(this, arguments);
+        if (result === true) appendSchedulePanels();
+        return result;
+      };
+    }
+    if (typeof window.allItems === 'function') {
+      const baseAllItems = window.allItems;
+      window.allItems = function providerServicesAllItems() {
+        const base = baseAllItems.apply(this, arguments);
+        return Array.isArray(base) ? base.concat(faqItems()) : faqItems();
+      };
+    }
+  }
+
+  function bindEvents() {
+    const onChange = event => {
+      const id = event.target && event.target.id;
+      if (id === 'upOldProvider' || id === 'upEmailUse') resetMailConfirmation();
+      if (id === 'scOldEmailUse' && event.target.value !== '利用あり') {
+        const provider = $('scOldMailProvider');
+        if (provider) provider.value = '';
+      }
+      if (['upOldProvider', 'upEmailUse', 'scOldEmailUse', 'scOldMailProvider', 'scProvider', 'scSpeed', 'scFlow', 'upType'].includes(id)) {
+        updatePanels();
+        appendProviderReview();
+        if (typeof window.invalidateSchedule === 'function') window.invalidateSchedule();
+      }
+    };
+    // The legacy upgrade panel stops bubbling change events. Direct listeners retain
+    // its existing behavior while making provider changes reset upMailKeep reliably.
+    ['upOldProvider', 'upEmailUse', 'scOldEmailUse', 'scOldMailProvider', 'scProvider', 'scSpeed', 'scFlow', 'upType']
+      .map($)
+      .filter(Boolean)
+      .forEach(node => node.addEventListener('change', onChange));
+  }
+
+  function init() {
+    installPanels();
+    decorateFunctions();
+    bindEvents();
+    updatePanels();
+    appendProviderReview();
+    window.ProviderServices = {
+      catalog,
+      safeHttpUrl,
+      refresh: () => { updatePanels(); appendProviderReview(); },
+      faqItems,
+      providerFor: catalogRecord
+    };
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true });
+  else init();
+})();
+
+</script>
 </body></html>
