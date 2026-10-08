@@ -46,10 +46,418 @@ body.guide-building header{padding:12px 14px 14px}body.guide-building header .ti
 </style>
 <style id="transferBenefitsStyle">.transfer-panel{margin:20px 0;padding:20px;box-sizing:border-box;border:1px solid #e8cbd1;border-radius:18px;background:#fff;min-width:0}.transfer-panel .form-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}.transfer-contact{margin-top:16px;padding:16px;background:#fff7f8;border-left:4px solid #b51f3d;border-radius:10px;overflow-wrap:anywhere}.transfer-contact p{margin:8px 0;font-size:15px;line-height:1.65}.transfer-contact a,.benefit-qr a{color:#a40029;font-weight:700}.campaign-text{white-space:pre-wrap;overflow-wrap:anywhere}.benefit-qr{display:flex;align-items:center;gap:20px;margin:20px 0;padding:20px;border:1px solid #e0cad1;border-radius:14px;background:#fff}.benefit-qr img{display:block;width:172px;height:172px;flex:none;image-rendering:pixelated;background:white}.benefit-qr h3{margin:0 0 10px}.benefit-qr p{margin:8px 0;line-height:1.6}.qr-url{display:block;font-size:11px;overflow-wrap:anywhere;color:#555}.store-campaign-output{margin:20px 0;padding:20px;border:1px solid #ddced2;border-radius:14px;background:#fff9fa}.store-campaign-output h3{margin:0 0 10px}.store-campaign-output p{line-height:1.65}.store-campaign-output .mini{font-size:12px;color:#626262}#scStoreCampaign{width:100%;box-sizing:border-box;font:inherit;font-size:16px;line-height:1.6;min-width:0;border:1px solid #d9d9dd;border-radius:12px;padding:14px;resize:vertical}@media(max-width:560px){.benefit-qr{flex-direction:column;align-items:flex-start;gap:12px}.transfer-contact{padding:12px}.transfer-contact p{font-size:14px}}@media print{.benefit-qr{display:flex;flex-direction:row;padding:12px;gap:14px;break-inside:avoid}.benefit-qr img{width:132px;height:132px}.benefit-qr h3{font-size:14px}.benefit-qr p{font-size:10px}.benefit-qr .qr-url{font-size:8px}.store-campaign-output{break-inside:avoid;padding:12px}.store-campaign-output h3{font-size:14px}.store-campaign-output p{font-size:10px}}
 </style>
-<style id="generative-consult-style">
-.consult-stage-notice{background:#fff8e8;border:1px solid #e8d5a3;border-radius:12px;padding:14px 16px;margin:12px 0;font-size:13px;line-height:1.9;color:#6d5527}
-.card.ai-support-robot{grid-column:auto}.card.ai-support-robot:focus-visible{outline:3px solid #bc173b;outline-offset:3px}
-.consult-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.consult-tabs button{min-height:44px;padding:10px 14px;border:1px solid #d9c8ce;border-radius:10px;background:white;color:#702439;font-weight:800;cursor:pointer;font-size:13px}.consult-tabs button[aria-selected=true]{background:#bc173b;border-color:#bc173b;color:#fff}.consult-tabs button:focus-visible{outline:3px solid #ecb3c4;outline-offset:2px}.consult-standalone{display:inline-flex;align-items:center;min-height:44px;padding:9px 12px;border:1px solid #e1c6cf;border-radius:9px;background:#fff;color:#a40029;font-size:12px;font-weight:700;text-decoration:none;margin:4px 0 12px}#consultFrame{display:block;width:100%;border:1px solid #e2d9df;border-radius:14px;height:1200px;background:white}#legacyFaqPanel[hidden],#consultPanel[hidden]{display:none!important}@media print{#aiView{display:none!important}}
+
+<style id="local-support-style">
+/* 登録回答ナビ専用。既存フォームへ影響しないよう #aiView 内に限定する。 */
+#aiView {
+  --ls-red: #cc0033;
+  --ls-red-dark: #a40029;
+  --ls-red-soft: #fff1f4;
+  --ls-ink: #202027;
+  --ls-muted: #696974;
+  --ls-line: #e4e4ea;
+  --ls-bg: #ffffff;
+  --ls-warn: #fff8e8;
+}
+
+#aiView .topbar {
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+#aiView .view-title {
+  line-height: 1.35;
+}
+
+#aiView .pill {
+  margin-bottom: 4px;
+}
+
+#aiView .ls-lead {
+  margin: 0 1px 16px;
+  color: var(--ls-muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+#aiView .ls-search-card,
+#aiView .ls-manage {
+  overflow: hidden;
+  border: 1px solid var(--ls-line);
+  border-radius: 18px;
+  background: var(--ls-bg);
+  box-shadow: 0 4px 18px #25000a08;
+}
+
+#aiView .ls-search-card {
+  padding: 16px;
+}
+
+#aiView .ls-section-title {
+  margin: 0 0 13px;
+  color: var(--ls-ink);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+#aiView .ls-field {
+  display: block;
+  min-width: 0;
+}
+
+#aiView .ls-field > span {
+  display: block;
+  margin-bottom: 6px;
+  color: #4d4d58;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.45;
+}
+
+#aiView .ls-field b {
+  margin-left: 4px;
+  color: var(--ls-red-dark);
+  font-size: 11px;
+}
+
+#aiView .ls-field input,
+#aiView .ls-field select,
+#aiView .ls-field textarea {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #d7d7e0;
+  border-radius: 11px;
+  background: #fff;
+  color: var(--ls-ink);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+#aiView .ls-field input,
+#aiView .ls-field select {
+  min-height: 46px;
+  padding: 10px 11px;
+}
+
+#aiView .ls-field textarea {
+  min-height: 92px;
+  padding: 11px;
+  resize: vertical;
+}
+
+#aiView .ls-field input[type="date"] {
+  min-width: 0;
+  font-size: 16px;
+}
+
+#aiView .ls-field input:focus,
+#aiView .ls-field select:focus,
+#aiView .ls-field textarea:focus {
+  border-color: var(--ls-red);
+  outline: 2px solid #f1c0ce;
+  outline-offset: 1px;
+}
+
+#aiView .ls-search-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+#aiView .ls-primary,
+#aiView .ls-secondary,
+#aiView .ls-import {
+  min-height: 44px;
+  border-radius: 11px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.35;
+  cursor: pointer;
+}
+
+#aiView .ls-primary {
+  border: 1px solid var(--ls-red);
+  background: var(--ls-red);
+  color: #fff;
+}
+
+#aiView .ls-primary:hover {
+  background: #b4002d;
+}
+
+#aiView .ls-secondary {
+  border: 1px solid #d7d7df;
+  background: #fff;
+  color: #41414c;
+}
+
+#aiView .ls-secondary:hover {
+  border-color: #c7a2ae;
+  background: #fff8fa;
+}
+
+#aiView .ls-primary:focus-visible,
+#aiView .ls-secondary:focus-visible,
+#aiView .ls-chip:focus-visible,
+#aiView .ls-import:focus-within {
+  outline: 3px solid #efb3c3;
+  outline-offset: 2px;
+}
+
+#aiView .ls-filter-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 11px 10px;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid #ededf1;
+}
+
+#aiView .ls-suggest-wrap {
+  margin-top: 17px;
+}
+
+#aiView .ls-suggest-label {
+  margin: 0 0 8px;
+  color: var(--ls-muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+#aiView .ls-suggests {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+#aiView .ls-chip {
+  border: 1px solid #edc7d1;
+  border-radius: 999px;
+  background: #fff8fa;
+  color: #8e1735;
+  padding: 7px 10px;
+  font-size: 12px;
+  font-weight: 750;
+  line-height: 1.4;
+  text-align: left;
+  cursor: pointer;
+}
+
+#aiView .ls-chip:hover {
+  border-color: #d58b9e;
+  background: var(--ls-red-soft);
+}
+
+#aiView .ls-result-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px 12px;
+  align-items: baseline;
+  min-height: 25px;
+  margin: 17px 3px 9px;
+  color: var(--ls-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+#aiView #lsCount {
+  color: var(--ls-red-dark);
+  font-weight: 900;
+}
+
+#aiView #lsSearchStatus,
+#aiView .ls-status {
+  overflow-wrap: anywhere;
+}
+
+#aiView .ls-results,
+#aiView .ls-own-list {
+  display: grid;
+  gap: 9px;
+}
+
+#aiView .ls-answer {
+  margin-top: 14px;
+}
+
+#aiView .ls-manage {
+  margin-top: 24px;
+  box-shadow: none;
+}
+
+#aiView .ls-manage > summary {
+  padding: 15px 16px;
+  color: #3c3c46;
+  font-size: 14px;
+  font-weight: 850;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+#aiView .ls-manage[open] > summary {
+  border-bottom: 1px solid var(--ls-line);
+  background: #fdfdfe;
+}
+
+#aiView .ls-manage-body {
+  padding: 16px;
+}
+
+#aiView .ls-manage-notices {
+  margin-bottom: 18px;
+  padding: 12px 13px;
+  border-left: 3px solid #d8a347;
+  border-radius: 0 10px 10px 0;
+  background: var(--ls-warn);
+  color: #5a4827;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+#aiView .ls-manage-notices p {
+  margin: 0;
+}
+
+#aiView .ls-manage-notices p + p {
+  margin-top: 7px;
+}
+
+#aiView .ls-editor-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 13px;
+}
+
+#aiView .ls-wide {
+  grid-column: 1 / -1;
+}
+
+#aiView .ls-check {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  min-height: 46px;
+  padding: 10px 11px;
+  border: 1px solid #d7d7e0;
+  border-radius: 11px;
+  color: #4d4d58;
+  font-size: 14px;
+  font-weight: 750;
+  line-height: 1.45;
+}
+
+#aiView .ls-check input {
+  width: 20px;
+  min-width: 20px;
+  height: 20px;
+  margin: 0;
+  accent-color: var(--ls-red);
+}
+
+#aiView .ls-editor-actions,
+#aiView .ls-storage-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 16px;
+}
+
+#aiView .ls-status {
+  min-height: 19px;
+  margin: 9px 1px 0;
+  color: var(--ls-muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+#aiView .ls-own-section,
+#aiView .ls-storage {
+  margin-top: 24px;
+  padding-top: 19px;
+  border-top: 1px solid #e9e9ee;
+}
+
+#aiView .ls-storage {
+  padding-bottom: 2px;
+}
+
+#aiView .ls-storage > div:first-child p {
+  margin: -5px 0 0;
+  color: var(--ls-muted);
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+#aiView .ls-import {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #d7d7df;
+  background: #fff;
+  color: #41414c;
+}
+
+#aiView .ls-import input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+}
+
+@media (min-width: 700px) {
+  #aiView .ls-search-card,
+  #aiView .ls-manage-body {
+    padding: 20px;
+  }
+
+  #aiView .ls-filter-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  #aiView .ls-editor-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+  }
+}
+
+@media (max-width: 359px) {
+  #aiView .ls-search-card,
+  #aiView .ls-manage-body {
+    padding: 13px;
+  }
+
+  #aiView .ls-primary,
+  #aiView .ls-secondary,
+  #aiView .ls-import {
+    padding-right: 11px;
+    padding-left: 11px;
+  }
+}
+
+#aiView .ls-result { display:block; width:100%; border:1px solid #e0dbe0; border-radius:12px; background:white; padding:14px 16px; text-align:left; color:#28232b; cursor:pointer; min-width:0; }
+#aiView .ls-result small,#aiView .ls-result span { display:block; font-size:12px; line-height:1.6; color:#746972; overflow-wrap:anywhere; }
+#aiView .ls-result strong { display:block; font-size:15px; line-height:1.65; margin:4px 0; }
+#aiView .ls-result:hover,#aiView .ls-result:focus-visible { border-color:#c43c61; outline:2px solid #f6d8e2; }
+#aiView .ls-empty { background:#fff; border-radius:12px; padding:16px; color:#706871; font-size:13px; line-height:1.7; }
+#aiView .ls-answer-card { padding:18px; background:#fff; border:1px solid #decbd3; border-radius:16px; scroll-margin-top:20px; }
+#aiView .ls-answer-card h2 { font-size:20px; line-height:1.65; margin:8px 0 10px; }
+#aiView .ls-answer-kind,#aiView .ls-condition { color:#8b3452; font-size:12px; line-height:1.7; margin:0 0 8px; }
+#aiView .ls-block { padding:14px 0; border-top:1px solid #eee7ec; }
+#aiView .ls-block h3 { font-size:14px; color:#74213c; margin:0 0 8px; }
+#aiView .ls-block p { font-size:15px; line-height:1.9; margin:0 0 7px; white-space:pre-wrap; overflow-wrap:anywhere; }
+#aiView .ls-block small { font-size:12px; color:#806b77; display:block; margin-bottom:7px; }
+#aiView .ls-talk { background:#fff4f7; padding:14px; border-radius:10px; }
+#aiView .ls-caution { background:#fff9ee; padding:14px; border-radius:10px; margin-top:14px; }
+#aiView .ls-block a { display:block; font-size:12px; color:#a60033; overflow-wrap:anywhere; line-height:1.8; margin-top:8px; }
+#aiView .ls-copy-check { display:flex; align-items:flex-start; gap:9px; font-size:13px; line-height:1.8; margin:10px 0; }
+#aiView .ls-copy-check input { width:20px; min-width:20px; height:20px; margin:3px 0 0; accent-color:#bd193f; }
+#aiView button:disabled { opacity:.5; cursor:not-allowed; }
+.card.ai-support-robot { grid-column:auto; }
+@media print { #aiView { display:none!important; } }
+
 </style>
 </head>
 <body><header><div class="head"><a href="./othercarrier_docomo_compare_v58_independent_routes.html" style="display:inline-flex;align-items:center;min-height:40px;margin-bottom:12px;padding:8px 14px;border:1px solid #ffffff66;border-radius:999px;background:#ffffff18;color:#fff;text-decoration:none;font-size:13px;font-weight:800">← 店頭メニューへ戻る</a><div class="brand">DOCOMO HIKARI</div><div class="title">ドコモ光 STAFF SUPPORT</div><div class="sub">現場スタッフ向け 接客・受付サポートツール</div></div></header>
@@ -63,7 +471,7 @@ body.guide-building header{padding:12px 14px 14px}body.guide-building header .ti
 <button class="card" onclick="openFlow('転用')"><div class="icon">↪️</div><h3>転用</h3><p>フレッツ光からドコモ光へ</p></button>
 <button class="card" onclick="openFlow('事業者変更')"><div class="icon">🔁</div><h3>事業者変更</h3><p>他社光コラボからドコモ光へ</p></button>
 <button class="card" onclick="openFlow('解約新規')"><div class="icon">🧾</div><h3>解約新規</h3><p>1ギガ→10ギガ。A/BとCの流れを分けて案内</p></button>
-<button type="button" id="aiSupportEntry" class="card ai ai-support-robot" onclick="openConsult()"><div class="icon">🤖</div><h3>AIサポロボ</h3><p>質問・切り返しトークを相談。公式の根拠も確認</p></button>
+<button type="button" id="aiSupportEntry" class="card ai ai-support-robot" onclick="openAI()"><div class="icon">🤖</div><h3>AIサポロボ</h3><p>登録回答・説明トークを検索。AI・ログイン不要</p></button>
 </div></section>
 
 <section id="serviceSelect" class="view"><div class="topbar"><button class="back" onclick="home()">← 戻る</button><div><div class="pill" id="servicePill"></div><div class="view-title" id="serviceTitle"></div></div></div>
@@ -101,13 +509,221 @@ body.guide-building header{padding:12px 14px 14px}body.guide-building header .ti
 <div class="section-title">代表的なチャンネル・商品</div><div id="channelResults" class="q-list"></div><div id="channelAnswer" class="answer"></div></section>
 
 <section id="aiView" class="view">
-<div class="topbar"><button class="back" onclick="home()">← 戻る</button><div><div class="pill">AI SUPPORT</div><div class="view-title">AIサポロボ</div></div></div>
-<div class="consult-tabs" role="tablist" aria-label="回答の方式"><button id="consultTab" role="tab" aria-selected="true" aria-controls="consultPanel" onclick="setConsultMode('consult')">生成AIコンサル（接続確認中）</button><button id="faqTab" role="tab" aria-selected="false" aria-controls="legacyFaqPanel" onclick="setConsultMode('faq')">登録Q&amp;A検索</button></div>
-<div id="consultPanel" role="tabpanel" aria-labelledby="consultTab"><div class="consult-stage-notice" role="status"><strong>現状確認用のHTMLです。</strong><br>生成AIサーバーは一時的なプレビューに接続しています。現在、GoogleがAPIキーを無効と判定しているため、生成AIでの回答はまだ利用できません。登録Q&amp;A検索・手続き案内は使えます。正しいキーの再登録・接続試験・正式公開後に、本番サーバーURLへ差し替えます。APIキーはこのHTMLに含めていません。</div><p class="notice">公式根拠を確認して、スタッフ向けの回答とお客様へのトークの下書きを作ります。スタッフのログインが必要です。顧客名・電話番号・実メールアドレス・社内の機密情報は入力しないでください。</p><a class="consult-standalone" href="https://8328-iph5hmf092bf7085hfnud-3cff12b7.sg2.manus.computer/" target="_blank" rel="noopener noreferrer">専用画面で開く（ログインできない場合はこちら） ↗</a><iframe id="consultFrame" src="https://8328-iph5hmf092bf7085hfnud-3cff12b7.sg2.manus.computer/" loading="lazy" title="生成AI スタッフコンサル" referrerpolicy="strict-origin-when-cross-origin" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"></iframe></div>
-<div id="legacyFaqPanel" role="tabpanel" aria-labelledby="faqTab" hidden><div class="chat" id="chat"><div class="bubble bot">ドコモ光について質問してください。<br>例：「事業者変更で固定電話をそのまま使える？」</div></div>
-<div class="chat-input"><input id="aiInput" placeholder="質問を入力してください"><button class="primary" onclick="askAI()">送信</button></div>
-<div class="notice">こちらは登録済みQ&amp;Aの検索です。自由な文章で回答を生成するAIコンサルとは異なります。</div></div>
+  <div class="topbar">
+    <button type="button" class="back" onclick="home()">← 戻る</button>
+    <div>
+      <div class="pill">登録回答ナビ</div>
+      <div class="view-title">AIサポロボ</div>
+    </div>
+  </div>
+
+  <p class="ls-lead">AI・ログインなしで、登録済みの回答を探せます。回答は対象のお手続き・会社・タイプを確認し、最新情報は受付元・公式案内で確認してください。</p>
+
+  <p id="lsDataStatus" class="ls-status" role="alert" hidden></p>
+
+  <section class="ls-search-card" aria-labelledby="lsSearchHeading">
+    <h2 id="lsSearchHeading" class="ls-section-title">登録回答を探す</h2>
+    <label class="ls-field" for="aiInput">
+      <span>質問・キーワード</span>
+      <textarea id="aiInput" rows="3" maxlength="2000" placeholder="例：eo光のメールアドレスは残せる？"></textarea>
+    </label>
+    <div class="ls-search-actions">
+      <button type="button" id="localSearchBtn" class="ls-primary" onclick="LocalSupport.search()">回答を検索</button>
+    </div>
+
+    <div class="ls-filter-grid" aria-label="検索条件">
+      <label class="ls-field" for="lsProcedure">
+        <span>手続き</span>
+        <select id="lsProcedure">
+          <option value="">すべて</option>
+          <option value="新規">新規</option>
+          <option value="他社奪還">他社奪還</option>
+          <option value="転用">転用</option>
+          <option value="事業者変更">事業者変更</option>
+          <option value="解約新規">解約新規</option>
+        </select>
+      </label>
+      <label class="ls-field" for="lsCompany">
+        <span>現在の会社</span>
+        <select id="lsCompany">
+          <option value="">指定なし</option>
+          <option value="eo光">eo光</option>
+          <option value="J:COM">J:COM</option>
+          <option value="NURO 光">NURO 光</option>
+          <option value="SoftBank 光">SoftBank 光</option>
+          <option value="auひかり">auひかり</option>
+          <option value="ビッグローブ光">ビッグローブ光</option>
+          <option value="楽天ひかり">楽天ひかり</option>
+          <option value="So-net 光">So-net 光</option>
+          <option value="@nifty光">@nifty光</option>
+          <option value="OCN光">OCN光</option>
+          <option value="enひかり">enひかり</option>
+          <option value="IIJmioひかり">IIJmioひかり</option>
+          <option value="その他">その他</option>
+        </select>
+      </label>
+      <label class="ls-field" for="lsType">
+        <span>変更先のドコモ光タイプ</span>
+        <select id="lsType">
+          <option value="">指定なし</option>
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="ls-suggest-wrap" aria-label="会社別の注意事項">
+      <p class="ls-suggest-label">会社を選んで、知りたい項目を押せます</p>
+      <div class="ls-suggests">
+        <button type="button" class="ls-chip" data-topic-question="解約金 工事費残債" onclick="LocalSupport.topicSearch(this)">解約金・残債</button>
+        <button type="button" class="ls-chip" data-topic-question="撤去 費用" onclick="LocalSupport.topicSearch(this)">撤去</button>
+        <button type="button" class="ls-chip" data-topic-question="返却 機器" onclick="LocalSupport.topicSearch(this)">返却するもの</button>
+        <button type="button" class="ls-chip" data-topic-question="録画" onclick="LocalSupport.topicSearch(this)">録画</button>
+        <button type="button" class="ls-chip" data-topic-question="テレビだけ残す 料金" onclick="LocalSupport.topicSearch(this)">テレビだけ残す</button>
+        <button type="button" class="ls-chip" data-topic-question="事業者変更承諾番号 取得" onclick="LocalSupport.topicSearch(this)">承諾番号</button>
+        <button type="button" class="ls-chip" data-topic-question="公式 問い合わせ 窓口" onclick="LocalSupport.topicSearch(this)">連絡先</button>
+      </div>
+    </div>
+
+    <div class="ls-suggest-wrap" aria-label="よくある検索">
+      <p class="ls-suggest-label">よくある検索</p>
+      <div class="ls-suggests">
+        <button type="button" class="ls-chip" data-example="eoメール切り返し" data-question="eo光のメールアドレスはドコモ光へ切替後も利用できますか？" data-procedure="他社奪還" data-company="eo光" data-target="" onclick="LocalSupport.example(this)">eoメール切り返し</button>
+        <button type="button" class="ls-chip" data-example="電話番号を残す" data-question="固定電話番号を残して切り替えるには何を確認しますか？" data-procedure="事業者変更" data-company="" data-target="" onclick="LocalSupport.example(this)">電話番号を残す</button>
+        <button type="button" class="ls-chip" data-example="解約金と特典" data-question="他社回線の解約金と特典はどのように案内しますか？" data-procedure="他社奪還" data-company="" data-target="" onclick="LocalSupport.example(this)">解約金と特典</button>
+        <button type="button" class="ls-chip" data-example="転用10ギガ" data-question="転用でドコモ光10ギガを申し込む際の確認事項は？" data-procedure="転用" data-company="" data-target="A" onclick="LocalSupport.example(this)">転用10ギガ</button>
+        <button type="button" class="ls-chip" data-example="事業者変更10ギガ" data-question="事業者変更でドコモ光10ギガを申し込む際の確認事項は？" data-procedure="事業者変更" data-company="" data-target="A" onclick="LocalSupport.example(this)">事業者変更10ギガ</button>
+        <button type="button" class="ls-chip" data-example="解約新規タイプCの電話" data-question="解約新規でタイプCへ変更するとき、電話はどう確認しますか？" data-procedure="解約新規" data-company="" data-target="C" onclick="LocalSupport.example(this)">解約新規タイプCの電話</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="ls-result-meta" aria-live="polite">
+    <span id="lsCount">0件</span>
+    <span id="lsSearchStatus" role="status"></span>
+  </div>
+  <div id="lsResults" class="ls-results"></div>
+  <section id="lsAnswer" class="ls-answer" hidden></section>
+
+  <details id="lsManage" class="ls-manage">
+    <summary>この端末の登録回答を追加・編集</summary>
+    <div class="ls-manage-body">
+      <div class="ls-manage-notices">
+        <p>保存はこの端末・このブラウザーだけです。共有するときはJSONを渡してください。この端末の保存では全店の共通マスターは更新されません。</p>
+        <p><strong>顧客名・電話・実メールを入れないでください。</strong></p>
+      </div>
+
+      <form id="lsEditor" onsubmit="event.preventDefault();LocalSupport.save()">
+        <input type="hidden" id="lsEditId">
+        <div class="ls-editor-grid">
+          <label class="ls-field ls-wide" for="lsEditQuestion">
+            <span>質問 <b>必須</b></span>
+            <input id="lsEditQuestion" type="text" maxlength="240" required placeholder="例：切替後もメールアドレスを残せる？">
+          </label>
+          <label class="ls-field ls-wide" for="lsEditAnswer">
+            <span>回答 <b>必須</b></span>
+            <textarea id="lsEditAnswer" rows="7" maxlength="6000" required placeholder="確認する順番と案内内容を入力"></textarea>
+          </label>
+          <label class="ls-field ls-wide" for="lsEditTalk">
+            <span>トーク</span>
+            <textarea id="lsEditTalk" rows="4" maxlength="3000" placeholder="お客様への短い伝え方（任意）"></textarea>
+          </label>
+          <label class="ls-field" for="lsEditChecks">
+            <span>確認事項</span>
+            <textarea id="lsEditChecks" rows="4" maxlength="1200" placeholder="契約先・名義・期限など（任意）"></textarea>
+          </label>
+          <label class="ls-field" for="lsEditWarnings">
+            <span>注意事項</span>
+            <textarea id="lsEditWarnings" rows="4" maxlength="1200" placeholder="先に解約しない等（任意）"></textarea>
+          </label>
+          <label class="ls-field" for="lsEditKeys">
+            <span>検索語</span>
+            <input id="lsEditKeys" type="text" maxlength="500" placeholder="例：メール、アドレス、eo（任意）">
+          </label>
+          <label class="ls-field" for="lsEditProcedure">
+            <span>対象手続き</span>
+            <select id="lsEditProcedure">
+              <option value="共通">共通</option>
+              <option value="新規">新規</option>
+              <option value="他社奪還">他社奪還</option>
+              <option value="転用">転用</option>
+              <option value="事業者変更">事業者変更</option>
+              <option value="解約新規">解約新規</option>
+            </select>
+          </label>
+          <label class="ls-field" for="lsEditCompany">
+            <span>対象会社</span>
+            <select id="lsEditCompany">
+              <option value="">指定なし</option>
+              <option value="eo光">eo光</option>
+              <option value="J:COM">J:COM</option>
+              <option value="NURO 光">NURO 光</option>
+              <option value="SoftBank 光">SoftBank 光</option>
+              <option value="auひかり">auひかり</option>
+              <option value="ビッグローブ光">ビッグローブ光</option>
+              <option value="楽天ひかり">楽天ひかり</option>
+              <option value="So-net 光">So-net 光</option>
+              <option value="@nifty光">@nifty光</option>
+          <option value="OCN光">OCN光</option>
+          <option value="enひかり">enひかり</option>
+          <option value="IIJmioひかり">IIJmioひかり</option>
+          <option value="その他">その他</option>
+            </select>
+          </label>
+          <label class="ls-field" for="lsEditType">
+            <span>対象タイプ</span>
+            <select id="lsEditType">
+              <option value="">指定なし</option>
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+            </select>
+          </label>
+          <label class="ls-field" for="lsEditUrl">
+            <span>参考URL</span>
+            <input id="lsEditUrl" type="url" placeholder="https://（任意）">
+          </label>
+          <label class="ls-field" for="lsEditDate">
+            <span>確認日</span>
+            <input id="lsEditDate" type="date">
+          </label>
+          <label class="ls-check" for="lsEditEnabled">
+            <input id="lsEditEnabled" type="checkbox">
+            <span>検索で使う</span>
+          </label>
+        </div>
+        <label class="ls-check" for="lsTemplateConfirmed"><input type="checkbox" id="lsTemplateConfirmed" required><span>個別のお客様・案件ではなく、顧客情報を含まない汎用の回答テンプレートです。自動検出は完全ではありません。</span></label>
+        <div class="ls-editor-actions">
+          <button type="submit" class="ls-primary">この端末に保存</button>
+          <button type="button" class="ls-secondary" onclick="LocalSupport.resetEditor()">新しく追加</button>
+        </div>
+        <p id="lsEditStatus" class="ls-status" role="status"></p>
+      </form>
+
+      <section class="ls-own-section" aria-labelledby="lsOwnHeading">
+        <h2 id="lsOwnHeading" class="ls-section-title">この端末の回答</h2>
+        <div id="lsOwnList" class="ls-own-list"></div>
+      </section>
+
+      <div class="ls-storage">
+        <div>
+          <h2 class="ls-section-title">JSONで共有・受け取り</h2>
+          <p>端末内の登録回答をJSONで渡すか、受け取ったJSONを読み込みます。</p>
+        </div>
+        <label class="ls-check" for="lsImportConfirmed"><input type="checkbox" id="lsImportConfirmed"><span>取込み内容を確認し、個別案件・顧客情報を含まない汎用テンプレートだけと確認しました。</span></label>
+        <div class="ls-storage-actions">
+          <button type="button" class="ls-secondary" onclick="LocalSupport.exportData()">JSONを書き出す</button>
+          <label class="ls-import" for="lsImport">JSONを読み込む<input type="file" id="lsImport" accept=".json,application/json" onchange="LocalSupport.importData(this.files[0]);"></label>
+        </div>
+        <p id="lsStorageStatus" class="ls-status" role="status"></p>
+      </div>
+    </div>
+  </details>
+
+  <div id="chat" hidden></div>
 </section>
+
 
 
 <section id="precautionsView" class="view">
@@ -1150,28 +1766,291 @@ document.getElementById('aiInput').addEventListener('keydown',e=>{if(e.key==='En
 })();
 common.push({level:'basic',cat:'初期契約解除',q:'初期契約解除の8日は、申込日から？プロバイダーも自動で解約になる？',keys:['初期契約解除','8日','受領','プロバイダー','キャンセル'],a:'ドコモ光／ahamo光の新規契約・プラン変更の対象注文では、郵送される「ドコモ光契約申込書」を受領した日を含む8日以内に、書面で初期契約解除を行える公式案内です。申込日からと決めつけず、対象注文と契約書面の受取日を確認します。',warn:'ドコモ光の解除だけでプロバイダーが自動解約にならず、料金や違約金が続く場合があります。実施済み工事料・事務手数料・利用分等の請求もあります。以前の事業者へ自動復帰はしません。解除と復帰・別契約の手続きはそれぞれ窓口で確認してください。',source:'<a href="https://www.docomo.ne.jp/internet/hikari/procedure/initial_cancellation/" target="_blank" rel="noopener noreferrer">ドコモ公式・初期契約解除</a>',updated:'2026-10-07',services:['net','phone','tv','cs','all']});
 </script>
-<script id="generative-consult-runtime">
-(function(){
-  const origin='https://8328-iph5hmf092bf7085hfnud-3cff12b7.sg2.manus.computer';
-  window.setConsultMode=function(mode){
-    const consult=mode==='consult';
-    document.getElementById('consultPanel').hidden=!consult;
-    document.getElementById('legacyFaqPanel').hidden=consult;
-    document.getElementById('consultTab').setAttribute('aria-selected',String(consult));
-    document.getElementById('faqTab').setAttribute('aria-selected',String(!consult));
-    if(!consult)document.getElementById('aiInput').focus();
+
+<script id="carrierFaqData" type="application/json">[{"id": "carrier-eo-1", "procedure": "他社奪還", "company": "eo光", "type": "", "targets": [], "question": "eo光の解約金と工事料残債はいくらですか？", "answer": "eo光は契約日（利用開始月の翌月起算）、ホーム／メゾン／マンションのタイプ、コース、即割・長割の有無で異なるため、一律には答えられません。公式にはホーム／メゾンの最低利用期間は原則1年、即割加入時は2年で、期間内はコース別の解約精算金が発生します。長割は3年単位の最低利用期間です。標準工事費を分割中なら残債を解約時に一括請求（ネットと電話の一部解約で一方を継続する場合は分割継続）と案内されています。契約内容をeoマイページで確認し、最終額はeoサポートダイヤルへ確認してください。 なお、公式表の金額は掲載時点の税込表示ですが、税率変更等で変わる可能性があり、最終請求書を基準にします。\n\nホームタイプ・最低利用期間内の公式掲載例（税込）：即割なしの1ギガ／5ギガ／10ギガは2,290円、即割ありは1ギガ5,000円・5ギガ5,520円・10ギガ6,090円（10ギガつづく割適用時3,540円）。即割なしは最低利用期間1年、即割ありは2年の表です。長割・メゾン・マンション・シンプルプラン等は別条件なので、この例を当てはめず契約表示で確定してください。標準工事費残債と撤去費は別です。", "checks": "契約者の利用開始日・契約時期、ホーム／メゾン／マンション、ネットのコース（1G・5G・10G等）、即割・長割、標準工事費の分割残回数、eo光テレビ／電話の併用を確認。 契約書面に記載の利用開始月と、割引の申込・更新状況を本人画面で照合します。", "talk": "解約金は契約時期やプラン、割引、工事費の残りで変わります。お客さまのeoマイページを一緒に確認し、確定額はeo光へ確認してから切り替え日を決めましょう。 確認できる資料をそろえてからeo光へ電話すれば、条件違いによる行き違いを減らせます。", "warnings": "ホーム／メゾンの掲載額は特定条件の公式例で、全契約に適用される金額ではありません。マンション、シンプルプラン、テレビ契約は別条件です。", "keys": "eo光 解約精算金・工事費残債 eo光 解約精算金 eo光 工事費残債 eo光 ホームタイプ eo光 メゾンタイプ eo光 即割 eo光 長割", "urls": ["https://support.eonet.jp/usqa/other/3000272_14146.html", "https://support.eonet.jp/usqa/other/4091582_14146.html", "https://support.eonet.jp/usqa/other/4200752_14146.html", "https://support.eonet.jp/inquiry/cancel/"], "source": "eoユーザーサポート公式『eo光ネット ホームタイプ／メゾンタイプを最低利用期間内に解約する場合の料金』『長割を解約したい』『解約の手続きをしたい』", "date": "2026-10-08", "certainty": "confirmed", "topic": "解約精算金・工事費残債", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-eo-2", "procedure": "他社奪還", "company": "eo光", "type": "", "targets": [], "question": "eo光：撤去費用、撤去する物、任意か義務か、立会い、賃貸の許可は？", "answer": "eo光公式は撤去費用を0円～24,200円の例として示し、契約状況で異なるとしています。ホームは回線終端装置のみ撤去（引込線を残す）か、引込線を含む撤去かがあり、前者は建物所有者・管理組合の残置承諾が必要です。承諾できなければ引込線を含む撤去が必要です。撤去不要の場合もあります。撤去工事を行う場合は宅内の回線終端装置、eoホームゲートウェイ／eo光多機能ルーター等を回収し、約1時間の立会いが必要です。テレビ解約は撤去工事が必要と公式記載があります。 戸建ての設備状況やテレビの追加チューナー台数によって別料金が加わる場合があります。\n\nホームタイプのネット解約料金表では、回線終端装置だけの撤去は設備撤去費なし、引込線を含む撤去は16,500円（税込）。eo光テレビも解約する場合は別の費用条件で、残すサービスや設備により変わります。", "checks": "戸建てかマンションか、eo光ネットのみかテレビ・電話併用か、残置承諾を管理会社／所有者から得られるか、撤去対象機器、希望日、賃貸の原状回復条件を確認。 戸建ての引込線、宅内配線、光コンセント、テレビのアンテナ切替状況も確認します。", "talk": "撤去が必要か、引込線を残せるかは建物と契約で変わります。賃貸なら先に管理会社へ確認し、eo光に撤去内容・費用・立会い日を確定してもらいましょう。 撤去範囲を決めずに先に解約せず、賃貸の許可とeo光の工事案内をそろえましょう。", "warnings": "撤去は常に任意とも義務とも断定できません。引込線を残す場合の承諾、テレビ撤去、マンションの個別条件は会社・管理者への確認が必要です。", "keys": "eo光 撤去工事・立会い・賃貸許可 eo光 撤去費用 eo光 引込線 eo光 回線終端装置 eo光 立会い eo光 賃貸 残置承諾", "urls": ["https://support.eonet.jp/inquiry/cancel/", "https://support.eonet.jp/usqa/other/3000272_14146.html", "https://support.eonet.jp/usqa/other/3000482_14146.html"], "source": "eoユーザーサポート公式『解約の手続きをしたい』『ホームタイプ最低利用期間内の料金』『eo光テレビを解約したい』", "date": "2026-10-08", "certainty": "confirmed", "topic": "撤去工事・立会い・賃貸許可", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-eo-3", "procedure": "他社奪還", "company": "eo光", "type": "", "targets": [], "question": "eo光のプロバイダーメールは解約後も使えますか？", "answer": "eo光ネットを解約すると、eoの契約メールアドレス（@xxx.eonet.ne.jp）は利用できなくなると公式解約案内に明記されています。メールサービスの公式ページでも、メールアドレスの提供はeo光ネットのホーム・メゾン・マンションを契約中のお客さまに限るとしています。解約前に必要なメールを保存し、各サービスの登録アドレスを別のメールへ変更してください。転送や保存期間などは解約後の継続を保証する案内ではありません。 eo光ネット以外の契約を残してもメールが残るとは公式には案内されていないため、継続前提で案内しないでください。", "checks": "eoメールを使う端末・連絡先、金融・通販・行政等の登録先、転送設定、必要な過去メール、eo光ネットの解約日を確認。 メールアドレスを使っている家族の端末、転送先、各種ログインの再設定完了も確認します。", "talk": "eoのメールはネット解約後に使えなくなります。切り替え前に新しいメールへ登録変更し、必要なメールや連絡先を保存しておくと安心です。 早めに変更先を決めて、変更後にテスト送受信まで済ませておくと切替日に慌てません。", "warnings": "メールアドレス継続可否の例外や解約後の救済は今回の公式本文で確認できません。会社に確認が必要です。", "keys": "eo光 eoプロバイダーメール eo光 メールアドレス eo光 解約 メール eonet.ne.jp eo光 プロバイダー", "urls": ["https://support.eonet.jp/inquiry/cancel/", "https://eonet.jp/service/option/net/mail.html"], "source": "eoユーザーサポート公式『解約の手続きをしたい』およびeo光公式『メールの基本サービス』", "date": "2026-10-08", "certainty": "confirmed", "topic": "eoプロバイダーメール", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-eo-4", "procedure": "他社奪還", "company": "eo光", "type": "", "targets": [], "question": "eo光テレビの録画済み番組は切り替え後どうなりますか？", "answer": "eo光公式の解約案内はテレビ撤去・チューナー撤去を案内していますが、録画済み番組のコピーや移行を保証する記載は今回確認できませんでした。レンタルSTBの録画、STB内蔵HDD、eo光対応の外付HDDは、機器返却・サービス終了に伴い視聴できなくなる可能性を含め、機種・録画方式ごとに会社確認が必要です。自前レコーダーの録画はeo光レンタル機器とは区別して、接続方式・著作権保護・新回線での再生可否を確認してください。コピー・移行できる、とは案内しません。 録画内容の保存を優先する場合は、解約・撤去・返却の前に、eo光が認める方法と期限を機器ごとに確認します。", "checks": "録画機器がレンタルSTBか内蔵HDDか外付HDDか自前レコーダーか、型番、番組の保存先、ダビング可否表示、返却対象か、切替前に残したい番組を確認。 番組の視聴期限、ダビング回数、B-CAS／ACAS等の状態、外付HDDの所有者も会社へ確認します。", "talk": "録画の扱いは機器と番組ごとに違い、移行できるとはお約束できません。型番と録画先を確認して、eo光へコピーや視聴継続の可否を事前にお問い合わせください。 録画は機器によって結果が異なりますので、確認が取れるまで機器を初期化したり返却したりしないでください。", "warnings": "公式本文で録画済み番組の解約後の扱い、コピー・移行保証を確認できていないため、個別確認が必要。初期化・返却前に会社確認が必要です。", "keys": "eo光 録画済み番組 eo光テレビ 録画 eo光 STB eo光 内蔵HDD eo光 外付HDD eo光 自前レコーダー", "urls": ["https://support.eonet.jp/inquiry/cancel/", "https://support.eonet.jp/download/contract/pdf/tv_home_terms.pdf", "https://support.eonet.jp/usqa/other/3000482_14146.html"], "source": "eo光公式『eo光テレビの提供条件』およびeoユーザーサポート公式『eo光テレビを解約したい』『解約の手続きをしたい』", "date": "2026-10-08", "certainty": "needs_contact", "topic": "録画済み番組", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-eo-5", "procedure": "他社奪還", "company": "eo光", "type": "", "targets": [], "question": "eo光はネットを解約してテレビだけ残せますか？料金はいくらですか？", "answer": "eo光公式の解約案内には、インターネットを使わない場合でもeo光ネットを解約し、eo光電話やeo光テレビを引き続き利用できる旨の案内があります。ただしこれは100Mライトコースの説明中の案内で、全プラン・全地域・全契約に同じ条件が適用されるとは書かれていません。eo光テレビ単独の今回の月額料金、機器料、割引適用後の額は公開資料から確定できません。テレビだけ残す場合は、契約中のネット・テレビコース、地域、チューナー台数を伝えてeo光の個別見積を取得してください。 ネットと電話の継続・解約の組み合わせでは工事費分割の請求方法も変わるため、テレビ料金だけで判断しません。", "checks": "ネットのプラン名、eo光テレビのコース、テレビチューナー台数、電話の継続、割引・セット条件、利用地域、希望する残留サービスと解約日を確認。 テレビの視聴場所数、STBのレンタル料、セット割の終了時期、撤去の要否も確認します。", "talk": "eo光は条件によりテレビを残せる案内がありますが、今回のテレビ単独料金は契約で変わります。プラン名と機器台数を確認し、eo光から見積を取ってから決めましょう。 『残せる可能性』と『今回の料金』は別です。個別見積の金額を見てから残すか決めてください。", "warnings": "『テレビだけ残せる』を全プランの可否として断定しません。公開資料では今回の料金を確定できず、TV単独の見積が必要です。", "keys": "eo光 ネット解約後のテレビ残留 eo光 ネット解約 テレビ継続 eo光テレビ単独 eo光 100Mライト eo光 テレビ料金", "urls": ["https://support.eonet.jp/inquiry/cancel/", "https://support.eonet.jp/inquiry/course/net/light.html", "https://support.eonet.jp/usqa/other/3000482_14146.html"], "source": "eoユーザーサポート公式『解約の手続きをしたい』『100Mライトコース』および『eo光テレビを解約したい』", "date": "2026-10-08", "certainty": "partial", "topic": "ネット解約後のテレビ残留", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-eo-6", "procedure": "他社奪還", "company": "eo光", "type": "", "targets": [], "question": "eo光：返却対象機器、方法、送料、未返却費は？", "answer": "撤去工事がある場合は、宅内の回線終端装置、eoホームゲートウェイ、eo光多機能ルーター等の接続機器を工事時に回収します。撤去不要の場合は、レンタル機器をお客さまが取り外して返却します。メゾン公式例では、eoホームゲートウェイ、eo光多機能ルーター、eo光無線ルーター、eo光電話アダプター、eoPLCアダプター、eoメッシュWi-Fi、eo無線LAN中継機等を返却対象として、送料はお客さま負担としています。電話アダプターの個別返却先は〒552-0013大阪市港区福崎2丁目3-29ヤマト運輸eo光電話アダプター返却係。未返却時は実費相当額請求です。", "checks": "宅内機器の型番・台数、レンタルか自前購入か、撤去工事の有無、電話アダプターの有無、返却案内・受付書面、送料、返却期限を確認。 電源・付属品・カード等を含む返却範囲、梱包方法、配送伝票、受付控えの保管も確認します。", "talk": "レンタル機器は工事回収か返送になります。機器を捨てたり自前品と混ぜたりせず、案内書面の対象・期限・返送方法を確認して返却してください。 返却対象を写真で記録し、控えを保管しておくと、返却漏れの確認がしやすくなります。", "warnings": "機器一覧・返却先・期限はサービスと契約で変わります。電話アダプター以外の個別返却先や未返却額は会社確認が必要です。", "keys": "eo光 レンタル機器の返却 eo光 機器返却 eo光 ルーター返却 eo光 電話アダプター eo光 送料 eo光 未返却費", "urls": ["https://support.eonet.jp/inquiry/cancel/", "https://support.eonet.jp/usqa/other/4091582_14146.html"], "source": "eoユーザーサポート公式『解約の手続きをしたい』『メゾンタイプを最低利用期間内に解約する場合の料金』", "date": "2026-10-08", "certainty": "confirmed", "topic": "レンタル機器の返却", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-eo-7", "procedure": "他社奪還", "company": "eo光", "type": "", "targets": [], "question": "eo光：番号継続、メール、テレビを確認してから、どの順番で解約しますか？", "answer": "eo光のネット・電話・テレビ解約は公式案内上、電話で申し出ます。eoサポートダイヤルは9:00～18:00（年中無休）、eo光電話／LaLa Callから1518、固定電話・携帯から0120-919-151、他の電話から050-7105-6333です。電話番号を引き継ぐなら、eo光電話の解約前に、今後使う電話回線事業者へ番号ポータビリティを申し込みます。先にeoを解約すると番号が廃止される場合があります。メール保存・登録変更、テレビ録画確認、機器返却、撤去日を確認後、eoへ解約申込。eo光独自回線からドコモ光への申込順（新規工事か事業者変更か）はeoだけでは確定できないため、ドコモ側にも確認してください。", "checks": "固定電話番号を継続するか、eoメールの登録先変更、録画保存、テレビ継続、撤去・立会い希望、機器返却、ドコモ光の開通日と申込区分を確認。 契約者本人による申込要否、eoID、本人確認情報、電話の利用場所、切替先の名義も確認します。", "talk": "まず番号を残す手続きを先に確認し、メールと録画を整理してから、ドコモ光の開通予定とeo光の解約日を調整しましょう。eo光への解約連絡は公式窓口でお願いします。 eo光とドコモ光の双方で日付と方式を確認し、番号・メール・テレビの順に抜け漏れなく整理しましょう。", "warnings": "番号ポータビリティ未手続きでeo光電話を先に解約すると番号廃止の可能性があります。開通前の先行解約、工事日未確定、テレビ・メール・録画未確認に注意。eo→ドコモ光の手続き区分は要確認です。", "keys": "eo光 連絡先・解約順序 eo光 解約 電話番号 eo光 番号ポータビリティ eo光 1518 eo光 0120-919-151 eo光 解約順序 eo光 ドコモ光 切替", "urls": ["https://support.eonet.jp/inquiry/cancel/", "https://support.eonet.jp/usqa/other/3000482_14146.html", "https://support.eonet.jp/inquiry/"], "source": "eoユーザーサポート公式『解約の手続きをしたい』『eo光テレビを解約したい』『料金確認・各種お手続き』", "date": "2026-10-08", "certainty": "partial", "topic": "連絡先・解約順序", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-eo-8", "procedure": "他社奪還", "company": "eo光", "type": "", "targets": [], "question": "eo光の解約月は日割りですか？切替日をどう考えますか？", "answer": "eo光公式の解約案内では、eo光ネットの月額料金は解約日前日まで日割り、レンタル機器利用料・オプション料金は解約日前日を含む月まで満額請求です。eo光電話とeo光テレビは、月額料金・レンタル機器利用料・オプション料金がすべて解約日前日を含む月まで満額請求とされています。したがってドコモ光へ切替予定でも、eo光のサービスごとの解約日、撤去日、電話番号切替日を別々に確認してください。実際の請求は契約内容と日付で確定します。 テレビや電話を月途中で解約する場合も日割りとは限らないため、請求月の満額条件を事前に確認します。", "checks": "ドコモ光の開通日、eo光ネット・電話・テレビそれぞれの解約日、撤去日、オプション・レンタル料、番号切替日、最終請求月の締めを確認。 最終月の基本料、オプション、機器料、撤去費、精算金を項目別に確認します。", "talk": "ネットと電話・テレビで解約月の請求方法が違います。開通日だけで判断せず、サービスごとの解約日と撤去日をeo光に確認して、二重利用期間も見積もりましょう。 請求の仕組みを先に確認すれば、開通日と解約日を無理なく調整できます。", "warnings": "ドコモ光の開通日が自動的にeo光の解約日になるとは限りません。撤去工事日まで手続き完了しない場合や、オプションが満額になる場合があります。", "keys": "eo光 月額料金・解約月 eo光 解約月 eo光 日割り eo光 撤去日 eo光 レンタル料 eo光 テレビ 解約料金", "urls": ["https://support.eonet.jp/inquiry/cancel/", "https://support.eonet.jp/usqa/other/3000482_14146.html"], "source": "eoユーザーサポート公式『解約の手続きをしたい』『eo光テレビを解約したい』", "date": "2026-10-08", "certainty": "confirmed", "topic": "月額料金・解約月", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-jcom-1", "procedure": "他社奪還", "company": "J:COM", "type": "", "targets": [], "question": "J:COMの解約金と工事料残債はいくらですか？契約日・ホーム/マンション・プランで違いますか？", "answer": "J:COM公式は、長期契約期間中の途中解約では契約解除料金が発生し、契約期間・解除料金はマイページで確認すると案内しています。工事費を分割中にJ:COMサービス契約が終了すると、工事費残額を一括請求する案内もあります。料金は契約日、J:COM TV/NET/PHONE等のサービス、プラン、戸建て・集合住宅、工事方法で変わるため、一律の解約金や残債は断定できません。マイページの契約内容と請求明細を確認し、J:COMに照会してください。 個別の請求額は、J:COMのマイページまたは公式窓口で確認した回答だけを登録してください。", "checks": "契約日、契約サービス名（J:COM TV/NET/PHONE等）、正確なコース名、長期契約・更新期間、戸建て/集合住宅、工事費の分割回数と残回数、対象地域を確認。 請求書・申込書・機器ラベルも照合。 契約者名・住所・請求月も確認。", "talk": "J:COMは契約条件で費用が変わります。契約内容を確認してから、契約解除料と工事費残額をJ:COMに個別確認しましょう。 ご不明点は公式窓口で確認できます。 契約内容に沿ってご案内します。", "warnings": "2026年10月8日時点の公式案内では個別契約の金額までは確定できません。長期契約の解除料と工事費残額を別々に確認し、先に解約しないでください。", "keys": "J:COM 解約金・工事料残債 J:COM 解約 契約解除料 工事費残額 長期契約 戸建て 集合住宅", "urls": ["https://support.myjcom.jp/support/cancellation/", "https://www.jcom.co.jp/price/fee/"], "source": "J:COM「解約をご検討中のお客さま」・「工事費・手数料」", "date": "2026-10-08", "certainty": "partial", "topic": "解約金・工事料残債", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-jcom-2", "procedure": "他社奪還", "company": "J:COM", "type": "", "targets": [], "question": "J:COMの撤去費用、撤去する物、任意か義務か、立会い、賃貸の許可は？", "answer": "J:COM公式は、解約時に撤去工事が必要な場合があり、作業員訪問か自身で撤去する方法があるが契約内容で変わると案内しています。機器返却ページでは、工事ありならサービスエンジニアが機器を回収し、工事なしなら機器を自分で外し、端子口・分配器の処理やブースター調整が必要になる場合があるとしています。料金ページの例は、作業員撤去で戸建て部分解約4,950円（税込）、全解約・引込線撤去10,780円（税込）、集合住宅の部分解約・全解約（条件別）は4,950円（税込）ですが、プラン・方式で変わります。立会いの要否、撤去範囲、賃貸での管理会社・所有者許可は公式本文で一律確認できず、会社・管理者へ確認が必要です。", "checks": "戸建て/集合住宅、配線方式、全解約か部分解約か、引込線を撤去するか、STB/ONU等の設置物、訪問工事希望、賃貸の管理会社・所有者許可、立会い可能日を確認。 請求書・申込書・機器ラベルも照合。 契約者名・住所・請求月も確認。", "talk": "撤去の方法と費用は、住居形態・契約・配線で変わります。J:COMに撤去範囲と立会いを確認し、賃貸なら管理会社にも先に相談しましょう。 ご不明点は公式窓口で確認できます。", "warnings": "料金例はJ:COM料金ページの現行例で、全契約に適用される一律額ではありません。引込線・端子を触る前にJ:COMと賃貸管理者へ確認してください。", "keys": "J:COM 撤去工事・撤去費用 J:COM 撤去工事 撤去費用 引込線 立会い 賃貸許可 ブースター", "urls": ["https://www.jcom.co.jp/price/fee/", "https://cs.myjcom.jp/articles/%E5%A5%91%E7%B4%84%E9%96%A2%E9%80%A3/jcom%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%92%E8%A7%A3%E7%B4%84%E3%81%99%E3%82%8B%E9%9A%9B%E3%81%AE%E8%BF%94%E5%8D%B4%E6%A9%9F%E5%99%A8%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/6790be90ad2e841b2e335756"], "source": "J:COM「工事費・手数料」・「解約する際の返却機器」", "date": "2026-10-08", "certainty": "partial", "topic": "撤去工事・撤去費用", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-jcom-3", "procedure": "他社奪還", "company": "J:COM", "type": "", "targets": [], "question": "J:COMのプロバイダーメールはドコモ光へ切替後も継続できますか？", "answer": "J:COM公式の乗り換えQ\u0026Aは、契約中のプロバイダから提供されたメールアドレスは、解約後は使用できないと案内しています。一方、一部プロバイダにはメールアドレスだけを継続利用できるサービスがあるため、現在のプロバイダへ問い合わせるよう案内しています。J:COM NETは回線・プロバイダーがセットで、別途プロバイダー契約は不要とも説明されています。Gmail、Yahoo!メール、Outlook等のフリーメールはそのまま利用できます。J:COMメールの継続可否・料金・申込期限は個別契約と時点で異なるため、J:COMへ確認が必要です。", "checks": "使っているアドレスのドメイン、J:COM NET契約の有無、メールのみ継続するサービスの有無・料金・期限、各サイトの登録変更、過去メールの保存方法を確認。 請求書・申込書・機器ラベルも照合。 契約者名・住所・請求月も確認。", "talk": "J:COM公式では、プロバイダー提供メールは原則そのまま使えない案内です。必要なら継続サービスの有無と条件をJ:COMへ確認し、先に連絡先を移しましょう。 ご不明点は公式窓口で確認できます。", "warnings": "J:COM公式本文は一部プロバイダーに継続サービスがあるとするにとどまり、J:COMメールの個別可否・料金を確定していません。会社に確認が必要です。", "keys": "J:COM プロバイダーメール J:COM プロバイダーメール メール継続 J:COM NET ドコモ光 フリーメール", "urls": ["https://www.jcom.co.jp/service/net/guide/qa/"], "source": "J:COM「インターネット・プロバイダ乗り換えQ\u0026A」", "date": "2026-10-08", "certainty": "partial", "topic": "プロバイダーメール", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-jcom-4", "procedure": "他社奪還", "company": "J:COM", "type": "", "targets": [], "question": "J:COMを解約すると録画済み番組はどうなりますか？レンタルSTB、内蔵HDD、外付HDD、自前レコーダーは？", "answer": "J:COMの解約案内は、解約後に録画物が消える可能性があると注意しています。J:COM TVのレンタル外付けHDD公式ページは、録画物のバックアップや引継ぎはできないと明記し、レンタル解約時はHDD本体・USBケーブル・ACアダプタを返却すると案内しています。J:COM LINK外付HDDから対応ブルーレイレコーダーへのダビング機能の説明はありますが、4K録画はLAN録画・ムーブ不可など機種・番組条件があります。レンタルSTBや内蔵HDDの録画の移行可否、自前レコーダーの録画データは機器・著作権保護・接続条件で異なるため、移行保証はせず、会社と機器メーカーに確認が必要です。", "checks": "STB機種（J:COM LINK等）、内蔵HDDか外付HDDか、レンタルか所有か、自前レコーダーの型番、4K録画の有無、ダビング対応・期限、返却前の視聴希望を確認。 請求書・申込書・機器ラベルも照合。", "talk": "録画は解約で消える可能性があり、J:COM公式もレンタルHDDのバックアップ・引継ぎ不可と案内しています。大切な番組は解約前に機種条件を確認しましょう。 ご不明点は公式窓口で確認できます。", "warnings": "コピー・移行を保証しません。レンタル機器は返却が必要です。内蔵HDD、自前レコーダー、STB機種別の可否は公式本文で一律確定できず、会社に確認が必要です。", "keys": "J:COM 録画済み番組 J:COM 録画番組 レンタルSTB 内蔵HDD 外付HDD 自前レコーダー ダビング 移行保証", "urls": ["https://support.myjcom.jp/support/cancellation/", "https://cs.myjcom.jp/articles/%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E6%A6%82%E8%A6%81/jcom-tv%E3%83%AC%E3%83%B3%E3%82%BF%E3%83%AB%E5%A4%96%E4%BB%98%E3%81%91%E3%83%8F%E3%83%BC%E3%83%89%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF/6790bf8b63f0175c4c0ee092"], "source": "J:COM「解約をご検討中のお客さま」・「レンタル外付けハードディスク」", "date": "2026-10-08", "certainty": "partial", "topic": "録画済み番組", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-jcom-5", "procedure": "他社奪還", "company": "J:COM", "type": "", "targets": [], "question": "J:COM NETだけ解約してJ:COM TVを残せますか？その場合の料金はいくらですか？", "answer": "J:COM公式の解約案内は、一部サービスの解約が可能とし、解約サービスとしてTV・NET・PHONE等を選べます。したがって、J:COMの契約内容と提供エリアでネットのみを解約しTVを残す手続きは相談できますが、TV単独が必ず可能とは断定できません。公式TV料金ページの例では、2年契約・1台のJ:COM TVは、集合住宅のシン・スタンダード4,950円（税込）、シン・スタンダードプラス6,050円（税込）、セレクト2,200円（税込）、戸建てはシン・スタンダード4,950円（税込）、シン・スタンダードプラス6,050円（税込）、セレクト2,970円（税込）です。ただし提供地域・契約条件・キャンペーン等で変わるため、今回のTV単独料金は公開資料だけでは確定できず、個別見積が必要です。", "checks": "現在のTVコース名、契約期間・更新、戸建て/集合住宅、地域、TV台数、STB・録画HDD、セット割の終了、TV単独提供可否、解約撤去範囲と見積を確認。 請求書・申込書・機器ラベルも照合。 契約者名・住所・請求月も確認。", "talk": "J:COMは一部サービスだけの解約に対応していますが、TV単独の可否と料金は契約・地域で変わります。NETを止める前に、J:COMへTVだけの見積を取りましょう。", "warnings": "表示例はJ:COM TVの2年契約・1台の料金で、今回の契約への適用を保証しません。公開資料では今回の料金を確定できず、TV単独の見積が必要です。", "keys": "J:COM ネット解約・テレビ残留 J:COM J:COM NET J:COM TV TV単独 部分解約 2年契約 戸建て 集合住宅", "urls": ["https://cs.myjcom.jp/articles/%E4%BC%91%E6%AD%A2%E8%A7%A3%E7%B4%84/jcom%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E8%A7%A3%E7%B4%84%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E3%81%94%E6%A1%88%E5%86%85%E3%81%A8%E3%82%88%E3%81%8F%E3%81%82%E3%82%8B%E8%B3%AA%E5%95%8F/6790bf1463f0175c4c0ed9af", "https://www.jcom.co.jp/service/tv/course/"], "source": "J:COM「解約に関する案内」・「J:COM TV 料金・コース」", "date": "2026-10-08", "certainty": "partial", "topic": "ネット解約・テレビ残留", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-jcom-6", "procedure": "他社奪還", "company": "J:COM", "type": "", "targets": [], "question": "J:COMの返却対象機器、返却方法、送料、未返却費は？", "answer": "J:COM公式は、加入時に設置した機器は返却が必要で、撤去工事の有無で方法が変わると案内しています。撤去工事ありはサービスエンジニアが回収、なしは自分で機器を外し、返却先・手順は解約手続き時に案内されます。料金ページでは、自分で撤去して指定先へ返送する場合、撤去費・機器配送手数料はかからないが返送費用は契約者負担としています。機器紛失・破損の事務手数料は3,300円（税込）と掲載されていますが、機器ごとの未返却・損害金は別条件になり得ます。返却対象の具体的な機器名、方法、送料、未返却費は契約と機器ごとにJ:COMへ確認してください。", "checks": "STB、モデム/ONU、ルーター、ACアダプタ、リモコン、C-CAS/B-CAS、レンタルHDD等の機器一覧、撤去工事有無、指定配送業者、返却期限、送料負担、紛失・破損時金額を確認。 請求書・申込書・機器ラベルも照合。", "talk": "返却対象は加入時の設置機器ですが、撤去工事の有無で方法が変わります。解約時にJ:COMから機器一覧と返却先・送料・期限を確認し、控えを保管してください。 ご不明点は公式窓口で確認できます。", "warnings": "公式ページは具体的な返却方法を手続き時に案内しています。3,300円（税込）は機器紛失・破損事務手数料の掲載例で、未返却費の一律額ではありません。", "keys": "J:COM 返却対象・方法・送料・未返却費 J:COM 機器返却 STB ONU ルーター レンタルHDD 送料 未返却費", "urls": ["https://cs.myjcom.jp/articles/%E5%A5%91%E7%B4%84%E9%96%A2%E9%80%A3/jcom%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%92%E8%A7%A3%E7%B4%84%E3%81%99%E3%82%8B%E9%9A%9B%E3%81%AE%E8%BF%94%E5%8D%B4%E6%A9%9F%E5%99%A8%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/6790be90ad2e841b2e335756", "https://www.jcom.co.jp/price/fee/"], "source": "J:COM「解約する際の返却機器」・「工事費・手数料」", "date": "2026-10-08", "certainty": "partial", "topic": "返却対象・方法・送料・未返却費", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-jcom-7", "procedure": "他社奪還", "company": "J:COM", "type": "", "targets": [], "question": "J:COMへの連絡先と解約の順序は？番号継続、メール、テレビを確認してから進めるには？", "answer": "J:COM公式の解約手順は、Webで解約申込み、担当者と手続き、利用機器の返却・訪問工事の順です。解約案内は他社工事・引越し前に必ずJ:COMへ連絡し、TV・NETは月末解約と注意しています。固定電話は番号が消失・引継ぎ不可の可能性があり、引継ぎ手続き漏れでも消失する可能性があります。一般的なサービス問い合わせは0120-999-000、9:00～18:00・年中無休、Web/チャットも公式窓口があります。ドコモ光の開通日を確定し、固定電話番号の継続可否、J:COMメール、TV・録画、機器返却・費用を確認してからJ:COM解約を申し込みます。", "checks": "ドコモ光の開通工事日、J:COMの解約希望月末、固定電話番号の継続可否と手続き主体、メール移行、TV視聴・録画保存、撤去/返却日、契約者本人確認を確認。 請求書・申込書・機器ラベルも照合。 契約者名・住所・請求月も確認。", "talk": "先にドコモ光の開通日と、電話番号・メール・録画・TVの残し方を確定しましょう。その後J:COMへWebまたは電話で解約を申し込み、機器返却まで確認します。 ご不明点は公式窓口で確認できます。", "warnings": "電話番号やメールを先に解約すると消失・利用不能の恐れがあります。J:COM公式は他社工事前の連絡を求めています。連絡先・営業時間は地域や窓口で異なる場合があるため、公式窓口で再確認してください。", "keys": "J:COM 連絡先・解約順序 J:COM 解約手順 0120-999-000 9時18時 固定電話番号 番号継続 メール 月末解約", "urls": ["https://support.myjcom.jp/support/cancellation/", "https://www.jcom.co.jp/contactus/call_rgu.html"], "source": "J:COM「解約をご検討中のお客さま」・「お問い合わせ」", "date": "2026-10-08", "certainty": "confirmed", "topic": "連絡先・解約順序", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-jcom-8", "procedure": "他社奪還", "company": "J:COM", "type": "", "targets": [], "question": "J:COMからドコモ光へ切り替えるとき、独自回線向けと事業者変更向けの手続き順は？", "answer": "J:COM公式の乗り換えQ\u0026Aは、現在の回線・プロバイダの解約は乗り換え先の開通工事日が決まり次第に行い、先に解約すると利用できない期間が発生する場合があると案内しています。J:COMのケーブル回線など独自回線からドコモ光へ移る場合は、ドコモ光の提供可否・工事日を確定→電話番号継続、メール、TV/録画、J:COM費用を確認→J:COMの解約・撤去/返却を申し込む順です。事業者変更に該当する光コラボ回線の手続きは、J:COMケーブル回線の解約順とは混同せず、対象事業者から事業者変更承諾番号等の必要書類・期限を確認してからドコモ光へ申し込む必要があります。J:COM契約が事業者変更対象かは会社に確認が必要です。", "checks": "J:COMがケーブル回線かJ:COM NET 光(N)等の光コラボか、ドコモ光の提供可否・工事日、承諾番号の要否と期限、固定電話番号、メール、TV/録画、撤去・返却日を確認。 請求書・申込書・機器ラベルも照合。", "talk": "J:COMの回線種別で手続きが変わります。独自回線はドコモ光の開通日確定後にJ:COMを解約し、光コラボの事業者変更は必要書類と期限を確認して別手順で進めましょう。", "warnings": "J:COM公式本文は乗り換え先の開通日確定後の解約を案内していますが、ドコモ光の申込制度やJ:COMの事業者変更対象可否をここで断定できません。会社に確認が必要です。", "keys": "J:COM 切替方式別の申込順 J:COM ドコモ光 独自回線 事業者変更 開通工事日 承諾番号 解約順序 回線種別", "urls": ["https://www.jcom.co.jp/service/net/guide/qa/", "https://support.myjcom.jp/support/cancellation/"], "source": "J:COM「インターネット・プロバイダ乗り換えQ\u0026A」・「解約をご検討中のお客さま」", "date": "2026-10-08", "certainty": "partial", "topic": "切替方式別の申込順", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-nuro-1", "procedure": "他社奪還", "company": "NURO 光", "type": "", "targets": [], "question": "NURO 光の解約金と工事料残債は、ドコモ光へ切り替えるといくらですか？", "answer": "NURO 光は契約プラン・契約時期・解約時期で契約解除料が異なり、戸建て/集合住宅や旧プランも同じ扱いではありません。基本工事費の分割払い中なら未払い残額を一括請求。キャンペーン解除料の可能性もあります。マイページの「NURO 光を解約する」で契約解除料・無料解約期間、「工事情報」または「ご利用料金」で残債を確認してください。金額の一律断定はできません。", "checks": "契約プラン名（2G/10G/One/forマンション等）、戸建てか集合住宅か、申込日・直近更新日、開通日、工事費分割の残り、適用キャンペーンを確認。マイページ表示を保存し、税込表示の注記も確認します。", "talk": "NURO 光の解約費用は、プランと契約時期で変わります。正確な金額はマイページで一緒に確認し、表示がない項目はNUROへ確認してから手続きしましょう。確認後に解約日を決めます。", "warnings": "解除料は現在のマイページの個別表示で確認してください。今回確認した公式ページには全プラン共通の金額表はなく、架空の数値を補っていません。電話の解約・番号移行の費用と工事費残債・キャンペーン解除料は別に確認します。", "keys": "NURO 光 解約金・工事費残債 NURO 光 契約解除料 解約金 工事費残債 契約時期 戸建て 集合住宅", "urls": ["https://support.nuro.jp/faqsupport/nuro/web/knowledge6931.html", "https://support.nuro.jp/faqsupport/nuro/web/knowledge7067.html"], "source": "NURO公式サポート本文（契約解除料・解約注意事項）", "date": "2026-10-08", "certainty": "confirmed", "topic": "解約金・工事費残債", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-nuro-2", "procedure": "他社奪還", "company": "NURO 光", "type": "", "targets": [], "question": "NURO 光の撤去費用、撤去する物、任意か義務か、立会い、賃貸許可はどうなりますか？", "answer": "撤去工事は原則任意で、戸建て所有物件は機器返却だけでも手続き完了です。ただし賃貸・集合住宅は建物所有者または管理会社に必要性を確認し、撤去を求められれば工事が必要です。撤去時は光ファイバー、屋外光キャビネット、屋内光コンセント等を主に撤去。プランで宅内・屋外範囲が異なり、費用は公式表のプラン区分で税込11,000円または19,800円。契約者等の立会いが必要です。", "checks": "賃貸契約・管理会社の原状回復指示、戸建て所有か、NUROのプラン名、光コンセント等の設置状況、希望工事日（申請日から30日後以降の候補3つ）を確認。不明点は公式窓口で確認してから申し込みます。念のため記録を残します。", "talk": "撤去は必ずではありませんが、賃貸や集合住宅は管理会社の指示が優先です。撤去する場合は有料で立会いが必要なので、先に建物側へ確認しましょう。確認後に解約日を決めます。", "warnings": "費用はプラン区分で異なり、作業範囲もプラン・建物・地域で異なります。賃貸許可そのものをNUROが代行する案内はありません。30日以内希望や変更はチャット確認が必要です。", "keys": "NURO 光 撤去工事 NURO 光 撤去工事 撤去費用 光ファイバー 光コンセント 立会い 賃貸", "urls": ["https://support.nuro.jp/faqsupport/nuro/web/knowledge6972.html"], "source": "NURO公式サポート本文（撤去工事）", "date": "2026-10-08", "certainty": "confirmed", "topic": "撤去工事", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-nuro-3", "procedure": "他社奪還", "company": "NURO 光", "type": "", "targets": [], "question": "NURO 光を解約してもプロバイダーメールは継続できますか？", "answer": "NURO公式は、So-net WebメールはNURO 光回線の解約時に失効し、メールボックスも削除され、メールだけの継続やNUROでのメールアドレス付与はないと案内しています。消滅後の復活もできません。必要なメールは解約前に他のメールソフトへ保存し、各サービスの登録アドレスを新アドレスへ変更してください。", "checks": "So-net Webメール利用の有無、保存が必要なメール、各種サイト・金融機関等の登録先、連絡用新メールを確認。NURO 光 2Gから10Gへのアップグレードでも2G解約時に削除される案内です。不明な契約は公式窓口へ確認します。", "talk": "So-net WebメールはNURO 光の解約と同時に使えなくなり、復活もできません。必要なメールを保存し、登録先を先に新しいメールへ変更しておきましょう。解約前の準備が安心です。", "warnings": "So-netの別契約（オプションコース(N)等）はNURO 光解約だけでは解約にならない場合があります。契約形態が不明な場合はSo-net/NUROへ確認してください。", "keys": "NURO 光 プロバイダーメール NURO 光 So-netメール Webメール メールボックス 失効 保存", "urls": ["https://support.nuro.jp/faqsupport/nuro/web/knowledge7067.html", "https://support.nuro.jp/faqsupport/nuro/web/knowledge10403.html"], "source": "NURO公式サポート本文（光回線解約注意事項・10Gアップグレード）", "date": "2026-10-08", "certainty": "confirmed", "topic": "プロバイダーメール", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-nuro-4", "procedure": "他社奪還", "company": "NURO 光", "type": "", "targets": [], "question": "NURO 光のひかりTVで録画済み番組は、レンタルSTB・内蔵HDD・外付HDD・自前レコーダー別にどうなりますか？", "answer": "公式本文で確認できるのは、ひかりTV for NUROを解約すると、解約完了後は録画番組を視聴できず、再申込みしても録画コンテンツを視聴できないことです。レンタルチューナーは返却が必要です。内蔵HDD・外付HDD・自前レコーダー別の扱い、コピーや移行の可否・保証は公式本文で確認できないため、会社に確認が必要です。コピー・移行できるとは案内しません。", "checks": "ひかりTV for NUROの契約有無、チューナーがレンタルか、録画先（内蔵/外付/自前レコーダー）、番組の保存要否、返却予定機器を確認。個別のコピー・移行を実施する前に公式窓口へ問い合わせます。不明な録画仕様は公式窓口へ確認します。", "talk": "NURO公式では、解約後は録画番組を見られず、再加入しても戻らないと案内されています。録画機器ごとの移行やコピーは保証できないため、先に確認しましょう。大切な録画は早めにご相談ください。", "warnings": "レンタルSTB・内蔵HDD・外付HDD・自前レコーダーを同じ扱いにしないでください。録画のコピー・移行保証はありません。", "keys": "NURO 光 録画済み番組 NURO 光 ひかりTV for NURO 録画 レンタルチューナー 内蔵HDD 外付HDD 自前レコーダー", "urls": ["https://support.nuro.jp/faqsupport/nuro/web/knowledge7071.html", "https://support.nuro.jp/faqsupport/nuro/web/knowledge7067.html"], "source": "NURO公式サポート本文（ひかりTV for NURO解約・光回線解約注意事項）", "date": "2026-10-08", "certainty": "partial", "topic": "録画済み番組", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-nuro-5", "procedure": "他社奪還", "company": "NURO 光", "type": "", "targets": [], "question": "NURO 光はネットを解約して、ひかりTV for NUROだけ残せますか？その料金はいくらですか？", "answer": "NURO公式は、NURO 光を解約するとひかりTV for NUROも同時解約になると案内しています。一方、ひかりTV for NUROだけを解約する手続きは案内されていますが、ネット解約後にTVだけを残す可否やTV単独料金は、確認した公式本文では確定できません。したがってNURO 光の条件だけで残せるとは答えられず、今回のTV単独見積は会社に確認が必要です。", "checks": "サービス名が「ひかりTV for NURO」か、NURO 光の契約プラン・解約予定日、TVの契約開始月・プラン変更月・無料オプション購入月、チューナー契約を確認。料金と可否は公式窓口へ確認します。念のため記録を残します。", "talk": "NURO公式では、NURO 光を解約するとひかりTV for NUROも同時解約です。TVだけ残せるかや料金は公開本文で確定できないため、解約前にNUROへ見積と可否を確認しましょう。", "warnings": "公開資料では今回の料金を確定できず、TV単独の見積が必要です。チューナーレンタルは必須で、チューナーだけの解約はできません。", "keys": "NURO 光 ネット解約後のテレビ NURO 光 ひかりTV for NURO ネット解約 TVのみ 単独料金 チューナーレンタル", "urls": ["https://support.nuro.jp/faqsupport/nuro/web/knowledge7071.html"], "source": "NURO公式サポート本文（ひかりTV for NURO解約）", "date": "2026-10-08", "certainty": "needs_contact", "topic": "ネット解約後のテレビ", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-nuro-6", "procedure": "他社奪還", "company": "NURO 光", "type": "", "targets": [], "question": "NURO 光の解約で返却する機器、方法、送料、未返却費は？", "answer": "回線解約はONU本体・同梱時のスタンド・電源アダプタ、NURO 光でんわはTA本体・電源アダプタが基本です。2026年10月8日時点で回線解約完了日が9月1日以降なら、箱と緩衝材を用意し、任意の配送業者から元払いで公式指定先へ発送、伝票控えを保管します。ONUの未返却費はプラン別に税込12,100円、33,000円、55,000円、TAは税込13,200円の区分があり、督促翌月10日まで未確認の場合に発生します。TVチューナーは指定業者が翌月以降回収します。", "checks": "回線解約完了日（受付日ではない）、ONU型・プラン、でんわTAやTVチューナー等オプション、返却物一覧、追跡番号、発送日を確認。返却先は本社ではなく公式ページの指定先を使います。返却条件は公式窓口へ確認します。", "talk": "返却する機器は契約内容で変わります。現在は元払い発送の案内なので、指定先・追跡番号を確認し、控えを返却確認まで保管してください。返却まで控えを保管しましょう。確認してから進めます。", "warnings": "2026年8月31日以前の完了分は着払い集荷、9月1日以降は元払い発送と公式案内が分かれます。解約完了日を取り違えないでください。", "keys": "NURO 光 返却機器・送料・未返却費 NURO 光 ONU TA 機器返却 元払い 送料 未返却費 チューナー", "urls": ["https://support.nuro.jp/faqsupport/nuro/web/knowledge6960.html", "https://support.nuro.jp/faqsupport/nuro/web/knowledge7067.html"], "source": "NURO公式サポート本文（レンタル機器返却・光回線解約注意事項）", "date": "2026-10-08", "certainty": "confirmed", "topic": "返却機器・送料・未返却費", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-nuro-7", "procedure": "他社奪還", "company": "NURO 光", "type": "", "targets": [], "question": "NURO 光からドコモ光へ切り替えるとき、番号継続・メール・テレビを含めた連絡先と解約の順序は？", "answer": "独自回線向けの新規申込では、ドコモ光の開通日・利用確認を先に行い、固定電話番号を継続するなら変更先事業者へ番号ポータビリティを申し込み、完了連携後にNURO 光でんわの解約処理が行われます。NURO公式は、電話番号継続は利用先事業者へ本人が希望連絡する手順と案内しています。メール保存・登録変更、ひかりTV録画確認、返却物確認を済ませてからNUROを解約してください。NUROの電話相談は0570-099-118、IP電話・かけ放題は03-6705-5839（9:00～18:00、月～土・祝日等除く）、チャットは24時間受付・オペレーター9:00～18:00です。事業者変更に該当する手続きは別のため、NUROへ確認が必要です。", "checks": "固定電話番号の発番元・継続要否、ドコモ光の申込区分（独自回線からの新規か事業者変更か）、開通日、So-netメール、ひかりTV、ONU/TA/チューナー返却を確認。電話番号継続完了前にNUROを先行解約しません。", "talk": "番号を残す場合は、先に変更先へ番号継続を申し込み、完了を確認してからNURO解約へ進みます。メール・録画・返却物も確認して、窓口に個別条件を伝えましょう。先に確認してから進めます。", "warnings": "独自回線からの新規申込と、事業者変更に該当する手続きは同じ順序とは限りません。番号継続、メール、TVの条件確認前の先行解約は避けてください。", "keys": "NURO 光 連絡先・解約順序 NURO 光 ドコモ光 番号ポータビリティ 独自回線 事業者変更 解約順序 電話窓口 チャット", "urls": ["https://support.nuro.jp/faqsupport/nuro/web/knowledge7067.html", "https://support.nuro.jp/faqsupport/nuro/web/knowledge6739.html", "https://support.nuro.jp/faqsupport/nuro/web/knowledge7018.html"], "source": "NURO公式サポート本文（光回線解約注意事項・問い合わせ先・番号ポータビリティ案内）", "date": "2026-10-08", "certainty": "partial", "topic": "連絡先・解約順序", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-nuro-8", "procedure": "他社奪還", "company": "NURO 光", "type": "", "targets": [], "question": "NURO 光の解約はWebと電話のどこへ連絡し、営業時間はいつですか？", "answer": "契約解除料や工事費残債の確認は、NUROマイページの「ご契約情報」→「NURO 光を解約する」から進めます。最終確認を完了するまでは解約成立しないため、確認だけでも進められます。一般問い合わせは公式チャット（AIは24時間、オペレーター9:00～18:00、年末年始等除く）、電話は0570-099-118または03-6705-5839で、ログイン不要窓口は登録電話番号とNUROお客さま番号を準備します。ログインして電話リクエストは9:00～18:00、月～土（祝日等除く）です。", "checks": "ユーザーID/PW、お客さま番号、登録電話番号、契約プラン、解約希望日、電話番号継続・TV・メールの希望を準備。Webで確認のみか、解約確定まで進むかを画面で確認します。窓口情報は当日公式ページでも確認します。", "talk": "まず公式マイページで費用と解約期間を確認できます。まだ確定しない場合は、契約番号を用意して公式チャットまたは電話へお問い合わせください。窓口の案内に沿って進めましょう。", "warnings": "電話受付時間は窓口種類・曜日・祝日等で異なります。受付時間や窓口変更の可能性があるため、当日公式ページで再確認してください。", "keys": "NURO 光 解約申込の公式窓口 NURO 光 マイページ 解約Web 電話 チャット 0570-099-118 03-6705-5839 営業時間", "urls": ["https://support.nuro.jp/faqsupport/nuro/web/knowledge6931.html", "https://support.nuro.jp/faqsupport/nuro/web/knowledge6739.html", "https://www.nuro.jp/app/mypage/login"], "source": "NURO公式サポート本文（契約解除料確認・問い合わせ先）", "date": "2026-10-08", "certainty": "confirmed", "topic": "解約申込の公式窓口", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-au-1", "procedure": "他社奪還", "company": "auひかり", "type": "", "targets": [], "question": "auひかりを解約すると、解約金と工事料残債はいくらですか？", "answer": "au公式では一律額ではありません。auひかり ホームは、ずっとギガ得（2022年7月1日以降申込）4,730円（税込）、ギガ得4,460円（税込）、標準プラン0円の例があり、マンションはお得プラン2,730円（税込）、お得プランA2,290円（税込）、標準プラン0円の例があります。いずれも更新期間（3か月）外など条件付きで、旧契約・他プラン・他プロバイダーでは異なります。工事費を分割中に途中解約すると残額を最終請求月に一括請求。契約日、ホーム/マンション、プラン、開始月、プロバイダーを確認し、My auで個別確定してください。", "checks": "契約日（2022年6月30日以前/以後）、ホームかマンションか、10/5ギガを含むプラン名、プロバイダー、ネット利用開始月、更新期間、初期費用の分割残月数・割引残月数をMy auと請求書で照合。", "talk": "解約金や工事費残額は契約日・住居タイプ・プランで変わります。今ここで一律の金額とは言わず、My auで契約内容と更新期間を確認してから、auに個別の請求額を確認しましょう。", "warnings": "金額の例はau one net等の公式記載例で、すべての契約に適用されるとは限りません。税込表記ですが、初期費用残額は契約経過月数で変動します。", "keys": "auひかり 解約金・工事料残債 auひかり 契約解除料 初期費用残額 工事費残債 ホーム マンション 更新期間 プラン", "urls": ["https://www.au.com/support/service/internet/procedure/contract/cancel/", "https://www.au.com/content/dam/au-com/internet/application/contract/pdf/auhikari-important-matter.pdf"], "source": "au公式「auひかり、その他インターネットの解約」「auひかりサービスご利用にあたって」本文", "date": "2026-10-08", "certainty": "partial", "topic": "解約金・工事料残債", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-au-2", "procedure": "他社奪還", "company": "auひかり", "type": "", "targets": [], "question": "auひかり解約時、何を撤去し、費用・立会い・賃貸の許可は必要ですか？", "answer": "au公式では解約後も引込設備（光ファイバーケーブル・光コンセント等）は残置され、撤去は希望時の扱いです。ホームは申込時期により公式解約案内で11,000円（税込）または31,680円（税込）の例が示され、重要事項では31,680円（税込）と記載されています。契約時期・書面で確認し、混同しないでください。撤去工事は立会いが必要で、原状回復の補修は原則行われません。賃貸住宅では工事・光コンセント設置・残置について建物所有者の了解が必要です。マンションの撤去可否・費用は会社確認が必要です。", "checks": "ホーム/マンション、申込日、光ケーブル・光コンセントの残置状況、撤去希望の有無、賃貸なら所有者の許可、立会い可能日、原状回復範囲を確認。マンション共用部設備は管理会社にも確認。", "talk": "解約すると設備を残す場合があり、撤去は自動ではありません。撤去を希望する場合は、契約時期と住居タイプで費用や工事条件が変わるため、賃貸なら所有者の了解を先に取り、auへ確認しましょう。", "warnings": "11,000円と31,680円（税込）は公式ページ間で契約時期により記載が分かれます。マンションの個別条件、撤去範囲、日程、補修は公開本文だけで確定しないため会社確認が必要です。", "keys": "auひかり 撤去工事・賃貸許可 auひかり 撤去工事 光ファイバー 光コンセント 立会い 賃貸 所有者許可 原状回復", "urls": ["https://www.au.com/support/service/internet/procedure/contract/cancel/", "https://www.au.com/content/dam/au-com/internet/application/contract/pdf/auhikari-important-matter.pdf"], "source": "au公式解約案内・重要事項本文", "date": "2026-10-08", "certainty": "partial", "topic": "撤去工事・賃貸許可", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-au-3", "procedure": "他社奪還", "company": "auひかり", "type": "", "targets": [], "question": "auひかりを解約しても、au one netのプロバイダーメールは使えますか？", "answer": "au公式は、au one netのメールアドレスを残す方法として、auひかりからメール専用コースへ変更する案内を掲載しています。メール専用コースはインターネット接続機能がなく、月額550円（税込）です。auひかりの解約と同時に自動で残るとは断定できません。契約プロバイダーがau one net以外なら、プロバイダーごとに継続可否・コース・料金が異なるため会社確認が必要です。解約前にメール専用コースへの変更可否、切替日、保存・転送を確認してください。", "checks": "プロバイダー名、メールドメイン、au one net契約か、メール専用コースへの変更可否・申込期限、月額（税込）、メール保存・転送設定、他社プロバイダーならその公式窓口を確認。", "talk": "メールを残したい場合、au one netには接続機能なしのメール専用コースという選択肢があります。解約後も自動継続とは限らないので、先にコース変更と料金をauへ確認してから回線解約を進めましょう。", "warnings": "月額550円（税込）はau one netメール専用コースの公式掲載額です。プロバイダーがau one net以外、またはメールドメインが別会社の場合はこの回答を適用せず、契約先へ確認してください。", "keys": "auひかり プロバイダーメール auひかり au one net プロバイダーメール メール専用コース メール継続 転送 550円", "urls": ["https://www.au.com/internet/auonenet/mail/", "https://www.au.com/support/service/internet/procedure/contract/cancel/"], "source": "au公式「メール専用コース」「auひかり解約」本文", "date": "2026-10-08", "certainty": "confirmed", "topic": "プロバイダーメール", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-au-4", "procedure": "他社奪還", "company": "auひかり", "type": "", "targets": [], "question": "auひかりテレビの録画済み番組は、解約後どうなりますか？", "answer": "au公式の現行STB案内では、STA3000は外付けHDDを接続して専門チャンネルを録画する機器です。また、機器故障・移転時の代品交換では、番組録画などのデータを代品へ移せないと明記されています。したがって、レンタルSTB（STA3000等）・外付けHDD・自前レコーダーを同じ扱いにはできません。内蔵HDD型や旧STB、解約後の再生、コピー・移行の可否は、型番と録画媒体を特定してauに確認が必要です。自前レコーダーの録画はauレンタル機器の返却・サービス解約とは別に、機器メーカーの仕様も確認してください。移行保証はありません。", "checks": "STB型番（STA3000、STW2000、旧型等）、レンタル/自所有、内蔵HDDか外付けHDDか、自前レコーダーか、録画番組の権利・再生期限、解約日と視聴可能期間、コピー・移行方法をauへ照会。", "talk": "録画番組は機器の型番と保存先で扱いが変わります。解約前に見たい番組を確認し、STBとHDDの構成を伝えてauへ再生・移行可否を聞いてください。コピーや移行が保証されるとは案内しません。", "warnings": "公式本文で確認できたのはSTA3000の外付けHDD録画と、代品への録画データ移行不可です。レンタルSTB、内蔵HDD、外付けHDD、自前レコーダーの解約後の一律結論は会社確認が必要です。", "keys": "auひかり 録画済み番組 auひかり テレビ 録画番組 STB STA3000 内蔵HDD 外付けHDD 自前レコーダー 移行保証", "urls": ["https://www.au.com/internet/service/auhikari/tv/stb/", "https://www.au.com/internet/service/auhikari/tv/"], "source": "au公式「セットトップボックス」「auひかりテレビサービス」本文", "date": "2026-10-08", "certainty": "partial", "topic": "録画済み番組", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-au-5", "procedure": "他社奪還", "company": "auひかり", "type": "", "targets": [], "question": "auひかりはネットだけ解約して、auひかりテレビだけ残せますか？料金はいくらですか？", "answer": "au公式は、テレビサービスをauひかり回線経由で提供し、ネット加入済みの人向けに「テレビサービスのみお申し込み」を案内しています。テレビのセットトップボックス利用料は550円（税込）／月で、別途チャンネルパック等の料金があります。ただし、ネット解約後に同じ契約でテレビだけを残せるか、今回の契約でのTV単独月額・チャンネル料金・STB継続可否は、公開本文では確定できません。公開資料では今回の料金を確定できず、TV単独の見積が必要です。ネットを先に解約せず、auへテレビ残留の可否と総額を確認してください。", "checks": "auひかりのプラン・地域・プロバイダー、TVのSTB型番・台数、契約チャンネル、ネット解約後のTV単独可否、STB550円（税込）以外の料金、請求先、解約・返却条件を確認。", "talk": "テレビだけ残せるかは、auひかりの回線条件と契約内容の確認が必要です。公式掲載のSTB利用料だけで総額を決めず、ネット解約前にTV単独の可否と見積をauへ確認しましょう。", "warnings": "550円（税込）／月はSTB利用料で、TV単独の総額ではありません。ネット解約後のTV残留可否と個別料金は会社確認が必要です。先にネットを解約するとテレビも使えなくなる可能性があるため、順序を確定してください。", "keys": "auひかり ネット解約後のテレビ残留 auひかり ネット解約 テレビだけ TV単独 STB 550円 チャンネルパック 見積", "urls": ["https://www.au.com/internet/service/auhikari/tv/", "https://www.au.com/support/faq/details/00/0000/000004/pg00000424/"], "source": "au公式「auひかりテレビサービス」「テレビサービス解約」本文", "date": "2026-10-08", "certainty": "needs_contact", "topic": "ネット解約後のテレビ残留", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-au-6", "procedure": "他社奪還", "company": "auひかり", "type": "", "targets": [], "question": "auひかり解約時に返す機器、方法、送料、未返却費はいくらですか？", "answer": "au公式では、解約手続き完了後にKDDIから返却用の着払い伝票が届き、その伝票で返送します。ホームゲートウェイ、ONU／回線終端装置、ルーター、STBなど契約中のレンタル機器が対象になり得ます。ACアダプタも同梱してください。返却伝票は解約問い合わせから10日前後の案内がありますが、機器ごとの対象は契約内容で異なります。一定期間返却がない場合は利用期間に応じた違約金が発生し、重要事項には機器別の最大額例が掲載されていますが、個別請求額は契約条件で異なります。解約手続き前に返却しないでください。", "checks": "契約機器一覧（HGW、ONU、STB、ACアダプタ、付属品）、レンタル/購入区分、返却伝票の到着、返却期限、梱包方法、追跡番号、未返却時の個別違約金をauに確認。自前機器は返さない。", "talk": "機器は先に返すのではなく、auの解約手続き完了後に届く着払い伝票で返却します。ACアダプタも含め、手元の機器一覧と返却期限を確認し、未返却費が個別に発生しないよう追跡できる方法で保管しましょう。", "warnings": "送料はKDDI指定の着払い伝票なら通常お客さま負担とは書かれていませんが、指定外伝票の送料はお客さま負担となる場合があります。未返却費の一律断定は禁止です。", "keys": "auひかり レンタル機器返却 auひかり レンタル機器 返却 ホームゲートウェイ ONU STB 着払い ACアダプタ 未返却違約金", "urls": ["https://www.au.com/support/service/internet/procedure/contract/cancel/", "https://www.au.com/content/dam/au-com/internet/application/contract/pdf/auhikari-important-matter.pdf", "https://www.au.com/support/faq/details/00/0000/000018/pg00001891/"], "source": "au公式解約案内・重要事項・機器返却FAQ本文", "date": "2026-10-08", "certainty": "confirmed", "topic": "レンタル機器返却", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-au-7", "procedure": "他社奪還", "company": "auひかり", "type": "", "targets": [], "question": "auひかりの連絡先と、電話番号・メール・テレビを確認してからの解約順序は？", "answer": "まず電話番号継続の可否を移行先へ確認し、auひかり電話番号を現在の契約者自身で先に解約しないでください。au公式は番号ポータビリティ完了前の先行解約で継続できなくなる注意を示しています。次にau one netメールの継続（メール専用コース等）とテレビ録画・TV残留可否を確認し、機器一覧と請求見込みを整理してからauひかりを解約します。au one netの解約はWeb予約フォーム（18:00～翌9:00）またはKDDIお客さまセンター0077-7068（無料、年中無休9:00～18:00）。テレビ全部解約は0077-777（無料、年中無休9:00～18:00）。独自回線として新回線を別途開通する手続きと、事業者変更番号で行う手続きを混同せず、auひかり側の個別案内を確認してください。", "checks": "電話番号の発番元・番号ポータビリティ可否と完了日、メール継続コース、TV・録画、契約解除料・工事費残債、撤去希望、返却機器を確認。au one net以外のプロバイダーは契約先窓口を確認。新回線開通後のau解約日を調整。", "talk": "先に電話番号、メール、テレビと録画を確認し、必要なものが残る手続きを終えてからauひかりを解約しましょう。番号ポータビリティ前の先行解約は避け、auひかりの公式窓口で契約内容と返却を確定してください。", "warnings": "電話番号の継続可否は番号の発番元・地域などで異なります。au公式本文で、ドコモ光への個別の事業者変更手続きは確認できていません。独自回線の新規開通と事業者変更を同じ申込順とせず、移行先・au双方へ確認してください。", "keys": "auひかり 連絡先・解約順序・番号継続 auひかり 解約順序 番号ポータビリティ 電話番号 メール テレビ 0077-7068 0077-777 新規回線 事業者変更", "urls": ["https://www.au.com/support/service/internet/procedure/contract/cancel/", "https://www.au.com/support/inquiry/", "https://www.au.com/internet/service/auhikari/phone/", "https://www.au.com/support/faq/details/00/0000/000004/pg00000424/"], "source": "au公式解約案内・問い合わせ窓口・auひかり電話・テレビ解約FAQ本文", "date": "2026-10-08", "certainty": "partial", "topic": "連絡先・解約順序・番号継続", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-softbank-1", "procedure": "事業者変更", "company": "SoftBank 光", "type": "", "targets": [], "question": "SoftBank 光の事業者変更承諾番号は、契約者本人がどこで取得し、Web・電話でどう進めますか？", "answer": "SoftBank 光の承諾番号は契約者本人が取得します。SoftBank公式は電話取得を案内し、事業者変更専用の電話サポート予約（Web予約）または0800-111-6710へ連絡します。予約にはS-ID（認証ID）／パスワードが必要です。発行手続きの翌日にSMSが届き、本文のMy SoftBankリンクから番号を確認します。本人確認の具体的な書類・質問内容は公式本文で確認できないため、窓口に確認してください。取得後はドコモ光側へ申し込みます。 契約者ごとの最終判断は、公式窓口またはMy SoftBankの契約表示で確認してください。", "checks": "契約者本人か、SoftBank 光の1ギガ等で10ギガではないか、S-ID／パスワード、登録電話番号、SMS受信先を確認。電話サポート予約だけでは取得完了ではないため、折り返し対応とSMSを確認する。", "talk": "承諾番号はご契約者さまご本人に取得いただきます。ソフトバンクへ電話または公式の電話予約をして、発行後のSMSから番号を確認し、ドコモ光へお申し込みください。 ご不明点は公式窓口で確認できます。", "warnings": "このツールが承諾番号を自動取得するものではありません。Webは予約手段で、番号そのもののオンライン即時発行とは書かれていません。本人確認方法が取れない場合は会社に確認が必要です。", "keys": "SoftBank 光 事業者変更承諾番号の取得先・本人確認・手順 SoftBank 光 事業者変更承諾番号 契約者本人 電話サポート予約 0800-111-6710 My SoftBank SMS", "urls": ["https://www.softbank.jp/support/faq/view/53622", "https://www.softbank.jp/support/faq/view/60958"], "source": "SoftBank公式FAQ（本文確認済み）", "date": "2026-10-08", "certainty": "partial", "topic": "事業者変更承諾番号の取得先・本人確認・手順", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-softbank-2", "procedure": "事業者変更", "company": "SoftBank 光", "type": "", "targets": [], "question": "SoftBank 光：承諾番号の有効期限と、切替の申込タイミング、速度・サービス別の制限は？", "answer": "承諾番号は払い出し日を含め15日間有効です。ドコモ光への申込予定日が近くなってからSoftBankへ発行を依頼し、15日以内にドコモ光へ事業者変更を申し込みます。期限切れ、または再発行時は過去番号が無効です。SoftBank 光・10ギガは事業者変更を受け付けず、現在サービスを解約して新たに契約する扱いです。1ギガ等の対象可否は契約内容を確認してください。独自回線向けの新規契約・解約の申込順を、事業者変更手続きと混同しないでください。 契約者ごとの最終判断は、公式窓口またはMy SoftBankの契約表示で確認してください。", "checks": "ドコモ光への申込日が番号の有効期限内か、現在の速度プランが10ギガでないか、承諾番号を複数発行していないかを確認。10ギガなら事業者変更不可のため、ドコモ光側の新規契約条件とSoftBank解約時期を会社に確認する。", "talk": "番号は発行日を含め15日間だけ有効です。ドコモ光への申込時期が近づいてから取得し、期限内にドコモ光へお申し込みください。10ギガは事業者変更ではなく、別の新規契約・解約手続きになります。", "warnings": "SoftBank 光・10ギガの事業者変更不可は公式確認済みです。新規契約側の開通日・申込順や速度可否はドコモ光の公式窓口で確認が必要です。期限切れ後は再取得が必要です。 番号を使った申込の期限と、実際の工事・切替完了日は別です。工事が15日以内に完了することを保証しません。", "keys": "SoftBank 光 有効期限・申込タイミング・速度制限 SoftBank 光 有効期限15日 10ギガ 事業者変更不可 申込タイミング 新規契約 解約", "urls": ["https://www.softbank.jp/support/faq/view/53622", "https://www.softbank.jp/internet/support/return/sbhikari/", "https://www.softbank.jp/support/faq/view/60958"], "source": "SoftBank公式FAQ・手続きページ（本文確認済み）", "date": "2026-10-08", "certainty": "confirmed", "topic": "有効期限・申込タイミング・速度制限", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-softbank-3", "procedure": "事業者変更", "company": "SoftBank 光", "type": "", "targets": [], "question": "SoftBank 光の解除料、工事費残債、最終請求は契約時期でどう変わりますか？", "answer": "事業者変更では回線開通をもってSoftBank 光が自動解約されます。解除料は契約成立日が2022年6月30日以前か、2022年7月1日以降か、2025年7月以降の自動更新、2年・5年・自動更新なし、ファミリー／マンション等で異なります。契約満了月の当月・翌月・翌々月は自動更新ありプランの解除料不要期間です。適用対象では基本料金1か月相当（割引前）等ですが、個別額はMy SoftBankで確認します。工事費残金は一括清算。月額基本料は日割り、オプションは満額請求です。 契約者ごとの最終判断は、公式窓口またはMy SoftBankの契約表示で確認してください。", "checks": "契約成立日、プラン名（2年・5年・自動更新なし、ファミリー／マンション）、自動更新日、工事費の分割残、電話・TV等オプション、My SoftBank表示額を確認。費用例を示す場合は必ずプラン・契約条件・税込表記を付ける。", "talk": "費用は契約時期とプランで変わるため、まずMy SoftBankの『解約のお手続き』で解除料と工事費残債を確認しましょう。残債は一括、月額は日割り、オプションは満額請求です。", "warnings": "公式表には条件別の金額がありますが、個別の最終請求額は契約情報なしに確定できません。事業者変更手数料は契約成立日等で異なり、2022年7月1日以降は不要と案内されています。2026年12月以降の料金改定対象もあるため、当時点のMy SoftBank確認を優先します。", "keys": "SoftBank 光 解約金・工事費残債・最終請求 SoftBank 光 解除料 工事費残債 2022年7月1日 2025年7月1日 最終請求 My SoftBank 日割り", "urls": ["https://www.softbank.jp/support/faq/view/14919", "https://www.softbank.jp/internet/cancellation-fee/", "https://www.softbank.jp/support/faq/view/25590", "https://www.softbank.jp/internet/support/return/sbhikari/"], "source": "SoftBank公式FAQ・料金改定ページ（本文確認済み）", "date": "2026-10-08", "certainty": "partial", "topic": "解約金・工事費残債・最終請求", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-softbank-4", "procedure": "事業者変更", "company": "SoftBank 光", "type": "", "targets": [], "question": "SoftBank 光：事業者変更時に返す機器と、継続利用するNTTのONU・HGWをどう区別しますか？返送先は？", "answer": "SoftBank 光から他の光コラボレーション事業者へ乗り換える場合、NTTロゴ入りのONU・ホームゲートウェイ（N）等は継続利用で返却不要です。一方、SoftBankロゴ入りの光BBユニット、電源アダプタ等をレンタル・オプション解約する場合は返却が必要です。サービス変更・解約に伴うSoftBank機器は元払いで、〒272-0001 千葉県市川市二俣678-55 ESR市川ディストリビューションセンター3階北棟N8 ソフトバンク返品センター宛。NTT機器を返す必要がある別ケースは回収キットです。", "checks": "機器のロゴ・型番、光BBユニット／メッシュWi-Fi／地デジチューナー等の契約、NTT機器の継続利用対象、付属品、返却期限（利用停止月の翌月20日までの案内）を確認。発送控えを保管する。 不明点は公式窓口へ照会する。", "talk": "NTTロゴのONUやホームゲートウェイは、事業者変更なら通常そのまま継続利用します。SoftBankロゴの光BBユニット等は別扱いで返却が必要なので、機器を一緒に確認しましょう。", "warnings": "機器返却だけでは解約になりません。SoftBankロゴ機器の返却先を未確認のまま案内せず、機器種類と手続き理由を公式返却ページで照合してください。NTT機器の別契約・対象外ケースは会社に確認が必要です。", "keys": "SoftBank 光 返却機器・NTT機器の継続利用 SoftBank 光 機器返却 NTT ONU ホームゲートウェイ 光BBユニット 回収キット 返却先", "urls": ["https://www.softbank.jp/support/faq/view/18730", "https://www.softbank.jp/internet/support/inquiry/return/"], "source": "SoftBank公式機器返却FAQ（本文確認済み）", "date": "2026-10-08", "certainty": "confirmed", "topic": "返却機器・NTT機器の継続利用", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-softbank-5", "procedure": "事業者変更", "company": "SoftBank 光", "type": "", "targets": [], "question": "SoftBank 光のメールアドレスは事業者変更後も維持できますか。別コース申込は？", "answer": "公式の事業者変更ページは、SoftBank 光の解約によりYahoo! BB基本サービスの@ ybb.ne.jpアドレスが利用できなくなると案内しています（表記上は@ybb.ne.jp）。一方、メールだけを維持する別コースの申込可否、料金、申込期限・条件は今回確認したSoftBank公式本文では確定できません。メールを残したい場合は事業者変更申込前に、現在契約のYahoo! BB基本サービスのプラン名とメール継続条件をSoftBankへ確認してください。 契約者ごとの最終判断は、公式窓口またはMy SoftBankの契約表示で確認してください。", "checks": "@ybb.ne.jpの利用有無、Yahoo! BB基本サービスのプラン（プレミアム等）、メール利用者、保存したいデータ、切替予定日を確認。別コースの名称・税込料金・申込期限は公式窓口で確認し、推測で案内しない。", "talk": "公式案内では、SoftBank 光の解約で@ybb.ne.jpは利用できなくなります。メールを残せる別コースの条件や料金は契約プランで変わる可能性があるため、切替前にソフトバンクへ確認しましょう。", "warnings": "メール維持の別コース条件・実額は今回の公式本文で未確認です。『維持できる』と断定しないでください。SoftBank 光＋など同ブランド別プランの情報をSoftBank 光へ流用しないでください。", "keys": "SoftBank 光 メールアドレス・別コース SoftBank 光 Yahoo! BB基本サービス @ybb.ne.jp メールアドレス 別コース 解約", "urls": ["https://www.softbank.jp/internet/support/return/sbhikari/", "https://www.softbank.jp/support/faq/view/14919", "https://www.softbank.jp/internet/support/contact/sbhikari/"], "source": "SoftBank公式手続きページ・FAQ（本文確認済み）", "date": "2026-10-08", "certainty": "needs_contact", "topic": "メールアドレス・別コース", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-softbank-6", "procedure": "事業者変更", "company": "SoftBank 光", "type": "", "targets": [], "question": "SoftBank 光：固定電話、テレビ、録画、CS、有料オプションはどうなりますか。先に旧回線を解約してよいですか？", "answer": "固定電話は番号継続の希望があれば、SoftBank 光の解約前に他社光コラボ事業者へ番号ポータビリティを相談します。NTT加入権番号のアナログ戻しは事前にNTTへ相談します。SoftBank公式はスカパー、Netflix、ひかりTV、スマートレスキュー、がっちりパック、プレミアムTVは本人による解約手続きが必要と案内しています。テレビ・録画・CSの事業者変更後の継続可否やTVだけ残す場合の料金は公式本文で確定できず、TV単独の見積が必要です。先に旧回線を手動解約せず、切替先の開通・番号継続を確認します。", "checks": "ホワイト光電話・光電話（N）・BBフォンの種類、番号の権利、テレビ／録画／CS／有料オプション名、継続・解約希望、ドコモ光側の受付可否を確認。TV単独残留の実額は見積取得まで確定扱いにしない。 不明点は公式窓口へ照会する。", "talk": "電話番号を残す場合は、先に切替先と番号継続を相談してください。旧回線を先に解約すると番号やサービスに影響するおそれがあります。テレビや有料サービスは個別契約なので、残すか解約するかを一つずつ確認します。", "warnings": "SoftBank公式は一部有料オプションの手動解約を明記していますが、テレビ・録画・CSの個別継続条件やTV単独料金は未確認です。公開資料では今回の料金を確定できず、TV単独の見積が必要です。", "keys": "SoftBank 光 電話・テレビ・録画・CS・有料オプション SoftBank 光 固定電話 ホワイト光電話 光電話（N） ひかりTV CS 録画 有料オプション 先行解約", "urls": ["https://www.softbank.jp/support/faq/view/53622", "https://www.softbank.jp/internet/support/return/sbhikari/", "https://www.softbank.jp/internet/support/contact/sbhikari/"], "source": "SoftBank公式FAQ・解約手続きページ（本文確認済み）", "date": "2026-10-08", "certainty": "partial", "topic": "電話・テレビ・録画・CS・有料オプション", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-softbank-7", "procedure": "事業者変更", "company": "SoftBank 光", "type": "", "targets": [], "question": "SoftBank 光の公式Web窓口、確認済み電話番号、営業時間は？", "answer": "事業者変更承諾番号・解約の電話窓口は0800-111-6710（通話料無料）、オペレーター受付は10:00～19:00、年中無休です。公式WebではSoftBank 光のお問い合わせページ、My SoftBank（24時間の手続き・契約確認）、事業者変更専用の電話サポート予約を案内しています。予約にはS-ID／パスワードが必要です。料金、契約、機器返却、固定電話・テレビは公式お問い合わせページの該当メニューから確認します。 契約者ごとの最終判断は、公式窓口またはMy SoftBankの契約表示で確認してください。", "checks": "電話番号を0800-111-6710と照合、受付時間10:00～19:00・年中無休を確認。予約利用ならS-ID／パスワード、My SoftBankならログイン情報を準備。内容に応じて料金・契約・返却・電話テレビのメニューを選ぶ。", "talk": "公式窓口は0800-111-6710、受付は10時から19時まで年中無休です。Web予約やMy SoftBankも利用できますが、予約にはS-ID・パスワードが必要です。", "warnings": "電話番号・営業時間はSoftBank公式本文で確認済みです。混雑や本人確認の詳細、契約別の可否は窓口での確認が必要です。検索広告や代理店番号ではなく、公式URLから確認してください。", "keys": "SoftBank 光 公式問い合わせ窓口 SoftBank 光 公式窓口 0800-111-6710 10:00-19:00 年中無休 My SoftBank 電話予約", "urls": ["https://www.softbank.jp/internet/support/contact/sbhikari/", "https://www.softbank.jp/support/faq/view/53622", "https://www.softbank.jp/internet/support/return/sbhikari/"], "source": "SoftBank公式問い合わせ・FAQページ（本文確認済み）", "date": "2026-10-08", "certainty": "confirmed", "topic": "公式問い合わせ窓口", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-softbank-8", "procedure": "事業者変更", "company": "SoftBank 光", "type": "", "targets": [], "question": "SoftBank 光の旧契約はいつ終了し、どの契約は別に手動解約が必要ですか？", "answer": "通常のSoftBank 光の事業者変更では、ドコモ光など切替先事業者の回線開通をもってSoftBank 光が自動解約され、SoftBankへ再度解約連絡は不要です。承諾番号を取得しただけでは終了しません。SoftBank 光・10ギガは事業者変更不可なので、現在サービスの解約と新規契約を別手順で行います。スカパー、Netflix、ひかりTV、スマートレスキュー、がっちりパック、プレミアムTVは本人の手動解約が必要です。OCNのように事業移管がある会社や、Yahoo! BB基本サービス等の別契約は、現在契約の通知書・請求書で窓口を確認して手続きします。", "checks": "ドコモ光の開通予定日・完了確認、SoftBank 光の速度（10ギガか）、別契約のサービス名、番号継続、未払い・手続き中の有無を確認。事業者変更の場合は旧回線を先に手動解約しない。 不明点は公式窓口へ照会する。", "talk": "事業者変更なら、切替先の回線開通でSoftBank 光は自動解約です。先にSoftBankを解約しないでください。10ギガや一部の動画・テレビ等は別手続きが必要なので、契約書や請求書も一緒に確認しましょう。", "warnings": "事業者変更と独自回線向けの新規契約・解約は別です。10ギガを通常の事業者変更として扱わないでください。別契約の手動解約時期、事業移管後の窓口は公式本文で一律確定できず、会社・現在契約の通知書確認が必要です。", "keys": "SoftBank 光 旧契約の終了時点・手動解約が必要な契約 SoftBank 光 自動解約 回線開通 10ギガ 手動解約 ひかりTV Netflix 事業移管 通知書", "urls": ["https://www.softbank.jp/support/faq/view/60958", "https://www.softbank.jp/internet/support/return/sbhikari/", "https://www.softbank.jp/internet/support/contact/sbhikari/"], "source": "SoftBank公式事業者変更・解約ページ（本文確認済み）", "date": "2026-10-08", "certainty": "partial", "topic": "旧契約の終了時点・手動解約が必要な契約", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-biglobe-1", "procedure": "事業者変更", "company": "ビッグローブ光", "type": "", "targets": [], "question": "ビッグローブ光の事業者変更承諾番号はどこで、どう取得しますか？", "answer": "ビッグローブ光の公式ページ下部から、契約者本人がWebで事業者変更受付を予約します。予約枠は9～12時、12～15時、15～18時で、手続きにはBIGLOBE ID・パスワードが必要です。予約した時間帯にビッグローブから登録連絡先へ電話があり、必要事項を確認した後、事業者変更承諾番号を受付当日中に登録メールアドレスまたはBIGLOBEメールへ送ります。番号を自動取得する手続きではありません。Web予約ができない場合や再発行は公式インフォメーションデスクへ確認してください。発行後は番号を控えてください。", "checks": "契約者本人の手続きであること、BIGLOBE ID・パスワード、登録電話番号・メールアドレスを確認。予約枠と折り返し電話に出られる時間、番号の受信先を確認する。未納など利用状況により発行できない場合がある。", "talk": "ビッグローブ光の番号は、お客さまご本人が公式Webで電話予約を行い、折り返し確認後に受け取ります。店舗やこのツールが代わりに取得するものではありません。IDと登録連絡先をご用意ください。", "warnings": "承諾番号の取得代行・自動取得とは案内しない。本人確認の詳細な項目は公式本文で列挙されていないため会社確認。BIGLOBE光プラス等の別ブランド・別プランと混同しない。", "keys": "ビッグローブ光 事業者変更承諾番号の取得先・本人確認・手順 ビッグローブ光 事業者変更 承諾番号 Web予約 本人確認 BIGLOBE ID 折り返し電話", "urls": ["https://support.biglobe.ne.jp/jimu/keiyaku/kaiyaku/bighikari-kaiyakuchuui.html", "https://support.biglobe.ne.jp/ask/info_desk.html"], "source": "ビッグローブ公式「BIGLOBE光」事業者変更（他社への転出）手続き、公式インフォメーションデスク本文を確認", "date": "2026-10-08", "certainty": "confirmed", "topic": "事業者変更承諾番号の取得先・本人確認・手順", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-biglobe-2", "procedure": "事業者変更", "company": "ビッグローブ光", "type": "", "targets": [], "question": "ビッグローブ光：承諾番号の有効期限と、ドコモ光申込タイミング、速度・サービス別制限は？", "answer": "ビッグローブ光の事業者変更承諾番号は発行日を含めて15日間有効です。ドコモ光への申込はその期間内に行い、期限切れなら番号は失効してビッグローブ光の契約が継続します。申込中も再発行は可能ですが、公式窓口へ確認してください。事業者変更は光コラボ間の手続きで、通常は開通工事なしですが、事業者変更と同時の光回線速度変更などでは工事や宅内機器設定が必要な場合があります。独自回線向けの光回線再利用は別手続きで、工事業者の回線工事が必要です。個別の速度・TV・CS等の転出可否は会社確認です。番号発行日を基準に日付を数えます。", "checks": "2026年10月8日に番号を発行するなら、発行日を含む15日以内にドコモ光へ申し込める日程か確認。現在の回線タイプ・速度、光電話・光テレビ等の利用状況、同時にタイプ変更をするかを確認する。ドコモ光の申込窓口にも期限内受付を確認する。", "talk": "承諾番号は発行日を含め15日間だけ有効です。先にビッグローブ光を解約せず、番号取得後に期限内でドコモ光へ申し込みましょう。速度変更やオプションの扱いは契約内容を確認して案内します。", "warnings": "番号の期限だけで開通日を保証しない。速度・サービス別の転出制限は公式本文で一律に確認できないため会社確認。独自回線向けの光回線再利用と事業者変更を混同しない。", "keys": "ビッグローブ光 有効期限・申込タイミング・速度変更 ビッグローブ光 承諾番号有効期限 15日間 申込タイミング 速度変更 光回線再利用 事業者変更", "urls": ["https://support.biglobe.ne.jp/jimu/keiyaku/kaiyaku/bighikari-kaiyakuchuui.html", "https://faq.support.biglobe.ne.jp/faq_detail.html?faq_id=12601"], "source": "ビッグローブ公式の事業者変更手続きページ・乗り換えFAQ本文を確認", "date": "2026-10-08", "certainty": "partial", "topic": "有効期限・申込タイミング・速度変更", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-biglobe-3", "procedure": "事業者変更", "company": "ビッグローブ光", "type": "", "targets": [], "question": "ビッグローブ光の解約金、工事費残債、最終請求はどうなりますか？", "answer": "事業者変更完了日の前日が属する月の末日がビッグローブ光の解約日で、解約月が違約金不要期間（定期利用期間の最終月と翌月・翌々月）外なら違約金が発生します。2年・3年プラン、ファミリー・マンション、申込時期で金額が異なり、2022年6月30日以前、2022年7月1日～2024年1月31日、2024年2月1日以降などの条件があります。例えば現行2年・3年プランの通常違約金はファミリー4,100円・マンション3,000円（不課税）ですが、契約時期で異なるため実額はマイページ確認です。工事費分割中は残額一括請求。解約月料金は日割りされず、通常翌月または翌々月に請求されます。", "checks": "契約プラン（2年/3年、10ギガを含む）、ファミリー/マンション、契約開始日・申込日、更新月、工事費の分割残回数、支払方法をマイページで確認。費用例は現行プラン・不課税であり個別請求額ではない。請求の締めと翌月・翌々月請求の可能性も説明する。", "talk": "違約金と工事費残債は、お客さまのプランと契約時期で変わります。解約月の料金は日割りされず、後日請求されることがあります。ビッグローブ光のマイページで個別金額を一緒に確認しましょう。", "warnings": "料金例は現行2年/3年プランのファミリー・マンション、違約金は不課税。2022年以前等の旧条件を現行額で断定しない。未納・割賦・特典の個別影響は会社確認。", "keys": "ビッグローブ光 解約金・工事費残債・最終請求 ビッグローブ光 違約金 2年プラン 3年プラン 2022年以前 工事費残債 最終請求 不課税", "urls": ["https://support.biglobe.ne.jp/jimu/keiyaku/kaiyaku/bighikari-kaiyakuchuui.html", "https://support.biglobe.ne.jp/jimu/ryokin/course/bighikari.html", "https://support.biglobe.ne.jp/jimu/ryokin/course/bighikari_3years.html", "https://support.biglobe.ne.jp/bighikari/kaiyaku/cancel.html"], "source": "ビッグローブ公式の事業者変更手続き、2年/3年料金表、解約・退会本文を確認", "date": "2026-10-08", "certainty": "partial", "topic": "解約金・工事費残債・最終請求", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-biglobe-4", "procedure": "事業者変更", "company": "ビッグローブ光", "type": "", "targets": [], "question": "ビッグローブ光：事業者変更で継続利用するNTT ONU/HGWと、返却するビッグローブ機器をどう区別しますか？", "answer": "NTTロゴ入りのONU、ホームゲートウェイ、VDSL装置、無線LANカード、10ギガ対応無線LANルーターや光電話対応機器は、事業者変更で回線を継続利用する場合に返却対象とは限らず、返却要否はNTT東日本・西日本の案内に従います。回線廃止等で返却が必要な場合は、工事業者の回収またはNTTの回収キットで返送します。ビッグローブ提供のレンタル無線LANルーター（BIGLOBEロゴ）は、事業者変更完了後に別途解約し、返却キットで返却します。返却手数料は1,430円/台。未返却費用は通常6,000円/台（不課税）、Aterm WG1810HP(JE)は16,000円（不課税）です。返送先を自己判断で作らないでください。", "checks": "機器本体のロゴと型番、レンタル/購入、NTT機器かBIGLOBE機器かを確認。事業者変更完了後にBIGLOBEレンタル無線LANの別途解約要否を確認し、届いた回収・返却キットと案内の宛先だけを使う。NTTからの案内が届くまで処分しない。", "talk": "NTTロゴのONU・ホームゲートウェイと、BIGLOBEロゴのレンタルルーターは扱いが異なります。事業者変更後もNTT機器を使う場合があるため、先に抜いたり返送したりせず、届いた公式案内の対象と宛先を確認しましょう。", "warnings": "事業者変更でNTT機器を必ず返却・必ず継続と断定しない。機器の契約状況により異なる。返送先住所は公式本文に固定記載がなく、回収キット同封案内に従う。", "keys": "ビッグローブ光 返却機器・NTT機器とBIGLOBE機器の区別 ビッグローブ光 機器返却 NTT ONU ホームゲートウェイ レンタルルーター 返却キット 返却手数料", "urls": ["https://support.biglobe.ne.jp/jimu/kaiyaku/bh-henkyaku.html", "https://support.biglobe.ne.jp/jimu/keiyaku/kaiyaku/bighikari-kaiyakuchuui.html"], "source": "ビッグローブ公式「BIGLOBE光」レンタル機器の返却／違約金、事業者変更本文を確認", "date": "2026-10-08", "certainty": "confirmed", "topic": "返却機器・NTT機器とBIGLOBE機器の区別", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-biglobe-5", "procedure": "事業者変更", "company": "ビッグローブ光", "type": "", "targets": [], "question": "ビッグローブ光からドコモ光へ移ってもBIGLOBEメールを維持できますか？", "answer": "BIGLOBEを退会すると、退会月末でBIGLOBEメールアドレスが使えなくなり、再入会しても同じアドレスは取得できません。一方、接続サービスだけを解約しBIGLOBE会員を退会しない場合、メールは無料のライトプラン（保存期間30日、メールソフト不可、Webメールのみ）へ変更されます。これまで通り利用したい場合は、接続サービス解約後に案内されるBIGLOBEメール スタンダードプラン（月額220円、税込かどうかはこの確認本文で明記なし）へ申し込むと案内されています。事業者変更では通常、完了日の約2カ月後に退会処理されるため、継続意思を示さない場合は退会となる点に注意してください。", "checks": "BIGLOBE会員を継続するか、退会するかを決める。事業者変更完了後に届く書面・メールの継続意思提示を確認し、メール利用形態（Webメールのみかメールソフト利用か）とスタンダードプラン申込を確認する。退会月末までの利用可否も確認する。", "talk": "メールアドレスを残すなら、ビッグローブ光の解約とBIGLOBE会員の退会を同じにしないことが大切です。事業者変更後の案内を確認し、必要ならBIGLOBEメールのスタンダードプランをお申し込みください。", "warnings": "月額220円は公式FAQ記載額だが税込表示の明記がないため、税込額として案内しない。退会するとメールは失われる。事業者変更後の継続意思提示を忘れない。", "keys": "ビッグローブ光 BIGLOBEメール維持・別コース申込 ビッグローブ光 BIGLOBEメール ライトプラン スタンダードプラン 退会 メールアドレス維持 月額220円", "urls": ["https://faq.support.biglobe.ne.jp/faq_detail.html?faq_id=10075", "https://support.biglobe.ne.jp/bighikari/kaiyaku/cancel.html", "https://faq.support.biglobe.ne.jp/faq_detail.html?faq_id=12601"], "source": "ビッグローブ公式メール継続FAQ、解約・退会、乗り換えFAQ本文を確認", "date": "2026-10-08", "certainty": "confirmed", "topic": "BIGLOBEメール維持・別コース申込", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-biglobe-6", "procedure": "事業者変更", "company": "ビッグローブ光", "type": "", "targets": [], "question": "ビッグローブ光電話・光テレビ・録画・CSや有料オプションはどうなりますか？", "answer": "事業者変更なら、BIGLOBE光電話の電話番号等を引き継げる可能性がありますが、同時に移転する場合は番号変更の可能性があります。光回線の速度変更を伴う場合や、次の光コラボで取り扱いがないオプションは工事・継続可否の確認が必要です。ビッグローブ光の公式本文は光テレビの個別料金・録画・CSの残留条件を一律には示していません。ネットを事業者変更してテレビだけをビッグローブ光に残せるか、残せる場合の料金・録画機器・CSの扱いは、今回の契約条件をビッグローブへ確認してください。旧回線や光電話を先に解約すると番号等を失うおそれがあるため、先にドコモ光側の事業者変更申込と引継ぎ確認を行います。", "checks": "光電話番号の取得元、光テレビ・録画・CS・有料オプション名、機器レンタル、ドコモ光側の提供可否を確認。テレビだけ残す希望ならBIGLOBEへ個別見積。先行解約をしない。テレビ単独の残留条件は窓口回答を記録する。", "talk": "電話番号やテレビを使っている場合は、先にビッグローブ光を解約しないでください。事業者変更で引き継げるものと、ドコモ光側で別申込が必要なものを確認し、テレビだけを残せるかはビッグローブへ個別に確認します。", "warnings": "光テレビ単独残留の可否・実額・録画/CS条件は公式本文で確定できず「公開資料では今回の料金を確定できず、TV単独の見積が必要」。光電話番号の引継ぎを保証しない。", "keys": "ビッグローブ光 電話・テレビ・録画・CS・有料オプション ビッグローブ光 光電話 光テレビ 録画 CS 有料オプション TV単独 先行解約", "urls": ["https://support.biglobe.ne.jp/bighikari/kaiyaku/cancel.html", "https://faq.support.biglobe.ne.jp/faq_detail.html?faq_id=12601", "https://support.biglobe.ne.jp/jimu/keiyaku/kaiyaku/bighikari-kaiyakuchuui.html"], "source": "ビッグローブ公式解約・退会、乗り換えFAQ、事業者変更本文を確認", "date": "2026-10-08", "certainty": "needs_contact", "topic": "電話・テレビ・録画・CS・有料オプション", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-biglobe-7", "procedure": "事業者変更", "company": "ビッグローブ光", "type": "", "targets": [], "question": "ビッグローブ光の公式問い合わせ先と受付時間は？", "answer": "ビッグローブ光の事務手続きは、公式Webの事業者変更受付予約を利用します。事業者変更承諾番号の再発行や個別条件の確認は、BIGLOBEカスタマーサポート インフォメーションデスクへ問い合わせます。電話は0120-86-0962（通話料無料）、携帯電話・IP電話は03-6385-0962（通話料有料）、受付時間は9:00～18:00、365日受付です。電話ではBIGLOBE ID、氏名、登録電話番号を伝えられるよう準備します。公式Webの問い合わせ案内も利用できます。BIGLOBE光の解約・退会自体は電話へ直接かけるのではなく、Web予約後に予約枠で折り返しを受ける方式です。", "checks": "電話番号の発信元（固定/携帯・IP）に応じた番号、BIGLOBE ID、氏名、登録電話番号を確認。事業者変更はWeb予約が先で、9～12時・12～15時・15～18時の折り返し枠を選ぶ。公式ページの番号を案内前に再確認する。", "talk": "公式窓口はWeb予約と電話確認の組み合わせです。インフォメーションデスクは0120-86-0962、携帯・IP電話は03-6385-0962、受付は9時から18時まで365日です。IDと登録電話番号をご用意ください。", "warnings": "番号・営業時間は2026年10月8日に公式本文で確認したもの。BIGLOBE光プラス by auひかりプラスは別窓口。電話混雑時は時間を置いて再発信。", "keys": "ビッグローブ光 問い合わせ窓口・電話番号・営業時間 ビッグローブ光 問い合わせ インフォメーションデスク 0120-86-0962 03-6385-0962 9時18時 365日", "urls": ["https://support.biglobe.ne.jp/ask/info_desk.html", "https://support.biglobe.ne.jp/ask/", "https://support.biglobe.ne.jp/jimu/keiyaku/kaiyaku/bighikari-kaiyakuchuui.html"], "source": "ビッグローブ公式インフォメーションデスク、問い合わせ総合、事業者変更本文を確認", "date": "2026-10-08", "certainty": "confirmed", "topic": "問い合わせ窓口・電話番号・営業時間", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-biglobe-8", "procedure": "事業者変更", "company": "ビッグローブ光", "type": "", "targets": [], "question": "ビッグローブ光はいつ終了し、どの契約を別途手動解約しますか？", "answer": "事業者変更では、NTT東西が事業者変更を確認した日が完了日で、その前日が属する月の末日がビッグローブ光の解約日です。ドコモ光の開通後にビッグローブ光は自動解約されます。BIGLOBE会員の退会日は通常、事業者変更完了日の約2カ月後で、継続意思を示さないと退会処理されます。この約2カ月間はオプション契約が継続し料金がかかるため、光回線と同時に終えたいオプションは契約者が個別に解約します。特にBIGLOBE提供のレンタル無線LANルーターは事業者変更完了後に別途解約が必要です。メールを残す場合は退会せず継続手続きをします。", "checks": "ドコモ光の開通・事業者変更完了日、ビッグローブ光の解約月、BIGLOBE会員継続意思、光電話・光テレビ・レンタル無線LAN・セキュリティ・コンテンツの契約を確認。手動解約対象を一覧化する。約2カ月の料金継続をお客さまへ説明する。", "talk": "事業者変更なら、ドコモ光の開通後にビッグローブ光は自動解約されます。ただしBIGLOBE会員や一部オプションは別に残るため、メールを残すか、レンタルルーター等を解約するかを完了後に確認してください。", "warnings": "旧回線を先に手動解約しない。BIGLOBE会員の退会と光回線の解約は別。事業移管がある契約は、現在契約の通知書記載の窓口で確認する。", "keys": "ビッグローブ光 解約完了時点・退会時点・手動解約が必要な契約 ビッグローブ光 解約日 退会日 事業者変更完了日 約2カ月後 手動解約 レンタル無線LAN", "urls": ["https://support.biglobe.ne.jp/jimu/keiyaku/kaiyaku/bighikari-kaiyakuchuui.html", "https://faq.support.biglobe.ne.jp/faq_detail.html?faq_id=12601", "https://support.biglobe.ne.jp/bighikari/kaiyaku/cancel.html"], "source": "ビッグローブ公式事業者変更、乗り換えFAQ、解約・退会本文を確認", "date": "2026-10-08", "certainty": "confirmed", "topic": "解約完了時点・退会時点・手動解約が必要な契約", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-sonet-1", "procedure": "事業者変更", "company": "So-net 光", "type": "", "targets": [], "question": "So-net 光の事業者変更承諾番号はどこで、本人確認を含めてどう取得しますか（Web・電話）？", "answer": "承諾番号は契約者本人がSo-netへ申し込み、取得するものです。So-net公式の個人向け申込ページから専用窓口へ申し込みます。申込後、登録電話番号宛てのSMSまたはメールで払い出し結果が届き、番号そのものはメール・SMSではなくマイページで確認します。マイページにはSo-netユーザーIDとパスワードが必要です。登録電話番号が現在と違う場合は先に契約者情報を更新します。電話での個人向け受付番号は公式本文で確認できず、So-net Call9は加入・ログインが必要です。店舗やツールが本人に代わって取得するものではありません。", "checks": "現在のコースがSo-net 光 S/M/L、10ギガ、プラス、So-net 光のいずれか、契約者名・設置住所・登録電話番号、ユーザーID、未払い、進行中の別手続きを確認。電話番号は公式公開有無をSo-netへ確認し、本人確認方法も案内窓口で確認する。", "talk": "承諾番号はご契約者さまご本人がSo-netへお申し込みください。結果の通知を受けた後、マイページで番号を確認して、ドコモ光へお申し込みいただく流れです。店舗での代理取得ではありません。", "warnings": "番号を店舗が自動取得するとは案内しない。本人確認の具体書類・電話受付番号は公式本文で確認できないため会社確認。別手続き中、未払い、対象外コースでは発行不可の場合がある。", "keys": "So-net 光 事業者変更承諾番号の取得 So-net 光 事業者変更承諾番号 契約者本人 マイページ SMS 専用窓口 本人確認", "urls": ["https://www.so-net.ne.jp/guide/collabo/applications/change_toisp.html", "https://www.so-net.ne.jp/support/taikai/change_gh_appl.html", "https://www.so-net.ne.jp/support/contact/"], "source": "So-net 光公式『So-netから他社への変更(事業者変更)』、So-net公式お問い合わせ", "date": "2026-10-08", "certainty": "partial", "topic": "事業者変更承諾番号の取得", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-sonet-2", "procedure": "事業者変更", "company": "So-net 光", "type": "", "targets": [], "question": "So-net 光：承諾番号の有効期限と、開通希望の申込タイミング、速度・サービス別の転出制限は？", "answer": "So-net公式では事業者変更承諾番号の有効期限は発行から15日間です。有効期限切れに注意し、変更先への申込日は有効期限内に設定します。So-net公式FAQは有効期限の4日前までに事業者変更を申し込むよう案内しています。払い出しは申込から2時間程度が目安ですが、16時以降は翌日になる場合があります。速度変更を同時に行う場合などは工事や宅内機器設定が必要になることがあります。10ギガは変更先が提供しない場合があり、サービス変更が必要です。個別の転出制限や希望日に開通できるかは、変更先とSo-netへの確認が必要です。", "checks": "発行日・有効期限、ドコモ光の希望開通日、現在のSo-net 光のコース（S/M/L・10ギガ・プラス等）、速度変更の有無、設置住所、変更先の提供メニューを確認し、15日以内に申込可能か確認する。申込可能な受付時間も確認する。", "talk": "承諾番号には期限があります。発行後は早めにドコモ光へお申し込みください。速度変更や10ギガでは工事や機器設定が必要になる場合があるため、日程は両社でご確認ください。", "warnings": "有効期限を過ぎた番号は使えない。個別の速度・電話・テレビ・録画・CSの移行可否、10ギガ提供可否は公式本文で一律に確定できず会社確認。独自回線の新規申込順と、事業者変更の手順を混同しない。", "keys": "So-net 光 有効期限・申込タイミング・速度別制限 So-net 光 有効期限15日 4日前 16時 10ギガ 速度変更 事業者変更", "urls": ["https://www.so-net.ne.jp/guide/collabo/applications/change_toisp.html", "https://support.so-net.ne.jp/fa/faq/web/knowledge1700.html"], "source": "So-net 光公式事業者変更ガイド・So-net 光よくあるご質問", "date": "2026-10-08", "certainty": "confirmed", "topic": "有効期限・申込タイミング・速度別制限", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-sonet-3", "procedure": "事業者変更", "company": "So-net 光", "type": "", "targets": [], "question": "So-net 光の解約金、工事費残債、最終請求はどうなりますか（2022年以前など契約ルール別）？", "answer": "工事費を分割中なら、事業者変更の申込月に未払い残額を一括請求します。承諾番号申込をキャンセルしても残債は一括請求です。So-net 光プラスは、契約条件により更新期間外の事業者変更日で解約金が発生します。2022年6月30日以前申込は20,000円（不課税）。2022年7月1日以降申込、または旧契約でも2022年7月1日以降の移転・回線タイプ変更、2025年7月1日以降の更新後自動継続は、戸建4,580円／マンション3,480円（いずれも不課税）です。旧契約は36か月、現行条件は24か月で更新期間が異なります。S/M/L・10ギガ等の個別費用はマイページで確認し、最終月まで料金がかかります。", "checks": "現在の正式なコース名、申込日、移転・回線タイプ変更歴、契約更新期間、工事費分割残額、キャンペーン最低利用期間、戸建・マンション、請求方法をマイページで確認し、最終請求の見込みをSo-netへ確認する。", "talk": "費用は契約時期やコース、更新期間、工事費の残りで変わります。So-netのマイページでお客さまの契約情報と残額を確認してから、切替日を決めましょう。ご不明な点はSo-netへ確認します。", "warnings": "金額例はSo-net 光プラスの契約条件・不課税であり、全プラン共通ではない。税込と不課税を混同しない。2022年以前の契約でも変更歴で条件が変わる。個別額は会社確認。", "keys": "So-net 光 解約金・工事費残債・最終請求 So-net 光 解約金 工事費残債 2022年6月30日以前 更新期間 最終請求 不課税", "urls": ["https://www.so-net.ne.jp/guide/collabo/applications/change_toisp.html", "https://support.so-net.ne.jp/fa/faq/web/knowledge1723.html", "https://www.so-net.ne.jp/signup/kiyaku/important/hikari_plus.html"], "source": "So-net 光公式事業者変更ガイド・契約更新月FAQ・重要事項説明", "date": "2026-10-08", "certainty": "partial", "topic": "解約金・工事費残債・最終請求", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-sonet-4", "procedure": "事業者変更", "company": "So-net 光", "type": "", "targets": [], "question": "So-net 光：事業者変更後にNTTのONU・HGWは返却しますか。So-netのレンタルルーターはどうしますか？", "answer": "NTT東西からのレンタル機器は、事業者変更後も変更先で継続利用できる場合があります。ただし変更先の申込内容により返却が必要になるため、ドコモ光の申込時に確認してください。So-net 光の解約で返却対象になる機器は、NTTロゴのONU、ひかり電話ルーター／ホームゲートウェイ等で、回線撤去の有無によりNTTの回収キットまたは工事担当者回収となります。So-net Wi-Fiルーターは別契約で、利用開始月から25か月以内の解約なら元払い返却、26か月目以降は返却不要です。対象機器を混同せず、返送先はNTT回収キットまたはSo-net公式指定先に従います。", "checks": "機器のロゴ・型番・契約先を写真で確認し、NTT ONU/HGW、So-net Wi-Fiルーター、10ギガルーターを分別。撤去工事の有無、回収キット到着、So-net Wi-Fi利用開始月、返却要否と返却先を公式案内で確認する。", "talk": "NTTのONUやホームゲートウェイは、ドコモ光で継続利用できる場合があります。So-netのルーターは別扱いですので、機器の型番を確認し、返却案内に従ってください。", "warnings": "NTT機器をSo-net Wi-Fiルーターの箱へ入れない。返却先を推測して作らない。変更先の申込内容でNTT機器返却が必要になることがある。So-net Wi-Fiの25か月条件は同サービス限定。", "keys": "So-net 光 返却機器 So-net 光 ONU HGW ホームゲートウェイ NTT So-net Wi-Fiルーター 返却", "urls": ["https://www.so-net.ne.jp/guide/collabo/applications/change_toisp.html", "https://support.so-net.ne.jp/fa/faq/web/knowledge1788.html", "https://support.so-net.ne.jp/fa/faq/web/knowledge1801.html"], "source": "So-net 光公式事業者変更ガイド・レンタル機器返却FAQ・So-net Wi-Fiルーター返却FAQ", "date": "2026-10-08", "certainty": "confirmed", "topic": "返却機器", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-sonet-5", "procedure": "事業者変更", "company": "So-net 光", "type": "", "targets": [], "question": "So-net 光：So-netのメールアドレスを維持できますか。別コース申込の条件と料金は？", "answer": "So-net 光 10ギガ以外から事業者変更後もSo-netのメールアドレスや有料オプションを継続したい場合、公式ガイドはSo-net 光 アクセスコースへの変更を案内しています。別途月額料金がかかりますが、今回の公開本文だけでは料金額を確定できません。メールアドレスだけを残す場合は、接続サービス解約後にベーシックコースへ変更します。ベーシックコースは月額330円（税込）で、現在のメールアドレスとユーザーIDを継続利用できます。So-netを退会してからでは同じメールアドレスを使えません。ベーシックコースへの変更で接続コースは自動解約されるため、順序を間違えないでください。", "checks": "現在のコースが10ギガか、それ以外か、メール継続かオプション継続か、So-net 光 アクセスの料金・適用条件、支払方法（NTT請求なら事前変更）を公式窓口で確認し、退会前に希望コースを申し込む。料金は税込表示かも確認する。", "talk": "メールを残す場合は、So-netを先に退会しないでください。メールだけならベーシックコース、メールや有料オプションを継続する場合はSo-net 光 アクセスを、条件と料金を確認してお申し込みください。", "warnings": "330円はベーシックコースの月額（税込）で、アクセスコースの料金ではない。10ギガはアクセス継続の対象外記載がある。退会後の復旧は不可。", "keys": "So-net 光 メールアドレスと別コース So-net 光 メールアドレス ベーシックコース 330円 So-net 光 アクセス 10ギガ 退会", "urls": ["https://www.so-net.ne.jp/guide/collabo/applications/change_toisp.html", "https://support.so-net.ne.jp/fa/faq/web/knowledge1879.html", "https://support.so-net.ne.jp/fa/faq/web/knowledge1888.html"], "source": "So-net 光公式事業者変更ガイド・メール継続FAQ・退会後サービスFAQ", "date": "2026-10-08", "certainty": "partial", "topic": "メールアドレスと別コース", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-sonet-6", "procedure": "事業者変更", "company": "So-net 光", "type": "", "targets": [], "question": "So-net 光電話、テレビ、録画・CS、有料オプションはどうなりますか。旧回線を先に解約してよいですか？", "answer": "So-net公式は、事業者変更でSo-net・NTTのオプションの利用条件が変わったり、全部または一部が使えなくなる場合があると案内しています。So-net 光電話の番号を継続する場合は変更先の電話事業者へ手続きが必要で、So-net 光電話の解約を先に行うと番号継続や接続に影響する可能性があります。So-net 光テレビは公式FAQのサービス案内までは確認できましたが、ドコモ光への変更時の継続・録画・CS・TV単独残留の具体条件と料金は公開本文で確定できません。NTT直接契約のひかり電話・フレッツテレビ等は、変更先申込前にNTTへ連絡が必要です。旧回線や電話・テレビを先に解約せず、移行先の提供可否を確認してください。", "checks": "電話番号継続の有無、So-net 光電話／光テレビの契約名、録画機器・CS・有料オプション、NTT直接契約の有無、ドコモ光側の提供可否と移行日を確認。TV単独の継続可否と料金は会社へ見積もりを依頼する。", "talk": "電話やテレビはサービスごとに移行条件が違います。先にSo-netや電話を解約せず、番号・テレビ・録画・CSがどう引き継がれるかを確認してから切替手続きを進めましょう。", "warnings": "TV単独の残留可否・料金は公開資料で確定できず、会社確認が必要。電話番号は先行解約で廃止のおそれ。v6プラス等は事業者変更完了後の自動解約や他社IPoE利用制限がある。", "keys": "So-net 光 電話・テレビ・録画・CS・オプション So-net 光 光電話 光テレビ 録画 CS 有料オプション 先行解約", "urls": ["https://www.so-net.ne.jp/guide/collabo/applications/change_toisp.html", "https://support.so-net.ne.jp/fa/faq/web/knowledge1664.html", "https://support.so-net.ne.jp/supportsitedetailpage?id=000009215"], "source": "So-net 光公式事業者変更ガイド・光電話解約FAQ・光テレビFAQ", "date": "2026-10-08", "certainty": "needs_contact", "topic": "電話・テレビ・録画・CS・オプション", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-sonet-7", "procedure": "事業者変更", "company": "So-net 光", "type": "", "targets": [], "question": "So-net 光の公式問い合わせWeb、電話番号、受付時間は？", "answer": "公式Web窓口はSo-netお問い合わせページです。個人向けのチャット・メールはSo-net会員アプリで受け付け、アプリを使えない場合のオペレータ対応時間は9:00～18:00（時間外はAIモモ）と掲載されています。電話はSo-net Call9の案内で、電話サポートにはCall9への加入が必要で、ログインして利用する方式です。今回確認できた公式本文には、個人向けの一般電話番号は掲載されていません。したがって店舗では電話番号を推測・転記せず、公式お問い合わせページから現行案内を確認してください。法人窓口の0120-80-7765（9:00～18:00、土日祝除く）は個人契約の案内に使わないでください。", "checks": "個人／法人、契約コース、問い合わせ内容（承諾番号・料金・機器・TV）を整理し、会員アプリ利用可否とCall9加入状況を確認。電話番号が必要なら公式ページの現行表示と営業時間を会社確認する。公式ページの更新日も確認する。", "talk": "お問い合わせは公式のSo-net会員アプリまたはお問い合わせページをご利用ください。個人向け電話番号は公開本文で確認できないため、現行の公式案内を一緒に確認します。", "warnings": "個人向けの検証済み電話番号は本文で取得できず、会社確認が必要。法人番号を個人客へ案内しない。非公式サイトの番号や営業時間を根拠にしない。", "keys": "So-net 光 問い合わせ窓口 So-net 光 公式Web 会員アプリ So-net Call9 9時 18時 電話番号", "urls": ["https://www.so-net.ne.jp/support/contact/", "https://www.so-net.ne.jp/support/call9/"], "source": "So-net公式お問い合わせ・So-net Call9案内", "date": "2026-10-08", "certainty": "partial", "topic": "問い合わせ窓口", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-sonet-8", "procedure": "事業者変更", "company": "So-net 光", "type": "", "targets": [], "question": "So-net 光の旧契約はいつ終了しますか。別契約で手動解約が必要なものは？", "answer": "So-net公式では、事業者変更が完了すると『So-net 光』コース解約完了のメールが届きます。So-netを退会する場合は事業者変更日を含む月の末日に退会完了となり、改めてSo-net退会手続きをする必要はありません。So-net 光の利用料金は事業者変更完了月までかかります。事業者変更後もSo-net 光アクセスへ変更して会員サービスを残す場合は、翌月から同コースへ切り替わります。v6プラス／IPoE（IPv6）は退会時に翌日以降自動解約ですが、他社IPoEを使うため先に解約したい場合はマイページで別途手続きが必要です（事業者変更手続き中は解約不可）。So-net Wi-Fiルーター等の別オプションは契約状態を確認し、残す・返す・解約を個別に判断します。", "checks": "ドコモ光の開通・事業者変更日、So-net退会希望、So-net 光アクセス継続、v6プラス/IPoE、So-net Wi-Fiルーター、メール・電話・テレビ・有料オプションの各契約を一覧確認し、手動解約が必要な契約を窓口で確定する。", "talk": "旧回線を先に手動解約するのではなく、ドコモ光の事業者変更完了を確認してください。So-netの終了月や別オプションの扱いは契約ごとに確認し、必要なものだけ手続きを行います。", "warnings": "事業者変更と単独の退会・解約を混同しない。電話番号継続手続きやNTT直接契約のオプションは別手続きが必要な場合がある。契約通知書に別会社名や事業移管の記載がある場合は、現在の契約先窓口を確認してから進める。", "keys": "So-net 光 旧契約の終了時点と手動解約 So-net 光 旧契約終了 事業者変更完了月 月末退会 v6プラス IPoE 手動解約", "urls": ["https://www.so-net.ne.jp/guide/collabo/applications/change_toisp.html", "https://support.so-net.ne.jp/fa/faq/web/knowledge1765.html", "https://support.so-net.ne.jp/fa/faq/web/knowledge1788.html"], "source": "So-net 光公式事業者変更ガイド・退会手続きFAQ・機器返却FAQ", "date": "2026-10-08", "certainty": "confirmed", "topic": "旧契約の終了時点と手動解約", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-rakuten-1", "procedure": "事業者変更", "company": "楽天ひかり", "type": "", "targets": [], "question": "ドコモ光へ事業者変更するため、楽天ひかりの事業者変更承諾番号はどこで、誰が、どう取得しますか？", "answer": "楽天ひかり公式の「事業者変更承諾番号 申請」Webフォームから、契約者本人が申請します。契約者名・契約者電話番号・契約者住所（建物名・部屋番号を含む）・登録中の契約メールアドレスを入力し、本人確認欄で「契約者本人です」を選びます。お客様番号（200から始まる11桁）、ユーザーID、回線ID（CAF/COP）は分かれば入力します。申請後3日程度で、登録済み契約メールアドレスだけに番号が届きます。楽天ひかりの電話での取得手順は公式本文で確認できないため、会社確認が必要です。", "checks": "契約者本人の申請か、氏名・電話番号・住所が楽天ひかりの登録情報と一致するか、登録メールを受信できるか、ドコモ光への変更先を選択したかを確認します。本人以外がこのツールで番号を自動取得することはありません。", "talk": "楽天ひかりの承諾番号は、ご契約者ご本人さまが公式Webフォームから申請してください。登録情報を正確に入力すると、通常3日程度で登録メールアドレスに届きます。", "warnings": "電話での取得可否・手順は公式本文で確認できません。申請後すぐに届くとは限らないため、2026年10月8日の切替希望日はドコモ光側と別途調整してください。", "keys": "楽天ひかり 事業者変更承諾番号の取得先・本人確認・手順 楽天ひかり 事業者変更承諾番号 契約者本人 Web申請 契約メールアドレス ドコモ光", "urls": ["https://network.mobile.rakuten.co.jp/hikari/form/number-request/"], "source": "楽天ひかり公式「事業者変更承諾番号 申請」", "date": "2026-10-08", "certainty": "confirmed", "topic": "事業者変更承諾番号の取得先・本人確認・手順", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-rakuten-2", "procedure": "事業者変更", "company": "楽天ひかり", "type": "", "targets": [], "question": "楽天ひかりの承諾番号はいつまで有効で、ドコモ光への申込時期や速度・サービス別の制限はありますか？", "answer": "楽天ひかり公式では、事業者変更承諾番号の有効期限は発行日を含む15日間です。期限を過ぎると自動キャンセルとなります。事業者変更は変更先が光コラボレーション事業者の場合だけ利用でき、auひかり・NURO光など光コラボ以外は事業者変更ではなく楽天ひかりの解約手続きが必要です。速度タイプ別の転出制限は公式本文で確認できません。IPv6は切替完了後も停止処理に数日かかる場合があり、事前停止は受け付けません。", "checks": "番号の発行日と有効期限、ドコモ光申込時点の残日数、契約名義・設置先の一致、IPv6利用の有無、光コラボ以外への変更ではないことを確認します。期限間近の再発行条件は変更先にも確認します。", "talk": "承諾番号の有効期限は15日間です。期限切れを避けるよう、ドコモ光の申込日と切替日を先に相談し、IPv6は切替後もしばらく停止処理が続く場合がある点をご案内します。", "warnings": "速度・サービス別の転出制限、2026年10月8日に間に合う具体的な申込日は公式で確定できません。会社またはドコモ光へ確認が必要です。", "keys": "楽天ひかり 有効期限・申込タイミング・転出制限 楽天ひかり 有効期限15日 光コラボ IPv6 転出制限 ドコモ光", "urls": ["https://network.mobile.rakuten.co.jp/hikari/form/number-request/", "https://hikari.faq.rakuten.net/Hikari/s/article/4118"], "source": "楽天ひかり公式申請フォーム・FAQ 4118", "date": "2026-10-08", "certainty": "partial", "topic": "有効期限・申込タイミング・転出制限", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-rakuten-3", "procedure": "事業者変更", "company": "楽天ひかり", "type": "", "targets": [], "question": "楽天ひかりから事業者変更すると、解約金・工事費残債・最終請求はどうなりますか？", "answer": "無料解約申請期間外に承諾番号を発行した場合、申込完了日が2022年6月30日23:59以前なら契約解除料10,450円、2022年7月1日0:00以降ならファミリープラン（戸建）5,280円、マンションプラン（集合住宅）4,180円です。いずれも税込表示です。無料解約申請期間内に番号を発行し、初月から5カ月以内に他社光コラボへの変更が完了すれば解除料は発生しません。月途中でも最終月額は1カ月分（日割りなし）。分割中の工事費残債は一括請求され、解約月請求より遅れる場合があります。", "checks": "申込完了日、ファミリー／マンションプラン、無料解約申請期間、番号発行日、切替完了日、工事費残債をメンバーズステーションで確認します。料金は契約条件で変わるため、画面の個別表示を優先します。", "talk": "解約金は申込時期とプラン、無料解約申請期間で変わります。月途中でも月額は日割りされず、工事費の残りがあれば後日まとめて請求されることがあります。", "warnings": "キャンペーンや個別契約条件、無料解約申請期間は契約者ごとに異なります。実額はメンバーズステーションまたは楽天ひかりへ確認してください。", "keys": "楽天ひかり 解約金・工事費残債・最終請求 楽天ひかり 契約解除料 2022年6月30日以前 ファミリープラン マンションプラン 工事費残債 最終請求", "urls": ["https://network.mobile.rakuten.co.jp/hikari/form/number-request/", "https://hikari.faq.rakuten.net/Hikari/s/article/4118", "https://network.mobile.rakuten.co.jp/hikari/support/cancellation/"], "source": "楽天ひかり公式申請フォーム・FAQ 4118・解約案内", "date": "2026-10-08", "certainty": "confirmed", "topic": "解約金・工事費残債・最終請求", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-rakuten-4", "procedure": "事業者変更", "company": "楽天ひかり", "type": "", "targets": [], "question": "事業者変更時、楽天ひかりのNTT ONU/HGWや会社・プロバイダーのレンタルルーターは返却しますか？", "answer": "事業者変更では、楽天ひかり公式FAQはレンタル機器の返却や工事内容が利用者の状況で異なるため、乗り換え先事業者へ確認するよう案内しています。NTT提供のONU・HGWが継続利用になるか、交換・返却になるかはドコモ光側の手続き結果を確認してください。楽天ひかりの会社・プロバイダー独自レンタルルーターについて、返却対象・返送先・期限は公式本文で確認できません。未検証の返送先は案内しません。回線撤去を伴う通常解約ではNTTの回収キットを使いますが、事業者変更と混同しないでください。", "checks": "機器本体のラベルでONU/HGW、NTT機器、楽天ひかり独自機器を区別し、ドコモ光から返却指示・回収キット・期限を確認します。返送先住所は案内書面以外から推測しません。", "talk": "事業者変更では機器の扱いが一律ではありません。ONU・HGWを含め、ドコモ光から返却や継続利用の指示を受けてから対応し、先に機器を送らないようお願いします。", "warnings": "楽天ひかり独自レンタルルーターの返送先・期限、NTT ONU/HGWの継続可否は会社またはドコモ光への確認が必要です。通常解約の回収キット案内を事業者変更に流用しません。", "keys": "楽天ひかり 返却機器・ONU/HGWとレンタルルーターの区別 楽天ひかり 事業者変更 ONU HGW NTTレンタル機器 返却先 回収キット", "urls": ["https://hikari.faq.rakuten.net/Hikari/s/article/4118", "https://hikari.faq.rakuten.net/Hikari/s/article/4036", "https://network.mobile.rakuten.co.jp/hikari/terms/important_explanation/"], "source": "楽天ひかり公式FAQ 4118・4036・重要事項説明書", "date": "2026-10-08", "certainty": "partial", "topic": "返却機器・ONU/HGWとレンタルルーターの区別", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-rakuten-5", "procedure": "事業者変更", "company": "楽天ひかり", "type": "", "targets": [], "question": "楽天ひかりのメールアドレスは事業者変更後も維持できますか。別コースを申し込めますか？", "answer": "楽天ひかり公式FAQは、事業者変更により楽天ひかり提供のオプションが利用できなくなり、その中にメールアドレス、メールプラス、電話設定サポート、セキュリティ等が含まれると案内しています。したがって楽天ひかりのメールアドレス維持は公式上確認できません。NTT東日本・西日本提供のサービスは、継続利用できるかを乗り換え先事業者へ問い合わせる扱いです。事業者変更後に楽天ひかり内の別コースへ申し込んでメールを維持できる条件・料金は公式本文で確認できないため、会社確認が必要です。", "checks": "楽天ひかりメール、メールプラス、NTT提供メール等を区別し、重要なメールの移行先・保存を準備します。別コースの名称、申込可否、料金、申込期限は楽天ひかりに個別確認します。", "talk": "楽天ひかり提供のメールは、事業者変更後に使えなくなる案内です。必要なメールは事前に保存し、継続や別コースの条件は楽天ひかりへ確認してから切り替えてください。", "warnings": "メール維持、別コースの申込可否と料金は今回確認した公式本文では確定できません。『残せる』と断定せず会社に確認が必要です。", "keys": "楽天ひかり メールアドレス・別コース申込 楽天ひかり メールアドレス メールプラス オプション 別コース 事業者変更", "urls": ["https://hikari.faq.rakuten.net/Hikari/s/article/4118", "https://network.mobile.rakuten.co.jp/hikari/support/cancellation/"], "source": "楽天ひかり公式FAQ 4118・解約案内", "date": "2026-10-08", "certainty": "partial", "topic": "メールアドレス・別コース申込", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-rakuten-6", "procedure": "事業者変更", "company": "楽天ひかり", "type": "", "targets": [], "question": "楽天ひかりのひかり電話、フレッツ・テレビ、録画・CS、有料オプションはドコモ光への変更でどうなりますか？", "answer": "楽天ひかり公式は、ひかり電話やフレッツ・テレビを利用中なら、必要な手続きをNTTまたは変更先事業者へ相談するよう案内しています。NTT東日本・西日本提供の無線LANカード、ホームゲートウェイ機器レンタル、リモートサポート、ひかり電話、フレッツ・テレビが引き続き使えるかも乗り換え先へ確認が必要です。楽天ひかり提供のメール等オプションは利用停止です。録画・CSなど個別サービスの引継ぎ条件やTVだけ残す場合の料金は公式本文で確定できず、TV単独の見積が必要です。", "checks": "ひかり電話番号、フレッツ・テレビ、録画機器、CS契約、NTT提供か楽天ひかり提供か、継続先と請求先を確認します。切替完了前に旧回線や電話・テレビを先に解約しないでください。", "talk": "電話やテレビをお使いの場合は、先に解約せず、ドコモ光とNTTへ引継ぎ方法を確認しましょう。TVだけ残す場合の料金は契約内容で変わるため、個別見積をご案内します。", "warnings": "録画・CS、TV単独の残留可否と実額は公開資料では今回確定できず、TV単独の見積が必要です。旧回線を先に解約すると電話番号やサービスに影響する可能性があります。", "keys": "楽天ひかり 電話・テレビ・録画・CS・有料オプション 楽天ひかり ひかり電話 フレッツテレビ 録画 CS 有料オプション TV単独", "urls": ["https://network.mobile.rakuten.co.jp/hikari/form/number-request/", "https://hikari.faq.rakuten.net/Hikari/s/article/4118", "https://network.mobile.rakuten.co.jp/hikari/terms/important_explanation/"], "source": "楽天ひかり公式申請フォーム・FAQ 4118・重要事項説明書", "date": "2026-10-08", "certainty": "needs_contact", "topic": "電話・テレビ・録画・CS・有料オプション", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-rakuten-7", "procedure": "事業者変更", "company": "楽天ひかり", "type": "", "targets": [], "question": "楽天ひかりの公式Web、検証済み電話番号、営業時間は？", "answer": "公式Web窓口は楽天ひかりのお客様サポート（https://network.mobile.rakuten.co.jp/hikari/support/）です。利用開始後の楽天ひかりカスタマーセンターは0120-987-300、受付9:00～18:00・年中無休です。申込・開通工事の窓口は楽天ひかり工事受付センター0120-987-899、受付10:00～19:00・年中無休です。メッセージ相談は公式フォームで9:00～18:00・年中無休です。承諾番号の取得は契約者本人が申請フォームを使う案内で、電話番号へ依頼するとは書かれていません。", "checks": "契約後の質問は0120-987-300、申込・開通工事は0120-987-899へ区分します。電話番号と営業時間は変更される可能性があるため、連絡前に公式サポート本文を確認します。", "talk": "契約内容や解約金は楽天ひかりカスタマーセンター、申込・工事は工事受付センターへご相談ください。どちらも公式窓口で、受付時間が異なります。", "warnings": "承諾番号の電話取得手順は公式本文で確認できません。番号申請は公式Webフォームを基本とし、電話案内が必要なら会社に確認してください。", "keys": "楽天ひかり 楽天ひかりの問い合わせ窓口 楽天ひかり 公式Web 0120-987-300 0120-987-899 営業時間 メッセージ相談", "urls": ["https://network.mobile.rakuten.co.jp/hikari/support/", "https://network.mobile.rakuten.co.jp/hikari/inquiry/form/support_chat/", "https://network.mobile.rakuten.co.jp/hikari/terms/important_explanation/"], "source": "楽天ひかり公式サポート・メッセージ相談・重要事項説明書", "date": "2026-10-08", "certainty": "confirmed", "topic": "楽天ひかりの問い合わせ窓口", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-rakuten-8", "procedure": "事業者変更", "company": "楽天ひかり", "type": "", "targets": [], "question": "楽天ひかりの契約はいつ終了し、別に手動解約が必要な契約はありますか？", "answer": "楽天ひかりから他社光コラボへの事業者変更では、切替工事（乗り換え完了）日が楽天ひかりの解約日で、別途廃止申込は不要です。切替完了日が1日の場合だけ前月末解約です。ドコモ光が光コラボとして切替を完了するまでは楽天ひかりを先に解約しません。楽天ひかり独自オプションは事業者変更で利用停止ですが、NTT東日本・西日本提供の電話・テレビ・機器レンタル等は継続や解約が別扱いになり得ます。光コラボ以外へ移る場合は楽天ひかりの解約手続きが必要です。", "checks": "ドコモ光の切替完了日、1日切替か、楽天ひかり独自オプション、NTT契約、録画・CS契約、未払い・残債の有無を確認します。現在の契約名義や窓口は契約内容のお知らせ・会員ページで照合します。", "talk": "ドコモ光への事業者変更が完了すると、楽天ひかりは自動解約です。切替前に楽天ひかりを手動解約せず、電話・テレビなど別契約は提供元へ個別に確認してください。", "warnings": "NTT提供オプションや外部の録画・CS契約の自動解約・継続は一律に断定できません。事業移管などで契約先が分からない場合は、現在の契約通知書に記載の窓口を確認してください。", "keys": "楽天ひかり 契約終了時点・手動解約が必要な契約 楽天ひかり 解約日 自動解約 切替完了日 NTT契約 手動解約 契約通知書", "urls": ["https://hikari.faq.rakuten.net/Hikari/s/article/4118", "https://network.mobile.rakuten.co.jp/hikari/form/number-request/", "https://network.mobile.rakuten.co.jp/hikari/terms/important_explanation/"], "source": "楽天ひかり公式FAQ 4118・申請フォーム・重要事項説明書", "date": "2026-10-08", "certainty": "confirmed", "topic": "契約終了時点・手動解約が必要な契約", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-nifty-1", "procedure": "事業者変更", "company": "@nifty光", "type": "", "targets": [], "question": "@nifty光の事業者変更承諾番号はどこで、本人がどう取得しますか？", "answer": "@nifty光の契約者本人が、公式のWeb申請（https://support.nifty.com/support/auth/a_7.htm）または@nifty光承諾番号発行窓口へ申し込みます。受付から2～3日後、@niftyメール、SMS（携帯番号を登録した場合）、または@nifty会員サポートの「お客様情報一覧」で11桁の番号を確認できます。電話手続きには事業者変更（解除）手数料3,300円（税込）が必要と公式FAQにあります。承諾番号の発行はこのツールが自動取得するものではなく、必ず契約者本人が行ってください。ログインや本人確認の具体的入力項目は指定Web本文を取得できなかったため、画面表示または窓口で会社に確認が必要です。", "checks": "契約者本人の申請か、@nifty ID・登録メール、SMSを受け取れる携帯番号、未払い料金の有無を確認。未払いがある場合は承諾番号を払い出せない旨の公式案内がある。Web申請画面の本人確認項目は会社に確認が必要。", "talk": "承諾番号はお客様ご本人に取得いただく番号です。公式Webまたは発行窓口へ申請し、届いた番号を使ってドコモ光のお申し込みを進めてください。こちらで番号を自動取得することはありません。", "warnings": "申請だけでは切替完了ではありません。@nifty光電話利用中は電話タイプ変更が必要な場合があります。指定URL本文は取得できていないため、本人確認方法は会社確認。", "keys": "@nifty光 事業者変更承諾番号の取得 @nifty光 事業者変更承諾番号 本人確認 Web申請 電話窓口 11桁 2～3日", "urls": ["https://faq.support.nifty.com/3867", "https://support.nifty.com/support/auth/a_7.htm", "https://support.nifty.com/support/service/niftyhikari/index.htm"], "source": "@nifty公式FAQ・会員サポート本文", "date": "2026-10-08", "certainty": "confirmed", "topic": "事業者変更承諾番号の取得", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-nifty-2", "procedure": "事業者変更", "company": "@nifty光", "type": "", "targets": [], "question": "@nifty光：承諾番号の有効期限、ドコモ光への申込時期、1ギガ・10ギガ等の制限は？", "answer": "@nifty光が発行する事業者変更承諾番号は発行日から15日目まで有効です。公式案内は、有効期限の5日前までに@nifty光へ申し込むこと、または取得後5日以内の申込を勧めています。期限を過ぎた番号は無効なので再取得します。今回のように@nifty光からドコモ光へ移る場合は、@nifty光で番号を取得し、切替先のドコモ光へ期限内に申し込みます。@nifty光公式は回線品目変更など利用状況により工事が必要になる場合があること、速度はベストエフォートで最大速度・接続性を保証しないことを示しています。@nifty光の1ギガ/10ギガ別に、ドコモ光への転出を一律に禁止する公式記載は確認できません。契約中の品目・オプション別可否は会社確認が必要です。", "checks": "承諾番号の発行日と有効期限、ドコモ光の申込予定日、現在の@nifty光が1ギガか10ギガか、光電話・光テレビ等の付加サービス、工事や品目変更の有無を確認。期限直前の申込は避ける。", "talk": "番号には期限がありますので、取得後は早めにドコモ光へお申し込みください。現在のギガ数や電話・テレビの利用状況で工事や引継ぎ確認が必要になる場合は、先に@niftyへ確認しましょう。", "warnings": "期限切れは再取得。独自回線の新規申込順と、光コラボ間の事業者変更手続きは別です。速度保証や速度別の転出制限は公式本文で確定できないため会社確認。", "keys": "@nifty光 有効期限と申込タイミング・速度別制限 @nifty光 有効期限15日 5日前 1ギガ 10ギガ ベストエフォート 事業者変更", "urls": ["https://faq.support.nifty.com/3867", "https://setsuzoku.nifty.com/niftyhikari/sign_up/jigyosha_no/", "https://setsuzoku.nifty.com/niftyhikari/flow/index_j/"], "source": "@nifty光公式FAQ・事業者変更案内本文", "date": "2026-10-08", "certainty": "partial", "topic": "有効期限と申込タイミング・速度別制限", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-nifty-3", "procedure": "事業者変更", "company": "@nifty光", "type": "", "targets": [], "question": "@nifty光からドコモ光へ切替えると、解約金・工事費残債・最後の請求はどうなりますか？", "answer": "@nifty光の2年プラン/3年プラン（N）は、契約満了月から翌々月までの3カ月間以外にコース変更またはサービス解除をすると解除手数料が発生する旨が公式に示されています。公式トップには例として、3年プラン（N）のホーム4,840円（不課税）、マンション3,630円（不課税）、2年プラン（N）のホーム・マンション4,840円（不課税）が掲載されていますが、適用プラン・契約開始時期を必ず照合してください。2022年9月以降の解除は不課税とのFAQ記載があります。工事費残債は契約・割引ごとに異なり、解約案内は発生する場合があるとするだけで個別額を確定できません。事業者変更完了後も解約月利用料等の最終請求は支払方法により請求月がずれるため、過去契約や2022年以前を含む個別条件は会社確認が必要です。", "checks": "お客様情報一覧でプラン名（2年/3年、Nか旧プランか）、契約開始月、更新期間、工事費の残額、割引・特典、未払い、請求方法を確認。金額例は@nifty光3年/2年プラン（N）の解除手数料で、不課税。", "talk": "料金はプランと契約開始時期で変わります。更新期間外の解除料や工事費残債が残る可能性があるため、切替前に@niftyの契約内容と最終請求を確認してから進めましょう。", "warnings": "掲載額を旧プランや2022年以前の契約へ流用しない。事業者変更手数料3,300円（税込）とは別に、旧契約の解除料・残債が発生する可能性がある。個別額は会社確認。", "keys": "@nifty光 解約金・工事費残債・最終請求 @nifty光 解除手数料 更新期間 2年プラン(N) 3年プラン(N) 工事費残債 最終請求", "urls": ["https://faq.support.nifty.com/3788", "https://setsuzoku.nifty.com/niftyhikari/index_j/", "https://support.nifty.com/support/member/tetsuduki/kaiyaku/index.htm"], "source": "@nifty光公式料金・解約案内本文", "date": "2026-10-08", "certainty": "partial", "topic": "解約金・工事費残債・最終請求", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-nifty-4", "procedure": "事業者変更", "company": "@nifty光", "type": "", "targets": [], "question": "@nifty光：事業者変更でNTTのONU/HGWを継続利用する場合と、@niftyのレンタルルーター等を返却する場合は？", "answer": "@nifty公式の解約案内は、レンタル機器の返却要否・返却先・方法は回線事業者やモデム型番で異なり、返却しない場合は督促や機器相当費用の請求があり得るとしています。事業者変更は回線をそのまま使う手続きですが、NTTのONU/HGWをドコモ光で継続利用できるか、交換が必要かは機器型番・回線品目・ドコモ光側の判定が必要です。@nifty Wi-Fiルーターレンタル、宅内LAN機器、@nifty光テレビの映像用ONUなど、@niftyまたは関連サービスの貸与品は一括りにせず個別確認します。テレビ解除時に映像用ONUの返却が必要な場合は、設置場所住所へ回収キットが送られる公式案内がありますが、一般のルーターの返送先は本文で確認できないため、未検証の住所を案内しません。", "checks": "機器本体のラベル（NTT/NIC/NIFTY、型番）、レンタル契約、ONU/HGW、Wi-Fiルーター、テレビ用映像ONUの別を確認。切替完了前に電源・機器を返却しない。返却案内・回収キットの有無を@niftyと切替先へ確認。", "talk": "NTTのONUやホームゲートウェイと、@niftyのレンタルルーター等では扱いが異なります。機器の型番を確認し、切替先と@niftyの案内が届くまで返却せず保管してください。", "warnings": "返送先を推測して案内しない。事業者変更で継続利用できる機器の個別可否は会社確認。テレビ用ONUは返却キットが届く場合があり、未返却時の費用可能性に注意。", "keys": "@nifty光 返却機器 @nifty光 ONU HGW レンタルルーター 機器返却 型番 回収キット", "urls": ["https://support.nifty.com/support/member/tetsuduki/kaiyaku/index.htm", "https://faq.support.nifty.com/3858", "https://support.nifty.com/support/service/niftyhikari/index.htm"], "source": "@nifty公式解約案内・光テレビFAQ本文", "date": "2026-10-08", "certainty": "partial", "topic": "返却機器", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-nifty-5", "procedure": "事業者変更", "company": "@nifty光", "type": "", "targets": [], "question": "@nifty光を解除しても@niftyメールを維持できますか？", "answer": "@nifty IDを解約すると@nifty.comメールアドレスやセカンドメールは使えなくなります。一方、公式FAQは@nifty IDを残し、@nifty光など常時接続サービスの解除手続き時に翌月からのコースとして「@nifty基本料金」を選ぶ方法を案内しています。@nifty基本料金は月額275円（税込）です。したがって、@nifty光の回線契約を解除してメールを維持する場合は、回線解除と@nifty ID解約を混同せず、基本料金コースへの変更を同時に申し込みます。別コースの適用月や家族ID、メール送信設定は契約状況で変わるため確認が必要です。他社回線で@niftyメールを使う場合、Outbound Port25 Blockingで送信できない可能性があり、メールソフト設定変更が必要と公式に記載されています。", "checks": "残したいメールアドレス、@nifty IDを解約しないこと、解除翌月のコース選択が「@nifty基本料金」になっていること、家族ID、他社回線利用時の送信設定を確認。275円（税込）/月は基本料金コースの公開額。", "talk": "メールを残す場合は、@nifty IDを解約せず、回線解除と同時に@nifty基本料金へ変更してください。メールだけ残す契約の手続きと、他社回線での送信設定を@niftyで確認しましょう。", "warnings": "@nifty ID解約はメール消失につながります。@nifty光の別プランへの変更と、回線解除後の基本料金コースは別手続き・別契約。適用月や家族IDは会社確認。", "keys": "@nifty光 メールアドレス維持と別コース @nifty光 @niftyメール @nifty ID 基本料金 275円（税込） コース変更 送信設定", "urls": ["https://faq.support.nifty.com/4235", "https://support.nifty.com/support/member/tetsuduki/kaiyaku/index.htm", "https://support.nifty.com/support/madoguchi/index.htm"], "source": "@nifty公式メールFAQ・解約案内本文", "date": "2026-10-08", "certainty": "confirmed", "topic": "メールアドレス維持と別コース", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-nifty-6", "procedure": "事業者変更", "company": "@nifty光", "type": "", "targets": [], "question": "@nifty光の電話、テレビ、録画、CS、有料オプションはドコモ光へどう引き継がれますか？", "answer": "@nifty光の事業者変更では、@nifty公式は光電話番号をそのまま引き継げる場合を案内していますが、@nifty光電話利用中はタイプ変更が必要な場合があるため、切替先の指示があれば@nifty光承諾番号発行窓口へ連絡します。@nifty光テレビは解除完了まで10日ほどかかる場合があり、月額は解除月まで満額、スカパーJSAT施設利用サービスはテレビ解除で廃止されます。放送事業者と別契約のスカパー等は、お客様自身で別途解約が必要です。録画機器、CSチャンネル、有料オプションがドコモ光へ自動移行するという@nifty公式本文は確認できません。旧回線・電話・テレビを先に手動解約すると番号や視聴に影響する恐れがあるため、先に切替先と@niftyへ引継ぎ・残留・個別解約を確認します。", "checks": "@nifty光電話の番号・タイプ、@nifty光テレビ、スカパー等の放送事業者との別契約、録画機器・CS・有料オプションの契約名を一覧化。解除完了時期、月跨ぎ、番号継続可否を@niftyとドコモ光へ確認。", "talk": "電話やテレビは回線と同じ扱いとは限りません。先に旧回線を解約せず、番号・テレビ・録画・CS・有料サービスごとに、何が引き継がれ何を別途解約するか確認してから切替日を決めましょう。", "warnings": "@nifty光テレビの違約金は公式FAQ上なしだが、月額は解除月まで発生。外部放送事業者契約は別解約。録画・CS・有料オプションの移行可否とTV単独残留の実額は公開資料で確定できず、TV単独見積が必要。", "keys": "@nifty光 電話・テレビ・録画・CS・有料オプション @nifty光 光電話 光テレビ 録画 CS スカパー 有料オプション 先行解約", "urls": ["https://faq.support.nifty.com/3867", "https://faq.support.nifty.com/3858", "https://support.nifty.com/support/service/niftyhikari/index.htm"], "source": "@nifty光公式FAQ・サービス案内本文", "date": "2026-10-08", "certainty": "partial", "topic": "電話・テレビ・録画・CS・有料オプション", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-nifty-7", "procedure": "事業者変更", "company": "@nifty光", "type": "", "targets": [], "question": "@nifty光の公式問い合わせ先、電話番号、営業時間は？", "answer": "@nifty光の事業者変更承諾番号発行窓口は、公式サービス案内本文で電話番号03-6625-3265、受付時間10:00～18:00（年末年始を除く毎日）と確認できます。番号取得はWeb申請も可能です。@nifty光への申込・相談は@niftyお申し込み受付デスク0120-50-2210、毎日9:00～21:00（携帯電話からも着信可）です。@nifty光電話・光テレビの解除や契約確認は、公式の@niftyカスタマーサービス窓口から案内を受けます。会員向け電話ページは本文抽出時に電話番号部分が表示されなかったため、個別の会員サポート番号は公式窓口ページから確認し、番号を推測して案内しません。事業者移管等の通知書が届いている契約は、通知書に記載された現在の契約窓口を優先して確認します。", "checks": "承諾番号発行か、契約・請求・電話テレビ解除か、@nifty光新規申込相談かを切り分ける。03-6625-3265（10:00～18:00、年末年始除く毎日）と0120-50-2210（毎日9:00～21:00）を用途に応じて使い分ける。", "talk": "まず用件を切り分け、承諾番号は発行窓口、申込相談は受付デスクへご連絡ください。契約の移管や通知書がある場合は、通知書の窓口を優先し、公式ページの最新案内で確認しましょう。", "warnings": "会員向けカスタマーサービスの電話番号は取得本文で表示されず未確認。電話番号・営業時間は変更の可能性があるため公式ページで再確認。事業者移管時は通知書の窓口を確認。", "keys": "@nifty光 問い合わせ窓口 @nifty光 問い合わせ 03-6625-3265 0120-50-2210 10:00～18:00 9:00～21:00 公式窓口", "urls": ["https://support.nifty.com/support/service/niftyhikari/index.htm", "https://setsuzoku.nifty.com/niftyhikari/sign_up/index_j/", "https://support.nifty.com/support/madoguchi/index.htm", "https://support.nifty.com/support/madoguchi/tel/customer.htm"], "source": "@nifty公式サービス案内・申込案内・問い合わせ案内本文", "date": "2026-10-08", "certainty": "partial", "topic": "問い合わせ窓口", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-nifty-8", "procedure": "事業者変更", "company": "@nifty光", "type": "", "targets": [], "question": "@nifty光はいつ終了し、どの別契約を手動解約する必要がありますか？", "answer": "@nifty光の公式案内では、事業者変更は承諾番号を取得しただけでは完了せず、変更先事業者で回線サービスが開通した時点で@nifty光が解除となります。承諾番号の有効期限内に変更先で手続きを開始しなければ自動キャンセルです。@nifty v6サービスは@nifty光解除日の数日後に解除されます。したがって、切替前に通常の@nifty光解約を別途先行して行うのではなく、ドコモ光側の事業者変更手続きと開通・切替日を確認します。一方、@nifty IDを残してメールを使うなら基本料金コースへの変更、@nifty光テレビ、電話付加サービス、セキュリティ、Wi-Fiルーターレンタル、放送事業者との別契約などは自動で全て解約・移行されるとは限らないため手動確認が必要です。事業移管等の通知書を受け取った場合は、現在契約している会社名・窓口を通知書で確認してから連絡します。", "checks": "ドコモ光側の申込開始日・開通予定日、承諾番号期限、@nifty光電話/テレビ、v6、Wi-Fiルーター、セキュリティ、メール、外部放送契約を確認。通常解約を先にしない。切替完了後の請求と各オプションの終了日を確認。", "talk": "承諾番号を取っただけでは旧回線は終わりません。ドコモ光の開通・切替完了で@nifty光が解除される流れを確認し、メールや個別オプションは残すか手動解約するかを一つずつ整理しましょう。", "warnings": "旧回線の先行解約は避ける。v6は解除日とずれる。@nifty ID解約、TV、外部放送、レンタル機器、セキュリティ等は別契約の可能性。事業移管通知がある場合は通知書の窓口を確認。", "keys": "@nifty光 旧契約の終了時点と手動解約 @nifty光 解除時点 開通 @nifty v6 手動解約 別契約 事業移管 通知書", "urls": ["https://support.nifty.com/support/service/niftyhikari/index.htm", "https://support.nifty.com/support/member/tetsuduki/kaiyaku/index.htm", "https://faq.support.nifty.com/3858"], "source": "@nifty光公式サービス案内・解約案内本文", "date": "2026-10-08", "certainty": "partial", "topic": "旧契約の終了時点と手動解約", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-ocn-1", "procedure": "事業者変更", "company": "OCN光", "type": "", "targets": [], "question": "OCN光の事業者変更承諾番号はどこで取得しますか。本人確認とWeb・電話の手順は？", "answer": "承諾番号は契約者本人がOCNから取得します。WebはOCNマイページ→契約中のサービス→その他変更のお手続き→契約中の「OCN 光」に関する変更→「事業者変更承諾番号・光回線再利用承諾番号の取得」→案内確認→番号選択→dアカウントまたはOCN IDでログイン→同意して申込→完了画面で番号確認・通知先メールを選択、の順です。電話窓口はOCNカスタマーズフロントですが、確認した公式本文には電話取得の本人確認項目・具体手順がないため会社に確認が必要です。ツールが自動取得するものではなく、契約者本人が取得してください。", "checks": "契約名義、OCNマイページのログイン可否、移転先が必要とする番号種別を確認。西日本エリアはCAFから始まるお客さまIDも必要。未払いや契約変更・引越し手続き中は先に解消・完了させる。", "talk": "OCN光の承諾番号は、お客さまご本人がOCNマイページで取得します。取得後は有効期限が短いため、ドコモ光のお申込み時期に合わせて手続きしましょう。電話での確認事項はOCNへご案内します。", "warnings": "本人確認書類や電話取得の詳細は公式本文で確認できないため推測しない。現在契約の通知書に記載された契約窓口がOCNの現行窓口と異なる場合があるため、事業移管後の契約通知書も確認する。", "keys": "OCN光 承諾番号の取得先・本人確認・Web/電話手順 OCN光 事業者変更承諾番号 OCNマイページ 契約者本人 CAF 本人確認 電話取得", "urls": ["https://support.ocn.ne.jp/personal/purpose/detail/pid29000028zw/", "https://service.ocn.ne.jp/hikari/change/move_out/", "https://mypage.ocn.ne.jp/"], "source": "OCN公式「事業者変更承諾番号・光回線再利用承諾番号を取得したい」「OCNにおける事業者変更について」本文", "date": "2026-10-08", "certainty": "partial", "topic": "承諾番号の取得先・本人確認・Web/電話手順", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-ocn-2", "procedure": "事業者変更", "company": "OCN光", "type": "", "targets": [], "question": "OCN光の承諾番号はいつまで有効で、ドコモ光申込はいつ行えばよいですか。速度やサービス別の制限は？", "answer": "OCN公式では承諾番号の有効期限は発行日を含め15日間です。期限を過ぎると無効になり、再発行すると旧番号も無効です。したがって、番号取得はドコモ光への事業者変更申込を行える時期に合わせ、期限内に申込完了できるようにしてください。事業者変更は原則新たな工事なしですが、通信速度の変更やオプションを同時申込する場合は別途工事・工事料が発生する場合があります。10ギガ等の提供可否・切替制限は申込先と住所・契約内容で確認が必要です。", "checks": "発行日、番号の期限、ドコモ光の申込希望日、東西エリア、現在の速度プラン、同時に変更する電話・テレビ等を確認。期限切れなら旧番号を使わず再発行する。", "talk": "承諾番号は発行日を含め15日間です。早すぎる取得は期限切れの原因になるため、申込準備が整ってから取得し、期限内にドコモ光の事業者変更申込を完了しましょう。速度変更などは別工事になる場合があります。", "warnings": "OCN公式本文は速度・サービスごとの転出可否一覧を示していないため、可否を推測しない。10ギガ化、電話・テレビ等の同時変更の工事・提供条件は申込先とOCN/NTTへ確認が必要。", "keys": "OCN光 有効期限・申込時期・速度/サービス別制限 OCN光 15日間 有効期限 申込タイミング 速度変更 別途工事 10ギガ", "urls": ["https://service.ocn.ne.jp/hikari/change/move_out/", "https://service.ocn.ne.jp/hikari/change/"], "source": "OCN公式「OCNにおける事業者変更について」「OCN インターネット×ドコモ光への事業者変更」本文", "date": "2026-10-08", "certainty": "partial", "topic": "有効期限・申込時期・速度/サービス別制限", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-ocn-3", "procedure": "事業者変更", "company": "OCN光", "type": "", "targets": [], "question": "OCN光から事業者変更すると解約金、工事費残債、最終請求はいくらですか。契約ルール別に？", "answer": "新2年自動更新型割引は更新月以外の事業者変更で3,600円（不課税）。OCN公式FAQのOCN光の契約別表示は、2年自動更新型11,000円（不課税）、新2年自動更新型3,600円（不課税）、3年自動更新型20,000円（不課税）で、更新月以外が対象です。2025年7月1日から期間拘束型割引・違約金の見直しがあるため、2022年以前等の個別契約はマイページの契約中サービス・更新月で確認します。工事費分割中は残額一括。月額は変更月分を支払い、通常料金は利用月の翌月、通話料・一部オプション・違約金は翌々月請求の場合があります。", "checks": "契約サービス名、割引名、更新月、工事費分割の残額、支払方法、ひかり電話・オプション利用月を確認。金額は必ず契約情報と請求内訳で確定し、税込/不課税の表示を混同しない。", "talk": "解約金は契約中の割引と更新月で変わります。工事費の分割残額があれば一括請求です。OCN光の月額は切替月分がかかり、通話料などは後から請求されることがあるため、最終請求まで確認しましょう。", "warnings": "ここに示した金額はOCN公式FAQの契約区分別の不課税額であり、全契約者に一律ではない。旧契約・2025年7月以降の見直し対象・個別キャンペーンは会社確認。", "keys": "OCN光 解約金・工事費残債・最終請求 OCN光 解約金 更新月 工事費残債 最終請求 2年自動更新 不課税", "urls": ["https://support.ocn.ne.jp/personal/faq/detail/pid2300001z0d/", "https://service.ocn.ne.jp/hikari/change/move_out/", "https://support.ocn.ne.jp/personal/faq/detail/pid23000009sp/"], "source": "OCN公式「OCNを解約した場合、違約金（解約金）は発生しますか？」「解約した後に請求がきましたが、なぜですか？」「OCNにおける事業者変更について」本文", "date": "2026-10-08", "certainty": "partial", "topic": "解約金・工事費残債・最終請求", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-ocn-4", "procedure": "事業者変更", "company": "OCN光", "type": "", "targets": [], "question": "OCN光：事業者変更後、NTTのONU/HGWとOCN・会社のレンタルルーターは返却しますか。返送先は？", "answer": "OCN公式は、事業者変更を新たな工事なしで行えることを案内していますが、OCN光で利用中のNTT ONU/HGWを継続利用する個別条件や、OCN光のレンタルルーター等の返却要否・返送先を、今回確認した本文では示していません。したがって、NTT提供機器は機器名・契約先を確認し、会社のレンタル機器は契約書・返却案内に従ってOCNへ確認してください。OCNインターネット×ドコモ光の新しいWi-Fiルーターレンタル案内は別サービスで、OCN光の旧機器返送先の根拠にはしません。", "checks": "ONU/HGWの型番・NTTロゴ、ルーターの所有者・レンタル契約名、電源や付属品、現在契約の通知書・返却案内を確認。返送先が公式に確認できるまで送らない。", "talk": "機器は一律に返却とは限りません。NTTのONU/HGWと、OCNや別会社のレンタルルーターは契約が別の場合があるため、型番と所有者を確認してから返却要否・送り先をご案内します。", "warnings": "未検証の返送先は作成しない。公式本文で旧OCN光機器の個別返却条件が読めないため会社に確認が必要。新しいOCNインターネット用ルーターの案内と旧OCN光契約を混同しない。", "keys": "OCN光 返却機器・ONU/HGWとレンタルルーターの区別 OCN光 ONU HGW 機器返却 レンタルルーター 返送先 所有者", "urls": ["https://service.ocn.ne.jp/hikari/change/move_out/", "https://service.ocn.ne.jp/hikari/ocn-internet/router/", "https://support.ocn.ne.jp/personal/inquiry/detail/pid2200001uwl"], "source": "OCN公式「OCNにおける事業者変更について」「Wi-Fiルーターレンタルサービス」本文。旧OCN光機器返却の記載は確認できず", "date": "2026-10-08", "certainty": "needs_contact", "topic": "返却機器・ONU/HGWとレンタルルーターの区別", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-ocn-5", "procedure": "事業者変更", "company": "OCN光", "type": "", "targets": [], "question": "OCN光：ドコモ光へ切替後もOCNメールアドレスを維持できますか。別コースの条件と料金は？", "answer": "OCN公式の承諾番号取得手順では、他社光回線サービスへの変更後もOCNメールを使い続けたい場合はOCNバリュープランを利用すると案内しています。取得画面ではOCNバリュープランの案内を確認してから番号取得へ進みます。OCN光の解約と同時にメールが自動で残るとは書かれていないため、切替前に別途バリュープランの申込要否・適用条件・料金を確認してください。確認した公式本文だけでは今回の契約に適用される実額を確定できません。", "checks": "残したいメールアドレス、現在のOCN契約・メールオプション、バリュープランの申込状況、切替日を確認。メールデータや各端末の設定変更要否もOCNへ確認する。", "talk": "OCNメールを残したい場合、OCN公式はOCNバリュープランを案内しています。OCN光の解約だけで自動継続するとは限らないため、切替前にお客さまの契約での申込条件と料金を確認しましょう。", "warnings": "バリュープランの今回の料金・適用条件を確認した本文だけでは確定できないため、会社に確認が必要。OCN光、OCN光「フレッツ」、OCNインターネット×ドコモ光を同一プランとみなさない。", "keys": "OCN光 OCNメールの維持・別コース申込 OCN光 OCNメール OCNバリュープラン メール継続 別コース 料金確認", "urls": ["https://support.ocn.ne.jp/personal/purpose/detail/pid29000028zw/", "https://service.ocn.ne.jp/option/mail/valueplan/", "https://support.ocn.ne.jp/personal/inquiry/detail/pid2200001uwl"], "source": "OCN公式「事業者変更承諾番号・光回線再利用承諾番号を取得したい」本文およびOCNバリュープラン案内リンク", "date": "2026-10-08", "certainty": "partial", "topic": "OCNメールの維持・別コース申込", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-ocn-6", "procedure": "事業者変更", "company": "OCN光", "type": "", "targets": [], "question": "OCN光のひかり電話、テレビ・録画・CS、有料オプションは切替後どうなりますか。先に解約してよいですか？", "answer": "OCN公式では、事業者変更でひかり電話番号は継続利用できる場合がありますが、OCN光を解約するとオプションサービスはすべて解約になります。変更先の提供条件によって、ひかり電話・フレッツ・テレビ・リモートサポートがNTT東日本/西日本との直接契約へ変わる場合があり、直接契約への変更手数料1,980円（税込）や別途手続費用が案内されています。変更先が提供しない場合もNTT直接提供へ変わることがあります。テレビの録画・CS・有料オプションの継続可否はサービスごとの提供条件確認が必要です。旧回線や電話を先に手動解約しないでください。", "checks": "ひかり電話番号、フレッツ・テレビ、録画機器、CS、有料オプション名、NTT直接契約の有無、変更先の提供条件を確認。NTTとの直接契約がある場合は開示許諾等を切替申込までに行う。", "talk": "電話番号は事業者変更で引き継げる場合がありますが、テレビや各オプションは提供条件で扱いが変わります。先にOCN光を解約せず、変更先とOCN・NTTの確認が済んでから切替を進めましょう。", "warnings": "ネットからTVだけ残す場合のOCN光の条件と実額は、確認した公式本文だけでは確定できず、TV単独の見積が必要。独自提供の電話サービスは番号継続不可の場合がある。", "keys": "OCN光 電話・テレビ・録画・CS・有料オプション OCN光 ひかり電話 フレッツテレビ 録画 CS 有料オプション NTT直接契約 先行解約", "urls": ["https://service.ocn.ne.jp/hikari/change/move_out/", "https://service.ocn.ne.jp/hikari/change/", "https://support.ocn.ne.jp/personal/inquiry/detail/pid2200001uwl"], "source": "OCN公式「OCNにおける事業者変更について」「OCN インターネット×ドコモ光への事業者変更」本文", "date": "2026-10-08", "certainty": "partial", "topic": "電話・テレビ・録画・CS・有料オプション", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-ocn-7", "procedure": "事業者変更", "company": "OCN光", "type": "", "targets": [], "question": "OCN光の公式問い合わせWeb、電話番号、営業時間は？", "answer": "公式WebはOCNお客さまサポートのカスタマーズフロント案内です。電話は0120-506506、営業時間は10:00～19:00（日曜・祝日・年末年始を除く）です。承諾番号発行ページからも電話問い合わせ先へ進めます。WebのOCNマイページは承諾番号取得手続きを24時間利用できる案内ですが、メンテナンス等は別途確認してください。契約者本人の現在の通知書に別窓口が記載されている場合は、事業移管後の契約窓口を優先して確認します。", "checks": "電話番号の読み間違いを防ぎ、契約名義・OCNお客さま番号・請求情報・機器型番・承諾番号発行日を準備。本人確認や個別契約金額は窓口で確認する。", "talk": "OCNの確認窓口は0120-506506、10時から19時（日曜・祝日・年末年始を除く）です。契約通知書に別の案内がある場合は、現在の契約窓口も併せて確認してからお問い合わせください。", "warnings": "営業時間・窓口は変更される可能性があるため、来店時は公式本文を再確認。電話取得の本人確認項目は公式本文で未確認なので推測しない。", "keys": "OCN光 問い合わせ窓口 OCN光 問い合わせ 0120-506506 営業時間 OCNサポート マイページ", "urls": ["https://support.ocn.ne.jp/personal/inquiry/detail/pid2200001uwl", "https://service.ocn.ne.jp/hikari/change/move_out/", "https://mypage.ocn.ne.jp/"], "source": "OCN公式「カスタマーズフロントのお問い合わせ電話番号」および事業者変更案内本文", "date": "2026-10-08", "certainty": "confirmed", "topic": "問い合わせ窓口", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-ocn-8", "procedure": "事業者変更", "company": "OCN光", "type": "", "targets": [], "question": "OCN光はいつ終了しますか。別契約の手動解約は必要ですか？", "answer": "OCN光からの事業者変更では、変更先事業者で事業者変更手続きが完了した日がOCN光の解約日です。月途中でも当月分のOCN光月額費用を支払います。OCN公式FAQは、事業者変更を使う場合は他社インターネットが開通するまで利用可能、通常の解約は解約月末まで利用可能と案内しています。OCN光の解約に伴いオプションはすべて解約されますが、NTT東西との直接契約、別のOCNメール契約、電話・テレビ等の別契約は自動終了・継続を断定できません。別契約の手動解約や継続手続きは契約先へ確認し、旧回線を先に解約しないでください。", "checks": "変更先の手続き完了日・開通予定、OCN光の契約名義、NTT直接契約、OCNメール、電話・テレビ、別プロバイダー契約を洗い出す。各契約に解約・継続手続きが必要か確認する。", "talk": "OCN光は、変更先で事業者変更が完了した日に終了します。先にOCN光を解約すると通信や電話が止まるおそれがあるため、変更先・OCN・NTTの手続き順を確認し、別契約は契約先ごとに整理しましょう。", "warnings": "NTT直接契約や別会社・別コースの自動処理は、確認したOCN本文だけでは確定できないため会社確認。事業者変更と独自回線の新規開通・廃止手続きを混同しない。", "keys": "OCN光 旧契約の終了時点・手動解約が必要な別契約 OCN光 解約日 事業者変更完了日 開通 手動解約 別契約 先行解約", "urls": ["https://service.ocn.ne.jp/hikari/change/move_out/", "https://support.ocn.ne.jp/personal/faq/detail/pid23000024r6/", "https://support.ocn.ne.jp/personal/inquiry/detail/pid2200001uwl"], "source": "OCN公式「OCNにおける事業者変更について」「解約した場合、いつまで利用できますか？」本文", "date": "2026-10-08", "certainty": "partial", "topic": "旧契約の終了時点・手動解約が必要な別契約", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-en-1", "procedure": "事業者変更", "company": "enひかり", "type": "", "targets": [], "question": "enひかり：ｅｎひかりからドコモ光へ替える事業者変更承諾番号は、どこで本人確認して取得しますか？", "answer": "承諾番号は契約者本人が取得します。ｅｎひかり公式は、事業者変更承諾番号は現在契約中の各事業者へ連絡するよう案内しています。ｅｎひかりの公式ページには、事業者変更のWeb発行フォーム、本人確認書類の固定手順、発行専用電話番号は掲載されていません。したがってｅｎひかりカスタマーセンターへ契約者本人が連絡し、契約名義・住所・電話番号等の確認方法とWeb/電話の取得可否を確認してください。このツールが自動取得するものではありません。", "checks": "契約者本人であること、契約名義・利用場所・登録電話番号、現在プラン（ｅｎひかり／Lite／クロス）、電話・テレビ等の付加サービス、現在契約の通知書に記載の窓口を確認。事業移管がある契約は通知書の窓口を優先します。", "talk": "承諾番号はご契約者様ご本人に取得いただく必要があります。ｅｎひかりの公式案内では現在の契約事業者へ連絡する方式ですので、まず公式窓口で本人確認と取得方法をご確認ください。", "warnings": "会社名やブランド内プランを取り違えず、ｅｎひかり公式窓口で確認してください。取得を代行・自動取得できるとは案内しません。", "keys": "enひかり 事業者変更承諾番号の取得先・本人確認・手順 ｅｎひかり 事業者変更 承諾番号 契約者本人 本人確認 Web 電話 OCN事業移管", "urls": ["https://enhikari.jp/", "https://enhikari.jp/document/jyuuyoujikou.pdf"], "source": "ｅｎひかり公式トップページ・重要事項説明書の本文確認", "date": "2026-10-08", "certainty": "partial", "topic": "事業者変更承諾番号の取得先・本人確認・手順", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-en-2", "procedure": "事業者変更", "company": "enひかり", "type": "", "targets": [], "question": "enひかり：承諾番号の有効期限と、2026年10月8日への申込タイミング、速度・サービス別の転出制限は？", "answer": "ｅｎひかり公式は、転用・事業者変更承諾番号の有効期限を発行日を含む15日間と案内し、期限切れは再発行としています。ドコモ光への申込は、番号取得後すぐ、15日を過ぎない日程で行ってください。ｅｎひかり公式は利用状況によって番号が発行されない場合があると記載していますが、ｅｎひかり、ｅｎひかりLite、ｅｎひかりクロス、電話・テレビ等の組合せ別の転出可否や速度品目別制限を網羅した表は確認できません。個別契約を会社に確認してください。", "checks": "番号の発行日・失効日、ｅｎひかりのプラン名、回線品目、IPv6方式、固定IP、電話、テレビ、工事・移転手続きの有無を確認。ドコモ光の受付期限はドコモ光側にも確認します。", "talk": "承諾番号は発行日を含め15日間です。期限が短いため、ｅｎひかりへ確認して番号を取得したら、失効前にドコモ光の申込みへ進んでください。プラン別の可否は個別確認が必要です。", "warnings": "有効期限は公式記載のルールです。速度が変わらないことはｅｎひかりへの転入説明であり、ドコモ光移行後の速度保証ではありません。先にｅｎひかりを解約すると事業者変更できません。", "keys": "enひかり 有効期限・申込タイミング・転出制限 ｅｎひかり 15日間 有効期限 申込タイミング Lite クロス 速度 転出制限", "urls": ["https://enhikari.jp/", "https://enhikari.jp/lite.html", "https://enhikari.jp/document/jyuuyoujikou.pdf"], "source": "ｅｎひかり公式トップページ・Liteページ・重要事項説明書の本文確認", "date": "2026-10-08", "certainty": "partial", "topic": "有効期限・申込タイミング・転出制限", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-en-3", "procedure": "事業者変更", "company": "enひかり", "type": "", "targets": [], "question": "enひかり：ｅｎひかりの解約金、工事費残債、最終請求は契約ルール別にどうなりますか？", "answer": "ｅｎひかり標準プランは最低利用期間・解約手数料なしと公式トップにあります。ただし、工事費の残額がある場合は解約時に一括支払いです。転用前のフレッツ光工事費残債も、未払い分をｅｎひかり転用時に一括請求する案内があります。公式約款には、NTT西日本の旧『初期工事割引』について、開通月から15か月以内22,000円（税込）、16～24か月以内11,000円（税込）の違約金条件があり、該当契約だけ確認が必要です。解約月の月額・定額オプションは日割りせず満額、利用月の翌々月以降に請求されます。", "checks": "標準プランか、旧契約・キャンペーン・NTT西日本初期工事割引か、工事費分割の残額、電話・テレビ・ルーター等のオプション、請求群と支払方法を契約内容・請求書で確認。金額例は旧NTT西日本条件の税込額です。", "talk": "標準プランは解約手数料なしですが、工事費の残りや一部の旧契約条件は別です。最終月は日割りにならず、後日の請求もあるため、契約書と請求明細を一緒に確認しましょう。", "warnings": "旧契約や地域別条件を一律に適用しないでください。解約手数料なしでも残債・オプション料金は発生し得ます。", "keys": "enひかり 解約金・工事費残債・最終請求 ｅｎひかり 解約金 工事費残債 旧契約 2022年以前 NTT西日本 最終請求 日割りなし", "urls": ["https://enhikari.jp/", "https://enhikari.jp/document/jyuuyoujikou.pdf", "https://enhikari.jp/document/yakkan.pdf"], "source": "ｅｎひかり公式トップページ・重要事項説明書・契約約款の本文確認", "date": "2026-10-08", "certainty": "confirmed", "topic": "解約金・工事費残債・最終請求", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-en-4", "procedure": "事業者変更", "company": "enひかり", "type": "", "targets": [], "question": "enひかり：事業者変更時のNTT ONU/HGWと、ｅｎひかりのレンタル機器は返却しますか？返送先は？", "answer": "ｅｎひかり公式は、事業者変更時は現在の回線契約を解約せず手続きを行うよう案内しています。NTT東西のONU等を事業者変更先で継続利用するか、HGWの扱いは移行先・NTTの案内に従うため、先に抜いたり返送したりしないでください。一方、ｅｎひかり提供の接続機器は契約終了後、別途届く返却キット（着払い）で指定住所へ返送する案内です。返却キット到着から1か月以内に返却しない場合等は機器相当額請求の可能性があります。個別の返送先はキット・公式窓口で確認し、推測しません。", "checks": "機器本体のラベルでNTT東西貸与かｅｎひかり貸与か、ONU/VDSL/HGW/無線LANルーターの別、電話契約の有無、返却キット到着日と案内記載の返送先を確認。", "talk": "機器は種類によって扱いが違います。NTTのONUやHGWは先に返さず移行先の案内を待ち、ｅｎひかりの貸与品は届いた返却キットの指定方法で返送してください。", "warnings": "公式本文で個別返送先住所は確認できません。返送先を作らず、返却キットまたはｅｎひかりカスタマーサポートへ確認してください。", "keys": "enひかり 返却機器・ONU/HGW・レンタルルーター ｅｎひかり 機器返却 ONU HGW NTT レンタルルーター 返却キット 返送先", "urls": ["https://enhikari.jp/", "https://enhikari.jp/document/jyuuyoujikou.pdf", "https://enhikari.jp/document/kashidasisetubiyakkan.pdf"], "source": "ｅｎひかり公式トップページ・重要事項説明書・端末設備貸出約款の本文確認", "date": "2026-10-08", "certainty": "partial", "topic": "返却機器・ONU/HGW・レンタルルーター", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-en-5", "procedure": "事業者変更", "company": "enひかり", "type": "", "targets": [], "question": "enひかり：ｅｎひかりのメールアドレスは維持できますか。別コースへの申込みで残せますか？", "answer": "ｅｎひかり公式約款の別紙2は『現在メールサービスは提供しておりません』と記載しています。過去にｅｎひかりメールを使っていた場合の、ドコモ光移行後の維持、別コース申込による継続、メールのみ残す条件は、現在公開資料から確認できません。ｅｎひかりの標準プランとｅｎひかりLiteは別サービスで、Liteの公式ページは通常プランとの相互プラン変更に変更事務手数料2,200円（税込）と案内しますが、メール維持を意味しません。契約者本人が会社に確認してください。", "checks": "利用中のメールアドレス、発行元表示、現行プラン、メール料金の請求有無、移行後も必要なメール・転送・保存データを確認。別コースは標準／Lite／クロスを混同せず、可否を窓口確認します。", "talk": "公式約款では現在メールサービス非提供の記載です。以前のアドレスを使っている場合、継続や別コースでの維持を断定できませんので、解約前にｅｎひかりへ確認し、必要なデータを保存してください。", "warnings": "公開資料でメール維持条件を確認できないため、推測で『残せる』『残せない』とは答えません。ｅｎひかりを先に解約しないでください。", "keys": "enひかり メールアドレス・別コース ｅｎひかり メールアドレス メール維持 別コース Lite クロス 標準プラン 確認必要", "urls": ["https://enhikari.jp/document/yakkan.pdf", "https://enhikari.jp/lite.html", "https://enhikari.jp/"], "source": "ｅｎひかり公式契約約款・Liteページ・トップページの本文確認", "date": "2026-10-08", "certainty": "needs_contact", "topic": "メールアドレス・別コース", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-en-6", "procedure": "事業者変更", "company": "enひかり", "type": "", "targets": [], "question": "enひかり：ｅｎひかり電話、テレビ、録画、CS、有料オプションはドコモ光変更時にどう扱いますか？", "answer": "ｅｎひかり公式は、転用・事業者変更時にNTT東西のひかり電話、フレッツ・テレビ、リモートサポート、フレッツ・v6オプションは自動転用され継続できる場合がある一方、オプション廃止は別途申出と案内しています。ｅｎひかり電話への転入側には、光コラボ電話からの番号継続・工事費なしの案内があります。これはドコモ光へ転出する場合の電話工事料が無料という意味ではなく、ドコモ光側の条件を別に確認します。テレビは地デジ・BS、CSは別途有料で、録画機器や有料チャンネルの移行可否は公式に網羅されていません。ｅｎひかり側を先に解約しないでください。", "checks": "電話番号の発番元、ｅｎひかり電話のプラン、テレビ契約・スカパー等の契約者、録画機器、CS有料チャンネル、NTT東西オプション、移行先で引継ぐかを各窓口に確認。", "talk": "電話やテレビは回線とは別に確認が必要です。電話番号や視聴契約を守るため、ｅｎひかりを先に解約せず、ドコモ光側とｅｎひかり側の両方で引継ぎ・廃止を確認しましょう。", "warnings": "電話番号継続は番号の発番元など条件があります。CS・録画・有料オプションはドコモ光移行後の可否を公式に確認できないため、確約しません。", "keys": "enひかり 電話・テレビ・録画・CS・有料オプション ｅｎひかり ひかり電話 テレビ 録画 CS スカパー 有料オプション 先行解約", "urls": ["https://enhikari.jp/denwa.html", "https://enhikari.jp/tv.html", "https://enhikari.jp/"], "source": "ｅｎひかり公式電話・テレビ・トップページの本文確認", "date": "2026-10-08", "certainty": "partial", "topic": "電話・テレビ・録画・CS・有料オプション", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-en-7", "procedure": "事業者変更", "company": "enひかり", "type": "", "targets": [], "question": "enひかり：ｅｎひかりの公式問い合わせWeb、電話番号、営業時間は？", "answer": "ｅｎひかり公式の契約後窓口は、ｅｎひかりカスタマーセンター／カスタマーサポートセンタ 03-5534-9997、10:00～18:30、平日・土日祝営業、年末年始（12月28日～1月7日）休業です。契約前はブロードバンド受付センター 0120-91-5586、10:00～18:30、同じ年末年始を除く土日祝営業です。Webは公式トップ https://enhikari.jp/ の各種案内・問い合わせ導線を使い、資格情報を入力する非公式サイトは使いません。料金支払方法はNTT東西の窓口が別です。", "checks": "契約前か契約後か、承諾番号・解約・機器返却・オプションのどの用件かを整理。電話番号と営業時間は公式本文で確認し、通話時は契約者本人の契約情報を用意します。", "talk": "承諾番号や解約、機器返却は、契約後窓口の03-5534-9997（10時～18時30分）へご相談ください。年末年始は休業ですので、公式サイトの案内も併せてご確認ください。", "warnings": "電話番号・営業時間は公式本文確認済みですが、受付方法や本人確認書類は用件ごとに異なる可能性があります。Webのログイン情報を店舗で預かりません。", "keys": "enひかり 問い合わせ窓口 ｅｎひかり 問い合わせ 03-5534-9997 0120-91-5586 営業時間 カスタマーセンター 公式Web", "urls": ["https://enhikari.jp/", "https://enhikari.jp/document/jyuuyoujikou.pdf"], "source": "ｅｎひかり公式トップページ・重要事項説明書の本文確認", "date": "2026-10-08", "certainty": "confirmed", "topic": "問い合わせ窓口", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-en-8", "procedure": "事業者変更", "company": "enひかり", "type": "", "targets": [], "question": "enひかり：ｅｎひかり契約はいつ終了し、どの別契約を手動解約する必要がありますか？", "answer": "ｅｎひかり公式は、月末解約希望なら解約希望月の20日までに03-5534-9997へ申し出、21日以降は翌月解約と案内しています。ただし事業者変更では、ｅｎひかりの回線契約を先に解約せず移行手続きを行う必要があります。ｅｎひかりは光回線とプロバイダのセットで、一方だけの解約はできません。付加サービスは本体解約で当然に全て解約とは限らず、約款上別途通知が必要なオプションがあります。ｅｎひかり以外の独立契約（スカパー等、有料サービス、事業移管前の旧プロバイダ等）は契約先へ手動解約を確認してください。", "checks": "ドコモ光の開通予定日、ｅｎひかりの解約希望月、電話・テレビ・CS・セキュリティ・Wi-Fi購入品、NTT東西の独立オプション、旧プロバイダの契約先を一覧化。OCN等の事業移管がある場合は通知書で現契約窓口を確認します。", "talk": "先にｅｎひかりを解約すると事業者変更できないため、まずドコモ光の手続きと開通日を確認します。ｅｎひかりの解約は必要な場合だけ20日までに申し出、別契約はそれぞれの会社へ確認しましょう。", "warnings": "『事業者変更日＝全オプションの終了日』とは限りません。先行解約、20日超の申出、独立したCS・有料サービスの見落としに注意。", "keys": "enひかり 旧契約の終了時点・手動解約が必要な契約 ｅｎひかり 終了時点 20日 月末解約 手動解約 事業者変更 OCN事業移管 旧プロバイダ", "urls": ["https://enhikari.jp/", "https://enhikari.jp/document/yakkan.pdf", "https://enhikari.jp/tv.html"], "source": "ｅｎひかり公式トップページ・契約約款・テレビページの本文確認", "date": "2026-10-08", "certainty": "partial", "topic": "旧契約の終了時点・手動解約が必要な契約", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-en-9", "procedure": "事業者変更", "company": "enひかり", "type": "", "targets": [], "question": "enひかり：ｅｎひかりのネットをドコモ光へ移した後、テレビだけ残せますか。料金はいくらですか？", "answer": "ｅｎひかり公式テレビページは、ｅｎひかりテレビの利用には『ｅｎひかり』契約、または『ｅｎひかり電話ネット無しプラン』契約が必要と記載し、テレビ月額は990円（税込）としています。しかし、ドコモ光へ事業者変更した後にｅｎひかりテレビだけを残す具体的な申込可否、今回の設備での工事、電話ネット無しプランを含む合計額は公式本文だけでは確定できません。公開資料では今回の料金を確定できず、TV単独の見積が必要です。テレビ契約を先に解約せず会社へ確認してください。", "checks": "ｅｎひかりテレビ契約の有無、ｅｎひかり電話ネット無しプランの可否、テレビ提供エリア、光配線方式、CS・スカパー契約、視聴設備と工事要否をｅｎひかりへ確認。", "talk": "ｅｎひかりテレビは、公式上はｅｎひかりまたは電話ネット無しプランが必要です。ドコモ光へ移った後にテレビだけ残せるかと合計額は確定できないため、解約前にｅｎひかりで見積もりをご確認ください。", "warnings": "990円（税込）はｅｎひかりテレビの表示月額ですが、必要な回線・電話の月額、設備・工事費、有料CS等を含む今回の総額ではありません。テレビだけ残す可否と合計額を解約前に確認します。", "keys": "enひかり ｅｎひかりテレビだけ残す場合 ｅｎひかり テレビ TV単独 電話ネット無しプラン 990円 CS 工事 見積", "urls": ["https://enhikari.jp/tv.html", "https://enhikari.jp/"], "source": "ｅｎひかり公式テレビページ・トップページの本文確認", "date": "2026-10-08", "certainty": "needs_contact", "topic": "ｅｎひかりテレビだけ残す場合", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-iij-1", "procedure": "事業者変更", "company": "IIJmioひかり", "type": "", "targets": [], "question": "IIJmioひかりの事業者変更承諾番号はどこで取得し、本人確認やWeb・電話の手順は？", "answer": "IIJmioひかりの契約者本人が、IIJmio会員専用ページの「IIJmioひかりをご契約の方」内「事業者変更承諾番号の発行」から申し込みます。公式の事業者変更案内でも、STEP1はお客様からIIJmioへの申込み、STEP2はIIJmioからお客様への番号取得です。発行には申込みから2～3日かかり、取得後にドコモ光へ事業者変更を申し込みます。本人確認書類の種類、電話での発行可否・手順は公式本文で確認できないため会社に確認が必要です。番号をこのツールが自動取得することはありません。 店頭では公式案内の範囲を超える断定をしません。", "checks": "契約者本人の会員ログイン、契約名義・設置先住所、現在のプランが1ギガかを確認。番号発行時の本人確認書類、電話受付の可否と時間はIIJサポートセンターへ確認する。 不明点は公式窓口で確認する。", "talk": "承諾番号は契約者さまご本人がIIJmioの会員専用ページで申請します。発行後にドコモ光へお申し込みください。こちらで番号を自動取得することはできません。 ご不明点は一緒に確認します。", "warnings": "本人確認書類の種類や電話発行の可否は未確認。10ギガは事業者変更に対応せず新規のみ。契約名義が通知書・請求書と異なる場合や事業移管の通知がある場合は、現在の契約先を通知書で確認してから窓口へ連絡する。", "keys": "IIJmioひかり 承諾番号取得 IIJmioひかり 事業者変更承諾番号 会員専用ページ 契約者本人 本人確認 発行手順 10ギガ", "urls": ["https://www.iijmio.jp/imh/cancel/collabo_change_notice.html", "https://www.iijmio.jp/resources/WebContent/common/service/before_apply.html", "https://www.iijmio.jp/contact.html"], "source": "IIJmioひかり公式事業者変更案内・重要説明事項・IIJサポート窓口", "date": "2026-10-08", "certainty": "partial", "topic": "承諾番号取得", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-iij-2", "procedure": "事業者変更", "company": "IIJmioひかり", "type": "", "targets": [], "question": "IIJmioひかり：承諾番号の有効期限、開通希望の申込タイミング、速度・サービス別の転出制限は？", "answer": "IIJmioひかり公式の重要説明事項では、IIJmioが発行する事業者変更承諾番号の有効期限は発行日から15日間です。期限を超えた場合は会員専用ページで再発行手続きが必要です。切替完了を希望する場合は、ドコモ光側の工事・切替日程もあるため、期限内に余裕をもって申込みます。10ギガプランは事業者変更（解約）に対応していません。1ギガが事業者変更の対象です。個別の最短申込日は公式に確定記載がないため会社に確認が必要です。 店頭では公式案内の範囲を超える断定をしません。", "checks": "現在プランが1ギガか、番号の発行日・有効期限、ドコモ光の切替希望日を確認。期限切れなら再発行。10ギガ、設備・オプションの個別制限はIIJとドコモ光双方へ確認する。 不明点は公式窓口で確認する。", "talk": "番号の有効期限は発行日から15日間です。期限内にドコモ光へお申し込みください。10ギガは事業者変更の対象外なので、現在のプランを先に確認しましょう。 ご不明点は一緒に確認します。", "warnings": "開通日を2026年10月8日にできる保証や、必要な申込日数は公式に固定されていない。期限ぎりぎりの申込みは避ける。10ギガを1ギガへ変更してから転出できるかは個別確認が必要。", "keys": "IIJmioひかり 有効期限・申込時期・速度制限 IIJmioひかり 有効期限15日 2026年10月8日 1ギガ 10ギガ 切替日 再発行", "urls": ["https://www.iijmio.jp/resources/WebContent/common/service/before_apply.html", "https://www.iijmio.jp/imh/cancel/collabo_change_notice.html", "https://help.iijmio.jp/answer/6128e4caae05cd001c0f7170/"], "source": "IIJmioひかり公式重要説明事項・事業者変更案内・FAQ", "date": "2026-10-08", "certainty": "confirmed", "topic": "有効期限・申込時期・速度制限", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-iij-3", "procedure": "事業者変更", "company": "IIJmioひかり", "type": "", "targets": [], "question": "IIJmioひかりの解約金、工事費残債、最終請求は契約ルール別にどうなる？", "answer": "IIJmioひかりの最低利用期間は利用開始から24か月で、期間内の事業者変更（解約）では最低利用期間内解除調定金3,000円（不課税）が解約月の請求に合わせて一括請求されます。分割中の工事費残債があれば、残債または法令上限額のいずれか低い額を一括請求します。法令上限は工事費総額（税込）×（24か月－利用開始月を0か月とした利用月数）÷24か月です。2022年以前など旧契約の解除料・工事費・特典は現行ページだけで個別確定できないため、契約書・請求明細を用いて会社に確認が必要です。 店頭では公式案内の範囲を超える断定をしません。", "checks": "利用開始日、1ギガ/10ギガ、工事費の分割残回数、工事費サポート等の特典、契約書・会員ページの請求明細を確認。金額例を出す場合は必ずプラン、契約条件、税込・不課税の別を明記する。 不明点は公式窓口で確認する。", "talk": "費用は利用開始からの期間と工事費の残りで変わります。24か月以内なら3,000円（不課税）の条件がありますが、旧契約や残債は個別確認が必要です。 ご不明点は一緒に確認します。", "warnings": "3,000円は現行の最低利用期間24か月内の条件で、全契約に一律ではない。工事費の実額・旧契約・キャンペーン適用は推測しない。最終請求の具体的な請求日・金額は会社確認。", "keys": "IIJmioひかり 費用・最終請求 IIJmioひかり 最低利用期間24か月 解除調定金3000円 工事費残債 最終請求 旧契約 税込・不課税", "urls": ["https://www.iijmio.jp/imh/cancel/", "https://www.iijmio.jp/imh/cost.jsp", "https://help.iijmio.jp/answer/61210487ae05cd001c0ef3d6/"], "source": "IIJmioひかり公式解約案内・料金仕様・解約FAQ", "date": "2026-10-08", "certainty": "partial", "topic": "費用・最終請求", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-iij-4", "procedure": "事業者変更", "company": "IIJmioひかり", "type": "", "targets": [], "question": "IIJmioひかり：NTTのONU・HGWを継続利用する場合と、IIJmioのレンタルルーター等を返却する場合は？返送先は？", "answer": "事業者変更は現在の光回線設備を引き続き利用する手続きなので、NTT設備として切替先で継続利用するONU・ホームゲートウェイ（HGW）がある場合、先に外して返送するとは案内しません。IIJmioひかりの提供機器（ONU、VDSL宅内装置、無線LAN対応ルーター、ひかり電話対応機器、10ギガ対応レンタルルーター等）は、解約・機器交換時に返却が必要です。公式では、訪問工事なら回収、訪問なしなら廃止日前後に送付される返却キットを使用するとしています。個別の返送先住所や、事業者変更時にどの機器を残すかは本文で確定できないため会社に確認が必要です。", "checks": "機器本体・カードの型番、IIJmio/NTT/利用者所有の区分、ひかり電話契約、訪問工事の有無を確認。返送先を推測せず、IIJmioから届く返却キット・案内とサポート指示を確認する。 不明点は公式窓口で確認する。", "talk": "ONUやHGWは切替先で継続利用する設備かを確認してから扱います。IIJmioのレンタル機器は返却対象ですが、返送先は案内された返却キットを使い、自己判断で送らないでください。", "warnings": "公式本文に個別の返送先住所はない。未返却・故障時は機器区分ごとの亡失負担金が発生する場合がある。IIJmioレンタル品とNTT設備を混同しない。", "keys": "IIJmioひかり 機器返却 IIJmioひかり ONU HGW ホームゲートウェイ レンタルルーター 返却キット 返送先", "urls": ["https://www.iijmio.jp/resources/WebContent/common/service/before_apply.html", "https://www.iijmio.jp/imh/cost.jsp", "https://www.iijmio.jp/imh/cancel/"], "source": "IIJmioひかり公式重要説明事項・料金仕様・解約案内", "date": "2026-10-08", "certainty": "partial", "topic": "機器返却", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-iij-5", "procedure": "事業者変更", "company": "IIJmioひかり", "type": "", "targets": [], "question": "IIJmioひかり：IIJmioのメールアドレスは維持できる？別コース申込で残せる？", "answer": "IIJmio公式FAQが確認できるのは、IIJmioからの連絡を受ける登録メールアドレスとしてGmailやYahoo!等のフリーアドレスを登録できることです。これはIIJmioひかり解約後もIIJmioのメールサービスが自動維持されることを意味しません。IIJmioひかりと別のIIJmioサービス（例：モバイル、セーフティメール等）の契約・メールアドレス維持、別コース申込の可否・料金はサービスごとの条件確認が必要です。IIJmioひかりからドコモ光へ切替えても、IIJmioの別契約を自動解約・自動継続とは扱いません。会社に確認が必要です。", "checks": "利用中メールのドメイン、メールサービス名、mioID内の別契約、請求明細、メール保存・転送の要否を確認。解約前に別アドレスを登録し、別サービスの継続条件と料金をIIJへ確認する。 不明点は公式窓口で確認する。", "talk": "登録連絡先はフリーアドレスも使えますが、ひかり解約後のメール維持は別サービスの契約条件次第です。現在のメール名と別契約を確認してからIIJへお問い合わせください。", "warnings": "IIJmioひかりの解約だけでメールが残る・消えるとは断定しない。別コースの申込可否、料金、保存期間は公式本文で今回確定できない。", "keys": "IIJmioひかり メール・別コース IIJmioひかり メールアドレス mioID 別コース セーフティメール 継続条件", "urls": ["https://help.iijmio.jp/answer/668f2ac5483b8f4678a3ae2f/", "https://www.iijmio.jp/contact.html", "https://www.iijmio.jp/mm/"], "source": "IIJmio公式メールアドレスFAQ・問い合わせ窓口・公式メールサービス案内", "date": "2026-10-08", "certainty": "needs_contact", "topic": "メール・別コース", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-iij-6", "procedure": "事業者変更", "company": "IIJmioひかり", "type": "", "targets": [], "question": "IIJmioひかり：電話、テレビ、録画、CS、有料オプションは切替後どうなる？", "answer": "IIJmioひかりから他社光コラボへ事業者変更すると、IIJmioひかり電話と付属オプションは同時に解約となります。電話番号をドコモ光側で継続できるかは、切替先の手続きと番号条件を確認してください。IIJmio公式では、提供していないオプションは切替時に解約となり、フレッツ・テレビ、リモートサポート、24時間出張修理オプションはNTTとの直接契約で利用可能な場合があると案内しています。TV・録画・CSや他の有料オプションの継続・引継ぎ、テレビだけ残す可否はIIJmio本文で今回の条件と実額を確定できず、TV単独の見積が必要です。旧回線を先に解約しないでください。", "checks": "ひかり電話番号、電話付属オプション、フレッツ・テレビ等の契約先、録画機器・CSサービスの請求元を確認。残したいものごとにIIJmio、NTT、ドコモ光へ継続可否と料金を確認する。 不明点は公式窓口で確認する。", "talk": "電話や付属オプションはIIJmioひかりの切替完了に伴って終了します。テレビ等は契約先ごとに扱いが違うため、先に解約せず、残したいサービスを確認してから手続きしましょう。", "warnings": "TV単独の残留可否・実額は公開資料では今回確定できず、TV単独の見積が必要。旧回線や電話を先行解約すると番号・サービスを失う可能性がある。NTT直接契約はNTTへ確認。", "keys": "IIJmioひかり 電話・テレビ・オプション IIJmioひかり ひかり電話 フレッツ・テレビ 録画 CS 有料オプション TV単独 先行解約", "urls": ["https://www.iijmio.jp/imh/hikaridenwa.jsp", "https://help.iijmio.jp/answer/6128df4b73cc70001c01a99c/", "https://www.iijmio.jp/resources/WebContent/common/service/before_apply.html"], "source": "IIJmioひかり電話公式・オプションFAQ・重要説明事項", "date": "2026-10-08", "certainty": "partial", "topic": "電話・テレビ・オプション", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-iij-7", "procedure": "事業者変更", "company": "IIJmioひかり", "type": "", "targets": [], "question": "IIJmioひかりの確認窓口（公式Web、電話番号、営業時間）は？", "answer": "公式Web窓口はIIJmioお問い合わせ窓口（https://www.iijmio.jp/contact.html）です。FAQはhttps://help.iijmio.jp/app/、チャットはオペレーター9:00～19:00、AIチャットボット24時間です。IIJmio公式の「特定商取引法等に基づく表示」で確認できる電話番号は0570-09-4400／03-5205-4400、オペレーター対応は9:00～19:00・年中無休です。契約内容や本人情報が必要な質問は会員ログイン状態で問い合わせます。事業者変更承諾番号の取得や個別費用は契約者本人から確認してください。", "checks": "mioIDで会員ログインできるか、契約者名・設置先住所・契約番号、確認したい機器・オプションを準備。電話番号や営業時間は変更の可能性があるため、当日も公式Webで再確認する。 不明点は公式窓口で確認する。", "talk": "まず公式FAQとお問い合わせ窓口をご利用ください。契約内容が関係する場合は、契約者さまが会員ログインして確認するとスムーズです。電話は9時から19時、年中無休です。", "warnings": "電話番号は公式公開情報を確認したものだが、利用時は公式窓口ページで再確認する。本人情報が必要な手続きを店舗やツールが代行するとは案内しない。", "keys": "IIJmioひかり 問い合わせ窓口 IIJmioひかり IIJサポートセンター 0570-09-4400 03-5205-4400 9時～19時 年中無休 公式Web", "urls": ["https://www.iijmio.jp/contact.html", "https://www.iijmio.jp/tokusho/", "https://help.iijmio.jp/app/"], "source": "IIJmio公式お問い合わせ窓口・特定商取引法等表示", "date": "2026-10-08", "certainty": "confirmed", "topic": "問い合わせ窓口", "kind": "carrier-reference", "enabled": true}, {"id": "carrier-iij-8", "procedure": "事業者変更", "company": "IIJmioひかり", "type": "", "targets": [], "question": "IIJmioひかりはいつ終了し、別契約で手動解約が必要なものは？", "answer": "IIJmioひかりの事業者変更（解約）は、ドコモ光側で事業者変更手続きとサービス切替が完了した時点で終了します。IIJmioひかりを先に会員ページから通常解約する手続きではありません。IIJmioひかり電話と付属オプションは同時に解約されます。一方、IIJmioが提供していないオプション、NTTとの直接契約（フレッツ・テレビ、リモートサポート、24時間出張修理等）、他社IPoE、メール等の別契約は自動解約・継続が契約ごとに異なります。IIJ公式は、未提供オプションは切替時に解約、別契約は個別確認としています。現在の契約通知書に事業移管の記載がある場合は、通知書記載の現在契約先窓口を確認してください。", "checks": "ドコモ光の切替完了予定、IIJmioひかり電話、IPoE、レンタル機器、NTT直契約TV、メール、動画・CS等の請求元を一覧化。各別契約の手動解約要否と終了日を契約先に確認する。 不明点は公式窓口で確認する。", "talk": "IIJmioひかりはドコモ光への切替完了時に終了します。電話付属品は同時終了ですが、NTTや別サービスの契約は別に確認が必要です。先にIIJmioひかりを通常解約しないでください。", "warnings": "事業者変更完了日と請求締め日・最終請求日は同じとは限らない。別契約を自動解約と断定しない。事業移管の通知書がある契約は、現在の契約先を通知書で確認し、IIJ窓口へ相談する。", "keys": "IIJmioひかり 終了時点・手動解約 IIJmioひかり ドコモ光 切替完了 解約時点 手動解約 NTT直契約 事業移管 旧回線", "urls": ["https://www.iijmio.jp/resources/WebContent/common/service/before_apply.html", "https://www.iijmio.jp/imh/cancel/collabo_change_notice.html", "https://help.iijmio.jp/answer/6128df4b73cc70001c01a99c/", "https://www.iijmio.jp/contact.html"], "source": "IIJmioひかり公式重要説明事項・事業者変更案内・オプションFAQ・問い合わせ窓口", "date": "2026-10-08", "certainty": "partial", "topic": "終了時点・手動解約", "kind": "carrier-reference", "enabled": true}]</script>
+<script id="local-support-runtime">
+/* global allItems, show, esc */
+(function () {
+  'use strict';
+  const $ = id => document.getElementById(id);
+  const KEY = 'hikari.support.store-answers.v1';
+  const PROCEDURES = ['共通','新規','他社奪還','転用','事業者変更','解約新規'];
+  const COMPANIES = ['', 'eo光','J:COM','NURO 光','SoftBank 光','auひかり','ビッグローブ光','楽天ひかり','So-net 光','@nifty光','OCN光','enひかり','IIJmioひかり','その他'];
+  const TYPES = ['', 'A','B','C'];
+  const aliases = [
+    ['eo光', /eo(?:光|メール)?|eonet|イオ光|イーオー光/i],
+    ['J:COM', /j[:：.\s]?com|ジェイコム/i],
+    ['NURO 光', /nuro|ニューロ|ヌーロ/i],
+    ['SoftBank 光', /softbank|ソフトバンク/i],
+    ['auひかり', /auひかり|au光/i],
+    ['ビッグローブ光', /biglobe|ビッグローブ/i],
+    ['楽天ひかり', /楽天(?:ひかり|光)|rakuten/i],
+    ['So-net 光', /so[\s-]?net|ソネット/i],
+    ['@nifty光', /@?nifty|ニフティ/i], ['OCN光', /ocn|オーシーエヌ/i],
+    ['enひかり', /enひかり|エンひかり/i], ['IIJmioひかり', /iijmio|iijひかり|アイアイジェイ/i]
+  ];
+  const topicPatterns = {
+    mail: /メール|アドレス|メアド/, phone: /電話|番号|のせかえ|載せ替え|ポータビリティ|fax/,
+    tv: /テレビ|アンテナ|地デジ|\bbs\b/, cs: /スカパー|\bcs\b|wowow|チャンネル/,
+    fees: /費用|工事費|料金|解約金|違約金|精算|残債|手数料/, benefit: /特典|キャンペーン|ポイント|還元/, 
+    works: /工事|立ち会|立会|訪問|開通/, flow: /流れ|順番|進め方|手続き|手順/,
+    speed: /1ギガ|10ギガ|速度|タイプ[abc]|タイプ/, provider: /プロバイダ|契約書|書類/, cancel: /解約|廃止|退会|取消/,
+    removal: /撤去|引込線|原状回復/, returns: /返却|返送|回収キット|未返却/, recording: /録画|ダビング|hdd/, contact: /連絡先|窓口|問い合わせ|問合せ|受付時間|営業時間/, authorization: /承諾番号|変更番号|転用番号|有効期限|番号取得/
   };
-  window.openConsult=function(){
-    window.openAI();
-    window.setConsultMode('consult');
+  let own = [], storageBlocked = false, storageAvailable = true, selected = null, generation = 0;
+  const escapeText = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  function plain(html) {
+    const node = document.createElement('div');
+    node.innerHTML = String(html ?? '').replace(/<br\s*\/?\s*>/gi, '\n').replace(/<\/(?:p|li|div)>/gi, '\n');
+    node.querySelectorAll('script,style,iframe').forEach(el => el.remove());
+    return (node.textContent || '').trim();
+  }
+  function normalize(s) {
+    return String(s).normalize('NFKC').toLowerCase()
+      .replace(/ニューロ|ヌーロ/g, 'nuro').replace(/ソフトバンク/g, 'softbank')
+      .replace(/ジェイコム|j[.:\s]com/g, 'jcom').replace(/プロバイダー/g, 'プロバイダ')
+      .replace(/(?:10|１０)\s*(?:gb|g|ギガ)(?![a-z])/g, '10ギガ')
+      .replace(/(?:1|１)\s*(?:gb|g|ギガ)(?![a-z])/g, '1ギガ')
+      .replace(/メアド|e-?mail/g, 'メール').replace(/載せ替え|乗せ替え|乗せかえ|のせ替え/g, 'のせかえ')
+      .replace(/違約金/g, '解約金').replace(/乗り換え|乗換え|乗換/g, 'のりかえ').replace(/\s+/g, ' ').trim();
+  }
+  const topics = s => Object.keys(topicPatterns).filter(k => topicPatterns[k].test(normalize(s)));
+  const companies = s => aliases.filter(([, re]) => re.test(String(s).normalize('NFKC'))).map(([name]) => name);
+  function tokens(s) {
+    const text = normalize(s), stop = new Set(['です','ます','こと','場合','する','した','して','使う','どう','どの','できる','ついて','ください','ドコモ','ドコモ光','教えて','お客様','回答','質問','でき','利用']);
+    let words = text.split(/[\s、。？！?!・,/:：()（）]+/);
+    if (typeof Intl.Segmenter === 'function') words = [...new Intl.Segmenter('ja',{granularity:'word'}).segment(text)].filter(x => x.isWordLike).map(x => x.segment);
+    return [...new Set(words.filter(x => x.length >= 2 && !stop.has(x)))];
+  }
+  function privacyFinding(s) {
+    const text = String(s).normalize('NFKC');
+    if (/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}/i.test(text)) return '実メールアドレス';
+    if (/0\d{1,4}[-\s]?\d{1,4}[-\s]?\d{4}(?!\d)/.test(text)) return '電話番号と思われる文字';
+    if (/(?:氏名|お名前|名前|お客様名|顧客名|契約者名)\s*[:：]\s*\S+/.test(text)) return '氏名欄';
+    if (/(?:住所|所在地|設置場所|契約番号|顧客番号|お客様番号|ユーザーID|会員ID|パスワード)[ \t]*[:：=][ \t]*\S+/i.test(text)) return '住所・契約番号等の個別情報欄';
+    const honorifics = [...text.matchAll(/([一-龯々ぁ-んァ-ヶ]{2,12}|[A-Za-z]+(?:[ \t]+[A-Za-z]+){0,3})[ \t]*(様|さま|さん|君|ちゃん)/g)];
+    if (honorifics.some(m => !/(?:お客|契約者|利用者|ご本人|皆|会員|スタッフ|担当者|お子|ご家族|家族|保護者|管理者|受取人|相談者|申込者|販売員|店員|従業員|お父|お母|息子|娘)$/.test(m[1]))) return '敬称付きの個人名と思われる文字';
+    return null;
+  }
+  function safeUrl(value) {
+    if (!value) return '';
+    const u = new URL(value);
+    if (u.protocol !== 'https:' || u.username || u.password || value.length > 2048) throw new Error('参考URLはユーザー名・パスワードなしのHTTPSにしてください。');
+    return u.href;
+  }
+  function dateValid(value) { return !value || /^\d{4}-\d{2}-\d{2}$/.test(value) && new Date(value+'T00:00:00Z').toISOString().slice(0,10) === value; }
+  function validateRecord(row) {
+    if (!row || typeof row !== 'object' || Array.isArray(row)) throw new Error('回答データの形式が違います。');
+    const limits = {id:100,question:240,answer:6000,talk:3000,checks:1200,warnings:1200,keys:500,procedure:20,company:60,type:2,url:2048,date:10};
+    const result = {};
+    for (const [key, max] of Object.entries(limits)) {
+      const value = row[key] ?? '';
+      if (typeof value !== 'string' || value.length > max) throw new Error('回答の文字数または形式を確認してください：'+key);
+      result[key] = value.trim();
+    }
+    if (!/^[a-zA-Z0-9_-]{1,100}$/.test(result.id) || !result.question || !result.answer) throw new Error('質問・回答・IDが必要です。');
+    if (!PROCEDURES.includes(result.procedure) || !COMPANIES.includes(result.company) || !TYPES.includes(result.type)) throw new Error('手続き・会社・タイプを確認してください。');
+    if (!dateValid(result.date)) throw new Error('確認日が正しくありません。');
+    result.url = safeUrl(result.url);
+    if (typeof row.enabled !== 'boolean') throw new Error('検索で使う設定が正しくありません。');
+    result.enabled = row.enabled;
+    const finding = privacyFinding([result.question,result.answer,result.talk,result.checks,result.warnings,result.keys].join('\n'));
+    if (finding) throw new Error(finding+'を検出しました。お客様を特定する情報を除いてください。検出は完全ではありません。');
+    return result;
+  }
+  function parseData(raw) {
+    const data = typeof raw === 'string' ? JSON.parse(raw) : raw;
+    if (!data || data.format !== 'hikari-store-answers' || data.version !== 1 || !Array.isArray(data.answers) || data.answers.length > 200) throw new Error('対応する店舗回答JSON（最大200件）ではありません。');
+    const rows = data.answers.map(validateRecord);
+    if (new Set(rows.map(x => x.id)).size !== rows.length) throw new Error('回答IDが重複しています。');
+    return rows;
+  }
+  function payload(rows) { return {format:'hikari-store-answers',version:1,answers:rows}; }
+  function persist(rows) {
+    if (storageBlocked) throw new Error('保存済みデータを読み取れないため上書きを止めています。元のデータをバックアップ・確認してください。');
+    if (!storageAvailable) throw new Error('このブラウザーの保存を利用できません。通常のSafariで開き、保存許可を確認してください。');
+    localStorage.setItem(KEY, JSON.stringify(payload(rows)));
+    own = rows;
+  }
+  const eo = {
+    id:'builtin-eo-mail', procedure:'他社奪還', company:'eo光', type:'', targets:[], kind:'reference',
+    question:'eo光のメールアドレスを使っているお客様へ、乗り換えをどう説明する？',
+    answer:'eo公式の解約案内では、eo光ネットを解約するとeoの契約メールアドレスは利用できなくなると案内されています。メールアドレスをそのまま残せると約束せず、アドレスを変更できるか確認してから乗り換えを検討します。',
+    checks:'今のメールを何に使っているか／銀行・買い物・仕事等の登録先を変更できるか／新しいメールへの移行や保存の準備ができるかを確認します。実際のアドレスはこの画面に入力しないでください。',
+    talk:'今お使いのメールは大事ですよね。eoの公式案内では、eo光ネットを解約するとeoのメールアドレスは使えなくなるとされています。まず登録先を変更できるか一緒に確認しましょう。今のアドレスをどうしても残す必要がある場合は、無理に乗り換えを進めず、今のご契約を続ける案も含めて考えます。',
+    warnings:'「解約後も同じeoメールを残せる」「メールは自動転送される」とは案内しません。メール移行の準備前にeoを解約しないでください。eo光シンプルプラン等、契約が異なる場合は対象の公式窓口で再確認します。',
+    keys:'eo eo光 eonet メール メアド アドレス 切り返し 残せる 変更 継続',
+    urls:['https://support.eonet.jp/inquiry/cancel/'], source:'eo公式「解約の手続きをしたい」／説明トークは店舗用の定型例', date:'2026-10-08', enabled:true
   };
-  window.addEventListener('message',function(event){
-    const frame=document.getElementById('consultFrame');
-    if(event.origin!==origin||event.source!==frame.contentWindow)return;
-    const data=event.data;
-    if(!data||data.type!=='hikari-coach-height'||typeof data.height!=='number'||!Number.isFinite(data.height))return;
-    frame.style.height=Math.max(600,Math.min(20000,Math.ceil(data.height)+8))+'px';
-  });
+  const nttTransfer={
+    id:'shared-ntt-transfer',procedure:'転用',company:'',type:'',targets:[],kind:'registered',certainty:'confirmed',enabled:true,
+    question:'フレッツ光：NTT東日本・西日本の転用承諾番号はどこで取得する？',
+    answer:'契約中のNTT東日本またはNTT西日本から、契約者本人がWebまたは電話で取得します。NTT東日本の電話は0120-140-202、NTT西日本は0120-553-104。両方の電話受付は9:00～17:00（年中無休・年末年始を除く）。Web取得は下のドコモ公式転用ページにあるNTT東西の取得リンクから進めます。東日本のWeb受付は8:30～22:00、西日本は7:00～翌1:00（いずれも年末年始を除く）。有効期限は取得日を含む15日間です。',
+    checks:'フレッツ光のお客様ID・ひかり電話番号・連絡先電話番号のいずれか1つ、契約者名、利用場所住所、料金の支払方法を本人の書類で確認します。取得した番号・有効期限・現在のプロバイダ・電話とテレビ等のオプションも確認します。この検索欄には本人情報を入力しません。',
+    talk:'転用の番号は、現在契約しているNTT東日本または西日本でご本人に取得いただきます。番号は15日間有効なので、ドコモ光への申込時期に合わせて、Webまたは電話で手続きしましょう。',
+    warnings:'このツールは番号を自動取得しません。番号の申込期限と工事・切替完了日は別です。受付時間・手続き条件は利用時に公式案内で再確認し、電話やテレビ・メールを先に解約しないでください。事業者変更承諾番号とは取得先が異なります。',
+    keys:'転用 NTT 東日本 西日本 フレッツ光 転用承諾番号 取得 連絡先 電話 窓口 受付時間 有効期限 15日',
+    urls:['https://www.docomo.ne.jp/internet/hikari/tenyou/'],source:'ドコモ公式「転用」：NTT東西の取得方法・窓口・準備事項',date:'2026-10-08'
+  };
+  function knowledge() {
+    const records = allItems().map((x,i) => {
+      const node = document.createElement('div'); node.innerHTML=x.source || '';
+      const urls = [...node.querySelectorAll('a[href]')].map(a=>{try{return safeUrl(a.getAttribute('href'));}catch{return '';}}).filter(Boolean);
+      const question = plain(x.q);
+      let targets = Array.isArray(x.targets) ? x.targets : [];
+      const match = question.match(/【タイプ([ABC](?:\/[ABC])*)】/);
+      if (!targets.length && match) targets = match[1].split('/');
+      return {id:'base-'+i,procedure:x.cat || '共通',company:companies(question+' '+(x.keys||[]).join(' '))[0] || '',type:'',targets,
+        question,answer:plain(x.a),checks:plain(x.staff),warnings:plain(x.warn),talk:'',keys:(x.keys||[]).join(' '),
+        urls, source:plain(x.source),date:x.updated || '',enabled:true,kind:/店舗|工程例/.test(x.source || '')?'store-reference':'registered'};
+    });
+    let carrierRows=[], rejected=0;
+    try {
+      const raw = JSON.parse($('carrierFaqData')?.textContent || '[]');
+      if (!Array.isArray(raw) || raw.length > 1000) throw new Error('会社別回答の形式が違います。');
+      const ids = new Set();
+      for (const row of raw) {
+        try {
+          if (!row || typeof row !== 'object' || Array.isArray(row)) throw new Error();
+          const limits={id:100,question:500,answer:12000,checks:3000,talk:6000,warnings:3000,keys:2000,source:2000,date:10,company:60,procedure:20,kind:30,certainty:30,topic:200,type:2};
+          for(const [key,limit] of Object.entries(limits))if(typeof row[key]!=='string'||row[key].length>limit)throw new Error();
+          if(!/^[a-zA-Z0-9_-]{1,100}$/.test(row.id)||ids.has(row.id)||!row.question.trim()||!row.answer.trim())throw new Error();
+          if(!PROCEDURES.includes(row.procedure)||!COMPANIES.includes(row.company)||!TYPES.includes(row.type)||row.kind!=='carrier-reference'||!['confirmed','partial','needs_contact'].includes(row.certainty)||!dateValid(row.date))throw new Error();
+          if(!Array.isArray(row.targets)||!row.targets.every(t=>['A','B','C'].includes(t))||!Array.isArray(row.urls)||!row.urls.length||row.urls.length>20||typeof row.enabled!=='boolean')throw new Error();
+          if(row.urls.some(url=>typeof url!=='string'||!url))throw new Error();
+          const urls=row.urls.map(safeUrl);ids.add(row.id);
+          if(row.enabled)carrierRows.push({...row,urls});
+        } catch { rejected++; }
+      }
+    } catch { rejected++; }
+    if($('lsDataStatus')){$('lsDataStatus').hidden=!rejected;$('lsDataStatus').textContent=rejected?'会社別追加データに不正な項目があるため、その項目は使っていません。既存回答は検索できます。共通HTMLの内容を確認してください。':'';}
+    return [...own.filter(x=>x.enabled).map(x=>({...x,kind:'store',urls:x.url?[x.url]:[],source:'この端末の店舗登録回答（参考URLは未検証）',targets:x.type?[x.type]:[]})),eo,nttTransfer,...carrierRows,...records];
+  }
+  function context(query) {
+    const typedCompanies=companies(query), selectedCompany=$('lsCompany').value;
+    const typedTypes=[...normalize(query).matchAll(/タイプ\s*([abc])/g)].map(m=>m[1].toUpperCase());
+    const pickedType=$('lsType').value;
+    const destination=normalize(query).match(/タイプ\s*([abc])\s*(?:から|→)\s*(?:タイプ\s*)?([abc])/);
+    const destinationType=destination?destination[2].toUpperCase():'';
+    if(destinationType && pickedType && destinationType!==pickedType)return {error:'質問文の変更先タイプと選択したタイプが違います。変更先を確認してください。'};
+    if(!selectedCompany && typedCompanies.length>1)return {error:'会社名が複数あります。「現在の会社」を選び、どの契約の条件を確認するか指定してください。'};
+    if (selectedCompany && selectedCompany !== 'その他' && typedCompanies.length && !typedCompanies.includes(selectedCompany)) return {error:'質問文の会社と選択した会社が違います。現在の会社を確認してください。'};
+    if (pickedType && !destinationType && typedTypes.length && !typedTypes.includes(pickedType)) return {error:'質問文のタイプと選択したタイプが違います。申し込み先のタイプを確認してください。'};
+    const typedProcedures=PROCEDURES.filter(x=>x!=='共通' && query.includes(x));
+    const pickedProcedure=$('lsProcedure').value;
+    if (pickedProcedure && typedProcedures.length && !typedProcedures.includes(pickedProcedure)) return {error:'質問文の手続きと選択した手続きが違います。手続きを確認してください。'};
+    return {company:selectedCompany || (typedCompanies.length===1?typedCompanies[0]:''),type:pickedType || destinationType || (typedTypes.length===1?typedTypes[0]:''),procedure:pickedProcedure || (typedProcedures.length===1?typedProcedures[0]:''),queryTopics:topics(query),hasQuery:!!query.trim()};
+  }
+  function eligible(record,c) {
+    if (c.procedure && record.procedure!=='共通' && record.procedure!==c.procedure) return false;
+    if (c.hasQuery && !c.company && record.company) return false;
+    if (c.company && record.company && record.company!==c.company) return false;
+    if (c.type && record.targets.length && !record.targets.includes(c.type)) return false;
+    return true;
+  }
+  function rank(record,query,c) {
+    const q=normalize(record.question), key=normalize(record.keys), input=normalize(query);
+    if (input===q) return 1000 + (record.kind==='store'?100:0);
+    const qTopics=topics(record.question+' '+record.keys);
+    if(c.queryTopics.length && qTopics.length && !c.queryTopics.some(t=>qTopics.includes(t))) return 0;
+    let score=0;
+    if (input.length>=3 && q.includes(input)) score+=150;
+    for(const term of tokens(query)) { if(q.includes(term))score+=10;else if(key.includes(term))score+=5; }
+    const overlap=c.queryTopics.filter(t=>qTopics.includes(t)); score+=overlap.length*12;
+    // A company name alone is not evidence that a mail/phone/fee answer is relevant.
+    if (c.queryTopics.length && !overlap.length && score<30) return 0;
+    if (score>0 && c.company && record.company===c.company)score+=8;
+    if (score>0 && record.kind==='store')score+=2;
+    return score;
+  }
+  function clearAnswer() { selected=null; $('lsAnswer').hidden=true; $('lsAnswer').innerHTML=''; generation++; }
+  function search() {
+    clearAnswer(); const query=$('aiInput').value.trim(); const c=context(query), results=$('lsResults'); results.innerHTML='';
+    const finding=privacyFinding(query);
+    if (finding || c.error) { $('lsCount').textContent='0件'; $('lsSearchStatus').textContent=c.error || finding+'は入力しないでください。条件だけの質問にしてください。'; return []; }
+    const pool=knowledge().filter(x=>eligible(x,c));
+    const ranked=(query?pool.map(record=>({record,score:rank(record,query,c)})).filter(x=>x.score>0).sort((a,b)=>b.score-a.score):pool.map(record=>({record,score:0}))).slice(0,8);
+    $('lsCount').textContent=pool.length+'件の登録回答から '+ranked.length+'候補';
+    $('lsSearchStatus').textContent=ranked.length?'候補は回答の対象を確認してから選んでください。正解率や確定回答ではありません。':'登録回答だけでは判断できません。会社・手続き・キーワードを見直し、見つからなければ受付元に確認してください。';
+    if(!ranked.length)results.innerHTML='<div class="ls-empty">質問を短いキーワードにして再検索できます。未登録の条件・料金・特典は推測で回答しません。</div>';
+    ranked.forEach(({record})=>{
+      const button=document.createElement('button'); button.type='button';button.className='ls-result';
+      button.innerHTML='<small>'+escapeText(record.procedure)+' ／ '+escapeText(record.company || '会社共通')+' ／ '+escapeText(record.targets.length?'タイプ'+record.targets.join('/'): 'タイプ指定なし')+(record.kind==='store'?' ／ この端末の登録':' ／ 全店舗共通マスター')+'</small><strong>'+escapeText(record.question)+'</strong><span>'+escapeText(record.answer.slice(0,100))+(record.answer.length>100?'…':'')+'</span>';
+      button.addEventListener('click',()=>read(record));results.appendChild(button);
+    });
+    return ranked.map(x=>x.record);
+  }
+  function read(record) {
+    selected=record;const answer=$('lsAnswer');const version=++generation;
+    const talk=record.talk || 'ご案内の内容は、'+record.answer+' ご契約の条件と提供可否を確認のうえで進めます。';
+    const condition=[record.procedure,record.company || '会社指定なし',record.targets.length?'タイプ'+record.targets.join('/'):'タイプ指定なし'].join(' ／ ');
+    const label=record.kind==='store'?'この端末の店舗登録回答（公式確認済みとは限りません）':record.kind==='store-reference'?'全店舗共通マスター：店舗の工程例（この端末の編集とは別）': '全店舗共通マスター（ここでは編集不可／現在の本文は自動取得していません）';
+    const certainty=record.certainty==='needs_contact'?'個別確認が必要：公開資料だけでは確定できません。':record.certainty==='partial'?'条件により異なります。ご契約・機器・提供元を確認してください。':record.certainty==='confirmed'?'公式案内を基に登録。今回の個別契約への適用は確認が必要です。':'';
+    const warning=record.warnings || '契約・提供エリア・設備・費用・特典の対象条件は、最新の受付元・公式資料で確認してください。';
+    answer.innerHTML='<article class="ls-answer-card"><p class="ls-answer-kind">'+escapeText(label)+'</p><h2>'+escapeText(record.question)+'</h2><p class="ls-condition">対象：'+escapeText(condition)+'</p><div class="ls-block"><h3>回答</h3>'+(certainty?'<p class="ls-answer-kind">'+escapeText(certainty)+'</p>':'')+'<p>'+escapeText(record.answer)+'</p></div><div class="ls-block"><h3>スタッフの確認事項</h3><p>'+escapeText(record.checks || '対象の契約・手続き・会社・タイプを確認し、未確認の条件は受付元に確認します。')+'</p></div><div class="ls-block ls-talk"><h3>お客様への説明トーク</h3><small>'+(record.talk?'登録した説明例':'登録回答をそのまま使った定型例（生成AIは不使用）')+'</small><p id="lsTalkText">'+escapeText(talk)+'</p></div><div class="ls-block ls-caution"><h3>注意事項</h3><p>'+escapeText(warning)+'</p></div><div class="ls-block"><h3>参考元・確認日</h3><p>'+escapeText(record.source || '参考元未登録')+'</p><p>登録時の情報確認日：'+escapeText(record.date || '未登録')+'。最新性を保証しません。</p>'+record.urls.map(url=>'<a href="'+escapeText(url)+'" target="_blank" rel="noopener noreferrer">参考URLを開く'+(record.kind==='store'?'（未検証）':'')+'<br>'+escapeText(url)+'</a>').join('')+'</div><label class="ls-copy-check"><input type="checkbox" id="lsTalkChecked">対象条件と参考元を確認してからご案内します</label><button type="button" id="lsCopyTalk" class="ls-secondary" disabled>説明トークをコピー</button><p id="lsCopyStatus" role="status"></p></article>';
+    answer.hidden=false;
+    $('lsTalkChecked').addEventListener('change',()=>{$('lsCopyTalk').disabled=!$('lsTalkChecked').checked;});
+    $('lsCopyTalk').addEventListener('click',async()=>{
+      if(!$('lsTalkChecked').checked)return;
+      try { if(!navigator.clipboard)throw new Error(); await navigator.clipboard.writeText(talk); if(version===generation)$('lsCopyStatus').textContent='説明トークをコピーしました。'; }
+      catch { if(version===generation)$('lsCopyStatus').textContent='コピーできませんでした。上の説明トークを長押ししてコピーしてください。'; }
+    });
+    answer.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  function resetEditor() {
+    $('lsEditor').reset();$('lsTemplateConfirmed').checked=false;$('lsEditId').value='';$('lsEditDate').value=new Date().toLocaleDateString('sv-SE',{timeZone:'Asia/Tokyo'});$('lsEditStatus').textContent='新しい回答を入力できます。保存先はこの端末だけです。';
+  }
+  const fields={question:'Question',answer:'Answer',talk:'Talk',checks:'Checks',warnings:'Warnings',keys:'Keys',procedure:'Procedure',company:'Company',type:'Type',url:'Url',date:'Date'};
+  function renderOwn() {
+    const list=$('lsOwnList');list.innerHTML='';
+    if(!own.length)list.innerHTML='<p class="ls-empty">この端末の追加回答はまだありません。</p>';
+    own.forEach(row=>{
+      const button=document.createElement('button');button.type='button';button.className='ls-result';
+      button.innerHTML='<small>'+escapeText(row.enabled?'検索で使用中':'下書き（検索では未使用）')+' ／ '+escapeText(row.procedure)+'</small><strong>'+escapeText(row.question)+'</strong>';
+      button.addEventListener('click',()=>{ $('lsEditId').value=row.id;for(const [key,suffix] of Object.entries(fields))$('lsEdit'+suffix).value=row[key];$('lsEditEnabled').checked=row.enabled;$('lsTemplateConfirmed').checked=false;$('lsEditStatus').textContent='編集中です。保存するまで元の回答は変更しません。';$('lsEditor').scrollIntoView({behavior:'smooth',block:'start'}); });list.appendChild(button);
+    });
+  }
+  function save() {
+    try {
+      if(!$('lsTemplateConfirmed').checked)throw new Error('個別案件ではなく汎用テンプレートであることを確認してください。');
+      const row={id:$('lsEditId').value || 'local-'+(crypto.randomUUID?crypto.randomUUID():Date.now().toString(36)+'-'+Math.random().toString(36).slice(2)),enabled:$('lsEditEnabled').checked};
+      for(const [key,suffix] of Object.entries(fields))row[key]=$('lsEdit'+suffix).value;
+      const valid=validateRecord(row), rows=[...own], index=rows.findIndex(x=>x.id===valid.id);
+      if(index<0){if(rows.length>=200)throw new Error('この端末の登録は最大200件です。');rows.push(valid);}else rows[index]=valid;
+      persist(rows);$('lsEditId').value=valid.id;renderOwn();clearAnswer();$('lsResults').innerHTML='';$('lsSearchStatus').textContent='回答を更新しました。再検索して確認してください。';$('lsCount').textContent='保存済み';$('lsEditStatus').textContent='この端末に保存しました。'+(valid.enabled?'検索に使えます。':'下書きです。「検索で使う」を選ぶと候補に出ます。');return true;
+    } catch(error){$('lsEditStatus').textContent='保存していません：'+error.message;return false;}
+  }
+  function exportData() {
+    if(storageBlocked){$('lsStorageStatus').textContent='読み取れない保存データがあるため書出しを止めています。ブラウザーの保存データを確認してください。';return;}
+    const blob=new Blob([JSON.stringify(payload(own),null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');
+    a.href=url;a.download='hikari-store-answers.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);$('lsStorageStatus').textContent='この端末の追加回答だけを書き出しました。会話・検索履歴・お客様情報は含みません。';
+  }
+  async function importData(file) {
+    if(!file)return false;
+    try {
+      if(!$('lsImportConfirmed').checked)throw new Error('取込み内容が汎用テンプレートで、顧客情報を含まないことを確認してください。');
+      if(file.size>8*1024*1024)throw new Error('JSONは8MB以内にしてください。');
+      const incoming=parseData(await file.text()),map=new Map(own.map(x=>[x.id,x]));
+      for(const row of incoming){const existing=map.get(row.id);if(existing&&JSON.stringify(existing)!==JSON.stringify(row))throw new Error('同じIDで内容が違う回答があります。既存回答を上書きせず取込みを止めました。');map.set(row.id,row);}
+      if(map.size>200)throw new Error('合計が200件を超えるため取込みを止めました。');
+      persist([...map.values()]);renderOwn();clearAnswer();$('lsResults').innerHTML='';$('lsSearchStatus').textContent='回答を取り込みました。再検索してください。';$('lsCount').textContent='取込み済み';$('lsStorageStatus').textContent=incoming.length+'件を受け取りました。この端末の保存だけを更新しました。';return true;
+    }catch(error){$('lsStorageStatus').textContent='取り込んでいません：'+(error instanceof SyntaxError?'JSONの形式が正しくありません。元データは変更していません。':error.message);return false;}
+  }
+  function example(button) {
+    $('aiInput').value=button.dataset.question || '';$('lsProcedure').value=button.dataset.procedure || '';$('lsCompany').value=button.dataset.company || '';$('lsType').value=button.dataset.target || '';search();
+  }
+  try {const raw=localStorage.getItem(KEY);if(raw)own=parseData(raw);}catch(error){storageBlocked=true;storageAvailable=false;$('lsStorageStatus').textContent='保存済みデータを読めないため上書きを止めています。元データは消去していません。';}
+  if(!storageBlocked)try{const probe=KEY+'.probe';localStorage.setItem(probe,'1');localStorage.removeItem(probe);}catch{storageAvailable=false;$('lsStorageStatus').textContent='ブラウザー内保存が使えません。登録済みの標準回答は検索できます。';}
+  function topicSearch(button){$('aiInput').value=button.dataset.topicQuestion || '';search();}
+  window.LocalSupport={search,example,topicSearch,save,resetEditor,exportData,importData,knowledge,normalize,context,validateRecord};
+  window.askAI=search;
+  window.openAI=function(){show('aiView');search();setTimeout(()=>$('aiInput').focus(),50);};
+  window.openConsult=window.openAI;
+  window.searchAll=function(){const input=$('globalSearch').value.trim();if(!input)return;$('aiInput').value=input;$('lsProcedure').value='';$('lsCompany').value='';$('lsType').value='';show('aiView');search();};
+  $('aiInput').addEventListener('input',()=>{clearAnswer();$('lsResults').innerHTML='';$('lsSearchStatus').textContent='条件を変更しました。「回答を検索」を押してください。';$('lsCount').textContent='未検索';});
+  ['lsProcedure','lsCompany','lsType'].forEach(id=>$(id).addEventListener('change',()=>search()));
+  resetEditor();renderOwn();
 })();
+
 </script>
 </body></html>
