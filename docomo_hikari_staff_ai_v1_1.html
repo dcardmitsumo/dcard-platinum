@@ -547,6 +547,7 @@ body.guide-building header{padding:12px 14px 14px}body.guide-building header .ti
         <span>現在の会社</span>
         <select id="lsCompany">
           <option value="">指定なし</option>
+          <option value="ドコモ光">ドコモ光</option>
           <option value="eo光">eo光</option>
           <option value="J:COM">J:COM</option>
           <option value="NURO 光">NURO 光</option>
@@ -594,7 +595,7 @@ body.guide-building header{padding:12px 14px 14px}body.guide-building header .ti
         <button type="button" class="ls-chip" data-example="解約金と特典" data-question="他社回線の解約金と特典はどのように案内しますか？" data-procedure="他社奪還" data-company="" data-target="" onclick="LocalSupport.example(this)">解約金と特典</button>
         <button type="button" class="ls-chip" data-example="転用10ギガ" data-question="転用でドコモ光10ギガを申し込む際の確認事項は？" data-procedure="転用" data-company="" data-target="A" onclick="LocalSupport.example(this)">転用10ギガ</button>
         <button type="button" class="ls-chip" data-example="事業者変更10ギガ" data-question="事業者変更でドコモ光10ギガを申し込む際の確認事項は？" data-procedure="事業者変更" data-company="" data-target="A" onclick="LocalSupport.example(this)">事業者変更10ギガ</button>
-        <button type="button" class="ls-chip" data-example="解約新規タイプCの電話" data-question="解約新規でタイプCへ変更するとき、電話はどう確認しますか？" data-procedure="解約新規" data-company="" data-target="C" onclick="LocalSupport.example(this)">解約新規タイプCの電話</button>
+        <button type="button" class="ls-chip" data-example="解約新規タイプCの電話" data-question="解約新規でタイプCへ変更するとき、電話はどう確認しますか？" data-procedure="解約新規" data-company="ドコモ光" data-target="C" onclick="LocalSupport.example(this)">解約新規タイプCの電話</button>
       </div>
     </div>
   </section>
@@ -656,6 +657,7 @@ body.guide-building header{padding:12px 14px 14px}body.guide-building header .ti
             <span>対象会社</span>
             <select id="lsEditCompany">
               <option value="">指定なし</option>
+          <option value="ドコモ光">ドコモ光</option>
               <option value="eo光">eo光</option>
               <option value="J:COM">J:COM</option>
               <option value="NURO 光">NURO 光</option>
@@ -1775,7 +1777,7 @@ common.push({level:'basic',cat:'初期契約解除',q:'初期契約解除の8日
   const $ = id => document.getElementById(id);
   const KEY = 'hikari.support.store-answers.v1';
   const PROCEDURES = ['共通','新規','他社奪還','転用','事業者変更','解約新規'];
-  const COMPANIES = ['', 'eo光','J:COM','NURO 光','SoftBank 光','auひかり','ビッグローブ光','楽天ひかり','So-net 光','@nifty光','OCN光','enひかり','IIJmioひかり','その他'];
+  const COMPANIES = ['', 'ドコモ光','eo光','J:COM','NURO 光','SoftBank 光','auひかり','ビッグローブ光','楽天ひかり','So-net 光','@nifty光','OCN光','enひかり','IIJmioひかり','その他'];
   const TYPES = ['', 'A','B','C'];
   const aliases = [
     ['eo光', /eo(?:光|メール)?|eonet|イオ光|イーオー光/i],
@@ -1815,7 +1817,13 @@ common.push({level:'basic',cat:'初期契約解除',q:'初期契約解除の8日
       .replace(/違約金/g, '解約金').replace(/乗り換え|乗換え|乗換/g, 'のりかえ').replace(/\s+/g, ' ').trim();
   }
   const topics = s => Object.keys(topicPatterns).filter(k => topicPatterns[k].test(normalize(s)));
-  const companies = s => aliases.filter(([, re]) => re.test(String(s).normalize('NFKC'))).map(([name]) => name);
+  function companies(s) {
+    const text = String(s).normalize('NFKC');
+    const others = aliases.filter(([, re]) => re.test(text)).map(([name]) => name);
+    // 「eo光からドコモ光へ」の変更先は現在の会社として追加しない。
+    if (others.length) return others;
+    return /ドコモ\s*光|docomo\s*(?:hikari|光)/i.test(text) ? ['ドコモ光'] : [];
+  }
   function tokens(s) {
     const text = normalize(s), stop = new Set(['です','ます','こと','場合','する','した','して','使う','どう','どの','できる','ついて','ください','ドコモ','ドコモ光','教えて','お客様','回答','質問','でき','利用']);
     let words = text.split(/[\s、。？！?!・,/:：()（）]+/);
@@ -1900,7 +1908,8 @@ common.push({level:'basic',cat:'初期契約解除',q:'初期契約解除の8日
       let targets = Array.isArray(x.targets) ? x.targets : [];
       const match = question.match(/【タイプ([ABC](?:\/[ABC])*)】/);
       if (!targets.length && match) targets = match[1].split('/');
-      return {id:'base-'+i,procedure:x.cat || '共通',company:companies(question+' '+(x.keys||[]).join(' '))[0] || '',type:'',targets,
+      const company = x.cat === '解約新規' ? 'ドコモ光' : aliases.filter(([, re]) => re.test(question+' '+(x.keys||[]).join(' '))).map(([name]) => name)[0] || '';
+      return {id:'base-'+i,procedure:x.cat || '共通',company,type:'',targets,
         question,answer:plain(x.a),checks:plain(x.staff),warnings:plain(x.warn),talk:'',keys:(x.keys||[]).join(' '),
         urls, source:plain(x.source),date:x.updated || '',enabled:true,kind:/店舗|工程例/.test(x.source || '')?'store-reference':'registered'};
     });
@@ -1927,7 +1936,8 @@ common.push({level:'basic',cat:'初期契約解除',q:'初期契約解除の8日
     return [...own.filter(x=>x.enabled).map(x=>({...x,kind:'store',urls:x.url?[x.url]:[],source:'この端末の店舗登録回答（参考URLは未検証）',targets:x.type?[x.type]:[]})),eo,nttTransfer,...carrierRows,...records];
   }
   function context(query) {
-    const typedCompanies=companies(query), selectedCompany=$('lsCompany').value;
+    const selectedCompany=$('lsCompany').value;
+    const typedCompanies=companies(query).filter(name=>name!=='ドコモ光' || !selectedCompany || selectedCompany==='ドコモ光');
     const typedTypes=[...normalize(query).matchAll(/タイプ\s*([abc])/g)].map(m=>m[1].toUpperCase());
     const pickedType=$('lsType').value;
     const destination=normalize(query).match(/タイプ\s*([abc])\s*(?:から|→)\s*(?:タイプ\s*)?([abc])/);
