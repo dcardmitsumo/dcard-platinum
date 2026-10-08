@@ -46,6 +46,11 @@ body.guide-building header{padding:12px 14px 14px}body.guide-building header .ti
 </style>
 <style id="transferBenefitsStyle">.transfer-panel{margin:20px 0;padding:20px;box-sizing:border-box;border:1px solid #e8cbd1;border-radius:18px;background:#fff;min-width:0}.transfer-panel .form-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}.transfer-contact{margin-top:16px;padding:16px;background:#fff7f8;border-left:4px solid #b51f3d;border-radius:10px;overflow-wrap:anywhere}.transfer-contact p{margin:8px 0;font-size:15px;line-height:1.65}.transfer-contact a,.benefit-qr a{color:#a40029;font-weight:700}.campaign-text{white-space:pre-wrap;overflow-wrap:anywhere}.benefit-qr{display:flex;align-items:center;gap:20px;margin:20px 0;padding:20px;border:1px solid #e0cad1;border-radius:14px;background:#fff}.benefit-qr img{display:block;width:172px;height:172px;flex:none;image-rendering:pixelated;background:white}.benefit-qr h3{margin:0 0 10px}.benefit-qr p{margin:8px 0;line-height:1.6}.qr-url{display:block;font-size:11px;overflow-wrap:anywhere;color:#555}.store-campaign-output{margin:20px 0;padding:20px;border:1px solid #ddced2;border-radius:14px;background:#fff9fa}.store-campaign-output h3{margin:0 0 10px}.store-campaign-output p{line-height:1.65}.store-campaign-output .mini{font-size:12px;color:#626262}#scStoreCampaign{width:100%;box-sizing:border-box;font:inherit;font-size:16px;line-height:1.6;min-width:0;border:1px solid #d9d9dd;border-radius:12px;padding:14px;resize:vertical}@media(max-width:560px){.benefit-qr{flex-direction:column;align-items:flex-start;gap:12px}.transfer-contact{padding:12px}.transfer-contact p{font-size:14px}}@media print{.benefit-qr{display:flex;flex-direction:row;padding:12px;gap:14px;break-inside:avoid}.benefit-qr img{width:132px;height:132px}.benefit-qr h3{font-size:14px}.benefit-qr p{font-size:10px}.benefit-qr .qr-url{font-size:8px}.store-campaign-output{break-inside:avoid;padding:12px}.store-campaign-output h3{font-size:14px}.store-campaign-output p{font-size:10px}}
 </style>
+<style id="generative-consult-style">
+.consult-stage-notice{background:#fff8e8;border:1px solid #e8d5a3;border-radius:12px;padding:14px 16px;margin:12px 0;font-size:13px;line-height:1.9;color:#6d5527}
+
+.consult-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.consult-tabs button{min-height:44px;padding:10px 14px;border:1px solid #d9c8ce;border-radius:10px;background:white;color:#702439;font-weight:800;cursor:pointer;font-size:13px}.consult-tabs button[aria-selected=true]{background:#bc173b;border-color:#bc173b;color:#fff}.consult-tabs button:focus-visible{outline:3px solid #ecb3c4;outline-offset:2px}.consult-standalone{display:inline-flex;align-items:center;min-height:44px;padding:9px 12px;border:1px solid #e1c6cf;border-radius:9px;background:#fff;color:#a40029;font-size:12px;font-weight:700;text-decoration:none;margin:4px 0 12px}#consultFrame{display:block;width:100%;border:1px solid #e2d9df;border-radius:14px;height:1200px;background:white}#legacyFaqPanel[hidden],#consultPanel[hidden]{display:none!important}@media print{#aiView{display:none!important}}
+</style>
 </head>
 <body><header><div class="head"><a href="./othercarrier_docomo_compare_v58_independent_routes.html" style="display:inline-flex;align-items:center;min-height:40px;margin-bottom:12px;padding:8px 14px;border:1px solid #ffffff66;border-radius:999px;background:#ffffff18;color:#fff;text-decoration:none;font-size:13px;font-weight:800">← 店頭メニューへ戻る</a><div class="brand">DOCOMO HIKARI</div><div class="title">ドコモ光 STAFF SUPPORT</div><div class="sub">現場スタッフ向け 接客・受付サポートツール</div></div></header>
 <main>
@@ -58,7 +63,7 @@ body.guide-building header{padding:12px 14px 14px}body.guide-building header .ti
 <button class="card" onclick="openFlow('転用')"><div class="icon">↪️</div><h3>転用</h3><p>フレッツ光からドコモ光へ</p></button>
 <button class="card" onclick="openFlow('事業者変更')"><div class="icon">🔁</div><h3>事業者変更</h3><p>他社光コラボからドコモ光へ</p></button>
 <button class="card" onclick="openFlow('解約新規')"><div class="icon">🧾</div><h3>解約新規</h3><p>1ギガ→10ギガ。A/BとCの流れを分けて案内</p></button>
-<button class="card ai" onclick="openAI()"><div class="icon">🤖</div><h3>ドコモ光 AIアシスタント</h3><p>複雑なケースや分からない内容を自然な文章で質問。将来AI APIと接続します。</p></button>
+<button class="card ai" onclick="openAI()"><div class="icon">🤖</div><h3>ドコモ光 AIアシスタント</h3><p>生成AIコンサルで、公式根拠・確認事項・お客様への説明トークを整理。登録Q&A検索も使えます。</p></button>
 </div></section>
 
 <section id="serviceSelect" class="view"><div class="topbar"><button class="back" onclick="home()">← 戻る</button><div><div class="pill" id="servicePill"></div><div class="view-title" id="serviceTitle"></div></div></div>
@@ -95,10 +100,14 @@ body.guide-building header{padding:12px 14px 14px}body.guide-building header .ti
 <div class="search"><input id="channelSearch" placeholder="例：東映、J SPORTS、映画、野球、WOWOW"><button onclick="searchChannels()">検索</button></div>
 <div class="section-title">代表的なチャンネル・商品</div><div id="channelResults" class="q-list"></div><div id="channelAnswer" class="answer"></div></section>
 
-<section id="aiView" class="view"><div class="topbar"><button class="back" onclick="home()">← 戻る</button><div><div class="pill">AI ASSISTANT</div><div class="view-title">ドコモ光 AIアシスタント</div></div></div>
-<div class="chat" id="chat"><div class="bubble bot">ドコモ光について質問してください。<br>例：「事業者変更で固定電話をそのまま使える？」</div></div>
+<section id="aiView" class="view">
+<div class="topbar"><button class="back" onclick="home()">← 戻る</button><div><div class="pill">AI ASSISTANT</div><div class="view-title">ドコモ光 AIアシスタント</div></div></div>
+<div class="consult-tabs" role="tablist" aria-label="回答の方式"><button id="consultTab" role="tab" aria-selected="true" aria-controls="consultPanel" onclick="setConsultMode('consult')">生成AIコンサル（接続確認中）</button><button id="faqTab" role="tab" aria-selected="false" aria-controls="legacyFaqPanel" onclick="setConsultMode('faq')">登録Q&amp;A検索</button></div>
+<div id="consultPanel" role="tabpanel" aria-labelledby="consultTab"><div class="consult-stage-notice" role="status"><strong>現状確認用のHTMLです。</strong><br>生成AIサーバーは一時的なプレビューに接続しています。現在、GoogleがAPIキーを無効と判定しているため、生成AIでの回答はまだ利用できません。登録Q&amp;A検索・手続き案内は使えます。正しいキーの再登録・接続試験・正式公開後に、本番サーバーURLへ差し替えます。APIキーはこのHTMLに含めていません。</div><p class="notice">公式根拠を確認して、スタッフ向けの回答とお客様へのトークの下書きを作ります。スタッフのログインが必要です。顧客名・電話番号・実メールアドレス・社内の機密情報は入力しないでください。</p><a class="consult-standalone" href="https://8328-iph5hmf092bf7085hfnud-3cff12b7.sg2.manus.computer/" target="_blank" rel="noopener noreferrer">専用画面で開く（ログインできない場合はこちら） ↗</a><iframe id="consultFrame" src="https://8328-iph5hmf092bf7085hfnud-3cff12b7.sg2.manus.computer/" loading="lazy" title="生成AI スタッフコンサル" referrerpolicy="strict-origin-when-cross-origin" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"></iframe></div>
+<div id="legacyFaqPanel" role="tabpanel" aria-labelledby="faqTab" hidden><div class="chat" id="chat"><div class="bubble bot">ドコモ光について質問してください。<br>例：「事業者変更で固定電話をそのまま使える？」</div></div>
 <div class="chat-input"><input id="aiInput" placeholder="質問を入力してください"><button class="primary" onclick="askAI()">送信</button></div>
-<div class="notice">V1では登録済みQ&Aから近い内容を検索します。AI APIはAPIキーを保護するサーバー側接続を前提に、次段階で実装します。</div></section>
+<div class="notice">こちらは登録済みQ&amp;Aの検索です。自由な文章で回答を生成するAIコンサルとは異なります。</div></div>
+</section>
 
 
 <section id="precautionsView" class="view">
@@ -1140,5 +1149,25 @@ document.getElementById('aiInput').addEventListener('keydown',e=>{if(e.key==='En
   }));
 })();
 common.push({level:'basic',cat:'初期契約解除',q:'初期契約解除の8日は、申込日から？プロバイダーも自動で解約になる？',keys:['初期契約解除','8日','受領','プロバイダー','キャンセル'],a:'ドコモ光／ahamo光の新規契約・プラン変更の対象注文では、郵送される「ドコモ光契約申込書」を受領した日を含む8日以内に、書面で初期契約解除を行える公式案内です。申込日からと決めつけず、対象注文と契約書面の受取日を確認します。',warn:'ドコモ光の解除だけでプロバイダーが自動解約にならず、料金や違約金が続く場合があります。実施済み工事料・事務手数料・利用分等の請求もあります。以前の事業者へ自動復帰はしません。解除と復帰・別契約の手続きはそれぞれ窓口で確認してください。',source:'<a href="https://www.docomo.ne.jp/internet/hikari/procedure/initial_cancellation/" target="_blank" rel="noopener noreferrer">ドコモ公式・初期契約解除</a>',updated:'2026-10-07',services:['net','phone','tv','cs','all']});
+</script>
+<script id="generative-consult-runtime">
+(function(){
+  const origin='https://8328-iph5hmf092bf7085hfnud-3cff12b7.sg2.manus.computer';
+  window.setConsultMode=function(mode){
+    const consult=mode==='consult';
+    document.getElementById('consultPanel').hidden=!consult;
+    document.getElementById('legacyFaqPanel').hidden=consult;
+    document.getElementById('consultTab').setAttribute('aria-selected',String(consult));
+    document.getElementById('faqTab').setAttribute('aria-selected',String(!consult));
+    if(!consult)document.getElementById('aiInput').focus();
+  };
+  window.addEventListener('message',function(event){
+    const frame=document.getElementById('consultFrame');
+    if(event.origin!==origin||event.source!==frame.contentWindow)return;
+    const data=event.data;
+    if(!data||data.type!=='hikari-coach-height'||typeof data.height!=='number'||!Number.isFinite(data.height))return;
+    frame.style.height=Math.max(600,Math.min(20000,Math.ceil(data.height)+8))+'px';
+  });
+})();
 </script>
 </body></html>
