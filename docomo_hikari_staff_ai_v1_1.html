@@ -459,6 +459,20 @@ body.guide-building header{padding:12px 14px 14px}body.guide-building header .ti
 @media print { #aiView { display:none!important; } }
 
 </style>
+<style id="gemini-panel-style">
+#aiView .gemini-mode-bar { display:flex; flex-wrap:wrap; gap:10px; margin:18px 0; }
+#aiView .gemini-mode-bar button { min-height:48px; padding:12px 18px; border:1px solid #cbbdc3; border-radius:12px; background:#fff; color:#77203a; font-size:15px; font-weight:700; cursor:pointer; }
+#aiView .gemini-mode-bar button[aria-selected="true"] { background:#b6173d; color:#fff; border-color:#b6173d; }
+#aiView .gemini-mode-bar button:focus-visible, #aiView .gemini-standalone:focus-visible { outline:3px solid #dc6685; outline-offset:3px; }
+#registeredSupportPanel[hidden], #geminiSupportPanel[hidden] { display:none !important; }
+#aiView .gemini-mode-note { line-height:1.8; font-size:15px; color:#41333b; padding:14px 16px; background:#fff5f8; border-radius:12px; margin:12px 0; }
+#aiView .gemini-mode-small { font-size:13px; background:#f5f5f7; }
+#aiView .gemini-standalone { display:inline-flex; align-items:center; min-height:46px; padding:10px 14px; font-size:14px; font-weight:700; color:#9d1736; border:1px solid #dbb9c3; border-radius:10px; background:#fff; text-decoration:none; }
+#geminiSupportFrame { display:block; width:100%; min-width:0; height:1400px; border:1px solid #e1d7dc; border-radius:12px; background:white; }
+@media(max-width:540px) { #aiView .gemini-mode-bar button { flex:1 1 150px; padding:12px 8px; font-size:13px; } }
+@media print { #geminiSupportPanel, #geminiModeBar { display:none !important; } }
+
+</style>
 </head>
 <body><header><div class="head"><a href="./othercarrier_docomo_compare_v58_independent_routes.html" style="display:inline-flex;align-items:center;min-height:40px;margin-bottom:12px;padding:8px 14px;border:1px solid #ffffff66;border-radius:999px;background:#ffffff18;color:#fff;text-decoration:none;font-size:13px;font-weight:800">← 店頭メニューへ戻る</a><div class="brand">DOCOMO HIKARI</div><div class="title">ドコモ光 STAFF SUPPORT</div><div class="sub">現場スタッフ向け 接客・受付サポートツール</div></div></header>
 <main>
@@ -471,7 +485,7 @@ body.guide-building header{padding:12px 14px 14px}body.guide-building header .ti
 <button class="card" onclick="openFlow('転用')"><div class="icon">↪️</div><h3>転用</h3><p>フレッツ光からドコモ光へ</p></button>
 <button class="card" onclick="openFlow('事業者変更')"><div class="icon">🔁</div><h3>事業者変更</h3><p>他社光コラボからドコモ光へ</p></button>
 <button class="card" onclick="openFlow('解約新規')"><div class="icon">🧾</div><h3>解約新規</h3><p>1ギガ→10ギガ。A/BとCの流れを分けて案内</p></button>
-<button type="button" id="aiSupportEntry" class="card ai ai-support-robot" onclick="openAI()"><div class="icon">🤖</div><h3>AIサポロボ</h3><p>登録回答・説明トークを検索。AI・ログイン不要</p></button>
+<button type="button" id="aiSupportEntry" class="card ai ai-support-robot" onclick="openAI()"><div class="icon">🤖</div><h3>AIサポロボ</h3><p>登録回答を検索／Geminiで相談・根拠確認</p></button>
 </div></section>
 
 <section id="serviceSelect" class="view"><div class="topbar"><button class="back" onclick="home()">← 戻る</button><div><div class="pill" id="servicePill"></div><div class="view-title" id="serviceTitle"></div></div></div>
@@ -516,6 +530,11 @@ body.guide-building header{padding:12px 14px 14px}body.guide-building header .ti
       <div class="view-title">AIサポロボ</div>
     </div>
   </div>
+<div id="geminiModeBar" class="gemini-mode-bar" role="tablist" aria-label="回答方式">
+<button id="registeredModeTab" type="button" role="tab" aria-controls="registeredSupportPanel" aria-selected="true">登録回答を探す（AI不要）</button>
+<button id="geminiModeTab" type="button" role="tab" aria-controls="geminiSupportPanel" aria-selected="false">Geminiに相談する</button>
+</div>
+<div id="registeredSupportPanel" role="tabpanel" aria-labelledby="registeredModeTab">
 
   <p class="ls-lead">AI・ログインなしで、登録済みの回答を探せます。回答は対象のお手続き・会社・タイプを確認し、最新情報は受付元・公式案内で確認してください。</p>
 
@@ -724,6 +743,13 @@ body.guide-building header{padding:12px 14px 14px}body.guide-building header .ti
   </details>
 
   <div id="chat" hidden></div>
+</div>
+<div id="geminiSupportPanel" role="tabpanel" aria-labelledby="geminiModeTab" hidden>
+<p class="gemini-mode-note">スタッフ各自のGoogleでログインして、公式資料を根拠に相談できます。管理者による利用承認が必要です。質問を送る前に、顧客名・電話番号・実際のメールアドレス・住所・機密情報が入っていないことを確認してください。</p>
+<a class="gemini-standalone" href="https://hikaricoach-aqwtlxgc.manus.space/" target="_blank" rel="noopener noreferrer">専用画面で開く（ログインしづらい場合はこちら）</a>
+<p class="gemini-mode-note gemini-mode-small">登録回答と端末保存は従来どおり、ログインなしで利用できます。Geminiを選んだだけでは質問を送信しません。生成回答は下書きで、参照した公式URLと個別条件を確認してからご案内ください。</p>
+<iframe id="geminiSupportFrame" data-src="https://hikaricoach-aqwtlxgc.manus.space/" title="Googleログイン・Geminiスタッフ相談" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"></iframe>
+</div>
 </section>
 
 
@@ -2722,6 +2748,44 @@ common.push({level:'basic',cat:'初期契約解除',q:'初期契約解除の8日
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true });
   else init();
+})();
+
+</script>
+<script id="gemini-panel-runtime">
+(function () {
+  'use strict';
+  const origin = "https://hikaricoach-aqwtlxgc.manus.space";
+  const localPanel = document.getElementById('registeredSupportPanel');
+  const aiPanel = document.getElementById('geminiSupportPanel');
+  const localTab = document.getElementById('registeredModeTab');
+  const aiTab = document.getElementById('geminiModeTab');
+  const frame = document.getElementById('geminiSupportFrame');
+  if (!localPanel || !aiPanel || !localTab || !aiTab || !frame) return;
+  function selectMode(gemini) {
+    localPanel.hidden = gemini;
+    aiPanel.hidden = !gemini;
+    localTab.setAttribute('aria-selected', String(!gemini));
+    aiTab.setAttribute('aria-selected', String(gemini));
+    if (gemini && !frame.hasAttribute('src')) frame.src = frame.dataset.src;
+  }
+  localTab.addEventListener('click', function () { selectMode(false); });
+  aiTab.addEventListener('click', function () { selectMode(true); });
+  document.getElementById('geminiModeBar').addEventListener('keydown', function (event) {
+    if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+    event.preventDefault();
+    const gemini = event.key === 'End' || (event.key !== 'Home' && localTab.getAttribute('aria-selected') === 'true');
+    selectMode(gemini);
+    (gemini ? aiTab : localTab).focus();
+  });
+  window.addEventListener('message', function (event) {
+    if (event.origin !== origin || event.source !== frame.contentWindow) return;
+    const data = event.data;
+    if (!data || data.type !== 'hikari-coach-height' || typeof data.height !== 'number' || !Number.isFinite(data.height)) return;
+    frame.style.height = Math.max(650, Math.min(18000, Math.ceil(data.height) + 12)) + 'px';
+  });
+  // Google認証情報を親のGitHub画面へ受け取らない。質問も自動転送しない。
+  // Geminiの生成操作はiframe内の承認・個人情報チェック付きボタンだけで行う。
+  selectMode(false);
 })();
 
 </script>
