@@ -477,11 +477,34 @@ body.guide-building header{padding:12px 14px 14px}body.guide-building header .ti
 .hv-controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0 14px}.hv-button{display:inline-flex;gap:8px;align-items:center;justify-content:center;min-height:48px;border:1px solid #ba3154;border-radius:12px;padding:10px 16px;background:#fff;color:#a2163c;font-size:15px;font-weight:700;cursor:pointer}.hv-button[aria-pressed="true"]{background:#a2163c;color:#fff}.hv-button:disabled{opacity:.55;cursor:not-allowed}.hv-mic{width:19px;height:19px;flex-shrink:0}.hv-status{font-size:14px;line-height:1.65;color:#633045;overflow-wrap:anywhere;margin:4px 0;min-height:0}.hv-note{font-size:12px;line-height:1.7;color:#655a61;margin:8px 0 14px}.hv-global .search{margin-bottom:4px}.hv-global .hv-controls{margin:8px 0 10px}#aiView .hv-controls{margin-bottom:6px}#aiView .hv-button{min-width:140px}.hv-mirai-hit{position:absolute;left:1.5%;top:11%;width:24%;height:57%;z-index:4;background:transparent;border:0;border-radius:25px;cursor:pointer}.hv-mirai-hit span{position:absolute;bottom:4%;left:8%;right:8%;padding:6px 3px;background:#fffef2e8;border:1px solid #f0b285;border-radius:20px;color:#a43b21;font-weight:800;font-size:clamp(10px,1.6vw,18px);box-shadow:0 2px 8px #5b361322}.hv-mirai-hit:focus-visible,.hv-button:focus-visible{outline:3px solid #235f9f;outline-offset:2px}#storeHome #miraiQuestionButton{min-height:44px;border:1px solid #b52d50;border-radius:24px;background:#fff;color:#ab2047;padding:10px 18px;font-weight:750;font-size:14px;cursor:pointer}#voiceMiraiDialog{width:min(92vw,650px);max-width:650px;max-height:86dvh;overflow:auto;margin:auto;padding:24px;border:0;border-radius:20px;color:#2c2830;background:#fff;box-shadow:0 10px 80px #0004}#voiceMiraiDialog::backdrop{background:#20121a80}#voiceMiraiDialog h2{font-size:24px;margin:10px 0}#voiceMiraiDialog .hv-dialog-top{display:flex;justify-content:space-between;gap:10px;align-items:center}#voiceMiraiDialog .hv-close{min-height:44px;padding:9px 14px;border:1px solid #ddd;border-radius:10px;background:#fff;font-size:14px;cursor:pointer}#voiceMiraiDialog label{display:block!important;font-size:15px;font-weight:700;margin:14px 0 8px}#voiceMiraiDialog textarea{display:block;width:100%!important;min-height:125px;box-sizing:border-box;font:16px/1.7 system-ui,sans-serif;padding:12px;border:1px solid #d4b3bf;border-radius:12px;color:#27202a;background:white;resize:vertical}#voiceMiraiDialog .hv-search{min-height:48px;padding:12px 18px;border:0;border-radius:12px;background:#b31942;color:#fff;font-size:16px;font-weight:750;cursor:pointer}#voiceMiraiDialog .hv-fallback{display:block;margin-top:16px;font-size:14px;color:#9b2445}#voiceMiraiDialog p{line-height:1.8}html.terms-pending #voiceMiraiDialog{display:none!important}@media(max-width:540px){.hv-global .search{flex-wrap:wrap}.hv-global .hv-controls{align-items:flex-start}#voiceMiraiDialog{padding:18px}#voiceMiraiDialog .hv-search{width:100%}}@media print{.hv-controls,.hv-note,.hv-status,.hv-mirai-hit,#miraiQuestionButton,#voiceMiraiDialog{display:none!important}}
 
 </style>
+<style id="consult-mode-style">
+#geminiModeBar{display:flex;flex-wrap:wrap;gap:10px}#geminiModeBar>button{flex:1 1 190px;min-height:52px}
+#consultSupportPanel{color:#252a32;max-width:1100px;margin:0 auto}#consultSupportPanel [hidden]{display:none!important}
+#consultSupportPanel .cc-intro{margin:24px 0}#consultSupportPanel .cc-intro h2{font-size:clamp(22px,3vw,30px);line-height:1.5;margin:10px 0}
+#consultSupportPanel p{line-height:1.85;overflow-wrap:anywhere}#consultSupportPanel .cc-label{color:#ab1943;font-size:13px;font-weight:800;letter-spacing:.06em}
+#consultSupportPanel .cc-card{background:white;border:1px solid #e1d8dc;border-radius:20px;padding:clamp(18px,3vw,28px);margin:18px 0;box-shadow:0 6px 20px #34202a05}
+#consultSupportPanel .cc-products{display:flex;gap:10px;margin-bottom:22px}#consultSupportPanel button,#consultSupportPanel .cc-link-button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 18px;border:1px solid #d5c8ce;background:white;border-radius:12px;color:#862342;font:inherit;font-weight:700;cursor:pointer;text-decoration:none;white-space:normal;line-height:1.5}
+#consultSupportPanel .cc-products>button{flex:1}#consultSupportPanel .cc-products>button[aria-pressed=true],#consultSupportPanel button.cc-primary{background:#b61948;border-color:#b61948;color:white}
+#consultSupportPanel .cc-fields{display:flex;flex-wrap:wrap;gap:18px;margin:18px 0}#consultSupportPanel .cc-fields>label{flex:1 1 240px;min-width:0;font-weight:700;line-height:1.6}
+#consultSupportPanel select{width:100%;margin-top:8px;min-height:48px;max-width:100%;box-sizing:border-box;padding:10px;border:1px solid #d7d2d5;border-radius:10px;color:#252a32;background:white;font:inherit}
+#consultSupportPanel .cc-question-label{display:block;font-weight:700;margin:22px 0 8px}#consultSupportPanel textarea{width:100%;box-sizing:border-box;resize:vertical;border:1px solid #d7d2d5;border-radius:12px;padding:14px;font:inherit;line-height:1.7;background:white;color:#252a32;min-height:110px}
+#consultSupportPanel .cc-small{font-size:13px;color:#6b6469;line-height:1.8}#consultSupportPanel .cc-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+#consultSupportPanel #ccStatus{margin:18px 0 0;color:#842543}#consultSupportPanel .cc-results>button{display:flex;flex-direction:column;align-items:flex-start;width:100%;text-align:left;margin:10px 0}#consultSupportPanel .cc-results>button span{font-size:13px;font-weight:400;color:#6b6469;margin-top:5px}
+#consultSupportPanel .cc-answer h3{font-size:25px;line-height:1.5;margin:12px 0 22px}#consultSupportPanel .cc-answer h4{font-size:17px;margin:0 0 12px}#consultSupportPanel .cc-answer section{padding:20px 0;border-top:1px solid #eee7eb}#consultSupportPanel .cc-answer ul{padding-left:22px;line-height:1.8;margin:0}#consultSupportPanel .cc-answer li{margin:8px 0}
+#consultSupportPanel .cc-answer .cc-talk{background:#fbf3f6;border:0;border-left:4px solid #b61948;border-radius:0 12px 12px 0;padding:18px;margin:18px 0}#consultSupportPanel .cc-talk p{margin:0}
+#consultSupportPanel .cc-answer .cc-caution{background:#fffcf1;padding:18px;border:1px solid #ece0bc;border-radius:12px;margin:16px 0}
+#consultSupportPanel .cc-source span,#consultSupportPanel .cc-source small{display:block;font-size:12px;color:#6b6469;overflow-wrap:anywhere}#consultSupportPanel .cc-source a{color:#9e1940;font-weight:700}
+#consultHomeButton{display:block;width:100%;box-sizing:border-box;text-align:left;border:1px solid #e0c8d2;background:#fff5f8;color:#9d193f;border-radius:16px;padding:18px 22px;margin:18px 0;min-height:52px;font:inherit;font-weight:800;cursor:pointer}#consultHomeButton small{display:block;color:#645b60;font-weight:400;margin-top:5px;font-size:13px}
+#consultSupportPanel button:focus-visible,#consultHomeButton:focus-visible{outline:3px solid #c1892c;outline-offset:3px}
+@media(max-width:550px){#consultSupportPanel .cc-fields>label{flex-basis:100%}#consultSupportPanel .cc-actions>button,#consultSupportPanel .cc-actions>a{width:100%;box-sizing:border-box}#geminiModeBar{gap:8px}#geminiModeBar>button{flex-basis:100%;font-size:15px}}
+
+</style>
 </head>
 <body><header><div class="head"><a href="./othercarrier_docomo_compare_v58_independent_routes.html" style="display:inline-flex;align-items:center;min-height:40px;margin-bottom:12px;padding:8px 14px;border:1px solid #ffffff66;border-radius:999px;background:#ffffff18;color:#fff;text-decoration:none;font-size:13px;font-weight:800">← 店頭メニューへ戻る</a><div class="brand">DOCOMO HIKARI</div><div class="title">ドコモ光 STAFF SUPPORT</div><div class="sub">現場スタッフ向け 接客・受付サポートツール</div></div></header>
 <main>
 <section id="home" class="view active">
 <div class="hv-global"><div class="search"><input id="globalSearch" placeholder="質問を入力（例：工事は必要？）"><button onclick="searchAll()">検索</button></div><div class="hv-controls"><button type="button" class="hv-button" id="voiceGlobalButton" data-voice-input aria-pressed="false"><svg class="hv-mic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3M8 22h8"/></svg>音声入力</button></div><p id="voiceGlobalStatus" class="hv-status" role="status" aria-live="polite"></p><p class="hv-note">音声はブラウザー提供元のサービスで処理される場合があります。お客様の氏名・電話番号・実メール・住所・機密情報は話さないでください。文字を確認してから検索します。音声入力ではGeminiへ送信しません。</p></div>
+<button id="consultHomeButton" type="button">接客コンサルモードを開く<small>dカード・ドコモ光の切り返しと提案アドバイス／AI・ログイン不要</small></button>
 <div class="section-title">お手続きを選択してください</div>
 <div class="grid">
 <button class="card" onclick="openFlow('新規')"><div class="icon">✨</div><h3>新規</h3><p>新しくドコモ光をお申込みするケース</p></button>
@@ -536,6 +559,7 @@ body.guide-building header{padding:12px 14px 14px}body.guide-building header .ti
   </div>
 <div id="geminiModeBar" class="gemini-mode-bar" role="tablist" aria-label="回答方式">
 <button id="registeredModeTab" type="button" role="tab" aria-controls="registeredSupportPanel" aria-selected="true">登録回答を探す（AI不要）</button>
+<button id="consultModeTab" type="button" role="tab" aria-controls="consultSupportPanel" aria-selected="false">コンサルモード（接客トーク）</button>
 <button id="geminiModeTab" type="button" role="tab" aria-controls="geminiSupportPanel" aria-selected="false">Geminiに相談する</button>
 </div>
 <div id="registeredSupportPanel" role="tabpanel" aria-labelledby="registeredModeTab">
@@ -748,6 +772,30 @@ body.guide-building header{padding:12px 14px 14px}body.guide-building header .ti
 
   <div id="chat" hidden></div>
 </div>
+<div id="consultSupportPanel" role="tabpanel" aria-labelledby="consultModeTab" hidden>
+  <div class="cc-intro"><span class="cc-label">接客トーク・提案サポート</span><h2>お客様の「気になる」に、どう答える？</h2><p>独自に登録したトークを探すモードです。AIによる自由な回答生成ではありません。公式の条件と店舗用の伝え方を分け、無理に勧めない提案をお手伝いします。</p></div>
+  <div class="cc-card">
+    <div class="cc-products" role="group" aria-label="相談する商品"><button type="button" data-cc-product="dcard" aria-pressed="true">dカード</button><button type="button" data-cc-product="hikari" aria-pressed="false">ドコモ光</button></div>
+    <div class="cc-fields">
+      <label>お客様の迷い・断り理由<select id="ccIssue"><option value="">質問から探す／悩みを選ぶ</option></select></label>
+      <label id="ccGradeWrap">検討するカード<select id="ccGrade"><option value="">未確認</option><option>dカード</option><option>dカード GOLD U</option><option>dカード GOLD</option><option>dカード PLATINUM</option></select></label>
+    </div>
+    <div id="ccHikariFields" class="cc-fields" hidden>
+      <label>現在の会社<select id="ccCompany"><option value="">未確認</option></select></label>
+      <label>手続き<select id="ccProcedure"><option value="">未確認</option></select></label>
+      <label>変更先のドコモ光タイプ<select id="ccType"><option value="">未確認</option><option value="A">タイプA</option><option value="B">タイプB</option><option value="C">タイプC</option></select></label>
+    </div>
+    <label class="cc-question-label" for="ccQuestion">質問・お客様の言葉（任意）</label>
+    <textarea id="ccQuestion" rows="3" maxlength="1000" placeholder="例：年会費が高いと言われた。どう説明すればいい？"></textarea>
+    <p class="cc-small">顧客名・電話番号・住所・カード番号・実際のメールアドレスは入力しないでください。このモードでは質問を外部へ送信・保存しません。</p>
+    <div class="cc-actions"><button id="ccFind" type="button" class="cc-primary">切り返し・アドバイスを探す</button><button id="ccClear" type="button">入力をクリア</button></div>
+    <p id="ccStatus" role="status" aria-live="polite"></p>
+  </div>
+  <div id="ccResults" class="cc-results" aria-label="関連する接客トーク"></div>
+  <article id="ccAnswer" class="cc-card cc-answer" aria-labelledby="ccAnswerTitle" hidden></article>
+  <p class="cc-small">検索で見つからない相談は「登録回答を探す」、または「Geminiに相談する」へ。Geminiへの送信はその画面での明示操作が必要です。切り返しトークは独自の下書きで、公式の推奨トークではありません。</p>
+</div>
+
 <div id="geminiSupportPanel" role="tabpanel" aria-labelledby="geminiModeTab" hidden>
 <p class="gemini-mode-note">スタッフ各自のGoogleでログインして、公式資料を根拠に相談できます。管理者による利用承認が必要です。質問を送る前に、顧客名・電話番号・実際のメールアドレス・住所・機密情報が入っていないことを確認してください。</p>
 <a class="gemini-standalone" href="https://hikaricoach-aqwtlxgc.manus.space/" target="_blank" rel="noopener noreferrer">専用画面で開く（ログインしづらい場合はこちら）</a>
@@ -2759,39 +2807,43 @@ common.push({level:'basic',cat:'初期契約解除',q:'初期契約解除の8日
 (function () {
   'use strict';
   const origin = "https://hikaricoach-aqwtlxgc.manus.space";
-  const localPanel = document.getElementById('registeredSupportPanel');
-  const aiPanel = document.getElementById('geminiSupportPanel');
-  const localTab = document.getElementById('registeredModeTab');
-  const aiTab = document.getElementById('geminiModeTab');
+  const modes = ['registered', 'consult', 'gemini'];
+  const panels = modes.map(name => document.getElementById(name + 'SupportPanel'));
+  const tabs = modes.map(name => document.getElementById(name + 'ModeTab'));
   const frame = document.getElementById('geminiSupportFrame');
-  if (!localPanel || !aiPanel || !localTab || !aiTab || !frame) return;
-  function selectMode(gemini) {
-    localPanel.hidden = gemini;
-    aiPanel.hidden = !gemini;
-    localTab.setAttribute('aria-selected', String(!gemini));
-    aiTab.setAttribute('aria-selected', String(gemini));
-    if (gemini && !frame.hasAttribute('src')) frame.src = frame.dataset.src;
+  if (panels.some(p => !p) || tabs.some(t => !t) || !frame) return;
+  let selected = 0;
+  function selectMode(index) {
+    if (index < 0 || index >= modes.length) return;
+    selected = index;
+    panels.forEach((panel, i) => { panel.hidden = i !== selected; });
+    tabs.forEach((tab, i) => {
+      tab.setAttribute('aria-selected', String(i === selected));
+      tab.tabIndex = i === selected ? 0 : -1;
+    });
+    if (modes[selected] === 'gemini' && !frame.hasAttribute('src')) frame.src = frame.dataset.src;
   }
-  localTab.addEventListener('click', function () { selectMode(false); });
-  aiTab.addEventListener('click', function () { selectMode(true); });
-  document.getElementById('geminiModeBar').addEventListener('keydown', function (event) {
+  tabs.forEach((tab, i) => tab.addEventListener('click', () => selectMode(i)));
+  document.getElementById('geminiModeBar').addEventListener('keydown', event => {
     if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
     event.preventDefault();
-    const gemini = event.key === 'End' || (event.key !== 'Home' && localTab.getAttribute('aria-selected') === 'true');
-    selectMode(gemini);
-    (gemini ? aiTab : localTab).focus();
+    const index = event.key === 'Home' ? 0 : event.key === 'End' ? modes.length - 1 : (selected + (event.key === 'ArrowRight' ? 1 : -1) + modes.length) % modes.length;
+    selectMode(index);
+    tabs[index].focus();
   });
-  window.addEventListener('message', function (event) {
+  window.addEventListener('message', event => {
     if (event.origin !== origin || event.source !== frame.contentWindow) return;
     const data = event.data;
     if (!data || data.type !== 'hikari-coach-height' || typeof data.height !== 'number' || !Number.isFinite(data.height)) return;
     frame.style.height = Math.max(650, Math.min(18000, Math.ceil(data.height) + 12)) + 'px';
   });
-  // Google認証情報を親のGitHub画面へ受け取らない。質問も自動転送しない。
-  // Geminiの生成操作はiframe内の承認・個人情報チェック付きボタンだけで行う。
-  selectMode(false);
+  // トップ検索・既存AI入口は登録回答を開く。認証情報や質問は転送しない。
+  ['openAI', 'searchAll', 'openConsult'].forEach(name => {
+    const previous = window[name];
+    if (typeof previous === 'function') window[name] = function () { selectMode(0); return previous.apply(this, arguments); };
+  });
+  selectMode(0);
 })();
-
 </script>
 <script id="voiceInputRuntime">
 (function () {
@@ -2959,6 +3011,114 @@ common.push({level:'basic',cat:'初期契約解除',q:'初期契約解除の8日
     if(document.documentElement.classList.contains('terms-pending') || hidden) cancel();
   }).observe(document.documentElement,{subtree:true,attributes:true,attributeFilter:['hidden','class','style']});
   window.HikariVoiceInput={cancel,openMirai};
+})();
+
+</script>
+<script id="consultTalkData" type="application/json">[{"id": "dcard-annual-fee", "product": "dcard", "title": "年会費が気になる", "keywords": ["年会費", "会費", "元が取れる", "維持費", "高い"], "checks": ["検討中のグレード（一般・GOLD U・GOLD・PLATINUM）", "カードに求める用途", "既存シミュレーターで確認する意思"], "shortTalk": "年会費は気になりますよね。まず、負担を増やしてまで必要かと、検討したいグレードを一緒に確認してよいですか？", "longTalk": "年会費だけで得・損を決めず、普段の使い方と対象になる条件を確認して判断するのが安心です。カードごとに条件や特典が異なり、今後見直し予定の案内もあるため、金額や回収をこの場で固定せず、既存シミュレーターと申込時点の公式条件で確認しましょう。合わなければ現状維持や持ち帰りでも問題ありません。これは店舗用の整理であり、公式の推奨トークではありません。", "advice": ["グレードを先に確認して比較対象を狭める", "既存シミュレーターへ案内する", "即決ではなく持ち帰りの選択肢を示す", "初年度と2年目以降を分け、年会費を差し引いた見込みと、特典を使わない場合も比較する。", "特典のために買物を増やす提案はせず、普段の支払額だけで検討する。"], "avoid": ["年会費は必ず回収できると言う", "将来の条件を固定して案内する", "特典額を合算して全員に得だと言う"], "next": ["どのグレードを考えていますか？", "主にどの支払いで使う予定ですか？", "まずシミュレーターで条件を見ますか？"], "sources": [{"title": "dカード比較（公式）", "url": "https://dcard.docomo.ne.jp/st/dcard_compare_dcar/index.html", "checkedAt": "2026-10-11"}, {"title": "dカード GOLD（公式）", "url": "https://dcard.docomo.ne.jp/st/dcard_gold/index.html", "checkedAt": "2026-10-11"}], "lookup": ""}, {"id": "dcard-points-real-value", "product": "dcard", "title": "ポイントは本当に得か", "keywords": ["ポイント", "本当に得", "還元", "貯まる", "お得"], "checks": ["ポイントの主な使い道", "対象外の支払いがあり得ることの確認", "現金同様の価値を期待していないか"], "shortTalk": "ポイントが実際に使いやすいかは大事ですよね。普段の使い道に合うかを確認してから考えませんか？", "longTalk": "ポイントには対象外の支払いがあり、使い方によって受け取り方も変わります。現金収入のように見込んだり、特典の額面だけで判断したりせず、普段の利用で無理なく使えるかを既存シミュレーターと登録された回答で確認しましょう。条件が合わなければ、カードを増やさない判断も自然です。これは店舗用の整理であり、公式の推奨トークではありません。", "advice": ["利用先と使い道を先に聞く", "対象外・条件確認を促す", "シミュレーターの結果を目安として案内する", "毎月の対象支払と対象外支払を分け、ポイントの使い道・期限も本人に確認する。"], "avoid": ["ポイントを確実な収入として扱う", "すべての支払いが対象だと案内する", "誰でも同じだけ得すると言う"], "next": ["ポイントは何に使うイメージですか？", "今の支払いでカードにまとめられそうなものはありますか？", "対象条件を確認してから比較しますか？"], "sources": [{"title": "dカード GOLD（公式）", "url": "https://dcard.docomo.ne.jp/st/dcard_gold/index.html", "checkedAt": "2026-10-11"}, {"title": "dカード比較（公式）", "url": "https://dcard.docomo.ne.jp/st/dcard_compare_dcar/index.html", "checkedAt": "2026-10-11"}], "lookup": ""}, {"id": "dcard-no-more-cards", "product": "dcard", "title": "カードを増やしたくない", "keywords": ["カード増やしたくない", "増やさない", "枚数", "管理", "財布"], "checks": ["現在のカード枚数と管理負担", "追加する目的が明確か", "現状のカードで困っていること"], "shortTalk": "増やすと管理が負担になりますよね。今のカードで困っていることがあるかだけ、先に伺ってもよいですか？", "longTalk": "新しいカードが必須ということではありません。今のカードで目的を満たせるなら、増やさない・持ち帰って考える選択も尊重します。追加する理由がはっきりある場合だけ、候補グレードの条件を既存シミュレーターで確認しましょう。審査や特典を前提に急がせる案内はしません。これは店舗用の整理であり、公式の推奨トークではありません。", "advice": ["追加理由を一つに絞って聞く", "管理負担への共感を示す", "現状維持を明確な選択肢にする"], "avoid": ["とりあえず申込みを勧める", "既存カードを否定する", "特典だけを理由に複数枚保有を促す"], "next": ["今のカードで不便な点はありますか？", "追加する目的は何でしょうか？", "今日は情報だけ持ち帰りますか？"], "sources": [{"title": "dカード比較（公式）", "url": "https://dcard.docomo.ne.jp/st/dcard_compare_dcar/index.html", "checkedAt": "2026-10-11"}], "lookup": ""}, {"id": "dcard-existing-card", "product": "dcard", "title": "今のカードがある", "keywords": ["既存カード", "今のカード", "他社カード", "持っている", "乗り換え"], "checks": ["現在のカードの主な用途", "切替ではなく追加かの確認", "比較したいdカードのグレード"], "shortTalk": "すでに使いやすいカードがあるのですね。無理に替える必要はないので、比較したい点だけ確認させてください。", "longTalk": "現在のカードを続ける前提で比較して大丈夫です。dカードのグレードごとに利用条件や特典は異なるため、既存カードとの優劣を一律には言えません。何を変えたいのかを確認し、必要なら既存シミュレーターと公式条件で対象を照らし合わせましょう。合わなければ今のカードを継続する案内にします。これは店舗用の整理であり、公式の推奨トークではありません。", "advice": ["既存カードを継続する前提で聞く", "切替・追加を混同しない", "比較軸を用途に限定する", "既存カードの年会費・還元対象・自動支払を本人の明細で比べ、切替時の支払設定変更も整理する。"], "avoid": ["今のカードより必ず有利だと言う", "解約を急がせる", "カード内容を推測で評価する"], "next": ["今のカードで満足している点は何ですか？", "変えたいことはありますか？", "追加か、比較だけか、どちらを考えていますか？"], "sources": [{"title": "dカード比較（公式）", "url": "https://dcard.docomo.ne.jp/st/dcard_compare_dcar/index.html", "checkedAt": "2026-10-11"}], "lookup": ""}, {"id": "dcard-platinum-or-gold", "product": "dcard", "title": "PLATINUMとGOLDで迷う", "keywords": ["PLATINUM", "プラチナ", "GOLD", "ゴールド", "違い", "比較"], "checks": ["比較するグレード（GOLD U・GOLD・PLATINUM）", "普段のショッピング利用の考え方", "ラウンジ等の利用予定", "本会員・家族会員の別"], "shortTalk": "グレードの違いは迷いますよね。使いたい特典と、普段の利用のイメージを先に確認して比べましょうか？", "longTalk": "PLATINUMは初年度と2年目以降で条件が異なり、2年目以降はショッピング利用額の条件も案内されています。ラウンジ等にも本会員、事前登録、回数などの条件があります。特典を全部使う前提で比べず、実際に使うものだけを既存シミュレーターと申込時点の公式条件で確認しましょう。GOLD U・GOLD・PLATINUMの条件を混ぜず、決め切れなければ持ち帰りで問題ありません。これは店舗用の整理であり、公式の推奨トークではありません。", "advice": ["グレード名を必ず確認する", "使わない特典を前提にしない", "本会員・家族会員の条件を分けて確認する"], "avoid": ["上位グレードほど必ず得だと言う", "ラウンジ等を全員が使えると案内する", "年ごとの条件差を省略する"], "next": ["GOLD U・GOLD・PLATINUMのどれで迷っていますか？", "使いたい特典はありますか？", "本会員として使う予定ですか？"], "sources": [{"title": "dカード PLATINUM（公式）", "url": "https://dcard.docomo.ne.jp/st/dcard_platinum/index.html", "checkedAt": "2026-10-11"}, {"title": "dカード GOLD（公式）", "url": "https://dcard.docomo.ne.jp/st/dcard_gold/index.html", "checkedAt": "2026-10-11"}], "lookup": ""}, {"id": "dcard-screening-concern", "product": "dcard", "title": "審査が不安", "keywords": ["審査", "通る", "通過", "不安", "申込"], "checks": ["申込みを急いでいないか", "希望グレード", "審査結果を保証できないことの理解"], "shortTalk": "審査のことは不安になりますよね。結果をお約束はできないので、まず希望するカードと申込条件の確認からでよいですか？", "longTalk": "カードには所定の入会条件と審査があります。個別の結果、通過見込み、結果が出る時期はここでは約束できません。焦って申し込む必要はないため、希望グレードの条件を公式で確認してから、申込むか持ち帰るかを選んでください。入力内容の判断や審査に関する推測はしません。これは店舗用の整理であり、公式の推奨トークではありません。", "advice": ["審査の保証をしない", "公式の入会条件確認へ案内する", "申込み判断は本人に委ねる"], "avoid": ["必ず通る・通りやすいと言う", "属性から可否を推測する", "急いで申込むよう促す"], "next": ["検討しているグレードはどれですか？", "まず公式の入会条件を確認しますか？", "今日は情報を持ち帰りますか？"], "sources": [{"title": "dカード GOLD（公式）", "url": "https://dcard.docomo.ne.jp/st/dcard_gold/index.html", "checkedAt": "2026-10-11"}, {"title": "dカード比較（公式）", "url": "https://dcard.docomo.ne.jp/st/dcard_compare_dcar/index.html", "checkedAt": "2026-10-11"}], "lookup": ""}, {"id": "dcard-revolving-concern", "product": "dcard", "title": "リボ払いが不安", "keywords": ["リボ", "リボ払い", "支払い", "分割", "不安"], "checks": ["不安なのが支払い設定か利用方法か", "申込前に条件を確認したいか", "無理のない管理を優先したいか"], "shortTalk": "支払い方法は大切なので、不安なまま進めたくないですよね。何が心配かを確認して、納得できるまで申込みは保留にしましょうか？", "longTalk": "支払い設定や利用方法は、ご本人が理解して選ぶことが大切です。ここではリボ利用を勧めたり、負担を軽く見せたりしません。申込前に公式の条件や注意事項を確認し、分からない点が残るなら持ち帰り・現状維持で問題ありません。カード特典のために支払い方法を急いで選ぶ必要はありません。これは店舗用の整理であり、公式の推奨トークではありません。", "advice": ["不安の内容を遮らず確認する", "公式の条件確認へ案内する", "申込み保留を自然な選択肢にする", "申込画面の支払方法・自動リボ等の設定を本人と確認し、手数料が生じる条件は提供元の説明を確認する。"], "avoid": ["リボ利用を前提に勧める", "支払い負担を断定的に軽いと言う", "理解不足のまま申込みを進める"], "next": ["支払い設定と利用方法の、どちらが心配ですか？", "公式の注意事項を確認してからにしますか？", "今日は申込まずに持ち帰りますか？"], "sources": [{"title": "dカード比較（公式）", "url": "https://dcard.docomo.ne.jp/st/dcard_compare_dcar/index.html", "checkedAt": "2026-10-11"}], "lookup": ""}, {"id": "dcard-family-use", "product": "dcard", "title": "家族でも使えるか気になる", "keywords": ["家族", "家族カード", "夫婦", "子ども", "家族会員"], "checks": ["本会員か家族会員か", "家族が使いたい内容", "グレードごとの条件確認", "家族の契約を本人同意なく決めないこと"], "shortTalk": "ご家族での使い方は条件を分けて見た方が安心ですね。本会員とご家族それぞれで、何を期待しているか伺えますか？", "longTalk": "家族に関する対象や利用条件を一律には案内できません。特にPLATINUMのラウンジ等は本会員限定、事前登録、回数などの条件があるため、家族全員が同じように使える前提にはしません。検討するグレードと本会員・家族会員の別を確認し、申込時点の公式条件で判断しましょう。ご本人が不在のご家族分を決めることは勧めません。これは店舗用の整理であり、公式の推奨トークではありません。", "advice": ["本会員と家族会員を分けて聞く", "家族分の特典を推測しない", "本人確認・同意が必要な判断は持ち帰りにする"], "avoid": ["家族全員が無条件で同じ特典を使えると言う", "家族の意思を確認せず申込みを進める", "本会員限定条件を省略する"], "next": ["本会員として使うのはどなたですか？", "ご家族は何に使う予定ですか？", "検討中のグレードを確認してもよいですか？"], "sources": [{"title": "dカード PLATINUM（公式）", "url": "https://dcard.docomo.ne.jp/st/dcard_platinum/index.html", "checkedAt": "2026-10-11"}, {"title": "dカード比較（公式）", "url": "https://dcard.docomo.ne.jp/st/dcard_compare_dcar/index.html", "checkedAt": "2026-10-11"}], "lookup": ""}, {"id": "dcard-no-travel-use", "product": "dcard", "title": "旅行では使わない", "keywords": ["旅行", "ラウンジ", "飛行機", "使わない", "不要"], "checks": ["旅行関連の特典を使う予定があるか", "日常利用で重視すること", "上位グレードを比較する理由"], "shortTalk": "旅行をしないなら、使わない特典まで前提にしたくないですよね。日常で重視したいことを中心に見直しましょうか？", "longTalk": "旅行関連の特典を使わない場合、それを価値として上乗せして判断する必要はありません。PLATINUMのラウンジ等にも本会員、事前登録、回数などの条件があります。利用予定のない特典の額面を足して得だとせず、日常で必要なことだけを基準にグレードと条件を確認しましょう。合わなければ低いグレードや現状維持、持ち帰りで問題ありません。これは店舗用の整理であり、公式の推奨トークではありません。", "advice": ["使わない特典を比較から外す", "日常用途を聞く", "下位グレード・現状維持も提示する"], "avoid": ["旅行特典を使う前提で得を計算する", "上位グレードへ誘導する", "ラウンジ利用を保証する"], "next": ["日常では何を一番重視しますか？", "旅行以外で使いたい特典はありますか？", "グレードを絞って確認しますか？"], "sources": [{"title": "dカード PLATINUM（公式）", "url": "https://dcard.docomo.ne.jp/st/dcard_platinum/index.html", "checkedAt": "2026-10-11"}], "lookup": ""}, {"id": "dcard-take-home", "product": "dcard", "title": "持ち帰って考えたい", "keywords": ["持ち帰り", "考える", "検討", "今日はやめる", "即決しない"], "checks": ["比較したグレード", "持ち帰りたい不明点", "既存シミュレーター・公式条件を確認するか"], "shortTalk": "もちろんです。カードは急いで決めなくて大丈夫なので、気になる条件だけ整理して持ち帰りませんか？", "longTalk": "持ち帰りは自然な判断です。年会費、対象条件、利用条件は申込時期やグレードで変わり得るため、今日の会話だけで決めず、既存シミュレーターと申込時点の公式条件を確認してください。次回は検討したグレードと残った疑問から再開できます。審査や特典、年会費回収を理由に即決を促しません。これは店舗用の整理であり、公式の推奨トークではありません。", "advice": ["比較した点を短くメモ化する", "公式条件の再確認先を示す", "再来店時の確認項目を残す"], "avoid": ["本日限りのように急がせる", "特典や審査を保証して引き留める", "個人情報をこのモードに保存する"], "next": ["どのグレードを持ち帰って比較しますか？", "一番確認したい条件は何ですか？", "次回はその点から確認しましょうか？"], "sources": [{"title": "dカード比較（公式）", "url": "https://dcard.docomo.ne.jp/st/dcard_compare_dcar/index.html", "checkedAt": "2026-10-11"}, {"title": "dカード PLATINUM（公式）", "url": "https://dcard.docomo.ne.jp/st/dcard_platinum/index.html", "checkedAt": "2026-10-11"}], "lookup": ""}, {"id": "hikari-monthly-price-high", "product": "hikari", "title": "月額が高く感じる", "keywords": ["月額", "高い", "料金", "安く", "費用"], "checks": ["現在の会社", "現在のタイプと変更先A・B・C", "スマホとの対象条件", "既存シミュレーターを確認する意思"], "shortTalk": "毎月の負担は気になりますよね。今の会社と検討中の変更先を確認して、条件が合うかから見てよいですか？", "longTalk": "月額だけで決めず、現在の契約、変更先、対象プラン、同一ファミリー割引グループなどの条件を確認する必要があります。割引は対象スマホ料金に関するもので、家族全員に無条件で適用されるものではなく、対象外となるプランもあります。個別の費用や還元はここで示さず、既存シミュレーターと登録回答で確認しましょう。合わなければ現状維持も選べます。これは店舗用の整理であり、公式の推奨トークではありません。", "advice": ["現在会社・タイプ・変更先A/B/Cを確認する", "既存シミュレーターへ案内する", "家族の割引適用を一律に扱わない", "ネット単体ではなく、スマホ・電話・テレビ・ルーターを含む毎月の総額と初期費用を比較する。", "期間限定割引の終了後料金と、ポイント進呈を分けて見せる。"], "avoid": ["必ず安くなると言う", "個別費用や還元率を固定して言う", "家族全員に無条件で適用されると言う"], "next": ["今はどの会社・タイプを使っていますか？", "変更先はA・B・Cのどれを考えていますか？", "既存シミュレーターで確認しますか？"], "sources": [{"title": "ドコモ光セット割（公式）", "url": "https://www.docomo.ne.jp/charge/hikari_set/", "checkedAt": "2026-10-11"}], "lookup": "月額 料金"}, {"id": "hikari-need-10g", "product": "hikari", "title": "10ギガは必要か", "keywords": ["10G", "10ギガ", "必要", "1G", "速度"], "checks": ["現在の回線タイプ", "困っている利用場面", "提供エリア", "対応ルーターの確認", "1Gからの変更か解約新規か"], "shortTalk": "10ギガが必要かは使い方次第ですよね。今どんな場面で困っているかと、現在の回線から確認してよいですか？", "longTalk": "10ギガはエリアや対応ルーターの確認が必要で、実際の通信は環境・機器・混雑の影響を受けます。速度を約束したり、全員に必要だと勧めたりはしません。通常の1Gから10Gへのプラン変更と、解約して新規契約する手続きは別です。まず利用場面と現在のタイプを確認し、既存の登録回答・公式条件で対象を見てから判断しましょう。これは店舗用の整理であり、公式の推奨トークではありません。", "advice": ["困る場面を具体的に聞く", "エリア・ルーター・手続き種別を確認する", "速度保証をしない", "動画視聴・オンライン会議・同時接続台数を聞き、困っていなければ1ギガ継続も提案する。"], "avoid": ["10ギガなら必ず速いと言う", "誰にでも10ギガが必要だと言う", "1Gからの変更と解約新規を同じ手続きとして案内する"], "next": ["今は1Gですか、それ以外ですか？", "どの利用場面で困りますか？", "提供エリアと対応機器を確認しますか？"], "sources": [{"title": "ドコモ光 10ギガ（公式）", "url": "https://www.docomo.ne.jp/internet/hikari/10g_plan/", "checkedAt": "2026-10-11"}], "lookup": "10G 1G 速度"}, {"id": "hikari-speed-slow", "product": "hikari", "title": "速度が遅い", "keywords": ["遅い", "速度", "つながらない", "Wi-Fi", "改善"], "checks": ["遅い時間帯と利用場所", "現在の会社・タイプ", "利用機器とルーターの状況", "10Gを検討する理由"], "shortTalk": "遅いと困りますよね。回線だけとは限らないので、いつ・どこで遅いかから確認してもよいですか？", "longTalk": "通信速度はベストエフォートで、環境、機器、混雑などにより低下することがあります。そのため、乗り換えや10ギガで必ず改善すると約束はできません。現在の会社・タイプ、遅い時間帯、利用機器を確認し、既存の登録回答と対象条件を見て、現状の見直しか変更かを検討しましょう。焦って切り替えず、現状維持も含めて選べます。これは店舗用の整理であり、公式の推奨トークではありません。", "advice": ["症状の時間帯と場所を聞く", "回線以外の要因もあり得ると説明する", "速度保証をしない", "同じ端末で有線とWi-Fi、ルーターの近くと遠くを比べ、回線以外の原因を切り分ける。"], "avoid": ["乗り換えれば必ず改善すると言う", "実使用速度を固定して案内する", "機器・環境の確認を飛ばす"], "next": ["遅いのはいつ、どの部屋ですか？", "今の会社とタイプを教えてください", "利用しているルーターの状況を確認しますか？"], "sources": [{"title": "ドコモ光 10ギガ（公式）", "url": "https://www.docomo.ne.jp/internet/hikari/10g_plan/", "checkedAt": "2026-10-11"}], "lookup": "速度 遅い ルーター"}, {"id": "hikari-switching-hassle", "product": "hikari", "title": "乗り換えが面倒", "keywords": ["乗り換え", "面倒", "手続き", "手間", "変更"], "checks": ["現在の会社", "現在のタイプ", "変更先A・B・C", "解約新規かプラン変更か", "引継ぎたいサービス"], "shortTalk": "手続きが増えるのは避けたいですよね。今の会社と、変えたい理由だけを先に整理してみませんか？", "longTalk": "手続きは現在の会社、契約タイプ、変更先、解約新規かプラン変更かで異なります。工事や日数を一律に約束せず、既存サイトの会社別登録回答とA/B/Cの解約新規フローを手動で確認してください。電話、メール、テレビなど引継ぎたいものがあれば別途確認が必要です。負担に見合わなければ、現状維持や持ち帰りという選択で問題ありません。これは店舗用の整理であり、公式の推奨トークではありません。", "advice": ["会社・タイプ・変更先A/B/Cを確認する", "既存の会社別フローへ手動でつなぐ", "引継ぎたい付加サービスを聞く", "必要な連絡先、開通日、設定サポート、返却の担当を既存案内書で一枚に整理して見せる。"], "avoid": ["誰でも簡単・短期間で終わると言う", "会社別手続きの違いを省略する", "付加サービスを確認せず解約を勧める"], "next": ["今はどの会社・タイプですか？", "変更先はA・B・Cのどれですか？", "引継ぎたい電話・メール・テレビはありますか？"], "sources": [{"title": "ドコモ光 10ギガ（公式）", "url": "https://www.docomo.ne.jp/internet/hikari/10g_plan/", "checkedAt": "2026-10-11"}], "lookup": "乗り換え 手続き"}, {"id": "hikari-cancellation-fee", "product": "hikari", "title": "解約金が心配", "keywords": ["解約金", "違約金", "解約", "費用", "契約解除"], "checks": ["現在の会社", "現在の契約内容を確認できるか", "変更先A・B・C", "返却・撤去・付加サービスの有無"], "shortTalk": "解約時のことは先に確認したいですよね。今の会社と契約内容を、既存の登録回答で一緒に確認しましょうか？", "longTalk": "解約時の費用や条件は現在の会社・契約内容によって異なるため、ここで金額を固定して案内しません。既存サイトの会社別登録回答と契約先窓口で、解約前に付加サービス、電話番号の引継ぎ、機器返却、撤去などを確認してください。変更先A/B/Cの手続きとも混同せず、負担が不明なうちは現状維持や持ち帰りで問題ありません。これは店舗用の整理であり、公式の推奨トークではありません。", "advice": ["現在会社と契約内容の確認を先にする", "既存の会社別登録回答へ手動で案内する", "費用・日数を固定しない", "契約解除料・工事費残債・撤去費・未返却費を分けて契約先に確認する。", "のりかえ特典は対象費用・申請期限・証明書・進呈条件を確認し、現金で全額返金とは案内しない。"], "avoid": ["解約金がない・必ず補えると言う", "個別費用を推測で案内する", "確認前に解約を勧める"], "next": ["現在の会社はどこですか？", "契約内容を確認できる書面や画面はありますか？", "既存の会社別回答を開いて確認しますか？"], "sources": [{"title": "ドコモ光 ご契約にあたっての注意事項（公式）", "url": "https://www.docomo.ne.jp/internet/hikari/notice/", "checkedAt": "2026-10-11"}], "lookup": "解約金 違約金"}, {"id": "hikari-email-continuity", "product": "hikari", "title": "メールアドレスを残せるか", "keywords": ["メール", "メールアドレス", "残す", "継続", "引継ぎ"], "checks": ["現在の会社とメールの提供元", "その会社のメールを今使っているか（実アドレスはここへ入力しない）", "変更先A・B・C", "旧契約のメール専用プラン・継続条件を確認"], "shortTalk": "大切なメールアドレスなら、解約前に確認したいですよね。今の会社と、残したいアドレスがあるかを確認してよいですか？", "longTalk": "今のメールを使い続けたいお気持ちは大切にしたいです。まず、旧プロバイダーにメールだけ残すプランと条件があるか確認しましょう。残せる場合も月額や申込期限、今のアドレスを引き継げるかまで確認します。残せない場合は、新しいアドレスを用意して、各サービスの連絡先変更や必要メールの保存を先に整理できます。そこまで確認してから、変更するか今のままにするかを一緒に考えましょう。継続可否をここで一律には断定しません。", "advice": ["残したいメールの有無を聞く", "既存のメール欄と会社別回答へ手動案内する", "契約先窓口での確認を促す", "メール専用プランの有無、既存アドレスを引き継げるか、月額と変更期限を旧プロバイダーに確認する。", "残せない場合は、新しいアドレスの準備と各サービスの連絡先変更・必要メールの保存を、旧契約解約前に進める。"], "avoid": ["メールを必ず残せる・必ず使えなくなると断定する", "会社をまたいで条件を流用する", "確認前に解約を勧める"], "next": ["現在の会社はどこですか？", "残したいメールアドレスはありますか？", "既存のメール確認欄を開きますか？"], "sources": [{"title": "ドコモ光 ご契約にあたっての注意事項（公式）", "url": "https://www.docomo.ne.jp/internet/hikari/notice/", "checkedAt": "2026-10-11"}], "lookup": "メール アドレス 継続"}, {"id": "hikari-phone-number", "product": "hikari", "title": "固定電話の番号が気になる", "keywords": ["電話", "固定電話", "電話番号", "番号", "引継ぎ"], "checks": ["現在の会社", "引き継ぎたい電話番号の有無", "変更先A・B・C", "現在の電話サービスの契約内容"], "shortTalk": "電話番号は生活に関わるので、先に確認したいですよね。引き継ぎたい番号があるか、今の会社から確認してよいですか？", "longTalk": "電話番号の引継ぎ可否や手順は、現在の会社と契約内容、変更先によって異なります。ここで継続できると約束せず、既存の会社別登録回答・電話欄と契約先窓口で確認してください。解約前に確認が必要な項目として、電話番号の引継ぎが案内されています。番号を優先するなら、確認が終わるまで現状維持にする判断も大切です。これは店舗用の整理であり、公式の推奨トークではありません。", "advice": ["番号を残したいかを最初に聞く", "会社別登録回答の電話欄へ手動案内する", "可否と日程を推測しない", "番号継続の可否を申込先に照会し、旧電話の廃止を先に申し込まない。"], "avoid": ["必ず番号を引き継げると言う", "解約してから確認するよう勧める", "他社の条件を流用する"], "next": ["引き継ぎたい固定電話番号はありますか？", "現在の会社と電話サービスを確認できますか？", "既存の電話確認欄を開きますか？"], "sources": [{"title": "ドコモ光 ご契約にあたっての注意事項（公式）", "url": "https://www.docomo.ne.jp/internet/hikari/notice/", "checkedAt": "2026-10-11"}, {"title": "ドコモ光電話・番号引継ぎの条件（公式）", "url": "https://www.docomo.ne.jp/internet/hikari/tell_service/", "checkedAt": "2026-10-11"}], "lookup": "電話 番号 引継ぎ"}, {"id": "hikari-tv-recording", "product": "hikari", "title": "テレビや録画が使えるか", "keywords": ["テレビ", "録画", "TV", "レコーダー", "視聴"], "checks": ["現在の会社", "利用中のテレビ・録画サービス", "残したい番組視聴・録画の使い方", "変更先A・B・C"], "shortTalk": "テレビや録画が変わると困りますよね。今使っているサービスと、残したい使い方を確認してからにしましょうか？", "longTalk": "テレビや録画の扱いは、現在の会社・契約している付加サービス・機器によって異なります。継続可否や録画の扱いをここで断定せず、既存の会社別登録回答・テレビ欄と契約先窓口で確認してください。J:COM、eo、NURO、auなどについても会社ごとの確認が必要です。利用中のサービスを確認しないまま解約や変更を勧めず、心配が残るなら現状維持で大丈夫です。これは店舗用の整理であり、公式の推奨トークではありません。", "advice": ["テレビ・録画の利用有無を先に聞く", "既存のテレビ欄へ手動案内する", "機器やサービスの継続を断定しない", "テレビの受信方法（アンテナ／ケーブル／光）と録画先（貸出機器／自分のレコーダー）を分けて聞く。", "返却機器内の録画は返却前に視聴・移動の可否を契約先に確認。移動できると保証しない。"], "avoid": ["録画や視聴がそのまま使えると保証する", "会社別の条件を混同する", "テレビ利用を確認せず解約を勧める"], "next": ["今はどのテレビ・録画サービスを使っていますか？", "残したい使い方はありますか？", "既存のテレビ確認欄を開きますか？"], "sources": [{"title": "ドコモ光 ご契約にあたっての注意事項（公式）", "url": "https://www.docomo.ne.jp/internet/hikari/notice/", "checkedAt": "2026-10-11"}, {"title": "ドコモ光テレビオプション・提供条件（公式）", "url": "https://www.docomo.ne.jp/internet/hikari/eizo_service/tv_option/", "checkedAt": "2026-10-11"}], "lookup": "テレビ 録画"}, {"id": "hikari-construction-concern", "product": "hikari", "title": "工事が心配", "keywords": ["工事", "立ち会い", "時間", "工事費", "いつ"], "checks": ["現在の会社とタイプ", "変更先A・B・C", "プラン変更か解約新規か", "提供エリア・設備・対応機器の確認"], "shortTalk": "工事の負担は心配ですよね。現在の回線と変更方法を確認して、必要な確認から進めましょうか？", "longTalk": "工事の有無、内容、費用、時期は申込内容、設備、エリアなどで変わるため、ここで固定しません。1Gから10Gへのプラン変更と解約新規は別の手続きです。現在の会社・タイプと変更先A/B/Cを確認し、既存の登録回答・フローおよび申込時点の公式案内で確認してください。負担が合わなければ、現状維持や持ち帰りを選べます。これは店舗用の整理であり、公式の推奨トークではありません。", "advice": ["変更種別を先に確認する", "工事費・所要時間を固定しない", "既存フローと公式案内へ手動案内する", "立会い・賃貸の工事承諾・穴あけ可否・テレビの同時工事を確認し、日程確定前に旧回線を先に解約しない。"], "avoid": ["工事不要・この日数で終わると断定する", "工事費を固定して言う", "設備やエリア確認を省略する"], "next": ["今の会社とタイプは何ですか？", "プラン変更と乗り換えのどちらを考えていますか？", "変更先はA・B・Cのどれですか？"], "sources": [{"title": "ドコモ光 10ギガ（公式）", "url": "https://www.docomo.ne.jp/internet/hikari/10g_plan/", "checkedAt": "2026-10-11"}], "lookup": "工事 費用 時間"}, {"id": "hikari-stay-current", "product": "hikari", "title": "今のままでよいか迷う", "keywords": ["現状維持", "今のまま", "変えない", "迷う", "持ち帰り"], "checks": ["現在の会社とタイプ", "変更を考えたきっかけ", "困っていることの優先度", "電話・メール・テレビなど残したいサービス"], "shortTalk": "今のままにする判断も大切ですよね。何を変えたいのか、今の不満があるかだけ整理してみませんか？", "longTalk": "変更が常に正解ではありません。速度、月額、手続き、電話・メール・テレビなど、優先したいことと引継ぎたいものを確認してから判断しましょう。J:COM、eo、NURO、auなどを含め、継続可否や解約時の条件は会社・契約内容ごとに既存の登録回答と契約先窓口で確認が必要です。個別費用、還元、工事の期間はここで固定せず、納得できなければ現状維持や持ち帰りで問題ありません。これは店舗用の整理であり、公式の推奨トークではありません。", "advice": ["変更理由と優先順位を聞く", "既存の会社別回答へ必要項目だけ手動案内する", "現状維持と持ち帰りを明確に提示する"], "avoid": ["変更しないと損だと言う", "他社サービスの継続可否を断定する", "費用・還元・工事期間を固定して比較する"], "next": ["今の会社とタイプは何ですか？", "一番変えたい点は何ですか？", "電話・メール・テレビで残したいものはありますか？"], "sources": [{"title": "ドコモ光セット割（公式）", "url": "https://www.docomo.ne.jp/charge/hikari_set/", "checkedAt": "2026-10-11"}, {"title": "ドコモ光 ご契約にあたっての注意事項（公式）", "url": "https://www.docomo.ne.jp/internet/hikari/notice/", "checkedAt": "2026-10-11"}], "lookup": "現状維持"}]</script>
+<script id="consult-mode-runtime">
+(function () {
+  'use strict';
+  const $ = id => document.getElementById(id);
+  const data = JSON.parse($('consultTalkData').textContent);
+  let product = 'dcard';
+  let active = null;
+  const normalize = text => String(text || '').normalize('NFKC').toLowerCase().replace(/[\s・。、？！?!]/g, '');
+  const escape = text => String(text || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  function privacy(text) {
+    const s = String(text || '').normalize('NFKC');
+    return /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i.test(s) || /(?:\d[\s()ー―−-]*){10,}/.test(s) || /(?:氏名|お客様名|住所|カード番号)\s*[:：]/.test(s);
+  }
+  function clearResults(message) {
+    active = null;
+    $('ccResults').replaceChildren();
+    $('ccAnswer').replaceChildren();
+    $('ccAnswer').hidden = true;
+    $('ccStatus').textContent = message || '';
+  }
+  function selectProduct(value) {
+    if (!['dcard', 'hikari'].includes(value)) return;
+    product = value;
+    document.querySelectorAll('[data-cc-product]').forEach(el => el.setAttribute('aria-pressed', String(el.dataset.ccProduct === product)));
+    $('ccGradeWrap').hidden = product !== 'dcard';
+    $('ccHikariFields').hidden = product !== 'hikari';
+    $('ccIssue').innerHTML = '<option value="">質問から探す／悩みを選ぶ</option>' + data.filter(r => r.product === product).map(r => '<option value="' + escape(r.id) + '">' + escape(r.title) + '</option>').join('');
+    $('ccQuestion').placeholder = product === 'dcard' ? '例：年会費が高いと言われた。どう説明すればいい？' : '例：eo光のメールを使っていて乗り換えが不安と言われた';
+    clearResults('相談する商品を選び、迷い・断り理由か質問を入力してください。');
+  }
+  function contextNotes(record) {
+    if (record.product === 'dcard') {
+      const grade = $('ccGrade').value;
+      return [grade ? '検討中：' + grade + '。そのカードの入会条件・年会費・対象利用料金・申込時期の条件を確認してください。' : 'カードの種類が未確認です。一般カード／GOLD U／GOLD／PLATINUMで条件が異なります。',
+        'ポイントと現金値引きは別です。12月以降など改定がある条件は、申込時点の公式案内とシミュレーターで確認してください。'];
+    }
+    const company = $('ccCompany').value;
+    const procedure = $('ccProcedure').value;
+    const type = $('ccType').value;
+    const notes = [company ? '現在の会社：' + company + '。契約プラン・契約時期・付加サービスで条件が異なります。' : '現在の会社が未確認です。会社名を確認し、別会社の費用・継続条件を当てはめないでください。', procedure ? '手続き：' + procedure + '。変更方法を受付元で確認してください。' : '転用・事業者変更・他社回線の新規切替・解約新規のどれに該当するか確認してください。'];
+    if (type === 'C') notes.push('タイプC：提携ケーブル会社の電話・テレビ・番号移行条件を確認。タイプA/Bの「光電話のせかえ」工程や料金をそのまま適用しません。電話番号を残す場合はC側への移行完了確認前に旧回線を解約しないでください。');
+    else if (procedure === '解約新規') notes.push('解約新規：通常の1ギガ→10ギガプラン変更とは別です。タイプA/BかCかを確認し、既存の専用工程を使用してください。番号を残す場合は移行完了後に旧回線を解約します。');
+    else if (!type) notes.push('変更先のタイプは未確認です。電話・テレビ・ルーターの条件を確定する前に確認してください。');
+    return notes;
+  }
+  function list(title, rows, css) {
+    return '<section class="' + (css || '') + '"><h4>' + escape(title) + '</h4><ul>' + rows.map(v => '<li>' + escape(v) + '</li>').join('') + '</ul></section>';
+  }
+  function showAnswer(id) {
+    const record = data.find(r => r.id === id && r.product === product);
+    if (!record) return;
+    active = record;
+    const urls = record.sources.filter(s => /^https:\/\//.test(s.url));
+    $('ccAnswer').innerHTML = '<span class="cc-label">独自登録トーク／ご案内前の下書き</span><h3 id="ccAnswerTitle">' + escape(record.title) + '</h3>' + list('この相談の確認条件', contextNotes(record), 'cc-caution') + list('先にヒアリングすること', record.checks) + '<section class="cc-talk"><h4>短い切り返し</h4><p>' + escape(record.shortTalk) + '</p></section><section class="cc-talk"><h4>詳しく伝えるなら</h4><p>' + escape(record.longTalk) + '</p></section>' + list('スタッフ向けの提案・アドバイス', record.advice) + list('避けたい案内', record.avoid, 'cc-caution') + list('次に確認すること', record.next) + '<section><h4>条件を確認する公式資料</h4><p class="cc-small">以下は制度・対象条件の確認先です。上の接客トーク自体が公式文という意味ではありません。内容は変更される場合があります。</p>' + urls.map(s => '<p class="cc-source"><a href="' + escape(s.url) + '" target="_blank" rel="noopener noreferrer">' + escape(s.title) + '</a><span>' + escape(s.url) + '</span><small>資料確認日：' + escape(s.checkedAt) + '</small></p>').join('') + '</section><div class="cc-actions"><button id="ccCopy" type="button">切り返しトークをコピー</button>' + (product === 'hikari' ? '<button id="ccLookup" type="button">この条件で登録回答を確認する</button>' : '<a class="cc-link-button" href="./dcard_simulator_store.html">dカードシミュレーターへ</a>') + '</div><p id="ccCopyStatus" role="status"></p>';
+    $('ccAnswer').hidden = false;
+    $('ccCopy').addEventListener('click', copy);
+    if ($('ccLookup')) $('ccLookup').addEventListener('click', lookup);
+    $('ccStatus').textContent = '登録トークを表示しました。対象条件と最新の公式案内を確認してください。';
+  }
+  function find() {
+    clearResults();
+    const question = $('ccQuestion').value.trim();
+    if (privacy(question)) { $('ccStatus').textContent = '個人情報と思われる内容があります。氏名・実際のメール・電話番号などを削除して、条件だけで質問してください。'; return []; }
+    const q = normalize(question);
+    const hasCard = /dカード|年会費|platinum|gold|カード審査/.test(q);
+    const hasHikari = /ドコモ光|eo光|nuro|jcom|j:com|auひかり|ルーター|光電話|光テレビ/.test(q);
+    if ((product === 'dcard' && hasHikari && !hasCard) || (product === 'hikari' && hasCard && !hasHikari)) { $('ccStatus').textContent = '選択商品と質問の商品が異なっています。商品を選び直してください。'; return []; }
+    const issue = $('ccIssue').value;
+    if (!q && !issue) { $('ccStatus').textContent = '迷い・断り理由を選ぶか、質問を入力してください。'; return []; }
+    const rows = data.filter(r => r.product === product).map(r => ({r, score: (issue === r.id ? 100 : 0) + r.keywords.reduce((n, k) => n + (normalize(k).length >= 2 && q.includes(normalize(k)) ? Math.min(8, normalize(k).length) : 0), 0)})).filter(x => x.score > 0).sort((a, b) => b.score - a.score).slice(0, 5);
+    if (!rows.length) { $('ccStatus').textContent = 'この相談の登録トークはまだありません。違う内容を当てはめず、悩みを選び直すか登録回答・受付元で確認してください。'; return []; }
+    $('ccResults').innerHTML = '<h3>関連するトークを選ぶ</h3>' + rows.map(x => '<button type="button" data-cc-id="' + escape(x.r.id) + '">' + escape(x.r.title) + '<span>確認項目・切り返し・注意点を見る</span></button>').join('');
+    $('ccResults').querySelectorAll('[data-cc-id]').forEach(el => el.addEventListener('click', () => showAnswer(el.dataset.ccId)));
+    if (rows.length === 1) showAnswer(rows[0].r.id);
+    else $('ccStatus').textContent = rows.length + '件の候補があります。お客様の迷いに合うものを選んでください。';
+    return rows.map(x => x.r.id);
+  }
+  async function copy() {
+    if (!active) return;
+    const text = active.title + '\n\n短い切り返し\n' + active.shortTalk + '\n\n詳しい伝え方\n' + active.longTalk;
+    try { await navigator.clipboard.writeText(text); $('ccCopyStatus').textContent = 'コピーしました。対象条件を確認してからご使用ください。'; }
+    catch (_) { $('ccCopyStatus').textContent = 'コピーできませんでした。本文を長押しして選択・コピーしてください。'; }
+  }
+  function lookup() {
+    if (!active || product !== 'hikari') return;
+    $('aiInput').value = active.lookup || active.title;
+    ['Company','Procedure','Type'].forEach(key => { $('ls' + key).value = $('cc' + key).value; });
+    $('registeredModeTab').click();
+    if (window.LocalSupport) window.LocalSupport.search();
+  }
+  ['Company', 'Procedure'].forEach(key => {
+    const source = $('ls' + key);
+    [...source.options].filter(o => o.value).forEach(o => $('cc' + key).add(new Option(o.textContent, o.value)));
+  });
+  document.querySelectorAll('[data-cc-product]').forEach(el => el.addEventListener('click', () => selectProduct(el.dataset.ccProduct)));
+  ['ccQuestion','ccIssue','ccGrade','ccCompany','ccProcedure','ccType'].forEach(id => $(id).addEventListener('input', () => clearResults('条件を変更しました。もう一度「探す」を押してください。')));
+  $('ccFind').addEventListener('click', find);
+  $('ccClear').addEventListener('click', () => {
+    ['ccQuestion','ccGrade','ccCompany','ccProcedure','ccType'].forEach(id => $(id).value = '');
+    selectProduct(product);
+  });
+  $('consultHomeButton').addEventListener('click', () => { window.show('aiView'); $('consultModeTab').click(); });
+  window.ConsultMode = {find, selectProduct, showAnswer};
+  selectProduct('dcard');
 })();
 
 </script>
