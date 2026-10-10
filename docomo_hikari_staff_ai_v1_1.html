@@ -473,11 +473,15 @@ body.guide-building header{padding:12px 14px 14px}body.guide-building header .ti
 @media print { #geminiSupportPanel, #geminiModeBar { display:none !important; } }
 
 </style>
+<style id="voiceInputStyle">
+.hv-controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0 14px}.hv-button{display:inline-flex;gap:8px;align-items:center;justify-content:center;min-height:48px;border:1px solid #ba3154;border-radius:12px;padding:10px 16px;background:#fff;color:#a2163c;font-size:15px;font-weight:700;cursor:pointer}.hv-button[aria-pressed="true"]{background:#a2163c;color:#fff}.hv-button:disabled{opacity:.55;cursor:not-allowed}.hv-mic{width:19px;height:19px;flex-shrink:0}.hv-status{font-size:14px;line-height:1.65;color:#633045;overflow-wrap:anywhere;margin:4px 0;min-height:0}.hv-note{font-size:12px;line-height:1.7;color:#655a61;margin:8px 0 14px}.hv-global .search{margin-bottom:4px}.hv-global .hv-controls{margin:8px 0 10px}#aiView .hv-controls{margin-bottom:6px}#aiView .hv-button{min-width:140px}.hv-mirai-hit{position:absolute;left:1.5%;top:11%;width:24%;height:57%;z-index:4;background:transparent;border:0;border-radius:25px;cursor:pointer}.hv-mirai-hit span{position:absolute;bottom:4%;left:8%;right:8%;padding:6px 3px;background:#fffef2e8;border:1px solid #f0b285;border-radius:20px;color:#a43b21;font-weight:800;font-size:clamp(10px,1.6vw,18px);box-shadow:0 2px 8px #5b361322}.hv-mirai-hit:focus-visible,.hv-button:focus-visible{outline:3px solid #235f9f;outline-offset:2px}#storeHome #miraiQuestionButton{min-height:44px;border:1px solid #b52d50;border-radius:24px;background:#fff;color:#ab2047;padding:10px 18px;font-weight:750;font-size:14px;cursor:pointer}#voiceMiraiDialog{width:min(92vw,650px);max-width:650px;max-height:86dvh;overflow:auto;margin:auto;padding:24px;border:0;border-radius:20px;color:#2c2830;background:#fff;box-shadow:0 10px 80px #0004}#voiceMiraiDialog::backdrop{background:#20121a80}#voiceMiraiDialog h2{font-size:24px;margin:10px 0}#voiceMiraiDialog .hv-dialog-top{display:flex;justify-content:space-between;gap:10px;align-items:center}#voiceMiraiDialog .hv-close{min-height:44px;padding:9px 14px;border:1px solid #ddd;border-radius:10px;background:#fff;font-size:14px;cursor:pointer}#voiceMiraiDialog label{display:block!important;font-size:15px;font-weight:700;margin:14px 0 8px}#voiceMiraiDialog textarea{display:block;width:100%!important;min-height:125px;box-sizing:border-box;font:16px/1.7 system-ui,sans-serif;padding:12px;border:1px solid #d4b3bf;border-radius:12px;color:#27202a;background:white;resize:vertical}#voiceMiraiDialog .hv-search{min-height:48px;padding:12px 18px;border:0;border-radius:12px;background:#b31942;color:#fff;font-size:16px;font-weight:750;cursor:pointer}#voiceMiraiDialog .hv-fallback{display:block;margin-top:16px;font-size:14px;color:#9b2445}#voiceMiraiDialog p{line-height:1.8}html.terms-pending #voiceMiraiDialog{display:none!important}@media(max-width:540px){.hv-global .search{flex-wrap:wrap}.hv-global .hv-controls{align-items:flex-start}#voiceMiraiDialog{padding:18px}#voiceMiraiDialog .hv-search{width:100%}}@media print{.hv-controls,.hv-note,.hv-status,.hv-mirai-hit,#miraiQuestionButton,#voiceMiraiDialog{display:none!important}}
+
+</style>
 </head>
 <body><header><div class="head"><a href="./othercarrier_docomo_compare_v58_independent_routes.html" style="display:inline-flex;align-items:center;min-height:40px;margin-bottom:12px;padding:8px 14px;border:1px solid #ffffff66;border-radius:999px;background:#ffffff18;color:#fff;text-decoration:none;font-size:13px;font-weight:800">← 店頭メニューへ戻る</a><div class="brand">DOCOMO HIKARI</div><div class="title">ドコモ光 STAFF SUPPORT</div><div class="sub">現場スタッフ向け 接客・受付サポートツール</div></div></header>
 <main>
 <section id="home" class="view active">
-<div class="search"><input id="globalSearch" placeholder="質問を入力（例：工事は必要？）"><button onclick="searchAll()">検索</button></div>
+<div class="hv-global"><div class="search"><input id="globalSearch" placeholder="質問を入力（例：工事は必要？）"><button onclick="searchAll()">検索</button></div><div class="hv-controls"><button type="button" class="hv-button" id="voiceGlobalButton" data-voice-input aria-pressed="false"><svg class="hv-mic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3M8 22h8"/></svg>音声入力</button></div><p id="voiceGlobalStatus" class="hv-status" role="status" aria-live="polite"></p><p class="hv-note">音声はブラウザー提供元のサービスで処理される場合があります。お客様の氏名・電話番号・実メール・住所・機密情報は話さないでください。文字を確認してから検索します。音声入力ではGeminiへ送信しません。</p></div>
 <div class="section-title">お手続きを選択してください</div>
 <div class="grid">
 <button class="card" onclick="openFlow('新規')"><div class="icon">✨</div><h3>新規</h3><p>新しくドコモ光をお申込みするケース</p></button>
@@ -546,7 +550,7 @@ body.guide-building header{padding:12px 14px 14px}body.guide-building header .ti
       <span>質問・キーワード</span>
       <textarea id="aiInput" rows="3" maxlength="2000" placeholder="例：eo光のメールアドレスは残せる？"></textarea>
     </label>
-    <div class="ls-search-actions">
+    <div class="hv-controls"><button type="button" class="hv-button" id="voiceLocalButton" data-voice-input aria-pressed="false"><svg class="hv-mic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3M8 22h8"/></svg>音声入力</button></div><p id="voiceLocalStatus" class="hv-status" role="status" aria-live="polite"></p><p class="hv-note">音声はブラウザー提供元のサービスで処理される場合があります。お客様の氏名・電話番号・実メール・住所・機密情報は話さないでください。文字を確認してから検索します。音声入力ではGeminiへ送信しません。</p><div class="ls-search-actions">
       <button type="button" id="localSearchBtn" class="ls-primary" onclick="LocalSupport.search()">回答を検索</button>
     </div>
 
@@ -2786,6 +2790,175 @@ common.push({level:'basic',cat:'初期契約解除',q:'初期契約解除の8日
   // Google認証情報を親のGitHub画面へ受け取らない。質問も自動転送しない。
   // Geminiの生成操作はiframe内の承認・個人情報チェック付きボタンだけで行う。
   selectMode(false);
+})();
+
+</script>
+<script id="voiceInputRuntime">
+(function () {
+  'use strict';
+  const $ = id => document.getElementById(id);
+  const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const HANDOFF = 'hikari.voice-question.once.v1';
+  const MAX = 2000;
+  let active = null, consent = false, returnFocus = null;
+  const dialog = $('voiceMiraiDialog');
+  function finding(value) {
+    const s = String(value).normalize('NFKC');
+    if (/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}/i.test(s)) return true;
+    if (/0\d{1,4}[-\s]?\d{1,4}[-\s]?\d{4}(?!\d)/.test(s)) return true;
+    if (/(氏名|名前|お名前|契約者名|住所|所在地|設置場所|契約番号|パスワード)\s*[:：=]\s*\S+/.test(s)) return true;
+    const names = [...s.matchAll(/([一-龯々ぁ-んァ-ヶ]{2,12}|[A-Za-z]+)[ \t]*(様|さま|さん|君|ちゃん)/g)];
+    return names.some(m => !/(お客|契約者|利用者|本人|皆|スタッフ|担当者|家族|管理者|申込者|店員|みらい)$/.test(m[1]));
+  }
+  function message(binding, text) { $(binding.status).textContent = text; }
+  function cleanup(session) {
+    clearTimeout(session.timer); clearTimeout(session.stopTimer);
+    const button = $(session.binding.button);
+    button.textContent = '音声入力'; button.setAttribute('aria-pressed', 'false'); button.disabled = !Recognition;
+    if (active === session) active = null;
+  }
+  function cancel(reason) {
+    if (!active) return;
+    const session = active; session.cancelled = true;
+    try { session.recognition.abort(); } catch {}
+    cleanup(session);
+    message(session.binding, reason || '音声入力を中止しました。入力済みの文字はそのままです。');
+  }
+  function finish(session) {
+    if (active !== session) return;
+    cleanup(session);
+    if (session.cancelled || session.failed) return;
+    const text = session.final.join(' ').trim();
+    if (!text) { message(session.binding, '音声を認識できませんでした。もう一度話すか、キーボードで入力してください。'); return; }
+    if (finding(text)) { message(session.binding, '個人情報と思われる内容があるため、質問欄には入れていません。氏名・電話番号・実メール・住所等を除いて話してください。自動検出は完全ではありません。'); return; }
+    const input = $(session.binding.input);
+    if (input.value !== session.before) { message(session.binding, '入力欄が変更されたため、音声の反映を止めました。'); return; }
+    const combined = [session.before.trim(), text].filter(Boolean).join(' ');
+    if (combined.length > Math.min(MAX, input.maxLength > 0 ? input.maxLength : MAX)) { message(session.binding, '文字数が上限を超えるため反映していません。入力を短くしてから話してください。'); return; }
+    input.value = combined; input.dispatchEvent(new Event('input', {bubbles:true}));
+    message(session.binding, '音声を文字にしました。会社名・数字・個人情報がないことを確認し、必要なら修正してから検索してください。');
+  }
+  function start(binding) {
+    if (active && active.binding === binding) {
+      const session = active; $(binding.button).textContent = '停止しています…'; $(binding.button).disabled = true;
+      session.stopTimer = setTimeout(() => cancel('音声認識が終了しませんでした。入力済みの文字は残っています。もう一度お試しください。'), 4000);
+      try { session.recognition.stop(); } catch { cancel(); return; }
+      return;
+    }
+    if (active) cancel();
+    if (!Recognition) { message(binding, 'このブラウザーは音声入力に対応していません。質問欄を押して、キーボードのマイクで音声入力するか手入力してください。'); return; }
+    if (!window.isSecureContext) { message(binding, '音声入力はSafariでHTTPSの公開URLを開いて利用してください。'); return; }
+    if (document.documentElement.classList.contains('terms-pending')) return;
+    if (!consent) {
+      consent = window.confirm('音声を文字に変換します。音声はブラウザー提供元の認識サービスで処理される場合があります。氏名・電話番号・実メール・住所・機密情報は話さないでください。このツールは録音ファイルや音声履歴を保存せず、Geminiへ音声を送りません。音声入力を開始しますか？');
+      if (!consent) { message(binding, '音声入力は開始していません。手入力で検索できます。'); return; }
+    }
+    const audio = $('miraiVoice'); if (audio) { try { audio.pause(); } catch {} }
+    if (window.MiraiControls) window.MiraiControls.suspend(true);
+    let recognition;
+    try { recognition = new Recognition(); } catch { message(binding, '音声認識を準備できませんでした。キーボードの音声入力を使ってください。'); return; }
+    const session = {binding, recognition, before:$(binding.input).value, final:[], timer:null, stopTimer:null, failed:false, cancelled:false};
+    active = session;
+    recognition.lang = 'ja-JP'; recognition.continuous = false; recognition.interimResults = true; recognition.maxAlternatives = 1;
+    $(binding.button).textContent = '停止'; $(binding.button).setAttribute('aria-pressed', 'true');
+    message(binding, 'マイクを準備しています。許可を求められたら「許可」を選んでください。');
+    recognition.onstart = () => { if (active === session) message(binding, '聞き取り中です。質問だけを短く話してください。終わったら「停止」を押せます。'); };
+    recognition.onresult = event => {
+      if (active !== session || session.failed || session.cancelled) return;
+      const interim = [];
+      for (let i=0; i<event.results.length; i++) {
+        const result=event.results[i], transcript=String(result[0]?.transcript || '');
+        if (result.isFinal) session.final[i]=transcript; else interim.push(transcript);
+      }
+      const draft = [...session.final, ...interim].join(' ').trim();
+      // 氏名等を認識した場合は画面にも表示しない。検出は完全ではない。
+      message(binding, finding(draft) ? '個人情報と思われる内容を検出しました。質問の条件だけを話してください。' : '聞き取り中：'+draft.slice(0, MAX));
+    };
+    recognition.onerror = event => {
+      if (active !== session) return;
+      session.failed=true;
+      const errors = {
+        'not-allowed':'マイクまたは音声認識が許可されていません。Safariのサイト設定・端末のマイク設定を確認してください。キーボードの音声入力も使えます。',
+        'service-not-allowed':'この端末では音声認識サービスを利用できません。Safariで開き、端末の音声入力設定を確認するか、キーボードのマイクを使ってください。',
+        'audio-capture':'マイクを利用できません。他の通話・録音を終了して試すか、手入力してください。',
+        'no-speech':'声を認識できませんでした。静かな場所で短く話すか、手入力してください。',
+        'network':'音声認識の通信でエラーが出ました。ネット接続を確認してください。自動再送はしません。',
+        'language-not-supported':'日本語の音声認識を利用できません。キーボードの音声入力または手入力を使ってください。',
+        'aborted':'音声入力を中止しました。入力済みの文字は残っています。'
+      };
+      message(binding, errors[event.error] || '音声入力を終了しました。もう一度試すか、手入力してください。');
+      try { recognition.abort(); } catch {} cleanup(session);
+    };
+    recognition.onend = () => finish(session);
+    session.timer = setTimeout(() => { if(active === session) cancel('音声入力は30秒で停止しました。質問を短くしてもう一度話してください。'); }, 30000);
+    try { recognition.start(); } catch { session.failed=true; cleanup(session); message(binding, '音声入力を開始できませんでした。Safariで開き直すか、キーボードのマイクを使ってください。'); }
+  }
+  const bindings = [
+    {input:'globalSearch',button:'voiceGlobalButton',status:'voiceGlobalStatus',container:'home'},
+    {input:'aiInput',button:'voiceLocalButton',status:'voiceLocalStatus',container:'registeredSupportPanel'},
+    {input:'voiceMiraiInput',button:'voiceMiraiButton',status:'voiceMiraiStatus',container:'voiceMiraiDialog'}
+  ].filter(binding => $(binding.input) && $(binding.button));
+  bindings.forEach(binding => {
+    $(binding.button).addEventListener('click', () => start(binding));
+    if (!Recognition) { $(binding.button).disabled=true; message(binding, '音声入力非対応：質問欄を押し、キーボードのマイクか手入力を利用してください。'); }
+    $(binding.input).addEventListener('input', () => { if(active?.binding===binding) cancel('文字入力を変更したため、音声入力を止めました。'); });
+  });
+  function openMirai() {
+    if (!dialog || document.documentElement.classList.contains('terms-pending') || getComputedStyle($('storeHome')).display==='none') return;
+    returnFocus=document.activeElement;
+    try {
+      if(typeof dialog.showModal!=='function') throw new Error('unsupported');
+      if (window.MiraiControls) window.MiraiControls.suspend(true);
+      if (!dialog.open) dialog.showModal();
+      if($('voiceMiraiEntryStatus')) $('voiceMiraiEntryStatus').textContent='';
+    } catch {
+      if(window.MiraiControls) window.MiraiControls.suspend(false);
+      if($('voiceMiraiEntryStatus')) $('voiceMiraiEntryStatus').textContent='このSafariでは質問画面を開けません。ドコモ光 AIサポートを開き、質問欄の音声入力かキーボードのマイクを使ってください。';
+    }
+  }
+  document.querySelectorAll('[data-voice-mirai]').forEach(button => button.addEventListener('click', openMirai));
+  if (dialog) {
+    $('voiceMiraiClose').addEventListener('click', () => dialog.close());
+    dialog.addEventListener('close', () => { cancel(); if(window.MiraiControls) window.MiraiControls.suspend(false); if(returnFocus?.isConnected) returnFocus.focus({preventScroll:true}); });
+    $('voiceMiraiSearch').addEventListener('click', () => {
+      if(active) cancel('入力を停止しました。検索する文字を確認してください。');
+      const query=$('voiceMiraiInput').value.trim();
+      if(!query) { $('voiceMiraiStatus').textContent='質問を入力するか音声入力してください。'; return; }
+      if(query.length>MAX || finding(query)) { $('voiceMiraiStatus').textContent='質問の条件だけを入力してください。個人情報と思われる文字は転送しません。'; return; }
+      try { sessionStorage.setItem(HANDOFF, JSON.stringify({version:1,query,expires:Date.now()+120000})); }
+      catch { $('voiceMiraiStatus').textContent='端末間の受渡しを利用できません。下の光サポートを開き、質問文をコピーして検索欄へ貼り付けてください。'; return; }
+      window.location.href='./docomo_hikari_staff_ai_v1_1.html#voice-search';
+    });
+  }
+  if ($('aiInput') && window.location.hash==='#voice-search') {
+    let raw;
+    try { raw=sessionStorage.getItem(HANDOFF); sessionStorage.removeItem(HANDOFF); } catch {}
+    try {
+      const data=JSON.parse(raw || 'null');
+      if(data && data.version===1 && typeof data.query==='string' && data.query.length<=MAX && !finding(data.query) && data.expires>Date.now() && data.expires<=Date.now()+120000) {
+        $('aiInput').value=data.query;
+        if (window.show) window.show('aiView');
+        $('aiInput').dispatchEvent(new Event('input',{bubbles:true}));
+        $('voiceLocalStatus').textContent='みらいちゃんの画面から質問を受け取りました。会社名・数字を確認して「回答を検索」を押してください。';
+      }
+    } catch {}
+    history.replaceState(null,'',location.pathname+location.search);
+  }
+  document.addEventListener('visibilitychange', () => { if(document.hidden) cancel('画面を離れたため、音声入力を停止しました。'); });
+  window.addEventListener('pagehide', () => cancel());
+  document.addEventListener('click', event => {
+    if(!active) return;
+    const target=event.target instanceof Element?event.target:null;
+    if(target?.closest('#localSearchBtn, .search button:not([data-voice-input]), .back, [data-reopen-store-terms]')) cancel();
+  },true);
+  new MutationObserver(() => {
+    if(!active) return;
+    const container=$(active.binding.container);
+    let hidden=!container;
+    for(let node=container;node && !hidden;node=node.parentElement) hidden=node.hidden || getComputedStyle(node).display==='none';
+    if(document.documentElement.classList.contains('terms-pending') || hidden) cancel();
+  }).observe(document.documentElement,{subtree:true,attributes:true,attributeFilter:['hidden','class','style']});
+  window.HikariVoiceInput={cancel,openMirai};
 })();
 
 </script>
