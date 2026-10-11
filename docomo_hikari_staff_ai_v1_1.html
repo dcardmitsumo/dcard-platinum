@@ -511,6 +511,18 @@ body.guide-building header{padding:12px 14px 14px}body.guide-building header .ti
 #consultSupportPanel .cc-research{background:#f7f7fa;color:#45404c}
 #consultSupportPanel .cc-research summary{color:#574969}
 #consultSupportPanel .cc-fields #ccStage{font-weight:600}
+#consultSupportPanel input.cc-wide-input,#consultSupportPanel .cc-fields input[type=number]{display:block;width:100%;box-sizing:border-box;max-width:100%;margin-top:8px;min-height:48px;padding:12px;border:1px solid #d7d2d5;border-radius:10px;background:white;color:#252a32;font:inherit}
+#consultSupportPanel .cc-checks{display:flex;flex-direction:column;gap:12px;margin:18px 0}
+#consultSupportPanel label.cc-check,#consultSupportPanel .cc-checks label{display:flex;align-items:flex-start;gap:10px;font-size:15px;font-weight:500;line-height:1.8}
+#consultSupportPanel label.cc-check input[type=checkbox],#consultSupportPanel .cc-checks input[type=checkbox]{appearance:auto;position:static;display:inline-block;width:20px;min-width:20px;height:20px;min-height:20px;max-width:20px;margin:3px 0 0;padding:0;border-radius:3px;flex:0 0 20px;accent-color:#b61948}
+#consultSupportPanel .cc-styled{background:#fff8f5;border-radius:14px;border:1px solid #efddd0;padding:20px!important;margin:20px 0}
+#consultSupportPanel .cc-style-step{padding:12px 0;border-top:1px solid #efddd0}
+#consultSupportPanel .cc-style-step strong{color:#963f32}
+#consultSupportPanel .cc-style-step p{margin:8px 0}
+#consultSupportPanel .cc-calculation{border-top:1px dashed #dbc9bc;margin-top:20px;padding-top:16px}
+#consultSupportPanel .cc-calculation dl{margin:12px 0;line-height:1.7}
+#consultSupportPanel .cc-calculation dt{font-size:14px;color:#645b60;margin-top:8px}
+#consultSupportPanel .cc-calculation dd{margin:4px 0 14px;font-weight:700;font-size:20px}
 
 </style>
 </head>
@@ -787,7 +799,7 @@ body.guide-building header{padding:12px 14px 14px}body.guide-building header .ti
   <div id="chat" hidden></div>
 </div>
 <div id="consultSupportPanel" role="tabpanel" aria-labelledby="consultModeTab" hidden>
-  <div class="cc-intro"><span class="cc-label">心理学をヒントに、信頼から始める接客</span><h2>説得の前に、守りたいことを一緒に。</h2><p>お客様の言葉を受け止め、メリットと負担を同じ基準で整理する独自登録トークです。プロスペクト理論などは聞き方・伝え方の参考で、心理診断や成約の保証ではありません。AIによる自由な回答生成ではありません。</p></div>
+  <div class="cc-intro"><span class="cc-label">心理学をヒントに、信頼から始める接客</span><h2>今の良さを認めて、次のメリットへ。</h2><p>お客様の言葉を受け止め、メリットと負担を同じ基準で整理する独自登録トークです。プロスペクト理論などは聞き方・伝え方の参考で、心理診断や成約の保証ではありません。AIによる自由な回答生成ではありません。</p></div>
   <details class="cc-method"><summary>プロスペクト理論・関係構築を、どう使う？</summary><p><strong>参照点を聞く：</strong>今の料金や使い慣れたサービスを基準に「何を残したいか」を確認します。得だけでなく、費用や失われる可能性も整理します。損失回避が全員に同じ強さで働くとは限りません。</p><p><strong>確実なものと条件付きのものを分ける：</strong>年会費・請求と、条件付きポイント・速度改善の可能性を混同しません。大きな特典だけで判断を促しません。</p><p><strong>関係構築：</strong>開かれた質問→言葉を受け止めて確認→説明の許可→中立に比較→どう感じたかを聞く。「そうですよね」だけで済ませず、理解が違えば直してもらいます。</p><p><strong>本人の選択を尊重：</strong>持ち帰りや見送りも選べます。「今決めないと損」、虚偽の限定、根拠のない人気、断った後の再説得には使いません。小さな確認への同意は申込み同意と別です。</p><p class="cc-small">心理学・支援場面の知見を基本的な聞き方に応用した独自設計です。この接客方法の効果を実証したという意味ではありません。参考研究は回答の下部に表示します。</p></details>
   <div class="cc-card">
     <div class="cc-products" role="group" aria-label="相談する商品"><button type="button" data-cc-product="dcard" aria-pressed="true">dカード</button><button type="button" data-cc-product="hikari" aria-pressed="false">ドコモ光</button></div>
@@ -801,6 +813,33 @@ body.guide-building header{padding:12px 14px 14px}body.guide-building header .ti
       <label>手続き<select id="ccProcedure"><option value="">未確認</option></select></label>
       <label>変更先のドコモ光タイプ<select id="ccType"><option value="">未確認</option><option value="A">タイプA</option><option value="B">タイプB</option><option value="C">タイプC</option></select></label>
     </div>
+
+    <div class="cc-fields">
+      <label>切り返しの話し方<select id="ccStyle"><option value="standard">標準：丁寧・安心感</option><option value="cabaret">キャバ嬢風：親しみ・褒め・共感</option><option value="host">ホスト風：明るい肯定・頼もしさ</option></select></label>
+      <label>今のサービスで気に入っている点<select id="ccGoodPoint"><option value="">まずお客様に聞く</option><option value="price">料金に納得している</option><option value="ease">使い慣れていて使いやすい</option><option value="support">サポートに満足している</option><option value="features">普段使う機能・特典が合っている</option><option value="other">その他（補足に入力）</option></select></label>
+    </div>
+    <label class="cc-question-label" for="ccGoodDetail">良い点の補足（任意・個人情報は入力しない）</label>
+    <input id="ccGoodDetail" class="cc-wide-input" type="text" maxlength="120" placeholder="例：アプリで支払いを管理しやすい">
+    <p class="cc-small">褒めるのは本人が話した満足点です。まだ聞いていない良さを作らないでください。キャバ嬢風・ホスト風は独自の話法イメージで、実際の職業全体を説明するものではありません。店舗の接客方針と相手の好みに合わせて選びます。</p>
+    <details class="cc-method" id="ccOpportunityFields">
+      <summary>メリット・年間差額を入れて提案する（任意）</summary>
+      <p>現在の良さを認めたうえで、確認できたメリットと支払差額を提案文へ入れます。特典ポイントと現金の支払いは分けます。</p>
+      <p><strong>対象を確認できたメリットだけチェック</strong></p>
+      <div class="cc-checks">
+        <label><input type="checkbox" id="ccPayDiscount">dカードお支払割の対象を確認した</label>
+        <label><input type="checkbox" id="ccHikariDiscount">ドコモ光セット割の対象を確認した</label>
+        <label><input type="checkbox" id="ccPointsBenefit">検討中カード等の対象利用・ポイント条件を確認した</label>
+      </div>
+      <p class="cc-small">商品名だけで全員に割引・ポイントが付くとは限りません。対象プラン・カード・支払設定・適用時期・特典条件を公式資料とシミュレーターで確認してください。セット割等を両方に計上し、二重に差し引かないでください。</p>
+      <div class="cc-fields">
+        <label>現状の年間支払総額（円）<input id="ccCurrentAnnual" type="number" min="0" max="10000000" step="1" inputmode="numeric" placeholder="例：120000"></label>
+        <label>提案後の年間支払総額（円）<input id="ccProposedAnnual" type="number" min="0" max="10000000" step="1" inputmode="numeric" placeholder="例：108000"></label>
+        <label>提案に伴う追加費用（円）<input id="ccSwitchCost" type="number" min="0" max="10000000" step="1" inputmode="numeric" placeholder="なしなら0"></label>
+      </div>
+      <p class="cc-small">同じ利用内容の今後12か月を比較。ネット・スマホ・電話・テレビ・ルーター・カード年会費など、比較範囲をそろえた実支払総額を入力します。期間限定割引は適用月だけ計算。解除料・残債・工事・撤去・設定等は追加費用へ（年間総額に含めた費用は再計上しない）。ポイントは含めません。</p>
+      <label class="cc-check"><input id="ccAnnualConfirmed" type="checkbox">同じ内容・比較期間・適用条件・年会費・追加費用・期間限定割引終了後の金額まで確認した</label>
+      <p id="ccAnnualStatus" role="status" class="cc-small">未入力なら、金額を入れずに確認から始めるトークを出します。</p>
+    </details>
     <label class="cc-question-label" for="ccQuestion">質問・お客様の言葉（任意）</label>
     <textarea id="ccQuestion" rows="3" maxlength="1000" placeholder="例：年会費が高いと言われた。どう説明すればいい？"></textarea>
     <p class="cc-small">顧客名・電話番号・住所・カード番号・実際のメールアドレスは入力しないでください。このモードでは質問を外部へ送信・保存しません。場面は本人の言葉から選び、心理を推測で決めつけないでください。</p>
@@ -3055,6 +3094,7 @@ common.push({level:'basic',cat:'初期契約解除',q:'初期契約解除の8日
   }
   function selectProduct(value) {
     if (!['dcard', 'hikari'].includes(value)) return;
+    if(product !== value) resetFinancialContext();
     product = value;
     document.querySelectorAll('[data-cc-product]').forEach(el => el.setAttribute('aria-pressed', String(el.dataset.ccProduct === product)));
     $('ccGradeWrap').hidden = product !== 'dcard';
@@ -3081,6 +3121,68 @@ common.push({level:'basic',cat:'初期契約解除',q:'初期契約解除の8日
   function list(title, rows, css) {
     return '<section class="' + (css || '') + '"><h4>' + escape(title) + '</h4><ul>' + rows.map(v => '<li>' + escape(v) + '</li>').join('') + '</ul></section>';
   }
+
+  const styleNames = {standard:'標準：丁寧・安心感',cabaret:'キャバ嬢風：親しみ・褒め・共感',host:'ホスト風：明るい肯定・頼もしさ'};
+  const goodPoints = {price:'料金に納得できている',ease:'使い慣れていて使いやすい',support:'サポートに満足している',features:'普段使う機能や特典が合っている'};
+  const amountFields = ['ccCurrentAnnual','ccProposedAnnual','ccSwitchCost'];
+  const benefitFields = ['ccPayDiscount','ccHikariDiscount','ccPointsBenefit'];
+  const formatYen = n => n.toLocaleString('ja-JP') + '円';
+  function annualComparison() {
+    const values = amountFields.map(id => $(id).value.trim());
+    if (values.every(v => v === '') && !$('ccAnnualConfirmed').checked) return {state:'empty'};
+    if (!values.every(v => /^\d{1,8}$/.test(v) && Number(v) <= 10000000)) return {state:'invalid',message:'3つの金額を0〜10,000,000円の整数で入力してください。追加費用なしの場合は0です。'};
+    if (!$('ccAnnualConfirmed').checked) return {state:'unconfirmed',message:'比較範囲・期間・対象条件と費用を確認し、チェックを入れてから数字入りトークを作成してください。'};
+    const [current,proposed,cost] = values.map(Number);
+    return {state:'ready',current,proposed,cost,difference:current-proposed-cost};
+  }
+  function updateAnnualStatus() {
+    const a=annualComparison();
+    if(a.state==='ready') $('ccAnnualStatus').textContent=a.difference>0 ? '入力した比較条件で、初年度の支払軽減見込み：'+formatYen(a.difference)+'（ポイントは別）。' : a.difference===0 ? '入力した比較条件では、初年度の支払差額は0円です。' : '入力した比較条件では、初年度の支払いが'+formatYen(-a.difference)+'増える見込みです。';
+    else $('ccAnnualStatus').textContent=a.message || '未入力なら、金額を入れずに確認から始めるトークを出します。';
+    return a;
+  }
+  function resetFinancialContext() {
+    amountFields.forEach(id=>$(id).value='');
+    benefitFields.forEach(id=>$(id).checked=false);
+    $('ccAnnualConfirmed').checked=false;
+    updateAnnualStatus();
+  }
+  function praise(style) {
+    const good = ($('ccGoodDetail').value.trim() || goodPoints[$('ccGoodPoint').value] || '');
+    if(!good) return style==='cabaret' ? '今のサービスでは、気に入っているところはありますか？ もしあれば教えてください。特になければ、そのままお伝えいただいて大丈夫です。' : style==='host' ? 'まず今のサービスで気に入っている点を教えてください。良いところは否定せず、そこを基準に比べましょう。' : '今のサービスで気に入っている点は、どんなところでしょうか。その良さを大切にしながら比較したいです。';
+    return style==='cabaret' ? '「'+good+'」という良さがあるんですね。毎日使うものだから、そこに納得できているのって大事ですよね。その良さはちゃんと大切にしたいです。' : style==='host' ? '「'+good+'」という良さがあるんですね。今のサービスも良い選択です。そこを基準に、さらに合う条件があるか見ていきましょう。' : '「'+good+'」という良さがあるんですね。今のサービスも、ご自身の使い方に合っている良いサービスですね。その良さを大切にして比較しましょう。';
+  }
+  function benefits(style) {
+    const rows=[];
+    if($('ccPayDiscount').checked) rows.push('対象を確認したdカードお支払割');
+    if($('ccHikariDiscount').checked) rows.push('対象を確認したドコモ光セット割');
+    if($('ccPointsBenefit').checked) rows.push('条件を確認した対象利用のポイント');
+    if(!rows.length) return product==='dcard' ? 'dカードは、対象プランや支払設定によってお支払割が使える場合があり、対象の支払いでポイントが付くメリットもあります。今のサービスと比べて、ご自身が対象になるかを先に確認してみませんか。' : 'ドコモ光は、対象スマホプラン等の条件が合えばセット割が使える場合があり、dカード等の対象条件によってポイントのメリットもあります。まずご自身がどの条件に当てはまるか確認してみませんか。';
+    const lead=style==='cabaret' ? 'その良さは残しつつ、今回確認できたメリットがあるんです。' : style==='host' ? 'そのうえで、今回の条件で確認できたメリットはここです。' : 'そのうえで、今回の条件では次のメリットを確認できました。';
+    return lead+rows.join('、')+'です。現在のサービスを続ける場合と比べて見ていきましょう。'+($('ccPointsBenefit').checked ? 'ポイントは進呈条件や時期・使い道があり、現金の値引きとは分けてご説明します。' : '未確認の特典は含めず、ご利用条件と費用も合わせて確認します。');
+  }
+  function opportunity(style,a) {
+    if(a.state!=='ready') return '年間でどれだけ差があるかは、対象条件と年会費・切替費用を含めて確認してからお伝えします。今の段階で「年間いくら損する」とは言い切らず、まず比較してみませんか。';
+    if(a.difference===0) return '今回確認した比較条件では、初年度の支払いに差はありません。金額のメリットではなく、使い勝手や特典がご自身に合うかで検討しましょう。';
+    if(a.difference<0) return '今回確認した比較条件では、初年度の支払いは今より'+formatYen(-a.difference)+'増える見込みです。費用面でお得とは言えません。使い方に合うメリットがその負担に見合うか、今のままも含めて検討しましょう。';
+    const n=formatYen(a.difference);
+    const core='今回確認した条件なら、今のまま続ける場合と比べて、今後12か月の支払いを'+n+'軽減できる見込みです。見直さない場合は、その'+n+'分の軽減機会を見送ることになります。';
+    return (style==='cabaret' ? 'これは一度見ておいても良さそうです。' : style==='host' ? '比較すると、見直す意味が数字でも見えてきます。' : '')+core+'比較内容が同じことが前提で、翌年以降まで同じ差額を保証するものではありません。';
+  }
+  function invitation(style,a) {
+    if(a.state==='ready' && a.difference<=0) return 'お越しになる機会が少ないようでしたら、今回の比較だけ持ち帰れるように整理しましょうか。今日のお申込みを前提にせず、ご自身のペースで検討いただけます。';
+    return style==='cabaret' ? 'ドコモショップには頻繁にいらっしゃらないようでしたら、せっかくの機会なので、使い方に合うか一緒に見てみませんか？ お得だけでなく負担も見て、納得できる方を選んでください。今日は比較だけでも大丈夫です。' : style==='host' ? '頻繁にお越しになる機会がないようでしたら、今回、対象と差額まで整理しておきませんか。決めるのはご自身です。今日は比較だけでも、持ち帰りでも大丈夫です。' : 'ドコモショップには頻繁にいらっしゃらないようでしたら、この機会に条件を整理して検討してみませんか。今日のお申込みは前提にせず、比較や持ち帰りだけでも大丈夫です。';
+  }
+  function styledProposal(record) {
+    const style=$('ccStyle').value;
+    const a=annualComparison();
+    const parts=[{title:'今のサービスの良さを認める',text:praise(style)},{title:'今回のメリットを提案する',text:benefits(style)},{title:'年間の差額・見直しの機会を伝える',text:opportunity(style,a)},{title:'今回の来店を検討の機会にする',text:invitation(style,a)}];
+    const calculationText=a.state==='ready' ? '\n\n入力した同じ条件の今後12か月比較\n現状の年間支払い：'+formatYen(a.current)+'\n提案後の年間支払い：'+formatYen(a.proposed)+'\n今回だけの追加費用：'+formatYen(a.cost)+'\n初年度の軽減見込み（マイナスは負担増）：'+formatYen(a.difference)+'\n現状 − 提案後 − 追加費用。スタッフの確認済み入力に基づく見込みです。ポイントは含めません。数字の入力だけで公式適用を自動判定する機能ではありません。' : '\n\n'+(a.message || '未入力のため、金額を使わず対象確認から始めるトークです。');
+    const text=parts.map(p=>p.text).join('\n\n')+calculationText;
+    const figures=a.state==='ready' ? '<div class="cc-calculation"><h4>入力した同じ条件の今後12か月比較</h4><dl><dt>現状の年間支払い</dt><dd>'+formatYen(a.current)+'</dd><dt>提案後の年間支払い</dt><dd>'+formatYen(a.proposed)+'</dd><dt>今回だけの追加費用</dt><dd>'+formatYen(a.cost)+'</dd><dt>初年度の軽減見込み（マイナスは負担増）</dt><dd>'+formatYen(a.difference)+'</dd></dl><p class="cc-small">現状 − 提案後 − 追加費用。スタッフの確認済み入力に基づく見込みです。ポイントは含めません。数字の入力だけで公式適用を自動判定する機能ではありません。</p></div>' : '<p class="cc-small">'+escape(a.message || '未入力のため、金額を使わず対象確認から始めるトークです。')+'</p>';
+    return {text,html:'<section class="cc-styled"><h4>'+escape(styleNames[style])+'：認める → メリット → 年間差額 → 検討</h4>'+parts.map((p,i)=>'<div class="cc-style-step"><strong>'+String(i+1)+'．'+escape(p.title)+'</strong><p>'+escape(p.text)+'</p></div>').join('')+'<p class="cc-small">この相談では「'+escape(record.title)+'」への受け止め・確認も、下の対話に組み合わせます。まだ満足点を聞いていない場合は、最初に尋ねてください。実際の来店頻度は推測で断定しません。</p>'+figures+'</section>'};
+  }
+
   const researchSources = [
     {title:'Kahneman & Tversky (1979) — プロスペクト理論の原典', url:'https://www.econometricsociety.org/publications/econometrica/1979/03/01/prospect-theory-analysis-decision-under-risk'},
     {title:'Neumann & Böckenholt (2014) — 損失回避の状況差・メタ分析', url:'https://www.sciencedirect.com/science/article/abs/pii/S0022435914000189'},
@@ -3103,7 +3205,8 @@ common.push({level:'basic',cat:'初期契約解除',q:'初期契約解除の8日
   }
   function renderClosure() {
     active = null;
-    const short = '承知しました。今回は見送りですね。無理にお勧めしません。お時間をいただき、ありがとうございました。';
+    const style=$('ccStyle').value;
+    const short=style==='cabaret' ? '分かりました。今日は見送りですね。お話ししてくださってありがとうございます。無理にはお勧めしません。' : style==='host' ? '承知しました。今回は見送りで大丈夫です。ご自身の選択を尊重します。お時間をいただき、ありがとうございました。' : '承知しました。今回は見送りですね。無理にお勧めしません。お時間をいただき、ありがとうございました。';
     const long = '承知しました。今回は提案不要ということですね。ここでお話を終えます。こちらから比較や申込みを進めることはありません。またご自身で相談したいことができたときに、お声掛けください。';
     copyText = '見送りを尊重するトーク\n\n' + short + '\n\n' + long;
     $('ccAnswer').innerHTML = '<span class="cc-label">本人の選択を尊重する対応</span><h3 id="ccAnswerTitle">見送り・提案不要を尊重して終える</h3>' + talkSection('終了のひと言',short) + talkSection('丁寧に伝えるなら',long) + list('スタッフ向けの対応',['理由の説明や追加比較を要求しない。メリット説明を再開しない。','連絡先や再来店の約束を求めない。本人から希望された場合だけ別途対応する。','断りを心理的リアクタンス・損失回避等と診断しない。']) + '<div class="cc-actions"><button id="ccCopy" type="button">終了トークをコピー</button></div><p id="ccCopyStatus" role="status"></p>';
@@ -3125,23 +3228,24 @@ common.push({level:'basic',cat:'初期契約解除',q:'初期契約解除の8日
     const header = '<span class="cc-label">独自登録トーク／信頼関係から始める提案</span><h3 id="ccAnswerTitle">' + escape(record.title) + '</h3>';
     const actions = '<div class="cc-actions"><button id="ccCopy" type="button">切り返しトークをコピー</button>' + (product === 'hikari' ? '<button id="ccLookup" type="button">この条件で登録回答を確認する</button>' : '<a class="cc-link-button" href="./dcard_simulator_store.html">dカードシミュレーターへ</a>') + '</div><p id="ccCopyStatus" role="status"></p>';
     if (takehome) {
-      const short = 'もちろんです。今日は決めずにお持ち帰りください。ご希望なら「' + record.title + '」について、確認済みのことと未確認のことだけ整理できます。不要ならここで終えて大丈夫です。';
+      const short = ($('ccStyle').value==='cabaret' ? 'もちろんです。ゆっくり考えてくださいね。' : $('ccStyle').value==='host' ? 'もちろんです。納得してから選びましょう。' : 'もちろんです。') + '今日は決めずにお持ち帰りください。ご希望なら「' + record.title + '」について、確認済みのことと未確認のことだけ整理できます。不要ならここで終えて大丈夫です。';
       const long = 'お考えになる時間も大切です。今日は申込みを進めません。ご希望があれば、良い点だけでなく費用・変わる点も整理してお渡しします。持ち帰りたい情報があるかだけ伺ってもよろしいですか。再来店や連絡の約束は必要ありません。';
       copyText = record.title + '\n\n持ち帰りを尊重するトーク\n' + short + '\n\n' + long;
       $('ccAnswer').innerHTML = header + talkSection('持ち帰りを尊重するひと言',short) + talkSection('希望がある場合だけ情報を整理',long) + list('スタッフの対応',['比較資料が必要かを一度尋ね、不要なら提案を終える。','本人が希望した条件だけをまとめる。説明を聞いたことは申込み同意ではない。','再来店・連絡は本人から希望があった場合だけ。']) + '<details class="cc-method"><summary>本人が希望した場合の、持ち帰り用確認項目</summary>' + list('この相談の確認条件',contextNotes(record),'cc-caution') + balanceSection(record) + sourceSection(record) + '</details>' + research(record) + actions;
       finishAnswer('持ち帰りの希望を尊重するトークです。本人が希望した場合だけ資料を整理してください。');
       return;
     }
+    const proposal=styledProposal(record);
     const flow = record.rapport.map((r,i) => '<li><strong>' + (i+1) + '．' + escape(r.title) + '</strong><p>' + escape(r.talk) + '</p></li>').join('');
     const flowTitle = stage === 'compare' ? '比較したい方への対話の流れ' : '関係構築から提案へ：対話の流れ';
-    copyText = record.title + '\n\n短い切り返し\n' + record.shortTalk + '\n\n対話の流れ\n' + record.rapport.map(r=>r.title+'\n'+r.talk).join('\n\n') + '\n\n詳しい伝え方\n' + record.longTalk;
-    $('ccAnswer').innerHTML = header + talkSection('最初の短い切り返し',record.shortTalk) + '<section class="cc-rapport"><h4>' + flowTitle + '</h4><ol>' + flow + '</ol><p class="cc-small">一度に全部読み上げず、相手の返答を待ちます。既に聞いたことは繰り返さず、理解が違えば訂正してもらいます。</p></section>' + list('この相談の確認条件',contextNotes(record),'cc-caution') + list('先にヒアリングすること',record.checks) + balanceSection(record) + talkSection('詳しく伝えるなら',record.longTalk) + list('スタッフ向けの提案・アドバイス',record.advice) + list('避けたい案内',record.avoid,'cc-caution') + list('次の小さな確認（申込みとは別）',[record.nextStep]) + list('次に確認すること',record.next) + sourceSection(record) + research(record) + actions;
+    copyText = record.title + '\n\n' + styleNames[$('ccStyle').value] + '\n\n' + proposal.text + '\n\nこの迷いへの短い切り返し\n' + record.shortTalk + '\n\n対話の流れ\n' + record.rapport.map(r=>r.title+'\n'+r.talk).join('\n\n') + '\n\n詳しい伝え方\n' + record.longTalk;
+    $('ccAnswer').innerHTML = header + proposal.html + talkSection('この迷いへの短い切り返し',record.shortTalk) + '<section class="cc-rapport"><h4>' + flowTitle + '</h4><ol>' + flow + '</ol><p class="cc-small">一度に全部読み上げず、相手の返答を待ちます。既に聞いたことは繰り返さず、理解が違えば訂正してもらいます。</p></section>' + list('この相談の確認条件',contextNotes(record),'cc-caution') + list('先にヒアリングすること',record.checks) + balanceSection(record) + talkSection('詳しく伝えるなら',record.longTalk) + list('スタッフ向けの提案・アドバイス',record.advice) + list('避けたい案内',record.avoid,'cc-caution') + list('次の小さな確認（申込みとは別）',[record.nextStep]) + list('次に確認すること',record.next) + sourceSection(record) + research(record) + actions;
     finishAnswer('関係構築と、メリット・負担を分けたトークを表示しました。対象条件と最新の公式案内を確認してください。');
   }
   function find() {
     clearResults();
     const question = $('ccQuestion').value.trim();
-    if (privacy(question)) { $('ccStatus').textContent = '個人情報と思われる内容があります。氏名・実際のメール・電話番号などを削除して、条件だけで質問してください。'; return []; }
+    if (privacy(question + ' ' + $('ccGoodDetail').value)) { $('ccStatus').textContent = '個人情報と思われる内容があります。氏名・実際のメール・電話番号などを削除して、条件だけで質問してください。'; return []; }
     if ($('ccStage').value === 'decline') { renderClosure(); return []; }
     const q = normalize(question);
     const hasCard = /dカード|年会費|platinum|gold|カード審査/.test(q);
@@ -3175,15 +3279,24 @@ common.push({level:'basic',cat:'初期契約解除',q:'初期契約解除の8日
     [...source.options].filter(o => o.value).forEach(o => $('cc' + key).add(new Option(o.textContent, o.value)));
   });
   document.querySelectorAll('[data-cc-product]').forEach(el => el.addEventListener('click', () => selectProduct(el.dataset.ccProduct)));
-  ['ccQuestion','ccIssue','ccGrade','ccCompany','ccProcedure','ccType','ccStage'].forEach(id => $(id).addEventListener('input', () => clearResults('条件を変更しました。もう一度「探す」を押してください。')));
+  ['ccQuestion','ccIssue','ccGrade','ccCompany','ccProcedure','ccType','ccStage','ccStyle','ccGoodPoint','ccGoodDetail'].forEach(id => $(id).addEventListener('input', () => clearResults('条件を変更しました。もう一度「探す」を押してください。')));
+  amountFields.forEach(id=>$(id).addEventListener('input',()=>{ $('ccAnnualConfirmed').checked=false; updateAnnualStatus(); clearResults('金額を変更しました。比較条件を再確認してから探してください。'); }));
+  benefitFields.forEach(id=>$(id).addEventListener('change',()=>{ $('ccAnnualConfirmed').checked=false; updateAnnualStatus(); clearResults('対象メリットを変更しました。金額の条件も確認してから探してください。'); }));
+  $('ccAnnualConfirmed').addEventListener('change',()=>{updateAnnualStatus();clearResults('年間比較の確認状態を変更しました。もう一度探してください。');});
+  ['ccGrade','ccCompany','ccProcedure','ccType'].forEach(id=>$(id).addEventListener('change',()=>{resetFinancialContext();clearResults('契約条件を変更したため、前のメリットと金額をリセットしました。');}));
+  $('ccGoodPoint').addEventListener('change',()=>{$('ccGoodDetail').value='';clearResults('良い点を変更しました。もう一度探してください。');});
   $('ccFind').addEventListener('click', find);
   $('ccClear').addEventListener('click', () => {
     ['ccQuestion','ccGrade','ccCompany','ccProcedure','ccType'].forEach(id => $(id).value = '');
     $('ccStage').value = 'first';
+    $('ccStyle').value = 'standard';
+    $('ccGoodPoint').value = '';
+    $('ccGoodDetail').value = '';
+    resetFinancialContext();
     selectProduct(product);
   });
   $('consultHomeButton').addEventListener('click', () => { window.show('aiView'); $('consultModeTab').click(); });
-  window.ConsultMode = {find, selectProduct, showAnswer};
+  window.ConsultMode = {find, selectProduct, showAnswer, annualComparison};
   selectProduct('dcard');
 })();
 
