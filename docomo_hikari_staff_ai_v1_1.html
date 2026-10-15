@@ -549,6 +549,60 @@ body.guide-building header{padding:12px 14px 14px}body.guide-building header .ti
 #ccAnswer .cc-talk p { white-space:pre-line; }
 @media (max-width:600px) { #consultSupportPanel .cc-products { display:flex; flex-direction:column; } #consultSupportPanel .cc-products button { flex:auto; width:100%; } #ccMonexFields .cc-fields { grid-template-columns:1fr; } }
 </style>
+<style id="securitiesFaqStyle">
+#securitiesSupportPanel[hidden] { display:none !important; }
+#aiView .gemini-mode-bar { align-items:stretch; }
+#aiView .gemini-mode-bar button { flex:1 1 180px; }
+.sf-root { color:#282d38; font-size:16px; line-height:1.75; overflow-wrap:anywhere; }
+.sf-root * { box-sizing:border-box; }
+.sf-root h2 { font-size:28px; line-height:1.4; margin:8px 0; color:#8d183a; }
+.sf-root h3 { font-size:18px; margin:0 0 12px; line-height:1.6; }
+.sf-root p { margin:8px 0; }
+.sf-root button,.sf-root select,.sf-root input { font:inherit; }
+.sf-root button { min-height:46px; border:1px solid #cdbfc5; border-radius:10px; padding:8px 13px; background:#fff; color:#7c1734; cursor:pointer; font-weight:700; white-space:normal; }
+.sf-root button:disabled { opacity:.5; cursor:default; }
+.sf-root button:focus-visible,.sf-root input:focus-visible,.sf-root select:focus-visible,.sf-root a:focus-visible { outline:3px solid #bc375c; outline-offset:3px; }
+.sf-head { color:#282d38; box-shadow:none; padding:22px; border:1px solid #ead4dd; border-left:5px solid #af2247; background:#fff6f9; border-radius:14px; }
+.sf-kicker { font-size:13px; letter-spacing:.04em; font-weight:700; color:#79213b; }
+.sf-meta { display:flex; align-items:center; flex-wrap:wrap; gap:10px; font-size:13px; color:#535964; }
+.sf-notice { background:#fffaf0; border:1px solid #dccda9; border-radius:12px; padding:16px 20px; margin:16px 0; }
+.sf-notice p { font-size:14px; margin-bottom:0; }
+.sf-controls { background:#fff; padding:20px; border:1px solid #e0d7dd; border-radius:12px; }
+.sf-controls label { display:block; font-weight:700; margin:0 0 7px; }
+.sf-searchline { display:flex; align-items:stretch; flex-wrap:wrap; gap:8px; }
+.sf-root input { flex:1 1 270px; min-width:0; width:100%; border:1px solid #b5aab1; border-radius:10px; min-height:50px; background:#fff; padding:10px 12px; color:#232832; }
+.sf-searchline #sfSearch { color:#fff; background:#a91d43; border-color:#a91d43; }
+.sf-root select { width:100%; max-width:430px; min-height:50px; padding:9px 12px; border:1px solid #b5aab1; border-radius:10px; background:#fff; color:#292f38; }
+.sf-quick { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+.sf-small { font-size:12px; color:#555d69; }
+.sf-root #sfStatus { font-size:14px; padding-top:10px; color:#8f1837; }
+.sf-toolbar { display:flex; align-items:center; flex-wrap:wrap; gap:8px; margin-top:16px; }
+.sf-toolbar > span { font-size:14px; font-weight:700; margin-right:4px; }
+.sf-layout { display:grid; grid-template-columns:minmax(230px, .78fr) minmax(0,1.45fr); gap:16px; margin:18px 0; align-items:start; }
+.sf-listbox,.sf-answer { background:#fff; border:1px solid #e0d7dd; border-radius:12px; padding:18px; min-width:0; }
+.sf-listbox > h3 > span { font-size:13px; font-weight:400; }
+#sfQuestions { max-height:680px; overflow-y:auto; scrollbar-gutter:stable; }
+.sf-root .sf-question { display:block; width:100%; margin-bottom:9px; text-align:left; line-height:1.6; color:#343943; font-size:15px; font-weight:500; }
+.sf-question small { display:block; color:#716370; font-size:11px; margin-bottom:3px; }
+.sf-root .sf-question[aria-current="true"] { background:#fff0f5; border:2px solid #ab2347; padding:7px 12px; color:#8f1738; font-weight:700; }
+.sf-answer:focus { outline:none; }
+.sf-answer h3 { font-size:23px; color:#81243e; }
+.sf-answer h4 { font-size:15px; color:#534052; margin:20px 0 5px; }
+.sf-summary { padding:14px 16px; border-radius:10px; background:#f5f7f9; border-left:4px solid #8c2545; font-weight:700; font-size:18px; }
+.sf-talk { background:#f5f7fb; border-radius:10px; padding:14px 16px; }
+.sf-caution { background:#fffaf0; border:1px solid #e7d7b7; padding:12px 16px; border-radius:10px; font-size:14px; }
+.sf-answer ul { padding-left:20px; margin:8px 0; }
+.sf-answer a { color:#87344d; font-size:13px; }
+.sf-answer .sf-refs li { margin:5px 0; }
+.sf-answer .sf-answer-meta { font-size:12px; color:#626775; margin:8px 0 12px; }
+.sf-copyline { display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-top:18px; }
+.sf-foot { border-top:1px solid #dfd5db; padding-top:14px; }
+.sf-consult-entry { margin:16px 0; padding:16px 20px; border:1px solid #dec4cf; border-radius:12px; background:#fff7fa; }
+.sf-consult-entry button { min-height:48px; font-size:16px; font-weight:700; border:1px solid #a82748; background:#a82748; color:white; padding:10px 18px; border-radius:10px; cursor:pointer; }
+.sf-consult-entry p { margin:8px 0 0; font-size:14px; }
+@media(max-width:850px) { .sf-layout { grid-template-columns:1fr; } #sfQuestions { max-height:300px; } .sf-answer h3 { font-size:21px; } }
+@media(max-width:540px) { .sf-root { font-size:15px; } .sf-head,.sf-controls,.sf-listbox,.sf-answer { padding:15px; } .sf-root h2 { font-size:25px; } .sf-root input { flex-basis:100%; } .sf-toolbar button { flex:1 1 120px; } .sf-summary { font-size:16px; } }
+</style>
 </head>
 <body><header><div class="head"><a href="./othercarrier_docomo_compare_v58_independent_routes.html" style="display:inline-flex;align-items:center;min-height:40px;margin-bottom:12px;padding:8px 14px;border:1px solid #ffffff66;border-radius:999px;background:#ffffff18;color:#fff;text-decoration:none;font-size:13px;font-weight:800">← 店頭メニューへ戻る</a><div class="brand">DOCOMO HIKARI</div><div class="title">ドコモ光 STAFF SUPPORT</div><div class="sub">現場スタッフ向け 接客・受付サポートツール</div></div></header>
 <main>
@@ -610,6 +664,7 @@ body.guide-building header{padding:12px 14px 14px}body.guide-building header .ti
 <div id="geminiModeBar" class="gemini-mode-bar" role="tablist" aria-label="回答方式">
 <button id="registeredModeTab" type="button" role="tab" aria-controls="registeredSupportPanel" aria-selected="true">登録回答を探す（AI不要）</button>
 <button id="consultModeTab" type="button" role="tab" aria-controls="consultSupportPanel" aria-selected="false">コンサルモード（接客トーク）</button>
+<button id="securitiesModeTab" type="button" role="tab" aria-controls="securitiesSupportPanel" aria-selected="false">今更聞けない証券</button>
 <button id="geminiModeTab" type="button" role="tab" aria-controls="geminiSupportPanel" aria-selected="false">Geminiに相談する</button>
 </div>
 <div id="registeredSupportPanel" role="tabpanel" aria-labelledby="registeredModeTab">
@@ -823,6 +878,8 @@ body.guide-building header{padding:12px 14px 14px}body.guide-building header .ti
   <div id="chat" hidden></div>
 </div>
 <div aria-labelledby="consultModeTab" hidden="" id="consultSupportPanel" role="tabpanel">
+<div class="sf-consult-entry"><button type="button" data-open-securities>今更聞けない証券を開く</button><p>NISA・マネックスへの変更・dカード積立・銀行連携を質問と回答で確認。全Q&Aや選択した回答を印刷できます。</p></div>
+
 <div class="cc-intro"><span class="cc-label">心理学をヒントに、信頼から始める接客</span><h2>断られたとき、どう返す？</h2><p>dカード・ドコモ光の断り理由に加え、マネックス証券×dカードのNISA・特定口座・積立ポイント・銀行連携の説明と切り返しを探せます。登録トークを表示する独自モードです。商品を選ぶと、関係のある条件だけ表示します。</p></div>
 <details class="cc-method"><summary>プロスペクト理論・関係構築を、どう使う？</summary><p><strong>参照点を聞く：</strong>今の料金や使い慣れたサービスを基準に「何を残したいか」を確認します。得だけでなく、費用や失われる可能性も整理します。損失回避が全員に同じ強さで働くとは限りません。</p><p><strong>確実なものと条件付きのものを分ける：</strong>年会費・請求と、条件付きポイント・速度改善の可能性を混同しません。大きな特典だけで判断を促しません。</p><p><strong>関係構築：</strong>開かれた質問→言葉を受け止めて確認→説明の許可→中立に比較→どう感じたかを聞く。「そうですよね」だけで済ませず、理解が違えば直してもらいます。</p><p><strong>本人の選択を尊重：</strong>持ち帰りや見送りも選べます。「今決めないと損」、虚偽の限定、根拠のない人気、断った後の再説得には使いません。小さな確認への同意は申込み同意と別です。</p><p class="cc-small">心理学・支援場面の知見を基本的な聞き方に応用した独自設計です。この接客方法の効果を実証したという意味ではありません。参考研究は回答の下部に表示します。</p></details>
 <div class="cc-card">
@@ -942,6 +999,33 @@ body.guide-building header{padding:12px 14px 14px}body.guide-building header .ti
 <article aria-labelledby="ccAnswerTitle" class="cc-card cc-answer" hidden="" id="ccAnswer"></article>
 <p class="cc-small">登録がない相談は「登録回答を探す」、または「Geminiに相談する」へ。Geminiへの送信はその画面での明示操作が必要です。切り返しは独自の下書きで、制度の公式文とは別です。</p>
 </div>
+<div id="securitiesSupportPanel" role="tabpanel" aria-labelledby="securitiesModeTab" hidden>
+  <section class="sf-root" aria-label="今更聞けない証券">
+    <header class="sf-head">
+      <span class="sf-kicker">スタッフの疑問から、正確な説明へ</span>
+      <h2>今更聞けない証券</h2>
+      <p>NISA・口座変更・dカード積立・銀行連携を、質問と回答で確認できます。登録回答なので<strong>AI・ログイン不要</strong>です。</p>
+      <div class="sf-meta">公式確認：2026年10月15日 <span id="sfTotal"></span> <button type="button" id="sfBack">接客トークへ戻る</button></div>
+    </header>
+    <div class="sf-notice"><strong>お客様へ伝える前に</strong><p>成人向けNISAの一般説明です。元本割れのリスクがあります。個別銘柄・金額・売買時期は勧めず、店舗の対応権限と最新公式条件を確認してください。</p></div>
+    <div class="sf-controls">
+      <label for="sfQuery">知りたいことを入力（一般的な質問だけ）</label>
+      <div class="sf-searchline"><input id="sfQuery" type="search" maxlength="160" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="例：NISA、2027年、GOLD、配当" aria-describedby="sfPrivacy"><button type="button" id="sfSearch">回答を探す</button><button type="button" id="sfReset">解除</button></div>
+      <p class="sf-small" id="sfPrivacy">氏名・電話番号・実際のメール・個人番号・カード／口座番号・パスワード・OTP等は入力しないでください。この検索語は保存・AI送信しません。</p>
+      <label for="sfCategory">分野から絞り込む</label><select id="sfCategory"><option value="all">すべての分野</option></select>
+      <div class="sf-quick" aria-label="よく使う質問"><button type="button" data-sf-query="NISA">NISAの基本</button><button type="button" data-sf-query="2027">2027年の変更</button><button type="button" data-sf-query="GOLD">カード積立</button><button type="button" data-sf-query="銀行">銀行連携</button></div>
+      <div id="sfStatus" role="status" aria-live="polite"></div>
+    </div>
+    <div class="sf-toolbar"><span>印刷用画面を開く</span><button type="button" id="sfPrintCurrent">この回答だけ</button><button type="button" id="sfPrintFiltered">絞込したQ&A</button><button type="button" id="sfPrintAll">全Q&A</button></div>
+    <p class="sf-small">印刷用画面の「印刷／PDF保存」またはSafariの共有→プリントを使います。ポップアップが止められた場合は、許可して再度お試しください。</p>
+    <div class="sf-layout">
+      <nav class="sf-listbox" aria-label="質問一覧"><h3>質問を選ぶ <span id="sfCount"></span></h3><div id="sfQuestions"></div></nav>
+      <article id="sfAnswer" class="sf-answer" aria-label="選択した質問への回答" tabindex="-1"></article>
+    </div>
+    <p class="sf-small sf-foot">登録回答にない内容は断定せず、マネックス・dカード等の公式窓口へ確認してください。接客例は独自編集で、公式の推奨トークではありません。</p>
+  </section>
+</div>
+
 <div id="geminiSupportPanel" role="tabpanel" aria-labelledby="geminiModeTab" hidden>
 <p class="gemini-mode-note">スタッフ各自のGoogleでログインして、公式資料を根拠に相談できます。管理者による利用承認が必要です。質問を送る前に、顧客名・電話番号・実際のメールアドレス・住所・機密情報が入っていないことを確認してください。</p>
 <a class="gemini-standalone" href="https://hikaricoach-aqwtlxgc.manus.space/" target="_blank" rel="noopener noreferrer">専用画面で開く（ログインしづらい場合はこちら）</a>
@@ -2953,7 +3037,7 @@ common.push({level:'basic',cat:'初期契約解除',q:'初期契約解除の8日
 (function () {
   'use strict';
   const origin = "https://hikaricoach-aqwtlxgc.manus.space";
-  const modes = ['registered', 'consult', 'gemini'];
+  const modes = ['registered', 'consult', 'securities', 'gemini'];
   const panels = modes.map(name => document.getElementById(name + 'SupportPanel'));
   const tabs = modes.map(name => document.getElementById(name + 'ModeTab'));
   const frame = document.getElementById('geminiSupportFrame');
@@ -2988,6 +3072,7 @@ common.push({level:'basic',cat:'初期契約解除',q:'初期契約解除の8日
     const previous = window[name];
     if (typeof previous === 'function') window[name] = function () { selectMode(0); return previous.apply(this, arguments); };
   });
+  window.showSupportMode = name => { const i = modes.indexOf(name); if (i >= 0) selectMode(i); };
   selectMode(0);
 })();
 </script>
@@ -3646,5 +3731,101 @@ common.push({level:'basic',cat:'初期契約解除',q:'初期契約解除の8日
 })();
 
 
+</script>
+
+<script type="application/json" id="securitiesFaqData">{"data": {"title": "今更聞けない証券", "subtitle": "NISA基礎・マネックスへの変更・dカードと銀行の活用", "checked": "2026-10-15", "categories": [{"id": "basic", "title": "NISAの基本"}, {"id": "rules", "title": "枠・口座・税金"}, {"id": "risk", "title": "リスクと出口"}, {"id": "change", "title": "マネックスへ変更"}, {"id": "benefits", "title": "dカード・銀行連携"}, {"id": "store", "title": "店頭対応・安全"}], "questions": [{"id": "q01", "number": 1, "category": "basic", "question": "NISAって何？投資商品なの？", "answer": "NISAは、対象の投資で得た利益を日本で非課税にする制度です。商品名ではありません。", "details": ["課税口座では上場株式等の売却益などに通常20.315％の税金がかかります。NISA口座では制度の条件を満たす売却益や配当・普通分配金が非課税になります。", "2024年からの成人向けNISAは、非課税保有期間が無期限で制度は恒久化されています。"], "talk": "「NISAは投資商品ではなく、対象の投資の利益にかかる税金を非課税にする制度です。値下がりのリスクは残ります。」", "cautions": ["利益が出ることや元本は保証されません。配当の受取方式や外国税には例外があります。"], "sources": ["fsa", "change", "nta"], "keywords": ["ニーサ", "新NISA", "初級", "税率"], "checked": "2026-10-15"}, {"id": "q02", "number": 2, "category": "basic", "question": "誰がNISAを使える？何口座まで？", "answer": "この資料は、日本に住む、その年の1月1日時点で18歳以上の方の成人向けNISAを扱います。", "details": ["同じ年の買付に使うNISAは1人1金融機関です。つみたて投資枠と成長投資枠を別の金融機関へ分けることはできません。", "年単位の金融機関変更は可能です。過去に買った資産を旧金融機関に残す場合は、その保有口座と新しい年の買付口座が併存することがあります。"], "talk": "「今年のNISAは、どちらの金融機関をご利用かだけ確認してもよいですか。口座番号は伺いません。」", "cautions": ["未成年者向け制度・海外転勤・非居住者の扱いは本資料の対象外です。最新公式案内を確認してください。"], "sources": ["fsa", "fsa-qa", "change"], "keywords": ["年齢", "対象者", "複数", "1人1口座"], "checked": "2026-10-15"}, {"id": "q03", "number": 3, "category": "basic", "question": "つみたて投資枠と成長投資枠はどう違う？", "answer": "つみたて投資枠は年120万円、成長投資枠は年240万円。対象商品と買い方が異なります。", "details": ["つみたて投資枠は長期・積立・分散に適した、所定の基準を満たす投資信託等が対象です。", "成長投資枠では対象の投資信託や国内外の上場株式等を買えます。成長投資枠でも積立はできます。取扱商品は金融機関によって異なります。"], "talk": "「2つの枠がありますが、両方を使わなければいけないわけではありません。対象商品の違いから確認しましょう。」", "cautions": ["対象基準を満たすことは、良い運用成績や安全性の保証ではありません。すべての株式・投信が対象ではありません。"], "sources": ["fsa", "change"], "keywords": ["初級", "120万円", "240万円", "積立", "成長"], "checked": "2026-10-15"}, {"id": "q04", "number": 4, "category": "basic", "question": "年間360万円と総枠1,800万円は何が違う？", "answer": "年間枠は1年の買付上限、総枠は買付額で管理する非課税保有限度額です。", "details": ["年間枠はつみたて120万円＋成長240万円＝合計最大360万円です。", "総枠は合計1,800万円。そのうち成長投資枠で保有できるのは1,200万円までです。値上がりで時価が1,800万円を超えても、それだけで枠超過にはなりません。"], "talk": "「年の上限と、保有できる総額の上限は別です。どちらも購入時の金額を基準に確認します。」", "cautions": ["1,800万円は利益の上限でも、一生の買付累計の固定上限でもありません。売却後の再利用には翌年以降のルールがあります。"], "sources": ["fsa", "fsa-qa"], "keywords": ["年間", "生涯", "総額", "1800", "360", "簿価"], "checked": "2026-10-15"}, {"id": "q05", "number": 5, "category": "basic", "question": "つみたて投資枠だけ、または成長投資枠だけでもよい？", "answer": "はい。両方を使う義務はありません。", "details": ["つみたて投資枠だけで総枠1,800万円を利用できます。", "成長投資枠だけを使う場合、その総枠は1,200万円までです。制度上の上限は、毎年必ず投資する目標額ではありません。"], "talk": "「使える上限と、ご自身が無理なく続けられる金額は別です。枠を埋めることを目的にする必要はありません。」", "cautions": ["このツールは、お客様に合った金額や商品を決めるものではありません。"], "sources": ["fsa-qa"], "keywords": ["片方だけ", "満額", "使い分け"], "checked": "2026-10-15"}, {"id": "q06", "number": 6, "category": "basic", "question": "銀行の預金や特定口座の株を、そのままNISAにできる？", "answer": "NISAは預金口座ではありません。課税口座の商品をそのままNISAへ移すこともできません。", "details": ["NISAを使うにはNISA対象商品の新たな買付が必要です。課税口座で保有中の商品は、単に口座区分を切り替えてNISA資産にはできません。", "買い直しには価格変動・税金・費用・枠の使用が伴います。店舗で売却や買い直しの判断を促しません。"], "talk": "「お持ちの商品をそのまま非課税口座へ変更する仕組みではありません。買い直しの判断は別の投資判断になります。」", "cautions": ["個別の売却・買付指示や税額の判断は、権限ある窓口・税務署等へ案内します。"], "sources": ["fsa", "change"], "keywords": ["預金", "引っ越し", "移管", "課税からNISA"], "checked": "2026-10-15"}, {"id": "q07", "number": 7, "category": "rules", "question": "売却するとNISAの枠はいつ、いくら戻る？", "answer": "売却した商品の購入額（簿価）分の総枠を、翌年以降に再利用できます。", "details": ["100万円で買った商品を150万円で全部売却した例では、翌年以降に再利用できる総枠は100万円分です。売却額150万円分ではありません。", "再利用する年も年間120万円・240万円の各上限以内です。売却した年の年間枠自体は戻りません。"], "talk": "「戻るのは買ったときの金額分の総枠で、翌年以降です。今年すぐ同じ枠を使い回せるわけではありません。」", "cautions": ["値下がりして売却しても基準は簿価です。一部売却や金融機関変更の個別残枠は公式口座画面で本人が確認します。"], "sources": ["fsa-qa", "change"], "keywords": ["中級", "復活", "翌年", "1月1日", "簿価", "再利用"], "checked": "2026-10-15"}, {"id": "q08", "number": 8, "category": "rules", "question": "使わなかった年間投資枠を翌年に繰り越せる？", "answer": "未使用の年間枠を、翌年の年間枠へ上乗せすることはできません。", "details": ["年間枠は年ごとに管理されます。使わなかったからといって翌年に年360万円を超えて買えるわけではありません。", "非課税保有期間は無期限なので、枠の失効を理由に急いで投資する必要はありません。"], "talk": "「今年使わなかった分の上乗せはありません。ただ、焦って始める必要はありません。」", "cautions": ["注文日と買付の年分は一致しない場合があります。年末の受渡日・取引締切は金融機関の案内で確認します。"], "sources": ["fsa", "fsa-qa"], "keywords": ["中級", "繰越", "年末", "使い残し"], "checked": "2026-10-15"}, {"id": "q09", "number": 9, "category": "rules", "question": "NISAと特定口座は何が違う？", "answer": "NISAは対象利益を非課税にする口座。特定口座は課税取引の損益計算や税の手続きを簡単にする口座です。", "details": ["NISAには年間枠・総枠・対象商品などの制限があります。特定口座の利益は原則課税されます。", "特定口座には「源泉徴収あり／なし」があります。NISAと特定口座は併用できます。NISAの枠外を自動で買う設定がないかも本人が確認します。"], "talk": "「NISAは税金の優遇、特定口座は課税される取引の管理の仕組み、と分けると理解しやすいです。」", "cautions": ["特定口座は預金口座ではありません。「特定口座なら確定申告が絶対不要」と断定しません。"], "sources": ["nta", "fsa", "change"], "keywords": ["中級", "違い", "課税", "一般口座"], "checked": "2026-10-15"}, {"id": "q10", "number": 10, "category": "rules", "question": "特定口座の「源泉徴収あり・なし」と確定申告は？", "answer": "源泉徴収ありでは口座内で税が徴収され、申告不要を選べます。なしでは申告が必要になる場合があります。", "details": ["特定口座では金融機関が年間取引報告書を作成します。源泉徴収ありは、一定の範囲で申告せずに済む仕組みです。", "他の証券口座との損益通算や損失の繰越控除を行う場合などは確定申告が必要です。個人の状況で取扱いは変わります。"], "talk": "「税務の手間を軽くする仕組みはありますが、申告の要否はご本人の状況によります。税務署等でご確認ください。」", "cautions": ["扶養・社会保険等を含めた申告の有利不利を店舗で判断しません。"], "sources": ["nta"], "keywords": ["源泉あり", "源泉なし", "申告", "税務"], "checked": "2026-10-15"}, {"id": "q11", "number": 11, "category": "rules", "question": "NISAで損をしたら、他の利益と相殺できる？", "answer": "NISAの損失は、特定口座等の利益との損益通算も翌年以降への繰越控除もできません。", "details": ["課税口座では一定の条件で損益通算・繰越控除が使える場合がありますが、NISAには適用されません。", "税が非課税になるメリットだけでなく、この損失の扱いも説明します。"], "talk": "「利益に税金がかからない一方で、NISAの損失をほかの利益から差し引くことはできません。」", "cautions": ["この違いだけを理由にNISA・特定口座のどちらを使うべきか断定しません。"], "sources": ["change", "nta"], "keywords": ["中級", "損益通算", "損失", "繰越控除"], "checked": "2026-10-15"}, {"id": "q12", "number": 12, "category": "rules", "question": "NISAの配当を非課税で受け取る設定は？", "answer": "国内上場株式・ETF・REITなどの配当等は「株式数比例配分方式」で受け取る必要があります。", "details": ["証券口座で受け取る方式です。銀行口座への振込等の方式では、国内上場株式等の配当がNISAでも課税される場合があります。", "投資信託の分配金や外国株の配当は、国内株の受取方式とは分けて確認します。外国の源泉税が残る場合があります。"], "talk": "「国内株などの配当は受取方法が重要です。投信や外国株も同じ条件とは限らないため、公式設定を確認しましょう。」", "cautions": ["「NISAだから配当はすべて税金ゼロ」「この設定で外国税もゼロ」と案内しません。本人が公式サイトで確認・変更します。"], "sources": ["change", "fee"], "keywords": ["配当", "銀行振込", "株式数比例", "分配金", "外国税"], "checked": "2026-10-15"}, {"id": "q13", "number": 13, "category": "risk", "question": "NISAなら元本割れしない？どんな費用がある？", "answer": "NISAでも元本割れはあります。税金の優遇と、商品リスク・費用は別です。", "details": ["株価・基準価額・為替等で資産は変動します。投資信託は保有中の信託報酬や、商品によって換金費用等がかかります。", "売買手数料無料でも、信託報酬・為替手数料・現地費用等まで全部無料とは限りません。契約締結前交付書面・目論見書で確認します。"], "talk": "「ポイントが付いても、それ以上に値下がりすることはあります。費用も含めて確認することが大切です。」", "cautions": ["過去の実績・非課税・ポイントで将来の利益を保証しません。"], "sources": ["change", "fee", "card"], "keywords": ["元本保証", "損", "価格", "為替", "コスト", "信託報酬"], "checked": "2026-10-15"}, {"id": "q14", "number": 14, "category": "risk", "question": "長期・積立・分散なら絶対に儲かる？", "answer": "リスクを抑える工夫ですが、利益や元本を保証する方法ではありません。", "details": ["長期は時間をかけること、積立は時期を分けて購入すること、分散は投資先を分けることです。", "複数商品を持っていても中身が似ていれば十分に分散できない場合があります。生活に必要なお金や近く使うお金を投資へ回すよう勧めません。"], "talk": "「長期・積立・分散は基本的な考え方ですが、損失がなくなるわけではありません。」", "cautions": ["借入や生活費の取り崩しで投資額を増やす案内はしません。個別配分は対象外です。"], "sources": ["fsa-invest", "change"], "keywords": ["分散", "積立", "長期", "リスク", "生活防衛資金"], "checked": "2026-10-15"}, {"id": "q15", "number": 15, "category": "risk", "question": "「最短5年で1,800万円」はおすすめの戦略？", "answer": "年360万円×5年＝1,800万円という、制度上の上限の計算例です。推奨ではありません。", "details": ["両枠を毎年上限まで使い、総枠の保有を積み上げた場合の計算です。つみたて120万円×5年＝600万円、成長240万円×5年＝1,200万円となります。", "B/H（買って保有する）も一般的な投資行動の呼び名です。5年で満額にすれば収益が高くなるという保証はありません。"], "talk": "「5年は計算上の最短年数で、お客様の目標額ではありません。無理なく続けられるかが先です。」", "cautions": ["上級者向けという理由で早期の満額投資や一括投資を勧めません。"], "sources": ["fsa", "fsa-invest"], "keywords": ["上級", "最速", "満額", "B/H", "バイアンドホールド", "出口"], "checked": "2026-10-15"}, {"id": "q16", "number": 16, "category": "risk", "question": "いつ売る？出口戦略やリバランスって何？", "answer": "出口戦略は使う時期を意識すること、リバランスは資産配分を見直すことです。", "details": ["老後・住宅・教育など、使う時期に市場が下落している可能性もあります。必要資金の時期と、売却・受渡しにかかる日数を考えるのが一般的な確認点です。", "売却後の総枠再利用は翌年以降です。新しい買付では年間枠を使い、費用もかかる場合があるため、自由に即時交換できるわけではありません。"], "talk": "「使う予定が近いお金か、長く置いておくお金かを分けて考える方法があります。売却の時期や商品は専門窓口でご相談ください。」", "cautions": ["個別の売却時期・価格・銘柄・配分の指示はしません。損失回避や買替えの容易さを保証しません。"], "sources": ["fsa-invest", "fsa-qa", "fee"], "keywords": ["上級", "リバランス", "出口", "老後", "教育", "住宅", "換金"], "checked": "2026-10-15"}, {"id": "q17", "number": 17, "category": "change", "question": "他社からマネックスへNISAを変更する2ステップは？", "answer": "①旧金融機関で通知書を取得、②マネックスでNISAの金融機関変更を申し込みます。", "details": ["①現在の金融機関へ変更を申し出て「勘定廃止通知書」または「非課税口座廃止通知書」を取り寄せます。", "②マネックスの証券総合取引口座・NISAを申し込みます。総合口座がなければ同時申込みも可能です。オンラインと郵送で提出方法が異なるため、公式の流れに従います。"], "talk": "「まず今の金融機関から変更に必要な通知書を取り寄せます。届いてからマネックスの公式手続きに進む流れです。」", "cautions": ["NISAの「金融機関変更」と、保有商品の「移管」を混同しません。店舗の対応範囲を事前確認します。"], "sources": ["change", "fsa-qa"], "keywords": ["移管", "乗り換え", "手続き", "2ステップ", "勘定廃止", "通知書"], "checked": "2026-10-15"}, {"id": "q18", "number": 18, "category": "change", "question": "今から2026年分を変更できる？2027年分はいつ？", "answer": "2026年10月15日時点で、2026年分は受付終了。2027年分は2026年10月1日から受付が始まっています。", "details": ["制度上の変更届出期間は、希望年の前年10月1日〜当年9月30日です。2027年分では2026年10月1日〜2027年9月30日となります。", "会社の書類必着日・審査完了期限は別に確認します。翌年初めから使いたい場合、マネックスは余裕をもって12月中旬頃までの手続きを勧めています。"], "talk": "「今の受付は2027年分です。年明けに利用したい場合は、書類取得と審査の時間を見込んで確認しましょう。」", "cautions": ["この日付案内は確認日基準の固定情報です。利用日が変わったら最新の受付年・期限を公式で再確認します。"], "sources": ["schedule", "change", "fsa-qa"], "keywords": ["期限", "2026", "2027", "10月1日", "9月30日", "タイミング"], "checked": "2026-10-15"}, {"id": "q19", "number": 19, "category": "change", "question": "今年すでにNISAで買っていたら変更できない？", "answer": "買付済みの年分は金融機関変更できません。翌年分の変更は前年10月1日から手続きできます。", "details": ["つみたて・成長のどちらかで買付済みなら、その年分の変更はできません。", "2026年に買付済みでも、2027年分の変更受付は2026年10月1日から可能です。旧金融機関の翌年の自動積立予定や未約定注文も本人が確認します。"], "talk": "「今年の買付有無を確認する理由は、変更できる年分が変わるからです。今の時期は翌年分の受付になります。」", "cautions": ["変更手続き中の旧口座買付が翌年分に影響しないか、両社で本人が確認します。売却すれば当年変更できるとは案内しません。"], "sources": ["change", "schedule", "fsa-qa"], "keywords": ["買付あり", "取引済", "今年", "購入済", "自動積立"], "checked": "2026-10-15"}, {"id": "q20", "number": 20, "category": "change", "question": "変更すると旧NISAの資産は売らなければいけない？", "answer": "売却は必須ではありません。旧金融機関で非課税保有を継続できますが、新金融機関のNISAへ移管はできません。", "details": ["2024年以降のNISAで買った資産は、旧金融機関で無期限の非課税保有を続けられます。", "2023年までの一般NISA・つみたてNISAは、それぞれの非課税期間内で保有を続けられます。新制度へロールオーバーはできません。新金融機関での買付は新たに年間枠を使います。"], "talk": "「口座の変更のために、今お持ちの商品を売る必要はありません。旧口座に残したまま管理する選択もできます。」", "cautions": ["旧資産と新規買付の管理が分かれます。総枠が変更先で新たに1,800万円増えるわけではありません。"], "sources": ["change", "fsa-qa"], "keywords": ["旧資産", "売却必要", "引っ越し", "ロールオーバー", "旧NISA"], "checked": "2026-10-15"}, {"id": "q21", "number": 21, "category": "change", "question": "必要書類と審査期間は？", "answer": "通知書に加え、申込方法に応じた本人確認・マイナンバー確認等が必要です。審査目安は1〜2週間程度です。", "details": ["郵送では、通知書・NISA口座開設必要書類提出票・本人確認書類・マイナンバー確認書類が基本です。既にマイナンバー登録済みなら再提出不要の場合があります。", "オンライン手続きは公式画面の提出指示に従います。審査完了はメッセージボード等で本人が確認します。旧金融機関の通知書取得や郵送の時間は別に見込みます。"], "talk": "「通知書や本人確認書類の準備が必要です。審査は目安なので、開始日をお約束することはできません。」", "cautions": ["このツールへ書類画像・個人番号・口座番号を入力しません。正確な書類の組合せは公式窓口で確認します。"], "sources": ["change"], "keywords": ["マイナンバーカード", "本人確認", "審査", "郵送", "オンライン", "期間"], "checked": "2026-10-15"}, {"id": "q22", "number": 22, "category": "change", "question": "金融機関変更で積立設定やdカード設定も引き継がれる？", "answer": "旧金融機関の積立設定は自動では引き継がれません。本人がマネックスで改めて確認・設定します。", "details": ["NISA変更完了と積立設定完了は別です。口座区分、対象商品、買付日、決済方法、引落し予定を公式画面で確認します。", "旧金融機関の翌年の積立が続かないよう、停止・取消の要否や締切も旧金融機関へ確認します。カード積立と銀行スイープは別の設定です。"], "talk": "「口座ができただけで積立が始まるとは限りません。旧設定と新設定を、両方確認する必要があります。」", "cautions": ["店舗スタッフはお客様に代わって商品選択・注文確定・積立設定を実行しません。"], "sources": ["change", "card", "sweep"], "keywords": ["再設定", "積立引継ぎ", "止める", "取消"], "checked": "2026-10-15"}, {"id": "q23", "number": 23, "category": "benefits", "question": "マネックスの強みは？費用は本当に全部無料？", "answer": "dカード積立、投信保有ポイント、国内外の対象商品を扱うことが特徴です。無料の範囲には例外があります。", "details": ["NISAの国内株・米国株・中国株・投資信託の売買手数料は公式に無料と案内されています。IFAサービス等は手数料体系が異なります。", "米国株の売却時の現地費用、ETF・投信の信託報酬、為替手数料等は別です。取扱いの多さや米国株の充実は、特定商品や外国株投資の推奨理由にはしません。"], "talk": "「カード積立などの特徴はありますが、商品のリスクと別の費用もあります。無料の範囲は公式で確認しましょう。」", "cautions": ["過去のニュースにあるキャッシュバック方式を、現行の全商品に一律適用しません。実際の最新手数料表示を優先します。"], "sources": ["fee", "change", "card"], "keywords": ["メリット", "米国株", "手数料無料", "銘柄数", "強み"], "checked": "2026-10-15"}, {"id": "q24", "number": 24, "category": "benefits", "question": "普通のdカードでも積立は全部1.1％？", "answer": "通常dカードはNISA・課税口座とも段階率です。全額一律1.1％ではありません。", "details": ["月額5万円以下の部分は1.1％、5万円超〜7万円以下の部分は0.6％、7万円超〜10万円以下の部分は0.2％です。", "単一設定で月10万円の公式例は、550＋120＋60＝730ポイントです。正確な進呈数は口座区分・設定・端数処理によります。"], "talk": "「普通のdカードは5万円を超えた部分の率が変わります。10万円全体に1.1％をかける計算ではありません。」", "cautions": ["NISAと課税の併用時は各部分の適用順序等があるため、公式例で確認します。"], "sources": ["card"], "keywords": ["一般カード", "通常", "段階", "730", "1.1"], "checked": "2026-10-15"}, {"id": "q25", "number": 25, "category": "benefits", "question": "dカード GOLD・GOLD UはNISAでどうなる？", "answer": "GOLD・GOLD UのNISA口座の通常積立は、月10万円まで1.1％です。課税口座では段階率です。", "details": ["NISA部分は1.1％です。課税口座の5万円以下の部分は1.1％、5万円超〜7万円以下は0.6％、7万円超〜10万円以下は0.2％です。", "NISAと課税口座を併用する場合、課税部分に単独の5万円以下の率を当て直すとは限りません。公式の併用例を確認します。"], "talk": "「GOLDならNISAの通常積立は1.1％ですが、課税口座まで全部同じ率ではありません。」", "cautions": ["月10万円はカード積立全体の上限です。家族カードは積立対象外。年会費・カード審査は別です。"], "sources": ["card", "compare"], "keywords": ["ゴールド", "GOLDU", "金カード"], "checked": "2026-10-15"}, {"id": "q26", "number": 26, "category": "benefits", "question": "dカード PLATINUMは常に3.1％？", "answer": "いいえ。NISAの通常積立は、適用期間や所定のショッピング利用額により1.1％・2.1％・3.1％です。", "details": ["課税口座は積立額の部分ごとに率が異なります。最大条件時の部分別率は5万円以下3.1％、5万円超〜7万円以下2.6％、7万円超〜10万円以下2.2％です。", "最大条件ではない場合や併用の場合は公式の表で確認します。通常ポイント進呈のほかにポイ活プランの別特典がある場合も、条件を分けて説明します。"], "talk": "「プラチナは最大3.1％ですが、常にではありません。入会時期・口座区分・利用条件を確認してからご案内します。」", "cautions": ["積立額に銀行買物特典の4.5％を加えません。最大率を得るための無理な買物・投資は勧めません。"], "sources": ["card", "revision"], "keywords": ["プラチナ", "最大", "還元率", "ショッピング"], "checked": "2026-10-15"}, {"id": "q27", "number": 27, "category": "benefits", "question": "2026年12月のPLATINUM積立改定は何が変わる？", "answer": "2026年12月決済分（2027年1月買付分）から、ショッピング利用額判定の開始時期が早まります。", "details": ["改定後、利用額条件なしで最大率が適用されるのは入会月から2か月後まで。入会月から3か月後以降は、所定のショッピング利用額に応じた率になります。", "従来は入会2年目以降に適用していた判定を早める改定です。既存会員も入会時期と対象決済月を公式で確認します。率自体と、最大率の適用期間を分けます。"], "talk": "「2027年1月買付分からは、入会初年度ずっと最大率という説明は使えません。今回適用される率を確認します。」", "cautions": ["「今入れば必ず1年間3.1％」と案内しません。他特典や通常dカードの年会費等の改定も別に確認します。"], "sources": ["revision", "card"], "keywords": ["改悪", "改定", "12月", "2027年1月", "初年度", "3か月"], "checked": "2026-10-15"}, {"id": "q28", "number": 28, "category": "benefits", "question": "GOLDとPLATINUM、ポイントだけで年会費の元は取れる？", "answer": "積立ポイントだけで元が取れるとは限りません。年会費・実際の適用率・他特典を分けて比較します。", "details": ["確認日時点の本会員年会費はGOLD 11,000円、PLATINUM 29,700円（税込）。月3万円のNISA通常積立の例では、GOLDは330ポイント、PLATINUMは適用率により330／630／930ポイントです。", "最大条件の月だけの差は600ポイント。将来12か月ずっと最大条件とは限らないため、そのまま年額へ換算して得を保証しません。"], "talk": "「積立のポイント差だけでなく、年会費と普段の使い方を合わせて確認しましょう。カードを変えない選択もあります。」", "cautions": ["金額は架空の説明例で、投資額のおすすめではありません。ポイントは投資の利益でも現金の利回りでもありません。"], "sources": ["compare", "card", "revision"], "keywords": ["年会費", "元取れる", "330", "930", "比較", "アップグレード"], "checked": "2026-10-15"}, {"id": "q29", "number": 29, "category": "benefits", "question": "dカード積立の上限・家族カード・通常決済ポイントは？", "answer": "月10万円まで、本会員の対象dカードを使います。家族カードは対象外です。", "details": ["dカード積立は、通常のカード決済でたまるポイントの対象外です。年間ご利用額特典の累計対象にも入りません。", "カード審査・有効性・積立締切・対象ファンドの休業日等も公式で確認します。口座開設と買付・約定は別です。"], "talk": "「積立ポイントとお買物ポイントは別です。積立額がそのまま年間利用額特典へ算入されるわけではありません。」", "cautions": ["積立額をPLATINUMのショッピング利用条件を満たす額として数えないよう、最新の判定対象を確認します。"], "sources": ["card", "revision"], "keywords": ["10万円", "家族", "対象外", "年間利用額", "締切"], "checked": "2026-10-15"}, {"id": "q30", "number": 30, "category": "benefits", "question": "投信保有ポイントは毎月0.26％もらえる？", "answer": "0.26％は最大の年率です。銘柄により0％（対象外）〜最大年率0.26％で、毎月付与されます。", "details": ["付与額は対象投信の月中平均残高等と銘柄別率で決まります。全銘柄に最大率が適用されるわけではありません。", "dアカウント連携によって、マネックスポイントの代わりにdポイントをためる仕組みがあります。銘柄別率は公式の投信保有ポイント案内で確認します。"], "talk": "「毎月ポイントが付く制度ですが、0.26％を毎月かける計算ではなく、最大年率の表示です。」", "cautions": ["保有ポイントだけで銘柄を選ぶよう勧めません。投信の費用・リスク・対象外を確認します。"], "sources": ["card"], "keywords": ["投信保有", "年率", "月率", "0.26", "ダブル"], "checked": "2026-10-15"}, {"id": "q31", "number": 31, "category": "benefits", "question": "銀行連携で最大4.5％は積立の還元率？", "answer": "いいえ。銀行・証券の条件を満たした場合の、対象の街のスマホ決済の還元率です。", "details": ["公式の初年度最大例では、通常決済1.0％＋PLATINUMの銀行引落特典2.0％＋証券特典最大1.5％＝4.5％です。対象は街のd払い（dカード支払い設定）やdカードのスマホタッチ等です。", "銀行特典は月3,000ポイント、証券特典は月500ポイントの上限があります。期間・用途限定ポイントで有効期限は進呈日から94日。銀行特典は2年目以降に利用額条件があります。"], "talk": "「4.5％は積立額ではなく、条件を満たした街のお買物の話です。積立ポイントとは別に見ましょう。」", "cautions": ["銀行口座があるだけでは対象になりません。対象カード・対象支店・対象決済・適用時期・上限を併せて確認します。"], "sources": ["bank", "card"], "keywords": ["ドコモ銀行", "4.5", "買物", "初年度", "上限", "94日"], "checked": "2026-10-15"}, {"id": "q32", "number": 32, "category": "benefits", "question": "dアカウント・銀行・スイープは何を連携する？", "answer": "証券とdアカウント、銀行とdアカウント、カードの引落口座、証券へのスイープはそれぞれ別の設定です。", "details": ["銀行特典は対象支店の銀行口座とdアカウント連携、カード利用携帯番号登録、カード引落し等が必要です。", "証券特典は前月末の証券d連携・カード利用携帯番号・対象銀行スイープがそろうと0.1％、さらに前月のdカード積立とd払い残高積立の合計約定月3万円以上で1.5％です。0.1％と1.5％は足しません。"], "talk": "「一つ連携すれば全部完了ではありません。どの特典の設定かを分け、本人の公式画面で確認しましょう。」", "cautions": ["約定が翌月になると判定月も変わります。銀行特典と証券特典では家族扱いが異なります。名義・登録情報の一致も公式で確認します。"], "sources": ["bank", "card", "sweep"], "keywords": ["連携", "dアカウント", "スイープ", "0.1", "1.5", "3万円", "約定"], "checked": "2026-10-15"}, {"id": "q33", "number": 33, "category": "benefits", "question": "スイープは銀行引落しと同じ？自動で投資が始まる？", "answer": "スイープは証券の買付等で不足する資金を対象銀行から自動入金する仕組みです。カード引落しとは別です。", "details": ["公式条件に基づき、注文時の不足金などを銀行から証券へ入金します。証券から銀行への自動出金には対応しない旨が案内されています。", "口座開設やスイープ設定だけで、特定商品を自動的に買うわけではありません。カード積立も別に申込み・設定が必要です。"], "talk": "「銀行から証券へ必要な資金を移す設定です。カード代金の引落口座設定とは別です。」", "cautions": ["本人確認・パスキー等はお客様自身が公式画面で操作します。このツールは資金移動も設定変更も実行しません。"], "sources": ["sweep", "bank", "card"], "keywords": ["自動入金", "自動出金", "引落", "パスキー"], "checked": "2026-10-15"}, {"id": "q34", "number": 34, "category": "store", "question": "dカードのお客様へ、どう切り出せばよい？", "answer": "まず説明の許可を取り、制度・リスクとカード条件を分けて説明します。", "details": ["「dカードの活用方法の一つとして、NISA対象商品のカード積立があります。一般的な仕組みをご説明してもよいですか」と聞きます。", "興味があれば、NISA利用の有無、変更希望年、一般的な操作の不安を確認します。投資をしない・カードを変えない・持ち帰る選択も尊重します。"], "talk": "「カード積立では条件に応じたポイントがありますが、投資には値下がりもあります。まず制度だけ確認しませんか。」", "cautions": ["「大人気」「今しないと毎年損」など、根拠のない人気や不安を利用して申込みを迫りません。接客例は独自編集で公式の推奨トークではありません。"], "sources": ["fsa-invest", "card"], "keywords": ["アプローチ", "ヒアリング", "心理学", "切り返し", "ポイント志向"], "checked": "2026-10-15"}, {"id": "q35", "number": 35, "category": "store", "question": "店舗で口座開設や変更を必ずサポートできる？", "answer": "対応可否・範囲は店舗の権限、資格者配置、社内ルールで確認します。全店舗で対応できると断定しません。", "details": ["一般的な制度説明と公式手続きの場所の案内を基本にします。口座開設補助や金融商品説明の範囲は、店舗の責任者・所管部署へ事前確認します。", "外務員資格を持つ人がいるだけで、すべての勧誘や手続きが可能になるわけではありません。必要な登録・業務範囲・社内手順に従います。"], "talk": "「当店でご案内できる範囲を確認してから、必要に応じて公式サポート窓口をご紹介します。」", "cautions": ["スタッフが本人確認の代理や認証情報の聞取り、売買注文・口座開設の確定を代行しません。これは社内運用上の確認事項で、個別の法的判断を示すものではありません。"], "sources": ["change", "card"], "keywords": ["外務員", "資格", "同席", "店頭サポート", "権限"], "checked": "2026-10-15"}, {"id": "q36", "number": 36, "category": "store", "question": "店頭の確認フロー・次回来店案内は？", "answer": "説明の許可→利用状況の概略→変更年→公式条件→本人手続きの案内、の順です。", "details": ["①制度説明の希望を確認。②現在のNISA金融機関と当年の買付有無を、口座番号なしで確認。③変更対象年と通知書の準備を案内。", "④カード種別・適用率・費用、必要な連携を公式で確認。⑤本人が手続きを進め、完了後の積立再設定を確認。次回予約は本人の希望がある場合だけ、店舗の正式な予約方法で扱います。"], "talk": "「通知書が届いたら、当店で対応できる範囲の説明を改めて行えます。今日は制度の確認だけでも大丈夫です。」", "cautions": ["予約や次回相談への同意は、投資・カード申込みの同意とは別です。このツールに顧客情報や予約内容を保存しません。"], "sources": ["change", "schedule", "card", "bank"], "keywords": ["接客フロー", "予約", "クロスセル", "手順"], "checked": "2026-10-15"}, {"id": "q37", "number": 37, "category": "store", "question": "「絶対儲かる」「ランキングから選ぼう」はなぜ避ける？", "answer": "制度説明と個別商品推奨を分けます。ランキングも実質的な勧誘の代わりに使いません。", "details": ["避ける表現は「絶対儲かる」「元本保証」「この銘柄を買いましょう」「上位だから安全」「今決めないと損」です。", "ランキングは過去の設定額等の集計で、将来の運用成果や本人への適合性を示しません。具体銘柄・金額・売買時期の相談は、対応権限のある専門窓口へ案内します。"], "talk": "「将来の利益はお約束できません。銘柄の選び方については、対応できる専門窓口へご相談ください。」", "cautions": ["禁止例を肯定文の接客トークとしてコピーしないでください。個別の税額・申告判断も扱いません。"], "sources": ["card", "fsa-invest", "change"], "keywords": ["禁止トーク", "コンプライアンス", "断定", "銘柄推奨", "ランキング"], "checked": "2026-10-15"}, {"id": "q38", "number": 38, "category": "store", "question": "このQ&A検索に入力してはいけない情報は？", "answer": "検索するのは一般的な質問だけです。お客様の個人情報・認証情報は入力しません。", "details": ["氏名・住所・電話番号・実際のメール・個人番号・カード番号・口座番号・書類画像・パスワード・OTP・パスキー等は入力しません。", "この証券Q&Aの検索は端末内の登録回答を探すだけで、検索語を保存したりAIへ送信したりしません。コピー・印刷は登録回答と根拠だけです。公式サイトを開くと、そのサイトの運用が適用されます。"], "talk": "「番号やパスワードは伺いません。必要な入力はご本人の端末で公式サイトへ直接お願いします。」", "cautions": ["別のGeminiタブは生成AI機能です。ここでの端末内検索と区別してください。機密情報の完全自動判別を保証するものではありません。"], "sources": ["card", "change"], "keywords": ["セキュリティ", "個人情報", "OTP", "パスワード", "AI", "送信", "保存"], "checked": "2026-10-15"}, {"id": "q39", "number": 39, "category": "store", "question": "わからない質問や、最新キャンペーンはどう案内する？", "answer": "登録回答にないことは断定せず、関係する公式ページ・専門窓口で確認します。", "details": ["金融制度・特典の条件は変わります。この資料の確認日は2026年10月15日です。キャンペーンの開始・終了、エントリー、対象口座・カード、進呈時期・期限はその都度確認します。", "手続きはマネックス公式、カードはdカード公式、銀行連携は各特典公式、個別税務は税務署等へ案内します。社内ルールの変更も責任者に確認します。"], "talk": "「こちらは確認が必要です。対象条件の公式ページをご案内し、確認できた範囲でお伝えします。」", "cautions": ["古い条件の印刷物を最新と案内しません。対象外・未確認の場合は買付やカード切替を促しません。"], "sources": ["change", "revision", "bank", "nta"], "keywords": ["未確認", "該当なし", "問い合わせ", "キャンペーン", "最新"], "checked": "2026-10-15"}, {"id": "q40", "number": 40, "category": "store", "question": "NISAをどこで開設したか忘れたら？", "answer": "税務署への相談や、一定の条件を満たす場合はe-Taxのマイページで確認できます。", "details": ["複数の金融機関へNISAを申し込む前に、既存の開設先を本人が確認します。", "e-Taxでの確認には、利用者識別番号やマイナンバー記載の申告書等の提出歴など所定の要件があります。金融庁の案内から国税庁の確認方法へ進んでください。"], "talk": "「開設先が不明な場合は、確認方法があります。番号をこちらへ伝えず、ご本人が公式窓口で確認してください。」", "cautions": ["スタッフが本人のe-Taxへ代理ログインしたり、識別番号・暗証番号を聞き取ったりしません。"], "sources": ["fsa-qa"], "keywords": ["忘れた", "開設先", "e-Tax", "税務署", "重複"], "checked": "2026-10-15"}], "notice": "成人向けNISAの一般説明と店舗の確認用です。個別銘柄・投資額・売買判断・個別税務は扱いません。投資には元本割れのリスクがあります。公式条件と店舗の対応権限を確認してください。接客例は独自編集です。"}, "sources": {"fsa": {"id": "fsa", "number": 1, "title": "金融庁：NISAを知る", "publisher": "金融庁", "url": "https://www.fsa.go.jp/policy/nisa2/know/", "checked": "2026-10-15"}, "fsa-qa": {"id": "fsa-qa", "number": 2, "title": "金融庁：NISAよくある質問", "publisher": "金融庁", "url": "https://www.fsa.go.jp/policy/nisa2/question/index.html", "checked": "2026-10-15"}, "fsa-invest": {"id": "fsa-invest", "number": 3, "title": "金融庁：資産形成の基本", "publisher": "金融庁", "url": "https://www.fsa.go.jp/policy/nisa2/invest/", "checked": "2026-10-15"}, "nta": {"id": "nta", "number": 4, "title": "国税庁：特定口座制度", "publisher": "国税庁", "url": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1476.htm", "checked": "2026-10-15"}, "change": {"id": "change", "number": 5, "title": "マネックス証券：金融機関変更・再開設", "publisher": "マネックス証券", "url": "https://info.monex.co.jp/nisa/procedure.html", "checked": "2026-10-15"}, "schedule": {"id": "schedule", "number": 6, "title": "マネックス証券：2027年分の金融機関変更は10月1日から", "publisher": "マネックス証券", "url": "https://info.monex.co.jp/news/2026/20260916_06.html", "checked": "2026-10-15"}, "fee": {"id": "fee", "number": 7, "title": "マネックス証券：NISA売買手数料と対象外費用", "publisher": "マネックス証券", "url": "https://info.monex.co.jp/nisa/feefree.html", "checked": "2026-10-15"}, "card": {"id": "card", "number": 8, "title": "マネックス証券：dカード積立", "publisher": "マネックス証券", "url": "https://info.monex.co.jp/fund/tsumitate/card-tsumitate/dcard/index.html", "checked": "2026-10-15"}, "revision": {"id": "revision", "number": 9, "title": "dカード：2026年12月以降の改定", "publisher": "NTTドコモFG", "url": "https://dcard.docomo.ne.jp/std/info/correction20260901.html", "checked": "2026-10-15"}, "compare": {"id": "compare", "number": 10, "title": "dカード：カード比較・年会費", "publisher": "NTTドコモFG", "url": "https://dcard.docomo.ne.jp/st/dcard_compare_dcar/index.html", "checked": "2026-10-15"}, "bank": {"id": "bank", "number": 11, "title": "dカード：銀行引落特典・マネックス証券特典", "publisher": "NTTドコモFG", "url": "https://dcard.docomo.ne.jp/st/dneobank_monex_benefits/index.html", "checked": "2026-10-15"}, "sweep": {"id": "sweep", "number": 12, "title": "マネックス証券：スイープ入金", "publisher": "マネックス証券", "url": "https://info.monex.co.jp/service/dneobank/sweep-deposit.html", "checked": "2026-10-15"}}}</script>
+<script id="securitiesFaqRuntime">
+(function () {
+  'use strict';
+  const payload = JSON.parse(document.getElementById('securitiesFaqData').textContent);
+  const data = payload.data, sources = payload.sources;
+  const questions = data.questions;
+  const byId = new Map(questions.map(q => [q.id,q]));
+  const catNames = Object.fromEntries(data.categories.map(c => [c.id,c.title]));
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const norm = s => String(s).normalize('NFKC').toLowerCase().replace(/ニーサ|にーさ|にさ/g,'nisa').replace(/ゴールド/g,'gold').replace(/プラチナ/g,'platinum');
+  let filtered = [...questions], current = questions[0].id;
+  const corpus = q => norm([q.question,q.answer,...q.details,q.talk,...q.cautions,...q.keywords].join(' '));
+  const isSensitive = s => /\d{9,}|[\w.+-]+@[\w.-]+\.[a-z]{2,}|(?:パスワード|otp|認証コード|口座番号|カード番号|個人番号|電話番号)\s*[:：=]\s*\S+/i.test(norm(s).replace(/[\s-]/g,''));
+  data.categories.forEach(c => { const o = document.createElement('option'); o.value=c.id; o.textContent=c.title; $('sfCategory').appendChild(o); });
+  $('sfTotal').textContent = '全' + questions.length + '問';
+  function textAnswer(q) {
+    return ['Q'+q.number+' '+q.question,'回答：'+q.answer,'詳しい説明：',...q.details,'店頭での言い方（独自編集）：'+q.talk,'注意事項：',...q.cautions,'公式確認日：'+q.checked,...q.sources.map(id => sources[id].title+' '+sources[id].url),data.notice].join('\n\n');
+  }
+  function answerHtml(q) {
+    return '<h3>Q'+q.number+'. '+esc(q.question)+'</h3><p class="sf-answer-meta">'+esc(catNames[q.category])+' ／ 公式確認 '+esc(q.checked)+'</p>'+
+      '<div class="sf-summary">'+esc(q.answer)+'</div><h4>詳しい説明</h4>'+q.details.map(s => '<p>'+esc(s)+'</p>').join('')+
+      '<h4>店頭での言い方（独自編集）</h4><div class="sf-talk">'+esc(q.talk)+'</div><h4>注意事項</h4><div class="sf-caution">'+q.cautions.map(s => '<p>'+esc(s)+'</p>').join('')+'</div>'+
+      '<h4>公式根拠</h4><ul class="sf-refs">'+q.sources.map(id => '<li><a href="'+esc(sources[id].url)+'" target="_blank" rel="noopener noreferrer">['+sources[id].number+'] '+esc(sources[id].title)+'</a></li>').join('')+'</ul>';
+  }
+  function renderAnswer(focus) {
+    const q = byId.get(current);
+    $('sfPrintCurrent').disabled = !q;
+    if (!q) { $('sfAnswer').innerHTML='<h3>該当する登録回答がありません</h3><p>検索語を短くするか、分野・検索を解除してください。未登録の内容は公式窓口で確認します。</p>'; return; }
+    $('sfAnswer').innerHTML=answerHtml(q)+'<div class="sf-copyline"><button id="sfCopy" type="button">回答・根拠をコピー</button><span id="sfCopyStatus" role="status"></span></div>';
+    $('sfCopy').addEventListener('click', async () => {
+      const t = textAnswer(q);
+      try {
+        if (navigator.clipboard && window.isSecureContext) await navigator.clipboard.writeText(t);
+        else {
+          const el=document.createElement('textarea'); el.value=t; el.setAttribute('readonly',''); el.style.position='fixed'; el.style.left='-10000px'; document.body.appendChild(el); el.select(); const ok=document.execCommand('copy'); el.remove(); if(!ok) throw new Error('copy');
+        }
+        $('sfCopyStatus').textContent='回答と公式根拠をコピーしました。';
+      } catch (_) { $('sfCopyStatus').textContent='自動コピーできませんでした。回答の文字を選択してコピーしてください。'; }
+    });
+    if(focus) { $('sfAnswer').focus({preventScroll:true}); $('sfAnswer').scrollIntoView({block:'start',behavior:'auto'}); }
+  }
+  function renderList() {
+    $('sfCount').textContent=filtered.length+'件';
+    $('sfPrintFiltered').disabled=!filtered.length;
+    $('sfQuestions').innerHTML=filtered.map(q => '<button type="button" class="sf-question" data-sf-id="'+q.id+'" aria-current="'+(q.id===current)+'"><small>Q'+q.number+' ／ '+esc(catNames[q.category])+'</small>'+esc(q.question)+'</button>').join('') || '<p>該当なし。検索・分野を解除してみてください。</p>';
+    $('sfQuestions').querySelectorAll('[data-sf-id]').forEach(b => b.addEventListener('click',() => {current=b.dataset.sfId;renderList();renderAnswer(true);}));
+  }
+  function search() {
+    const raw=$('sfQuery').value;
+    if(isSensitive(raw)) { $('sfQuery').value=''; $('sfStatus').textContent='個人情報・認証情報と思われる入力を削除しました。一般的な質問だけで検索してください。'; return; }
+    const query=norm(raw).trim();
+    let tokens=query.split(/\s+/).filter(Boolean);
+    const cleaned=query.replace(/とは|って|ですか|どうなる|知りたい|について|教えて|ください|\?|？|。/g,'').trim();
+    if(tokens.length===1 && cleaned) tokens=[cleaned];
+    const known=['nisa','2026','2027','gold','platinum','銀行','配当','損益通算','特定口座','スイープ','年会費','変更','積立','手数料','投信保有','元本割れ','ランキング','期限','個人情報'];
+    if(tokens.length===1 && !questions.some(q => corpus(q).includes(tokens[0]))) {
+      const words=known.filter(k=>query.includes(k)); if(words.length) tokens=words;
+    }
+    const cat=$('sfCategory').value;
+    filtered=questions.filter(q => (cat==='all'||q.category===cat)&&tokens.every(t=>corpus(q).includes(t)));
+    if(!filtered.some(q=>q.id===current)) current=filtered.length?filtered[0].id:null;
+    $('sfStatus').textContent=query||cat!=='all' ? filtered.length+'件の登録回答が見つかりました。質問を選んでください。' : '';
+    renderList();renderAnswer(false);
+  }
+  function show(id) {
+    if(!byId.has(id)) return;
+    $('sfQuery').value=''; $('sfCategory').value='all'; filtered=[...questions];current=id;renderList();renderAnswer(false);
+  }
+  const printCss='@page{size:A4;margin:16mm}*{box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Noto Sans CJK JP",sans-serif;color:#111;font-size:11pt;line-height:1.7;margin:25px auto;padding:0 20px;max-width:850px}h1{font-size:22pt}h2{font-size:18pt}h3{font-size:15pt;margin-top:25px;break-after:avoid}h4{font-size:11pt;margin:14px 0 4px;break-after:avoid}p{margin:7px 0;orphans:3;widows:3}a{color:#111;overflow-wrap:anywhere}.sf-summary{font-weight:bold;border-left:3px solid #555;padding:8px 12px;background:#f4f4f4}.sf-caution{border:1px solid #aaa;padding:8px 12px}.sf-answer-meta{font-size:9pt}.sf-refs{font-size:9pt;padding-left:20px}section{border-top:1px solid #bbb;padding-top:10px}button{padding:10px 20px;font-size:16px}footer{border-top:1px solid #999;margin-top:25px;font-size:9pt}@media print{body{margin:0;padding:0;max-width:none}.print-controls{display:none}a{text-decoration:none}a::after{content:" (" attr(href) ")";font-size:8pt}}';
+  function printDocument(scope) {
+    const items=scope==='all'?questions:scope==='filtered'?filtered:[byId.get(current)].filter(Boolean);
+    if(!items.length) return;
+    const w=window.open('','_blank');
+    if(!w) { $('sfStatus').textContent='印刷用画面が開けません。Safari等のポップアップを許可してもう一度お試しください。'; return; }
+    const doc='<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>今更聞けない証券・印刷用</title><style>'+printCss+'</style></head><body><div class="print-controls"><button id="printButton">印刷／PDF保存</button><p>Safariでは共有→プリントからも使えます。PDFとして保存して社内共有できます。</p></div><h1>今更聞けない証券</h1><p>'+esc(data.subtitle)+'<br>社内・店舗向け ／ 公式確認 '+esc(data.checked)+' ／ '+items.length+'問</p><p>'+esc(data.notice)+'</p>'+items.map(q=>'<section>'+answerHtml(q)+'</section>').join('')+'<footer>'+esc(data.notice)+'<br>個人情報の入力・保存・送信、金融取引の代行はしません。</footer></body></html>';
+    w.document.open();w.document.write(doc);w.document.close();w.opener=null;
+    w.document.getElementById('printButton').addEventListener('click',()=>w.print());
+  }
+  $('sfSearch').addEventListener('click',search);
+  $('sfQuery').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();search();}});
+  $('sfQuery').addEventListener('input',()=>{if(isSensitive($('sfQuery').value)){ $('sfQuery').value='';$('sfStatus').textContent='番号や認証情報は入力しないでください。入力を削除しました。';}});
+  $('sfCategory').addEventListener('change',search);
+  $('sfReset').addEventListener('click',()=>{show(questions[0].id);$('sfStatus').textContent='';});
+  document.querySelectorAll('[data-sf-query]').forEach(b=>b.addEventListener('click',()=>{$('sfCategory').value='all';$('sfQuery').value=b.dataset.sfQuery;search();}));
+  $('sfPrintCurrent').addEventListener('click',()=>printDocument('current'));
+  $('sfPrintFiltered').addEventListener('click',()=>printDocument('filtered'));
+  $('sfPrintAll').addEventListener('click',()=>printDocument('all'));
+  $('sfBack').addEventListener('click',()=>window.showSupportMode('consult'));
+  document.querySelectorAll('[data-open-securities]').forEach(b=>b.addEventListener('click',()=>{window.showSupportMode('securities');$('securitiesModeTab').focus();}));
+  window.SecuritiesFaq={search,show,printDocument};
+  renderList();renderAnswer(false);
+})();
 </script>
 </body></html>
